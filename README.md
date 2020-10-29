@@ -1,11 +1,11 @@
-¿Qué es PSMame Plus (Metal Slug Special Edition)?
+What is PSMAME PLUS?
 
-Este una edición especial del emulador Proyecto Shadow, que utiliza la fuente de código del emulador de HBMame. 
+This is a special edition of the Shadow Project emulator, which uses the HBMAME emulator source code.
 
-El inicio de este proyecto fue en el año 2019, donde le ofrezco a los usuarios la comodidad y la facilidad de poder jugar todas las franquicias del juegos del Metal Slug del sistema árcade "Neo Geo MVS". 
+The beginning of this project was in 2019, where I offer users the pleasure of being able to play all the franchises of the Metal Slug games of the "Neo Geo MVS" arcade system.
 
-También se le incluirá las versiones no oficiales conocidamente como "hacks". 
+It will also include unofficial versions known as "hacks".
 
-Para poder compilar exitosamente necesitaremos los códigos fuente de la versión de HBMAME 0.215.
+In order to compile successfully we will need the source codes of HBMAME version 0.215.
 
-Tenga en cuenta que el uso de este emulador está prohibido para cualquier uso comercial o utilizado el proyecto para una recaudación de fondos económicos.
+Please note that the use of this emulator is prohibited for any commercial use or used the project for an economic fundraiser.
