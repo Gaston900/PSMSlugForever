@@ -70,7 +70,6 @@ function createProjects_hbmame_hbmame(_target, _subtarget)
 createHBMAMEProjects(_target, _subtarget, "neogeo")
 files {
 	MAME_DIR .. "src/hbmame/drivers/neogeo.cpp",
-	MAME_DIR .. "src/hbmame/drivers/neogeo1.cpp",
 	MAME_DIR .. "src/hbmame/drivers/mslug.cpp",
 	MAME_DIR .. "src/hbmame/drivers/mslug2.cpp",
 	MAME_DIR .. "src/hbmame/drivers/mslug3.cpp",
