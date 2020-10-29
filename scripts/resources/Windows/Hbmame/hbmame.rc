@@ -1,0 +1,15 @@
+// license:BSD-3-Clause
+// copyright-holders:Gaston90
+// copyright-holders:Robbbert
+//============================================================
+//
+//	mame.rc - Minimal resource file for Win32 MAME
+//
+//============================================================
+
+#include <windows.h>
+//#include "mamevers.rc"
+
+1                       24      MOVEABLE PURE   "PSMame Plus.man"
+
+2                       ICON    DISCARDABLE     "PSMame.ico"
