@@ -861,7 +861,7 @@ ROM_END
 
 ROM_START( mslug3hacks31 ) //mslug3eb
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "neo-sma_hacks30.sma", 0x0c0000, 0x040000, CRC(c2dc0b28) SHA1(3aff37ec62def5a8f23523cb7c1988934e27ea30) )
+	ROM_LOAD16_WORD_SWAP( "neo-sma_hacks31.sma", 0x0c0000, 0x040000, CRC(c2dc0b28) SHA1(3aff37ec62def5a8f23523cb7c1988934e27ea30) )
 	ROM_LOAD16_WORD_SWAP( "256_hacks09.p1",     0x100000, 0x400000, CRC(6ec2e58d) SHA1(d83dd522a5c8a8b4bd32722967e3d934d2e73e08) )
 	ROM_LOAD16_WORD_SWAP( "256_hacks31.p2",     0x500000, 0x400000, CRC(faaf8cd8) SHA1(264018877eab84582ba553cb42d75f15c0c08f65) )
 
@@ -966,7 +966,7 @@ ROM_END
 
 ROM_START( mslug3hacks35 ) //mslug31v2
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "neo-sma_h68",    0x0c0000, 0x040000, CRC(1c090500) SHA1(d4ca78c9848418ff89a3d756051051a6c1125b52) )
+	ROM_LOAD16_WORD_SWAP( "neo-sma_hacks35.sma",    0x0c0000, 0x040000, CRC(1c090500) SHA1(d4ca78c9848418ff89a3d756051051a6c1125b52) )
 	ROM_LOAD16_WORD_SWAP( "256.p1", 0x100000, 0x400000, CRC(b07edfd5) SHA1(dcbd9e500bfae98d754e55cdbbbbf9401013f8ee) )
 	ROM_LOAD16_WORD_SWAP( "256_hacks35.p2", 0x500000, 0x400000, CRC(45db3f1d) SHA1(3d07c5f0eb3914acb443e151048318e498be2186) )
 
@@ -3371,7 +3371,7 @@ ROM_END
 ROM_START( mslug3la06 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_la06.p1",  0x000000, 0x100000, CRC(6ff261d2) SHA1(1af09eef4edd9ff789152de7e8efc2d02e21fbdf) )
-	ROM_LOAD16_WORD_SWAP( "256la06.p2", 0x100000, 0x400000, CRC(78584c8a) SHA1(fc6e8b9e86e0f7111f2230d3b78177ed2abe8c9c) )
+	ROM_LOAD16_WORD_SWAP( "256_la06.p2", 0x100000, 0x400000, CRC(78584c8a) SHA1(fc6e8b9e86e0f7111f2230d3b78177ed2abe8c9c) )
 
 	NEO_SFIX_128K( "256_hacks17.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
 
@@ -7002,23 +7002,23 @@ ROM_END
 // Metal Slug 3
 HACK( 2000, mslug3hacks01,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3n,   ROT0, "HappyAsr", "Metal Slug 3 (Super D version)", MACHINE_SUPPORTS_SAVE )
 HACK( 2000, mslug3hacks02,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3n,   ROT0, "ZKW",      "Metal Slug 3 (PPX Team Hack)", MACHINE_SUPPORTS_SAVE )
-HACK( 2000, mslug3hacks03,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "DDJ",      "Metal Slug 3 (Jump In Mid Air)" ,  MACHINE_SUPPORTS_SAVE )
-HACK( 2000, mslug3hacks04,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "bootleg ( ms6boot )",    "Metal Slug 3 (Change Gun version)", MACHINE_SUPPORTS_SAVE )
+HACK( 2017, mslug3hacks03,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "DDJ",      "Metal Slug 3 (Jump In Mid Air 2017-08-23)" ,  MACHINE_SUPPORTS_SAVE )
+HACK( 2012, mslug3hacks04,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "bootleg ( ms6boot )",    "Metal Slug 3 (Change Gun Version 2012-04-06)", MACHINE_SUPPORTS_SAVE )
 HACK( 2014, mslug3hacks05,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "LB70",     "Metal Slug 3 (Crazy Fire Version V1.1 2014-10-04)", MACHINE_SUPPORTS_SAVE )
-HACK( 2000, mslug3hacks06,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "PlayerX China",    "Metal Slug 3 (Green Blue)", MACHINE_SUPPORTS_SAVE )
+HACK( 2011, mslug3hacks06,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "PlayerX China",    "Metal Slug 3 (Green Blue 2011-06-06)", MACHINE_SUPPORTS_SAVE )
 HACK( 2020, mslug3hacks07,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "hack",     "Metal Slug 3 (Burst Enhanced Edition 2020-03-17)", MACHINE_SUPPORTS_SAVE )
 HACK( 2006, mslug3hacks08,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "Shyma.X",  "Metal Slug 3 (Neo Arc French Traduction version 2006 Rev.1)", MACHINE_SUPPORTS_SAVE )
 HACK( 2013, mslug3hacks09,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3,    ROT0, "PlayerX China",  "Metal Slug 3 (Green Edition 2013-02-27)" , MACHINE_SUPPORTS_SAVE )
 HACK( 2004, mslug3hacks10,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3fr,  ROT0, "Arkatrad", "Metal Slug 3 (Neo Arc French Traduction version 2004)", MACHINE_SUPPORTS_SAVE )
 HACK( 2003, mslug3hacks11,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3fr,  ROT0, "Arkatrad", "Metal Slug 3 (Neo Arc French Traduction version 2004)(Old)", MACHINE_SUPPORTS_SAVE )
 HACK( 2015, mslug3hacks12,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3n,   ROT0, "hack",     "Metal Slug 3 (Enhanced Version 2015-05-07)", MACHINE_SUPPORTS_SAVE )
-HACK( 2000, mslug3hacks13,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "DDJ",      "Metal Slug 3 (Change Weapon)", MACHINE_NOT_WORKING | MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
-HACK( 2000, mslug3hacks14,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "DDJ",      "Metal Slug 3 (Change Zombie)", MACHINE_SUPPORTS_SAVE )
+HACK( 2017, mslug3hacks13,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "DDJ",      "Metal Slug 3 (Change Weapon 2017-05-22)", MACHINE_NOT_WORKING | MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
+HACK( 2016, mslug3hacks14,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "DDJ",      "Metal Slug 3 (Change Zombie 2016-03-10)", MACHINE_SUPPORTS_SAVE )
 HACK( 2012, mslug3hacks15,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3b6,  ROT0, "Eezezy",   "Metal Slug 3 (Violence Edition 2012-03-01)", MACHINE_SUPPORTS_SAVE )
 HACK( 2019, mslug3hacks16,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "hack",     "Metal Slug 3 (Mount Enhanced 2019-04-04)", MACHINE_SUPPORTS_SAVE )
 HACK( 2020, mslug3hacks17,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  neogeo,    ROT0, "hack",     "Metal Slug 3 (Ultimate Simplified Edition 2020-08-25)", MACHINE_SUPPORTS_SAVE )
 HACK( 2020, mslug3hacks18,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "hack",     "Metal Slug 3 (Hybrid Bullets Version 2020-09-12)", MACHINE_SUPPORTS_SAVE )
-HACK( 2000, mslug3hacks19,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "DDJ",      "Metal Slug 3 (War Chariot)", MACHINE_SUPPORTS_SAVE )
+HACK( 2016, mslug3hacks19,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "DDJ",      "Metal Slug 3 (War Chariot 2016-02-21)", MACHINE_SUPPORTS_SAVE )
 HACK( 2020, mslug3hacks20,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  cmc42sfix, ROT0, "hack",     "Metal Slug 3 (Crazy Zombie 2020-09-12)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) //It is unstable and can crash suddenly at any level, the problem is generated by the file .p1.
 HACK( 2020, mslug3hacks21,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  cmc42sfix, ROT0, "hack",     "Metal Slug 3 (Crazy Mummy 2020-09-05)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) //It is unstable and can crash suddenly at any level, the problem is generated by the file .p1.
 HACK( 2020, mslug3hacks22,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  cmc42sfix, ROT0, "hack",     "Metal Slug 3 (The Last Warhead 2020-09-05)", MACHINE_SUPPORTS_SAVE )
@@ -7036,7 +7036,7 @@ HACK( 2019, mslug3hacks33,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  
 HACK( 2019, mslug3hacks34,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  cmc42sfix, ROT0, "XiaShuiDaoMeiRenYu",    "Metal Slug 3 (Enemies Resetting Version 2019-04-17)" , MACHINE_SUPPORTS_SAVE )
 HACK( 2019, mslug3hacks35,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3,    ROT0, "hack",  "Metal Slug 3 (Generation 1V2 2019-05-11)" , MACHINE_SUPPORTS_SAVE )
 HACK( 2019, mslug3hacks36,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  cmc42sfix, ROT0, "XiaShuiDaoMeiRenYu",    "Metal Slug 3 (Enemies Resetting Version 2019-07-20)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2000, mslug3hacks37,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "PlayerX China",    "Metal Slug 3 (Out Of Blue)" , MACHINE_NOT_WORKING | MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
+HACK( 2017, mslug3hacks37,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "PlayerX China",    "Metal Slug 3 (Out Of Blue 2017-12-29)" , MACHINE_NOT_WORKING | MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
 HACK( 2020, mslug3hacks38,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "hack",    "Metal Slug 3 (Burst Enhanced Edition 2020-03-29)", MACHINE_SUPPORTS_SAVE )
 HACK( 2018, mslug3hacks39,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "hack",    "Metal Slug 3 (Enemy Soldier Reset Alpha 2014-01-18)" , MACHINE_SUPPORTS_SAVE )
 HACK( 2017, mslug3hacks40,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  neogeo,    ROT0, "hack",    "Metal Slug 3 (Random Enemies Resetting Version 1.0 2017-12-08)" , MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
@@ -7044,8 +7044,8 @@ HACK( 2018, mslug3hacks41,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  
 HACK( 2018, mslug3hacks42,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "hack",    "Metal Slug 3 (Summon Mount Edition 2017-04-04)" , MACHINE_SUPPORTS_SAVE )
 HACK( 2004, mslug3hacks43,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3fr,  ROT0, "Shyma.X", "Metal Slug 3 (Neo Arc French Traduction 2006 Rev.2)", MACHINE_SUPPORTS_SAVE )
 HACK( 2020, mslug3hacks44,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "hack",    "Metal Slug 3 (Burst Enhanced Edition 2020-04-28)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, mslug3hacks45,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "hack",    "Metal Slug 3 (SE Special Edition)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, mslug3hacks46,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  neogeo,    ROT0, "hack",  "Metal Slug 3 (Ghost Wu Zuoma 2018-05-29)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+HACK( 2019, mslug3hacks45,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "hack",    "Metal Slug 3 (SE Special Edition 2019-07-27)", MACHINE_SUPPORTS_SAVE )
+HACK( 2018, mslug3hacks46,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  neogeo,    ROT0, "hack",    "Metal Slug 3 (Ghost Wu Zuoma 2018-05-29)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 HACK( 2017, mslug3hacks47,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "hack",    "Metal Slug 3 (Summon Mount Prototype Rev.1 2017-10-09)", MACHINE_SUPPORTS_SAVE )
 HACK( 2019, mslug3hacks48,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  cmc42sfix, ROT0, "XiaShuiDaoMeiRenYu",    "Metal Slug 3 (Enemies Resetting Version 2019-04-15)" , MACHINE_SUPPORTS_SAVE )
 HACK( 2018, mslug3hacks49,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "hack",    "Metal Slug 3 (Enhanced Edition 2018-05-09)" ,  MACHINE_NOT_WORKING | MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )

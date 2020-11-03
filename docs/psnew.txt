@@ -1,0 +1,14 @@
+﻿What's new in PSMAME PLUS
+====================
+
+2020-12-30 // Version 1.0
+
+- First release oficial
+
+New Games
+---------------------------------
+- [mslugxese03]             Metal Slug X (Extreme Space 2R Edition 2015-04-10)(Hybrid Bullets Version)(Revised Improved version 2020-11-10)
+- [mslugxese04]             Metal Slug X (Extreme Space 2R Edition 2015-04-10)(Big Heavy Machine Gun Flame Edition)(Revised Improved version 2020-11-10)
+- [mslugxmcv06]             Metal Slug X (Multi-Carrier 2R Edition 2013-01-05)(Big Heavy Machine Gun Flame Edition)(Revised Improved version 2020-11-10)
+- [mslugxrmxe6s13]          Metal Slug X (Extreme Space 2R Edition 2015-04-10)(Big Heavy Machine Gun Flame Edition Extreme Remix 2020-11-10)
+- [mslugxrmxe6s14]          Metal Slug X (Multi-Carrier 2R Edition 2013-01-05)(Big Heavy Machine Gun Flame Edition Extreme Remix 2020-11-10)

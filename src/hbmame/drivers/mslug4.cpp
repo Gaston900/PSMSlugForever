@@ -155,7 +155,7 @@ ROM_END
 
 ROM_START( mslug4hacks05 ) //mslug4c, mslug4dr
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263hh50.p1",   0x000000, 0x100000, CRC(81fd4ae9) SHA1(0bb85d314b96e09e859d30f0a8714efc1884938b) )
+	ROM_LOAD16_WORD_SWAP( "263_hacks05.p1",   0x000000, 0x100000, CRC(81fd4ae9) SHA1(0bb85d314b96e09e859d30f0a8714efc1884938b) )
 	ROM_LOAD16_WORD_SWAP( "263.p2", 0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
 
 	NEO_SFIX_128K( "263.s1", CRC(a9446774) SHA1(c5a309fd8ee6d6750a15c82e710218a3755e38b2) )
@@ -249,7 +249,7 @@ ROM_END
 
 ROM_START( mslug4hacks09 ) //mslug4maxp
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263hh54.p1",  0x000000, 0x500000, CRC(ae9e9d37) SHA1(ea85c99bcc12088e5196836284fb6180843cf4c4) )
+	ROM_LOAD16_WORD_SWAP( "263_hacks09.p1",  0x000000, 0x500000, CRC(ae9e9d37) SHA1(ea85c99bcc12088e5196836284fb6180843cf4c4) )
 
 	NEO_SFIX_512K( "263_hacks08.s1", CRC(1eaa05e0) SHA1(73a7e158c3c4fa602e17dcb517190fd91a9dbab8) )
 
@@ -982,7 +982,7 @@ ROM_START( mslug4dd )
 	ROM_LOAD( "263_hacks07.v1", 0x000000, 0x400000, CRC(8cb5a9ef) SHA1(272ad312f8694acf9190ebf48d1c8a5fec73c130) )
 	ROM_LOAD( "263_hacks17.v2", 0x400000, 0x400000, CRC(94217b1e) SHA1(c468a192e2ec0952a20cfd9e391cf6c12346efb3) )
 	ROM_LOAD( "263_hacks17.v3", 0x800000, 0x400000, CRC(7616fcec) SHA1(83006094379d0373b967603dcaa1cec69c2f746f) )
-	ROM_LOAD( "263hh48.v4", 0xc00000, 0x400000, CRC(c5967f91) SHA1(874562109c3df9e1fdefbb3970092128aaa31a17) )
+	ROM_LOAD( "263dd.v4",       0xc00000, 0x400000, CRC(c5967f91) SHA1(874562109c3df9e1fdefbb3970092128aaa31a17) )
 
 	ROM_REGION( 0x3000000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "263nd.c1", 0x0000000, 0x800000, CRC(361ddda6) SHA1(95f329019660f1ec7f15f6ea1e0c2bfc84b02ca8) )
@@ -2358,7 +2358,7 @@ GAME( 2005, mslug4hacks03,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  
 GAME( 2007, mslug4hacks04,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Evoboy",  "Metal Slug 4 (Traduction Italian)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug4hacks05,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_neogeo,    ROT0, "XiaShuiDaoMeiRenYu",    "Metal Slug 4 (Enemies Resetting Version 2019-11-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug4hacks06,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "hack",             "Metal Slug 4 (Multi-Function Version 2018-10-05)", MACHINE_SUPPORTS_SAVE ) //The date of the ips is taken into account
-GAME( 2020, mslug4hacks07,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_neogeo,    ROT0, "XiaShuiDaoMeiRenYu",  "Metal Slug 4 (Enemies Resetting Version 2020-02-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4hacks07,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_neogeo,    ROT0, "XiaShuiDaoMeiRenYu",    "Metal Slug 4 (Enemies Resetting Version 2020-02-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug4hacks08,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "hack",             "Metal Slug 4 (Burst Enhanced Edition 2020-03-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug4hacks09,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "hack",             "Metal Slug 4 (Burst Enhanced Edition 2020-03-29)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug4hacks10,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "hack",             "Metal Slug 4 (Burst Enhanced Edition 2020-04-28)", MACHINE_SUPPORTS_SAVE )
@@ -2377,17 +2377,17 @@ GAME( 2020, mslug4hacks22,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  
 GAME( 2019, mslug4hacks23,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_neogeo,    ROT0, "XiaShuiDaoMeiRenYu",       "Metal Slug 4 (Enemies Resetting Version 2019-04-15)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug4hacks24,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "hack",             "Metal Slug 4 (Generation 1V2 2019-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, mslug4hacks25,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "hack",             "Metal Slug 4 (Multi-Function Version 2017-12-25)", MACHINE_SUPPORTS_SAVE )
-GAME( 2006, mslug4hacks26,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Shyma.X",          "Metal Slug 4 (Neo Arc French Traduction Version 2006)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslug4hacks26,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Shyma.X",          "Metal Slug 4 (Neo Arc French Traduction 2006 Version )", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslug4hacks27,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_neogeo,    ROT0, "hack",             "Metal Slug 4 (Last Bullet 2016-03-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslug4hacks28,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_neogeo,    ROT0, "hack",             "Metal Slug 4 (Last Bullet 2016-10-15)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslug4hacks29,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_neogeo,    ROT0, "hack",             "Metal Slug 4 (Mummy Edition 2020-08-31)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, mslug4hacks30,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "DDJ",              "Metal Slug 4 (Change Character)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) //It is Crashea when one changes character at the beginning of the final mission.
-GAME( 2002, mslug4hacks31,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "DDJ",              "Metal Slug 4 (Change Weapon)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, mslug4hacks32,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "DDJ",              "Metal Slug 4 (Change Zombie)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) //It is Crashea when one changes character at the beginning of the final mission.
-GAME( 2002, mslug4hacks33,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "DDJ",              "Metal Slug 4 (Jump In Mid Air)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, mslug4hacks34,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Shyma.X",          "Metal Slug 4 (Neo Arc French Traduction Version 2006 Rev.3)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, mslug4hacks35,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "DDJ",              "Metal Slug 4 (War Chariot)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, mslug4hacks36,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Mame Neht",        "Metal Slug 4 (Neo Arc French Traduction (Version Unknown))", MACHINE_SUPPORTS_SAVE )
+GAME( 2010, mslug4hacks30,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "DDJ",              "Metal Slug 4 (Change Character 2016-01-05)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) //It is Crashea when one changes character at the beginning of the final mission.
+GAME( 2010, mslug4hacks31,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "DDJ",              "Metal Slug 4 (Change Weapon 2016-03-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, mslug4hacks32,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "DDJ",              "Metal Slug 4 (Change Zombie 2017-05-25)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) //It is Crashea when one changes character at the beginning of the final mission.
+GAME( 2017, mslug4hacks33,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "DDJ",              "Metal Slug 4 (Jump In Mid Air 2017-08-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslug4hacks34,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Shyma.X",          "Metal Slug 4 (Neo Arc French Traduction 2006 Version Rev.3)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, mslug4hacks35,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "DDJ",              "Metal Slug 4 (War Chariot 2016-02-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslug4hacks36,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Mame Neht",        "Metal Slug 4 (Neo Arc French Traduction (Version Unknown))", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug4hacks37,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_neogeo,    ROT0, "XiaShuiDaoMeiRenYu",    "Metal Slug 4 (Enemies Resetting Version 2019-04-25)", MACHINE_SUPPORTS_SAVE )
 
 // Bootleg
