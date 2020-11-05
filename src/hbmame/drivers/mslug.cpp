@@ -240,9 +240,9 @@ ROM_END
  Only exclusive
 *****************/
 
-ROM_START( mslughp01 )
+ROM_START( mslugla01 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "201_hp01.p1", 0x100000, 0x100000, CRC(5b0a07c2) SHA1(5af4473a6dc4b745a83a832135fc183765ae8af3) )
+	ROM_LOAD16_WORD_SWAP( "201_la01.p1", 0x100000, 0x100000, CRC(7b38187b) SHA1(2714b9bffe417839268ba625da585be004c791c3) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
 
 	NEO_SFIX_128K( "201.s1", CRC(2f55958d) SHA1(550b53628daec9f1e1e11a398854092d90f9505a) )
@@ -266,7 +266,7 @@ ROM_END
 
 ROM_START( mslugrmxe0s01 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "201_mxe0s01.p1", 0x100000, 0x100000, CRC(77e73d67) SHA1(8be04b5d956ea284074c5bc6b9426d0cde59d79f) )
+	ROM_LOAD16_WORD_SWAP( "201_mxe0s01.p1", 0x100000, 0x100000, CRC(57d522de) SHA1(7dacbe9ec4da39b6bc9eb586ab4aa0b181e72cda) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
 
 	NEO_SFIX_128K( "201.s1", CRC(2f55958d) SHA1(550b53628daec9f1e1e11a398854092d90f9505a) )
@@ -294,7 +294,7 @@ ROM_END
 
 ROM_START( mslugrmxe1s01 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "201_mxe1s01.p1", 0x100000, 0x100000, CRC(8b78c4e6) SHA1(cf26d9c810c4c1ef05e03a69038142535e50e150) )
+	ROM_LOAD16_WORD_SWAP( "201_mxe1s01.p1", 0x100000, 0x100000, CRC(ab4adb5f) SHA1(c8e7677c4924a313b3e23674f2e07a480d5a5594) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
 
 	NEO_SFIX_128K( "201.s1", CRC(2f55958d) SHA1(550b53628daec9f1e1e11a398854092d90f9505a) )
@@ -347,7 +347,7 @@ HACK( 2005, msboot,            mslug,    neogeo_noslot, neogeo, neogeo_state,   
   if some type of problems are detected that cannot be solved.
 ********************************************************************************************/
 
-HACK( 2020, mslughp01,         mslug,    neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,I love Nimes)",                "Metal Slug (Multi-Function Version 2018-04-30)(Burst Enhanced Edition)(Revised Improved version 2020-11-10)", MACHINE_SUPPORTS_SAVE ) //2020-11-10
+HACK( 2020, mslugla01,         mslug,    neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,I love Nimes)",                "Metal Slug (Multi-Function Version 2018-04-30)(Burst Enhanced Edition)(Revised Improved version 2020-11-10)", MACHINE_SUPPORTS_SAVE )
 
 // Extreme Remixes
 HACK( 2020, mslugrmxe0s01,     mslug,    neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,DDJ,I love Nimes)",    "Metal Slug (Revised Version Heavy Machine Gun Extreme Remix [2020-11-10])", MACHINE_SUPPORTS_SAVE )

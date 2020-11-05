@@ -429,7 +429,7 @@ ROM_START( mslug4hacks16 ) //mslug4lw //Final Version//
 	ROM_LOAD16_BYTE( "263_hacks07.c6", 0x2000001, 0x400000, CRC(b015aeee) SHA1(24e12e72b82eea9e52a4cefc774efb3bd7db822f) )
 ROM_END
 
-ROM_START( mslug4hacks17 ) //mslug4lwp
+ROM_START( mslug4hacks17 ) //mslug4le
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hacks17.p1", 0x000000, 0x100000, CRC(657ebd6e) SHA1(2f2c5849d249df6cbfe412ea47e0f8d6da1568dd) )
 	ROM_LOAD16_WORD_SWAP( "263_hacks17.p2", 0x100000, 0x800000, CRC(37bce641) SHA1(74344b36f980beaceb225cc5cd5afaec9b05ded6) )
@@ -997,10 +997,10 @@ ROM_END
  Only exclusive
 ******************/
 
-ROM_START( mslug4zb01 )
+ROM_START( mslug4la01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_zb01.p1",  0x000000, 0x100000, CRC(13040d33) SHA1(f8fc05307a617d04c6b22e76a259c60091acf2fe) )
-	ROM_LOAD16_WORD_SWAP( "263_wh00.p2", 0x100000, 0x400000, CRC(0fc9c60a) SHA1(86fd8753fda5003c78c8622bccd001043ccc58a2) )
+	ROM_LOAD16_WORD_SWAP( "263_la01.p1",  0x000000, 0x100000, CRC(13040d33) SHA1(f8fc05307a617d04c6b22e76a259c60091acf2fe) )
+	ROM_LOAD16_WORD_SWAP( "263_la01.p2",  0x100000, 0x400000, CRC(0fc9c60a) SHA1(86fd8753fda5003c78c8622bccd001043ccc58a2) )
 
 	NEO_SFIX_MT_512K
 
@@ -1022,10 +1022,10 @@ ROM_START( mslug4zb01 )
 	ROM_LOAD16_BYTE( "263.c6", 0x2000001, 0x800000, CRC(5c8ba116) SHA1(6034db09c8706d4ddbcefc053efbc47a0953eb92) )
 ROM_END
 
-ROM_START( mslug4zb02 )
+ROM_START( mslug4la02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_zb02.p1",  0x000000, 0x100000, CRC(97ca73ea) SHA1(3f2d3d15b73047891f904329900046224a86ae75) )
-	ROM_LOAD16_WORD_SWAP( "263_wh01.p2", 0x100000, 0x400000, CRC(fe1f929e) SHA1(2c4a1d19987844a1d4c05f9a07e112dfd338c980) )
+	ROM_LOAD16_WORD_SWAP( "263_la02.p1",  0x000000, 0x100000, CRC(97ca73ea) SHA1(3f2d3d15b73047891f904329900046224a86ae75) )
+	ROM_LOAD16_WORD_SWAP( "263_la02.p2",  0x100000, 0x400000, CRC(fe1f929e) SHA1(2c4a1d19987844a1d4c05f9a07e112dfd338c980) )
 
 	NEO_SFIX_MT_512K
 
@@ -1047,10 +1047,10 @@ ROM_START( mslug4zb02 )
 	ROM_LOAD16_BYTE( "263.c6", 0x2000001, 0x800000, CRC(5c8ba116) SHA1(6034db09c8706d4ddbcefc053efbc47a0953eb92) )
 ROM_END
 
-ROM_START( mslug4zb03 )
+ROM_START( mslug4la03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_zb03.p1",   0x000000, 0x100000, CRC(ea22bd49) SHA1(c55942394da9d11f9c42eefde841566fdd6c7ff7) )
-	ROM_LOAD16_WORD_SWAP( "263_wh00.p2", 0x100000, 0x400000, CRC(0fc9c60a) SHA1(86fd8753fda5003c78c8622bccd001043ccc58a2) )
+	ROM_LOAD16_WORD_SWAP( "263_la03.p1",   0x000000, 0x100000, CRC(ea22bd49) SHA1(c55942394da9d11f9c42eefde841566fdd6c7ff7) )
+	ROM_LOAD16_WORD_SWAP( "263_la01.p2",   0x100000, 0x400000, CRC(0fc9c60a) SHA1(86fd8753fda5003c78c8622bccd001043ccc58a2) )
 
 	NEO_SFIX_MT_512K
 
@@ -1072,10 +1072,10 @@ ROM_START( mslug4zb03 )
 	ROM_LOAD16_BYTE( "263.c6", 0x2000001, 0x800000, CRC(5c8ba116) SHA1(6034db09c8706d4ddbcefc053efbc47a0953eb92) )
 ROM_END
 
-ROM_START( mslug4zb04 )
+ROM_START( mslug4la04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_zb04.p1",   0x000000, 0x100000, CRC(934af7c7) SHA1(eaae1a9fb0ff8f5bafc588171f2b415c02e0e961) )
-	ROM_LOAD16_WORD_SWAP( "263_wh01.p2", 0x100000, 0x400000, CRC(fe1f929e) SHA1(2c4a1d19987844a1d4c05f9a07e112dfd338c980) )
+	ROM_LOAD16_WORD_SWAP( "263_la04.p1",   0x000000, 0x100000, CRC(934af7c7) SHA1(eaae1a9fb0ff8f5bafc588171f2b415c02e0e961) )
+	ROM_LOAD16_WORD_SWAP( "263_la02.p2",   0x100000, 0x400000, CRC(fe1f929e) SHA1(2c4a1d19987844a1d4c05f9a07e112dfd338c980) )
 
 	NEO_SFIX_MT_512K
 
@@ -1097,10 +1097,10 @@ ROM_START( mslug4zb04 )
 	ROM_LOAD16_BYTE( "263.c6", 0x2000001, 0x800000, CRC(5c8ba116) SHA1(6034db09c8706d4ddbcefc053efbc47a0953eb92) )
 ROM_END
 
-ROM_START( mslug4mk01 )
+ROM_START( mslug4lb01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_mk01.p1",  0x000000, 0x100000, CRC(d7aa8e11) SHA1(c628aec510bb2c02d2f1e1e866cddbfd85c1e9e0) )
-	ROM_LOAD16_WORD_SWAP( "263_wh00.p2", 0x100000, 0x400000, CRC(0fc9c60a) SHA1(86fd8753fda5003c78c8622bccd001043ccc58a2) )
+	ROM_LOAD16_WORD_SWAP( "263_lb01.p1",  0x000000, 0x100000, CRC(d7aa8e11) SHA1(c628aec510bb2c02d2f1e1e866cddbfd85c1e9e0) )
+	ROM_LOAD16_WORD_SWAP( "263_la01.p2",  0x100000, 0x400000, CRC(0fc9c60a) SHA1(86fd8753fda5003c78c8622bccd001043ccc58a2) )
 
 	NEO_SFIX_MT_512K
 
@@ -1122,10 +1122,10 @@ ROM_START( mslug4mk01 )
 	ROM_LOAD16_BYTE( "263.c6", 0x2000001, 0x800000, CRC(5c8ba116) SHA1(6034db09c8706d4ddbcefc053efbc47a0953eb92) )
 ROM_END
 
-ROM_START( mslug4mk02 )
+ROM_START( mslug4lb02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_mk02.p1",  0x000000, 0x100000, CRC(5364f0c8) SHA1(0cc52b699fe291b919320ad7a8a2e8f90b0e329a) )
-	ROM_LOAD16_WORD_SWAP( "263_wh01.p2", 0x100000, 0x400000, CRC(fe1f929e) SHA1(2c4a1d19987844a1d4c05f9a07e112dfd338c980) )
+	ROM_LOAD16_WORD_SWAP( "263_lb02.p1",  0x000000, 0x100000, CRC(5364f0c8) SHA1(0cc52b699fe291b919320ad7a8a2e8f90b0e329a) )
+	ROM_LOAD16_WORD_SWAP( "263_la02.p2",  0x100000, 0x400000, CRC(fe1f929e) SHA1(2c4a1d19987844a1d4c05f9a07e112dfd338c980) )
 
 	NEO_SFIX_MT_512K
 
@@ -1147,10 +1147,10 @@ ROM_START( mslug4mk02 )
 	ROM_LOAD16_BYTE( "263.c6", 0x2000001, 0x800000, CRC(5c8ba116) SHA1(6034db09c8706d4ddbcefc053efbc47a0953eb92) )
 ROM_END
 
-ROM_START( mslug4mk03 )
+ROM_START( mslug4lb03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_mk03.p1",   0x000000, 0x100000, CRC(2e8c3e6b) SHA1(3f29115f1ae5b4a87678f99a6d2892cc63e963f8) )
-	ROM_LOAD16_WORD_SWAP( "263_wh00.p2", 0x100000, 0x400000, CRC(0fc9c60a) SHA1(86fd8753fda5003c78c8622bccd001043ccc58a2) )
+	ROM_LOAD16_WORD_SWAP( "263_lb03.p1",   0x000000, 0x100000, CRC(2e8c3e6b) SHA1(3f29115f1ae5b4a87678f99a6d2892cc63e963f8) )
+	ROM_LOAD16_WORD_SWAP( "263_la01.p2",   0x100000, 0x400000, CRC(0fc9c60a) SHA1(86fd8753fda5003c78c8622bccd001043ccc58a2) )
 
 	NEO_SFIX_MT_512K
 
@@ -1172,10 +1172,10 @@ ROM_START( mslug4mk03 )
 	ROM_LOAD16_BYTE( "263.c6", 0x2000001, 0x800000, CRC(5c8ba116) SHA1(6034db09c8706d4ddbcefc053efbc47a0953eb92) )
 ROM_END
 
-ROM_START( mslug4mk04 )
+ROM_START( mslug4lb04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_mk04.p1",   0x000000, 0x100000, CRC(57e474e5) SHA1(8bc2cf768547ba93f47ae8934c7d47f0ca4f83fe) )
-	ROM_LOAD16_WORD_SWAP( "263_wh01.p2", 0x100000, 0x400000, CRC(fe1f929e) SHA1(2c4a1d19987844a1d4c05f9a07e112dfd338c980) )
+	ROM_LOAD16_WORD_SWAP( "263_lb04.p1",   0x000000, 0x100000, CRC(57e474e5) SHA1(8bc2cf768547ba93f47ae8934c7d47f0ca4f83fe) )
+	ROM_LOAD16_WORD_SWAP( "263_la02.p2",   0x100000, 0x400000, CRC(fe1f929e) SHA1(2c4a1d19987844a1d4c05f9a07e112dfd338c980) )
 
 	NEO_SFIX_MT_512K
 
@@ -1197,10 +1197,10 @@ ROM_START( mslug4mk04 )
 	ROM_LOAD16_BYTE( "263.c6", 0x2000001, 0x800000, CRC(5c8ba116) SHA1(6034db09c8706d4ddbcefc053efbc47a0953eb92) )
 ROM_END
 
-ROM_START( mslug4mb01 )
+ROM_START( mslug4lc01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_mb01.p1",  0x000000, 0x100000, CRC(61890cd8) SHA1(fc84b87a8d702738bae85952089ec2f4c101cb94) )
-	ROM_LOAD16_WORD_SWAP( "263_wh00.p2", 0x100000, 0x400000, CRC(0fc9c60a) SHA1(86fd8753fda5003c78c8622bccd001043ccc58a2) )
+	ROM_LOAD16_WORD_SWAP( "263_lc01.p1",  0x000000, 0x100000, CRC(61890cd8) SHA1(fc84b87a8d702738bae85952089ec2f4c101cb94) )
+	ROM_LOAD16_WORD_SWAP( "263_la01.p2",  0x100000, 0x400000, CRC(0fc9c60a) SHA1(86fd8753fda5003c78c8622bccd001043ccc58a2) )
 
 	NEO_SFIX_MT_512K
 
@@ -1222,10 +1222,10 @@ ROM_START( mslug4mb01 )
 	ROM_LOAD16_BYTE( "263.c6", 0x2000001, 0x800000, CRC(5c8ba116) SHA1(6034db09c8706d4ddbcefc053efbc47a0953eb92) )
 ROM_END
 
-ROM_START( mslug4mb02 )
+ROM_START( mslug4lc02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_mb02.p1",  0x000000, 0x100000, CRC(e5477201) SHA1(56022fb5fc83478c435e5db751fb37de6252bbf4) )
-	ROM_LOAD16_WORD_SWAP( "263_wh01.p2", 0x100000, 0x400000, CRC(fe1f929e) SHA1(2c4a1d19987844a1d4c05f9a07e112dfd338c980) )
+	ROM_LOAD16_WORD_SWAP( "263_lc02.p1",  0x000000, 0x100000, CRC(e5477201) SHA1(56022fb5fc83478c435e5db751fb37de6252bbf4) )
+	ROM_LOAD16_WORD_SWAP( "263_la02.p2",  0x100000, 0x400000, CRC(fe1f929e) SHA1(2c4a1d19987844a1d4c05f9a07e112dfd338c980) )
 
 	NEO_SFIX_MT_512K
 
@@ -1247,10 +1247,10 @@ ROM_START( mslug4mb02 )
 	ROM_LOAD16_BYTE( "263.c6", 0x2000001, 0x800000, CRC(5c8ba116) SHA1(6034db09c8706d4ddbcefc053efbc47a0953eb92) )
 ROM_END
 
-ROM_START( mslug4mb03 )
+ROM_START( mslug4lc03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_mb03.p1",   0x000000, 0x100000, CRC(98afbca2) SHA1(e3d903701c4c2e4f887edb08a8b8972bde2ecfaa) )
-	ROM_LOAD16_WORD_SWAP( "263_wh00.p2", 0x100000, 0x400000, CRC(0fc9c60a) SHA1(86fd8753fda5003c78c8622bccd001043ccc58a2) )
+	ROM_LOAD16_WORD_SWAP( "263_lc03.p1",   0x000000, 0x100000, CRC(98afbca2) SHA1(e3d903701c4c2e4f887edb08a8b8972bde2ecfaa) )
+	ROM_LOAD16_WORD_SWAP( "263_la01.p2",   0x100000, 0x400000, CRC(0fc9c60a) SHA1(86fd8753fda5003c78c8622bccd001043ccc58a2) )
 
 	NEO_SFIX_MT_512K
 
@@ -1272,10 +1272,10 @@ ROM_START( mslug4mb03 )
 	ROM_LOAD16_BYTE( "263.c6", 0x2000001, 0x800000, CRC(5c8ba116) SHA1(6034db09c8706d4ddbcefc053efbc47a0953eb92) )
 ROM_END
 
-ROM_START( mslug4mb04 )
+ROM_START( mslug4lc04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_mb04.p1",   0x000000, 0x100000, CRC(e1c7f62c) SHA1(2b140dc5eaacc2b8f1e6668735453e9a067eb630) )
-	ROM_LOAD16_WORD_SWAP( "263_wh01.p2", 0x100000, 0x400000, CRC(fe1f929e) SHA1(2c4a1d19987844a1d4c05f9a07e112dfd338c980) )
+	ROM_LOAD16_WORD_SWAP( "263_lc04.p1",   0x000000, 0x100000, CRC(e1c7f62c) SHA1(2b140dc5eaacc2b8f1e6668735453e9a067eb630) )
+	ROM_LOAD16_WORD_SWAP( "263_la02.p2",   0x100000, 0x400000, CRC(fe1f929e) SHA1(2c4a1d19987844a1d4c05f9a07e112dfd338c980) )
 
 	NEO_SFIX_MT_512K
 
@@ -1297,10 +1297,10 @@ ROM_START( mslug4mb04 )
 	ROM_LOAD16_BYTE( "263.c6", 0x2000001, 0x800000, CRC(5c8ba116) SHA1(6034db09c8706d4ddbcefc053efbc47a0953eb92) )
 ROM_END
 
-ROM_START( mslug4erd01 )
+ROM_START( mslug4ld01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_erd01.p1", 0x000000, 0x100000, CRC(45721afc) SHA1(e9c0d1e4a6b84c3475ad26d6a962f70537bb3b79) )
-	ROM_LOAD16_WORD_SWAP( "263_wh01.p2", 0x100000, 0x400000, CRC(fe1f929e) SHA1(2c4a1d19987844a1d4c05f9a07e112dfd338c980) )
+	ROM_LOAD16_WORD_SWAP( "263_ld01.p1", 0x000000, 0x100000, CRC(45721afc) SHA1(e9c0d1e4a6b84c3475ad26d6a962f70537bb3b79) )
+	ROM_LOAD16_WORD_SWAP( "263_la02.p2", 0x100000, 0x400000, CRC(fe1f929e) SHA1(2c4a1d19987844a1d4c05f9a07e112dfd338c980) )
 
 	NEO_SFIX_MT_512K
 
@@ -1322,10 +1322,10 @@ ROM_START( mslug4erd01 )
 	ROM_LOAD16_BYTE( "263.c6", 0x2000001, 0x800000, CRC(5c8ba116) SHA1(6034db09c8706d4ddbcefc053efbc47a0953eb92) )
 ROM_END
 
-ROM_START( mslug4erd02 )
+ROM_START( mslug4ld02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_erd02.p1",   0x000000, 0x100000, CRC(750113bb) SHA1(85687305b42da94b626b0274a28c5ef60f6a69b6) )
-	ROM_LOAD16_WORD_SWAP( "263_wh00.p2", 0x100000, 0x400000, CRC(0fc9c60a) SHA1(86fd8753fda5003c78c8622bccd001043ccc58a2) )
+	ROM_LOAD16_WORD_SWAP( "263_ld02.p1",   0x000000, 0x100000, CRC(750113bb) SHA1(85687305b42da94b626b0274a28c5ef60f6a69b6) )
+	ROM_LOAD16_WORD_SWAP( "263_la01.p2",   0x100000, 0x400000, CRC(0fc9c60a) SHA1(86fd8753fda5003c78c8622bccd001043ccc58a2) )
 
 	NEO_SFIX_MT_512K
 
@@ -1347,10 +1347,10 @@ ROM_START( mslug4erd02 )
 	ROM_LOAD16_BYTE( "263.c6", 0x2000001, 0x800000, CRC(5c8ba116) SHA1(6034db09c8706d4ddbcefc053efbc47a0953eb92) )
 ROM_END
 
-ROM_START( mslug4erd03 )
+ROM_START( mslug4ld03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_erd03.p1",   0x000000, 0x100000, CRC(46191695) SHA1(91c142d4b7ebbacc38ffa0befd9b6e914bc47df6) )
-	ROM_LOAD16_WORD_SWAP( "263_wh00.p2", 0x100000, 0x400000, CRC(0fc9c60a) SHA1(86fd8753fda5003c78c8622bccd001043ccc58a2) )
+	ROM_LOAD16_WORD_SWAP( "263_ld03.p1",   0x000000, 0x100000, CRC(46191695) SHA1(91c142d4b7ebbacc38ffa0befd9b6e914bc47df6) )
+	ROM_LOAD16_WORD_SWAP( "263_la01.p2",   0x100000, 0x400000, CRC(0fc9c60a) SHA1(86fd8753fda5003c78c8622bccd001043ccc58a2) )
 
 	NEO_SFIX_MT_512K
 
@@ -1372,10 +1372,10 @@ ROM_START( mslug4erd03 )
 	ROM_LOAD16_BYTE( "263.c6", 0x2000001, 0x800000, CRC(5c8ba116) SHA1(6034db09c8706d4ddbcefc053efbc47a0953eb92) )
 ROM_END
 
-ROM_START( mslug4lwp01 )
+ROM_START( mslug4le01 )
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_lwp01.p1", 0x000000, 0x100000, CRC(50ee2908) SHA1(1cc9c92f0e87e35d8a1124acf54acb4fa33e3b67) )
-	ROM_LOAD16_WORD_SWAP( "263_lwp01.p2", 0x100000, 0x800000, CRC(d240abfd) SHA1(1e4c96df1861f17ff3b982be26e269d0cbdf20d5) )
+	ROM_LOAD16_WORD_SWAP( "263_le01.p1", 0x000000, 0x100000, CRC(50ee2908) SHA1(1cc9c92f0e87e35d8a1124acf54acb4fa33e3b67) )
+	ROM_LOAD16_WORD_SWAP( "263_le01.p2", 0x100000, 0x800000, CRC(d240abfd) SHA1(1e4c96df1861f17ff3b982be26e269d0cbdf20d5) )
 
 	NEO_SFIX_128K( "263.s1", CRC(a9446774) SHA1(c5a309fd8ee6d6750a15c82e710218a3755e38b2) )
 
@@ -1397,10 +1397,10 @@ ROM_START( mslug4lwp01 )
 	ROM_LOAD16_BYTE( "263_hacks07.c6", 0x2000001, 0x400000, CRC(b015aeee) SHA1(24e12e72b82eea9e52a4cefc774efb3bd7db822f) )
 ROM_END
 
-ROM_START( mslug4lwp02 )
+ROM_START( mslug4le02 )
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_lwp02.p1", 0x000000, 0x100000, CRC(dec382a1) SHA1(829f3ad224ef6f248cb72ee65fd2c6eaa02122af) )
-	ROM_LOAD16_WORD_SWAP( "263_lwp01.p2", 0x100000, 0x800000, CRC(d240abfd) SHA1(1e4c96df1861f17ff3b982be26e269d0cbdf20d5) )
+	ROM_LOAD16_WORD_SWAP( "263_le02.p1", 0x000000, 0x100000, CRC(dec382a1) SHA1(829f3ad224ef6f248cb72ee65fd2c6eaa02122af) )
+	ROM_LOAD16_WORD_SWAP( "263_le01.p2", 0x100000, 0x800000, CRC(d240abfd) SHA1(1e4c96df1861f17ff3b982be26e269d0cbdf20d5) )
 
 	NEO_SFIX_128K( "263.s1", CRC(a9446774) SHA1(c5a309fd8ee6d6750a15c82e710218a3755e38b2) )
 
@@ -1429,7 +1429,7 @@ ROM_END
 ROM_START( mslug4rmxe0s01 )
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe0s01.p1",  0x000000, 0x100000, CRC(515e8a0c) SHA1(64c9ef2704c91b21c469a5cffcf042ff84e614aa) )
-	ROM_LOAD16_WORD_SWAP( "263_wh03.p2", 0x100000, 0x400000, CRC(632d41d1) SHA1(a411b6657e540cca892687b16900ace75ca6bd24) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe0s01.p2",  0x100000, 0x400000, CRC(632d41d1) SHA1(a411b6657e540cca892687b16900ace75ca6bd24) )
 
 	NEO_SFIX_MT_512K
 
@@ -1462,7 +1462,7 @@ ROM_END
 ROM_START( mslug4rmxe0s02 )
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe0s02.p1",  0x000000, 0x100000, CRC(2cd6058a) SHA1(1168d6f0cb63d799b35f846b95ca98348c8e87a5) )
-	ROM_LOAD16_WORD_SWAP( "263_wh03.p2", 0x100000, 0x400000, CRC(632d41d1) SHA1(a411b6657e540cca892687b16900ace75ca6bd24) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe0s01.p2",  0x100000, 0x400000, CRC(632d41d1) SHA1(a411b6657e540cca892687b16900ace75ca6bd24) )
 
 	NEO_SFIX_MT_512K
 
@@ -1495,7 +1495,7 @@ ROM_END
 ROM_START( mslug4rmxe1s01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe1s01.p1",    0x000000, 0x100000, CRC(7d0b5a9d) SHA1(29648dbd8b6fd023035d87a07181020d4d4d1b2d) )
-	ROM_LOAD16_WORD_SWAP( "263_wh03.p2", 0x100000, 0x400000, CRC(632d41d1) SHA1(a411b6657e540cca892687b16900ace75ca6bd24) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe0s01.p2",    0x100000, 0x400000, CRC(632d41d1) SHA1(a411b6657e540cca892687b16900ace75ca6bd24) )
 
 	NEO_SFIX_MT_512K
 
@@ -1528,7 +1528,7 @@ ROM_END
 ROM_START( mslug4rmxe1s02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe1s02.p1",    0x000000, 0x100000, CRC(0083d51b) SHA1(c89c8b52178867f00750b6cba2d19f127d1a32d6) )
-	ROM_LOAD16_WORD_SWAP( "263_wh03.p2", 0x100000, 0x400000, CRC(632d41d1) SHA1(a411b6657e540cca892687b16900ace75ca6bd24) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe0s01.p2",    0x100000, 0x400000, CRC(632d41d1) SHA1(a411b6657e540cca892687b16900ace75ca6bd24) )
 
 	NEO_SFIX_MT_512K
 
@@ -1561,7 +1561,7 @@ ROM_END
 ROM_START( mslug4rmxe2s01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe2s01.p1",    0x000000, 0x100000, CRC(77ad246f) SHA1(56d308992ac6c6a16ee1509baaf40854de464bc0) )
-	ROM_LOAD16_WORD_SWAP( "263_wh04.p2", 0x100000, 0x400000, CRC(fd627d9a) SHA1(587c009ce7e6652e41a9bb9f039866ea8ef1e6e7) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe2s01.p2",    0x100000, 0x400000, CRC(fd627d9a) SHA1(587c009ce7e6652e41a9bb9f039866ea8ef1e6e7) )
 
 	NEO_SFIX_MT_512K
 
@@ -1594,7 +1594,7 @@ ROM_END
 ROM_START( mslug4rmxe2s02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe2s02.p1",    0x000000, 0x100000, CRC(0a25abe9) SHA1(138538a5de7649a91033b3be2d2bb01ad0b49571) )
-	ROM_LOAD16_WORD_SWAP( "263_wh04.p2", 0x100000, 0x400000, CRC(fd627d9a) SHA1(587c009ce7e6652e41a9bb9f039866ea8ef1e6e7) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe2s01.p2", 0x100000, 0x400000, CRC(fd627d9a) SHA1(587c009ce7e6652e41a9bb9f039866ea8ef1e6e7) )
 
 	NEO_SFIX_MT_512K
 
@@ -1627,7 +1627,7 @@ ROM_END
 ROM_START( mslug4rmxe2s03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe2s03.p1",    0x000000, 0x100000, CRC(6ec993bd) SHA1(1ad472eb613b53aae695a4f4f1a7a0e88fdbbfdb) )
-	ROM_LOAD16_WORD_SWAP( "263_wh04.p2", 0x100000, 0x400000, CRC(fd627d9a) SHA1(587c009ce7e6652e41a9bb9f039866ea8ef1e6e7) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe2s01.p2", 0x100000, 0x400000, CRC(fd627d9a) SHA1(587c009ce7e6652e41a9bb9f039866ea8ef1e6e7) )
 
 	NEO_SFIX_MT_512K
 
@@ -1660,7 +1660,7 @@ ROM_END
 ROM_START( mslug4rmxe2s04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe2s04.p1",    0x000000, 0x100000, CRC(13411c3b) SHA1(160ce83a86f45b2eda17df3fa3561992f787dbf7) )
-	ROM_LOAD16_WORD_SWAP( "263_wh04.p2", 0x100000, 0x400000, CRC(fd627d9a) SHA1(587c009ce7e6652e41a9bb9f039866ea8ef1e6e7) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe2s01.p2",    0x100000, 0x400000, CRC(fd627d9a) SHA1(587c009ce7e6652e41a9bb9f039866ea8ef1e6e7) )
 
 	NEO_SFIX_MT_512K
 
@@ -1693,7 +1693,7 @@ ROM_END
 ROM_START( mslug4rmxe2s05 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe2s05.p1",    0x000000, 0x100000, CRC(6615fef3) SHA1(dbb6501b912765977a320f2009ea2dad64cbd241) )
-	ROM_LOAD16_WORD_SWAP( "263_wh04.p2", 0x100000, 0x400000, CRC(fd627d9a) SHA1(587c009ce7e6652e41a9bb9f039866ea8ef1e6e7) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe2s01.p2", 0x100000, 0x400000, CRC(fd627d9a) SHA1(587c009ce7e6652e41a9bb9f039866ea8ef1e6e7) )
 
 	NEO_SFIX_MT_512K
 
@@ -1726,7 +1726,7 @@ ROM_END
 ROM_START( mslug4rmxe2s06 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe2s06.p1",    0x000000, 0x100000, CRC(1b9d7175) SHA1(7f6db63ebd6ab7a9222620f8d5d2693a6480820f) )
-	ROM_LOAD16_WORD_SWAP( "263_wh04.p2", 0x100000, 0x400000, CRC(fd627d9a) SHA1(587c009ce7e6652e41a9bb9f039866ea8ef1e6e7) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe2s01.p2",    0x100000, 0x400000, CRC(fd627d9a) SHA1(587c009ce7e6652e41a9bb9f039866ea8ef1e6e7) )
 
 	NEO_SFIX_MT_512K
 
@@ -1759,7 +1759,7 @@ ROM_END
 ROM_START( mslug4rmxe2s07 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe2s07.p1",    0x000000, 0x100000, CRC(7f714921) SHA1(c8c787aa1922ad0d7ef9344ac6e175bbf9703557) )
-	ROM_LOAD16_WORD_SWAP( "263_wh04.p2", 0x100000, 0x400000, CRC(fd627d9a) SHA1(587c009ce7e6652e41a9bb9f039866ea8ef1e6e7) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe2s01.p2",    0x100000, 0x400000, CRC(fd627d9a) SHA1(587c009ce7e6652e41a9bb9f039866ea8ef1e6e7) )
 
 	NEO_SFIX_MT_512K
 
@@ -1792,7 +1792,7 @@ ROM_END
 ROM_START( mslug4rmxe2s08 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe2s08.p1",    0x000000, 0x100000, CRC(02f9c6a7) SHA1(e6f76fac17d7e57cd2b3fe2041a60061f094c084) )
-	ROM_LOAD16_WORD_SWAP( "263_wh04.p2", 0x100000, 0x400000, CRC(fd627d9a) SHA1(587c009ce7e6652e41a9bb9f039866ea8ef1e6e7) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe2s01.p2",    0x100000, 0x400000, CRC(fd627d9a) SHA1(587c009ce7e6652e41a9bb9f039866ea8ef1e6e7) )
 
 	NEO_SFIX_MT_512K
 
@@ -1824,8 +1824,8 @@ ROM_END
 
 ROM_START( mslug4rmxe3s01 )
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_rmxe3s01.p1", 0x000000, 0x100000, CRC(6108972e) SHA1(07de8de1f081aad6390ffe1b43276994e4ebb5fe) )
-	ROM_LOAD16_WORD_SWAP( "263_wh05.p2", 0x100000, 0x800000, CRC(36351369) SHA1(4f9b55a41c33609f0bdb0e27aad14b675d07c605) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe3s01.p1",     0x000000, 0x100000, CRC(6108972e) SHA1(07de8de1f081aad6390ffe1b43276994e4ebb5fe) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe3s01.p2",     0x100000, 0x800000, CRC(36351369) SHA1(4f9b55a41c33609f0bdb0e27aad14b675d07c605) )
 
 	NEO_SFIX_128K( "263.s1", CRC(a9446774) SHA1(c5a309fd8ee6d6750a15c82e710218a3755e38b2) )
 
@@ -1858,7 +1858,7 @@ ROM_END
 ROM_START( mslug4rmxe3s02 )
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe3s02.p1", 0x000000, 0x100000, CRC(1c8018a8) SHA1(e72bc2f6dde5f627e88a261e2ebd48ea13a7fd00) )
-	ROM_LOAD16_WORD_SWAP( "263_wh05.p2", 0x100000, 0x800000, CRC(36351369) SHA1(4f9b55a41c33609f0bdb0e27aad14b675d07c605) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe3s01.p2", 0x100000, 0x800000, CRC(36351369) SHA1(4f9b55a41c33609f0bdb0e27aad14b675d07c605) )
 
 	NEO_SFIX_128K( "263.s1", CRC(a9446774) SHA1(c5a309fd8ee6d6750a15c82e710218a3755e38b2) )
 
@@ -1891,7 +1891,7 @@ ROM_END
 ROM_START( mslug4rmxe3s03 )
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe3s03.p1", 0x000000, 0x100000, CRC(786c20fc) SHA1(66c8e2d48ab5d3ab11cb2d8cf94d04fee1c926d9) )
-	ROM_LOAD16_WORD_SWAP( "263_wh05.p2", 0x100000, 0x800000, CRC(36351369) SHA1(4f9b55a41c33609f0bdb0e27aad14b675d07c605) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe3s01.p2", 0x100000, 0x800000, CRC(36351369) SHA1(4f9b55a41c33609f0bdb0e27aad14b675d07c605) )
 
 	NEO_SFIX_128K( "263.s1", CRC(a9446774) SHA1(c5a309fd8ee6d6750a15c82e710218a3755e38b2) )
 
@@ -1924,7 +1924,7 @@ ROM_END
 ROM_START( mslug4rmxe3s04 )
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe3s04.p1", 0x000000, 0x100000, CRC(05e4af7a) SHA1(195488d2e238aa269b904432cde1dea1c6224329) )
-	ROM_LOAD16_WORD_SWAP( "263_wh05.p2", 0x100000, 0x800000, CRC(36351369) SHA1(4f9b55a41c33609f0bdb0e27aad14b675d07c605) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe3s01.p2", 0x100000, 0x800000, CRC(36351369) SHA1(4f9b55a41c33609f0bdb0e27aad14b675d07c605) )
 
 	NEO_SFIX_128K( "263.s1", CRC(a9446774) SHA1(c5a309fd8ee6d6750a15c82e710218a3755e38b2) )
 
@@ -1957,7 +1957,7 @@ ROM_END
 ROM_START( mslug4rmxe3s05 )
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe3s05.p1", 0x000000, 0x100000, CRC(70b04db2) SHA1(e96052afa566eddcb9a9c66e0804fb44b9d473e3) )
-	ROM_LOAD16_WORD_SWAP( "263_wh05.p2", 0x100000, 0x800000, CRC(36351369) SHA1(4f9b55a41c33609f0bdb0e27aad14b675d07c605) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe3s01.p2", 0x100000, 0x800000, CRC(36351369) SHA1(4f9b55a41c33609f0bdb0e27aad14b675d07c605) )
 
 	NEO_SFIX_128K( "263.s1", CRC(a9446774) SHA1(c5a309fd8ee6d6750a15c82e710218a3755e38b2) )
 
@@ -1990,7 +1990,7 @@ ROM_END
 ROM_START( mslug4rmxe3s06 )
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe3s06.p1", 0x000000, 0x100000, CRC(0d38c234) SHA1(e7e0aad19a0ab0cdce86517066a17f45a372881e) )
-	ROM_LOAD16_WORD_SWAP( "263_wh05.p2", 0x100000, 0x800000, CRC(36351369) SHA1(4f9b55a41c33609f0bdb0e27aad14b675d07c605) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe3s01.p2", 0x100000, 0x800000, CRC(36351369) SHA1(4f9b55a41c33609f0bdb0e27aad14b675d07c605) )
 
 	NEO_SFIX_128K( "263.s1", CRC(a9446774) SHA1(c5a309fd8ee6d6750a15c82e710218a3755e38b2) )
 
@@ -2023,7 +2023,7 @@ ROM_END
 ROM_START( mslug4rmxe3s07 )
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe3s07.p1", 0x000000, 0x100000, CRC(69d4fa60) SHA1(4cbd0386b42112dd9fa73a3f823fda50c2ee4f15) )
-	ROM_LOAD16_WORD_SWAP( "263_wh05.p2", 0x100000, 0x800000, CRC(36351369) SHA1(4f9b55a41c33609f0bdb0e27aad14b675d07c605) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe3s01.p2", 0x100000, 0x800000, CRC(36351369) SHA1(4f9b55a41c33609f0bdb0e27aad14b675d07c605) )
 
 	NEO_SFIX_128K( "263.s1", CRC(a9446774) SHA1(c5a309fd8ee6d6750a15c82e710218a3755e38b2) )
 
@@ -2056,7 +2056,7 @@ ROM_END
 ROM_START( mslug4rmxe3s08 )
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe3s08.p1", 0x000000, 0x100000, CRC(145c75e6) SHA1(d3d745cbaee79830a649eac8b7f713d0094cdb7f) )
-	ROM_LOAD16_WORD_SWAP( "263_wh05.p2", 0x100000, 0x800000, CRC(36351369) SHA1(4f9b55a41c33609f0bdb0e27aad14b675d07c605) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe3s01.p2", 0x100000, 0x800000, CRC(36351369) SHA1(4f9b55a41c33609f0bdb0e27aad14b675d07c605) )
 
 	NEO_SFIX_128K( "263.s1", CRC(a9446774) SHA1(c5a309fd8ee6d6750a15c82e710218a3755e38b2) )
 
@@ -2089,7 +2089,7 @@ ROM_END
 ROM_START( mslug4rmxe4s01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe4s01.p1",   0x000000, 0x100000, CRC(c2d716bd) SHA1(6835325a3e219d48822c7256964ab3c34fd1b7fe) )
-	ROM_LOAD16_WORD_SWAP( "263_wh06.p2", 0x100000, 0x400000, CRC(b87a68ba) SHA1(e5c8091307e90b32f3a56d96bb51a708cd205278) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe4s01.p2",   0x100000, 0x400000, CRC(b87a68ba) SHA1(e5c8091307e90b32f3a56d96bb51a708cd205278) )
 
 	NEO_SFIX_MT_512K
 
@@ -2122,7 +2122,7 @@ ROM_END
 ROM_START( mslug4rmxe4s02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe4s02.p1",   0x000000, 0x100000, CRC(bf5f993b) SHA1(b1590d23affaf360a87212ad6719d26232a73aee) )
-	ROM_LOAD16_WORD_SWAP( "263_wh06.p2", 0x100000, 0x400000, CRC(b87a68ba) SHA1(e5c8091307e90b32f3a56d96bb51a708cd205278) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe4s01.p2",   0x100000, 0x400000, CRC(b87a68ba) SHA1(e5c8091307e90b32f3a56d96bb51a708cd205278) )
 
 	NEO_SFIX_MT_512K
 
@@ -2155,7 +2155,7 @@ ROM_END
 ROM_START( mslug4rmxe4s03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe4s03.p1",   0x000000, 0x100000, CRC(dbb3a16f) SHA1(ec192b09c6d37849bd47da8e278666ad3ab7369a) )
-	ROM_LOAD16_WORD_SWAP( "263_wh06.p2", 0x100000, 0x400000, CRC(b87a68ba) SHA1(e5c8091307e90b32f3a56d96bb51a708cd205278) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe4s01.p2",   0x100000, 0x400000, CRC(b87a68ba) SHA1(e5c8091307e90b32f3a56d96bb51a708cd205278) )
 
 	NEO_SFIX_MT_512K
 
@@ -2188,7 +2188,7 @@ ROM_END
 ROM_START( mslug4rmxe4s04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe4s04.p1",   0x000000, 0x100000, CRC(a63b2ee9) SHA1(4471b417459a529e0cb99691ffcfc031287df4d8) )
-	ROM_LOAD16_WORD_SWAP( "263_wh06.p2", 0x100000, 0x400000, CRC(b87a68ba) SHA1(e5c8091307e90b32f3a56d96bb51a708cd205278) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe4s01.p2",   0x100000, 0x400000, CRC(b87a68ba) SHA1(e5c8091307e90b32f3a56d96bb51a708cd205278) )
 
 	NEO_SFIX_MT_512K
 
@@ -2221,7 +2221,7 @@ ROM_END
 ROM_START( mslug4rmxe4s05 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe4s05.p1",   0x000000, 0x100000, CRC(d36fcc21) SHA1(81a01b70cd92536905087dd250cb9500166191d5) )
-	ROM_LOAD16_WORD_SWAP( "263_wh06.p2", 0x100000, 0x400000, CRC(b87a68ba) SHA1(e5c8091307e90b32f3a56d96bb51a708cd205278) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe4s01.p2",   0x100000, 0x400000, CRC(b87a68ba) SHA1(e5c8091307e90b32f3a56d96bb51a708cd205278) )
 
 	NEO_SFIX_MT_512K
 
@@ -2254,7 +2254,7 @@ ROM_END
 ROM_START( mslug4rmxe4s06 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe4s06.p1",   0x000000, 0x100000, CRC(aee743a7) SHA1(654720eddbcdea57bf17045b05f10e2218e6581a) )
-	ROM_LOAD16_WORD_SWAP( "263_wh06.p2", 0x100000, 0x400000, CRC(b87a68ba) SHA1(e5c8091307e90b32f3a56d96bb51a708cd205278) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe4s01.p2",   0x100000, 0x400000, CRC(b87a68ba) SHA1(e5c8091307e90b32f3a56d96bb51a708cd205278) )
 
 	NEO_SFIX_MT_512K
 
@@ -2287,7 +2287,7 @@ ROM_END
 ROM_START( mslug4rmxe4s07 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe4s07.p1",   0x000000, 0x100000, CRC(ca0b7bf3) SHA1(1dbfae36ddd11b45d22248584382d0b353ab986c) )
-	ROM_LOAD16_WORD_SWAP( "263_wh06.p2", 0x100000, 0x400000, CRC(b87a68ba) SHA1(e5c8091307e90b32f3a56d96bb51a708cd205278) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe4s01.p2",   0x100000, 0x400000, CRC(b87a68ba) SHA1(e5c8091307e90b32f3a56d96bb51a708cd205278) )
 
 	NEO_SFIX_MT_512K
 
@@ -2320,7 +2320,7 @@ ROM_END
 ROM_START( mslug4rmxe4s08 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmxe4s08.p1",   0x000000, 0x100000, CRC(b783f475) SHA1(3f50d19fa5eba6c3d6f457912f02002f051890dd) )
-	ROM_LOAD16_WORD_SWAP( "263_wh06.p2", 0x100000, 0x400000, CRC(b87a68ba) SHA1(e5c8091307e90b32f3a56d96bb51a708cd205278) )
+	ROM_LOAD16_WORD_SWAP( "263_rmxe4s01.p2",   0x100000, 0x400000, CRC(b87a68ba) SHA1(e5c8091307e90b32f3a56d96bb51a708cd205278) )
 
 	NEO_SFIX_MT_512K
 
@@ -2409,23 +2409,23 @@ GAME( 2002, mslug4dd,           mslug4,   neogeo_noslot, neogeo, neogeo_state, i
   of problem is detected that cannot be fixed...
 ********************************************************************************************/
 
-GAME( 2020, mslug4zb01,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/I love Nimes",         "Metal Slug 4 (Zombie Players Mode Edition 2020-10-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug4zb02,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/I love Nimes",         "Metal Slug 4 (Zombie Players Mode Multi-Function Edition 2020-10-01)", MACHINE_SUPPORTS_SAVE ) //Multi-Function Version 2017-12-25
-GAME( 2020, mslug4zb03,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/XiaShuiDaoMeiRenYu/I love Nimes",         "Metal Slug 4 (Zombie Players Mode Enemies Resetting Edition 2020-10-01)", MACHINE_SUPPORTS_SAVE ) // Enemies Resetting Edition 2020-02-10
-GAME( 2020, mslug4zb04,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/XiaShuiDaoMeiRenYu/I love Nimes",         "Metal Slug 4 (Zombie Players Mode Enemies Resetting Multi-Function Edition 2020-10-01)", MACHINE_SUPPORTS_SAVE ) // Enemies Resetting Edition 2019-04-15, Multi-Function Version 2017-12-25
-GAME( 2020, mslug4mk01,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/I love Nimes",         "Metal Slug 4 (Monkeys Players Mode Edition 2020-10-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug4mk02,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/I love Nimes",         "Metal Slug 4 (Monkeys Players Mode Multi-Function Edition 2020-10-01)", MACHINE_SUPPORTS_SAVE ) //Multi-Function Version 2017-12-25
-GAME( 2020, mslug4mk03,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/XiaShuiDaoMeiRenYu/I love Nimes",         "Metal Slug 4 (Monkeys Players Mode Enemies Resetting Edition 2020-10-01)", MACHINE_SUPPORTS_SAVE ) // Enemies Resetting Edition 2020-02-10
-GAME( 2020, mslug4mk04,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/XiaShuiDaoMeiRenYu/I love Nimes",         "Metal Slug 4 (Monkeys Players Mode Enemies Resetting Multi-Function Edition 2020-10-01)", MACHINE_SUPPORTS_SAVE ) // Enemies Resetting Edition 2019-04-15, Multi-Function Version 2017-12-25
-GAME( 2020, mslug4mb01,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/I love Nimes",         "Metal Slug 4 (Mummy Players Mode Edition 2020-10-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug4mb02,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/I love Nimes",         "Metal Slug 4 (Mummy Players Mode Multi-Function Edition 2020-10-01)", MACHINE_SUPPORTS_SAVE ) //Multi-Function Version 2017-12-25
-GAME( 2020, mslug4mb03,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/XiaShuiDaoMeiRenYu/I love Nimes",         "Metal Slug 4 (Mummy Players Mode Enemies Resetting Edition 2020-10-01)", MACHINE_SUPPORTS_SAVE ) // Enemies Resetting Edition 2020-02-10
-GAME( 2020, mslug4mb04,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/XiaShuiDaoMeiRenYu/I love Nimes",         "Metal Slug 4 (Mummy Players Mode Enemies Resetting Multi-Function Edition 2020-10-01)", MACHINE_SUPPORTS_SAVE ) // Enemies Resetting Edition 2019-04-15, Multi-Function Version 2017-12-25
-GAME( 2020, mslug4erd01,     mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90",                     "Metal Slug 4 (Enemies Resetting Version 2019-04-15)(Multi-Function)", MACHINE_SUPPORTS_SAVE ) // Cannot update the current version anymore causes crashing
-GAME( 2020, mslug4erd02,     mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/XiaShuiDaoMeiRenYu",  "Metal Slug 4 (Enemies Resetting Version 2020-02-10)(Generation 1V2)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug4erd03,     mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/XiaShuiDaoMeiRenYu/I love Nimes",  "Metal Slug 4 (Enemies Resetting Version 2020-02-10)(Burst Enhanced Version)", MACHINE_SUPPORTS_SAVE )
-GAME( 2018, mslug4lwp01,     mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_neogeo,    ROT0, "Gaston90",                     "Metal Slug 4 (Last Bullet Multi-Function 2016-10-16 (Prototype))", MACHINE_SUPPORTS_SAVE ) //Edition 2018
-GAME( 2020, mslug4lwp02,     mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_neogeo,    ROT0, "Gaston90",                     "Metal Slug 4 (Last Bullet Multi-Function 2017-07-27 (Prototype))", MACHINE_SUPPORTS_SAVE ) //Edition 2020
+GAME( 2020, mslug4la01,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/I love Nimes",         "Metal Slug 4 (Zombie Players Mode Edition 2020-10-01)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4la02,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/I love Nimes",         "Metal Slug 4 (Zombie Players Mode Multi-Function Edition 2020-10-01)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE ) //Multi-Function Version 2017-12-25
+GAME( 2020, mslug4la03,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/XiaShuiDaoMeiRenYu/I love Nimes",         "Metal Slug 4 (Zombie Players Mode Enemies Resetting Edition 2020-10-01)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE ) // Enemies Resetting Edition 2020-02-10
+GAME( 2020, mslug4la04,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/XiaShuiDaoMeiRenYu/I love Nimes",         "Metal Slug 4 (Zombie Players Mode Enemies Resetting Multi-Function Edition 2020-10-01)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE ) // Enemies Resetting Edition 2019-04-15, Multi-Function Version 2017-12-25
+GAME( 2020, mslug4lb01,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/I love Nimes",         "Metal Slug 4 (Monkeys Players Mode Edition 2020-10-01)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4lb02,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/I love Nimes",         "Metal Slug 4 (Monkeys Players Mode Multi-Function Edition 2020-10-01)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE ) //Multi-Function Version 2017-12-25
+GAME( 2020, mslug4lb03,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/XiaShuiDaoMeiRenYu/I love Nimes",         "Metal Slug 4 (Monkeys Players Mode Enemies Resetting Edition 2020-10-01)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE ) // Enemies Resetting Edition 2020-02-10
+GAME( 2020, mslug4lb04,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/XiaShuiDaoMeiRenYu/I love Nimes",         "Metal Slug 4 (Monkeys Players Mode Enemies Resetting Multi-Function Edition 2020-10-01)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE ) // Enemies Resetting Edition 2019-04-15, Multi-Function Version 2017-12-25
+GAME( 2020, mslug4lc01,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/I love Nimes",         "Metal Slug 4 (Mummy Players Mode Edition 2020-10-01)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4lc02,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/I love Nimes",         "Metal Slug 4 (Mummy Players Mode Multi-Function Edition 2020-10-01)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE ) //Multi-Function Version 2017-12-25
+GAME( 2020, mslug4lc03,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/XiaShuiDaoMeiRenYu/I love Nimes",         "Metal Slug 4 (Mummy Players Mode Enemies Resetting Edition 2020-10-01)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE ) // Enemies Resetting Edition 2020-02-10
+GAME( 2020, mslug4lc04,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/XiaShuiDaoMeiRenYu/I love Nimes",         "Metal Slug 4 (Mummy Players Mode Enemies Resetting Multi-Function Edition 2020-10-01)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE ) // Enemies Resetting Edition 2019-04-15, Multi-Function Version 2017-12-25
+GAME( 2020, mslug4ld01,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90",                     "Metal Slug 4 (Enemies Resetting Version 2019-04-15)(Multi-Function)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE ) // Cannot update the current version anymore causes crashing
+GAME( 2020, mslug4ld02,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/XiaShuiDaoMeiRenYu",  "Metal Slug 4 (Enemies Resetting Version 2020-02-10)(Generation 1V2)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4ld03,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Gaston90/XiaShuiDaoMeiRenYu/I love Nimes",  "Metal Slug 4 (Enemies Resetting Version 2020-02-10)(Burst Enhanced Version)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, mslug4le01,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_neogeo,    ROT0, "Gaston90",                     "Metal Slug 4 (Last Bullet Multi-Function 2016-10-16 (Prototype))(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE ) //Edition 2018
+GAME( 2020, mslug4le02,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_neogeo,    ROT0, "Gaston90",                     "Metal Slug 4 (Last Bullet Multi-Function 2017-07-27 (Prototype))(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE ) //Edition 2020
 
 // Extreme Remixes
 GAME( 2020, mslug4rmxe0s01,     mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix(Gaston90,Creamymami[EGCG],I love Nimes)",                     "Metal Slug 4 (Enemies Resetting Multi-Function Version 2019-04-15)(Revised Version Extreme Remix 1.0 (2020-10-08))", MACHINE_SUPPORTS_SAVE )// Cannot update the current version anymore causes crashing
@@ -2456,5 +2456,3 @@ GAME( 2020, mslug4rmxe4s05,     mslug4,   neogeo_noslot, neogeo, neogeo_state,  
 GAME( 2020, mslug4rmxe4s06,     mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix(Gaston90,XiaShuiDaoMeiRenYu,Shyma.X,Creamymami[EGCG],DDJ,I love Nimes)",    "Metal Slug 4 (Enemies Resetting Version 2020-02-10)(Revised Version Enemy Chaser Extreme Remix 1.1 (2020-10-08))", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug4rmxe4s07,     mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix(Gaston90,XiaShuiDaoMeiRenYu,Shyma.X,Creamymami[EGCG],DDJ,I love Nimes)",    "Metal Slug 4 (Enemies Resetting Version 2020-02-10)(Revised Version Satellite Extreme Remix 1.0 (2020-10-08))", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug4rmxe4s08,     mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix(Gaston90,XiaShuiDaoMeiRenYu,Shyma.X,Creamymami[EGCG],DDJ,I love Nimes)",    "Metal Slug 4 (Enemies Resetting Version 2020-02-10)(Revised Version Satellite Extreme Remix 1.1 (2020-10-08))", MACHINE_SUPPORTS_SAVE )
-
-
