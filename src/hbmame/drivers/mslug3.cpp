@@ -1407,6 +1407,33 @@ ROM_START( mslug3nd ) // all confirmed
 	ROM_LOAD16_BYTE( "256d.c8", 0x3000001, 0x800000, CRC(a369f9d4) SHA1(f8146ea80a1a23da7e7e04c88f778ee9abdfeb5c) )
 ROM_END
 
+ROM_START( mslug3a )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "green.neo-sma", 0x0c0000, 0x040000, CRC(c60d29b2) SHA1(1647260ccbda833b35005608ef1fdc82fba02f04) )
+	ROM_LOAD16_WORD_SWAP( "256a.p1", 0x100000, 0x400000, CRC(a1177628) SHA1(4c4c379d9fc3a83265b7f32fbfce9d16b7d0f0fd) )
+	ROM_LOAD16_WORD_SWAP( "256a.p2", 0x500000, 0x400000, CRC(9b659826) SHA1(d6bd03cf61879217922c18db4d3bd77095c0fe19) )
+
+	NEO_SFIX_MT_512K
+	
+	NEO_BIOS_AUDIO_512K( "256.m1", CRC(eaeec116) SHA1(54419dbb21edc8c4b37eaac2e7ad9496d2de037a) )
+
+	ROM_REGION( 0x1000000, "ymsnd", 0 )
+	ROM_LOAD( "256.v1", 0x000000, 0x400000, CRC(f2690241) SHA1(fd56babc1934d10e0d27c32f032f9edda7ca8ce9) )
+	ROM_LOAD( "256.v2", 0x400000, 0x400000, CRC(7e2a10bd) SHA1(0d587fb9f64cba0315ce2d8a03e2b8fe34936dff) )
+	ROM_LOAD( "256.v3", 0x800000, 0x400000, CRC(0eaec17c) SHA1(c3ed613cc6993edd6fc0d62a90bcd85de8e21915) )
+	ROM_LOAD( "256.v4", 0xc00000, 0x400000, CRC(9b4b22d4) SHA1(9764fbf8453e52f80aa97a46fb9cf5937ef15a31) )
+
+	ROM_REGION( 0x4000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "256.c1", 0x0000000, 0x800000, CRC(5a79c34e) SHA1(b8aa51fa50935cae62ab3d125b723ab888691e60) )
+	ROM_LOAD16_BYTE( "256.c2", 0x0000001, 0x800000, CRC(944c362c) SHA1(3843ab300f956280475469caee70135658f67089) )
+	ROM_LOAD16_BYTE( "256.c3", 0x1000000, 0x800000, CRC(6e69d36f) SHA1(94e8cf42e999114b4bd8b30e0aa2f365578c4c9a) )
+	ROM_LOAD16_BYTE( "256.c4", 0x1000001, 0x800000, CRC(b755b4eb) SHA1(804700a0966a48f130c434ede3f970792ea74fa5) )
+	ROM_LOAD16_BYTE( "256.c5", 0x2000000, 0x800000, CRC(7aacab47) SHA1(312c1c9846175fe1a3cad51d5ae230cf674fc93d) )
+	ROM_LOAD16_BYTE( "256.c6", 0x2000001, 0x800000, CRC(c698fd5d) SHA1(16818883b06849ba2f8d61bdd5e21aaf99bd8408) )
+	ROM_LOAD16_BYTE( "256.c7", 0x3000000, 0x800000, CRC(cfceddd2) SHA1(7def666adf8bd1703f40c61f182fc040b6362dc9) )
+	ROM_LOAD16_BYTE( "256.c8", 0x3000001, 0x800000, CRC(4d9be34c) SHA1(a737bdfa2b815aea7067e7af2636e83a9409c414) )
+ROM_END
+
 /****************************************************
  Metal Slug 6" is a hack/bootleg of Metal Slug 3
 *******************************************************/
@@ -7005,7 +7032,7 @@ HACK( 2014, mslug3hacks05,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  
 HACK( 2011, mslug3hacks06,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "PlayerX China",  "Metal Slug 3 (Green Blue Edition 2011-06-06)", MACHINE_SUPPORTS_SAVE )
 HACK( 2013, mslug3hacks07,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3,    ROT0, "PlayerX China",  "Metal Slug 3 (Green Blue Edition 2013-02-27)", MACHINE_SUPPORTS_SAVE )
 HACK( 2014, mslug3hacks08,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3,    ROT0, "PlayerX China",  "Metal Slug 3 (Green Blue Edition 2014-10-15)", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, mslug3hacks09,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "DDJ",            "Metal Slug 3 (Change Weapon 2017-05-22)", MACHINE_NOT_WORKING | MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
+HACK( 2017, mslug3hacks09,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "DDJ",            "Metal Slug 3 (Change Weapons 2017-05-22)", MACHINE_NOT_WORKING | MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
 HACK( 2004, mslug3hacks10,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3fr,  ROT0, "Arkatrad",       "Metal Slug 3 (Neo Arc French Traduction version 2004)", MACHINE_SUPPORTS_SAVE )
 HACK( 2003, mslug3hacks11,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3fr,  ROT0, "Arkatrad",       "Metal Slug 3 (Neo Arc French Traduction version 2004)(Old)", MACHINE_SUPPORTS_SAVE )
 HACK( 2006, mslug3hacks12,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3h,   ROT0, "Shyma.X",        "Metal Slug 3 (Neo Arc French Traduction version 2006)", MACHINE_SUPPORTS_SAVE )
@@ -7050,6 +7077,7 @@ HACK( 2020, mslug3hacks49,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  
 // Bootleg
 HACK( 2000, mslug3d,            mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3d,   ROT0, "bootleg", "Metal Slug 3 (Decrypted C)", MACHINE_SUPPORTS_SAVE )
 HACK( 2000, mslug3nd,           mslug3,   neogeo_noslot, neogeo, neogeo_state,  cmc42sfix, ROT0, "bootleg", "Metal Slug 3 (Fully Decrypted C)", MACHINE_SUPPORTS_SAVE )
+HACK( 2000, mslug3a,            mslug3,   neogeo_noslot, neogeo, neogeo_state,  mslug3,    ROT0, "bootleg", "Metal Slug 3 (NGM-2560, earlier)", MACHINE_SUPPORTS_SAVE )
 
 // Metal Slug 6" is a hack/bootleg of Metal Slug 3
 HACK( 2019, mslug6hacks01,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  ms6s16,    ROT0, "XiaShuiDaoMeiRenYu",     "Metal Slug 6 (Enemies Resetting Version 2019-02-12)", MACHINE_SUPPORTS_SAVE ) //Official roms hacks

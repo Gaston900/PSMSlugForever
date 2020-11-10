@@ -1,11 +1,8 @@
-# license:BSD-3-Clause
-# copyright-holders:Robbbert
+# Proyecto Shadows Mame Build Plus
+# copyright-holders:Gaston90
 ###########################################################################
-#
 #   makefile
-#
-#   Additional makefile for building HBMAME
-#
+#   Additional makefile for building PSMAME PLUS
 ###########################################################################
 
 GEN_FOLDERS += $(GENDIR)/mame/layout/
