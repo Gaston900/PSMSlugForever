@@ -2187,9 +2187,78 @@ ROM_START( mslugxlh03 )
 	ROM_LOAD16_BYTE( "250.c6", 0x2000001, 0x800000, CRC(83e3e69d) SHA1(39be66287696829d243fb71b3fb8b7dc2bc3298f) )
 ROM_END
 
-/****************
+ROM_START( mslugxlh01 )
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "250_la01.p1", 0x000000, 0x100000, CRC(0e44f6cc) SHA1(af1d013abbf511197c28e140de767e8711cd7cbf) )
+	ROM_LOAD16_WORD_SWAP( "250_li00.p2", 0x100000, 0x400000, CRC(3f473f8d) SHA1(c80e9bffb28e2c859075a8b2233be16fdd850a0a) )
+
+	NEO_SFIX_128K( "250_hacks48.s1", CRC(a2bb2551) SHA1(fa22568bf15ac41afdf5e2bd7dc2dec4fe813f02) )
+
+	NEO_BIOS_AUDIO_128K( "250.m1", CRC(fd42a842) SHA1(55769bad4860f64ef53a333e0da9e073db483d6a) )
+
+	ROM_REGION( 0xa00000, "ymsnd", 0 )
+	ROM_LOAD( "250.v1", 0x000000, 0x400000, CRC(c79ede73) SHA1(ebfcc67204ff9677cf7972fd5b6b7faabf07280c) )
+	ROM_LOAD( "250.v2", 0x400000, 0x400000, CRC(ea9aabe1) SHA1(526c42ca9a388f7435569400e2f132e2724c71ff) )
+	ROM_LOAD( "250.v3", 0x800000, 0x200000, CRC(2ca65102) SHA1(45979d1edb1fc774a415d9386f98d7cb252a2043) )
+
+	ROM_REGION( 0x3000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "250_hacks15.c1", 0x0000000, 0x800000, CRC(eb7ce1ff) SHA1(e519b53c6938451f9bfb4d15c10baa7f152ecfcd) )
+	ROM_LOAD16_BYTE( "250_hacks15.c2", 0x0000001, 0x800000, CRC(45c7e401) SHA1(b71754cc746631f1a70c09ef564c7be11aa577e9) )
+	ROM_LOAD16_BYTE( "250.c3", 0x1000000, 0x800000, CRC(fd602019) SHA1(c56646c62387bc1439d46610258c755beb8d7dd8) )
+	ROM_LOAD16_BYTE( "250.c4", 0x1000001, 0x800000, CRC(31354513) SHA1(31be8ea2498001f68ce4b06b8b90acbf2dcab6af) )
+	ROM_LOAD16_BYTE( "250.c5", 0x2000000, 0x800000, CRC(a4b56124) SHA1(d41069856df990a1a99d39fb263c8303389d5475) )
+	ROM_LOAD16_BYTE( "250.c6", 0x2000001, 0x800000, CRC(83e3e69d) SHA1(39be66287696829d243fb71b3fb8b7dc2bc3298f) )
+ROM_END
+
+ROM_START( mslugxlh02 )
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "250_la02.p1", 0x000000, 0x100000, CRC(56e3ca7c) SHA1(65992607a1aa951241611cf44d9ac2f6bd16d1ef) )
+	ROM_LOAD16_WORD_SWAP( "250_li00.p2", 0x100000, 0x400000, CRC(3f473f8d) SHA1(c80e9bffb28e2c859075a8b2233be16fdd850a0a) )
+
+	NEO_SFIX_128K( "250_hacks48.s1", CRC(a2bb2551) SHA1(fa22568bf15ac41afdf5e2bd7dc2dec4fe813f02) )
+
+	NEO_BIOS_AUDIO_128K( "250.m1", CRC(fd42a842) SHA1(55769bad4860f64ef53a333e0da9e073db483d6a) )
+
+	ROM_REGION( 0xa00000, "ymsnd", 0 )
+	ROM_LOAD( "250.v1", 0x000000, 0x400000, CRC(c79ede73) SHA1(ebfcc67204ff9677cf7972fd5b6b7faabf07280c) )
+	ROM_LOAD( "250.v2", 0x400000, 0x400000, CRC(ea9aabe1) SHA1(526c42ca9a388f7435569400e2f132e2724c71ff) )
+	ROM_LOAD( "250.v3", 0x800000, 0x200000, CRC(2ca65102) SHA1(45979d1edb1fc774a415d9386f98d7cb252a2043) )
+
+	ROM_REGION( 0x3000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "250_hacks15.c1", 0x0000000, 0x800000, CRC(eb7ce1ff) SHA1(e519b53c6938451f9bfb4d15c10baa7f152ecfcd) )
+	ROM_LOAD16_BYTE( "250_hacks15.c2", 0x0000001, 0x800000, CRC(45c7e401) SHA1(b71754cc746631f1a70c09ef564c7be11aa577e9) )
+	ROM_LOAD16_BYTE( "250.c3", 0x1000000, 0x800000, CRC(fd602019) SHA1(c56646c62387bc1439d46610258c755beb8d7dd8) )
+	ROM_LOAD16_BYTE( "250.c4", 0x1000001, 0x800000, CRC(31354513) SHA1(31be8ea2498001f68ce4b06b8b90acbf2dcab6af) )
+	ROM_LOAD16_BYTE( "250.c5", 0x2000000, 0x800000, CRC(a4b56124) SHA1(d41069856df990a1a99d39fb263c8303389d5475) )
+	ROM_LOAD16_BYTE( "250.c6", 0x2000001, 0x800000, CRC(83e3e69d) SHA1(39be66287696829d243fb71b3fb8b7dc2bc3298f) )
+ROM_END
+
+ROM_START( mslugxli03 )
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "250_la03.p1", 0x000000, 0x100000, CRC(b3954886) SHA1(ed42df7c151a4dcb20be746eabc5f9380196da5e) )
+	ROM_LOAD16_WORD_SWAP( "250_li00.p2", 0x100000, 0x400000, CRC(3f473f8d) SHA1(c80e9bffb28e2c859075a8b2233be16fdd850a0a) )
+
+	NEO_SFIX_128K( "250_hacks48.s1", CRC(a2bb2551) SHA1(fa22568bf15ac41afdf5e2bd7dc2dec4fe813f02) )
+
+	NEO_BIOS_AUDIO_128K( "250.m1", CRC(fd42a842) SHA1(55769bad4860f64ef53a333e0da9e073db483d6a) )
+
+	ROM_REGION( 0xa00000, "ymsnd", 0 )
+	ROM_LOAD( "250.v1", 0x000000, 0x400000, CRC(c79ede73) SHA1(ebfcc67204ff9677cf7972fd5b6b7faabf07280c) )
+	ROM_LOAD( "250.v2", 0x400000, 0x400000, CRC(ea9aabe1) SHA1(526c42ca9a388f7435569400e2f132e2724c71ff) )
+	ROM_LOAD( "250.v3", 0x800000, 0x200000, CRC(2ca65102) SHA1(45979d1edb1fc774a415d9386f98d7cb252a2043) )
+
+	ROM_REGION( 0x3000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "250_hacks15.c1", 0x0000000, 0x800000, CRC(eb7ce1ff) SHA1(e519b53c6938451f9bfb4d15c10baa7f152ecfcd) )
+	ROM_LOAD16_BYTE( "250_hacks15.c2", 0x0000001, 0x800000, CRC(45c7e401) SHA1(b71754cc746631f1a70c09ef564c7be11aa577e9) )
+	ROM_LOAD16_BYTE( "250.c3", 0x1000000, 0x800000, CRC(fd602019) SHA1(c56646c62387bc1439d46610258c755beb8d7dd8) )
+	ROM_LOAD16_BYTE( "250.c4", 0x1000001, 0x800000, CRC(31354513) SHA1(31be8ea2498001f68ce4b06b8b90acbf2dcab6af) )
+	ROM_LOAD16_BYTE( "250.c5", 0x2000000, 0x800000, CRC(a4b56124) SHA1(d41069856df990a1a99d39fb263c8303389d5475) )
+	ROM_LOAD16_BYTE( "250.c6", 0x2000001, 0x800000, CRC(83e3e69d) SHA1(39be66287696829d243fb71b3fb8b7dc2bc3298f) )
+ROM_END
+
+/**************************
  Extreme MegaMods Edition
-*******************/
+*****************************/
 
 ROM_START( mslugxrmxe0s01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
@@ -3279,7 +3348,7 @@ ROM_END
 ROM_START( mslugxrmxe6s07 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rmxe6s01.p1", 0x000000, 0x100000, CRC(1e59a9b0) SHA1(f98b3a38d4c5b4cd50b0bdaf108b0c2d1fed7eb6) )
-	ROM_LOAD16_WORD_SWAP( "250_rmxe6s07.p2", 0x100000, 0x400000, CRC(46ec2621) SHA1(6e371608e02ac00c3b7bbedfaf371ac459a4ad62) )
+	ROM_LOAD16_WORD_SWAP( "250_rmxe6s07.p2", 0x100000, 0x400000, CRC(41a41335) SHA1(6e371608e02ac00c3b7bbedfaf371ac459a4ad62) )
 
 	NEO_SFIX_128K( "250_hacks48.s1", CRC(a2bb2551) SHA1(fa22568bf15ac41afdf5e2bd7dc2dec4fe813f02) )
 
@@ -3977,11 +4046,14 @@ HACK( 2020, mslugxlg03,   mslugx,   neogeo_noslot, neogeo, neogeo_state,  mslugx
 HACK( 2020, mslugxlh01,   mslugx,   neogeo_noslot, neogeo, neogeo_state,  mslugx,    ROT0, "Team Remix(Gaston90,PlayerX China,Azstar China Soda,Creamymami,I love Nimes)",             "Metal Slug X (Enemy Soldiers Reset Version 2.7 2020-11-06)(Revised Remix Standard Edition 2020-12-10)", MACHINE_SUPPORTS_SAVE )
 HACK( 2020, mslugxlh02,   mslugx,   neogeo_noslot, neogeo, neogeo_state,  mslugx,    ROT0, "Team Remix(Gaston90,PlayerX China,Azstar China Soda,Creamymami,I love Nimes)",             "Metal Slug X (Enemy Soldiers Reset Version 2.7 2020-11-06)(Revised Hybrid Bullets Remix Standard Edition 2020-12-10)", MACHINE_SUPPORTS_SAVE )
 HACK( 2020, mslugxlh03,   mslugx,   neogeo_noslot, neogeo, neogeo_state,  mslugx,    ROT0, "Team Remix(Gaston90,PlayerX China,Azstar China Soda,Creamymami,I love Nimes)",             "Metal Slug X (Enemy Soldiers Reset Version 2.7 2020-11-06)(Revised Big Heavy Machine Gun Flame Remix Standard Edition 2020-12-10)", MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslugxli01,   mslugx,   neogeo_noslot, neogeo, neogeo_state,  mslugx,    ROT0, "Team Remix(Gaston90,PlayerX China,Azstar China Soda,Creamymami,I love Nimes)",             "Metal Slug X (Revised Remix Standard Edition 2020-12-10)", MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslugxli02,   mslugx,   neogeo_noslot, neogeo, neogeo_state,  mslugx,    ROT0, "Team Remix(Gaston90,PlayerX China,Azstar China Soda,Creamymami,I love Nimes)",             "Metal Slug X (Revised Hybrid Bullets Remix Standard Edition 2020-12-10)", MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslugxli03,   mslugx,   neogeo_noslot, neogeo, neogeo_state,  mslugx,    ROT0, "Team Remix(Gaston90,PlayerX China,Azstar China Soda,Creamymami,I love Nimes)",             "Metal Slug X (Revised Big Heavy Machine Gun Flame Remix Standard Edition 2020-12-10)", MACHINE_SUPPORTS_SAVE )
 
 // Extreme MegaMods Edition
 // Universe Bios v4.0 boot system
-HACK( 2020, mslugxrmxe0s01,  mslugx,   neogeo_noslot, neogeo, neogeo_state,  mslugx,    ROT0, "Team Remix(Gaston90,PlayerX China,Shyma.X,DDJ,julee,Azstar China Soda,I love Nimes)",                                            "Metal Slug X (Enemy Heavy Plate 2R Edition 2013-06-18)(Hybrid Bullets Extreme MegaMods Edition 2020-12-10)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslugxrmxe0s02,  mslugx,   neogeo_noslot, neogeo, neogeo_state,  mslugx,    ROT0, "Team Remix(Gaston90,PlayerX China,Shyma.X,DDJ,julee,Azstar China Soda,I love Nimes)",                                            "Metal Slug X (Enemy Soldiers Remake 2R Version 3)(Hybrid Bullets Extreme MegaMods Edition 2020-12-10)", MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslugxrmxe0s01,  mslugx,   neogeo_noslot, neogeo, neogeo_state,  mslugx,    ROT0, "Team Remix(Gaston90,PlayerX China,Shyma.X,DDJ,julee,Azstar China Soda,I love Nimes)",                                            "Metal Slug X (Enemy Heavy Plate 2R Edition 2013-06-18)(Revised Hybrid Bullets Extreme MegaMods Edition 2020-12-10)", MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslugxrmxe0s02,  mslugx,   neogeo_noslot, neogeo, neogeo_state,  mslugx,    ROT0, "Team Remix(Gaston90,PlayerX China,Shyma.X,DDJ,julee,Azstar China Soda,I love Nimes)",                                            "Metal Slug X (Enemy Soldiers Remake 2R Version 3)(Revised Hybrid Bullets Extreme MegaMods Edition 2020-12-10)", MACHINE_SUPPORTS_SAVE )
 HACK( 2020, mslugxrmxe0s03,  mslugx,   neogeo_noslot, neogeo, neogeo_state,  mslugx,    ROT0, "Team Remix(Gaston90,PlayerX China,Shyma.X,DDJ,julee,Azstar China Soda,I love Nimes)",                                            "Metal Slug X (Revised 2R Hybrid Bullets Version Extreme MegaMods Edition 2020-12-10)", MACHINE_SUPPORTS_SAVE )
 HACK( 2020, mslugxrmxe0s04,  mslugx,   neogeo_noslot, neogeo, neogeo_state,  mslugx,    ROT0, "Team Remix(Gaston90,PlayerX China,Metroid,Shyma.X,DDJ,julee,Azstar China Soda,I love Nimes)",                                    "Metal Slug X (Multi-Carrier 2R Edition 2013-01-05)(Revised Hybrid Bullets Extreme MegaMods Edition 2020-12-10)", MACHINE_SUPPORTS_SAVE )
 HACK( 2020, mslugxrmxe0s05,  mslugx,   neogeo_noslot, neogeo, neogeo_state,  mslugx,    ROT0, "Team Remix(Gaston90,PlayerX China,Shyma.X,DDJ,julee,Azstar China Soda,I love Nimes)",                                            "Metal Slug X (Allen O'Neil See You In Hell 2R Edition 2020-07-16)(Revised Hybrid Bullets Extreme MegaMods Edition 2020-12-10)", MACHINE_SUPPORTS_SAVE )

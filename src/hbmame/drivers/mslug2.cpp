@@ -512,13 +512,16 @@ ROM_END
 /***************
  Only exclusive
 *****************/
+/********************************
+ Revised Remix Standard Edition
+************************************/
 
 ROM_START( mslug2la01 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_la01.p1", 0x000000, 0x100000, CRC(0e732701) SHA1(1f324d84b278f839e90c96e8f9e1dcdf5c655e76) )
+	ROM_LOAD16_WORD_SWAP( "241_la01.p1", 0x000000, 0x100000, CRC(7475bfb9) SHA1(e6567920e63e3106be161ca4558db9da4f3d94dd) )
 	ROM_LOAD16_WORD_SWAP( "241_la01.p2", 0x100000, 0x200000, CRC(d30ecf73) SHA1(e63de0d097542413bb967ea02fa2ad58f2d447e6) )
 
-	NEO_SFIX_128K( "241.s1", CRC(f3d32f0f) SHA1(2dc38b7dfd3ff14f64d5c0733c510b6bb8c692d0) )
+	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
 
 	NEO_BIOS_AUDIO_128K( "241.m1", CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
 
@@ -527,18 +530,18 @@ ROM_START( mslug2la01 )
 	ROM_LOAD( "241.v2", 0x400000, 0x400000, CRC(ecb16799) SHA1(b4b4ddc680836ed55942c66d7dfe756314e02211) )
 
 	ROM_REGION( 0x2000000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "241.c1", 0x0000000, 0x800000, CRC(394b5e0d) SHA1(4549926f5054ee6aa7689cf920be0327e3908a50) )
-	ROM_LOAD16_BYTE( "241.c2", 0x0000001, 0x800000, CRC(e5806221) SHA1(1e5475cfab129c77acc610f09369ca42ba5aafa5) )
+	ROM_LOAD16_BYTE( "241_hacks02.c1", 0x0000000, 0x800000, CRC(7df74035) SHA1(08322a2f4e87cd125ebc5b7a98754c7a5b8e91d2) )
+	ROM_LOAD16_BYTE( "241_hacks02.c2", 0x0000001, 0x800000, CRC(97d9525d) SHA1(451a5bdafe1f2de63b76efb7d4afab454abdfff0) )
 	ROM_LOAD16_BYTE( "241.c3", 0x1000000, 0x800000, CRC(9f6bfa6f) SHA1(a4319b48004e723f81a980887678e3e296049a53) )
 	ROM_LOAD16_BYTE( "241.c4", 0x1000001, 0x800000, CRC(7d3e306f) SHA1(1499316fb381775218d897b81a6a0c3465d1a37c) )
 ROM_END
 
 ROM_START( mslug2la02 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_la02.p1", 0x000000, 0x100000, CRC(eb274a10) SHA1(a0a819f0b2e3b72216ad23f9d5d4ebe6bf7919bc) )
+	ROM_LOAD16_WORD_SWAP( "241_la02.p1", 0x000000, 0x100000, CRC(8a7fee1b) SHA1(daf58a3cf6f866569bcda5080d5f044531c60190) )
 	ROM_LOAD16_WORD_SWAP( "241_lb01.p2", 0x100000, 0x200000, CRC(e8c57cad) SHA1(1c4941464f94b60edf9025bf57265cab3d1a5186) )
 
-	NEO_SFIX_128K( "241.s1", CRC(f3d32f0f) SHA1(2dc38b7dfd3ff14f64d5c0733c510b6bb8c692d0) )
+	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
 
 	NEO_BIOS_AUDIO_128K( "241.m1", CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
 
@@ -547,15 +550,15 @@ ROM_START( mslug2la02 )
 	ROM_LOAD( "241.v2", 0x400000, 0x400000, CRC(ecb16799) SHA1(b4b4ddc680836ed55942c66d7dfe756314e02211) )
 
 	ROM_REGION( 0x2000000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "241.c1", 0x0000000, 0x800000, CRC(394b5e0d) SHA1(4549926f5054ee6aa7689cf920be0327e3908a50) )
-	ROM_LOAD16_BYTE( "241.c2", 0x0000001, 0x800000, CRC(e5806221) SHA1(1e5475cfab129c77acc610f09369ca42ba5aafa5) )
+	ROM_LOAD16_BYTE( "241_hacks02.c1", 0x0000000, 0x800000, CRC(7df74035) SHA1(08322a2f4e87cd125ebc5b7a98754c7a5b8e91d2) )
+	ROM_LOAD16_BYTE( "241_hacks02.c2", 0x0000001, 0x800000, CRC(97d9525d) SHA1(451a5bdafe1f2de63b76efb7d4afab454abdfff0) )
 	ROM_LOAD16_BYTE( "241.c3", 0x1000000, 0x800000, CRC(9f6bfa6f) SHA1(a4319b48004e723f81a980887678e3e296049a53) )
 	ROM_LOAD16_BYTE( "241.c4", 0x1000001, 0x800000, CRC(7d3e306f) SHA1(1499316fb381775218d897b81a6a0c3465d1a37c) )
 ROM_END
 
 ROM_START( mslug2la03 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_la03.p1", 0x000000, 0x100000, CRC(281bc265) SHA1(3540c4dc36cf8721867594242cfba18239aef4bf) )
+	ROM_LOAD16_WORD_SWAP( "241_la03.p1", 0x000000, 0x100000, CRC(157a76bf) SHA1(c34eceb1256a76a4c61850debc8d4f806b76d38b) )
 	ROM_LOAD16_WORD_SWAP( "241_lc01.p2", 0x100000, 0x200000, CRC(6f6659c9) SHA1(9cb5770184e12304563c0fd0f200594ba9500253) )
 
 	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
@@ -575,10 +578,10 @@ ROM_END
 
 ROM_START( mslug2la04 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_la04.p1", 0x000000, 0x100000, CRC(e7cf0fb7) SHA1(a9dcdc5d2063b1bb465143da61656c5fc1abaefb) )
+	ROM_LOAD16_WORD_SWAP( "241_la04.p1", 0x000000, 0x100000, CRC(9aed5711) SHA1(11202bd58244ea816d56865654c6eab945b7b9e8) )
 	ROM_LOAD16_WORD_SWAP( "241_la01.p2", 0x100000, 0x200000, CRC(d30ecf73) SHA1(e63de0d097542413bb967ea02fa2ad58f2d447e6) )
 
-	NEO_SFIX_128K( "241.s1", CRC(f3d32f0f) SHA1(2dc38b7dfd3ff14f64d5c0733c510b6bb8c692d0) )
+	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
 
 	NEO_BIOS_AUDIO_128K( "241.m1", CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
 
@@ -587,58 +590,18 @@ ROM_START( mslug2la04 )
 	ROM_LOAD( "241.v2", 0x400000, 0x400000, CRC(ecb16799) SHA1(b4b4ddc680836ed55942c66d7dfe756314e02211) )
 
 	ROM_REGION( 0x2000000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "241.c1", 0x0000000, 0x800000, CRC(394b5e0d) SHA1(4549926f5054ee6aa7689cf920be0327e3908a50) )
-	ROM_LOAD16_BYTE( "241.c2", 0x0000001, 0x800000, CRC(e5806221) SHA1(1e5475cfab129c77acc610f09369ca42ba5aafa5) )
-	ROM_LOAD16_BYTE( "241.c3", 0x1000000, 0x800000, CRC(9f6bfa6f) SHA1(a4319b48004e723f81a980887678e3e296049a53) )
-	ROM_LOAD16_BYTE( "241.c4", 0x1000001, 0x800000, CRC(7d3e306f) SHA1(1499316fb381775218d897b81a6a0c3465d1a37c) )
-ROM_END
-
-ROM_START( mslug2la05 )
-	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_la05.p1", 0x000000, 0x100000, CRC(43b1d11d) SHA1(62b53e8c5ed9f6f7ff3cdf4a20ac9ebc5a348e8a) )
-	ROM_LOAD16_WORD_SWAP( "241_la01.p2", 0x100000, 0x200000, CRC(d30ecf73) SHA1(e63de0d097542413bb967ea02fa2ad58f2d447e6) )
-
-	NEO_SFIX_128K( "241.s1", CRC(f3d32f0f) SHA1(2dc38b7dfd3ff14f64d5c0733c510b6bb8c692d0) )
-
-	NEO_BIOS_AUDIO_128K( "241.m1", CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
-
-	ROM_REGION( 0x800000, "ymsnd", 0 )
-	ROM_LOAD( "241.v1", 0x000000, 0x400000, CRC(99ec20e8) SHA1(80597707f1fe115eed1941bb0701fc00790ad504) )
-	ROM_LOAD( "241.v2", 0x400000, 0x400000, CRC(ecb16799) SHA1(b4b4ddc680836ed55942c66d7dfe756314e02211) )
-
-	ROM_REGION( 0x2000000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "241.c1", 0x0000000, 0x800000, CRC(394b5e0d) SHA1(4549926f5054ee6aa7689cf920be0327e3908a50) )
-	ROM_LOAD16_BYTE( "241.c2", 0x0000001, 0x800000, CRC(e5806221) SHA1(1e5475cfab129c77acc610f09369ca42ba5aafa5) )
-	ROM_LOAD16_BYTE( "241.c3", 0x1000000, 0x800000, CRC(9f6bfa6f) SHA1(a4319b48004e723f81a980887678e3e296049a53) )
-	ROM_LOAD16_BYTE( "241.c4", 0x1000001, 0x800000, CRC(7d3e306f) SHA1(1499316fb381775218d897b81a6a0c3465d1a37c) )
-ROM_END
-
-ROM_START( mslug2la06 )
-	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_la06.p1", 0x000000, 0x100000, CRC(660d0f93) SHA1(9d71d0ca0b8364cd389224ff95fe6cf0d94dfd81) )
-	ROM_LOAD16_WORD_SWAP( "241_la01.p2", 0x100000, 0x200000, CRC(d30ecf73) SHA1(e63de0d097542413bb967ea02fa2ad58f2d447e6) )
-
-	NEO_SFIX_128K( "241.s1", CRC(f3d32f0f) SHA1(2dc38b7dfd3ff14f64d5c0733c510b6bb8c692d0) )
-
-	NEO_BIOS_AUDIO_128K( "241.m1", CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
-
-	ROM_REGION( 0x800000, "ymsnd", 0 )
-	ROM_LOAD( "241.v1", 0x000000, 0x400000, CRC(99ec20e8) SHA1(80597707f1fe115eed1941bb0701fc00790ad504) )
-	ROM_LOAD( "241.v2", 0x400000, 0x400000, CRC(ecb16799) SHA1(b4b4ddc680836ed55942c66d7dfe756314e02211) )
-
-	ROM_REGION( 0x2000000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "241.c1", 0x0000000, 0x800000, CRC(394b5e0d) SHA1(4549926f5054ee6aa7689cf920be0327e3908a50) )
-	ROM_LOAD16_BYTE( "241.c2", 0x0000001, 0x800000, CRC(e5806221) SHA1(1e5475cfab129c77acc610f09369ca42ba5aafa5) )
+	ROM_LOAD16_BYTE( "241_hacks02.c1", 0x0000000, 0x800000, CRC(7df74035) SHA1(08322a2f4e87cd125ebc5b7a98754c7a5b8e91d2) )
+	ROM_LOAD16_BYTE( "241_hacks02.c2", 0x0000001, 0x800000, CRC(97d9525d) SHA1(451a5bdafe1f2de63b76efb7d4afab454abdfff0) )
 	ROM_LOAD16_BYTE( "241.c3", 0x1000000, 0x800000, CRC(9f6bfa6f) SHA1(a4319b48004e723f81a980887678e3e296049a53) )
 	ROM_LOAD16_BYTE( "241.c4", 0x1000001, 0x800000, CRC(7d3e306f) SHA1(1499316fb381775218d897b81a6a0c3465d1a37c) )
 ROM_END
 
 ROM_START( mslug2lb01 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_lb01.p1", 0x000000, 0x100000, CRC(717338fc) SHA1(bc9a0ec66bf96e62abd5551be23bebde70e1b46e) )
-	ROM_LOAD16_WORD_SWAP( "241_lc01.p2", 0x100000, 0x200000, CRC(6f6659c9) SHA1(9cb5770184e12304563c0fd0f200594ba9500253) )
+	ROM_LOAD16_WORD_SWAP( "241_lb01.p1", 0x000000, 0x100000, CRC(6c1d6f21) SHA1(59211282d48c7bb0f75ac9c73add266f47e7dcfa) )
+	ROM_LOAD16_WORD_SWAP( "241_la01.p2", 0x100000, 0x200000, CRC(d30ecf73) SHA1(e63de0d097542413bb967ea02fa2ad58f2d447e6) )
 
-	NEO_SFIX_128K( "241.s1", CRC(f3d32f0f) SHA1(2dc38b7dfd3ff14f64d5c0733c510b6bb8c692d0) )
+	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
 
 	NEO_BIOS_AUDIO_128K( "241.m1", CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
 
@@ -647,18 +610,18 @@ ROM_START( mslug2lb01 )
 	ROM_LOAD( "241.v2", 0x400000, 0x400000, CRC(ecb16799) SHA1(b4b4ddc680836ed55942c66d7dfe756314e02211) )
 
 	ROM_REGION( 0x2000000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "241.c1", 0x0000000, 0x800000, CRC(394b5e0d) SHA1(4549926f5054ee6aa7689cf920be0327e3908a50) )
-	ROM_LOAD16_BYTE( "241.c2", 0x0000001, 0x800000, CRC(e5806221) SHA1(1e5475cfab129c77acc610f09369ca42ba5aafa5) )
+	ROM_LOAD16_BYTE( "241_hacks02.c1", 0x0000000, 0x800000, CRC(7df74035) SHA1(08322a2f4e87cd125ebc5b7a98754c7a5b8e91d2) )
+	ROM_LOAD16_BYTE( "241_hacks02.c2", 0x0000001, 0x800000, CRC(97d9525d) SHA1(451a5bdafe1f2de63b76efb7d4afab454abdfff0) )
 	ROM_LOAD16_BYTE( "241.c3", 0x1000000, 0x800000, CRC(9f6bfa6f) SHA1(a4319b48004e723f81a980887678e3e296049a53) )
 	ROM_LOAD16_BYTE( "241.c4", 0x1000001, 0x800000, CRC(7d3e306f) SHA1(1499316fb381775218d897b81a6a0c3465d1a37c) )
 ROM_END
 
 ROM_START( mslug2lb02 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_lb02.p1", 0x000000, 0x100000, CRC(faa6a1b3) SHA1(8214d570e793713f8ad189628d2b1f6472fc4dc8) )
+	ROM_LOAD16_WORD_SWAP( "241_lb02.p1", 0x000000, 0x100000, CRC(9bfe05b8) SHA1(bfcc4195472d6de7735fa6e109b079cefb95d7eb) )
 	ROM_LOAD16_WORD_SWAP( "241_lb01.p2", 0x100000, 0x200000, CRC(e8c57cad) SHA1(1c4941464f94b60edf9025bf57265cab3d1a5186) )
 
-	NEO_SFIX_128K( "241.s1", CRC(f3d32f0f) SHA1(2dc38b7dfd3ff14f64d5c0733c510b6bb8c692d0) )
+	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
 
 	NEO_BIOS_AUDIO_128K( "241.m1", CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
 
@@ -667,18 +630,18 @@ ROM_START( mslug2lb02 )
 	ROM_LOAD( "241.v2", 0x400000, 0x400000, CRC(ecb16799) SHA1(b4b4ddc680836ed55942c66d7dfe756314e02211) )
 
 	ROM_REGION( 0x2000000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "241.c1", 0x0000000, 0x800000, CRC(394b5e0d) SHA1(4549926f5054ee6aa7689cf920be0327e3908a50) )
-	ROM_LOAD16_BYTE( "241.c2", 0x0000001, 0x800000, CRC(e5806221) SHA1(1e5475cfab129c77acc610f09369ca42ba5aafa5) )
+	ROM_LOAD16_BYTE( "241_hacks02.c1", 0x0000000, 0x800000, CRC(7df74035) SHA1(08322a2f4e87cd125ebc5b7a98754c7a5b8e91d2) )
+	ROM_LOAD16_BYTE( "241_hacks02.c2", 0x0000001, 0x800000, CRC(97d9525d) SHA1(451a5bdafe1f2de63b76efb7d4afab454abdfff0) )
 	ROM_LOAD16_BYTE( "241.c3", 0x1000000, 0x800000, CRC(9f6bfa6f) SHA1(a4319b48004e723f81a980887678e3e296049a53) )
 	ROM_LOAD16_BYTE( "241.c4", 0x1000001, 0x800000, CRC(7d3e306f) SHA1(1499316fb381775218d897b81a6a0c3465d1a37c) )
 ROM_END
 
 ROM_START( mslug2lb03 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_lb03.p1", 0x000000, 0x100000, CRC(f64ee414) SHA1(e218fc27430964488a42dbbedf552107e349bab2) )
-	ROM_LOAD16_WORD_SWAP( "241_la01.p2", 0x100000, 0x200000, CRC(d30ecf73) SHA1(e63de0d097542413bb967ea02fa2ad58f2d447e6) )
+	ROM_LOAD16_WORD_SWAP( "241_lb03.p1", 0x000000, 0x100000, CRC(630b88d6) SHA1(d8c7abcc068199b2fba38c7ca2fa018bf5ff4f0c) )
+	ROM_LOAD16_WORD_SWAP( "241_lc01.p2", 0x100000, 0x200000, CRC(6f6659c9) SHA1(9cb5770184e12304563c0fd0f200594ba9500253) )
 
-	NEO_SFIX_128K( "241.s1", CRC(f3d32f0f) SHA1(2dc38b7dfd3ff14f64d5c0733c510b6bb8c692d0) )
+	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
 
 	NEO_BIOS_AUDIO_128K( "241.m1", CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
 
@@ -687,18 +650,18 @@ ROM_START( mslug2lb03 )
 	ROM_LOAD( "241.v2", 0x400000, 0x400000, CRC(ecb16799) SHA1(b4b4ddc680836ed55942c66d7dfe756314e02211) )
 
 	ROM_REGION( 0x2000000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "241.c1", 0x0000000, 0x800000, CRC(394b5e0d) SHA1(4549926f5054ee6aa7689cf920be0327e3908a50) )
-	ROM_LOAD16_BYTE( "241.c2", 0x0000001, 0x800000, CRC(e5806221) SHA1(1e5475cfab129c77acc610f09369ca42ba5aafa5) )
+	ROM_LOAD16_BYTE( "241_hacks02.c1", 0x0000000, 0x800000, CRC(7df74035) SHA1(08322a2f4e87cd125ebc5b7a98754c7a5b8e91d2) )
+	ROM_LOAD16_BYTE( "241_hacks02.c2", 0x0000001, 0x800000, CRC(97d9525d) SHA1(451a5bdafe1f2de63b76efb7d4afab454abdfff0) )
 	ROM_LOAD16_BYTE( "241.c3", 0x1000000, 0x800000, CRC(9f6bfa6f) SHA1(a4319b48004e723f81a980887678e3e296049a53) )
 	ROM_LOAD16_BYTE( "241.c4", 0x1000001, 0x800000, CRC(7d3e306f) SHA1(1499316fb381775218d897b81a6a0c3465d1a37c) )
 ROM_END
 
 ROM_START( mslug2lb04 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_lb04.p1", 0x000000, 0x100000, CRC(a73e90d8) SHA1(de7193927b4a0bd961fa52da72909e738749771a) )
+	ROM_LOAD16_WORD_SWAP( "241_lb04.p1", 0x000000, 0x100000, CRC(80291cf9) SHA1(6dbbf2861cc457b4e6134d9e5418b9002eb58a8e) )
 	ROM_LOAD16_WORD_SWAP( "241_la01.p2", 0x100000, 0x200000, CRC(d30ecf73) SHA1(e63de0d097542413bb967ea02fa2ad58f2d447e6) )
 
-	NEO_SFIX_128K( "241.s1", CRC(f3d32f0f) SHA1(2dc38b7dfd3ff14f64d5c0733c510b6bb8c692d0) )
+	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
 
 	NEO_BIOS_AUDIO_128K( "241.m1", CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
 
@@ -707,35 +670,15 @@ ROM_START( mslug2lb04 )
 	ROM_LOAD( "241.v2", 0x400000, 0x400000, CRC(ecb16799) SHA1(b4b4ddc680836ed55942c66d7dfe756314e02211) )
 
 	ROM_REGION( 0x2000000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "241.c1", 0x0000000, 0x800000, CRC(394b5e0d) SHA1(4549926f5054ee6aa7689cf920be0327e3908a50) )
-	ROM_LOAD16_BYTE( "241.c2", 0x0000001, 0x800000, CRC(e5806221) SHA1(1e5475cfab129c77acc610f09369ca42ba5aafa5) )
+	ROM_LOAD16_BYTE( "241_hacks02.c1", 0x0000000, 0x800000, CRC(7df74035) SHA1(08322a2f4e87cd125ebc5b7a98754c7a5b8e91d2) )
+	ROM_LOAD16_BYTE( "241_hacks02.c2", 0x0000001, 0x800000, CRC(97d9525d) SHA1(451a5bdafe1f2de63b76efb7d4afab454abdfff0) )
 	ROM_LOAD16_BYTE( "241.c3", 0x1000000, 0x800000, CRC(9f6bfa6f) SHA1(a4319b48004e723f81a980887678e3e296049a53) )
 	ROM_LOAD16_BYTE( "241.c4", 0x1000001, 0x800000, CRC(7d3e306f) SHA1(1499316fb381775218d897b81a6a0c3465d1a37c) )
 ROM_END
 
-ROM_START( mslug2lb05 )
-	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_lb05.p1", 0x000000, 0x100000, CRC(1ff2cca2) SHA1(993bf303d19d22e07a79d08ac3ab2a9f18e2a004) )
-	ROM_LOAD16_WORD_SWAP( "241_la01.p2", 0x100000, 0x200000, CRC(d30ecf73) SHA1(e63de0d097542413bb967ea02fa2ad58f2d447e6) )
-
-	NEO_SFIX_128K( "241.s1", CRC(f3d32f0f) SHA1(2dc38b7dfd3ff14f64d5c0733c510b6bb8c692d0) )
-
-	NEO_BIOS_AUDIO_128K( "241.m1", CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
-
-	ROM_REGION( 0x800000, "ymsnd", 0 )
-	ROM_LOAD( "241.v1", 0x000000, 0x400000, CRC(99ec20e8) SHA1(80597707f1fe115eed1941bb0701fc00790ad504) )
-	ROM_LOAD( "241.v2", 0x400000, 0x400000, CRC(ecb16799) SHA1(b4b4ddc680836ed55942c66d7dfe756314e02211) )
-
-	ROM_REGION( 0x2000000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "241.c1", 0x0000000, 0x800000, CRC(394b5e0d) SHA1(4549926f5054ee6aa7689cf920be0327e3908a50) )
-	ROM_LOAD16_BYTE( "241.c2", 0x0000001, 0x800000, CRC(e5806221) SHA1(1e5475cfab129c77acc610f09369ca42ba5aafa5) )
-	ROM_LOAD16_BYTE( "241.c3", 0x1000000, 0x800000, CRC(9f6bfa6f) SHA1(a4319b48004e723f81a980887678e3e296049a53) )
-	ROM_LOAD16_BYTE( "241.c4", 0x1000001, 0x800000, CRC(7d3e306f) SHA1(1499316fb381775218d897b81a6a0c3465d1a37c) )
-ROM_END
-
-/****************
- Extreme Remixes
-*******************/
+/*************************
+ Extreme MegaMods Edition
+****************************/
 
 ROM_START( mslug2rmxe0s01 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
@@ -963,7 +906,7 @@ ROM_END
 
 ROM_START( mslug2rmxe3s01 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_rmxe3s01.p1", 0x000000, 0x100000, CRC(f4993244) SHA1(8c95124350d9923b6be93f163aa354d7c74eeaf2) )
+	ROM_LOAD16_WORD_SWAP( "241_rmxe3s01.p1", 0x000000, 0x100000, CRC(a33c3014) SHA1(ba2b17c06ac4526ad4151d94f0a85adf680a2b3b) )
 	ROM_LOAD16_WORD_SWAP( "241_la01.p2", 0x100000, 0x200000, CRC(d30ecf73) SHA1(e63de0d097542413bb967ea02fa2ad58f2d447e6) )
 
 	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
@@ -991,7 +934,7 @@ ROM_END
 
 ROM_START( mslug2rmxe3s02 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_rmxe3s02.p1", 0x000000, 0x100000, CRC(a4d26f9c) SHA1(6fee246033871fe999a93051d393ad9203120e5c) )
+	ROM_LOAD16_WORD_SWAP( "241_rmxe3s02.p1", 0x000000, 0x100000, CRC(f3776dcc) SHA1(c763287c440da6a256de37647becbf3d81637cc9) )
 	ROM_LOAD16_WORD_SWAP( "241_la01.p2", 0x100000, 0x200000, CRC(d30ecf73) SHA1(e63de0d097542413bb967ea02fa2ad58f2d447e6) )
 
 	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
@@ -1019,7 +962,7 @@ ROM_END
 
 ROM_START( mslug2rmxe4s01 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_rmxe4s01.p1", 0x000000, 0x100000, CRC(e518d9e7) SHA1(bf773cca112ac2135de7dc04cf583fd96af146d7) )
+	ROM_LOAD16_WORD_SWAP( "241_rmxe4s01.p1", 0x000000, 0x100000, CRC(f4993244) SHA1(8c95124350d9923b6be93f163aa354d7c74eeaf2) )
 	ROM_LOAD16_WORD_SWAP( "241_la01.p2", 0x100000, 0x200000, CRC(d30ecf73) SHA1(e63de0d097542413bb967ea02fa2ad58f2d447e6) )
 
 	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
@@ -1047,7 +990,7 @@ ROM_END
 
 ROM_START( mslug2rmxe4s02 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_rmxe4s02.p1", 0x000000, 0x100000, CRC(b553843f) SHA1(0fb0f86d36b3dcd25c9f708733dfcd54bc88ed77) )
+	ROM_LOAD16_WORD_SWAP( "241_rmxe5s02.p1", 0x000000, 0x100000, CRC(a4d26f9c) SHA1(6fee246033871fe999a93051d393ad9203120e5c) )
 	ROM_LOAD16_WORD_SWAP( "241_la01.p2", 0x100000, 0x200000, CRC(d30ecf73) SHA1(e63de0d097542413bb967ea02fa2ad58f2d447e6) )
 
 	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
@@ -1075,7 +1018,7 @@ ROM_END
 
 ROM_START( mslug2rmxe5s01 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_rmxe5s01.p1", 0x000000, 0x100000, CRC(699cc8b8) SHA1(314a73e320a1b09717e72203ffd078595a73c5e8) )
+	ROM_LOAD16_WORD_SWAP( "241_rmxe5s01.p1", 0x000000, 0x100000, CRC(e518d9e7) SHA1(bf773cca112ac2135de7dc04cf583fd96af146d7) )
 	ROM_LOAD16_WORD_SWAP( "241_la01.p2", 0x100000, 0x200000, CRC(d30ecf73) SHA1(e63de0d097542413bb967ea02fa2ad58f2d447e6) )
 
 	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
@@ -1103,7 +1046,7 @@ ROM_END
 
 ROM_START( mslug2rmxe5s02 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_rmxe5s02.p1", 0x000000, 0x100000, CRC(39d79560) SHA1(dacad108aef80136a974e00930c690787ab4dc79) )
+	ROM_LOAD16_WORD_SWAP( "241_rmxe5s02.p1", 0x000000, 0x100000, CRC(b553843f) SHA1(0fb0f86d36b3dcd25c9f708733dfcd54bc88ed77) )
 	ROM_LOAD16_WORD_SWAP( "241_la01.p2", 0x100000, 0x200000, CRC(d30ecf73) SHA1(e63de0d097542413bb967ea02fa2ad58f2d447e6) )
 
 	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
@@ -1131,7 +1074,7 @@ ROM_END
 
 ROM_START( mslug2rmxe6s01 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_rmxe6s01.p1", 0x000000, 0x100000, CRC(a33c3014) SHA1(ba2b17c06ac4526ad4151d94f0a85adf680a2b3b) )
+	ROM_LOAD16_WORD_SWAP( "241_rmxe6s01.p1", 0x000000, 0x100000, CRC(699cc8b8) SHA1(314a73e320a1b09717e72203ffd078595a73c5e8) )
 	ROM_LOAD16_WORD_SWAP( "241_la01.p2", 0x100000, 0x200000, CRC(d30ecf73) SHA1(e63de0d097542413bb967ea02fa2ad58f2d447e6) )
 
 	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
@@ -1159,7 +1102,7 @@ ROM_END
 
 ROM_START( mslug2rmxe6s02 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_rmxe6s02.p1", 0x000000, 0x100000, CRC(f3776dcc) SHA1(c763287c440da6a256de37647becbf3d81637cc9) )
+	ROM_LOAD16_WORD_SWAP( "241_rmxe6s02.p1", 0x000000, 0x100000, CRC(39d79560) SHA1(dacad108aef80136a974e00930c690787ab4dc79) )
 	ROM_LOAD16_WORD_SWAP( "241_la01.p2", 0x100000, 0x200000, CRC(d30ecf73) SHA1(e63de0d097542413bb967ea02fa2ad58f2d447e6) )
 
 	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
@@ -1236,33 +1179,31 @@ HACK( 2020, mslug2hacks24,      mslug2,   neogeo_noslot, neogeo, neogeo_state,  
   mslug2rmxe6s01, mslug2rmxe6s02.
  ***********************************************************************************************************/
 
-HACK( 2020, mslug2la01,       mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",     "Metal Slug 2 Turbo (Enemies Resetting 2014-09-14)(Revised Improved version 2020-11-10)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2la02,       mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",     "Metal Slug 2 Turbo (Enemies Resetting 2014-09-14)(Survival Version)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
-HACK( 2020, mslug2la03,       mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",     "Metal Slug 2 Turbo (Enemies Resetting 2014-09-14)(Multi-Function Version)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2la04,       mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",     "Metal Slug 2 Turbo (Enemies Resetting 2014-09-14)(Generation 1V2 Version)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2la05,       mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",     "Metal Slug 2 Turbo (Enemies Resetting 2014-09-14)(Hybrid Bullets Version)(Revised Improved Version 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2la06,       mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",     "Metal Slug 2 Turbo (Enemies Resetting 2014-09-14)(Burst Enhanced Edition)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2lb01,       mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",     "Metal Slug 2 Turbo (Multi-Function Version 2017-05-09)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2lb02,       mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",     "Metal Slug 2 Turbo (Survival Version 2018-07-31)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
-HACK( 2020, mslug2lb03,       mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",     "Metal Slug 2 Turbo (Generation 1V2 2019-05-11)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2lb04,       mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",     "Metal Slug 2 Turbo (Hybrid Bullets Version 2008-12-04)(Revised Improved Version 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2lb05,       mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",     "Metal Slug 2 Turbo (Burst Enhanced Edition 2020-03-26)(Revised Improved Version 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+// Revised Extreme MegaMods Edition
+HACK( 2020, mslug2la01,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Enemies Resetting 2014-09-14)(Revised Improved version 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslug2la02,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Enemies Resetting 2014-09-14)(Revised Survival Version Remix Standard Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
+HACK( 2020, mslug2la03,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Enemies Resetting 2014-09-14)(Revised Multi-Function Remix Standard Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslug2la04,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Enemies Resetting 2014-09-14)(Revised Hybrid Bullets Remix Standard Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslug2lb01,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Revised Remix Standard Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslug2lb02,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Revised Multi-Function Remix Standard Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
+HACK( 2020, mslug2lb03,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Revised Survival Version Remix Standard Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslug2lb04,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Revised Hybrid Bullets Remix Standard Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 
-// Extreme Remixes
-HACK( 2020, mslug2rmxe0s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",                "Metal Slug 2 Turbo (Enemies Resetting Survival Version 2019-03-12)(Revised Version Remix [2020-11-10])", MACHINE_SUPPORTS_SAVE ) //To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
-HACK( 2020, mslug2rmxe0s02,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",                "Metal Slug 2 Turbo (Enemies Resetting Survival Version 2019-03-12)(Revised Hybrid Bullets Version Remix [2020-11-10])", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
-HACK( 2020, mslug2rmxe0s03,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",                "Metal Slug 2 Turbo (Survival Version 2018-07-31)(Revised Version Remix [2020-11-10])", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
-HACK( 2020, mslug2rmxe0s04,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",                "Metal Slug 2 Turbo (Survival Version 2018-07-31)(Revised Hybrid Bullets Version Remix [2020-11-10])", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
-HACK( 2020, mslug2rmxe1s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",        "Metal Slug 2 Turbo (Enemies Resetting Multi-Function Version 2018-05-12)(Revised Version Remix Rev.1.0 [2020-11-10])", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2rmxe1s02,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",        "Metal Slug 2 Turbo (Enemies Resetting Multi-Function Version 2018-05-12)(Revised Version Remix Rev.1.1 [2020-11-10])", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2rmxe2s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",        "Metal Slug 2 Turbo (Multi-Function Version 2017-05-09)(Revised Version Remix Rev.1.0 [2020-11-10])", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2rmxe2s02,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",        "Metal Slug 2 Turbo (Multi-Function Version 2017-05-09)(Revised Version Remix Rev.1.1 [2020-11-10])", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2rmxe3s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Full])",                 "Metal Slug 2 (Revised Version Heavy Machine Gun Extreme Remix V1.0 [2020-11-10])", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2rmxe3s02,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Full])",                 "Metal Slug 2 (Revised Version Heavy Machine Gun Extreme Remix V1.1 [2020-11-10])", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2rmxe4s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Full])",                 "Metal Slug 2 (Enemies Resetting Version 2014-09-14)(Revised Version Heavy Machine Gun Extreme Remix V1.0 [2020-11-10])", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2rmxe4s02,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Full])",                 "Metal Slug 2 (Enemies Resetting Version 2014-09-14)(Revised Version Heavy Machine Gun Extreme Remix V1.1 [2020-11-10])", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2rmxe5s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Beta])",                 "Metal Slug 2 (Revised Version Hybrid Bullets Remix V1.0 [2020-11-10])", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2rmxe5s02,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Beta])",                 "Metal Slug 2 (Revised Version Hybrid Bullets Remix V1.1 [2020-11-10])", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2rmxe6s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",        "Metal Slug 2 Turbo (Revised Version Enemies Resetting Version 2014-09-14)(Revised Version Hybrid Bullets Remix V1.0 [2020-11-10])", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2rmxe6s02,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",        "Metal Slug 2 Turbo (Revised Version Enemies Resetting Version 2014-09-14)(Revised Version Hybrid Bullets Remix V1.1 [2020-11-10])", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-
+// Extreme MegaMods Edition
+// Universe Bios v4.0 boot system
+HACK( 2020, mslug2rmxe0s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",                "Metal Slug 2 Turbo (Enemies Resetting Survival Version 2019-03-12)(Revised Extreme MegaMods Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE ) //To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
+HACK( 2020, mslug2rmxe0s02,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",                "Metal Slug 2 Turbo (Enemies Resetting Survival Version 2019-03-12)(Revised Hybrid Bullets Extreme MegaMods Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
+HACK( 2020, mslug2rmxe0s03,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",                "Metal Slug 2 Turbo (Survival Version 2018-07-31)(Revised Extreme MegaMods Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
+HACK( 2020, mslug2rmxe0s04,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",                "Metal Slug 2 Turbo (Survival Version 2018-07-31)(Revised Hybrid Bullets Extreme MegaMods Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
+HACK( 2020, mslug2rmxe1s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",        "Metal Slug 2 Turbo (Enemies Resetting Multi-Function Version 2018-05-12)(Revised Extreme MegaMods Edition V1.0 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslug2rmxe1s02,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",        "Metal Slug 2 Turbo (Enemies Resetting Multi-Function Version 2018-05-12)(Revised Extreme MegaMods Edition V1.1 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslug2rmxe2s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",        "Metal Slug 2 Turbo (Multi-Function Version 2017-05-09)(Revised Extreme MegaMods Edition V1.0 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslug2rmxe2s02,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",        "Metal Slug 2 Turbo (Multi-Function Version 2017-05-09)(Revised Extreme MegaMods Edition V1.1 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslug2rmxe3s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",        "Metal Slug 2 Turbo (Enemies Resetting Version 2014-09-14)(Revised Hybrid Bullets Extreme MegaMods Edition V1.0 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslug2rmxe3s02,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",        "Metal Slug 2 Turbo (Enemies Resetting Version 2014-09-14)(Revised Hybrid Bullets Extreme MegaMods Edition V1.1 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslug2rmxe4s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Full])",                 "Metal Slug 2 (Revised Heavy Machine Gun Extreme MegaMods Edition V1.0 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslug2rmxe4s02,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Full])",                 "Metal Slug 2 (Revised Heavy Machine Gun Extreme MegaMods Edition V1.1 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslug2rmxe5s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Full])",                 "Metal Slug 2 (Enemies Resetting Version 2014-09-14)(Revised Version Heavy Machine Gun Extreme MegaMods Edition V1.0 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslug2rmxe6s02,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Full])",                 "Metal Slug 2 (Enemies Resetting Version 2014-09-14)(Revised Version Heavy Machine Gun Extreme MegaMods Edition V1.1 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslug2rmxe6s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Beta])",                 "Metal Slug 2 (Revised Hybrid Bullets Extreme MegaMods Edition V1.0 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslug2rmxe6s02,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Beta])",                 "Metal Slug 2 (Revised Hybrid Bullets Extreme MegaMods Edition V1.1 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )

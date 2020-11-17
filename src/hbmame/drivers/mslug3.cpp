@@ -3054,32 +3054,6 @@ ROM_START( mslug3le04 )
 	ROM_LOAD16_BYTE( "256_hacks20.c8", 0x3000001, 0x800000, CRC(1c52378b) SHA1(05cd499f5444eae6360c96bfd3d3db8870d9656a) )
 ROM_END
 
-ROM_START( mslug3le05 )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_la05.p1", 0x000000, 0x100000, CRC(0e04aae3) SHA1(fcc8b7425cee8f80db1636977c90a334989e864c) )
-	ROM_LOAD16_WORD_SWAP( "256_cpa05.p2", 0x100000, 0x400000, CRC(4594761e) SHA1(04d05d0fc8603ac52ef2bf3574009311cf4d7f48) )
-
-	NEO_SFIX_MT_512K
-
-	NEO_BIOS_AUDIO_512K( "256.m1", CRC(eaeec116) SHA1(54419dbb21edc8c4b37eaac2e7ad9496d2de037a) )
-
-	ROM_REGION( 0x1000000, "ymsnd", 0 )
-	ROM_LOAD( "256.v1", 0x000000, 0x400000, CRC(f2690241) SHA1(fd56babc1934d10e0d27c32f032f9edda7ca8ce9) )
-	ROM_LOAD( "256.v2", 0x400000, 0x400000, CRC(7e2a10bd) SHA1(0d587fb9f64cba0315ce2d8a03e2b8fe34936dff) )
-	ROM_LOAD( "256.v3", 0x800000, 0x400000, CRC(0eaec17c) SHA1(c3ed613cc6993edd6fc0d62a90bcd85de8e21915) )
-	ROM_LOAD( "256.v4", 0xc00000, 0x400000, CRC(9b4b22d4) SHA1(9764fbf8453e52f80aa97a46fb9cf5937ef15a31) )
-
-	ROM_REGION( 0x4000000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "256d.c1", 0x0000000, 0x800000, CRC(3540398c) SHA1(0a96f2360eb26c66bf02bbc6f52230b55cc95e4e) )
-	ROM_LOAD16_BYTE( "256d.c2", 0x0000001, 0x800000, CRC(bdd220f0) SHA1(f52851023f3bc120b05f622af0e0ab1bedc41604) )
-	ROM_LOAD16_BYTE( "256d.c3", 0x1000000, 0x800000, CRC(bfaade82) SHA1(66b07e592c9a9b35567fe463496f8f75c32a7db9) )
-	ROM_LOAD16_BYTE( "256d.c4", 0x1000001, 0x800000, CRC(1463add6) SHA1(4db91b46d6430da272d27d00a6dc0eb25949bea1) )
-	ROM_LOAD16_BYTE( "256d.c5", 0x2000000, 0x800000, CRC(48ca7f28) SHA1(e903876be5fb4fa582c988d74c6bef1c3b9c7083) )
-	ROM_LOAD16_BYTE( "256d.c6", 0x2000001, 0x800000, CRC(806eb36f) SHA1(a412a9cab80c326733dde7652d1db2a46afb3ebb) )
-	ROM_LOAD16_BYTE( "256_hacks20.c7", 0x3000000, 0x800000, CRC(ed559fac) SHA1(e2e73b068785226cd97abbb8c2bd2b5800e9bf19) )
-	ROM_LOAD16_BYTE( "256_hacks20.c8", 0x3000001, 0x800000, CRC(1c52378b) SHA1(05cd499f5444eae6360c96bfd3d3db8870d9656a) )
-ROM_END
-
 ROM_START( mslug3le06 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_la06.p1", 0x000000, 0x100000, CRC(d7646a82) SHA1(e3d9b4605ab0e7a8579cb6d2ccb1b007d4fa0974) )
@@ -3161,58 +3135,6 @@ ROM_END
 ROM_START( mslug3le09 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_pla02.p1", 0x000000, 0x100000, CRC(0e91eeaa) SHA1(742fa493bdddf3c54b5762044cc9b95372ddda8b) )
-	ROM_LOAD16_WORD_SWAP( "256_cpa05.p2", 0x100000, 0x400000, CRC(4594761e) SHA1(04d05d0fc8603ac52ef2bf3574009311cf4d7f48) )
-
-	NEO_SFIX_MT_512K
-
-	NEO_BIOS_AUDIO_512K( "256.m1", CRC(eaeec116) SHA1(54419dbb21edc8c4b37eaac2e7ad9496d2de037a) )
-
-	ROM_REGION( 0x1000000, "ymsnd", 0 )
-	ROM_LOAD( "256.v1", 0x000000, 0x400000, CRC(f2690241) SHA1(fd56babc1934d10e0d27c32f032f9edda7ca8ce9) )
-	ROM_LOAD( "256.v2", 0x400000, 0x400000, CRC(7e2a10bd) SHA1(0d587fb9f64cba0315ce2d8a03e2b8fe34936dff) )
-	ROM_LOAD( "256.v3", 0x800000, 0x400000, CRC(0eaec17c) SHA1(c3ed613cc6993edd6fc0d62a90bcd85de8e21915) )
-	ROM_LOAD( "256.v4", 0xc00000, 0x400000, CRC(9b4b22d4) SHA1(9764fbf8453e52f80aa97a46fb9cf5937ef15a31) )
-
-	ROM_REGION( 0x4000000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "256d.c1", 0x0000000, 0x800000, CRC(3540398c) SHA1(0a96f2360eb26c66bf02bbc6f52230b55cc95e4e) )
-	ROM_LOAD16_BYTE( "256d.c2", 0x0000001, 0x800000, CRC(bdd220f0) SHA1(f52851023f3bc120b05f622af0e0ab1bedc41604) )
-	ROM_LOAD16_BYTE( "256d.c3", 0x1000000, 0x800000, CRC(bfaade82) SHA1(66b07e592c9a9b35567fe463496f8f75c32a7db9) )
-	ROM_LOAD16_BYTE( "256d.c4", 0x1000001, 0x800000, CRC(1463add6) SHA1(4db91b46d6430da272d27d00a6dc0eb25949bea1) )
-	ROM_LOAD16_BYTE( "256d.c5", 0x2000000, 0x800000, CRC(48ca7f28) SHA1(e903876be5fb4fa582c988d74c6bef1c3b9c7083) )
-	ROM_LOAD16_BYTE( "256d.c6", 0x2000001, 0x800000, CRC(806eb36f) SHA1(a412a9cab80c326733dde7652d1db2a46afb3ebb) )
-	ROM_LOAD16_BYTE( "256_hacks20.c7", 0x3000000, 0x800000, CRC(ed559fac) SHA1(e2e73b068785226cd97abbb8c2bd2b5800e9bf19) )
-	ROM_LOAD16_BYTE( "256_hacks20.c8", 0x3000001, 0x800000, CRC(1c52378b) SHA1(05cd499f5444eae6360c96bfd3d3db8870d9656a) )
-ROM_END
-
-ROM_START( mslug3le10 )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_la10.p1", 0x000000, 0x100000, CRC(a4c18762) SHA1(6af9264229280ac2e8359d4155d0e120e6c29465) )
-	ROM_LOAD16_WORD_SWAP( "256_cpa05.p2", 0x100000, 0x400000, CRC(4594761e) SHA1(04d05d0fc8603ac52ef2bf3574009311cf4d7f48) )
-
-	NEO_SFIX_MT_512K
-
-	NEO_BIOS_AUDIO_512K( "256.m1", CRC(eaeec116) SHA1(54419dbb21edc8c4b37eaac2e7ad9496d2de037a) )
-
-	ROM_REGION( 0x1000000, "ymsnd", 0 )
-	ROM_LOAD( "256.v1", 0x000000, 0x400000, CRC(f2690241) SHA1(fd56babc1934d10e0d27c32f032f9edda7ca8ce9) )
-	ROM_LOAD( "256.v2", 0x400000, 0x400000, CRC(7e2a10bd) SHA1(0d587fb9f64cba0315ce2d8a03e2b8fe34936dff) )
-	ROM_LOAD( "256.v3", 0x800000, 0x400000, CRC(0eaec17c) SHA1(c3ed613cc6993edd6fc0d62a90bcd85de8e21915) )
-	ROM_LOAD( "256.v4", 0xc00000, 0x400000, CRC(9b4b22d4) SHA1(9764fbf8453e52f80aa97a46fb9cf5937ef15a31) )
-
-	ROM_REGION( 0x4000000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "256d.c1", 0x0000000, 0x800000, CRC(3540398c) SHA1(0a96f2360eb26c66bf02bbc6f52230b55cc95e4e) )
-	ROM_LOAD16_BYTE( "256d.c2", 0x0000001, 0x800000, CRC(bdd220f0) SHA1(f52851023f3bc120b05f622af0e0ab1bedc41604) )
-	ROM_LOAD16_BYTE( "256d.c3", 0x1000000, 0x800000, CRC(bfaade82) SHA1(66b07e592c9a9b35567fe463496f8f75c32a7db9) )
-	ROM_LOAD16_BYTE( "256d.c4", 0x1000001, 0x800000, CRC(1463add6) SHA1(4db91b46d6430da272d27d00a6dc0eb25949bea1) )
-	ROM_LOAD16_BYTE( "256d.c5", 0x2000000, 0x800000, CRC(48ca7f28) SHA1(e903876be5fb4fa582c988d74c6bef1c3b9c7083) )
-	ROM_LOAD16_BYTE( "256d.c6", 0x2000001, 0x800000, CRC(806eb36f) SHA1(a412a9cab80c326733dde7652d1db2a46afb3ebb) )
-	ROM_LOAD16_BYTE( "256_hacks20.c7", 0x3000000, 0x800000, CRC(ed559fac) SHA1(e2e73b068785226cd97abbb8c2bd2b5800e9bf19) )
-	ROM_LOAD16_BYTE( "256_hacks20.c8", 0x3000001, 0x800000, CRC(1c52378b) SHA1(05cd499f5444eae6360c96bfd3d3db8870d9656a) )
-ROM_END
-
-ROM_START( mslug3le11 )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_la11.p1", 0x000000, 0x100000, CRC(79c73bb5) SHA1(f50e69e308c89badd2e12518d0c5437e50a185d2) )
 	ROM_LOAD16_WORD_SWAP( "256_cpa05.p2", 0x100000, 0x400000, CRC(4594761e) SHA1(04d05d0fc8603ac52ef2bf3574009311cf4d7f48) )
 
 	NEO_SFIX_MT_512K
@@ -7184,13 +7106,12 @@ HACK( 2020, mslug3le01,    mslug3,   neogeo_noslot, neogeo, neogeo_state,  cmc42
 HACK( 2020, mslug3le02,    mslug3,   neogeo_noslot, neogeo, neogeo_state,  neogeo,    ROT0, "Team Remix(Gaston90)",  "Metal Slug 3 (Enemy Soldier Reset Version #3 2020-09-29)[Edition 1](Ghost Wu Zuoma Version)(Revised Improved Version 2020-11-10)" , MACHINE_SUPPORTS_SAVE ) //Enemy Soldier Reset #3 2019-01-02
 HACK( 2020, mslug3le03,    mslug3,   neogeo_noslot, neogeo, neogeo_state,  cmc42sfix, ROT0, "Team Remix(Gaston90)",  "Metal Slug 3 (Enemy Soldier Reset Version #3 2020-09-29)[Edition 1](Summon Mount Edition)(Revised Improved Version 2020-11-10)" , MACHINE_SUPPORTS_SAVE ) //Enemy Soldier Reset #3 2019-01-02
 HACK( 2020, mslug3le04,    mslug3,   neogeo_noslot, neogeo, neogeo_state,  cmc42sfix, ROT0, "Team Remix(Gaston90)",  "Metal Slug 3 (Enemy Soldier Reset Version #3 2020-09-29)[Edition 1](Store Version)(Revised Improved Version 2020-11-10)" , MACHINE_SUPPORTS_SAVE ) //Enemy Soldier Reset #3 2019-01-02
-HACK( 2020, mslug3le05,    mslug3,   neogeo_noslot, neogeo, neogeo_state,  cmc42sfix, ROT0, "Team Remix(Gaston90,PlayerX China)",  "Metal Slug 3 (Enemy Soldier Reset Version #3 2020-09-29)[Edition 1](Green Blue Version)(Revised Improved Version 2020-11-10)" , MACHINE_SUPPORTS_SAVE ) //Enemy Soldier Reset #3 2019-01-02
+
 HACK( 2020, mslug3le06,    mslug3,   neogeo_noslot, neogeo, neogeo_state,  cmc42sfix, ROT0, "Team Remix(Gaston90)",  "Metal Slug 3 (Enemy Soldier Reset Version #3 2020-09-29)[Edition 1](SE Special Edition)(Revised Improved Version 2020-11-10)" , MACHINE_SUPPORTS_SAVE ) //Enemy Soldier Reset #3 2019-01-02
 HACK( 2020, mslug3le07,    mslug3,   neogeo_noslot, neogeo, neogeo_state,  cmc42sfix, ROT0, "Team Remix(Gaston90)",  "Metal Slug 3 (Enemy Soldier Reset Version #3 2020-09-29)[Edition 1](Burst Enhanced Edition)(Revised Improved Version 2020-11-10)" , MACHINE_SUPPORTS_SAVE ) //Enemy Soldier Reset #3 2019-01-02
 HACK( 2020, mslug3le08,    mslug3,   neogeo_noslot, neogeo, neogeo_state,  cmc42sfix, ROT0, "Team Remix(Gaston90)",  "Metal Slug 3 (Enemy Soldier Reset Version #3 2020-09-29)[Edition 1](Zombie Players Mode Edition)(Revised Improved Version 2020-11-10)" , MACHINE_SUPPORTS_SAVE ) //Enemy Soldier Reset #3 2019-01-02
 HACK( 2020, mslug3le09,    mslug3,   neogeo_noslot, neogeo, neogeo_state,  cmc42sfix, ROT0, "Team Remix(Gaston90)",  "Metal Slug 3 (Enemy Soldier Reset Version #3 2020-09-29)[Edition 1](Mummy Players Mode Edition)(Revised Improved Version 2020-11-10)" , MACHINE_SUPPORTS_SAVE ) //Enemy Soldier Reset #3 2019-01-02
-HACK( 2020, mslug3le10,    mslug3,   neogeo_noslot, neogeo, neogeo_state,  cmc42sfix, ROT0, "Team Remix(Gaston90)",  "Metal Slug 3 (Enemy Soldier Reset Version #3 2020-09-29)[Edition 1](Crazy Fire Version V1.1)(Revised Improved Version 2020-11-10)" , MACHINE_SUPPORTS_SAVE ) //Enemy Soldier Reset #3 2019-01-02
-HACK( 2020, mslug3le11,    mslug3,   neogeo_noslot, neogeo, neogeo_state,  cmc42sfix, ROT0, "Team Remix(Gaston90,HappyAsr)",  "Metal Slug 3 (Enemy Soldier Reset Version #3 2020-09-29)[Edition 1](Super D version)(Revised Improved Version 2020-11-10)" , MACHINE_SUPPORTS_SAVE ) //Enemy Soldier Reset #3 2019-01-02
+
 HACK( 2020, mslug3le12,    mslug3,   neogeo_noslot, neogeo, neogeo_state,  cmc42sfix, ROT0, "Team Remix(Gaston90)",  "Metal Slug 3 (Enemy Soldier Reset Version #3 2020-09-29)[Edition 1](Hybrid Bullets Version)(Revised Improved Version 2020-11-10)" , MACHINE_SUPPORTS_SAVE ) //Enemy Soldier Reset #3 2019-01-02
 
 // The color palette of the soldier sprites has been changed and also the model of the bomb.

@@ -239,6 +239,9 @@ ROM_END
  /**************
  Only exclusive
 *****************/
+ /******************************
+ Revised Remix Standard Edition
+*********************************/
 
 ROM_START( mslugla01 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
@@ -260,9 +263,9 @@ ROM_START( mslugla01 )
 	ROM_LOAD16_BYTE( "201.c4", 0x800001, 0x400000, CRC(f4ad59a3) SHA1(4e94fda8ee63abf0f92afe08060a488546e5c280) )
 ROM_END
 
-/****************
- Extreme Remixes
-*******************/
+/*************************
+ Extreme MegaMods Edition
+***************************/
 
 ROM_START( mslugrmxe0s01 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
@@ -347,9 +350,11 @@ HACK( 2005, msboot,            mslug,    neogeo_noslot, neogeo, neogeo_state,   
   if some type of problems are detected that cannot be solved.
 ********************************************************************************************/
 
-HACK( 2020, mslugla01,         mslug,    neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,I love Nimes)",                "Metal Slug (Multi-Function Version 2018-04-30)(Burst Enhanced Edition)(Revised Improved version 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+// Revised Remix Standard Edition
+HACK( 2020, mslugla01,         mslug,    neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,I love Nimes)",                "Metal Slug (Multi-Function Version 2018-04-30)(Revised Remix Standard Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )
 
-// Extreme Remixes
-HACK( 2020, mslugrmxe0s01,     mslug,    neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,DDJ,I love Nimes)",    "Metal Slug (Revised Version Heavy Machine Gun Extreme Remix [2020-11-10])", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslugrmxe1s01,     mslug,    neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,DDJ,I love Nimes)",            "Metal Slug (Multi-Function Version 2018-04-30)(Revised Version Heavy Machine Gun Extreme Remix [2020-11-10])", MACHINE_SUPPORTS_SAVE )
+// Extreme MegaMods Edition
+// Universe Bios v4.0 boot system
+HACK( 2020, mslugrmxe0s01,     mslug,    neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,DDJ,I love Nimes)",    "Metal Slug (Revised Heavy Machine Gun Extreme MegaMods Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslugrmxe1s01,     mslug,    neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,DDJ,I love Nimes)",            "Metal Slug (Multi-Function Version 2018-04-30)(Revised Heavy Machine Gun Extreme MegaMods Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )
 
