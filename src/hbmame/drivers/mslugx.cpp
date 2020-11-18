@@ -2187,7 +2187,7 @@ ROM_START( mslugxlh03 )
 	ROM_LOAD16_BYTE( "250.c6", 0x2000001, 0x800000, CRC(83e3e69d) SHA1(39be66287696829d243fb71b3fb8b7dc2bc3298f) )
 ROM_END
 
-ROM_START( mslugxlh01 )
+ROM_START( mslugxli01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_la01.p1", 0x000000, 0x100000, CRC(0e44f6cc) SHA1(af1d013abbf511197c28e140de767e8711cd7cbf) )
 	ROM_LOAD16_WORD_SWAP( "250_li00.p2", 0x100000, 0x400000, CRC(3f473f8d) SHA1(c80e9bffb28e2c859075a8b2233be16fdd850a0a) )
@@ -2210,7 +2210,7 @@ ROM_START( mslugxlh01 )
 	ROM_LOAD16_BYTE( "250.c6", 0x2000001, 0x800000, CRC(83e3e69d) SHA1(39be66287696829d243fb71b3fb8b7dc2bc3298f) )
 ROM_END
 
-ROM_START( mslugxlh02 )
+ROM_START( mslugxli02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_la02.p1", 0x000000, 0x100000, CRC(56e3ca7c) SHA1(65992607a1aa951241611cf44d9ac2f6bd16d1ef) )
 	ROM_LOAD16_WORD_SWAP( "250_li00.p2", 0x100000, 0x400000, CRC(3f473f8d) SHA1(c80e9bffb28e2c859075a8b2233be16fdd850a0a) )
@@ -4051,7 +4051,7 @@ HACK( 2020, mslugxli02,   mslugx,   neogeo_noslot, neogeo, neogeo_state,  mslugx
 HACK( 2020, mslugxli03,   mslugx,   neogeo_noslot, neogeo, neogeo_state,  mslugx,    ROT0, "Team Remix(Gaston90,PlayerX China,Azstar China Soda,Creamymami,I love Nimes)",             "Metal Slug X (Revised Big Heavy Machine Gun Flame Remix Standard Edition 2020-12-10)", MACHINE_SUPPORTS_SAVE )
 
 // Extreme MegaMods Edition
-// Universe Bios v4.0 boot system
+// Universe Bios v4.0 Boot System
 HACK( 2020, mslugxrmxe0s01,  mslugx,   neogeo_noslot, neogeo, neogeo_state,  mslugx,    ROT0, "Team Remix(Gaston90,PlayerX China,Shyma.X,DDJ,julee,Azstar China Soda,I love Nimes)",                                            "Metal Slug X (Enemy Heavy Plate 2R Edition 2013-06-18)(Revised Hybrid Bullets Extreme MegaMods Edition 2020-12-10)", MACHINE_SUPPORTS_SAVE )
 HACK( 2020, mslugxrmxe0s02,  mslugx,   neogeo_noslot, neogeo, neogeo_state,  mslugx,    ROT0, "Team Remix(Gaston90,PlayerX China,Shyma.X,DDJ,julee,Azstar China Soda,I love Nimes)",                                            "Metal Slug X (Enemy Soldiers Remake 2R Version 3)(Revised Hybrid Bullets Extreme MegaMods Edition 2020-12-10)", MACHINE_SUPPORTS_SAVE )
 HACK( 2020, mslugxrmxe0s03,  mslugx,   neogeo_noslot, neogeo, neogeo_state,  mslugx,    ROT0, "Team Remix(Gaston90,PlayerX China,Shyma.X,DDJ,julee,Azstar China Soda,I love Nimes)",                                            "Metal Slug X (Revised 2R Hybrid Bullets Version Extreme MegaMods Edition 2020-12-10)", MACHINE_SUPPORTS_SAVE )

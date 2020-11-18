@@ -990,7 +990,7 @@ ROM_END
 
 ROM_START( mslug2rmxe4s02 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_rmxe5s02.p1", 0x000000, 0x100000, CRC(a4d26f9c) SHA1(6fee246033871fe999a93051d393ad9203120e5c) )
+	ROM_LOAD16_WORD_SWAP( "241_rmxe4s02.p1", 0x000000, 0x100000, CRC(a4d26f9c) SHA1(6fee246033871fe999a93051d393ad9203120e5c) )
 	ROM_LOAD16_WORD_SWAP( "241_la01.p2", 0x100000, 0x200000, CRC(d30ecf73) SHA1(e63de0d097542413bb967ea02fa2ad58f2d447e6) )
 
 	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
@@ -1175,7 +1175,7 @@ HACK( 2020, mslug2hacks24,      mslug2,   neogeo_noslot, neogeo, neogeo_state,  
   will not allow you to continue playing level 2.
   The precarious solutions that have been found is the selection of levels and skipping level 2 
   is that the only level that arrogantly causes the error.
-  Roms with these names with carry the error: mslug2rmxe0s02, mslug2rmxe0s04, mslug2rmxe5s01, mslug2rmxe5s02,
+  Roms with these names with carry the error: mslug2rmxe0s02, mslug2rmxe0s04, mslug2rmxe3s01, mslug2rmxe3s02,
   mslug2rmxe6s01, mslug2rmxe6s02.
  ***********************************************************************************************************/
 
@@ -1190,7 +1190,7 @@ HACK( 2020, mslug2lb03,        mslug2,   neogeo_noslot, neogeo, neogeo_state,   
 HACK( 2020, mslug2lb04,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Revised Hybrid Bullets Remix Standard Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 
 // Extreme MegaMods Edition
-// Universe Bios v4.0 boot system
+// Universe Bios v4.0 Boot System
 HACK( 2020, mslug2rmxe0s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",                "Metal Slug 2 Turbo (Enemies Resetting Survival Version 2019-03-12)(Revised Extreme MegaMods Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE ) //To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
 HACK( 2020, mslug2rmxe0s02,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",                "Metal Slug 2 Turbo (Enemies Resetting Survival Version 2019-03-12)(Revised Hybrid Bullets Extreme MegaMods Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
 HACK( 2020, mslug2rmxe0s03,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",                "Metal Slug 2 Turbo (Survival Version 2018-07-31)(Revised Extreme MegaMods Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
@@ -1204,6 +1204,7 @@ HACK( 2020, mslug2rmxe3s02,    mslug2,   neogeo_noslot, neogeo, neogeo_state,   
 HACK( 2020, mslug2rmxe4s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Full])",                 "Metal Slug 2 (Revised Heavy Machine Gun Extreme MegaMods Edition V1.0 2020-11-10)", MACHINE_SUPPORTS_SAVE )
 HACK( 2020, mslug2rmxe4s02,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Full])",                 "Metal Slug 2 (Revised Heavy Machine Gun Extreme MegaMods Edition V1.1 2020-11-10)", MACHINE_SUPPORTS_SAVE )
 HACK( 2020, mslug2rmxe5s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Full])",                 "Metal Slug 2 (Enemies Resetting Version 2014-09-14)(Revised Version Heavy Machine Gun Extreme MegaMods Edition V1.0 2020-11-10)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2rmxe6s02,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Full])",                 "Metal Slug 2 (Enemies Resetting Version 2014-09-14)(Revised Version Heavy Machine Gun Extreme MegaMods Edition V1.1 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+HACK( 2020, mslug2rmxe5s02,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Full])",                 "Metal Slug 2 (Enemies Resetting Version 2014-09-14)(Revised Version Heavy Machine Gun Extreme MegaMods Edition V1.1 2020-11-10)", MACHINE_SUPPORTS_SAVE )
 HACK( 2020, mslug2rmxe6s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Beta])",                 "Metal Slug 2 (Revised Hybrid Bullets Extreme MegaMods Edition V1.0 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 HACK( 2020, mslug2rmxe6s02,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Beta])",                 "Metal Slug 2 (Revised Hybrid Bullets Extreme MegaMods Edition V1.1 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+ 
