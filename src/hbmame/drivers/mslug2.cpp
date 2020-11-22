@@ -523,7 +523,15 @@ ROM_START( mslug2la01 )
 
 	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
 
-	NEO_BIOS_AUDIO_128K( "241.m1", CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
+	ROM_REGION16_BE( 0x20000, "mainbios", 0 )
+	ROM_LOAD16_WORD_SWAP( "uni-bios_4_0.rom", 0x00000, 0x20000, CRC(a7aab458) SHA1(938a0bda7d9a357240718c2cec319878d36b8f72) )
+
+	ROM_REGION( 0x20000, "audiobios", 0 )
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) )
+
+	ROM_REGION( 0x30000, "audiocpu", 0 )
+	ROM_LOAD( "241.m1", 0x00000, 0x20000, CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
+	ROM_RELOAD(     0x10000, 0x20000 )
 
 	ROM_REGION( 0x800000, "ymsnd", 0 )
 	ROM_LOAD( "241.v1", 0x000000, 0x400000, CRC(99ec20e8) SHA1(80597707f1fe115eed1941bb0701fc00790ad504) )
@@ -543,7 +551,15 @@ ROM_START( mslug2la02 )
 
 	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
 
-	NEO_BIOS_AUDIO_128K( "241.m1", CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
+	ROM_REGION16_BE( 0x20000, "mainbios", 0 )
+	ROM_LOAD16_WORD_SWAP( "uni-bios_4_0.rom", 0x00000, 0x20000, CRC(a7aab458) SHA1(938a0bda7d9a357240718c2cec319878d36b8f72) )
+
+	ROM_REGION( 0x20000, "audiobios", 0 )
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) )
+
+	ROM_REGION( 0x30000, "audiocpu", 0 )
+	ROM_LOAD( "241.m1", 0x00000, 0x20000, CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
+	ROM_RELOAD(     0x10000, 0x20000 )
 
 	ROM_REGION( 0x800000, "ymsnd", 0 )
 	ROM_LOAD( "241.v1", 0x000000, 0x400000, CRC(99ec20e8) SHA1(80597707f1fe115eed1941bb0701fc00790ad504) )
@@ -563,7 +579,15 @@ ROM_START( mslug2la03 )
 
 	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
 
-	NEO_BIOS_AUDIO_128K( "241.m1", CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
+	ROM_REGION16_BE( 0x20000, "mainbios", 0 )
+	ROM_LOAD16_WORD_SWAP( "uni-bios_4_0.rom", 0x00000, 0x20000, CRC(a7aab458) SHA1(938a0bda7d9a357240718c2cec319878d36b8f72) )
+
+	ROM_REGION( 0x20000, "audiobios", 0 )
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) )
+
+	ROM_REGION( 0x30000, "audiocpu", 0 )
+	ROM_LOAD( "241.m1", 0x00000, 0x20000, CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
+	ROM_RELOAD(     0x10000, 0x20000 )
 
 	ROM_REGION( 0x800000, "ymsnd", 0 )
 	ROM_LOAD( "241.v1", 0x000000, 0x400000, CRC(99ec20e8) SHA1(80597707f1fe115eed1941bb0701fc00790ad504) )
@@ -583,7 +607,15 @@ ROM_START( mslug2la04 )
 
 	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
 
-	NEO_BIOS_AUDIO_128K( "241.m1", CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
+	ROM_REGION16_BE( 0x20000, "mainbios", 0 )
+	ROM_LOAD16_WORD_SWAP( "uni-bios_4_0.rom", 0x00000, 0x20000, CRC(a7aab458) SHA1(938a0bda7d9a357240718c2cec319878d36b8f72) )
+
+	ROM_REGION( 0x20000, "audiobios", 0 )
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) )
+
+	ROM_REGION( 0x30000, "audiocpu", 0 )
+	ROM_LOAD( "241.m1", 0x00000, 0x20000, CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
+	ROM_RELOAD(     0x10000, 0x20000 )
 
 	ROM_REGION( 0x800000, "ymsnd", 0 )
 	ROM_LOAD( "241.v1", 0x000000, 0x400000, CRC(99ec20e8) SHA1(80597707f1fe115eed1941bb0701fc00790ad504) )
@@ -603,7 +635,15 @@ ROM_START( mslug2lb01 )
 
 	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
 
-	NEO_BIOS_AUDIO_128K( "241.m1", CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
+	ROM_REGION16_BE( 0x20000, "mainbios", 0 )
+	ROM_LOAD16_WORD_SWAP( "uni-bios_4_0.rom", 0x00000, 0x20000, CRC(a7aab458) SHA1(938a0bda7d9a357240718c2cec319878d36b8f72) )
+
+	ROM_REGION( 0x20000, "audiobios", 0 )
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) )
+
+	ROM_REGION( 0x30000, "audiocpu", 0 )
+	ROM_LOAD( "241.m1", 0x00000, 0x20000, CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
+	ROM_RELOAD(     0x10000, 0x20000 )
 
 	ROM_REGION( 0x800000, "ymsnd", 0 )
 	ROM_LOAD( "241.v1", 0x000000, 0x400000, CRC(99ec20e8) SHA1(80597707f1fe115eed1941bb0701fc00790ad504) )
@@ -623,7 +663,15 @@ ROM_START( mslug2lb02 )
 
 	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
 
-	NEO_BIOS_AUDIO_128K( "241.m1", CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
+	ROM_REGION16_BE( 0x20000, "mainbios", 0 )
+	ROM_LOAD16_WORD_SWAP( "uni-bios_4_0.rom", 0x00000, 0x20000, CRC(a7aab458) SHA1(938a0bda7d9a357240718c2cec319878d36b8f72) )
+
+	ROM_REGION( 0x20000, "audiobios", 0 )
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) )
+
+	ROM_REGION( 0x30000, "audiocpu", 0 )
+	ROM_LOAD( "241.m1", 0x00000, 0x20000, CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
+	ROM_RELOAD(     0x10000, 0x20000 )
 
 	ROM_REGION( 0x800000, "ymsnd", 0 )
 	ROM_LOAD( "241.v1", 0x000000, 0x400000, CRC(99ec20e8) SHA1(80597707f1fe115eed1941bb0701fc00790ad504) )
@@ -643,7 +691,15 @@ ROM_START( mslug2lb03 )
 
 	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
 
-	NEO_BIOS_AUDIO_128K( "241.m1", CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
+	ROM_REGION16_BE( 0x20000, "mainbios", 0 )
+	ROM_LOAD16_WORD_SWAP( "uni-bios_4_0.rom", 0x00000, 0x20000, CRC(a7aab458) SHA1(938a0bda7d9a357240718c2cec319878d36b8f72) )
+
+	ROM_REGION( 0x20000, "audiobios", 0 )
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) )
+
+	ROM_REGION( 0x30000, "audiocpu", 0 )
+	ROM_LOAD( "241.m1", 0x00000, 0x20000, CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
+	ROM_RELOAD(     0x10000, 0x20000 )
 
 	ROM_REGION( 0x800000, "ymsnd", 0 )
 	ROM_LOAD( "241.v1", 0x000000, 0x400000, CRC(99ec20e8) SHA1(80597707f1fe115eed1941bb0701fc00790ad504) )
@@ -663,7 +719,15 @@ ROM_START( mslug2lb04 )
 
 	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
 
-	NEO_BIOS_AUDIO_128K( "241.m1", CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
+	ROM_REGION16_BE( 0x20000, "mainbios", 0 )
+	ROM_LOAD16_WORD_SWAP( "uni-bios_4_0.rom", 0x00000, 0x20000, CRC(a7aab458) SHA1(938a0bda7d9a357240718c2cec319878d36b8f72) )
+
+	ROM_REGION( 0x20000, "audiobios", 0 )
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) )
+
+	ROM_REGION( 0x30000, "audiocpu", 0 )
+	ROM_LOAD( "241.m1", 0x00000, 0x20000, CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
+	ROM_RELOAD(     0x10000, 0x20000 )
 
 	ROM_REGION( 0x800000, "ymsnd", 0 )
 	ROM_LOAD( "241.v1", 0x000000, 0x400000, CRC(99ec20e8) SHA1(80597707f1fe115eed1941bb0701fc00790ad504) )
@@ -962,30 +1026,30 @@ ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
 // Metal Slug 2
-HACK( 2014, mslug2hacks01,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "hack",            "Metal Slug 2 (Enemies Resetting Version 2014-09-14)", MACHINE_SUPPORTS_SAVE )
-HACK( 2004, mslug2hacks02,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Arkatrad",        "Metal Slug 2 (Neo Arc Traduction French Version 2004)(Old)", MACHINE_SUPPORTS_SAVE )
-HACK( 2003, mslug2hacks03,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Arkatrad",        "Metal Slug 2 (Neo Arc Traduction French Version Unknown)(Old)", MACHINE_SUPPORTS_SAVE )
-HACK( 2006, mslug2hacks04,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Shyma.X",         "Metal Slug 2 (Neo Arc Traduction French Version 2004)", MACHINE_SUPPORTS_SAVE )
-HACK( 2015, mslug2hacks05,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "System11",        "Metal Slug 2 (Turbo) ", MACHINE_SUPPORTS_SAVE )
-HACK( 2008, mslug2hacks06,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "hack",            "Metal Slug 2 (Hybrid bullets version 2008-12-04)", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, mslug2hacks07,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "DDJ",             "Metal Slug 2 (Jump In Mid Air 2017-08-24)", MACHINE_SUPPORTS_SAVE )
-HACK( 2006, mslug2hacks08,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "hack",            "Metal Slug 2 (Ward Charior 2016-01-25)", MACHINE_SUPPORTS_SAVE )
-HACK( 2006, mslug2hacks09,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "DDJ",             "Metal Slug 2 (Change Weapon And Mummy 2016-01-25)", MACHINE_NOT_WORKING |  MACHINE_SUPPORTS_SAVE ) //The game crashes when you press the 1 + D button.
-HACK( 2020, mslug2hacks10,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "I love Nimes",    "Metal Slug 2 (Burst Enhanced Edition 2020-03-26)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2hacks11,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "hack",            "Metal Slug 2 (Burst Enhanced Edition 2020-03-29)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2hacks12,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "hack",            "Metal Slug 2 (Burst Enhanced Edition 2020-04-28)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2hacks13,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "hack",            "Metal Slug 2 (Burst Enhanced Edition 2020-05-10)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2hacks14,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "I love Nimes",    "Metal Slug 2 (Burst Enhanced Edition 2020-09-18)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2hacks15,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "hack",            "Metal Slug 2 (Burst Enhanced Edition 2020-10-12)", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, mslug2hacks16,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "hack",            "Metal Slug 2 (Multi-Function Version 2017-04-23)", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, mslug2hacks17,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "hack",            "Metal Slug 2 (Multi-Function Version 2017-05-09)", MACHINE_SUPPORTS_SAVE )
-HACK( 2015, mslug2hacks18,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "hack",            "Metal Slug 2 (Stored Gun Edition 2015-10-07)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-HACK( 2015, mslug2hacks19,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "hack",            "Metal Slug 2 (Stored Gun Edition 2015-11-11)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-HACK( 2018, mslug2hacks20,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "hack",            "Metal Slug 2 (Survival Version 2018-07-31)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
-HACK( 2006, mslug2hacks21,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "DDJ",             "Metal Slug 2 (Circulation For The Gun 2016-03-10)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, mslug2hacks22,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "hack",            "Metal Slug 2 (Generation 1V2 2019-05-11)", MACHINE_SUPPORTS_SAVE )
-HACK( 2016, mslug2hacks23,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "DDJ",             "Metal Slug 2 (Stage Select 2016-10-19)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2hacks24,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "hack",            "Metal Slug 2 (Crazy Fire Edition 2020-09-05)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) //The game crashes when you press the 1 + D button / 3 + D button.
+GAME( 2014, mslug2hacks01,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Enemies Resetting Version 2014-09-14)", MACHINE_SUPPORTS_SAVE )
+GAME( 2004, mslug2hacks02,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Arkatrad",        "Metal Slug 2 (Neo Arc Traduction French Version 2004)(Old)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, mslug2hacks03,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Arkatrad",        "Metal Slug 2 (Neo Arc Traduction French Version Unknown)(Old)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslug2hacks04,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Shyma.X",         "Metal Slug 2 (Neo Arc Traduction French Version 2004)", MACHINE_SUPPORTS_SAVE )
+GAME( 2015, mslug2hacks05,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "System11",        "Metal Slug 2 (Turbo) ", MACHINE_SUPPORTS_SAVE )
+GAME( 2008, mslug2hacks06,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Hybrid bullets version 2008-12-04)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, mslug2hacks07,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "DDJ",             "Metal Slug 2 (Jump In Mid Air 2017-08-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslug2hacks08,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Ward Charior 2016-01-25)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslug2hacks09,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "DDJ",             "Metal Slug 2 (Change Weapon And Mummy 2016-01-25)", MACHINE_NOT_WORKING |  MACHINE_SUPPORTS_SAVE ) //The game crashes when you press the 1 + D button.
+GAME( 2020, mslug2hacks10,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "I love Nimes",    "Metal Slug 2 (Burst Enhanced Edition 2020-03-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug2hacks11,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Burst Enhanced Edition 2020-03-29)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug2hacks12,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Burst Enhanced Edition 2020-04-28)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug2hacks13,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Burst Enhanced Edition 2020-05-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug2hacks14,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "I love Nimes",    "Metal Slug 2 (Burst Enhanced Edition 2020-09-18)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug2hacks15,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Burst Enhanced Edition 2020-10-12)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, mslug2hacks16,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Multi-Function Version 2017-04-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, mslug2hacks17,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Multi-Function Version 2017-05-09)", MACHINE_SUPPORTS_SAVE )
+GAME( 2015, mslug2hacks18,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Stored Gun Edition 2015-10-07)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2015, mslug2hacks19,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Stored Gun Edition 2015-11-11)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2018, mslug2hacks20,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Survival Version 2018-07-31)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
+GAME( 2006, mslug2hacks21,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "DDJ",             "Metal Slug 2 (Circulation For The Gun 2016-03-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, mslug2hacks22,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Generation 1V2 2019-05-11)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, mslug2hacks23,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "DDJ",             "Metal Slug 2 (Stage Select 2016-10-19)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug2hacks24,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Crazy Fire Edition 2020-09-05)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) //The game crashes when you press the 1 + D button / 3 + D button.
 
 /***************
  Only exclusive
@@ -1010,25 +1074,25 @@ HACK( 2020, mslug2hacks24,      mslug2,   neogeo_noslot, neogeo, neogeo_state,  
   Roms with these names with carry the error: mslug2rmxe0s02, mslug2rmxe0s04, mslug2rmxe3s01, mslug2rmxe6s01.
  ***********************************************************************************************************/
 
-// Revised Extreme MegaMods Edition
-HACK( 2020, mslug2la01,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Enemies Resetting 2014-09-14)(Revised Improved version 2020-11-10)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2la02,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Enemies Resetting 2014-09-14)(Revised Survival Version Remix Standard Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
-HACK( 2020, mslug2la03,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Enemies Resetting 2014-09-14)(Revised Multi-Function Remix Standard Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2la04,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Enemies Resetting 2014-09-14)(Revised Hybrid Bullets Remix Standard Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2lb01,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Revised Remix Standard Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2lb02,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Revised Multi-Function Remix Standard Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
-HACK( 2020, mslug2lb03,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Revised Survival Version Remix Standard Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2lb04,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Revised Hybrid Bullets Remix Standard Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+// Revised Remix Standard Edition
+// Universe Bios v4.0 Boot Systems
+GAME( 2020, mslug2la01,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Enemies Resetting 2014-09-14)(Revised Improved version 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug2la02,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Enemies Resetting 2014-09-14)(Revised Survival Version Remix Standard Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
+GAME( 2020, mslug2la03,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Enemies Resetting 2014-09-14)(Revised Multi-Function Remix Standard Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug2la04,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Enemies Resetting 2014-09-14)(Revised Hybrid Bullets Remix Standard Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug2lb01,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Revised Remix Standard Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug2lb02,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Revised Multi-Function Remix Standard Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
+GAME( 2020, mslug2lb03,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Revised Survival Version Remix Standard Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug2lb04,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Revised Hybrid Bullets Remix Standard Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 
 // Extreme MegaMods Edition
-// Universe Bios v4.0 Boot System
-HACK( 2020, mslug2rmxe0s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",                "Metal Slug 2 Turbo (Enemies Resetting Survival Version 2019-03-12)(Revised Extreme MegaMods Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE ) //To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
-HACK( 2020, mslug2rmxe0s02,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",                "Metal Slug 2 Turbo (Enemies Resetting Survival Version 2019-03-12)(Revised Hybrid Bullets Extreme MegaMods Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
-HACK( 2020, mslug2rmxe0s03,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",                "Metal Slug 2 Turbo (Survival Version 2018-07-31)(Revised Extreme MegaMods Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
-HACK( 2020, mslug2rmxe0s04,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",                "Metal Slug 2 Turbo (Survival Version 2018-07-31)(Revised Hybrid Bullets Extreme MegaMods Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
-HACK( 2020, mslug2rmxe1s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",        "Metal Slug 2 Turbo (Enemies Resetting Multi-Function Version 2018-05-12)(Revised Extreme MegaMods Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2rmxe2s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",        "Metal Slug 2 Turbo (Multi-Function Version 2017-05-09)(Revised Extreme MegaMods Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2rmxe3s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",        "Metal Slug 2 Turbo (Enemies Resetting Version 2014-09-14)(Revised Hybrid Bullets Extreme MegaMods Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2rmxe4s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Full])",                 "Metal Slug 2 (Revised Heavy Machine Gun Extreme MegaMods Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2rmxe5s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Full])",                 "Metal Slug 2 (Enemies Resetting Version 2014-09-14)(Revised Version Heavy Machine Gun Extreme MegaMods Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, mslug2rmxe6s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Beta])",                 "Metal Slug 2 (Revised Hybrid Bullets Extreme MegaMods Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug2rmxe0s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",                "Metal Slug 2 Turbo (Enemies Resetting Survival Version 2019-03-12)(Revised Extreme MegaMods Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE ) //To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
+GAME( 2020, mslug2rmxe0s02,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",                "Metal Slug 2 Turbo (Enemies Resetting Survival Version 2019-03-12)(Revised Hybrid Bullets Extreme MegaMods Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
+GAME( 2020, mslug2rmxe0s03,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",                "Metal Slug 2 Turbo (Survival Version 2018-07-31)(Revised Extreme MegaMods Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
+GAME( 2020, mslug2rmxe0s04,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",                "Metal Slug 2 Turbo (Survival Version 2018-07-31)(Revised Hybrid Bullets Extreme MegaMods Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
+GAME( 2020, mslug2rmxe1s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",        "Metal Slug 2 Turbo (Enemies Resetting Multi-Function Version 2018-05-12)(Revised Extreme MegaMods Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug2rmxe2s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",        "Metal Slug 2 Turbo (Multi-Function Version 2017-05-09)(Revised Extreme MegaMods Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug2rmxe3s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,System11,I love Nimes [Beta])",        "Metal Slug 2 Turbo (Enemies Resetting Version 2014-09-14)(Revised Hybrid Bullets Extreme MegaMods Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug2rmxe4s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Full])",                 "Metal Slug 2 (Revised Heavy Machine Gun Extreme MegaMods Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug2rmxe5s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Full])",                 "Metal Slug 2 (Enemies Resetting Version 2014-09-14)(Revised Version Heavy Machine Gun Extreme MegaMods Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug2rmxe6s01,    mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Shyma.X,kof1996,Ydmis,DDJ,I love Nimes [Beta])",                 "Metal Slug 2 (Revised Hybrid Bullets Extreme MegaMods Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )

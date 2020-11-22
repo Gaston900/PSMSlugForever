@@ -1,14 +1,7 @@
-// license:BSD-3-Clause
+// Proyecto Shadows Mame Build Plus
 // copyright-holders:Gaston90
-/***************************************************************************
 
-    version.c
-
-    Version string source file for MAME.
-
-***************************************************************************/
-
-#define BARE_BUILD_VERSION "1.0"
+#define BARE_BUILD_VERSION "2.0"
 
 extern const char bare_build_version[];
 extern const char build_version[];
