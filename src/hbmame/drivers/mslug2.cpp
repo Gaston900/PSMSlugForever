@@ -486,7 +486,7 @@ ROM_END
 
 ROM_START( mslug2la02 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_la02.p1", 0x000000, 0x100000, CRC(2ee073b5) SHA1(a10d5610a19bd5c811e28cb06ea5e027f7a81a0c) )
+	ROM_LOAD16_WORD_SWAP( "241_la02.p1", 0x000000, 0x100000, CRC(8a7fee1b) SHA1(daf58a3cf6f866569bcda5080d5f044531c60190) )
 	ROM_LOAD16_WORD_SWAP( "241_lb01.p2", 0x100000, 0x200000, CRC(e8c57cad) SHA1(1c4941464f94b60edf9025bf57265cab3d1a5186) )
 
 	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
@@ -598,7 +598,7 @@ ROM_END
 
 ROM_START( mslug2lb02 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_lb02.p1", 0x000000, 0x100000, CRC(3f619816) SHA1(aed58c0301370bf6ac1383bc23fe883a8ab76a44) )
+	ROM_LOAD16_WORD_SWAP( "241_lb02.p1", 0x000000, 0x100000, CRC(9bfe05b8) SHA1(bfcc4195472d6de7735fa6e109b079cefb95d7eb) )
 	ROM_LOAD16_WORD_SWAP( "241_lb01.p2", 0x100000, 0x200000, CRC(e8c57cad) SHA1(1c4941464f94b60edf9025bf57265cab3d1a5186) )
 
 	NEO_SFIX_128K( "241_hacks04.s1", CRC(e22801a7) SHA1(24120adfbc5e35efcea98cfb30a936b6630da7c5) )
@@ -686,7 +686,7 @@ ROM_END
 
 ROM_START( mslug2rmxe0s01 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_rmxe0s01.p1", 0x000000, 0x100000, CRC(f03e3e46) SHA1(67db0ff9fa68f890e433f07a1e70b646c3c272e9) )
+	ROM_LOAD16_WORD_SWAP( "241_rmxe0s01.p1", 0x000000, 0x100000, CRC(54a1a3e8) SHA1(cd5123d4e6e010e54c8a737d0e5b7a78d80363d2) )
 	ROM_LOAD16_WORD_SWAP( "241_lb01.p2", 0x100000, 0x200000, CRC(e8c57cad) SHA1(1c4941464f94b60edf9025bf57265cab3d1a5186) )
 
 	NEO_SFIX_128K( "241.s1", CRC(f3d32f0f) SHA1(2dc38b7dfd3ff14f64d5c0733c510b6bb8c692d0) )
@@ -714,7 +714,7 @@ ROM_END
 
 ROM_START( mslug2rmxe0s02 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_rmxe0s02.p1", 0x000000, 0x100000, CRC(94217681) SHA1(a7d21f7008afd247f942f603c97719099b7d9259) )
+	ROM_LOAD16_WORD_SWAP( "241_rmxe0s02.p1", 0x000000, 0x100000, CRC(30beeb2f) SHA1(2af79509f8206ba894faa1693ff77322ca5fce72) )
 	ROM_LOAD16_WORD_SWAP( "241_lb01.p2", 0x100000, 0x200000, CRC(e8c57cad) SHA1(1c4941464f94b60edf9025bf57265cab3d1a5186) )
 
 	NEO_SFIX_128K( "241.s1", CRC(f3d32f0f) SHA1(2dc38b7dfd3ff14f64d5c0733c510b6bb8c692d0) )
@@ -742,7 +742,7 @@ ROM_END
 
 ROM_START( mslug2rmxe0s03 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_rmxe0s03.p1", 0x000000, 0x100000, CRC(e1bfd5e5) SHA1(46b566e3de71f63586ce7540db5a493446ff37db) )
+	ROM_LOAD16_WORD_SWAP( "241_rmxe0s03.p1", 0x000000, 0x100000, CRC(4520484b) SHA1(b7a7fe82c5b44379c3ffdf1792028ca23b8171e8) )
 	ROM_LOAD16_WORD_SWAP( "241_lb01.p2", 0x100000, 0x200000, CRC(e8c57cad) SHA1(1c4941464f94b60edf9025bf57265cab3d1a5186) )
 
 	NEO_SFIX_128K( "241.s1", CRC(f3d32f0f) SHA1(2dc38b7dfd3ff14f64d5c0733c510b6bb8c692d0) )
@@ -770,7 +770,7 @@ ROM_END
 
 ROM_START( mslug2rmxe0s04 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_rmxe0s04.p1", 0x000000, 0x100000, CRC(85a09d22) SHA1(057bdd31bc970a39db3fd0ca1d5eb9a075a58b7d) )
+	ROM_LOAD16_WORD_SWAP( "241_rmxe0s04.p1", 0x000000, 0x100000, CRC(213f008c) SHA1(82280889d832458386bbb85ad078810a3250514b) )
 	ROM_LOAD16_WORD_SWAP( "241_lb01.p2", 0x100000, 0x200000, CRC(e8c57cad) SHA1(1c4941464f94b60edf9025bf57265cab3d1a5186) )
 
 	NEO_SFIX_128K( "241.s1", CRC(f3d32f0f) SHA1(2dc38b7dfd3ff14f64d5c0733c510b6bb8c692d0) )
@@ -1018,8 +1018,8 @@ GAME( 2020, mslug2la02,        mslug2,   neogeo_noslot, neogeo, neogeo_state,   
 GAME( 2020, mslug2la03,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Enemies Resetting 2014-09-14)(Revised Multi-Function Remix Standard Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug2la04,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Enemies Resetting 2014-09-14)(Revised Hybrid Bullets Remix Standard Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug2lb01,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Revised Remix Standard Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug2lb02,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Revised Multi-Function Remix Standard Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
-GAME( 2020, mslug2lb03,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Revised Survival Version Remix Standard Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug2lb02,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Revised Survival Version Remix Standard Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
+GAME( 2020, mslug2lb03,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Revised Multi-Function Remix Standard Edition 2020-11-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug2lb04,        mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,kof1996,System11,I love Nimes [Beta])",                    "Metal Slug 2 Turbo (Revised Hybrid Bullets Remix Standard Edition 2020-11-10)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 
 // Extreme MegaMods Edition
