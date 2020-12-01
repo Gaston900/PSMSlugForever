@@ -37,7 +37,6 @@ mslughacks07
 mslughacks08
 mslugla01
 mslugrmxe0s01
-mslugrmxe1s01
 
 @source:mslug2.cpp
 mslug2hacks01
@@ -333,18 +332,8 @@ mslug5hacks49
 mslug5hacks50
 mslug5hacks51
 mslug5hacks52
-mslug5hacks53
-mslug5hacks54
-mslug5hacks55
-mslug5hacks56
-mslug5hacks57
-mslug5hacks58
 mslug5la01
-mslug5la02
-mslug5la03
 mslug5lb01
-mslug5lb02
-mslug5lb03
 mslug5lc01
 mslug5rmxe0s01
 mslug5rmxe1s01
@@ -352,9 +341,6 @@ mslug5rmxe2s01
 mslug5rmxe3s01
 mslug5rmxe4s01
 mslug5rmxe5s01
-mslug5rmxe6s01
-mslug5rmxe7s01
-mslug5rmxe8s01
 
 @source:mslugx.cpp
 mslugxhacks01
