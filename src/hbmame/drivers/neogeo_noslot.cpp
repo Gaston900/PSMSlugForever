@@ -8192,7 +8192,7 @@ GAME( 2000, b2b,        neogeo,   neogeo_noslot,   neogeo, neogeo_state, init_ne
 /* Mega Enterprise */
 GAME( 2002, mslug4,     neogeo,   neogeo_noslot,   neogeo, neogeo_state, init_mslug4,   ROT0, "Mega / Playmore", "Metal Slug 4 (NGM-2630)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, mslug4h,    mslug4,   neogeo_noslot,   neogeo, neogeo_state, init_mslug4,   ROT0, "Mega / Playmore", "Metal Slug 4 (NGH-2630)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, ms4plus,    mslug4,   neogeo_noslot,   neogeo, neogeo_state, init_ms4plus,  ROT0, "bootleg", "Metal Slug 4 Plus (bootleg)", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, ms4plus,    mslug4,   neogeo_noslot,   neogeo, neogeo_state, init_ms4plus,  ROT0, "bootleg", "Metal Slug 4 Plus (bootleg)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 
 /* Evoga */
 GAME( 2002, rotd,       neogeo,   neogeo_noslot,   neogeo, neogeo_state, init_rotd,     ROT0, "Evoga / Playmore", "Rage of the Dragons (NGM-264?)", MACHINE_SUPPORTS_SAVE )
