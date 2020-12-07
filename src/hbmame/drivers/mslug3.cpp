@@ -3445,14 +3445,12 @@ GAME( 2020, mslug6hacks15,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  
  Only exclusive
 *****************/
 /***************************************************************************************
-* This game sector is exclusive, its modifications have been customized which load 
-  files 256.p1 and 256.p2, thus creating a new color palette for some sprites, as in the 
-  case of the 4 selectable characters and the shot of the weapons and logo of unique colors, 
-  thus a unique game distinctive to the rest will be displayed, we have been working to 
-  optimize performance and avoid any type of fall that occurs during the game. This 
-  simply means that there are some details of the roms that still need to be improved, 
-  things to add, and things that could later be updated or permanently removed if some kind 
-  of problem is detected that cannot be fixed...
+* This game sector is exclusive, its modifications that load have been customized
+  241.p1 and 241.p2 files. Therefore, a unique and distinctive game will be displayed 
+  from the rest, we have been working to Optimize performance and avoid any type of crash 
+  that occurs during the game. This it just means there are some details of the roms that 
+  still need to be improved, things to add and things that could later be updated or 
+  permanently removed if some kind a problem is detected that cannot be solved ...
 ********************************************************************************************/
 /***************************************************************************************
 * I have been working very hard to optimize it and to adapt it with the emulator 

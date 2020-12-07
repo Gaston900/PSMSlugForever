@@ -322,12 +322,12 @@ GAME( 2005, msboot,            mslug,    neogeo_noslot, neogeo, neogeo_state,   
  Only exclusive
 *****************/
 /*********************************************************************************
-* This game is exclusive, its modifications are personalized, as well as 
-  the files that load the 201.p1, we have been working to optimize 
-  the performance and avoid any type of crashing that occurs through the game. 
-  This simply means that there are some details of the roms that still need to be 
-  improved, things to add and things that could later be updated or permanently eliminated 
-  if some type of problems are detected that cannot be solved.
+* This game sector is exclusive, its modifications that load have been customized
+  241.p1 and 241.p2 files. Therefore, a unique and distinctive game will be displayed 
+  from the rest, we have been working to Optimize performance and avoid any type of crash 
+  that occurs during the game. This it just means there are some details of the roms that 
+  still need to be improved, things to add and things that could later be updated or 
+  permanently removed if some kind a problem is detected that cannot be solved ...
 ********************************************************************************************/
 
 // Revised Remix Standard Edition
