@@ -1,5 +1,5 @@
-// license:BSD-3-Clause
-// copyright-holders:Robbbert
+// Proyecto Shadows Mame Build Plus
+// copyright-holders:Gaston90
 /***************************************************************************
 
     hbmame.c
@@ -10,8 +10,8 @@
 
 #include "emu.h"
 
-#define APPNAME             "PSMAME PLUS (Special Edition)"
-#define APPNAME_LOWER       "PSMAME PLUS (Special Edition)"
+#define APPNAME             "PSMAME PLUS (Special Edition Final)"
+#define APPNAME_LOWER       "PSMAME PLUS (Special Edition Final)"
 #define CONFIGNAME          "PSMame Plus"
 #define COPYRIGHT           "Copyright Gaston90\nand the MAME team\nhttp://psarcadeplus.blogspot.com"
 #define COPYRIGHT_INFO      "\nMAME portions are copyright the MAME team.\n" \
