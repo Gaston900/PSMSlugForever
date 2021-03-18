@@ -1,0 +1,36 @@
+﻿What's new in PSMAME PLUS
+====================
+
+2021-12-29
+
+New Games
+---------------------------------
+- [mslug3hacks31]             Metal Slug 3 (Green Edition 2020-12-26)
+- [mslug3hacks32]             Metal Slug 3 (Punishment Edition 2021-01-17)
+- [mslug5hacks09]             Metal Slug 5 (5X 2020-11-11)
+- [mslug5hacks10]             Metal Slug 5 (Ultimate Simplified Edition 2021-01-13)
+- [mslugxhacks27]             Metal Slug X (Enemy Soldiers Reset Version 2020-12-03)
+- [mslugxhacks29]             Metal Slug X (Generation SR 2020-11-28)
+- [mslugxhacks30]             Metal Slug X (Generation SV 2020-12-03)
+
+
+
+
+2020-12-30
+
+What was implemented in this latest final version 2.0?
+-In this version, the boot of Uni-bios 4.0 was implemented by default, to the roms that are exclusive for this system.
+-Most of the roms that are unstable and unusable and which causes the emulator to crash have been permanently eliminated.
+-The 50% damage reduction of the shot and the bomb has been implemented, except for Metal Slug X.
+-A new color palette has been generated for the soldier, the 4 players [Marco, Eri, Tarma and Fio], 
+the slug tanks and the common shot, Heavy Machine Gun and Enemy Chaser that has been adapted to all franchises.
+-A new color palette has been generated for the metal slug 3 and 4 logo.
+-Customized icons, Snap, Title and Cheat have been designed for the graphical interface.
+
+New Games
+---------------------------------
+- [mslug3hacks06]             Metal Slug 3 (SE Special Edition 2020-11-04)
+- [mslug5hacks09]             Metal Slug 5 (5X 2020-11-11)
+- [mslugxhacks27]             Metal Slug X (Enemy Soldiers Reset Version 2.7 2020-11-06)
+- [mslugxhacks28]             Metal Slug X (Unlimited Firepower 2020-10-18)
+
