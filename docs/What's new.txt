@@ -5,6 +5,7 @@
 
 New Games
 ---------------------------------
+- [mslug2hacks14]             Metal Slug 2 (A Full Screen Attack 2021-01-16)
 - [mslug3hacks31]             Metal Slug 3 (Green Edition 2020-12-26)
 - [mslug3hacks32]             Metal Slug 3 (Punishment Edition 2021-01-17)
 - [mslug5hacks09]             Metal Slug 5 (5X 2020-11-11)
