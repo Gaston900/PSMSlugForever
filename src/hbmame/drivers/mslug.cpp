@@ -340,8 +340,8 @@ GAME( 1996, msluge,            mslug,    neogeo_noslot, neogeo, neogeo_state,   
 
 // Revised Remix Standard Edition
 // Universe Bios v4.0 boot system
-GAME( 2020, mslugla01,         mslug,    neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,I love Nimes)",                "Metal Slug (Multi-Function Version 2018-04-30)(Revised Remix Standard Edition 2020-12-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslugla01,         mslug,    neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix (Gaston90,Ydmis,I love Nimes)",                "Metal Slug (Multi-Function Version 2018-04-30)(Revised Remix Standard Edition 2020-12-10)", MACHINE_SUPPORTS_SAVE )
 
 // Extreme MegaMods Edition
-GAME( 2020, mslugrmxe0s01,     mslug,    neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix(Gaston90,Ydmis,DDJ,I love Nimes)",            "Metal Slug (Multi-Function Version 2018-04-30)(Revised Heavy Machine Gun Extreme MegaMods Edition 2020-12-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslugrmxe0s01,     mslug,    neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix (Gaston90,Ydmis,DDJ,I love Nimes)",            "Metal Slug (Multi-Function Version 2018-04-30)(Revised Heavy Machine Gun Extreme MegaMods Edition 2020-12-10)", MACHINE_SUPPORTS_SAVE )
 
