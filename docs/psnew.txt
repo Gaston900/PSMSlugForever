@@ -10,7 +10,7 @@
 -The Metal Slug X Apocalyptic Time versions have been updated, which is now called the successor Apocalyptic Time The End Of The Ages. 
 -The color of the logo of the metal slug 3 has been corrected, when the demo of the game starts showing 
 -Fixed the error that caused the Multi-Carrier 2R Edition roms both the Revised Remix Standard Edition and Extreme MegaMods Edition to crash.
--We thank the collaborators of this month, without their help I could not have released this version: 
+-We thank the collaborators of this month, without their help I could not have released this version: KOFKILL 爱丽丝
 
 New Games
 ---------------------------------
