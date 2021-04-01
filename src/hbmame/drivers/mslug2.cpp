@@ -986,7 +986,7 @@ GAME( 2016, mslug2hacks17,      mslug2,   neogeo_noslot, neogeo, neogeo_state,  
 GAME( 2013, mslug2hacks18,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "lb70",            "Metal Slug 2 (Crazy Fire Edition 2013-02-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug2hacks19,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Ding Ding Ji",    "Metal Slug 2 (Press The D Button To Change People 4 Characters 2015-05-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2hacks20,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Fightcade 2 2021-03-10)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug2hacks21,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "KOFKILL",         "Metal Slug 2 (Unity Time 2021-01-22)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug2hacks21,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "KOFKILL, WANG HUA, CZX",  "Metal Slug 2 (Unity Time 2021-01-22)", MACHINE_SUPPORTS_SAVE )
 
 /***************
  Only exclusive

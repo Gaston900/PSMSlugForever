@@ -1,7 +1,7 @@
 ﻿What's new in PSMAME PLUS
 ====================
 
-2021-04-28
+2021-04-XX
 
 -New more stylish icons have been designed for Metal Slug rom list.
 -New screen title image has been designed for Metal Slug rom list. 

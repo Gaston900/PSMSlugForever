@@ -1373,7 +1373,7 @@ GAME( 2014, mslug4hacks17,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  
 GAME( 2015, mslug4hacks18,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Ding Dingji",        "Metal Slug 4 (Press The D Button To Change People 4 Characters 2015-05-09)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug4hacks19,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "hack",               "Metal Slug 4 (Press STARTS + Down To Change Next Level!! 2015-05-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2008, mslug4hacks20,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "hack",               "Metal Slug 4 (Never Lose The Prisoner Saved After Dying!! 2008-07-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug4hacks21,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "KOFKILL",            "Metal Slug 4 (Unity Time 2021-01-30)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug4hacks21,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "KOFKILL, WANG HUA, CZX",  "Metal Slug 4 (Unity Time 2021-01-30)", MACHINE_SUPPORTS_SAVE )
 
 // Bootleg
 GAME( 2002, mslug4d,            mslug4,   neogeo_noslot, neogeo, neogeo_state, init_mslug4hb,   ROT0, "bootleg",          "Metal Slug 4 (Decrypted C)", MACHINE_SUPPORTS_SAVE )
