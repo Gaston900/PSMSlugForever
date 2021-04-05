@@ -681,10 +681,10 @@ ROM_START( mslugxhacks28 ) //mslugxmax
 	ROM_LOAD16_BYTE( "250.c6", 0x2000001, 0x800000, CRC(83e3e69d) SHA1(39be66287696829d243fb71b3fb8b7dc2bc3298f) )
 ROM_END
 
-ROM_START( mslugxhacks29 ) //¿¿mslugxmax??
+ROM_START( mslugxhacks29 ) //mslugxr
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250_hacks29.p1", 0x000000, 0x100000, CRC(91771f80) SHA1(8f2429b0657afa38c1b75aaaf3d5c1a2611941f7) )
-	ROM_LOAD16_WORD_SWAP( "250_hacks29.p2", 0x100000, 0x400000, CRC(8a912509) SHA1(620d57950e573162fa14381f47b37567486632e4) )
+	ROM_LOAD16_WORD_SWAP( "250_hacks29.p1", 0x000000, 0x100000, CRC(a507546f) SHA1(ab6e9e969c2b3728cb0b13e0b1d62bda09037ac0) )
+	ROM_LOAD16_WORD_SWAP( "250_hacks29.p2", 0x100000, 0x400000, CRC(78a66189) SHA1(a0689ea58b12873c939ebe949b42145ef49aff3f) )
 
 	NEO_SFIX_128K( "250.s1", CRC(fb6f441d) SHA1(2cc392ecde5d5afb28ddbaa1030552b48571dcfb) )
 
@@ -2997,7 +2997,7 @@ GAME( 2015, mslugxhacks25,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  
 GAME( 2016, mslugxhacks26,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "lb70 (Eezezy)",     "Metal Slug X (Violence Version 2016-01-04)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslugxhacks27,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "Azstar Soda Remix", "Metal Slug X (Enemy Soldiers Reset Version 2020-12-03)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslugxhacks28,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "Qianqianm~",        "Metal Slug X (Unlimited Firepower 2020-10-18)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslugxhacks29,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "S.R Mugen Power",   "Metal Slug X (Generation SR 2020-11-28)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslugxhacks29,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "S.R Mugen Power",   "Metal Slug X (Infinite Fire Edition 2021-03-20 )", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslugxhacks30,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "Azstar Soda Remix", "Metal Slug X (Generation SV 2020-12-03)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslugxhacks31,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "Wang Hua",          "Metal Slug X (Survival First Edition 2 2020-02-02)", MACHINE_SUPPORTS_SAVE )
 GAME( 2008, mslugxhacks32,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "hack",              "Metal Slug X (Never Lose The Prisoner Saved After Dying!! 2008-07-01)", MACHINE_SUPPORTS_SAVE )

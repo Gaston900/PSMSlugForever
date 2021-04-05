@@ -540,6 +540,31 @@ ROM_START( mslug4hacks21 ) //mslug4unity
 	ROM_LOAD16_BYTE( "263.c6", 0x2000001, 0x800000, CRC(5c8ba116) SHA1(6034db09c8706d4ddbcefc053efbc47a0953eb92) )
 ROM_END
 
+ROM_START( mslug4hacks22 ) //mslug4ae
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "263_hacks22.p1", 0x000000, 0x100000, CRC(1deebfb8) SHA1(054edef39e59f6c7818d4313af59341db44bcc0d) )
+	ROM_LOAD16_WORD_SWAP( "263_hacks22.p2", 0x100000, 0x400000, CRC(68db2329) SHA1(b1e338276ca13399e921233e7c23eff0b9d01ff2) )
+
+	NEO_SFIX_128K( "263.s1", CRC(a9446774) SHA1(c5a309fd8ee6d6750a15c82e710218a3755e38b2) )
+
+	NEO_BIOS_AUDIO_128K( "263nd.m1", CRC(ef5db532) SHA1(4aeba9e206b8f309610eb7e1891644f39aa61830) )
+
+	ROM_REGION( 0x1000000, "ymsnd", 0 )
+	ROM_LOAD( "263_hacks05.v1", 0x000000, 0x400000, CRC(8cb5a9ef) SHA1(272ad312f8694acf9190ebf48d1c8a5fec73c130) )
+	ROM_LOAD( "263dd.v2",       0x400000, 0x400000, CRC(94217b1e) SHA1(c468a192e2ec0952a20cfd9e391cf6c12346efb3) )
+	ROM_LOAD( "263dd.v3",       0x800000, 0x400000, CRC(7616fcec) SHA1(83006094379d0373b967603dcaa1cec69c2f746f) )
+	ROM_LOAD( "263_hacks22.v4", 0xc00000, 0x400000, CRC(35e79379) SHA1(7db3ccc72e008976a238af7ec3880969ed5dc893) )
+    ROM_IGNORE( 0x400000 )
+	
+	ROM_REGION( 0x3000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "263nd.c1", 0x0000000, 0x800000, CRC(361ddda6) SHA1(95f329019660f1ec7f15f6ea1e0c2bfc84b02ca8) )
+	ROM_LOAD16_BYTE( "263nd.c2", 0x0000001, 0x800000, CRC(15d192c4) SHA1(0b9afb62a1d4d764d616408b09e17a05fc4a87e7) )
+	ROM_LOAD16_BYTE( "263_hacks05.c3", 0x1000000, 0x800000, CRC(e296612c) SHA1(57eb1861b738247aaf0643641268f676b71ed025) )
+	ROM_LOAD16_BYTE( "263_hacks05.c4", 0x1000001, 0x800000, CRC(c22e3ad0) SHA1(11ce301d4e5b4b1b76e2b82d18c4a9b8b56eeb20) )
+	ROM_LOAD16_BYTE( "263_hacks05.c5", 0x2000000, 0x400000, CRC(288cd91f) SHA1(a195be13d4ef19705cd3f08be1ec8cdacb29f159) )
+	ROM_LOAD16_BYTE( "263_hacks05.c6", 0x2000001, 0x400000, CRC(b015aeee) SHA1(24e12e72b82eea9e52a4cefc774efb3bd7db822f) )
+ROM_END
+
 /********
  Bootleg
 **********/
@@ -1374,6 +1399,7 @@ GAME( 2015, mslug4hacks18,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  
 GAME( 2015, mslug4hacks19,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "hack",               "Metal Slug 4 (Press STARTS + Down To Change Next Level!! 2015-05-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2008, mslug4hacks20,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "hack",               "Metal Slug 4 (Never Lose The Prisoner Saved After Dying!! 2008-07-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug4hacks21,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "KOFKILL, WANG HUA, CZX",  "Metal Slug 4 (Unity Time 2021-01-30)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug4hacks22,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_neogeo,    ROT0, "hack",               "Metal Slug 4 (20th Anniversary Edition 2021-03-04)", MACHINE_SUPPORTS_SAVE )
 
 // Bootleg
 GAME( 2002, mslug4d,            mslug4,   neogeo_noslot, neogeo, neogeo_state, init_mslug4hb,   ROT0, "bootleg",          "Metal Slug 4 (Decrypted C)", MACHINE_SUPPORTS_SAVE )

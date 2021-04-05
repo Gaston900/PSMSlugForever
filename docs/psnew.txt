@@ -1,6 +1,15 @@
 ﻿What's new in PSMAME PLUS
 ====================
 
+2021-XX-XX
+
+New Games
+---------------------------------
+- [mslug4hacks22]           Metal Slug 4 (20th Anniversary Edition 2021-03-04)
+- [mslugxhacks29]           Metal Slug X (Infinite Fire Edition 2021-03-20 )
+
+
+
 2021-04-01
 
 -New more stylish icons have been designed for Metal Slug rom list.
