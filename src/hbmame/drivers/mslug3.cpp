@@ -2801,7 +2801,7 @@ GAME( 2015, mslug3hacks33,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  
 GAME( 2018, mslug3hacks34,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_mslug3h,   ROT0, "hack",           "Metal Slug 3 (Easy Mode Difficulty 2018-11-16)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3hacks35,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_mslug3h,   ROT0, "Ding Dingji",    "Metal Slug 3 (Super G Version 2020-12-12)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2008, mslug3hacks36,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_mslug3h,   ROT0, "hack",           "Metal Slug 3 (Never Lose The Prisoner Saved After Dying!! 2008-07-01)" , MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug3hacks37,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_mslug3,    ROT0, "KOFKILL, WANG HUA, CZX", "Metal Slug 3 (Unity Time 2021-02-21)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug3hacks37,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_mslug3,    ROT0, "KofKill, Wang Hua, Czk", "Metal Slug 3 (Unity Time 2021-02-21)" , MACHINE_SUPPORTS_SAVE )
 
 // Bootleg
 GAME( 2000, mslug3d,            mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_mslug3d,   ROT0, "bootleg", "Metal Slug 3 (Decrypted C)", MACHINE_SUPPORTS_SAVE )

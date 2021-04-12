@@ -3005,7 +3005,7 @@ GAME( 2018, mslugxhacks33,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  
 GAME( 2015, mslugxhacks34,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "hack",              "Metal Slug X (Press STARTS + Down To Change Next Level!! 2015-05-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslugxhacks35,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "hack",              "Metal Slug X (Extreme Combat 2015-04-29)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslugxhacks36,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "Azstar Soda Remix", "Metal Slug X (Fightcade 2 Unity! 2021-02-12)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslugxhacks37,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "KOFKILL, WANG HUA, CZX", "Metal Slug X (Unity Time! 2021-01-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslugxhacks37,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "KofKill, Wang Hua, Czk", "Metal Slug X (Unity Time! 2021-01-23)", MACHINE_SUPPORTS_SAVE )
 
 /***************
  Only exclusive

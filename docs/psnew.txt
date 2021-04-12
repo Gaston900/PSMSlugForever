@@ -1,10 +1,22 @@
 ﻿What's new in PSMAME PLUS
 ====================
 
-2021-XX-XX
+2021-04-12
+
+- A definitive solution has been found in the hacks of roms called Version Hybrid Bullets, 
+  which has been included in HBMAME around 8 years ago, this rom hacks have a very serious 
+  problem that generates a crash in mission 2 / phase 2 and phase 3 , its way of manifesting 
+  is to make the torso disappear from the body that if the button is pressed shooting, the game 
+  crashes immediately and will restart the game from scratch and will not allow you to continue 
+  playing at level 2, now you can skip level 2 playing Normally, the mission will be finished 
+  at the beginning of level 2 of phase 2 and phase 3, the rest of the levels work normally, 
+  it will no longer be an impediment to continue playing until the end of the game.
+- New has been implemented Metal Slug 2 Turbo (Apocalyptic Time Ports Demo 2021-04-11), 
+  Revised Remix Standard Edition and Extreme MegaMods Edition versions
 
 New Games
 ---------------------------------
+
 - [mslug4hacks22]           Metal Slug 4 (20th Anniversary Edition 2021-03-04)
 - [mslugxhacks29]           Metal Slug X (Infinite Fire Edition 2021-03-20 )
 
@@ -12,14 +24,13 @@ New Games
 
 2021-04-01
 
--New more stylish icons have been designed for Metal Slug rom list.
--New screen title image has been designed for Metal Slug rom list. 
--The Metal Slug 3 Extreme MegaMods Edition versions have been updated
--The Metal Slug X Revised Remix Standard Edition and Extreme MegaMods Edition versions have been updated. 
--The Metal Slug X Apocalyptic Time versions have been updated, which is now called the successor Apocalyptic Time The End Of The Ages. 
--The color of the logo of the metal slug 3 has been corrected, when the demo of the game starts showing 
--Fixed the error that caused the Multi-Carrier 2R Edition roms both the Revised Remix Standard Edition and Extreme MegaMods Edition to crash.
--We thank the collaborators of this month, without their help I could not have released this version: KOFKILL 爱丽丝
+- New more stylish icons have been designed for Metal Slug rom list.
+- New screen title image has been designed for Metal Slug rom list. 
+- The Metal Slug 3 Extreme MegaMods Edition versions have been updated
+- The Metal Slug X Revised Remix Standard Edition and Extreme MegaMods Edition versions have been updated. 
+- The Metal Slug X Apocalyptic Time versions have been updated, which is now called the successor Apocalyptic Time The End Of The Ages. 
+- The color of the logo of the metal slug 3 has been corrected, when the demo of the game starts showing 
+- Fixed the error that caused the Multi-Carrier 2R Edition roms both the Revised Remix Standard Edition and Extreme MegaMods Edition to crash.
 
 New Games
 ---------------------------------
@@ -75,13 +86,13 @@ New Games
 2020-12-30
 
 What was implemented in this latest final version 2.0?
--In this version, the boot of Uni-bios 4.0 was implemented by default, to the roms that are exclusive for this system.
--Most of the roms that are unstable and unusable and which causes the emulator to crash have been permanently eliminated.
--The 50% damage reduction of the shot and the bomb has been implemented, except for Metal Slug X.
--A new color palette has been generated for the soldier, the 4 players [Marco, Eri, Tarma and Fio], 
-the slug tanks and the common shot, Heavy Machine Gun and Enemy Chaser that has been adapted to all franchises.
--A new color palette has been generated for the metal slug 3 and 4 logo.
--Customized icons, Snap, Title and Cheat have been designed for the graphical interface.
+- In this version, the boot of Uni-bios 4.0 was implemented by default, to the roms that are exclusive for this system.
+- Most of the roms that are unstable and unusable and which causes the emulator to crash have been permanently eliminated.
+- The 50% damage reduction of the shot and the bomb has been implemented, except for Metal Slug X.
+- A new color palette has been generated for the soldier, the 4 players [Marco, Eri, Tarma and Fio], 
+  the slug tanks and the common shot, Heavy Machine Gun and Enemy Chaser that has been adapted to all franchises.
+- A new color palette has been generated for the metal slug 3 and 4 logo.
+- Customized icons, Snap, Title and Cheat have been designed for the graphical interface.
 
 New Games
 ---------------------------------
