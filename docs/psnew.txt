@@ -1,0 +1,129 @@
+﻿What's new in PSMAME PLUS
+====================
+
+2021-05-30
+
+- Fixed the White Soldier color palette being placed correctly on Mslug 2, 3, 4, and X.
+- Fixed the color palette of the 4 players correctly in Mslug 2, 3, and X. 
+- Unnecessary roms were removed 
+
+New Games
+---------------------------------
+- [mslughacks05]            Metal Slug (Burst Enhanced Version 2021-04-28)
+- [mslug2hacks10]           Metal Slug 2 (Burst Enhanced Version 2021-04-28)
+- [mslug2hacks17]           Metal Slug 2 (Fightcade 2 2021-04-15)
+- [mslug3hacks02]           Metal Slug 3 (Burst Enhanced Version 2021-04-28)
+- [mslug4hacks04]           Metal Slug 4 (Burst Enhanced Version 2021-04-28)
+- [mslug5hacks08]           Metal Slug 5 (Unity Time! 2021-04-23)
+- [mslug5hacks11]           Metal Slug 5 (Burst Enhanced Version 2021-04-28)
+- [mslugxhacks14]           Metal Slug X (Burst Enhanced Version 2021-04-28)
+- [mslugxesp01]             Metal Slug X (Apocalyptic Time The 2 Beginning Of The End Of Time 7.0 2R Extreme Space Edition Remastering 2021-05-22)
+- [mslugxesp02]             Metal Slug X (Super Vehicle-001 2R Extreme Space Edition Remastering 2021-05-22)
+- [mslugxesp03]             Metal Slug X (Enemy Soldiers Reset Version 2.7 2R Extreme Space Edition Remastering 2021-05-22)
+- [mslugxesp04]             Metal Slug X (Unlimited Firepower 2R Extreme Space Edition Remastering 2021-05-22)
+- [mslugxesp05]             Metal Slug X (Enemy Soldiers Remake Version 3 2R Extreme Space Edition Remastering 2021-05-22)
+- [mslugxesp06]             Metal Slug X (Enemy Heavy Plate 2R Extreme Space Edition Remastering 2021-05-22)
+- [mslugxesp07]             Metal Slug X (Allen O'Neil You In Hell 1.0 2R Extreme Space Edition Remastering 2021-05-22)
+
+
+
+2021-04-12
+
+- A definitive solution has been found in the hacks of roms called Version Hybrid Bullets, 
+  which has been included in HBMAME around 8 years ago, this rom hacks have a very serious 
+  problem that generates a crash in mission 2 / phase 2 and phase 3 , its way of manifesting 
+  is to make the torso disappear from the body that if the button is pressed shooting, the game 
+  crashes immediately and will restart the game from scratch and will not allow you to continue 
+  playing at level 2, now you can skip level 2 playing Normally, the mission will be finished 
+  at the beginning of level 2 of phase 2 and phase 3, the rest of the levels work normally, 
+  it will no longer be an impediment to continue playing until the end of the game.
+- New has been implemented Metal Slug 2 Turbo (Apocalyptic Time Ports Demo 2021-04-11), 
+  Revised Remix Standard Edition and Extreme MegaMods Edition versions
+
+New Games
+---------------------------------
+
+- [mslug4hacks22]           Metal Slug 4 (20th Anniversary Edition 2021-03-04)
+- [mslugxhacks29]           Metal Slug X (Infinite Fire Edition 2021-03-20 )
+
+
+
+2021-04-01
+
+- New more stylish icons have been designed for Metal Slug rom list.
+- New screen title image has been designed for Metal Slug rom list. 
+- The Metal Slug 3 Extreme MegaMods Edition versions have been updated
+- The Metal Slug X Revised Remix Standard Edition and Extreme MegaMods Edition versions have been updated. 
+- The Metal Slug X Apocalyptic Time versions have been updated, which is now called the successor Apocalyptic Time The End Of The Ages. 
+- The color of the logo of the metal slug 3 has been corrected, when the demo of the game starts showing 
+- Fixed the error that caused the Multi-Carrier 2R Edition roms both the Revised Remix Standard Edition and Extreme MegaMods Edition to crash.
+
+New Games
+---------------------------------
+- [mslughacks09]              Metal Slug (Unity Time 2021-02-05)
+- [mslug2hacks14]             Metal Slug 2 (A Full Screen Attack 2021-01-16)
+- [mslug2hacks15]             Metal Slug 2 (Press STARTS To Change Next Level!! 2015-05-20)
+- [mslug2hacks16]             Metal Slug 2 (Easy Mode Difficulty 2018-11-26)
+- [mslug2hacks17]             Metal Slug 2 (Never Lose The Prisoner Saved After Dying!! 2016-03-07)
+- [mslug2hacks18]             Metal Slug 2 (Crazy Fire Edition 2013-02-07)
+- [mslug2hacks19]             Metal Slug 2 (Press The D Button To Change People 4 Characters 2015-05-10)
+- [mslug2hacks20]             Metal Slug 2 (Fightcade 2 2021-03-10)
+- [mslug2hacks21]             Metal Slug 2 (Unity Time 2021-01-22)
+- [mslug3hacks26]             Metal Slug 3 (Random Enemies Resetting Version Unknown 2020-12-26)
+- [mslug3hacks27]             Metal Slug 3 (Random Enemies Resetting Version Unknown 2021-01-17)
+- [mslug3hacks32]             Metal Slug 3 (Press STARTS To Change Next Level!! 2015-05-20)
+- [mslug3hacks33]             Metal Slug 3 (Press The D Button To Change People 4 Characters 2015-05-10)
+- [mslug3hacks34]             Metal Slug 3 (Easy Mode Difficulty 2018-11-16)
+- [mslug3hacks35]             Metal Slug 3 (Super G Version 2020-12-12)
+- [mslug3hacks36]             Metal Slug 3 (Never Lose The Prisoner Saved After Dying!! 2008-07-01)
+- [mslug3hacks37]             Metal Slug 3 (Unity Time 2021-02-21)
+- [mslug4hacks15]             Metal Slug 4 (Easy Mode Difficulty 2018-11-16)
+- [mslug4hacks16]             Metal Slug 4 (Crazy Fire Edition 2012-06-17)
+- [mslug4hacks17]             Metal Slug 4 (Super G Edition 2014-10-29)
+- [mslug4hacks18]             Metal Slug 4 (Press The D Button To Change People 4 Characters 2015-05-09)
+- [mslug4hacks19]             Metal Slug 4 (Press STARTS + Down To Change Next Level!! 2015-05-20)
+- [mslug4hacks20]             Metal Slug 4 (Never Lose The Prisoner Saved After Dying!! 2008-07-01)
+- [mslug4hacks21]             Metal Slug 4 (Unity Time 2021-01-30)
+- [mslug5hacks09]             Metal Slug 5 (5X 2020-11-11)
+- [mslug5hacks10]             Metal Slug 5 (Ultimate Simplified Edition 2021-01-13)
+- [mslug5hacks20]             Metal Slug 5 (Press STARTS To Change Next Level!! 2015-05-20)
+- [mslug5hacks21]             Metal Slug 5 (Press The D + Down Button To Change Tank Slug 2015-05-20)
+- [mslug5hacks22]             Metal Slug 5 (Easy Mode Difficulty 2018-11-16)
+- [mslug5hacks23]             Metal Slug 5 (Never Lose The Prisoner Saved After Dying!! 2008-07-01)
+- [mslug5hacks24]             Metal Slug 5 (Change Game Color First Edition 2013-08-01)
+- [mslug5hacks25]             Metal Slug 5 (Change Game Color Second Edition 2013-08-01)
+- [mslug5hacks26]             Metal Slug 5 (Change Game Color Third Edition 2013-08-01)
+- [mslug5hacks27]             Metal Slug 5 (Change Game Color Four Edition 2013-08-01)
+- [mslug5hacks28]             Metal Slug 5 (Change Game Color Five Edition 2013-08-01)
+- [mslugxat08]                Metal Slug X (Apocalyptic Time The End Of The Ages 6.0 2R Edition 2021-03-20)
+- [mslugxhacks27]             Metal Slug X (Enemy Soldiers Reset Version 2020-12-03)
+- [mslugxhacks29]             Metal Slug X (Generation SR 2020-11-28)
+- [mslugxhacks30]             Metal Slug X (Generation SV 2020-12-03)
+- [mslugxhacks31]             Metal Slug X (Survival First Edition 2 2020-02-02)
+- [mslugxhacks32]             Metal Slug X (Never Lose The Prisoner Saved After Dying!! 2008-07-01)
+- [mslugxhacks33]             Metal Slug X (Easy Mode Difficulty 2018-11-26)
+- [mslugxhacks34]             Metal Slug X (Press STARTS + Down To Change Next Level!! 2015-05-20)
+- [mslugxhacks35]             Metal Slug X (Extreme Combat 2015-04-29)
+- [mslugxhacks36]             Metal Slug X (Unity! 2021-02-12)
+- [mslugxhacks37]             Metal Slug X (Unity Time! 2021-01-23)
+
+
+
+2020-12-30
+
+What was implemented in this latest final version 2.0?
+- In this version, the boot of Uni-bios 4.0 was implemented by default, to the roms that are exclusive for this system.
+- Most of the roms that are unstable and unusable and which causes the emulator to crash have been permanently eliminated.
+- The 50% damage reduction of the shot and the bomb has been implemented, except for Metal Slug X.
+- A new color palette has been generated for the soldier, the 4 players [Marco, Eri, Tarma and Fio], 
+  the slug tanks and the common shot, Heavy Machine Gun and Enemy Chaser that has been adapted to all franchises.
+- A new color palette has been generated for the metal slug 3 and 4 logo.
+- Customized icons, Snap, Title and Cheat have been designed for the graphical interface.
+
+New Games
+---------------------------------
+- [mslug3hacks06]             Metal Slug 3 (SE Special Edition 2020-11-04)
+- [mslug5hacks09]             Metal Slug 5 (5X 2020-11-11)
+- [mslugxhacks27]             Metal Slug X (Enemy Soldiers Reset Version 2.7 2020-11-06)
+- [mslugxhacks28]             Metal Slug X (Unlimited Firepower 2020-10-18)
+
