@@ -1,7 +1,7 @@
 // Proyecto Shadows Mame Build Plus
 // copyright-holders:Gaston90
 
-#define BARE_BUILD_VERSION "2.4"
+#define BARE_BUILD_VERSION "2.5"
 
 extern const char bare_build_version[];
 extern const char build_version[];

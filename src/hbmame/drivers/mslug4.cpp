@@ -616,7 +616,7 @@ ROM_END
 ROM_START( mslug4la02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_la02.p1", 0x000000, 0x100000, CRC(60215815) SHA1(cf15b8d820cecd58c2136999324710b14aaf780b) )
-	ROM_LOAD16_WORD_SWAP( "263_la02.p2", 0x100000, 0x400000, CRC(9193d999) SHA1(eac62c63e6fff0361a32cf18e2916d5661be2c83) )
+	ROM_LOAD16_WORD_SWAP( "263_la02.p2", 0x100000, 0x400000, CRC(356a8e70) SHA1(90c0b3b4a1fd1097637dfadcee61bf8dca3be0c9) )
 
 	NEO_SFIX_MT_512K
 
@@ -682,7 +682,7 @@ ROM_END
 ROM_START( mslug4la04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_la04.p1", 0x000000, 0x100000, CRC(64a1dc38) SHA1(40703049cb2fb14d4d72aac8757d00a04f1fc574) )
-	ROM_LOAD16_WORD_SWAP( "263_la02.p2", 0x100000, 0x400000, CRC(9193d999) SHA1(eac62c63e6fff0361a32cf18e2916d5661be2c83) )
+	ROM_LOAD16_WORD_SWAP( "263_la02.p2", 0x100000, 0x400000, CRC(356a8e70) SHA1(90c0b3b4a1fd1097637dfadcee61bf8dca3be0c9) )
 
 	NEO_SFIX_MT_512K
 
@@ -748,7 +748,7 @@ ROM_END
 ROM_START( mslug4lb02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_lb02.p1", 0x000000, 0x100000, CRC(a48fdb37) SHA1(546a202972451e857a50c77d7d8dba8a582601ac) )
-	ROM_LOAD16_WORD_SWAP( "263_lb02.p2", 0x100000, 0x400000, CRC(529dc8a0) SHA1(01cccf7ec066cb16e1f07e04172b554be3bf2bcc) )
+	ROM_LOAD16_WORD_SWAP( "263_lb02.p2", 0x100000, 0x400000, CRC(f6649f49) SHA1(acf41ac7147011801663f0a49a8261d265dc5a81) )
 
 	NEO_SFIX_MT_512K
 
@@ -814,7 +814,7 @@ ROM_END
 ROM_START( mslug4lb04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_lb04.p1", 0x000000, 0x100000, CRC(a00f5f1a) SHA1(b351f4396b81abcdc5b088d31327472fa7b0324e) )
-	ROM_LOAD16_WORD_SWAP( "263_lb02.p2", 0x100000, 0x400000, CRC(529dc8a0) SHA1(01cccf7ec066cb16e1f07e04172b554be3bf2bcc) )
+	ROM_LOAD16_WORD_SWAP( "263_lb02.p2", 0x100000, 0x400000, CRC(f6649f49) SHA1(acf41ac7147011801663f0a49a8261d265dc5a81) )
 
 	NEO_SFIX_MT_512K
 
@@ -880,7 +880,7 @@ ROM_END
 ROM_START( mslug4lc02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_lc02.p1", 0x000000, 0x100000, CRC(12ac59fe) SHA1(6002150b88f0a3cb823025566bbbd5461cea27d0) )
-	ROM_LOAD16_WORD_SWAP( "263_lc02.p2", 0x100000, 0x400000, CRC(eef5e91c) SHA1(a1fc8744a68ca26f1505b14bc0c89271a2f3b565) )
+	ROM_LOAD16_WORD_SWAP( "263_lc02.p2", 0x100000, 0x400000, CRC(4a0cbef5) SHA1(58fe7b60b71ce8f4e214b98111014adc7f3da04b) )
 
 	NEO_SFIX_MT_512K
 
@@ -946,7 +946,7 @@ ROM_END
 ROM_START( mslug4lc04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_lc04.p1", 0x000000, 0x100000, CRC(162cddd3) SHA1(394f4131c445a1bc3984739860768cc55aeade0b) )
-	ROM_LOAD16_WORD_SWAP( "263_lc02.p2", 0x100000, 0x400000, CRC(eef5e91c) SHA1(a1fc8744a68ca26f1505b14bc0c89271a2f3b565) )
+	ROM_LOAD16_WORD_SWAP( "263_lc02.p2", 0x100000, 0x400000, CRC(4a0cbef5) SHA1(58fe7b60b71ce8f4e214b98111014adc7f3da04b) )
 
 	NEO_SFIX_MT_512K
 
@@ -1012,7 +1012,7 @@ ROM_END
 ROM_START( mslug4ld02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_ld02.p1", 0x000000, 0x100000, CRC(eecef759) SHA1(42462e4774cb9dd6b348d9851c6685f9da3a4ee0) )
-	ROM_LOAD16_WORD_SWAP( "263_ld02.p2", 0x100000, 0x400000, CRC(be53f30f) SHA1(83c6a1270ed8c677e963b5d7e14e93425d5e2a47) )
+	ROM_LOAD16_WORD_SWAP( "263_ld02.p2", 0x100000, 0x400000, CRC(1aaaa4e6) SHA1(08782fff6ce5a52ff7902867ff9e8a8054e8680a) )
 
 	NEO_SFIX_MT_512K
 
@@ -1078,7 +1078,7 @@ ROM_END
 ROM_START( mslug4ld04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_ld04.p1", 0x000000, 0x100000, CRC(ea4e7374) SHA1(677bf1783d9f0dccff9cfbd370154db281b7332a) )
-	ROM_LOAD16_WORD_SWAP( "263_ld02.p2", 0x100000, 0x400000, CRC(be53f30f) SHA1(83c6a1270ed8c677e963b5d7e14e93425d5e2a47) )
+	ROM_LOAD16_WORD_SWAP( "263_ld02.p2", 0x100000, 0x400000, CRC(1aaaa4e6) SHA1(08782fff6ce5a52ff7902867ff9e8a8054e8680a) )
 
 	NEO_SFIX_MT_512K
 
@@ -1326,26 +1326,26 @@ GAME( 2002, mslug4dd,           mslug4,   neogeo_noslot, neogeo, neogeo_state, i
 
 // Revised Remix Standard Edition
 // Universe Bios v4.0 boot system
-GAME( 2020, mslug4la01,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90,I love Nimes)",                            "Metal Slug 4 (Zombie Players Mode Edition 2020-10-01)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug4la02,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90,I love Nimes)",                            "Metal Slug 4 (Zombie Players Mode Multi-Function Edition 2017-12-25)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug4la03,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90,XiaShuiDaoMeiRenYu,I love Nimes)",         "Metal Slug 4 (Zombie Players Mode Enemies Resetting Edition 2020-02-10)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug4la04,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90,XiaShuiDaoMeiRenYu,I love Nimes)",         "Metal Slug 4 (Zombie Players Mode Enemies Resetting Multi-Function Edition 2019-04-15/2017-12-25)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE ) 
-GAME( 2020, mslug4lb01,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90,I love Nimes)",                            "Metal Slug 4 (Monkeys Players Mode Edition 2020-10-01)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug4lb02,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90,I love Nimes)",                            "Metal Slug 4 (Monkeys Players Mode Multi-Function Edition 2017-12-25)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug4lb03,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90,XiaShuiDaoMeiRenYu,I love Nimes)",         "Metal Slug 4 (Monkeys Players Mode Enemies Resetting Edition 2020-02-10)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug4lb04,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90,XiaShuiDaoMeiRenYu,I love Nimes)",         "Metal Slug 4 (Monkeys Players Mode Enemies Resetting Multi-Function Edition 2019-04-15/2017-12-25)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug4lc01,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90,I love Nimes)",                            "Metal Slug 4 (Mummy Players Mode Edition 2020-10-01)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug4lc02,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90,I love Nimes)",                            "Metal Slug 4 (Mummy Players Mode Multi-Function Edition 2017-12-25)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug4lc03,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90,XiaShuiDaoMeiRenYu,I love Nimes)",         "Metal Slug 4 (Mummy Players Mode Enemies Resetting Edition 2020-02-10)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug4lc04,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90,XiaShuiDaoMeiRenYu,I love Nimes)",         "Metal Slug 4 (Mummy Players Mode Enemies Resetting Multi-Function Edition 2019-04-15/2017-12-25)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug4ld01,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90,I love Nimes)",                            "Metal Slug 4 (Normal Players Mode Edition 2020-10-01)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug4ld02,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90,I love Nimes)",                            "Metal Slug 4 (Normal Players Mode Multi-Function Edition 2017-12-25)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug4ld03,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90,XiaShuiDaoMeiRenYu,I love Nimes)",         "Metal Slug 4 (Normal Players Mode Enemies Resetting Edition 2020-02-10)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug4ld04,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90,XiaShuiDaoMeiRenYu,I love Nimes)",         "Metal Slug 4 (Normal Players Mode Enemies Resetting Multi-Function Edition 2019-04-15/2017-12-25)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4la01,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90, I love Nimes)",                            "Metal Slug 4 (Zombie Players Mode Edition 2020-10-01)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4la02,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90, I love Nimes)",                            "Metal Slug 4 (Zombie Players Mode Multi-Function Edition 2017-12-25)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4la03,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90, XiaShuiDaoMeiRenYu, I love Nimes)",        "Metal Slug 4 (Zombie Players Mode Enemies Resetting Edition 2020-02-10)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4la04,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90, XiaShuiDaoMeiRenYu, I love Nimes)",        "Metal Slug 4 (Zombie Players Mode Enemies Resetting Multi-Function Edition 2019-04-15)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE ) 
+GAME( 2020, mslug4lb01,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90, I love Nimes)",                            "Metal Slug 4 (Monkeys Players Mode Edition 2020-10-01)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4lb02,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90, I love Nimes)",                            "Metal Slug 4 (Monkeys Players Mode Multi-Function Edition 2017-12-25)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4lb03,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90, XiaShuiDaoMeiRenYu, I love Nimes)",        "Metal Slug 4 (Monkeys Players Mode Enemies Resetting Edition 2020-02-10)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4lb04,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90, XiaShuiDaoMeiRenYu, I love Nimes)",        "Metal Slug 4 (Monkeys Players Mode Enemies Resetting Multi-Function Edition 2019-04-15)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4lc01,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90, I love Nimes)",                            "Metal Slug 4 (Mummy Players Mode Edition 2020-10-01)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4lc02,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90, I love Nimes)",                            "Metal Slug 4 (Mummy Players Mode Multi-Function Edition 2017-12-25)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4lc03,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90, XiaShuiDaoMeiRenYu, I love Nimes)",        "Metal Slug 4 (Mummy Players Mode Enemies Resetting Edition 2020-02-10)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4lc04,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90, XiaShuiDaoMeiRenYu, I love Nimes)",        "Metal Slug 4 (Mummy Players Mode Enemies Resetting Multi-Function Edition 2019-04-15)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4ld01,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90, I love Nimes)",                            "Metal Slug 4 (Normal Players Mode Edition 2020-10-01)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4ld02,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90, I love Nimes)",                            "Metal Slug 4 (Normal Players Mode Multi-Function Edition 2017-12-25)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4ld03,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90, XiaShuiDaoMeiRenYu, I love Nimes)",        "Metal Slug 4 (Normal Players Mode Enemies Resetting Edition 2020-02-10)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4ld04,         mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90, XiaShuiDaoMeiRenYu, I love Nimes)",        "Metal Slug 4 (Normal Players Mode Enemies Resetting Multi-Function Edition 2019-04-15)(Revised Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
 
 // Extreme MegaMods Edition
-GAME( 2020, mslug4rmxe0s01,     mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90,Creamymami[EGCG],I love Nimes)",                                   "Metal Slug 4 (Enemies Resetting Multi-Function Version 2019-04-15)(Revised Big Heavy Machine Gun Extreme MegaMods Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug4rmxe1s01,     mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90,Shyma.X,Creamymami[EGCG],I love Nimes)",                           "Metal Slug 4 (Multi-Function Version 2017-12-25)(Revised Big Heavy Machine Gun Extreme MegaMods Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug4rmxe2s01,     mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90,Shyma.X,Creamymami[EGCG],DDJ,I love Nimes)",                       "Metal Slug 4 (Revised Big Heavy Machine Gun Extreme MegaMods Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug4rmxe3s01,     mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_neogeo,    ROT0, "Team Remix (Gaston90,Creamymami[EGCG])",                                                "Metal Slug 4 (Last Bullet 2017-07-27)(Revised Big Heavy Machine Gun Extreme MegaMods Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug4rmxe4s01,     mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90,XiaShuiDaoMeiRenYu,Shyma.X,Creamymami[EGCG],DDJ,I love Nimes)",    "Metal Slug 4 (Enemies Resetting Version 2020-02-10)(Revised Big Heavy Machine Gun Extreme MegaMods Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4rmxe0s01,     mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90, Creamymami[EGCG], I love Nimes)",                                   "Metal Slug 4 (Enemies Resetting Multi-Function Version 2019-04-15)(Revised Big Heavy Machine Gun Extreme MegaMods Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4rmxe1s01,     mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90, Shyma.X, Creamymami[EGCG], I love Nimes)",                          "Metal Slug 4 (Multi-Function Version 2017-12-25)(Revised Big Heavy Machine Gun Extreme MegaMods Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4rmxe2s01,     mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90, Shyma.X, Creamymami[EGCG], DDJ, I love Nimes)",                     "Metal Slug 4 (Revised Big Heavy Machine Gun Extreme MegaMods Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4rmxe3s01,     mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_neogeo,    ROT0, "Team Remix (Gaston90, Creamymami[EGCG])",                                                 "Metal Slug 4 (Last Bullet 2017-07-27)(Revised Big Heavy Machine Gun Extreme MegaMods Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug4rmxe4s01,     mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "Team Remix (Gaston90, XiaShuiDaoMeiRenYu, Shyma.X, Creamymami[EGCG], DDJ, I love Nimes)", "Metal Slug 4 (Enemies Resetting Version 2020-02-10)(Revised Big Heavy Machine Gun Extreme MegaMods Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
