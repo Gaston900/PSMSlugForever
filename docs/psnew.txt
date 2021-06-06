@@ -1,10 +1,10 @@
 ﻿What's new in PSMAME PLUS
 ====================
 
-2021-05-30
+2021-06-03
 
 - Fixed the White Soldier color palette being placed correctly on Mslug 2, 3, 4, and X.
-- Fixed the color palette of the 4 players correctly in Mslug 2, 3, and X. 
+- Fixed the color palette of the 4 players correctly in Mslug 2, 3, 4, 5 and X. 
 - Unnecessary roms were removed 
 
 New Games
