@@ -1,6 +1,14 @@
 ﻿What's new in PSMAME PLUS
 ====================
 
+2021-07-08
+
+- Fixed is optimized to work correctly this version of the Metal Slug 4 20th Anniversary Edition
+- [mslug2hacks20]           Metal Slug 2 (Friendly Injury Edition 2021-04-23)
+- [mslug4hacks19]           Metal Slug 4 (20th Anniversary Edition 2021-03-23)
+
+
+
 2021-06-03
 
 - Fixed the White Soldier color palette being placed correctly on Mslug 2, 3, 4, and X.
