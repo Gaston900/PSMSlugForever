@@ -638,7 +638,7 @@ ROM_END
 ROM_START( mslugxhacks27 ) //mslugxxr
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hacks27.p1", 0x000000, 0x100000, CRC(bea1f7e5) SHA1(52148032328e4f2e4b6fe93f9df816891ebd50bb) )
-	ROM_LOAD16_WORD_SWAP( "250_hacks27.p2", 0x100000, 0x400000, CRC(9b7ad61f) SHA1(ff2a0e70396458aa0c0543ccc7c3785f4f984554) )
+	ROM_LOAD16_WORD_SWAP( "250_hacks27.p2", 0x100000, 0x400000, CRC(0efc5d67) SHA1(21a370ebc96e1b17ecfb12085732512dc51491d3) )
 
 	NEO_SFIX_128K( "250.s1", CRC(fb6f441d) SHA1(2cc392ecde5d5afb28ddbaa1030552b48571dcfb) )
 
@@ -661,7 +661,7 @@ ROM_END
 ROM_START( mslugxhacks28 ) //mslugxmax
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hacks28.p1", 0x000000, 0x100000, CRC(1ffd4613) SHA1(796c3f4af17692ef74cc9ddf771b1a23c53b914b) )
-	ROM_LOAD16_WORD_SWAP( "250_hacks28.p2", 0x100000, 0x400000, CRC(8d595131) SHA1(523401915e5b751c9d67c169173de7e17fe7ff00) )
+	ROM_LOAD16_WORD_SWAP( "250_hacks28.p2", 0x100000, 0x400000, CRC(9cf91e0f) SHA1(ed094f66d5b3e231ceb709bd578b47ce436709fe) )
 
 	NEO_SFIX_128K( "250.s1", CRC(fb6f441d) SHA1(2cc392ecde5d5afb28ddbaa1030552b48571dcfb) )
 
@@ -707,7 +707,7 @@ ROM_END
 ROM_START( mslugxhacks30 ) //mslugxsv
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hacks30.p1", 0x000000, 0x100000, CRC(1b213460) SHA1(23f14b2e97582552e6db1e95f98b12f73140d9a5) )
-	ROM_LOAD16_WORD_SWAP( "250_hacks30.p2", 0x100000, 0x400000, CRC(71952506) SHA1(f583c666a89efdd6a7c1edaa00bf5a7a26159358) )
+	ROM_LOAD16_WORD_SWAP( "250_hacks30.p2", 0x100000, 0x400000, CRC(718d6d66) SHA1(d15f0394cab7c84f8434a3095b25014fd9bb3000) )
 
 	NEO_SFIX_128K( "250.s1", CRC(fb6f441d) SHA1(2cc392ecde5d5afb28ddbaa1030552b48571dcfb) )
 
@@ -2723,10 +2723,10 @@ GAME( 2020, mslugxhacks23,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  
 GAME( 2013, mslugxhacks24,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "Metroid",           "Metal Slug X (Multi-Carrier Version 2013-05-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslugxhacks25,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "PlayerX China",     "Metal Slug X (Extreme Space Edition 2015-04-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslugxhacks26,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "lb70 (Eezezy)",     "Metal Slug X (Violence Version 2016-01-04)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslugxhacks27,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "Azstar Soda Remix", "Metal Slug X (Enemy Soldiers Reset Version 2.7 2020-12-03)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslugxhacks28,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "Qianqianm~",        "Metal Slug X (Unlimited Firepower 2020-10-18)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslugxhacks27,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "Azstar Soda Remix", "Metal Slug X (Enemy Soldiers Reset Version 2.7 2021-04-03)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslugxhacks28,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "Qianqianm~",        "Metal Slug X (Unlimited Firepower 2021-03-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslugxhacks29,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "S.R Mugen Power",   "Metal Slug X (Infinite Fire Edition 2021-03-20 )", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslugxhacks30,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "Azstar Soda Remix", "Metal Slug X (Generation SV 2020-12-03)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslugxhacks30,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "Azstar Soda Remix", "Metal Slug X (Generation SV 2020-11-04)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslugxhacks31,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "Wang Hua",          "Metal Slug X (Survival First Edition 2 2020-02-02)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslugxhacks32,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "hack",              "Metal Slug X (Easy Mode Difficulty 2018-11-26)", MACHINE_SUPPORTS_SAVE )
 
