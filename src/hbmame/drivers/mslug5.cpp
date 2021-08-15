@@ -1452,7 +1452,7 @@ GAME( 2013, mslug5hacks26,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, i
 
 // Bootleg
 GAME( 2003, ms5boot,        mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_mslug5hb, ROT0, "bootleg", "Metal Slug 5 (Bootleg, Set 2)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, ms5pcbd,        ms5pcb,   neogeo_noslot, dualbios, neogeo_state, init_ms5pcbd,  ROT0, "bootleg", "Metal Slug 5 (JAMMA PCB)(Decrypted)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, ms5pcbd,        mslug5,   neogeo_noslot, dualbios, neogeo_state, init_ms5pcbd,  ROT0, "bootleg", "Metal Slug 5 (JAMMA PCB)(Decrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5nd,       mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_mslug5hb, ROT0, "bootleg", "Metal Slug 5 (Decrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5d,        mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_mslug5hb, ROT0, "bootleg", "Metal Slug 5 (Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5d1,       mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_mslug5hb, ROT0, "bootleg", "Metal Slug 5 (Not Encrypted)", MACHINE_SUPPORTS_SAVE )
