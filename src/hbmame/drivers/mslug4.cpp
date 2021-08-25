@@ -476,9 +476,9 @@ ROM_END
 
 ROM_START( mslug4hacks19 ) //mslug4ae, mslug4a // [Roms corrected by Gaston90]
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	//ROM_LOAD16_WORD_SWAP( "263_hacks19.p1", 0x000000, 0x100000, CRC(3976fe28) SHA1(86eb60800d7a987a02451321d709c68692c3a5a6) )  //CRC this roms original generates a huge problem the .p1 causing the enemy to be totally immortal 
-	ROM_LOAD16_WORD_SWAP( "263_hacks19.p1", 0x000000, 0x100000, CRC(d59e4d8c) SHA1(1ad09aa4e2d865fd8eb7250ad783dbbd1a064d41) )
-	ROM_LOAD16_WORD_SWAP( "263_hacks19.p2", 0x100000, 0x400000, CRC(1c637c05) SHA1(e1365e290b15ef362b84ef2ca0075206e1a2caf4) )
+	//ROM_LOAD16_WORD_SWAP( "263_hacks19.p1", 0x000000, 0x100000, CRC(8d255cad) SHA1(f7c405596d396d8fe6fdf2592768fa98cfc76c81) )  //CRC this roms original generates a huge problem the .p1 causing the enemy to be totally immortal 
+	ROM_LOAD16_WORD_SWAP( "263_hacks19.p1", 0x000000, 0x100000, CRC(61cdef09) SHA1(7c028fc416e4c32b11b895ec05d210749edaac55) )
+	ROM_LOAD16_WORD_SWAP( "263_hacks19.p2", 0x100000, 0x400000, CRC(c07e895d) SHA1(a6ca40c0665aa11edc806cc698e0855a6af27d1a) )
 
 	NEO_SFIX_MT_512K
 
@@ -1295,7 +1295,7 @@ GAME( 2019, mslug4hacks14,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  
 GAME( 2012, mslug4hacks16,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "LB70",               "Metal Slug 4 (Crazy Fire Edition 2012-06-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2014, mslug4hacks17,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "hack",               "Metal Slug 4 (Super G Edition 2014-10-29)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug4hacks18,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "KofKill, Wang Hua, Czk",  "Metal Slug 4 (Unity Time 2021-01-30)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug4hacks19,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "hack",               "Metal Slug 4 (20th Anniversary Edition 2021-07-03)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug4hacks19,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "hack",               "Metal Slug 4 (20th Anniversary Edition 2021-08-11)", MACHINE_SUPPORTS_SAVE )
 
 // Bootleg
 GAME( 2002, mslug4d,            mslug4,   neogeo_noslot, neogeo, neogeo_state, init_mslug4hb,   ROT0, "bootleg",          "Metal Slug 4 (Decrypted C)", MACHINE_SUPPORTS_SAVE )
