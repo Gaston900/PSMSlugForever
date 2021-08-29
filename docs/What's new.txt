@@ -1,9 +1,26 @@
 ﻿What's new in PSMAME PLUS
 ====================
 
+2021-08-24
+
+- Roms updated Metal Slug 4 (20th Anniversary Edition 2021-08-11)
+- Roms updated Metal Slug 5 (Hybrid Bullets Version 2020-09-14)
+- Fixed the bug that caused a problem in the camera of the player position Metal Slug 5 (Summon Slug Edition 2018-09-18)
+- UNIVERSE BIOS v4.0 was added to the missing roms for what are exclusive games. 
+- Duplicate roms were removed
+
+New Games
+---------------------------------
+- [mslug5hacks19]           Metal Slug 5 (Crazy Fire Edition 2020-09-02)
+
+
+
 2021-07-08
 
 - Fixed is optimized to work correctly this version of the Metal Slug 4 20th Anniversary Edition
+
+New Games
+---------------------------------
 - [mslug2hacks20]           Metal Slug 2 (Friendly Injury Edition 2021-04-23)
 - [mslug4hacks19]           Metal Slug 4 (20th Anniversary Edition 2021-03-23)
 
