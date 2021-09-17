@@ -1,6 +1,17 @@
 ﻿What's new in PSMAME PLUS
 ====================
 
+2021-09-17
+
+- updated Roms Metal Slug 3 (The Future 2020-09-12)
+- Minor fix 
+
+New Games
+---------------------------------
+- [mslug3hacks26]          Metal Slug 3 (Random Enemies Resetting Version 2018-03-01)
+
+
+
 2021-08-24
 
 - Roms updated Metal Slug 4 (20th Anniversary Edition 2021-08-11)
