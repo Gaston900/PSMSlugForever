@@ -3,12 +3,19 @@
 
 2021-09-17
 
-- updated Roms Metal Slug 3 (The Future 2020-09-12)
+- Updated Roms Metal Slug 3 (The Future 2020-09-12)
+- Updated Roms Metal Slug 6 (The Future 2020-09-29)
 - Minor fix 
 
 New Games
 ---------------------------------
 - [mslug3hacks26]          Metal Slug 3 (Random Enemies Resetting Version 2018-03-01)
+- [mslug3zb01]             Metal Slug 3 (Enemies Resetting Version 2019-07-20)(Revised Crazy Zombie Hybrid Bullets Remix Standard Edition 2021-09-18)
+- [mslug3zb02]             Metal Slug 3 (Enemy Remake 2020-09-05)(Revised Crazy Zombie Hybrid Bullets Remix Standard Edition 2021-09-18)
+- [mslug3zb03]             Metal Slug 3 (The Future 2020-09-29)(Revised Crazy Zombie Hybrid Bullets Remix Standard Edition 2021-09-18)
+- [mslug3zb04]             Metal Slug 3 (The Last Warhead 2020-09-05)(Revised Crazy Zombie Hybrid Bullets Remix Standard Edition 2021-09-18)
+- [mslug3zb05]             Metal Slug 3 (Enemy Soldiers Reset 2019-01-02)(Revised Crazy Zombie Hybrid Bullets Remix Standard Edition 2021-09-18)
+- [mslug3zb06]             Metal Slug 3 (Revised Crazy Zombie Hybrid Bullets Remix Standard Edition 2021-09-18)
 
 
 
