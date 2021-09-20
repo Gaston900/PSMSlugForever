@@ -1,6 +1,14 @@
 ﻿What's new in PSMAME PLUS
 ====================
 
+2021-10-##
+
+New Games
+---------------------------------
+- [mslughacks08]           Metal Slug (Stage Select 2016-10-17)
+
+
+
 2021-09-17
 
 - Updated Roms Metal Slug 3 (The Future 2020-09-12)
