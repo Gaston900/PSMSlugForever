@@ -1,12 +1,15 @@
 ﻿What's new in PSMAME PLUS
 ====================
 
-2021-10-##
+2021-09-26
+
+- Fixed crashing of Metal Slug Metal Slug 3 (Random Enemies Resetting Version 2018-03-01)
+- Added 6 New Remix Metal slug 3 Summon Mount 
 
 New Games
 ---------------------------------
 - [mslughacks08]           Metal Slug (Stage Select 2016-10-17)
-
+- [mslug3hacks33]          Metal Slug 3 (Enemy Soldiers Remake 2020-05-11)
 
 
 2021-09-17
@@ -23,7 +26,8 @@ New Games
 - [mslug3zb03]             Metal Slug 3 (The Future 2020-09-29)(Revised Crazy Zombie Hybrid Bullets Remix Standard Edition 2021-09-18)
 - [mslug3zb04]             Metal Slug 3 (The Last Warhead 2020-09-05)(Revised Crazy Zombie Hybrid Bullets Remix Standard Edition 2021-09-18)
 - [mslug3zb05]             Metal Slug 3 (Enemy Soldiers Reset 2019-01-02)(Revised Crazy Zombie Hybrid Bullets Remix Standard Edition 2021-09-18)
-- [mslug3zb06]             Metal Slug 3 (Revised Crazy Zombie Hybrid Bullets Remix Standard Edition 2021-09-18)
+- [mslug3zb06]             Metal Slug 3 (Enemy Soldiers Remake 2020-05-11)(Revised Crazy Zombie Hybrid Bullets Remix Standard Edition 2021-09-18)
+- [mslug3zb07]             Metal Slug 3 (Revised Crazy Zombie Hybrid Bullets Remix Standard Edition 2021-09-18)
 
 
 
