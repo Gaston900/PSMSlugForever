@@ -63,20 +63,22 @@ mslug2la01
 mslug2la02
 mslug2la03
 mslug2la04
+mslug2la05
 mslug2lb01
 mslug2lb02
 mslug2lb03
 mslug2lb04
+mslug2lb05
 mslug2rmxe0s01
 mslug2rmxe0s02
 mslug2rmxe0s03
 mslug2rmxe0s04
+mslug2rmxe0s05
 mslug2rmxe1s01
-mslug2rmxe2s01
-mslug2rmxe3s01
-mslug2rmxe4s01
-mslug2rmxe5s01
-mslug2rmxe6s01
+mslug2rmxe1s02
+mslug2rmxe1s03
+mslug2rmxe1s04
+mslug2rmxe1s05
 
 @source:mslug3.cpp
 mslug3d
@@ -202,7 +204,7 @@ mslug4hacks05
 mslug4hacks06
 mslug4hacks07
 mslug4hacks08
-mslug4hacks09
+//mslug4hacks09
 mslug4hacks10
 mslug4hacks11
 mslug4hacks12
@@ -306,8 +308,8 @@ mslugxhacks16
 mslugxhacks17
 mslugxhacks18
 mslugxhacks19
-mslugxhacks20
-mslugxhacks21
+//mslugxhacks20
+//mslugxhacks21
 mslugxhacks22
 mslugxhacks23
 mslugxhacks24
