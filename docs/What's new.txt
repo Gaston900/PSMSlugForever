@@ -7,6 +7,7 @@
 - A new color palette has been developed in the sprites of the 4 selectable characters.
 - Updated All Roms Metal Slug 2 (Extreme MegaMods Edition)
 - Updated Roms Metal Slug 2 (Change Weapon And Mummy 2018-08-25)
+- Updated Roms Metal Slug 4 (Zombie, Monkeys, Mummy, Normal Players Mode Enemies Resetting Multi-Function Edition 2020-02-10)(Revised Remix Standard Edition 2020-12-24)
 - Updated Roms Metal Slug 4 (Last Bullet 2017-07-27)(Revised Big Heavy Machine Gun Extreme MegaMods Edition 2021-09-30)
 - Updated Roms Metal Slug X (Change Weapon And Fat Guy 2018-09-26)
 - Duplicate roms were removed
