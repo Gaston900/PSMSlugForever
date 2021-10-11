@@ -1,16 +1,17 @@
 ﻿What's new in PSMAME PLUS
 ====================
 
-2021-10-##
-
+2021-10-11
 
 - A new color palette has been developed in the sprites of the 4 selectable characters.
-- Updated All Roms Metal Slug 2 (Extreme MegaMods Edition)
+- Updated All Roms Metal Slug 2 (Remix Standard And Extreme MegaMods Edition)
+- Updated All Roms Metal Slug 3 (Remix Standard And Extreme MegaMods Edition)
 - Updated Roms Metal Slug 2 (Change Weapon And Mummy 2018-08-25)
+- Fixed crashing of Metal Slug 3 (Random Enemies Resetting Version 2017-12-08/2018-03-01)
 - Updated Roms Metal Slug 4 (Zombie, Monkeys, Mummy, Normal Players Mode Enemies Resetting Multi-Function Edition 2020-02-10)(Revised Remix Standard Edition 2020-12-24)
 - Updated Roms Metal Slug 4 (Last Bullet 2017-07-27)(Revised Big Heavy Machine Gun Extreme MegaMods Edition 2021-09-30)
 - Updated Roms Metal Slug X (Change Weapon And Fat Guy 2018-09-26)
-- Duplicate roms were removed
+- A general cleanup was generated, many unnecessary remix roms have been undone.
 
 New Games
 ---------------------------------
@@ -27,6 +28,7 @@ New Games
 ---------------------------------
 - [mslughacks08]           Metal Slug (Stage Select 2016-10-17)
 - [mslug3hacks33]          Metal Slug 3 (Enemy Soldiers Remake 2020-05-11)
+
 
 
 2021-09-17
