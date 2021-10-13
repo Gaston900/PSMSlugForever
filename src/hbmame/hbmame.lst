@@ -196,9 +196,19 @@ mslug4lb01
 mslug4lb02
 mslug4lb03
 mslug4lb04
+mslug4lc01
+mslug4lc02
+mslug4lc03
+mslug4lc04
+mslug4ld01
+mslug4ld02
+mslug4ld03
+mslug4ld04
 mslug4rmxe0s01
 mslug4rmxe1s01
 mslug4rmxe2s01
+mslug4rmxe3s01
+mslug4rmxe4s01
 
 @source:mslug5.cpp
 ms5boot
