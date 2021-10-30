@@ -1,11 +1,19 @@
 ﻿What's new in PSMAME PLUS
 ====================
 
+2021-11-01
+
+- Updated All Roms Metal Slug 1, 2, 3, 4 , 5 And X (Now It difference More The Remix Standard And Extreme MegaMods Edition)
+- Fixed crashing Metal Slug 2 Turbo (Apocalyptic Time Ports 0.2 2021-07-17)
+- Updated Roms Metal Slug 4 (20th Anniversary Edition 2021-08-26)
+- Updated Roms Metal Slug 5 (5X 2021-10-11)
+
+
+
 2021-10-11
 
 - A new color palette has been developed in the sprites of the 4 selectable characters.
-- Updated All Roms Metal Slug 2 (Remix Standard And Extreme MegaMods Edition)
-- Updated All Roms Metal Slug 3 (Remix Standard And Extreme MegaMods Edition)
+- Updated All Roms Metal Slug 2 And 3 (Remix Standard And Extreme MegaMods Edition)
 - Updated Roms Metal Slug 2 (Change Weapon And Mummy 2018-08-25)
 - Fixed crashing of Metal Slug 3 (Random Enemies Resetting Version 2017-12-08/2018-03-01)
 - Updated Roms Metal Slug 4 (Zombie, Monkeys, Mummy, Normal Players Mode Enemies Resetting Multi-Function Edition 2020-02-10)(Revised Remix Standard Edition 2020-12-24)
