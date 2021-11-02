@@ -7,10 +7,8 @@
 - Fixed crashing Metal Slug 2 Turbo (Apocalyptic Time Ports 0.2 2021-07-17)
 - Updated Roms Metal Slug 4 (20th Anniversary Edition 2021-08-26)
 - Updated Roms Metal Slug 5 (5X 2021-10-11)
+- Updated Roms Metal Slug X (Survival Edition 2021-04-03)
 
-New Games
----------------------------------
-- [mslugxhacks31]          Metal Slug X (Survival Edition 2021-04-03)
 
 
 2021-10-11
