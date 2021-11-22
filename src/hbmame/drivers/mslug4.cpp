@@ -155,7 +155,7 @@ ROM_END
 
 ROM_START( mslug4hacks05 ) //mslug4lw Final Version // [Roms corrected by Gaston90]
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	//ROM_LOAD16_WORD_SWAP( "263_hacks16.p1", 0x000000, 0x100000, CRC(ad713169) SHA1(51c10dfa1b8fc3b0e7850c71920091dbd91d1ba5) ) //CRC this roms has an error command START + D
+	//ROM_LOAD16_WORD_SWAP( "263_hacks05.p1", 0x000000, 0x100000, CRC(ad713169) SHA1(51c10dfa1b8fc3b0e7850c71920091dbd91d1ba5) ) //CRC this roms has an error command START + D
 	ROM_LOAD16_WORD_SWAP( "263_hacks05.p1", 0x000000, 0x100000, CRC(0012756e) SHA1(2dde1e2cc6fba5c50c2832b63b6fd58e025bdd29) )
 	ROM_LOAD16_WORD_SWAP( "263_hacks05.p2", 0x100000, 0x800000, CRC(427eed0b) SHA1(6062f783d63748ec9fccad414d3c0a830295aad8) )
 
@@ -410,8 +410,8 @@ ROM_END
 
 ROM_START( mslug4hacks16 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_hacks16.p1", 0x000000, 0x100000, CRC(f0c97843) SHA1(cb6a276d1c5a0b1d942b1f2eeb5f7c35f1500704) )
-	ROM_LOAD16_WORD_SWAP( "263_hacks16.p2", 0x100000, 0x400000, CRC(1464718d) SHA1(972f7993bde5fc429494939c2c8c9f32d6bfc07a) )
+	ROM_LOAD16_WORD_SWAP( "263_hacks16.p1", 0x000000, 0x100000, CRC(ef7deca8) SHA1(deebac7306e5405958e5bda18872e24397b32cb9) )
+	ROM_LOAD16_WORD_SWAP( "263_hacks16.p2", 0x100000, 0x400000, CRC(53c6f969) SHA1(85964359cf70070a6c86b88dff6a90f5367e5caf) )
 
 	NEO_SFIX_128K( "263.s1", CRC(a9446774) SHA1(c5a309fd8ee6d6750a15c82e710218a3755e38b2) )
 
@@ -715,7 +715,7 @@ ROM_END
 ROM_START( mslug4lb01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_lb01.p1", 0x000000, 0x100000, CRC(fc19c94e) SHA1(8d7c16888f4c4e8d63e3b72ec3b5ad21209417d8) )
-	ROM_LOAD16_WORD_SWAP( "263_lb01.p2", 0x100000, 0x400000, CRC(1782d963) SHA1(207d0c1384db302b61a3efb025d677cdef253049) )
+	ROM_LOAD16_WORD_SWAP( "263_la01.p2", 0x100000, 0x400000, CRC(1782d963) SHA1(207d0c1384db302b61a3efb025d677cdef253049) )
 
 	NEO_SFIX_MT_512K
 
@@ -979,7 +979,7 @@ ROM_END
 ROM_START( mslug4ld01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_ld01.p1", 0x000000, 0x100000, CRC(eb1fea53) SHA1(da634576b818c8bc2394554b8b7cfe068c7e6793) )
-	ROM_LOAD16_WORD_SWAP( "263_ld01.p2", 0x100000, 0x400000, CRC(daf31aca) SHA1(9e807c89733ff1e77c38436d44430cd65f1b5d29) )
+	ROM_LOAD16_WORD_SWAP( "263_lc01.p2", 0x100000, 0x400000, CRC(daf31aca) SHA1(9e807c89733ff1e77c38436d44430cd65f1b5d29) )
 
 	NEO_SFIX_MT_512K
 
@@ -1294,7 +1294,7 @@ GAME( 2017, mslug4hacks12,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  
 GAME( 2016, mslug4hacks13,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "DDJ",                "Metal Slug 4 (War Chariot 2016-02-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug4hacks14,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "hack",               "Metal Slug 4 (Generation 1V2 2019-05-11)", MACHINE_SUPPORTS_SAVE )
 //GAME( 2018, mslug4hacks15,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "hack",               "Metal Slug 4 (Easy Mode Difficulty 2018-11-16)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug4hacks16,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_neogeo,    ROT0, "Gaston90 And XiaShuiDaoMeiRenYu", "Metal Slug 4 (Enemies Resetting Remastering Version 2021-09-29)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug4hacks16,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_neogeo,    ROT0, "Gaston90 And XiaShuiDaoMeiRenYu", "Metal Slug 4 (Enemies Resetting Remastering Version 2021-11-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2014, mslug4hacks17,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "hack",               "Metal Slug 4 (Super G Edition 2014-10-29)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug4hacks18,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "KofKill, Wang Hua, Czk",  "Metal Slug 4 (Unity Time 2021-01-30)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug4hacks19,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "hack",               "Metal Slug 4 (20th Anniversary Edition 2021-08-26)", MACHINE_SUPPORTS_SAVE )
