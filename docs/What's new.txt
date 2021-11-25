@@ -11,6 +11,9 @@
 - Metal Slug 2 level 2 has been restored by the reboot of the enemy, of the edition that 
   includes Hybrid Bullets, because level 2 crashes in its entirety, a strange phenomenon that 
   occurs when the character begins to shoot and his average body disappears. 
+- Metal Slug 3 Random Enemies Resetting It is again correcting other bugs of many that have been fixed, 
+  in this case in Level 1 for some strange reason this causes a crashea when the ship that is generated 
+  in the air is destroyed.  
 - Metal Slug 3 added the Warp Tubes in level 2, to be able to access the secret level.
 - Metal Slug 3 has corrected some scenarios in order to avoid some bugs that prevent the 
   player from reaching the end of the game of the Zombie version, Mummy Players Mode and 
