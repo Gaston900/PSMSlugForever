@@ -23,6 +23,7 @@
 - Duplicate roms have been removed.
 - Some roms of Metal Slug 2 and 4 have been correctly renamed.
 - Updated Roms Metal Slug 4 (Enemies Resetting Remastering Version 2021-11-20)
+- Updated Roms Metal Slug X (Apocalyptic Time The 2 Beginning Of The End Of Time 7.1 2R Edition 2021-12-04)
 
 
 
