@@ -652,30 +652,31 @@ ROM_START( mslug3hacks22 ) //mslug3lw
 	ROM_LOAD16_BYTE( "256_hacks20.c8", 0x3000001, 0x800000, CRC(1c52378b) SHA1(05cd499f5444eae6360c96bfd3d3db8870d9656a) )
 ROM_END
 
-ROM_START( mslug3hacks23 ) //mslug3hr
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_hacks23.p1", 0x000000, 0x100000, CRC(920a3352) SHA1(cc4036f4ecea65d87b8b4f4530a6ac101b89d4a7) )
-	ROM_LOAD16_WORD_SWAP( "256_hacks17.p2", 0x100000, 0x400000, CRC(62e699b3) SHA1(eac088b21d2243198034a9796aa0815d686ccfac) )
+ROM_START( mslug3hacks23 ) //mslug3i
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "neo-sma_hacks23.sma", 0x0c0000, 0x040000, CRC(3a631f79) SHA1(47dff1a509f15a1115547453992e6d10f86851a1) )
+	ROM_LOAD16_WORD_SWAP( "256.p1", 0x100000, 0x400000, CRC(b07edfd5) SHA1(dcbd9e500bfae98d754e55cdbbbbf9401013f8ee) )
+	ROM_LOAD16_WORD_SWAP( "256_hacks23.p2", 0x500000, 0x400000, CRC(3a040bcc) SHA1(509f7308ab5ecff1b3d925798667e9c59981310a) )
 
-	NEO_SFIX_128K( "256_hacks17.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
+	NEO_SFIX_MT_512K
 
-	NEO_BIOS_AUDIO_512K( "256_hacks17.m1", CRC(c84d22f2) SHA1(069d5eafa859acbebc35394344df78ea84055cf7) )
+	NEO_BIOS_AUDIO_512K( "256.m1", CRC(eaeec116) SHA1(54419dbb21edc8c4b37eaac2e7ad9496d2de037a) )
 
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
 	ROM_LOAD( "256.v1", 0x000000, 0x400000, CRC(f2690241) SHA1(fd56babc1934d10e0d27c32f032f9edda7ca8ce9) )
 	ROM_LOAD( "256.v2", 0x400000, 0x400000, CRC(7e2a10bd) SHA1(0d587fb9f64cba0315ce2d8a03e2b8fe34936dff) )
 	ROM_LOAD( "256.v3", 0x800000, 0x400000, CRC(0eaec17c) SHA1(c3ed613cc6993edd6fc0d62a90bcd85de8e21915) )
-	ROM_LOAD( "256_hacks17.v4", 0xc00000, 0x400000, CRC(b45d9a3b) SHA1(eee342e11865facbbfcaf82b8e16b9e64b8c309c) )
+	ROM_LOAD( "256.v4", 0xc00000, 0x400000, CRC(9b4b22d4) SHA1(9764fbf8453e52f80aa97a46fb9cf5937ef15a31) )
 
 	ROM_REGION( 0x4000000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "256d.c1", 0x0000000, 0x800000, CRC(3540398c) SHA1(0a96f2360eb26c66bf02bbc6f52230b55cc95e4e) )
-	ROM_LOAD16_BYTE( "256d.c2", 0x0000001, 0x800000, CRC(bdd220f0) SHA1(f52851023f3bc120b05f622af0e0ab1bedc41604) )
-	ROM_LOAD16_BYTE( "256d.c3", 0x1000000, 0x800000, CRC(bfaade82) SHA1(66b07e592c9a9b35567fe463496f8f75c32a7db9) )
-	ROM_LOAD16_BYTE( "256d.c4", 0x1000001, 0x800000, CRC(1463add6) SHA1(4db91b46d6430da272d27d00a6dc0eb25949bea1) )
-	ROM_LOAD16_BYTE( "256d.c5", 0x2000000, 0x800000, CRC(48ca7f28) SHA1(e903876be5fb4fa582c988d74c6bef1c3b9c7083) )
-	ROM_LOAD16_BYTE( "256d.c6", 0x2000001, 0x800000, CRC(806eb36f) SHA1(a412a9cab80c326733dde7652d1db2a46afb3ebb) )
-	ROM_LOAD16_BYTE( "256d.c7", 0x3000000, 0x800000, CRC(9395b809) SHA1(ca9ac9832017094eee3623f0b6c4c4b7b4f1374d) )
-	ROM_LOAD16_BYTE( "256d.c8", 0x3000001, 0x800000, CRC(a369f9d4) SHA1(f8146ea80a1a23da7e7e04c88f778ee9abdfeb5c) )
+	ROM_LOAD16_BYTE( "256.c1", 0x0000000, 0x800000, CRC(5a79c34e) SHA1(b8aa51fa50935cae62ab3d125b723ab888691e60) )
+	ROM_LOAD16_BYTE( "256.c2", 0x0000001, 0x800000, CRC(944c362c) SHA1(3843ab300f956280475469caee70135658f67089) )
+	ROM_LOAD16_BYTE( "256.c3", 0x1000000, 0x800000, CRC(6e69d36f) SHA1(94e8cf42e999114b4bd8b30e0aa2f365578c4c9a) )
+	ROM_LOAD16_BYTE( "256.c4", 0x1000001, 0x800000, CRC(b755b4eb) SHA1(804700a0966a48f130c434ede3f970792ea74fa5) )
+	ROM_LOAD16_BYTE( "256.c5", 0x2000000, 0x800000, CRC(7aacab47) SHA1(312c1c9846175fe1a3cad51d5ae230cf674fc93d) )
+	ROM_LOAD16_BYTE( "256.c6", 0x2000001, 0x800000, CRC(c698fd5d) SHA1(16818883b06849ba2f8d61bdd5e21aaf99bd8408) )
+	ROM_LOAD16_BYTE( "256.c7", 0x3000000, 0x800000, CRC(cfceddd2) SHA1(7def666adf8bd1703f40c61f182fc040b6362dc9) )
+	ROM_LOAD16_BYTE( "256.c8", 0x3000001, 0x800000, CRC(4d9be34c) SHA1(a737bdfa2b815aea7067e7af2636e83a9409c414) )
 ROM_END
 
 ROM_START( mslug3hacks24 )  // mslug3c, mslug3dbcz
@@ -3539,7 +3540,7 @@ GAME( 2016, mslug3hacks19,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  
 GAME( 2020, mslug3hacks20,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_cmc42sfix, ROT0, "hack",           "Metal Slug 3 (The Future 2020-09-12)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, mslug3hacks21,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_cmc42sfix, ROT0, "hack",           "Metal Slug 3 (Enemy Remake 2017-09-27)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3hacks22,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_cmc42sfix, ROT0, "hack",           "Metal Slug 3 (The Last Warhead 2020-09-05)", MACHINE_SUPPORTS_SAVE )
-//GAME( 2020, mslug3hacks23,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_neogeo,    ROT0, "hack",           "Metal Slug 3 (Crazy Fire Edition 2020-09-03)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug3hacks23,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_mslug3,    ROT0, "hack",           "Metal Slug 3 (Unlimited Firepower 2021-03-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug3hacks24,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_cmc42sfix, ROT0, "XiaShuiDaoMeiRenYu",     "Metal Slug 3 (Enemies Resetting Version 2019-07-20)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2017, mslug3hacks25,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_neogeo,    ROT0, "hack",                   "Metal Slug 3 (Random Enemies Resetting Version 2017-12-08)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug3hacks26,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_neogeo,    ROT0, "hack",                   "Metal Slug 3 (Random Enemies Resetting Version 2018-03-01)" , MACHINE_SUPPORTS_SAVE ) //(It is unknown if it is an update or a prototype )

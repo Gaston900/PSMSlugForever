@@ -300,7 +300,7 @@ ROM_END
 
 ROM_START( mslug5hacks09 ) //mslug5x 
 	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_hacks09.p1", 0x000000, 0x600000, CRC(81901f7d) SHA1(baa8967a9cc8302c4eb1c3d44160f06727975ad6) )
+	ROM_LOAD16_WORD_SWAP( "268_hacks09.p1", 0x000000, 0x600000, CRC(65ac2ff4) SHA1(e7103edc69a614ae4968a0ff5301b8b523330e5b) )
 
 	NEO_SFIX_128K( "268_hacks02.s1", CRC(64952683) SHA1(88ec728c2fe18a11fdd218bed5d73bb3affe2ec1) )
 
@@ -325,8 +325,7 @@ ROM_END
 
 ROM_START( mslug5hacks10 ) //mslug5es
 	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_hacks10.p1", 0x000000, 0x100000, CRC(8eb95f3a) SHA1(4353d141544056d34b22adca0615f0ea9d32e376) )
-	ROM_LOAD16_WORD_SWAP( "268nd.p2", 0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
+	ROM_LOAD16_WORD_SWAP( "268_hacks10.p1", 0x000000, 0x600000, CRC(f54804df) SHA1(9d62ebb8a8a36dbe9a38ad0a51b2ee1b55a5a598) )
 
 	NEO_SFIX_128K( "268_hacks02.s1", CRC(64952683) SHA1(88ec728c2fe18a11fdd218bed5d73bb3affe2ec1) )
 
@@ -1433,8 +1432,8 @@ GAME( 2015, mslug5hacks04,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, i
 GAME( 2016, mslug5hacks06,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_mslug5hb, ROT0, "C.B",                "Metal Slug 5 (Battle 2016-03-10)", MACHINE_SUPPORTS_SAVE )  //It is removed by the flash from the shotgun edition 2016-10-19
 GAME( 2020, mslug5hacks07,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_neogeo,   ROT0, "hack",               "Metal Slug 5 (Final Edition 2020-09-19)",  MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug5hacks08,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_mslug5hb, ROT0, "KofKill, Wang Hua, Czk",    "Metal Slug 5 (Unity Time! 2021-04-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug5hacks09,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_neogeo,   ROT0, "Xia Shui Dao Mei Ren Yu",   "Metal Slug 5 (5X 2021-10-11)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug5hacks10,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_neogeo,   ROT0, "hack",               "Metal Slug 5 (Ultimate Simplified Edition 2021-01-13)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug5hacks09,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_neogeo,   ROT0, "Xia Shui Dao Mei Ren Yu",   "Metal Slug 5 (5X 2021-11-04)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug5hacks10,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_neogeo,   ROT0, "hack",               "Metal Slug 5 (Extremely Simplified Edition 2021-10-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug5hacks11,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_mslug5hb, ROT0, "I love Nimes",       "Metal Slug 5 (Burst Enhanced Edition 2021-07-19)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug5hacks12,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_neogeo,   ROT0, "XiaShuiDaoMeiRenYu", "Metal Slug 5 (Enemies Resetting Version 2019-07-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug5hacks13,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_neogeo,   ROT0, "YouGuDuoLa",         "Metal Slug 5 (Enemy Soldiers Enhanced Version 2020-04-06)",  MACHINE_SUPPORTS_SAVE )
