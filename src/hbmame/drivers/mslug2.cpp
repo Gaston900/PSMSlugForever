@@ -391,12 +391,12 @@ ROM_END
 
 ROM_START( mslug2hacks19 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_hacks19.p1",  0x000000, 0x100000, CRC(df83fa89) SHA1(f8f637675b183a5fc34bab38bbc2d755394ffaf7) )
-	ROM_LOAD16_WORD_SWAP( "241_rmxe0s01.p2", 0x100000, 0x200000, CRC(5b3e127f) SHA1(ffbaf0fac8e25713716bbd04ebdb43fb993202b4) )
+	ROM_LOAD16_WORD_SWAP( "241.p1", 0x000000, 0x100000, CRC(2a53c5da) SHA1(5a6aba482cac588a6c2c51179c95b487c6e11899) )
+	ROM_LOAD16_WORD_SWAP( "241.p2", 0x100000, 0x200000, CRC(38883f44) SHA1(fcf34b8c6e37774741542393b963635412484a27) )
 
 	NEO_SFIX_128K( "241.s1", CRC(f3d32f0f) SHA1(2dc38b7dfd3ff14f64d5c0733c510b6bb8c692d0) )
 
-	NEO_BIOS_AUDIO_128K( "241.m1", CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
+	NEO_BIOS_AUDIO_128K( "241_hacks19.m1", CRC(aa3f889e) SHA1(c0c51d5f9fbbe96aeca9a352a9b2da42102c3399) )
 
 	ROM_REGION( 0x800000, "ymsnd", 0 )
 	ROM_LOAD( "241.v1", 0x000000, 0x400000, CRC(99ec20e8) SHA1(80597707f1fe115eed1941bb0701fc00790ad504) )
@@ -1051,7 +1051,7 @@ GAME( 2018, mslug2hacks15,      mslug2,   neogeo_noslot, neogeo, neogeo_state,  
 GAME( 2013, mslug2hacks16,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "lb70",            "Metal Slug 2 (Crazy Fire Edition 2013-02-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2hacks17,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "CZXINC",          "Metal Slug 2 (Fightcade 2 2021-04-15)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2hacks18,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "KofKill, Wang Hua, Czk",  "Metal Slug 2 (Unity Time 2021-01-22)", MACHINE_SUPPORTS_SAVE )
-//GAME( 2021, mslug2hacks19,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Gaston90",        "Metal Slug 2 (Apocalyptic Time Ports 0.1 Standard Edition 2021-04-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, mslug2hacks19,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Removal Of Background Music 2018-08-16)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2hacks20,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Friendly Injury Edition 2021-04-23)", MACHINE_SUPPORTS_SAVE )
 
 /***************
