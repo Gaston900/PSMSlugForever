@@ -2,14 +2,20 @@
 ====================
 
 2022-01-22
+- Updated All Roms Metal Slug 1 (Remix Standard And Extreme MegaMods Edition)
+- Updated 2 Roms Metal Slug 4 (Extreme MegaMods Edition)
 - Updated All Roms Metal Slug X (Remix Standard And Extreme MegaMods Edition)
 - Updated Roms Metal Slug 5 (5X 2021-11-04)
 - Updated Roms Metal Slug 5 (Extremely Simplified Edition 2021-10-10)
+- Updated Roms Metal Slug X (Apocalyptic Time The 3 Beginning Of The End Of Time 8.0 2R Edition 2022-01-17)
 
 New Games
 ---------------------------------
+- [mslughacks09]           Metal Slug 1 (Random Items Explosives 2021-06-08)
+- [mslug2hacks19]          Metal Slug 2 (Removal Of Background Music 2018-08-16)
 - [mslug3hacks23]          Metal Slug 3 (Unlimited Firepower 2021-03-17)
-- [mslugxat10]             Metal Slug X (Apocalyptic Time The 3 Beginning Of The End Of Time 8.0 2R Edition 2022-01-17)
+- [mslug3hacks33]          Metal Slug 3 (Ammo Increases 2021-06-13)
+- [mslug4hacks09]          Metal Slug 4 (Children's Version 2021-06-06)
 
 
 
