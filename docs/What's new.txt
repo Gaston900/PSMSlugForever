@@ -1,13 +1,13 @@
 ﻿What's new in PSMAME PLUS
 ====================
 
-2022-01-22
+2022-02-20
 - Updated All Roms Metal Slug 1 (Remix Standard And Extreme MegaMods Edition)
 - Updated 2 Roms Metal Slug 4 (Extreme MegaMods Edition)
 - Updated All Roms Metal Slug X (Remix Standard And Extreme MegaMods Edition)
 - Updated Roms Metal Slug 5 (5X 2021-11-04)
 - Updated Roms Metal Slug 5 (Extremely Simplified Edition 2021-10-10)
-- Updated Roms Metal Slug X (Apocalyptic Time The 3 Beginning Of The End Of Time 8.0 2R Edition 2022-01-17)
+- Updated Roms Metal Slug X (Apocalyptic Time The 3 Beginning Of The End Of Time 8.1 2R Edition 2022-02-20)
 
 New Games
 ---------------------------------
