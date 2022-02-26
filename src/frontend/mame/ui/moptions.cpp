@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Maurizio Petrarota
+// copyright-holders:Gaston e Maurizio Petrarota
 /***************************************************************************
 
     ui/moptions.cpp

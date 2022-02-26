@@ -1,0 +1,11 @@
+// license:BSD-3-Clause
+// copyright-holders:Gaston90 And Robbbert
+
+//#define NOWINRES
+#include "windows.h"
+//#include "commctrl.h"
+//#include "hbmamevers.rc"
+
+1                       24      MOVEABLE PURE   "PSMameplus.man"
+
+2                       ICON    DISCARDABLE     "PSMameplus.ico"

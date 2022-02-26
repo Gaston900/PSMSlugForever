@@ -1,7 +1,13 @@
 ﻿What's new in PSMAME PLUS
 ====================
+2022-00-00
+
+-Added compatibility to the .exe batch with gui
+
+
 
 2022-02-20
+
 - Updated All Roms Metal Slug 1 (Remix Standard And Extreme MegaMods Edition)
 - Updated 2 Roms Metal Slug 4 (Extreme MegaMods Edition)
 - Updated All Roms Metal Slug X (Remix Standard And Extreme MegaMods Edition)
