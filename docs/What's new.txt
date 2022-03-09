@@ -2,7 +2,7 @@
 ====================
 2022-00-00
 
--Added compatibility to the .exe batch with gui
+-Added compatibility to the .exe batch with Arcade64gui
 
 
 

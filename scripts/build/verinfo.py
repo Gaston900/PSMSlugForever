@@ -85,7 +85,7 @@ if dstfile is not None:
 else:
     fp = sys.stdout
 
-legal_copyright = "Copyright Nicola Salmoria and the MAME team"
+legal_copyright = "Gaston90"
 
 if build == "mess":
     # MESS
@@ -99,25 +99,25 @@ if build == "mess":
     bundle_identifier = "org.mamedev.mess"
 elif build == "hbmame":
     # HBMAME
-    author = "Gaston90, Robbbert and the MAME team"
+    author = "Robbbert and the MAME team"
     legal_copyright = author
-    comments = "Proyecto Shadow MAME Plus (Metal Slug Forever Collection Final)"
+    comments = "Homebrew MAME"
     company_name = "MAME Team"
-    file_description = "PSMameplus"
-    internal_name = "PSMameplus"
-    original_filename = "PSMameplus"
-    product_name = "PSMameplus"
-    bundle_identifier = "org.mamedev.PSMameplus"
+    file_description = "HBMAME"
+    internal_name = "HBMAME"
+    original_filename = "HBMAME"
+    product_name = "HBMAME"
+    bundle_identifier = "org.mamedev.hbmame"
 else:
     # MAME
-    author = "Nicola Salmoria and the MAME Team"
-    comments = "Multi-purpose emulation framework"
+    author = "Gaston90"
+    comments = "Proyecto Shadow MAME Plus"
     company_name = "MAME Team"
-    file_description = "MAME"
-    internal_name = "MAME" if build == "mame" else build
-    original_filename = "MAME" if build == "mame" else build
-    product_name = "MAME" if build == "mame" else build
-    bundle_identifier = "org.mamedev." + build
+    file_description = "PSMame plus"
+    internal_name = "PSMame plus"
+    original_filename = "PSMame plus"
+    product_name = "PSMame plus"
+    bundle_identifier = "org.mamedev.PSMame plus"
 
 if outfmt == 'rc':
     fp.write('VS_VERSION_INFO VERSIONINFO\n')
