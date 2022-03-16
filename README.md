@@ -1,10 +1,8 @@
-# PSMAME PLUS
-What is PSMAME PLUS?
+# PSMAME PLUS (Metal Slug Forever Special Edition Final)
+It is called Project Shadow Mame Plus (Metal Slug Forever Special Edition Final), this project was part of the HBMAME emulator in the year 2018 – 2020.
 
-This is a special mini edition of the Project Shadow emulator, which uses the source code from the HBMAME 0.215 emulator. This version was used, since it has a submenu of a cheat that adjusts the automatic trigger, which was removed in the current update.
+Afterwards, it has been decided to make the project independent in 2021, providing all kinds of support, repairing all bugs and glitches, correcting incompatibility with the NeoGeo system, etc.
 
-The beginning of this project was in 2019, where I offer users the pleasure of being able to play all the franchises of the Metal Slug games of the "Neo Geo MVS" arcade system.
+Version 0.215 [HBMAME] is being used as the base system. Users are being offered the pleasure and convenience of being able to play all the Metal Slug game franchises of the "Neo Geo MVS" Arcade system.
 
-It will also include unofficial versions known as "hacks".
-
-Please note that the use of this emulator is prohibited for any commercial use or the project was used for an economic fundraiser.
+Unofficial versions known as "hacks" are also included.
