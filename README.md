@@ -1,3 +1,4 @@
+# PSMAME PLUS
 What is PSMAME PLUS?
 
 This is a special mini edition of the Shadow Project emulator, which uses the source code from the HBMAME 0.215 emulator. This version was used, since it has a submenu of a cheat that adjusts the automatic trigger, which was removed in the current update.
