@@ -306,7 +306,7 @@ static void output_joined_collection(const TColl &collection, TEmitMemberFunc em
 
 void mame_ui_manager::display_startup_screens(bool first_time)
 {
-	const int maxstate = 3;
+	const int maxstate = 0;
 	int str = machine().options().seconds_to_run();
 	bool show_gameinfo = !machine().options().skip_gameinfo();
 	bool show_warnings = true, show_mandatory_fileman = true;
