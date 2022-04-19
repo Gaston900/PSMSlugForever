@@ -444,7 +444,15 @@ void rom_load_manager::verify_length_and_hash(const char *name, u32 explength, c
 
 void rom_load_manager::display_loading_rom_message(const char *name, bool from_list)
 {
+    /*char buffer[200];
 
+	if (name != nullptr)
+		sprintf(buffer, "%s (%d%%)", from_list ? "Loading Software" : "Loading Machine", u32(100 * u64(m_romsloadedsize) / u64(m_romstotalsize)));
+	else
+		sprintf(buffer, "Loading Complete");
+
+	if (!machine().ui().is_menu_active())
+		machine().ui().set_startup_text(buffer, false);*/
 }
 
 
