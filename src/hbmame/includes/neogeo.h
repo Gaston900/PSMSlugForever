@@ -154,6 +154,7 @@ public:
 	void init_matrimd();
 	void init_matrmehc();
 	void init_mslug3();
+	void init_mslug3a();
 	void init_mslug3b6();
 	void init_mslug3d();
 	void init_mslug3fr();
@@ -163,6 +164,7 @@ public:
 	void init_mslug4hb();
 	void init_mslug5();
 	void init_mslug5b();
+	void init_mslug5b1();
 	void init_mslug5hb();
 	void init_mslugx();
 	void init_ms4plus();

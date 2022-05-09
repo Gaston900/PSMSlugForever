@@ -1,8 +1,17 @@
 ﻿What's new in PSMAME PLUS
 ====================
-2022-00-00
+2022-05-10
 
--Added compatibility to the .exe batch with Arcade64gui
+- The latest version.
+- The entire Neo Geo system configuration has been optimized, now all the system is pre-configured.
+- Added compatibility to the .exe batch with Arcade64gui
+
+New Games
+---------------------------------
+- [mslug3a]                Metal Slug 3 (NGM-2560, earlier)
+- [mslug3hacks34]          Metal Slug 3 (Mothership Armageddon Easter Egg 2021-06-13)
+- [mslug4hacks19]          Metal Slug 4 (20th Anniversary Edition 2022-03-18)
+- [mslug5b]                Metal Slug 5 (bootleg)
 
 
 

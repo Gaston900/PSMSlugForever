@@ -5646,6 +5646,40 @@ ROM_START( mslug3 ) /* Original Version - Encrypted Code & GFX */ /* revision 20
 	ROM_LOAD16_BYTE( "256.c8", 0x3000001, 0x800000, CRC(4d9be34c) SHA1(a737bdfa2b815aea7067e7af2636e83a9409c414) )
 ROM_END
 
+ROM_START( mslug3a ) /* Original Version - Encrypted Code & GFX */ /* MVS VERSION */
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "white.neo-sma",    0x0c0000, 0x040000, CRC(c60d29b2) SHA1(1647260ccbda833b35005608ef1fdc82fba02f04) ) /* stored in the custom SMA chip, the SMA has a white colour marking */
+	ROM_LOAD16_WORD_SWAP( "256a.p1", 0x100000, 0x400000, CRC(a1177628) SHA1(4c4c379d9fc3a83265b7f32fbfce9d16b7d0f0fd) )
+	ROM_LOAD16_WORD_SWAP( "256a.p2", 0x500000, 0x400000, CRC(9b659826) SHA1(d6bd03cf61879217922c18db4d3bd77095c0fe19) )
+
+	ROM_Y_ZOOM
+
+	/* The Encrypted Boards do not have an s1 rom, data for it comes from the Cx ROMs */
+	ROM_REGION( 0x80000, "fixed", 0 ) /* larger char set */
+	ROM_FILL( 0x000000, 0x20000, 0x000000 )
+	ROM_REGION( 0x20000, "fixedbios", 0 )
+	ROM_LOAD( "sfix.sfix", 0x000000, 0x20000, CRC(c2ea0cfd) SHA1(fd4a618cdcdbf849374f0a50dd8efe9dbab706c3) )
+
+	NEO_BIOS_AUDIO_512K( "256-m1.m1", CRC(eaeec116) SHA1(54419dbb21edc8c4b37eaac2e7ad9496d2de037a) ) /* mask rom TC534000 */
+
+	ROM_REGION( 0x1000000, "ymsnd", 0 )
+	ROM_LOAD( "256-v1.v1", 0x000000, 0x400000, CRC(f2690241) SHA1(fd56babc1934d10e0d27c32f032f9edda7ca8ce9) ) /* TC5332204 */
+	ROM_LOAD( "256-v2.v2", 0x400000, 0x400000, CRC(7e2a10bd) SHA1(0d587fb9f64cba0315ce2d8a03e2b8fe34936dff) ) /* TC5332204 */
+	ROM_LOAD( "256-v3.v3", 0x800000, 0x400000, CRC(0eaec17c) SHA1(c3ed613cc6993edd6fc0d62a90bcd85de8e21915) ) /* TC5332204 */
+	ROM_LOAD( "256-v4.v4", 0xc00000, 0x400000, CRC(9b4b22d4) SHA1(9764fbf8453e52f80aa97a46fb9cf5937ef15a31) ) /* TC5332204 */
+
+	ROM_REGION( 0x4000000, "sprites", 0 )
+	/* Encrypted */
+	ROM_LOAD16_BYTE( "256-c1.c1", 0x0000000, 0x800000, CRC(5a79c34e) SHA1(b8aa51fa50935cae62ab3d125b723ab888691e60) ) /* Plane 0,1 */ /* TC5364205 */
+	ROM_LOAD16_BYTE( "256-c2.c2", 0x0000001, 0x800000, CRC(944c362c) SHA1(3843ab300f956280475469caee70135658f67089) ) /* Plane 2,3 */ /* TC5364205 */
+	ROM_LOAD16_BYTE( "256-c3.c3", 0x1000000, 0x800000, CRC(6e69d36f) SHA1(94e8cf42e999114b4bd8b30e0aa2f365578c4c9a) ) /* Plane 0,1 */ /* TC5364205 */
+	ROM_LOAD16_BYTE( "256-c4.c4", 0x1000001, 0x800000, CRC(b755b4eb) SHA1(804700a0966a48f130c434ede3f970792ea74fa5) ) /* Plane 2,3 */ /* TC5364205 */
+	ROM_LOAD16_BYTE( "256-c5.c5", 0x2000000, 0x800000, CRC(7aacab47) SHA1(312c1c9846175fe1a3cad51d5ae230cf674fc93d) ) /* Plane 0,1 */ /* TC5364205 */
+	ROM_LOAD16_BYTE( "256-c6.c6", 0x2000001, 0x800000, CRC(c698fd5d) SHA1(16818883b06849ba2f8d61bdd5e21aaf99bd8408) ) /* Plane 2,3 */ /* TC5364205 */
+	ROM_LOAD16_BYTE( "256-c7.c7", 0x3000000, 0x800000, CRC(cfceddd2) SHA1(7def666adf8bd1703f40c61f182fc040b6362dc9) ) /* Plane 0,1 */ /* TC5364205 */
+	ROM_LOAD16_BYTE( "256-c8.c8", 0x3000001, 0x800000, CRC(4d9be34c) SHA1(a737bdfa2b815aea7067e7af2636e83a9409c414) ) /* Plane 2,3 */ /* TC5364205 */
+ROM_END
+
 ROM_START( mslug3h ) /* Original Version - Encrypted GFX */ /* revision 2000.3.17 */ /* AES VERSION */
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256h.p1",  0x000000, 0x100000, CRC(9c42ca85) SHA1(7a8f77a89867b889295ae9b9dfd4ba28f02d234d) )
@@ -7203,6 +7237,41 @@ ROM_START( ms5plus )
 	ROM_LOAD16_BYTE( "268-c8c.c8", 0x3000001, 0x800000, CRC(551d720e) SHA1(ebf69e334fcaba0fda6fd432fd0970283a365d12) )
 ROM_END
 
+/* clear cart, orange pcbs
+   prog board: no v encryption, uses a plcc epm7096lc84-15 for pcm, 16-bit v roms decoded by 2x 74hc245
+   cha board: no c/m encryption, uses a soic palce16v8 for zmc, 5x 74hc273a for neo-273, 6x so44 m59pw064 64Mbit + 2x dip lh28f160 16MBit flash roms for gfx
+   all roms are erasable flash chips, mixture of 5v and 3.3v
+   produced sometime after early 2004 (going by youngest ic date code) */
+ROM_START( mslug5b )
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "ms5b-p1.bin", 0x000000, 0x100000, CRC(1376f43c) SHA1(7ca4a8b11c7effda2603d04e793cf664e7aa39bf) ) /* MX29F1615PC-10     16Mbit  2nd half empty */
+	ROM_LOAD16_WORD_SWAP( "ms5b-p2.bin", 0x100000, 0x400000, CRC(4becfba0) SHA1(fd3708f6c8fa26133b29b4b033148dff54dc1e7d) ) /* LH28F320BJD-TTL80  32Mbit  3.3v */
+
+	/* Scrambled */
+	NEO_SFIX_128K( "ms5b-s1.bin", CRC(3a427c9f) SHA1(6c6050640adb7148d42d35e3017cc171e53ae957) ) /* W29C011A-15  1Mbit */
+
+	/* Not encrypted */
+	NEO_BIOS_AUDIO_128K( "ms5b-m1.bin", CRC(bf1601bc) SHA1(5e285c98c65acefd77e893247482af0d09f3e1e4) ) /* W29EE011-15  1Mbit */
+
+	/* Not encrypted, odd bytes scrambled */
+	ROM_REGION( 0x1000000, "ymsnd", 0 )
+	ROM_LOAD( "ms5b-v1.bin", 0x000000, 0x400000, CRC(e3f9fd75) SHA1(8772d0936c45623763b92c55816d0e56dd8d2ef2) ) /* LH28F320BJD-TTL80  32Mbit  3.3v  2 bytes diff vs decrypted */
+	ROM_LOAD( "ms5b-v2.bin", 0x400000, 0x400000, CRC(a53618f6) SHA1(002e37f3d45aa6153593c7939902e1a022de14c7) ) /* LH28F320BJD-TTL80  32Mbit  3.3v */
+	ROM_LOAD( "ms5b-v3.bin", 0x800000, 0x400000, CRC(14f000ee) SHA1(b30df60964cc8480b78a4bc2d323cad59e44a0ae) ) /* LH28F320BJD-TTL80  32Mbit  3.3v */
+	ROM_LOAD( "ms5b-v4.bin", 0xc00000, 0x400000, CRC(0ccee813) SHA1(4bc034f7f37da956b4116a2dea8a856b96e43c18) ) /* LH28F320BJD-TTL80  32Mbit  3.3v */
+
+	/* Not encrypted, a18/a19 lines swapped */
+	ROM_REGION( 0x4000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "ms5b-c1.bin", 0x0000000, 0x800000, CRC(4b0e5998) SHA1(458486d579db118ec4ba4f9fce9d62fedfef949b) ) /* M59PW064  64Mbit  3.3v */
+	ROM_LOAD16_BYTE( "ms5b-c2.bin", 0x0000001, 0x800000, CRC(022fc30b) SHA1(7178900acbb377c3de95338c8fae56e308327cab) ) /* M59PW064  64Mbit  3.3v */
+	ROM_LOAD16_BYTE( "ms5b-c3.bin", 0x1000000, 0x800000, CRC(ead86d28) SHA1(e1db4f839972748f49dddfe3bd4b0cf2e0ddf074) ) /* M59PW064  64Mbit  3.3v */
+	ROM_LOAD16_BYTE( "ms5b-c4.bin", 0x1000001, 0x800000, CRC(0be6be35) SHA1(34e20e55423cefd2b98c15061f86198b64727173) ) /* M59PW064  64Mbit  3.3v */
+	ROM_LOAD16_BYTE( "ms5b-c5.bin", 0x2000000, 0x200000, CRC(2a23e569) SHA1(576370a24a8ef5ca0f8e7afa4ccdb0cb3ad9bdaa) ) /* LH28F160BJD-TTL80  16Mbit  3.3v */
+	ROM_LOAD16_BYTE( "ms5b-c6.bin", 0x2000001, 0x200000, CRC(6eb6bc9e) SHA1(4e54d904b0ce34cca429b3c86ab8bf972c66336e) ) /* LH28F160BJD-TTL80  16Mbit  3.3v */
+	ROM_LOAD16_BYTE( "ms5b-c7.bin", 0x3000000, 0x800000, CRC(57f4e53f) SHA1(813d98175288045c0750d45afe03c74973d70cee) ) /* M59PW064  64Mbit  3.3v */
+	ROM_LOAD16_BYTE( "ms5b-c8.bin", 0x3000001, 0x800000, CRC(9d59ff7c) SHA1(ff90dc79598de0880df17624c76df81c92f267ce) ) /* M59PW064  64Mbit  3.3v */
+ROM_END
+
 /* Puzzle Bobble / Bust-A-Move (Neo-Geo) bootleg */
 
 ROM_START( pbobblenb )
@@ -8017,6 +8086,7 @@ GAME( 1999, garouh,     garou,    neogeo_noslot,   neogeo, neogeo_state, init_ga
 GAME( 1999, garoup,     garou,    neogeo_noslot,   neogeo, neogeo_state, init_neogeo,   ROT0, "SNK", "Garou - Mark of the Wolves (prototype)", MACHINE_SUPPORTS_SAVE )
 GAME( 1999, garoubl,    garou,    neogeo_noslot,   neogeo, neogeo_state, init_garoubl,  ROT0, "bootleg", "Garou - Mark of the Wolves (bootleg)", MACHINE_SUPPORTS_SAVE ) /* Bootleg of garoup */
 GAME( 2000, mslug3,     neogeo,   neogeo_noslot,   neogeo, neogeo_state, init_mslug3,   ROT0, "SNK", "Metal Slug 3 (NGM-2560)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2000, mslug3a,    mslug3,   neogeo_noslot,   neogeo, neogeo_state, init_mslug3a,  ROT0, "SNK", "Metal Slug 3 (NGM-2560, earlier)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX - revision Mar/17/2000 1:36 (from SMA rom) */
 GAME( 2000, mslug3h,    mslug3,   neogeo_noslot,   neogeo, neogeo_state, init_mslug3h,  ROT0, "SNK", "Metal Slug 3 (NGH-2560)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2000, mslug3b6,   mslug3,   neogeo_noslot,   neogeo, neogeo_state, init_mslug3b6, ROT0, "bootleg", "Metal Slug 6 (Metal Slug 3 bootleg)", MACHINE_SUPPORTS_SAVE ) /* real Metal Slug 6 is an Atomiswave HW game, see naomi.c ;-) */
 GAME( 2000, kof2000,    neogeo,   neogeo_noslot,   neogeo, neogeo_state, init_kof2000,  ROT0, "SNK", "The King of Fighters 2000 (NGM-2570) (NGH-2570)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
@@ -8042,6 +8112,7 @@ GAME( 2003, mslug5,     neogeo,   neogeo_noslot,   neogeo, neogeo_state, init_ms
 GAME( 2003, mslug5h,    mslug5,   neogeo_noslot,   neogeo, neogeo_state, init_mslug5,   ROT0, "SNK Playmore", "Metal Slug 5 (NGH-2680)", MACHINE_SUPPORTS_SAVE ) /* Also found in later MVS carts */
 GAME( 2003, ms5pcb,     mslug5,   neogeo_noslot,   dualbios, neogeo_state, init_ms5pcb, ROT0, "SNK Playmore", "Metal Slug 5 (JAMMA PCB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, ms5plus,    mslug5,   neogeo_noslot,   neogeo, neogeo_state, init_ms5plus,  ROT0, "bootleg", "Metal Slug 5 Plus (bootleg)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, mslug5b,    mslug5,   neogeo_noslot,   neogeo, neogeo_state, init_mslug5b,  ROT0, "bootleg", "Metal Slug 5 (bootleg)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, svcpcb,     0,        neogeo_noslot,   dualbios, neogeo_state, init_svcpcb, ROT0, "SNK Playmore", "SNK vs. Capcom - SVC Chaos (JAMMA PCB, set 1)", MACHINE_SUPPORTS_SAVE ) // not a clone of neogeo because it's NOT a neogeo cart.
 GAME( 2003, svcpcba,    svcpcb,   neogeo_noslot,   dualbios, neogeo_state, init_svcpcb, ROT0, "SNK Playmore", "SNK vs. Capcom - SVC Chaos (JAMMA PCB, set 2)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted Code */
 GAME( 2003, svc,        neogeo,   neogeo_noslot,   neogeo, neogeo_state, init_svc,      ROT0, "SNK Playmore", "SNK vs. Capcom - SVC Chaos (NGM-2690)(NGH-2690)", MACHINE_SUPPORTS_SAVE )

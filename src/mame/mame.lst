@@ -16,11 +16,13 @@ mslug
 mslug2
 mslugx
 mslug3
+mslug3a
 mslug3h
 mslug3b6
 mslug4
 mslug4h
 mslug5
+mslug5b
 mslug5h
 
 @source:neogeo.cpp
@@ -117,6 +119,7 @@ mslug3hacks30
 mslug3hacks31
 mslug3hacks32
 mslug3hacks33
+mslug3hacks34
 mslug6hacks01
 mslug6hacks02
 mslug6hacks03
@@ -252,13 +255,12 @@ ms5pcbd
 mslug5nd
 mslug5d
 mslug5d1
-mslug5b
+mslug5b1
 ms5plusd
 mslug5n
 mslug5ba
 mslug5n2
 mslug5hd
-mslug5b2
 ms5plusc
 mslug5hacks01
 mslug5hacks02

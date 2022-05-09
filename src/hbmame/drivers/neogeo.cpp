@@ -1012,6 +1012,8 @@ void neogeo_state::init_neogeo()
 	// install controllers
 	m_maincpu->space(AS_PROGRAM).install_read_handler(0x300000, 0x300001, 0, 0x01ff7e, 0, read16_delegate(FUNC(neogeo_state::in0_r), this));
 	m_maincpu->space(AS_PROGRAM).install_read_handler(0x340000, 0x340001, 0, 0x01fffe, 0, read16_delegate(FUNC(neogeo_state::in1_r), this));
+
+//	m_maincpu->space(AS_PROGRAM).install_read_port(0x340000, 0x340001, 0x01fffe, "P2");
 }
 
 
@@ -1153,10 +1155,12 @@ void neogeo_state::neogeo_main_map(address_map &map)
 {
 	map(0x100000,0x10ffff).mirror(0x0f0000).ram();
 	/* some games have protection devices in the 0x200000 region, it appears to map to cart space, not surprising, the ROM is read here too */
+//	map(0x300000,0x300001).mirror(0x01ff7e).portr("DSW");
 	map(0x300080,0x300081).mirror(0x01ff7e).portr("TEST");
 	map(0x300000,0x300001).mirror(0x01fffe).w("watchdog",FUNC(watchdog_timer_device::reset_w)).umask16(0x00ff);
 	map(0x320000,0x320001).mirror(0x01fffe).portr("AUDIO/COIN");
 	map(0x320000,0x320001).mirror(0x01fffe).w(FUNC(neogeo_state::audio_command_w)).umask16(0xff00);
+//	map(0x340000,0x340001).mirror(0x01fffe).portr("P2");
 	map(0x360000,0x37ffff).r(FUNC(neogeo_state::neogeo_unmapped_r));
 	map(0x380000,0x380001).mirror(0x01fffe).portr("SYSTEM");
 	map(0x380000,0x38007f).mirror(0x01ff80).w(FUNC(neogeo_state::io_control_w)).umask16(0x00ff);
@@ -1249,6 +1253,25 @@ INPUT_PORTS_START( neogeo )
 	PORT_DIPNAME( 0x80, 0x80, "Freeze" ) PORT_DIPLOCATION("SW:8")
 	PORT_DIPSETTING(    0x80, DEF_STR( Off ) )
 	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+//	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_JOYSTICK_UP )
+//	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_JOYSTICK_DOWN )
+//	PORT_BIT( 0x0400, IP_ACTIVE_LOW, IPT_JOYSTICK_LEFT )
+//	PORT_BIT( 0x0800, IP_ACTIVE_LOW, IPT_JOYSTICK_RIGHT )
+//	PORT_BIT( 0x1000, IP_ACTIVE_LOW, IPT_BUTTON1 )
+//	PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_BUTTON2 )
+//	PORT_BIT( 0x4000, IP_ACTIVE_LOW, IPT_BUTTON3 )
+//	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON4 )
+
+//	PORT_START("P2")
+//	PORT_BIT( 0x00ff, IP_ACTIVE_LOW, IPT_UNUSED )
+//	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_JOYSTICK_UP ) PORT_PLAYER(2)
+//	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_JOYSTICK_DOWN ) PORT_PLAYER(2)
+//	PORT_BIT( 0x0400, IP_ACTIVE_LOW, IPT_JOYSTICK_LEFT ) PORT_PLAYER(2)
+//	PORT_BIT( 0x0800, IP_ACTIVE_LOW, IPT_JOYSTICK_RIGHT ) PORT_PLAYER(2)
+//	PORT_BIT( 0x1000, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(2)
+//	PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_PLAYER(2)
+//	PORT_BIT( 0x4000, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(2)
+//	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_PLAYER(2)
 
 	PORT_START("SYSTEM")
 	PORT_BIT( 0x00ff, IP_ACTIVE_LOW, IPT_UNUSED )
@@ -1560,6 +1583,16 @@ void neogeo_state::init_mslug3()
 	m_cmc_prot->cmc42_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG3_GFX_KEY);
 	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
 	m_sma_prot->mslug3_install_protection(m_maincpu,m_banked_cart);
+}
+
+void neogeo_state::init_mslug3a()
+{
+	init_neogeo();
+	m_sma_prot->mslug3a_decrypt_68k(cpuregion);
+	m_sprgen->m_fixed_layer_bank_type = 1;
+	m_cmc_prot->cmc42_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG3_GFX_KEY);
+	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+	m_sma_prot->mslug3a_install_protection(m_maincpu,m_banked_cart);
 }
 
 /*********************************************** SMA + CMC50 */
@@ -2164,6 +2197,13 @@ void neogeo_state::init_ms5plus()
 	m_bootleg_prot->install_ms5plus_protection(m_maincpu,m_banked_cart);
 }
 
+void neogeo_state::init_mslug5b()
+{
+	init_neogeo();
+	m_bootleg_prot->mslug5b_vx_decrypt(ym_region, ym_region_size);
+	m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size, 2);
+	m_bootleg_prot->mslug5b_cx_decrypt(spr_region, spr_region_size);
+}
 
 
 void neogeo_state::init_svcboot()

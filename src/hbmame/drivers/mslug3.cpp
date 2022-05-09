@@ -936,6 +936,29 @@ ROM_START( mslug3hacks33 )
 	ROM_LOAD16_BYTE( "256.c8", 0x3000001, 0x800000, CRC(4d9be34c) SHA1(a737bdfa2b815aea7067e7af2636e83a9409c414) )
 ROM_END
 
+ROM_START( mslug3hacks34 )
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256_hacks34.p1", 0x000000, 0x200000, CRC(64f596c5) SHA1(22423abd7688ceda121ccdc67505acb37921a563) )
+
+	NEO_SFIX_128K( "256_hacks34.s1", CRC(d2af5597) SHA1(7a1c48a65214705327a747b44105cf847a0cba21) )
+
+	NEO_BIOS_AUDIO_128K( "256_hacks34.m1", CRC(0e339fdf) SHA1(65f3c8f551050a798f42da8e8f8d94e51cce7cd1) )
+
+	ROM_REGION( 0x1000000, "ymsnd", 0 )
+	ROM_LOAD( "256_hacks34.v1", 0x000000, 0x400000, CRC(67cc9264) SHA1(701758422e1e6c0c0ea0ec15f3b9cd35b299b6ca) )
+    ROM_IGNORE( 0xC00000 )
+
+	ROM_REGION( 0x4000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "256_hacks34.c1", 0x0000000, 0x800000, CRC(4a895201) SHA1(eab8d35a2fa141ffdd0997aa71771f20c64dc208) )
+	ROM_LOAD16_BYTE( "256_hacks34.c2", 0x0000001, 0x800000, CRC(47c53b38) SHA1(f051068d9a529c91182edd7918e57c4af9f2cdd0) )
+	ROM_LOAD16_BYTE( "256d.c3", 0x1000000, 0x800000, CRC(bfaade82) SHA1(66b07e592c9a9b35567fe463496f8f75c32a7db9) )
+	ROM_LOAD16_BYTE( "256d.c4", 0x1000001, 0x800000, CRC(1463add6) SHA1(4db91b46d6430da272d27d00a6dc0eb25949bea1) )
+	ROM_LOAD16_BYTE( "256d.c5", 0x2000000, 0x800000, CRC(48ca7f28) SHA1(e903876be5fb4fa582c988d74c6bef1c3b9c7083) )
+	ROM_LOAD16_BYTE( "256d.c6", 0x2000001, 0x800000, CRC(806eb36f) SHA1(a412a9cab80c326733dde7652d1db2a46afb3ebb) )
+	ROM_LOAD16_BYTE( "256d.c7", 0x3000000, 0x800000, CRC(9395b809) SHA1(ca9ac9832017094eee3623f0b6c4c4b7b4f1374d) )
+	ROM_LOAD16_BYTE( "256d.c8", 0x3000001, 0x800000, CRC(a369f9d4) SHA1(f8146ea80a1a23da7e7e04c88f778ee9abdfeb5c) )
+ROM_END
+
 /********
  Bootleg
 **********/
@@ -3576,7 +3599,7 @@ GAME( 2019, mslug3hacks30,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  
 GAME( 2018, mslug3hacks31,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_mslug3h,   ROT0, "hack",           "Metal Slug 3 (Easy Mode Difficulty 2018-11-16)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug3hacks32,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_mslug3,    ROT0, "KofKill, Wang Hua, Czk", "Metal Slug 3 (Unity Time 2021-02-21)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug3hacks33,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_mslug3h,   ROT0, "hack",           "Metal Slug 3 (Ammo Increases 2021-06-13)", MACHINE_SUPPORTS_SAVE )
-
+GAME( 2021, mslug3hacks34,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_cmc42sfix, ROT0, "hack",           "Metal Slug 3 (Mothership Armageddon Easter Egg 2021-06-13)", MACHINE_SUPPORTS_SAVE )
 // Bootleg
 GAME( 2000, mslug3d,            mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_mslug3d,   ROT0, "bootleg", "Metal Slug 3 (Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2000, mslug3nd,           mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_cmc42sfix, ROT0, "bootleg", "Metal Slug 3 (Fully Decrypted C)", MACHINE_SUPPORTS_SAVE )
