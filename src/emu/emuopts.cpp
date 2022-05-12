@@ -46,7 +46,7 @@ const options_entry emu_options::s_option_entries[] =
 	{ OPTION_CROSSHAIRPATH,                              "config/crosshair", OPTION_STRING,     "path to crosshair files" },
 	{ OPTION_PLUGINSPATH,                                "config/plugins",   OPTION_STRING,     "path to plugin files" },
 	{ OPTION_LANGUAGEPATH,                               "config/language",  OPTION_STRING,     "path to UI translation files" },
-	{ OPTION_SWPATH,                                     "software",  OPTION_STRING,     "path to loose software" },
+	{ OPTION_SWPATH,                                     "support/software", OPTION_STRING,     "path to loose software" },
 
 	// output directory options
 	{ nullptr,                                           nullptr,     OPTION_HEADER,     "CORE OUTPUT DIRECTORY OPTIONS" },
@@ -54,10 +54,10 @@ const options_entry emu_options::s_option_entries[] =
 	{ OPTION_NVRAM_DIRECTORY,                            "config/nvram",     OPTION_STRING,     "directory to save NVRAM contents" },
 	{ OPTION_INPUT_DIRECTORY,                            "config/inp",       OPTION_STRING,     "directory to save input device logs" },
 	{ OPTION_STATE_DIRECTORY,                            "config/sta",       OPTION_STRING,     "directory to save states" },
-	{ OPTION_SNAPSHOT_DIRECTORY,                         "support/snap",      OPTION_STRING,     "directory to save/load screenshots" },
+	{ OPTION_SNAPSHOT_DIRECTORY,                         "support/snap",     OPTION_STRING,     "directory to save/load screenshots" },
 	{ OPTION_DIFF_DIRECTORY,                             "config/diff",      OPTION_STRING,     "directory to save hard drive image difference files" },
 	{ OPTION_COMMENT_DIRECTORY,                          "config/comments",  OPTION_STRING,     "directory to save debugger comments" },
-	{ OPTION_VIDEO_DIRECTORY,                          	 "support/video",  	  OPTION_STRING,     "directory to save/load video files" },
+	{ OPTION_VIDEO_DIRECTORY,                          	 "support/video",  	 OPTION_STRING,     "directory to save/load video files" },
 
 	// state/playback options
 	{ nullptr,                                           nullptr,     OPTION_HEADER,     "CORE STATE/PLAYBACK OPTIONS" },

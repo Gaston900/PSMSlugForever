@@ -3,8 +3,10 @@
 2022-05-10
 
 - The latest version.
+- A huge thank you is given to user Remikare for his cooperation in sharing the code that allowed 
+  us to get the latest NeoGeo encrypted roms working.
 - The entire Neo Geo system configuration has been optimized, now all the system is pre-configured.
-- Added compatibility to the .exe batch with Arcade64gui
+- It has been possible to integrate the graphical interface "GUI" of the Arcade64 emulator + modernize it and update the system.
 
 New Games
 ---------------------------------
