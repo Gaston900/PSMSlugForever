@@ -59,7 +59,7 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_HIDE_FOLDERS,				nullptr,        OPTION_STRING, nullptr },
 	{ MUIOPTION_SHOW_FOLDER_SECTION,		"1",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_SHOW_TABS,					"1",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_HIDE_TABS,					"",         	OPTION_STRING, nullptr },
+	{ MUIOPTION_HIDE_TABS,					"title, scores, howto, select, versus, boss, end, gameover, logo, artpreview, flyer, cabinet, marquee, cpanel, pcb",         	OPTION_STRING, nullptr },
 	{ MUIOPTION_HISTORY_TAB,				"0",        	OPTION_INTEGER, nullptr },
 	{ MUIOPTION_SORT_COLUMN,				"0",        	OPTION_INTEGER, nullptr },
 	{ MUIOPTION_SORT_REVERSED,				"0",        	OPTION_BOOLEAN, nullptr },
@@ -101,27 +101,27 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_SCREENSHOT_BORDER_COLOR,	"187,0,0",    	OPTION_INTEGER, nullptr },
 
 	{ nullptr,								nullptr,       	OPTION_HEADER, "SEARCH PATH OPTIONS" },
-	{ MUIOPTION_ARTWORK_DIRECTORY,			"artpreview", 	OPTION_STRING, nullptr },
-	{ MUIOPTION_AUDIO_DIRECTORY,			"audio",    	OPTION_STRING, nullptr },
-	{ MUIOPTION_BOSSES_DIRECTORY,			"bosses",   	OPTION_STRING, nullptr },
-	{ MUIOPTION_CABINET_DIRECTORY,			"cabinets", 	OPTION_STRING, nullptr },
-	{ MUIOPTION_CPANEL_DIRECTORY,			"cpanel",   	OPTION_STRING, nullptr },
-	{ MUIOPTION_DATS_DIRECTORY,				"dats",    	 	OPTION_STRING, nullptr },
-	{ MUIOPTION_ENDS_DIRECTORY,				"ends",     	OPTION_STRING, nullptr },
-	{ MUIOPTION_FLYER_DIRECTORY,			"flyers",   	OPTION_STRING, nullptr },
-	{ MUIOPTION_FOLDER_DIRECTORY,			"folders",  	OPTION_STRING, nullptr },
-	{ MUIOPTION_GAMEOVER_DIRECTORY,			"gameover", 	OPTION_STRING, nullptr },
-	{ MUIOPTION_GUI_DIRECTORY,				"gui",      	OPTION_STRING, nullptr },
-	{ MUIOPTION_HOWTO_DIRECTORY,			"howto",    	OPTION_STRING, nullptr },
-	{ MUIOPTION_ICONS_DIRECTORY,			"icons",    	OPTION_STRING, nullptr },
-	{ MUIOPTION_LOGO_DIRECTORY,				"logo",     	OPTION_STRING, nullptr },
-	{ MUIOPTION_MANUALS_DIRECTORY,          "manuals",      OPTION_STRING, nullptr },
-	{ MUIOPTION_MARQUEE_DIRECTORY,			"marquees", 	OPTION_STRING, nullptr },
-	{ MUIOPTION_PCB_DIRECTORY,				"pcb",      	OPTION_STRING, nullptr },
-	{ MUIOPTION_SCORES_DIRECTORY,			"scores",   	OPTION_STRING, nullptr },
-	{ MUIOPTION_SELECT_DIRECTORY,			"select",   	OPTION_STRING, nullptr },
-	{ MUIOPTION_TITLE_DIRECTORY,			"titles",   	OPTION_STRING, nullptr },
-	{ MUIOPTION_VERSUS_DIRECTORY,			"versus",   	OPTION_STRING, nullptr },
+	{ MUIOPTION_ARTWORK_DIRECTORY,			"support/artpreview", 	OPTION_STRING, nullptr },
+	{ MUIOPTION_AUDIO_DIRECTORY,			"audio",    	        OPTION_STRING, nullptr },
+	{ MUIOPTION_BOSSES_DIRECTORY,			"support/bosses",   	OPTION_STRING, nullptr },
+	{ MUIOPTION_CABINET_DIRECTORY,			"support/cabinets", 	OPTION_STRING, nullptr },
+	{ MUIOPTION_CPANEL_DIRECTORY,			"support/cpanel",   	OPTION_STRING, nullptr },
+	{ MUIOPTION_DATS_DIRECTORY,				"support/dats",    	 	OPTION_STRING, nullptr },
+	{ MUIOPTION_ENDS_DIRECTORY,				"support/ends",     	OPTION_STRING, nullptr },
+	{ MUIOPTION_FLYER_DIRECTORY,			"support/flyers",   	OPTION_STRING, nullptr },
+	{ MUIOPTION_FOLDER_DIRECTORY,			"config/folders",       OPTION_STRING, nullptr },
+	{ MUIOPTION_GAMEOVER_DIRECTORY,			"support/gameover", 	OPTION_STRING, nullptr },
+	{ MUIOPTION_GUI_DIRECTORY,				"config/gui",           OPTION_STRING, nullptr },
+	{ MUIOPTION_HOWTO_DIRECTORY,			"support/howto",    	OPTION_STRING, nullptr },
+	{ MUIOPTION_ICONS_DIRECTORY,			"support/icons",    	OPTION_STRING, nullptr },
+	{ MUIOPTION_LOGO_DIRECTORY,				"support/logo",     	OPTION_STRING, nullptr },
+	{ MUIOPTION_MANUALS_DIRECTORY,          "support/manuals",      OPTION_STRING, nullptr },
+	{ MUIOPTION_MARQUEE_DIRECTORY,			"support/marquees", 	OPTION_STRING, nullptr },
+	{ MUIOPTION_PCB_DIRECTORY,				"support/pcb",      	OPTION_STRING, nullptr },
+	{ MUIOPTION_SCORES_DIRECTORY,			"support/scores",   	OPTION_STRING, nullptr },
+	{ MUIOPTION_SELECT_DIRECTORY,			"support/select",   	OPTION_STRING, nullptr },
+	{ MUIOPTION_TITLE_DIRECTORY,			"support/titles",   	OPTION_STRING, nullptr },
+	{ MUIOPTION_VERSUS_DIRECTORY,			"support/versus",   	OPTION_STRING, nullptr },
 
 	{ nullptr,								nullptr,        OPTION_HEADER, "NAVIGATION JOYSTICK CODES" },
 	{ MUIOPTION_UI_JOY_UP,					"1,1,1,1",  	OPTION_STRING, nullptr },
@@ -203,7 +203,7 @@ windows_options & MameUIGlobal(void)
 void OptionsInit(void)
 {
 	// setup our INI folder
-	SetIniDir("ini");
+	SetIniDir("config/ini");
 	// now load the options and interface settings
 	LoadOptionsAndInterface();
 	// setup directory for datafiles in the Internal UI

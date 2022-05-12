@@ -98,7 +98,7 @@ const options_entry osd_options::s_option_entries[] =
 
 #if USE_OPENGL
 	{ nullptr,                                nullptr,          OPTION_HEADER,    "OpenGL-SPECIFIC OPTIONS" },
-	{ OSDOPTION_GLSLPATH,                     "glsl",           OPTION_STRING,    "path to glsl shader files" },
+	{ OSDOPTION_GLSLPATH,                     "config/glsl",    OPTION_STRING,    "path to glsl shader files" },
 	{ OSDOPTION_GL_FORCEPOW2TEXTURE,          "0",              OPTION_BOOLEAN,   "force power-of-two texture sizes (default no)" },
 	{ OSDOPTION_GL_NOTEXTURERECT,             "0",              OPTION_BOOLEAN,   "don't use OpenGL GL_ARB_texture_rectangle (default on)" },
 	{ OSDOPTION_GL_VBO,                       "1",              OPTION_BOOLEAN,   "enable OpenGL VBO if available (default on)" },
@@ -155,7 +155,7 @@ const options_entry osd_options::s_option_entries[] =
 #endif
 
 	{ nullptr,                                nullptr,           OPTION_HEADER, "BGFX POST-PROCESSING OPTIONS" },
-	{ OSDOPTION_BGFX_PATH,                    "bgfx",            OPTION_STRING, "path to BGFX-related files" },
+	{ OSDOPTION_BGFX_PATH,                    "config/bgfx",            OPTION_STRING, "path to BGFX-related files" },
 	{ OSDOPTION_BGFX_BACKEND,                 "auto",            OPTION_STRING, "BGFX backend to use (d3d9, d3d11, metal, opengl, gles)" },
 	{ OSDOPTION_BGFX_DEBUG,                   "0",               OPTION_BOOLEAN, "enable BGFX debugging statistics" },
 	{ OSDOPTION_BGFX_SCREEN_CHAINS,           "default",         OPTION_STRING, "comma-delimited list of screen chain JSON names, colon-delimited per-window" },

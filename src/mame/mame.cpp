@@ -10,8 +10,8 @@
 
 #include "emu.h"
 
-#define APPNAME                 "PSMAME PLUS (METAL SLUG FOREVER SPECIAL EDITION FINAL)"
-#define APPNAME_LOWER           "PSMAME PLUS (METAL SLUG FOREVER SPECIAL EDITION FINAL)"
+#define APPNAME                 "PSMame Plus (Metal Slug Forever Special Edition Final)"
+#define APPNAME_LOWER           "PSMame Plus (Metal Slug Forever Special Edition Final)"
 #define CONFIGNAME              "mame"
 #define COPYRIGHT               "Copyright Nicola Salmoria\nand the MAME team\nhttp://mamedev.org"
 #define COPYRIGHT_INFO          "Copyright Nicola Salmoria and the MAME team"
