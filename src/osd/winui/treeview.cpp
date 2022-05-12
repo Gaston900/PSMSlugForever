@@ -1072,7 +1072,7 @@ static void LoadExternalFolders(int parent_index, const char *fname, int id)
 
 	while (fgets(readbuf, 256, f))
 	{
-//		do we have [...] ?
+		//do we have [...] ?
 		if (readbuf[0] == '[')
 		{
 			char *p = strchr(readbuf, ']');
@@ -1083,7 +1083,7 @@ static void LoadExternalFolders(int parent_index, const char *fname, int id)
 			*p = '\0';
 			name = &readbuf[1];
 
-//			is it [FOLDER_SETTINGS]?
+			//is it [FOLDER_SETTINGS]?
 			if (strcmp(name, "FOLDER_SETTINGS") == 0)
 			{
 				current_id = -1;
@@ -1091,7 +1091,7 @@ static void LoadExternalFolders(int parent_index, const char *fname, int id)
 			}
 			else
 			{
-//				 is it [ROOT_FOLDER]?
+				//is it [ROOT_FOLDER]?
 				if (!strcmp(name, "ROOT_FOLDER"))
 				{
 					current_id = lpFolder->m_nFolderId;
@@ -1107,7 +1107,7 @@ static void LoadExternalFolders(int parent_index, const char *fname, int id)
 		}
 		else if (current_id != -1)
 		{
-//			string on a line by itself -- game name
+			//string on a line by itself -- game name
 			name = strtok(readbuf, " \t\r\n");
 
 			if (name == NULL)
@@ -1145,8 +1145,8 @@ static void SaveExternalFolders(int parent_index, const char *fname)
 	fprintf(f, "RootFolderIcon custom\n");
 	fprintf(f, "SubFolderIcon custom\n");
 
-//  need to loop over all our TREEFOLDERs--first the root one, then each child.
-//	start with the root 
+	//need to loop over all our TREEFOLDERs--first the root one, then each child.
+	//start with the root
 	folder_data = lpFolder;
 	fprintf(f, "\n[ROOT_FOLDER]\n");
 
@@ -1156,7 +1156,7 @@ static void SaveExternalFolders(int parent_index, const char *fname)
 			fprintf(f, "%s\n", GetDriverGameName(i));
 	}
 
-//	look through the custom folders for ones with our root as parent
+	//look through the custom folders for ones with our root as parent
 	for (int jj = 0; jj < numFolders; jj++)
 	{
 		folder_data = treeFolders[jj];
