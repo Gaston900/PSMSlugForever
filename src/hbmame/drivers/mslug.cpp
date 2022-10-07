@@ -278,15 +278,7 @@ ROM_START( mslugla01 )
 
 	NEO_SFIX_128K( "201.s1", CRC(2f55958d) SHA1(550b53628daec9f1e1e11a398854092d90f9505a) )
 
-	ROM_REGION16_BE( 0x20000, "mainbios", 0 )
-	ROM_LOAD16_WORD_SWAP( "uni-bios_4_0.rom", 0x00000, 0x20000, CRC(a7aab458) SHA1(938a0bda7d9a357240718c2cec319878d36b8f72) )
-
-	ROM_REGION( 0x20000, "audiobios", 0 )
-	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) )
-
-	ROM_REGION( 0x30000, "audiocpu", 0 )
-	ROM_LOAD( "201.m1", 0x00000, 0x20000, CRC(c28b3253) SHA1(fd75bd15aed30266a8b3775f276f997af57d1c06) )
-	ROM_RELOAD(     0x10000, 0x20000 )
+	NEO_BIOS_AUDIO_128K( "201.m1", CRC(c28b3253) SHA1(fd75bd15aed30266a8b3775f276f997af57d1c06) )
 
 	ROM_REGION( 0x800000, "ymsnd", 0 )
 	ROM_LOAD( "201.v1", 0x000000, 0x400000, CRC(23d22ed1) SHA1(cd076928468ad6bcc5f19f88cb843ecb5e660681) )
@@ -310,15 +302,7 @@ ROM_START( mslugrmxe0s01 )
 
 	NEO_SFIX_128K( "201.s1", CRC(2f55958d) SHA1(550b53628daec9f1e1e11a398854092d90f9505a) )
 
-	ROM_REGION16_BE( 0x20000, "mainbios", 0 )
-	ROM_LOAD16_WORD_SWAP( "uni-bios_4_0.rom", 0x00000, 0x20000, CRC(a7aab458) SHA1(938a0bda7d9a357240718c2cec319878d36b8f72) )
-
-	ROM_REGION( 0x20000, "audiobios", 0 )
-	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) )
-
-	ROM_REGION( 0x30000, "audiocpu", 0 )
-	ROM_LOAD( "201.m1", 0x00000, 0x20000, CRC(c28b3253) SHA1(fd75bd15aed30266a8b3775f276f997af57d1c06) )
-	ROM_RELOAD(     0x10000, 0x20000 )
+	NEO_BIOS_AUDIO_128K( "201.m1", CRC(c28b3253) SHA1(fd75bd15aed30266a8b3775f276f997af57d1c06) )
 
 	ROM_REGION( 0x800000, "ymsnd", 0 )
 	ROM_LOAD( "201.v1", 0x000000, 0x400000, CRC(23d22ed1) SHA1(cd076928468ad6bcc5f19f88cb843ecb5e660681) )
@@ -332,6 +316,7 @@ ROM_START( mslugrmxe0s01 )
 ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
+// Universe Bios v4.0 Boot System
 // Metal Slug
 GAME( 2016, mslughacks01,      mslug,    neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "DDJ",           "Metal Slug (Change Weapon 2016-03-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, mslughacks02,      mslug,    neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "DDJ",           "Metal Slug (Jump In Mid Air 2017-08-24)", MACHINE_SUPPORTS_SAVE )
@@ -360,7 +345,6 @@ GAME( 1996, msluge,            mslug,    neogeo_noslot, neogeo, neogeo_state,   
 ********************************************************************************************/
 
 // Revised Remix Standard Edition
-// Universe Bios v4.0 boot system
 GAME( 2021, mslugla01,         mslug,    neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Team Remix (Gaston90, Ydmis And I love Nimes)",                 "Metal Slug (Multi-Function Version 2018-04-30)(Revised Remix Standard Edition 2021-12-31)", MACHINE_SUPPORTS_SAVE )
 
 // Extreme MegaMods Edition

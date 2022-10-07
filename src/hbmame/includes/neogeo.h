@@ -470,7 +470,7 @@ INPUT_PORTS_EXTERN(dualbios);
 	\
 	NEOGEO_UNIBIOS(16) \
 	NEOGEO_UNIBIOS_1_2_AND_OLDER(16) \
-	ROM_DEFAULT_BIOS("euro")
+	ROM_DEFAULT_BIOS("unibios40")
 
 
 #define NEO_BIOS_AUDIO_64K(name, hash) \
