@@ -383,10 +383,10 @@ ROM_START( mslug4hacks14 ) //mslug41v2
 	ROM_LOAD16_BYTE( "263.c6", 0x2000001, 0x800000, CRC(5c8ba116) SHA1(6034db09c8706d4ddbcefc053efbc47a0953eb92) )
 ROM_END
 
-ROM_START( mslug4hacks15 ) //mslug4lw Final Version // [Roms corrected by Gaston90]
+ROM_START( mslug4hacks15 ) //mslug4lwq [Roms corrected by Gaston90]
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	//ROM_LOAD16_WORD_SWAP( "263_hacks05.p1", 0x000000, 0x100000, CRC(ad713169) SHA1(51c10dfa1b8fc3b0e7850c71920091dbd91d1ba5) ) //CRC this roms has an error command START + D
-	ROM_LOAD16_WORD_SWAP( "263_hacks15.p1", 0x000000, 0x100000, CRC(9ebe335e) SHA1(7af10e13b84494393c0e32d01e881060236724db) )
+	//ROM_LOAD16_WORD_SWAP( "263_hacks15.p1", 0x000000, 0x100000, CRC(9ebe335e) SHA1(7af10e13b84494393c0e32d01e881060236724db) ) //CRC this roms has an error command START + D
+	ROM_LOAD16_WORD_SWAP( "263_hacks15.p1", 0x000000, 0x100000, CRC(17ff4563) SHA1(8bd00630233d4256522a719b8d958fe2b903378e) )
 	ROM_LOAD16_WORD_SWAP( "263_hacks05.p2", 0x100000, 0x800000, CRC(427eed0b) SHA1(6062f783d63748ec9fccad414d3c0a830295aad8) )
 
 	NEO_SFIX_128K( "263.s1", CRC(a9446774) SHA1(c5a309fd8ee6d6750a15c82e710218a3755e38b2) )
@@ -480,7 +480,7 @@ ROM_END
 
 ROM_START( mslug4hacks19 ) //mslug4ae, mslug4a // [Roms corrected by Gaston90]
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_hacks19.p1", 0x000000, 0x100000, CRC(0f2b0fc2) SHA1(8f12a7e703f331ad2e80ac2d2d9c5e7645066468) )
+	ROM_LOAD16_WORD_SWAP( "263_hacks19.p1", 0x000000, 0x100000, CRC(e3c3bc66) SHA1(07b0d9c80cd5f2672dee3407257bb76430e7945c) )
 	ROM_LOAD16_WORD_SWAP( "263_hacks19.p2", 0x100000, 0x400000, CRC(87dc01b9) SHA1(ddad7d72e53e0c6273384119f96b3b7f324ca237) )
 
 	NEO_SFIX_MT_512K
@@ -546,7 +546,7 @@ ROM_END
 
 ROM_START( mslug4hacks22 ) //mslug4q // [Roms corrected by Gaston90]
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_hacks22.p1", 0x000000, 0x100000, CRC(461579ae) SHA1(fe7da7ec3e4ee2e0b4281ea76a130a7fe3cac549) )
+	ROM_LOAD16_WORD_SWAP( "263_hacks22.p1", 0x000000, 0x100000, CRC(aafdca0a) SHA1(42551158ab570e7596aed11f183e948d3f990d44) )
 	ROM_LOAD16_WORD_SWAP( "263_hacks22.p2", 0x100000, 0x400000, CRC(a4d2e871) SHA1(646ac0117a832f1642cffe17478b94635cf294a2) )
 
 	NEO_SFIX_512K( "263d.s1", CRC(1eaa05e0) SHA1(73a7e158c3c4fa602e17dcb517190fd91a9dbab8) )
@@ -1226,7 +1226,15 @@ GAME( 2002, mslug4dd,           mslug4,   neogeo_noslot, neogeo, neogeo_state, i
   0000FBF0 //[B9 4E 0E 00 E0 0A] 00 46 00 02 0F 00 2D 12 50 E4
 ********************************************************************************************/
 /***************************************************************************************
-* This version of the Metal Slug 4 20th Anniversary Edition, is optimized to work correctly 
+* I have been working very hard to optimize and adapt it with the emulator the Mslug 4 
+  roms version Last Bullet Removal Of Body Armor 2020-09-16, which caused the emulator to freeze completely when 
+  players quickly press the START + D command. I have managed to disable it this command so 
+  that it does not cause this fatal accident case or one's discomfort when playing the game.
+  Command disabled in file 256.p1:
+  00001E50 //92 80 7C 3B 00 00 D2 DB B9 4E 00 00 [F0 FB] B9 4E
+********************************************************************************************/
+/***************************************************************************************
+* This version of the Metal Slug 4 20th Anniversary Edition And Metal Slug 4 Longest Fight, is optimized to work correctly 
   with the emulator by disabling a command that caused immortality to all the enemies 
   that are inside the screens, thus making the game unusable. The modification is 
   generated in the .P1 file: 

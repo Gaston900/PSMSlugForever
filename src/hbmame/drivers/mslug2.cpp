@@ -891,7 +891,7 @@ ROM_END
 GAME( 2014, mslug2hacks01,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Enemies Resetting Version 2014-09-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug2hacks02,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Generation 1V2 2019-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslug2hacks03,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "DDJ",             "Metal Slug 2 (Stage Select 2016-10-19)", MACHINE_SUPPORTS_SAVE )
-GAME( 2006, mslug2hacks04,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Shyma.X",         "Metal Slug 2 (Traduction French 2004 Version)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslug2hacks04,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "Shyma.X",         "Metal Slug 2 (Traduction French Version 2004)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug2hacks05,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "System11",        "Metal Slug 2 (Turbo) ", MACHINE_SUPPORTS_SAVE )
 GAME( 2008, mslug2hacks06,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Hybrid bullets version 2008-12-04)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 GAME( 2017, mslug2hacks07,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "DDJ",             "Metal Slug 2 (Jump In Mid Air 2017-08-24)", MACHINE_SUPPORTS_SAVE )
