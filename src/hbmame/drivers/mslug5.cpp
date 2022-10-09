@@ -669,6 +669,30 @@ ROM_START( mslug5hacks23 ) //mslug5ki
 	ROM_LOAD16_BYTE( "268d.c8", 0x3000001, 0x800000, CRC(c0d5bc20) SHA1(B5D0D81D5CC624538B0651C568295E578A1330D1) )
 ROM_END
 
+ROM_START( mslug5hacks24 ) //mslug5ext
+	ROM_REGION( 0x600000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "268_hacks24.p1", 0x000000, 0x600000, CRC(7ff5364b) SHA1(698373c6c3fb37fe20c4194c5c51251f6a251c18) )
+
+	NEO_SFIX_128K( "268_hacks02.s1", CRC(64952683) SHA1(88ec728c2fe18a11fdd218bed5d73bb3affe2ec1) )
+
+	NEO_BIOS_AUDIO_128K( "268nd.m1", CRC(6FA01C9A) SHA1(3DAB7593BFCCE318D22EC3DF672EE3B4AB73DCF5) )
+
+	ROM_REGION( 0x1000000, "ymsnd", 0 )
+	ROM_LOAD( "268_hacks24.v1", 0x000000, 0x800000, CRC(14848c5c) SHA1(8f67daa54738f8b217cce1f1d0a7872fd06d91b6) )
+	ROM_LOAD( "268_hacks03.v2", 0x800000, 0x800000, CRC(696cce3b) SHA1(538d4a25befa4ffd25a48df97380469c13980f7a) )
+
+	ROM_REGION( 0x4000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "268d.c1", 0x0000000, 0x800000, CRC(969c0d62) SHA1(DE3C5CFA980CCA2FAB0416AC0D292948B5D4C9C3) )
+	ROM_LOAD16_BYTE( "268d.c2", 0x0000001, 0x800000, CRC(c69ae867) SHA1(3198EE5C7C2C7563B49EBD9F7BA95D9B0B303F6C) )
+	ROM_LOAD16_BYTE( "268d.c3", 0x1000000, 0x800000, CRC(d7beaeaf) SHA1(99443EA4C1BAB45F1977A390EB7E1A0163915110) )
+	ROM_LOAD16_BYTE( "268nd.c4", 0x1000001, 0x800000, CRC(E1B1131B) SHA1(68A36D336582069E79AD481638D92F57C4CD6523) )
+	ROM_LOAD16_BYTE( "268d.c5", 0x2000000, 0x800000, CRC(2fa1a5ad) SHA1(4AE15D29BA979601598EDDF8905072FE1D9E0A98) )
+	ROM_LOAD16_BYTE( "268d.c6", 0x2000001, 0x800000, CRC(6de89589) SHA1(86A6C036BF51AF516FEA83A30874026EC1586A83) )
+	ROM_LOAD16_BYTE( "268d.c7", 0x3000000, 0x800000, CRC(97bd0c0a) SHA1(30F3280FE527098ECF46541CC645A59B366105EA) )
+	ROM_LOAD16_BYTE( "268d.c8", 0x3000001, 0x800000, CRC(c0d5bc20) SHA1(B5D0D81D5CC624538B0651C568295E578A1330D1) )
+ROM_END
+
+
 /********
  Bootleg
 **********/
@@ -1277,6 +1301,7 @@ ROM_START( mslug5rmxe5s01 )
 ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
+// Universe Bios v4.0 Boot System
 // Metal Slug 5
 GAME( 2016, mslug5hacks01,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_mslug5hb, ROT0, "DDJ",                "Metal Slug 5 (Change Weapons 2016-02-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug5hacks02,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_neogeo,   ROT0, "hack",               "Metal Slug 5 (Hybrid Bullets Version 2020-09-14)", MACHINE_SUPPORTS_SAVE )
@@ -1301,6 +1326,7 @@ GAME( 2015, mslug5hacks20,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, i
 GAME( 2018, mslug5hacks21,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_mslug5hb, ROT0, "hack",               "Metal Slug 5 (Easy Mode Difficulty 2018-11-16)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hacks22,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_neogeo,   ROT0, "hack",               "Metal Slug 5 (Early Summer Starry Sky 2022-08-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hacks23,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_neogeo,   ROT0, "hack",               "Metal Slug 5 (Komorebi 2022-08-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslug5hacks24,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_neogeo,   ROT0, "WillNie And & AKS",  "Metal Slug 5 (Extender Ver. 2022 2022-10-02)", MACHINE_SUPPORTS_SAVE )
 
 // Bootleg
 GAME( 2003, ms5boot,        mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_mslug5hb, ROT0, "bootleg", "Metal Slug 5 (Bootleg, Set 2)", MACHINE_SUPPORTS_SAVE )
@@ -1338,7 +1364,6 @@ GAME( 2010, neopang,        mslughw,  neogeo_noslot, neogeo,   neogeo_state, ini
 ********************************************************************************************/
 
 // Revised Remix Standard Edition
-// Universe Bios v4.0 boot system
 GAME( 2021, mslug5la01,         mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_s1945p,     ROT0, "Team Remix (Gaston90, YouGuDuoLa, C.B, I love Nimes And remikare)",                          "Metal Slug 5 (Enemy Soldiers Enhanced Multi-Function Version 2018-07-31)(Revised Remix Standard Edition 2020-11-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug5lb01,         mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_s1945p,     ROT0, "Team Remix (Gaston90, XiaShuiDaoMeiRenYu, C.B, I love Nimes And remikare)",                  "Metal Slug 5 (Enemies Resetting Multi-Function Version 2019-01-01)(Revised Remix Standard Edition 2020-11-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug5lc01,         mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_s1945p,     ROT0, "Team Remix (Gaston90, XiaShuiDaoMeiRenYu, C.B And remikare)",                                "Metal Slug 5 (Enemies Resetting Version 2019-07-28)(Revised Hybrid bullets Remix Standard Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )

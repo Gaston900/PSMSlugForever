@@ -18,6 +18,7 @@ New Games
 - [mslug5hacks05]          Metal Slug 5 (Remake Final Fightcade2 Version 2021-11-03)
 - [mslug5hacks22]          Metal Slug 5 (Early Summer Starry Sky 2022-08-10)
 - [mslug5hacks23]          Metal Slug 5 (Komorebi 2022-08-10)
+- [mslug5hacks24]          Metal Slug 5 (Extender Ver. 2022 2022-10-02)
 - [mslugxhacks20]          Metal Slug X (Early Summer Starry Sky 2022-08-10)
 - [mslughw]                Metal Slug HomeBrew (Mothership Armageddon Easter Egg 2021-06-13)
 - [neopang]                Metal Slug HomeBrew (Neo Pang)
