@@ -3410,13 +3410,23 @@ GAME( 2019, mslug6hacks05,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  
   Random Enemies Resetting Version # 2
   Random Enemies Resetting Version # 3 
   
-  Crashes for killing a cursed crab has settled with new command without replacing ID.
-  0311BB0// 30 00 C4 02 00 00 01 00 78 00 01 00 00 00 0E 09
+  030F360//[CC 04 2F 01 00 00 00 00 00 00 01 00]14 08 00 0C [Level 4-2]
+  030F360// 74 03 5C 00 84 03 00 00 00 00 01 00 14 08 00 0C [Replace To Correct]
+
+  Crashes for killing a cursed small crab has settled with new command without replacing ID.
+  0311BB0// 30 00 C4 02 00 00 01 00 78 00 01 00 00 00 0E 09 [Level 4-9]
   0311BB0// 30 00 C4 02 00 00 00 00 00 00 00 00 00 00 0E 09 [Replace To Correct]
   
   0343A40// A0 8D 10 08 0B 01 E0 FF 38 00 A4 02 00 00 78 00 68 00
   0343A40// A0 8D 10 08 0B 01 E0 FF 38 00 A4 02 00 00 00 00 00 00 [Replace To Correct]
+  
+  Enemy spawns that are floating in the air ship when destroyed crashes immediately, fixed replaced with piranha ID.
+  03894A0// 2C 01 14 08 02 07 40 01 [60 00 A0 00 40 00 2C 00
+  03894B0// FA 00 18 01 00 00] 14 08 02 07 40 01 30 00 EC 01
 
+  03894A0// 2C 01 14 08 02 07 40 01 [30 00 EC 01 01 FF FF 00 [Replace To Correct]
+  03894B0// 40 00 4A 00 2C 01] 14 08 02 07 40 01 30 00 EC 01 
+  
 ********************************************************************************************/
 /***************************************************************************************
 * 2021-09-17 "Random Enemies Resetting Version"
