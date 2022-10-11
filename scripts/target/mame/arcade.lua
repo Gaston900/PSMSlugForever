@@ -79,6 +79,7 @@ files {
 	MAME_DIR .. "src/hbmame/drivers/mslug4.cpp",
 	MAME_DIR .. "src/hbmame/drivers/mslug5.cpp",
 	MAME_DIR .. "src/hbmame/drivers/mslugx.cpp",
+	MAME_DIR .. "src/hbmame/drivers/homebrew.cpp",	
 	MAME_DIR .. "src/hbmame/video/neogeo.cpp",
 	MAME_DIR .. "src/hbmame/drivers/neogeo_noslot.cpp",
 	MAME_DIR .. "src/hbmame/video/neogeo_spr.cpp",

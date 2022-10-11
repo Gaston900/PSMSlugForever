@@ -1,4 +1,4 @@
-// Proyecto Shadows Mame Build Plus
+// Proyecto Shadows Mame Plus
 // copyright-holders:Gaston90
 
 #include "includes/neogeo.h"
