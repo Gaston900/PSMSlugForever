@@ -1,7 +1,7 @@
 ﻿What's new in PSMAME PLUS
 ====================
-2022-10-07
-- Neogeo: Made Universal Bios 4 The Default, To Roperly Catch Cpu Exceptions. By Robert
+2022-10-XX
+- Neogeo: Made Universal Bios 4 The Default, To Roperly Catch Cpu Exceptions. By HBMAME
 - Updated Roms Metal Slug 5 (5X 2022-06-06)
 - Updated Roms Metal Slug 5 (Extremely Simplified Edition 2022-08-20)
 - Updated Roms Metal Slug 5 (Stone Tortoise Edition 2022-08-13)
@@ -23,6 +23,7 @@ New Games
 - [mslugxhacks20]          Metal Slug X (Early Summer Starry Sky 2022-08-10)
 - [mslughw]                Metal Slug HomeBrew (Mothership Armageddon Easter Egg 2021-06-13)
 - [neopang]                Metal Slug HomeBrew (Neo Pang)
+
 
 
 
