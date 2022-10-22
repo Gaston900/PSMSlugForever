@@ -2,9 +2,54 @@
 ====================
 2022-10-XX
 - Neogeo: Made Universal Bios 4 The Default, To Roperly Catch Cpu Exceptions. By HBMAME
+- - It is a version that corrects the bug or crash All Roms Metal Slug 2, 3 And X 
+ (This is developed for The Remix Standard and Extreme MegaMods Edition versions.)
+- It has been rolled back, the Apocalyptic Time Ports hack roms version to the Enemies Resetting Version, 
+  the Extreme Remix version and the Standard Remix of Metal Slug 2.
+- Changed The Last Sprite Color Palette For MSLUG2/X Enemy Soldiers.
+- The Metal Slug X Extreme Space Edition hack roms has been modified again, 
+  now the enemies are no longer replaced as was the case in the previous versions, 
+  now new elements will be added that allow you to connect with the other levels.
+- The default values of the weapons have been restored, since there were some bugs 
+  with the laser weapon that does not work in the water levels that are very annoying in Metal Slug 3.
+- Some decrypted roms were fixed, adding the missing .s1 roms, in some they were corrected by correctly placing 
+  the .P1 and P2 roms in their respective places.
+- We are celebrating that from now on you will be able to play all the Metal Slug franchises at starting level 8.
+  For those players who like challenges, remastered standard hack roms of some enemy reset titles have been developed:
+  #Metal Slug (Multi-Function Version 2018-04-30)(Items Explosives Edition Remastering 2022-10-18)
+  #Metal Slug 2 Turbo (Enemies Resetting Version 2014-09-14)(Revised XR Improved Edition Remastering 2022-10-17)
+  #Metal Slug 2 Turbo (Enemies Resetting Version 2014-09-14)(Revised XR Multi-Function Remix Standard Edition Remastering 2022-10-17)
+  #Metal Slug 2 Turbo (Enemies Resetting Version 2014-09-14)(Revised XR Survival Version Remix Standard Edition Remastering 2022-10-17)
+  #Metal Slug 3 (Enemies Resetting #1 Version Remastering 2021-10-10)(Revised Multi-Function Edition 2021-11-18)
+  #Metal Slug 3 (Enemies Resetting #2 Version Remastering 2021-10-10)(Revised Multi-Function Edition 2021-11-18)
+  #Metal Slug 3 (Enemies Resetting #3 Version Remastering 2021-10-10)(Revised Multi-Function Edition 2021-11-18)
+  #Metal Slug 3 (Enemies Resetting #4 Version Remastering 2021-10-10)(Revised Multi-Function Edition 2021-11-18)
+  #Metal Slug 3 (Enemies Resetting #5 Version Remastering 2021-10-10)(Revised Multi-Function Edition 2021-11-18)
+  #Metal Slug 3 (Enemies Resetting #6 Version Remastering 2021-10-10)(Revised Multi-Function Edition 2021-11-18)
+  #Metal Slug 3 (Enemies Resetting #7 Version Remastering 2021-10-10)(Revised Multi-Function Edition 2021-11-18)
+  #Metal Slug X (Unlimited Firepower 2R Survival Edition Remastering 2022-10-12)
+  #Metal Slug X (Enemy Heavy Plate 2R Survival Edition Remastering 2022-10-12)
+  #Metal Slug X (Enemy Soldiers Remake Version 3 2R Survival Edition Remastering 2022-10-12)
+  #Metal Slug X (Allen O'Neil See You In Hell 1.1 2R Survival Edition Remastering 2022-10-12)
+  #Metal Slug X (Multi-Carrier 2R Survival Edition Remastering 2022-10-12)
+  #Metal Slug X (Level Reset Special 2R Survival Edition Remastering 2022-10-12)
+  #Metal Slug X (Enemy Soldiers Reset Version 2.7 2R Survival Remastering 2022-10-12)
+  #Metal Slug X (Unlimited Firepower 2R Extreme Space Edition Remastering 2022-10-12)
+  #Metal Slug X (Enemy Heavy Plate 2R Extreme Space Edition Remastering 2022-10-12)
+  #Metal Slug X (Enemy Soldiers Remake Version 3 2R Extreme Space Remastering 2022-10-12)
+  #Metal Slug X (Allen O'Neil See You In Hell 1.1 2R Extreme Space Remastering 2022-10-12)
+  #Metal Slug X (Multi-Carrier 2R Extreme Space Edition Remastering 2022-10-12)
+  #Metal Slug X (Extreme Space 2R Edition Remastering 2022-10-12)
+  #Metal Slug X (Enemy Soldiers Reset Version 2.7 Extreme Space 2R Remastering 2022-10-12)
+  
+- Updated Roms Metal Slug X (Survival Edition 2022-07-11)
 - Updated Roms Metal Slug 5 (5X 2022-06-06)
 - Updated Roms Metal Slug 5 (Extremely Simplified Edition 2022-08-20)
 - Updated Roms Metal Slug 5 (Stone Tortoise Edition 2022-08-13)
+- Added Latest Decrypted Roms:
+  #Metal Slug 3 (Non-encrypted P, decrypted C)
+  #Metal Slug 4 (Custom Decrypted C)
+  #Metal Slug 4 (Bootleg)
 
 New Games
 ---------------------------------
@@ -23,7 +68,6 @@ New Games
 - [mslugxhacks20]          Metal Slug X (Early Summer Starry Sky 2022-08-10)
 - [mslughw]                Metal Slug HomeBrew (Mothership Armageddon Easter Egg 2021-06-13)
 - [neopang]                Metal Slug HomeBrew (Neo Pang)
-
 
 
 
