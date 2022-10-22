@@ -309,7 +309,7 @@ ROM_END
 
 ROM_START( mslug4hacks11 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_hacks11.p1", 0x000000, 0x100000, CRC(B846b1d1) SHA1(C03b3f43dac6722bea23d3007393dd9ccde3958e) )
+	ROM_LOAD16_WORD_SWAP( "263_hacks11.p1", 0x000000, 0x100000, CRC(9a524c97) SHA1(6c2dd09f73e41a18a7e1a3290756d7fcfc8ec6b9) )
 	ROM_LOAD16_WORD_SWAP( "263.p2", 0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
     ROM_FILL(0x1741,1,0x78)
 
@@ -984,7 +984,7 @@ GAME( 2020, mslug4hacks07,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  
 GAME( 2017, mslug4hacks08,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "hack",               "Metal Slug 4 (Multi-Function Version 2017-12-25)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug4hacks09,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "hack",               "Metal Slug 4 (Children's Version 2021-06-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2010, mslug4hacks10,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "DDJ",                "Metal Slug 4 (Change Weapon 2016-03-10)", MACHINE_SUPPORTS_SAVE )
-//GAME( 2017, mslug4hacks11,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "DDJ",                "Metal Slug 4 (Change Zombie 2017-05-25)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) //It is Crashea when one changes character at the beginning of the final mission.
+GAME( 2017, mslug4hacks11,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "DDJ And Gaston90",   "Metal Slug 4 (Change Zombie Fix 2017-05-25)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) //It is Crashea when one changes character at the beginning of the final mission.
 GAME( 2017, mslug4hacks12,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "DDJ",                "Metal Slug 4 (Jump In Mid Air 2017-08-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslug4hacks13,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "DDJ",                "Metal Slug 4 (War Chariot 2016-02-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug4hacks14,      mslug4,   neogeo_noslot, neogeo, neogeo_state,  init_mslug4hb,  ROT0, "hack",               "Metal Slug 4 (Generation 1V2 2019-05-11)", MACHINE_SUPPORTS_SAVE )

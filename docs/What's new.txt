@@ -1,9 +1,11 @@
 ﻿What's new in PSMAME PLUS
 ====================
 2022-10-XX
+
 - Neogeo: Made Universal Bios 4 The Default, To Roperly Catch Cpu Exceptions. By HBMAME
-- - It is a version that corrects the bug or crash All Roms Metal Slug 2, 3 And X 
+- It is a version that corrects the bug or crash All Roms Metal Slug 2, 3 And X 
  (This is developed for The Remix Standard and Extreme MegaMods Edition versions.)
+- Fixed Metal Slug 4 Change Zombie hack roms, now skip starting level 6-1 to 6-2.
 - It has been rolled back, the Apocalyptic Time Ports hack roms version to the Enemies Resetting Version, 
   the Extreme Remix version and the Standard Remix of Metal Slug 2.
 - Changed The Last Sprite Color Palette For MSLUG2/X Enemy Soldiers.
