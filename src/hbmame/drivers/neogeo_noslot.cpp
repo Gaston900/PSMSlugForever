@@ -4,7 +4,6 @@
 
 #include "includes/neogeo.h"
 
-
 /*************************************
  *
  *  Official sets
@@ -109,6 +108,50 @@
 
 */
 
+#define MSLUG_MAINCPU \
+    ROM_FILL(0x1783E7,1,0x78)\
+	ROM_FILL(0x1783EB,1,0x12)\
+	ROM_FILL(0x1783E8,1,0x34)\
+	ROM_FILL(0x1783EE,1,0x24)
+
+#define MSLUG2_MAINCPU \
+    ROM_FILL(0x100D,1,0x78)\
+	ROM_FILL(0x1011,1,0x12)\
+	ROM_FILL(0x1013,1,0x34)\
+	ROM_FILL(0x100E,1,0x34)\
+	ROM_FILL(0x1014,1,0x34)
+
+#define MSLUG3H_MAINCPU \
+    ROM_FILL(0x2EA7,1,0x78)\
+	ROM_FILL(0x2EAE,1,0x12)\
+	ROM_FILL(0x2EAF,1,0x12)\
+	ROM_FILL(0x2EAB,1,0x34)\
+	ROM_FILL(0x2EA8,1,0x34)\
+	ROM_FILL(0x2EAD,1,0x24)
+
+#define MSLUG4_MAINCPU \
+    ROM_FILL(0x1741,1,0x78)\
+	ROM_FILL(0x1748,1,0x12)\
+	ROM_FILL(0x1749,1,0x12)\
+	ROM_FILL(0x1745,1,0x34)\
+	ROM_FILL(0x1742,1,0x34)\
+	ROM_FILL(0x1747,1,0x24)
+
+#define MSLUG5VC_MAINCPU \
+    ROM_FILL(0x2CD3,1,0x78)\
+	ROM_FILL(0x2CDA,1,0x12)\
+	ROM_FILL(0x2CDB,1,0x12)\
+	ROM_FILL(0x2CD7,1,0x34)\
+	ROM_FILL(0x2CD4,1,0x34)\
+	ROM_FILL(0x2CD9,1,0x24)
+
+#define MSLUGX_MAINCPU \
+    ROM_FILL(0x3185,1,0x78)\
+	ROM_FILL(0x3189,1,0x12)\
+	ROM_FILL(0x318D,1,0x12)\
+	ROM_FILL(0x318B,1,0x34)\
+	ROM_FILL(0x3186,1,0x34)\
+	ROM_FILL(0x318C,1,0x34)
 
 // Game specific input definitions
 
@@ -196,7 +239,6 @@ INPUT_PORTS_START( jockeygp )
 	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_UNKNOWN ) /* game freezes with this bit enabled */
 	PORT_BIT( 0x0400, IP_ACTIVE_LOW, IPT_UNKNOWN ) /* game freezes with this bit enabled */
 INPUT_PORTS_END
-
 
 
 /****************************************
@@ -3636,6 +3678,7 @@ ROM_START( mslug )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "201.p1", 0x100000, 0x100000, CRC(08d8daa5) SHA1(b888993dbb7e9f0a28a01d7d2e1da00ef9cf6f38) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
+    MSLUG_MAINCPU
 
 	NEO_SFIX_128K( "201.s1", CRC(2f55958d) SHA1(550b53628daec9f1e1e11a398854092d90f9505a) )
 
@@ -4911,7 +4954,7 @@ ROM_START( mslug2 ) /* MVS AND AES VERSION */
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241.p1",  0x000000, 0x100000, CRC(2a53c5da) SHA1(5a6aba482cac588a6c2c51179c95b487c6e11899) )
 	ROM_LOAD16_WORD_SWAP( "241.p2", 0x100000, 0x200000, CRC(38883f44) SHA1(fcf34b8c6e37774741542393b963635412484a27) )
-    ROM_FILL(0x100D,1,0x78)
+    MSLUG2_MAINCPU
 
 	NEO_SFIX_128K( "241.s1", CRC(f3d32f0f) SHA1(2dc38b7dfd3ff14f64d5c0733c510b6bb8c692d0) )
 
@@ -5269,7 +5312,7 @@ ROM_START( mslugx ) /* MVS AND AES VERSION */
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250.p1",  0x000000, 0x100000, CRC(81f1f60b) SHA1(4c19f2e9824e606178ac1c9d4b0516fbaa625035) )
 	ROM_LOAD16_WORD_SWAP( "250.p2", 0x100000, 0x400000, CRC(1fda2e12) SHA1(18aaa7a3ba8da99f78c430e9be69ccde04bc04d9) )
-    ROM_FILL(0x3185,1,0x78)
+    MSLUGX_MAINCPU
 
 	NEO_SFIX_128K( "250.s1", CRC(fb6f441d) SHA1(2cc392ecde5d5afb28ddbaa1030552b48571dcfb) )
 
@@ -5626,7 +5669,6 @@ ROM_START( mslug3 ) /* Original Version - Encrypted Code & GFX */ /* revision 20
 	ROM_LOAD16_WORD_SWAP( "neo-sma",    0x0c0000, 0x040000, CRC(9cd55736) SHA1(d6efb2b313127c2911d47d9324626b3f1e7c6ccb) )
 	ROM_LOAD16_WORD_SWAP( "256.p1", 0x100000, 0x400000, CRC(b07edfd5) SHA1(dcbd9e500bfae98d754e55cdbbbbf9401013f8ee) )
 	ROM_LOAD16_WORD_SWAP( "256.p2", 0x500000, 0x400000, CRC(6097c26b) SHA1(248ec29d21216f29dc6f5f3f0e1ad1601b3501b6) )
-    ROM_FILL(0x2EA7,1,0x78)
 
 	NEO_SFIX_MT_512K
 
@@ -5654,7 +5696,6 @@ ROM_START( mslug3a ) /* Original Version - Encrypted Code & GFX */ /* MVS VERSIO
 	ROM_LOAD16_WORD_SWAP( "white.neo-sma",    0x0c0000, 0x040000, CRC(c60d29b2) SHA1(1647260ccbda833b35005608ef1fdc82fba02f04) ) /* stored in the custom SMA chip, the SMA has a white colour marking */
 	ROM_LOAD16_WORD_SWAP( "256a.p1", 0x100000, 0x400000, CRC(a1177628) SHA1(4c4c379d9fc3a83265b7f32fbfce9d16b7d0f0fd) )
 	ROM_LOAD16_WORD_SWAP( "256a.p2", 0x500000, 0x400000, CRC(9b659826) SHA1(d6bd03cf61879217922c18db4d3bd77095c0fe19) )
-    ROM_FILL(0x2EA7,1,0x78)
 
 	ROM_Y_ZOOM
 
@@ -5688,7 +5729,7 @@ ROM_START( mslug3h ) /* Original Version - Encrypted GFX */ /* revision 2000.3.1
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256h.p1",  0x000000, 0x100000, CRC(9c42ca85) SHA1(7a8f77a89867b889295ae9b9dfd4ba28f02d234d) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2", 0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    ROM_FILL(0x2EA7,1,0x78)
+    MSLUG3H_MAINCPU
 
 	NEO_SFIX_MT_512K
 
@@ -5929,7 +5970,7 @@ ROM_START( mslug4 ) /* Original Version - Encrypted GFX */ /* MVS VERSION */
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263.p1",  0x000000, 0x100000, CRC(27e4def3) SHA1(a08785e8145981bb6b5332a3b2df7eb321253cca) )
 	ROM_LOAD16_WORD_SWAP( "263.p2", 0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-    ROM_FILL(0x1741,1,0x78)
+    MSLUG4_MAINCPU
 
 	NEO_SFIX_MT_512K
 
@@ -5952,7 +5993,7 @@ ROM_START( mslug4h ) /* Original Version - Encrypted GFX */ /* AES VERSION */
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263h.p1",  0x000000, 0x100000, CRC(c67f5c8d) SHA1(12af74964843f103520d9f0825069ea2f67eeb2f) )
 	ROM_LOAD16_WORD_SWAP( "263h.p2", 0x100000, 0x400000, CRC(bc3ec89e) SHA1(2cb0626bc4fa57e1d25f208e04532b570d87b3fb) )
-    ROM_FILL(0x1741,1,0x78)
+    MSLUG4_MAINCPU
 
 	NEO_SFIX_MT_512K
 
@@ -6101,7 +6142,7 @@ ROM_START( mslug5 ) /* Encrypted Set */ /* MVS VERSION */
 	ROM_REGION( 0x800000, "maincpu", 0 )
 	ROM_LOAD32_WORD_SWAP( "268.p1", 0x000000, 0x400000, CRC(d0466792) SHA1(880819933d997fab398f91061e9dbccb959ae8a1) )
 	ROM_LOAD32_WORD_SWAP( "268.p2", 0x000002, 0x400000, CRC(fbf6b61e) SHA1(9ec743d5988b5e3183f37f8edf45c72a8c0c893e) )
-    ROM_FILL(0x2CD3,1,0x78)
+    MSLUG5VC_MAINCPU
 
 	NEO_SFIX_MT_128K
 
@@ -6126,7 +6167,6 @@ ROM_START( mslug5h ) /* Encrypted Set */ /* AES release of the game but is also 
 	ROM_REGION( 0x800000, "maincpu", 0 )
 	ROM_LOAD32_WORD_SWAP( "268h.p1", 0x000000, 0x400000, CRC(3636690a) SHA1(e0da714b4bdc6efffe1250ded02ebddb3ab6d7b3) )
 	ROM_LOAD32_WORD_SWAP( "268h.p2", 0x000002, 0x400000, CRC(8dfc47a2) SHA1(27d618cfbd0107a4d2a836797e967b39d2eb4851) )
-    ROM_FILL(0x2CD3,1,0x78)
 
 	NEO_SFIX_MT_128K
 
@@ -6507,7 +6547,6 @@ ROM_START( ms5pcb ) /* Encrypted Set, JAMMA PCB */
 	ROM_REGION( 0x800000, "maincpu", 0 )
 	ROM_LOAD32_WORD_SWAP( "268.p1", 0x000000, 0x400000, CRC(d0466792) SHA1(880819933d997fab398f91061e9dbccb959ae8a1) )
 	ROM_LOAD32_WORD_SWAP( "268.p2", 0x000002, 0x400000, CRC(fbf6b61e) SHA1(9ec743d5988b5e3183f37f8edf45c72a8c0c893e) )
-    ROM_FILL(0x2CD3,1,0x78)
 
 	NEO_SFIX_MT_128K
 
@@ -6796,7 +6835,7 @@ ROM_START( mslug3b6 ) /* This "Metal Slug 6" is a hack/bootleg of Metal Slug 3, 
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "299-p1.bin", 0x000000, 0x200000, CRC(5f2fe228) SHA1(747775a2dfc0da87ad2ddd4f57ce5b2522f23fa5) )
 	ROM_LOAD16_WORD_SWAP( "299-p2.bin", 0x100000, 0x400000, CRC(193fa835) SHA1(fb1f26db7998b0bb6b1c8b92500c1596ec5dfc71) )
-    ROM_FILL(0x2EA7,1,0x78)
+    MSLUG3H_MAINCPU
 
 	NEO_SFIX_128K( "299-s1.bin", CRC(6f8b9635) SHA1(86b0c8c0ccac913c6192ed6a96c35d4e1a5e8061) )
 
@@ -6931,6 +6970,7 @@ ROM_START( ms4plus )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "ms4-p1p.bin", 0x000000, 0x100000, CRC(806a6e04) SHA1(df503772d607271ea51285154c9fd68e18b143ce) )
 	ROM_LOAD16_WORD_SWAP( "263.p2",  0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
+    MSLUG4_MAINCPU
 
 	NEO_SFIX_128K( "ms4-s1p.bin", CRC(07ff87ce) SHA1(96ddb439de2a26bf9869015d7fb19129d40f3fd9) )
 
@@ -7228,7 +7268,7 @@ ROM_START( ms5plus )
 	ROM_LOAD16_WORD_SWAP( "ms5-p1p.bin", 0x000000, 0x100000, CRC(106b276f) SHA1(0e840df95f3813145e5043573483c7610d2d3e68) )
 	ROM_LOAD16_WORD_SWAP( "ms5-p2p.bin", 0x100000, 0x200000, CRC(d6a458e8) SHA1(c0a8bdae06d62859fb6734766ccc190eb2a809a4) )
 	ROM_LOAD16_WORD_SWAP( "ms5-p3p.bin", 0x300000, 0x200000, CRC(439ec031) SHA1(f0ad8f9be7d26bc504593c1321bd23c286a221f0) )
-    ROM_FILL(0x2CD3,1,0x78)
+    MSLUG5VC_MAINCPU
 
 	NEO_SFIX_128K("ms5-s1p.bin", CRC(21e04432) SHA1(10057a2aa487087f7143d1d69fdad978a6bef0f7) )
 
@@ -7258,7 +7298,7 @@ ROM_START( mslug5b )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "ms5b-p1.bin", 0x000000, 0x100000, CRC(1376f43c) SHA1(7ca4a8b11c7effda2603d04e793cf664e7aa39bf) ) /* MX29F1615PC-10     16Mbit  2nd half empty */
 	ROM_LOAD16_WORD_SWAP( "ms5b-p2.bin", 0x100000, 0x400000, CRC(4becfba0) SHA1(fd3708f6c8fa26133b29b4b033148dff54dc1e7d) ) /* LH28F320BJD-TTL80  32Mbit  3.3v */
-    ROM_FILL(0x2CD3,1,0x78)
+    MSLUG5VC_MAINCPU
 
 	/* Scrambled */
 	NEO_SFIX_128K( "ms5b-s1.bin", CRC(3a427c9f) SHA1(6c6050640adb7148d42d35e3017cc171e53ae957) ) /* W29C011A-15  1Mbit */
@@ -8276,7 +8316,7 @@ GAME( 2000, b2b,        neogeo,   neogeo_noslot,   neogeo, neogeo_state, init_ne
 /* Mega Enterprise */
 GAME( 2002, mslug4,     neogeo,   neogeo_noslot,   neogeo, neogeo_state, init_mslug4,   ROT0, "Mega / Playmore", "Metal Slug 4 (NGM-2630)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, mslug4h,    mslug4,   neogeo_noslot,   neogeo, neogeo_state, init_mslug4,   ROT0, "Mega / Playmore", "Metal Slug 4 (NGH-2630)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, ms4plus,    mslug4,   neogeo_noslot,   neogeo, neogeo_state, init_ms4plus,  ROT0, "bootleg", "Metal Slug 4 Plus (bootleg)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2002, ms4plus,    mslug4,   neogeo_noslot,   neogeo, neogeo_state, init_ms4plus,  ROT0, "bootleg", "Metal Slug 4 Plus (bootleg)",  MACHINE_SUPPORTS_SAVE )
 
 /* Evoga */
 GAME( 2002, rotd,       neogeo,   neogeo_noslot,   neogeo, neogeo_state, init_rotd,     ROT0, "Evoga / Playmore", "Rage of the Dragons (NGM-264?)", MACHINE_SUPPORTS_SAVE )

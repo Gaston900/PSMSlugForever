@@ -13,7 +13,6 @@ ms4plus           //Bootleg
 ms5plus           //Bootleg
 mslug             //Neogeo
 mslug2            //Neogeo
-mslugx            //Neogeo
 mslug3            //Neogeo
 mslug3a           //Neogeo
 mslug3h           //Neogeo
@@ -23,6 +22,7 @@ mslug4h           //Neogeo
 mslug5            //Neogeo
 mslug5b           //Neogeo
 mslug5h           //Neogeo
+mslugx            //Neogeo
 
 @source:neogeo.cpp
 msluge            //Earlier
@@ -237,13 +237,15 @@ mslug4hacks12     //Hack
 mslug4hacks13     //Hack
 mslug4hacks14     //Hack
 mslug4hacks15     //Hack
-//mslug4hacks16      //Hack //disabled
+mslug4hacks16     //Hack
 mslug4hacks17     //Hack
 mslug4hacks18     //Hack
 mslug4hacks19     //Hack
 mslug4hacks20     //Hack
 mslug4hacks21     //Hack
 mslug4hacks22     //Hack
+mslug4er01        //Hack
+mslug4er02        //Hack
 mslug4la01        //Hack
 mslug4la02        //Hack
 mslug4la03        //Hack
