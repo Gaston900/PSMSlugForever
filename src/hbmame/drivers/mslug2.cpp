@@ -282,20 +282,20 @@ ROM_START( mslug2hacks13 )
 ROM_END
 
 ROM_START( mslug2hacks14 )
-	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_hacks14.p1", 0x000000, 0x100000, CRC(5261ffd7) SHA1(d514f35f4d8278c31d7619ff45df6af117c6ee0f) )
-	ROM_LOAD16_WORD_SWAP( "241.p2", 0x100000, 0x200000, CRC(38883f44) SHA1(fcf34b8c6e37774741542393b963635412484a27) )
+	ROM_REGION( 0x400000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "241_hacks14.p1",  0x000000, 0x100000, CRC(aab0c2a7) SHA1(8501f543ec2a26a870195ead3dd531133390f203) )
+	ROM_LOAD16_WORD_SWAP( "241_hacks22.p2",  0x100000, 0x300000, CRC(abf37360) SHA1(09347f0502fba4965dc14fd6db89bb3cabdeea1f) )
     MSLUG2_MAINCPU
 
-	NEO_SFIX_128K( "241.s1", CRC(f3d32f0f) SHA1(2dc38b7dfd3ff14f64d5c0733c510b6bb8c692d0) )
+	NEO_SFIX_128K( "241_hacks22.s1", CRC(d983067f) SHA1(b9da5e7e2064bf11baa601773413192c3694710a) )
 
 	NEO_BIOS_AUDIO_128K( "241.m1", CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
 
 	ROM_REGION( 0x800000, "ymsnd", 0 )
     MSLUG2_YMSND
 
-	ROM_REGION( 0x2000000, "sprites", 0 )
-    MSLUG2_SPRITES
+	ROM_REGION( 0x3000000, "sprites", 0 )
+    MSLUG2EG_SPRITES
 ROM_END
 
 ROM_START( mslug2hacks15 )
@@ -881,7 +881,7 @@ GAME( 2021, mslug2hacks10,      mslug2,   neogeo_noslot, neogeo, neogeo_state,  
 GAME( 2017, mslug2hacks11,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Multi-Function Version 2017-05-09)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug2hacks12,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Survival Version 2018-07-31)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
 GAME( 2006, mslug2hacks13,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "DDJ",             "Metal Slug 2 (Violence Edition 2016-03-10)", MACHINE_SUPPORTS_SAVE )
-//GAME( 2021, mslug2hacks14,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (A Full Screen Attack 2021-01-16)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug2hacks14,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Enemies Resetting Extraction Green Turbo 2021-09-16)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug2hacks15,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Easy Mode Difficulty 2018-11-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2013, mslug2hacks16,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "lb70",            "Metal Slug 2 (Crazy Fire Edition 2013-02-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2hacks17,      mslug2,   neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "CZXINC",          "Metal Slug 2 (Fightcade 2 2021-04-15)", MACHINE_SUPPORTS_SAVE )

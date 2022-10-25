@@ -69,11 +69,12 @@
 
 New Games
 ---------------------------------
+- [mslug2hacks14]          Metal Slug 2 (Enemies Resetting Extraction Green Turbo 2021-09-16)
 - [mslug2hacks21]          Metal Slug 2 (Early Summer Starry Sky 2022-05-11)
-- [mslug2hacks22]          Metal Slug 2 (Extraction Green Turbo 2021-09-16)
 - [mslug3hacks35]          Metal Slug 3 (Early Summer Starry Sky 2022-05-11)
 - [mslug3hacks36]          Metal Slug 3 (Komorebi 2022-05-11)
 - [mslug4hacks15]          Metal Slug 4 (Last Bullet Removal Of Body Armor 2020-09-16)
+- [mslug4hacks16]          Metal Slug 4 (20th Longest Fight Enemies Resetting Version 2022-10-24)
 - [mslug4hacks20]          Metal Slug 4 (Early Summer Starry Sky 2022-05-11)
 - [mslug4hacks21]          Metal Slug 4 (Komorebi 2022-05-11)
 - [mslug4hacks22]          Metal Slug 4 (Longest Fight 2022-06-23)

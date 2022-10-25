@@ -61,7 +61,7 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_SHOW_TABS,					"1",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_HIDE_TABS,					"title, scores, howto, select, versus, boss, end, gameover, logo, artpreview, flyer, cabinet, marquee, cpanel, pcb",         	OPTION_STRING, nullptr },
 	{ MUIOPTION_HISTORY_TAB,				"0",        	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_SORT_COLUMN,				"0",        	OPTION_INTEGER, nullptr },
+	{ MUIOPTION_SORT_COLUMN,				"1",        	OPTION_INTEGER, nullptr },
 	{ MUIOPTION_SORT_REVERSED,				"0",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_WINDOW_X,					"0",        	OPTION_INTEGER, nullptr },
 	{ MUIOPTION_WINDOW_Y,					"0",        	OPTION_INTEGER, nullptr },
@@ -81,7 +81,7 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_LIST_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", OPTION_STRING, nullptr },
 	{ MUIOPTION_HISTORY_FONT,				"-11,0,0,0,400,0,0,0,0,3,2,1,34,Verdana", OPTION_STRING, nullptr },
 	{ MUIOPTION_TREE_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", OPTION_STRING, nullptr },
-	{ MUIOPTION_COLUMN_WIDTHS,				"387,80,85,140,50,160,60,70", OPTION_STRING, nullptr },
+	{ MUIOPTION_COLUMN_WIDTHS,				"577,80,85,140,50,160,60,70", OPTION_STRING, nullptr },
 	{ MUIOPTION_COLUMN_ORDER,				"0,1,2,5,4,3,6,7", OPTION_STRING, nullptr },
 	{ MUIOPTION_COLUMN_SHOWN,				"1,1,1,1,1,1,1,1", OPTION_STRING, nullptr },
 
@@ -102,7 +102,7 @@ const options_entry winui_options::s_option_entries[] =
 
 	{ nullptr,								nullptr,       	OPTION_HEADER, "SEARCH PATH OPTIONS" },
 	{ MUIOPTION_ARTWORK_DIRECTORY,			"support/artpreview", 	OPTION_STRING, nullptr },
-	{ MUIOPTION_AUDIO_DIRECTORY,			"audio",    	        OPTION_STRING, nullptr },
+	{ MUIOPTION_AUDIO_DIRECTORY,			"config/audio",         OPTION_STRING, nullptr },
 	{ MUIOPTION_BOSSES_DIRECTORY,			"support/bosses",   	OPTION_STRING, nullptr },
 	{ MUIOPTION_CABINET_DIRECTORY,			"support/cabinets", 	OPTION_STRING, nullptr },
 	{ MUIOPTION_CPANEL_DIRECTORY,			"support/cpanel",   	OPTION_STRING, nullptr },
