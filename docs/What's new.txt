@@ -9,10 +9,12 @@
 - Neogeo: Made Universal Bios 4 The Default, To Roperly Catch Cpu Exceptions. By Robert [HBMAME]
 - It is a version that corrects the bug or crash All Roms Metal Slug 2, 3 And X 
  (This is developed for The Remix Standard and Extreme MegaMods Edition versions.)
+- Fixed Metal Slug 3 Shop Version hack roms, It caused a crash when I pressed the start + D button. 
 - Fixed Metal Slug 4 Change Zombie Fix hack roms, now skip starting level 6-1 to 6-2.
 - Fixed Metal Slug 4 Super G Edition Fix hack roms, now skip starting level 6-1 to 6-2.
 - Fixed Metal Slug 4 20th Anniversary Edition 2022-03-18 hack roms By Robert [HBMAME]
-- Fixed Metal Slug 4 Longest Fight 2022-06-23 hack roms By Robert [HBMAME]
+- Fixed Metal Slug 4 The Longest Fight 2022-06-23 hack roms By Robert [HBMAME]
+- Roms have been renamed.
 - It has been rolled back, the Apocalyptic Time Ports hack roms version to the Enemies Resetting Version, 
   the Extreme Remix version and the Standard Remix of Metal Slug 2.
 - Changed The Last Sprite Color Palette For MSLUG2/X Enemy Soldiers.
@@ -55,6 +57,7 @@
   #Metal Slug X (Extreme Space 2R Edition Remastering 2022-10-12)
   #Metal Slug X (Enemy Soldiers Reset Version 2.7 Extreme Space 2R Remastering 2022-10-12)
 
+- Updated Roms Metal Slug 3 (SE Special Edition 2022-03-31)
 - Updated Roms Metal Slug 3 (Burst Enhanced Edition 2022-10-13)
 - Updated Roms Metal Slug 5 (5X 2022-06-06)
 - Updated Roms Metal Slug 5 (Burst Enhanced Edition 2022-10-13)
@@ -73,11 +76,11 @@ New Games
 - [mslug2hacks21]          Metal Slug 2 (Early Summer Starry Sky 2022-05-11)
 - [mslug3hacks35]          Metal Slug 3 (Early Summer Starry Sky 2022-05-11)
 - [mslug3hacks36]          Metal Slug 3 (Komorebi 2022-05-11)
-- [mslug4hacks15]          Metal Slug 4 (Last Bullet Removal Of Body Armor 2020-09-16)
-- [mslug4hacks16]          Metal Slug 4 (20th Longest Fight Enemies Resetting Version 2022-10-24)
+- [mslug4hacks15]          Metal Slug 4 (Last Bullet Remix Bulletproof Vest Removed 2020-09-16)
+- [mslug4hacks16]          Metal Slug 4 (20th The Longest Fight Enemies Resetting Version 2022-10-24)
 - [mslug4hacks20]          Metal Slug 4 (Early Summer Starry Sky 2022-05-11)
 - [mslug4hacks21]          Metal Slug 4 (Komorebi 2022-05-11)
-- [mslug4hacks22]          Metal Slug 4 (Longest Fight 2022-06-23)
+- [mslug4hacks22]          Metal Slug 4 (The Longest Fight 2022-06-23)
 - [mslug5hacks05]          Metal Slug 5 (Remake Final Fightcade2 Version 2021-11-03)
 - [mslug5hacks22]          Metal Slug 5 (Early Summer Starry Sky 2022-08-10)
 - [mslug5hacks23]          Metal Slug 5 (Komorebi 2022-08-10)
