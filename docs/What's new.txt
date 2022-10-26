@@ -1,6 +1,6 @@
-﻿What's new in PSMAME PLUS
-====================
-2022-10-XX
+﻿What's new in PSMAME PLUS (Metal Slug Forever Special Edition Final)
+=====================================================================
+2022-10-27
 
 - I make this section to thank Robert enormously, who has made a great effort to help me program these codes, 
   so that this version could be published today, the most important news that was now applied by default in 
@@ -42,27 +42,27 @@
   #Metal Slug 3 (Enemies Resetting #7 Version Remastering 2021-10-10)(Revised Multi-Function Edition 2021-11-18)
   #Metal Slug 4 (Enemies Resetting Plus Style Remastering Edition 2022-10-22)
   #Metal Slug 4 (Enemies Resetting Multi-Function Remastering Edition 2022-10-22)
-  #Metal Slug X (Unlimited Firepower 2R Survival Edition Remastering 2022-10-12)
-  #Metal Slug X (Enemy Heavy Plate 2R Survival Edition Remastering 2022-10-12)
-  #Metal Slug X (Enemy Soldiers Remake Version 3 2R Survival Edition Remastering 2022-10-12)
-  #Metal Slug X (Allen O'Neil See You In Hell 1.1 2R Survival Edition Remastering 2022-10-12)
-  #Metal Slug X (Multi-Carrier 2R Survival Edition Remastering 2022-10-12)
-  #Metal Slug X (Level Reset Special 2R Survival Edition Remastering 2022-10-12)
-  #Metal Slug X (Enemy Soldiers Reset Version 2.7 2R Survival Remastering 2022-10-12)
-  #Metal Slug X (Unlimited Firepower 2R Extreme Space Edition Remastering 2022-10-12)
-  #Metal Slug X (Enemy Heavy Plate 2R Extreme Space Edition Remastering 2022-10-12)
-  #Metal Slug X (Enemy Soldiers Remake Version 3 2R Extreme Space Remastering 2022-10-12)
-  #Metal Slug X (Allen O'Neil See You In Hell 1.1 2R Extreme Space Remastering 2022-10-12)
-  #Metal Slug X (Multi-Carrier 2R Extreme Space Edition Remastering 2022-10-12)
-  #Metal Slug X (Extreme Space 2R Edition Remastering 2022-10-12)
-  #Metal Slug X (Enemy Soldiers Reset Version 2.7 Extreme Space 2R Remastering 2022-10-12)
+  #Metal Slug X (Unlimited Firepower 2R Survival Remastering Edition 2022-10-12)
+  #Metal Slug X (Enemy Heavy Plate 2R Survival Remastering Edition 2022-10-12)
+  #Metal Slug X (Enemy Soldiers Remake Version 3 2R Survival Remastering Edition 2022-10-12)
+  #Metal Slug X (Allen O'Neil See You In Hell 1.1 2R Survival Remastering Edition 2022-10-12)
+  #Metal Slug X (Multi-Carrier 2R Survival Remastering Edition 2022-10-12)
+  #Metal Slug X (Level Reset Special 2R Survival Remastering Edition 2022-10-12)
+  #Metal Slug X (Enemy Soldiers Reset Version 2.7 2R Survival Remastering Edition 2022-10-12)
+  #Metal Slug X (Unlimited Firepower 2R Extreme Space Remastering Edition 2022-10-12)
+  #Metal Slug X (Enemy Heavy Plate 2R Extreme Space Remastering Edition 2022-10-12)
+  #Metal Slug X (Enemy Soldiers Remake Version 3 2R Extreme Space Remastering Edition 2022-10-12)
+  #Metal Slug X (Allen O'Neil See You In Hell 1.1 2R Extreme Space Remastering Edition 2022-10-12)
+  #Metal Slug X (Multi-Carrier 2R Extreme Space Edition Remastering Edition 2022-10-12)
+  #Metal Slug X (Extreme Space 2R Edition Remastering Edition 2022-10-12)
+  #Metal Slug X (Enemy Soldiers Reset Version 2.7 2R Extreme Space Remastering Edition 2022-10-12)
 
 - Updated Roms Metal Slug 3 (SE Special Edition 2022-03-31)
 - Updated Roms Metal Slug 3 (Burst Enhanced Edition 2022-10-13)
-- Updated Roms Metal Slug 5 (5X 2022-06-06)
+- Updated Roms Metal Slug 5 (5X Final 2022-06-06)
 - Updated Roms Metal Slug 5 (Burst Enhanced Edition 2022-10-13)
 - Updated Roms Metal Slug 5 (Extremely Simplified Edition 2022-08-20)
-- Updated Roms Metal Slug 5 (Stone Tortoise Edition 2022-08-13)
+- Updated Roms Metal Slug 5 (Stone Tortoise Edition 2022-10-17)
 - Updated Roms Metal Slug X (Survival Edition 2022-07-11)
 - Updated Roms Metal Slug X (Burst Enhanced Edition 2022-10-13)
 - Added Latest Decrypted Roms:
@@ -98,11 +98,9 @@ New Games
   us to get the latest NeoGeo encrypted roms working.
 - The entire Neo Geo system configuration has been optimized, now all the system is pre-configured.
 - It has been possible to integrate the graphical interface "GUI" of the Arcade64 emulator + modernize it and update the system.
-
-New Games
----------------------------------
-- [mslug3a]                Metal Slug 3 (NGM-2560, earlier)
-- [mslug5b]                Metal Slug 5 (bootleg)
+- Added Latest Decrypted Roms:
+  #Metal Slug 3 (NGM-2560, earlier)
+  #Metal Slug 5 (bootleg)
 
 
 

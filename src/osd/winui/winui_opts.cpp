@@ -81,7 +81,7 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_LIST_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", OPTION_STRING, nullptr },
 	{ MUIOPTION_HISTORY_FONT,				"-11,0,0,0,400,0,0,0,0,3,2,1,34,Verdana", OPTION_STRING, nullptr },
 	{ MUIOPTION_TREE_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", OPTION_STRING, nullptr },
-	{ MUIOPTION_COLUMN_WIDTHS,				"577,80,85,140,50,160,60,70", OPTION_STRING, nullptr },
+	{ MUIOPTION_COLUMN_WIDTHS,				"577,97,85,140,50,160,60,70", OPTION_STRING, nullptr },
 	{ MUIOPTION_COLUMN_ORDER,				"0,1,2,5,4,3,6,7", OPTION_STRING, nullptr },
 	{ MUIOPTION_COLUMN_SHOWN,				"1,1,1,1,1,1,1,1", OPTION_STRING, nullptr },
 

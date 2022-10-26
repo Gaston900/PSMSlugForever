@@ -526,7 +526,7 @@ ROM_END
 
 ROM_START( mslug5hacks18 ) //mslug5sg
 	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_hacks18.p1", 0x000000, 0x600000, CRC(f92bbfd1) SHA1(989e854d28c8fc2a9f1fce5f46d7c4a2cae32dcb) )
+	ROM_LOAD16_WORD_SWAP( "268_hacks18.p1", 0x000000, 0x600000, CRC(59402234) SHA1(95dc2f340ef3b02642d87d4c50d2f1984266e4a3) )
     MSLUG5H_MAINCPU
 
 	NEO_SFIX_128K( "268_hacks02.s1", CRC(64952683) SHA1(88ec728c2fe18a11fdd218bed5d73bb3affe2ec1) )
@@ -1049,13 +1049,13 @@ GAME( 2019, mslug5hacks14,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, i
 GAME( 2019, mslug5hacks15,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_neogeo,   ROT0, "GOTVG",              "Metal Slug 5 (Generation 1V2 2019-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug5hacks16,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_neogeo,   ROT0, "GOTVG",              "Metal Slug 5 (Summon Slug Edition 2018-09-18)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, mslug5hacks17,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_mslug5hb, ROT0, "GOTVG",              "Metal Slug 5 (Multi-Function Version 2017-05-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslug5hacks18,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_neogeo,   ROT0, "GOTVG",              "Metal Slug 5 (Stone Tortoise Edition 2022-08-13)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslug5hacks18,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_neogeo,   ROT0, "GOTVG",              "Metal Slug 5 (Stone Tortoise Edition 2022-10-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug5hacks19,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_neogeo,   ROT0, "hack",               "Metal Slug 5 (Crazy Fire Edition 2020-09-02)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug5hacks20,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_mslug5hb, ROT0, "hack",               "Metal Slug 5 (War Chariot 2015-05-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug5hacks21,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_mslug5hb, ROT0, "hack",               "Metal Slug 5 (Easy Mode Difficulty 2018-11-16)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hacks22,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_neogeo,   ROT0, "GOTVG",              "Metal Slug 5 (Early Summer Starry Sky 2022-08-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hacks23,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_neogeo,   ROT0, "GOTVG",              "Metal Slug 5 (Komorebi 2022-08-10)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslug5hacks24,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_neogeo,   ROT0, "WillNie And AKS",    "Metal Slug 5 (Extender Ver. 2022 2022-10-02)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslug5hacks24,    mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_neogeo,   ROT0, "GOTVG",              "Metal Slug 5 (Extender Ver. 2022 2022-10-02)", MACHINE_SUPPORTS_SAVE )
 
 // Decrypted And Bootleg
 GAME( 2003, ms5boot,        mslug5,   neogeo_noslot, neogeo,   neogeo_state, init_mslug5hb, ROT0, "bootleg", "Metal Slug 5 (Bootleg, Set 2)", MACHINE_SUPPORTS_SAVE )
