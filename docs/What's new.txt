@@ -1,5 +1,13 @@
 ﻿What's new in PSMAME PLUS (Metal Slug Forever Special Edition Final)
 =====================================================================
+2022-10-29
+
+- Some decrypted roms were fixed, adding the missing
+- Updated Roms Metal Slug X (Survival Edition 2022-10-21)
+- Added Latest Decrypted Roms:
+  #Metal Slug 5 (Fully Decrypted C)
+
+
 2022-10-27
 
 - I make this section to thank Robert enormously, who has made a great effort to help me program these codes, 

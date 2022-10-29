@@ -882,7 +882,7 @@ GAME( 2017, mslug2hacks11,      mslug2,   neogeo_noslot, neogeo, neogeo_state,  
 GAME( 2018, mslug2hacks12,      mslug2,   neogeo_noslot, neogeo, neogeo_state,   init_neogeo,    ROT0, "GOTVG",           "Metal Slug 2 (Survival Version 2018-07-31)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
 GAME( 2006, mslug2hacks13,      mslug2,   neogeo_noslot, neogeo, neogeo_state,   init_neogeo,    ROT0, "DDJ",             "Metal Slug 2 (Violence Edition 2016-03-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2hacks14,      mslug2,   neogeo_noslot, neogeo, neogeo_state,   init_neogeo,    ROT0, "phengzheng And Gaston90",  "Metal Slug 2 (Enemies Resetting Extraction Green Turbo 2021-09-16)", MACHINE_SUPPORTS_SAVE )
-GAME( 2018, mslug2hacks15,      mslug2,   neogeo_noslot, neogeo, neogeo_state,   init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Easy Mode Difficulty 2018-11-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, mslug2hacks15,      mslug2,   neogeo_noslot, neogeo, neogeo_state,   init_neogeo,    ROT0, "hack",            "Metal Slug 2 (Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2013, mslug2hacks16,      mslug2,   neogeo_noslot, neogeo, neogeo_state,   init_neogeo,    ROT0, "lb70",            "Metal Slug 2 (Crazy Fire Edition 2013-02-07)", MACHINE_SUPPORTS_SAVE )
 //GAME( 2021, mslug2hacks17,      mslug2,   neogeo_noslot, neogeo, neogeo_state,   init_neogeo,    ROT0, "CZXINC",          "Metal Slug 2 (Friendly Fire FC2 2021-04-15)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2hacks18,      mslug2,   neogeo_noslot, neogeo, neogeo_state,   init_neogeo,    ROT0, "KofKill, Wang Hua, Czk",  "Metal Slug 2 (Unity Time 2021-01-22)", MACHINE_SUPPORTS_SAVE )

@@ -71,8 +71,8 @@
 	ROM_LOAD16_BYTE( "250.c2", 0x0000001, 0x800000, CRC(31679821) SHA1(554f600a3aa09c16c13c625299b087a79d0d15c5) )\
 	ROM_LOAD16_BYTE( "250.c3", 0x1000000, 0x800000, CRC(fd602019) SHA1(c56646c62387bc1439d46610258c755beb8d7dd8) )\
 	ROM_LOAD16_BYTE( "250.c4", 0x1000001, 0x800000, CRC(31354513) SHA1(31be8ea2498001f68ce4b06b8b90acbf2dcab6af) )\
-	ROM_LOAD16_BYTE( "250_hacks31.c5", 0x2000000, 0x800000, CRC(9a9422e4) SHA1(453b897a98574c7be881123398642cf5ec143896) )\
-	ROM_LOAD16_BYTE( "250_hacks31.c6", 0x2000001, 0x800000, CRC(ef116b50) SHA1(de725caad51cc787fba5d21a709844fa96362488) )
+	ROM_LOAD16_BYTE( "250_hacks31.c5", 0x2000000, 0x800000, CRC(25c32d86) SHA1(4185717b88fbdf563edf6eca142c0664bae79729) )\
+	ROM_LOAD16_BYTE( "250_hacks31.c6", 0x2000001, 0x800000, CRC(52ec6db8) SHA1(b2499dccfa47ee88af8ba84d7f6496478b30ffa2) )
 
 /*************
  Metal Slug X
@@ -591,8 +591,8 @@ ROM_END
 
 ROM_START( mslugxhacks31 ) //mslugxsc
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250_hacks31.p1", 0x000000, 0x100000, CRC(d8c467bd) SHA1(e4c42da247fd21d15700065cd5ef0db04e435690) )
-	ROM_LOAD16_WORD_SWAP( "250_hacks31.p2", 0x100000, 0x400000, CRC(d2e02a46) SHA1(8fae243c57fde0c61de48f30fb5c7955e6e646ae) )
+	ROM_LOAD16_WORD_SWAP( "250_hacks31.p1", 0x000000, 0x100000, CRC(86aa5509) SHA1(f1c13be70196d144bdbfb509bad7cc0db0707159) )
+	ROM_LOAD16_WORD_SWAP( "250_hacks31.p2", 0x100000, 0x400000, CRC(72be5d30) SHA1(90e9be210fb648020017248d515a697d230532b1) )
     ROM_DEFAULT_BIOS("euro")
     MSLUGX_MAINCPU
 
@@ -1940,8 +1940,8 @@ GAME( 2020, mslugxhacks27,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  
 GAME( 2020, mslugxhacks28,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "GOTVG",             "Metal Slug X (Unlimited Firepower 2020-10-18)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslugxhacks29,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "GOTVG",             "Metal Slug X (Infinite Fire Edition 2021-03-20 )", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslugxhacks30,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "GOTVG",             "Metal Slug X (Generation SV 2020-11-04)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslugxhacks31,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "GOTVG",             "Metal Slug X (Survival Edition 2022-07-11)", MACHINE_SUPPORTS_SAVE )
-GAME( 2018, mslugxhacks32,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "hack",              "Metal Slug X (Easy Mode Difficulty 2018-11-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslugxhacks31,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "GOTVG",             "Metal Slug X (Survival Edition 2022-10-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, mslugxhacks32,      mslugx,   neogeo_noslot, neogeo, neogeo_state,  init_mslugx,    ROT0, "hack",              "Metal Slug X (Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
 
 /***************
  Only exclusive

@@ -227,7 +227,7 @@ ROM_START( mslug3hacks06 ) //mslug3se
 	ROM_LOAD16_WORD_SWAP( "256h.p2", 0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
     MSLUG3H_MAINCPU
 	
-	NEO_SFIX_128K( "256_hacks06.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
+	NEO_SFIX_128K( "256hd.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
 
 	NEO_BIOS_AUDIO_512K( "256.m1", CRC(eaeec116) SHA1(54419dbb21edc8c4b37eaac2e7ad9496d2de037a) )
 
@@ -262,7 +262,7 @@ ROM_START( mslug3hacks08 ) //mslug3sd
 	ROM_LOAD16_WORD_SWAP( "256_hacks08.p2", 0x100000, 0x400000, CRC(7343335b) SHA1(2d694af0c876eb8b4844e918cb707ce011c61c5d) )
     MSLUG3H_MAINCPU
 	
-	NEO_SFIX_128K( "256_hacks06.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
+	NEO_SFIX_128K( "256hd.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
 
 	NEO_BIOS_AUDIO_512K( "256.m1", CRC(eaeec116) SHA1(54419dbb21edc8c4b37eaac2e7ad9496d2de037a) )
 
@@ -296,7 +296,7 @@ ROM_START( mslug3hacks10 ) //mslug3zh
 	ROM_LOAD16_WORD_SWAP( "256_hacks10.p2", 0x100000, 0x400000, CRC(badc753c) SHA1(60eae0e02c05448c33cde2666a8b565ee6835216) )
     MSLUG3H_MAINCPU
 	
-	NEO_SFIX_128K( "256_hacks06.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
+	NEO_SFIX_128K( "256hd.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
 
 	NEO_BIOS_AUDIO_512K( "256.m1", CRC(eaeec116) SHA1(54419dbb21edc8c4b37eaac2e7ad9496d2de037a) )
 
@@ -348,7 +348,7 @@ ROM_START( mslug3hacks13 ) // mslug3gw
 	ROM_LOAD16_WORD_SWAP( "256h.p2", 0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
     MSLUG3H_MAINCPU
 
-	NEO_SFIX_128K( "256_hacks06.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
+	NEO_SFIX_128K( "256hd.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
 
 	NEO_BIOS_AUDIO_512K( "256_hacks17.m1", CRC(c84d22f2) SHA1(069d5eafa859acbebc35394344df78ea84055cf7) )
 
@@ -416,7 +416,7 @@ ROM_START( mslug3hacks17 ) //mslug3es
 	ROM_LOAD16_WORD_SWAP( "256_hacks17.p2", 0x100000, 0x400000, CRC(62e699b3) SHA1(eac088b21d2243198034a9796aa0815d686ccfac) )
     MSLUG3H_MAINCPU
 
-	NEO_SFIX_128K( "256_hacks06.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
+	NEO_SFIX_128K( "256hd.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
 
 	NEO_BIOS_AUDIO_512K( "256_hacks17.m1", CRC(c84d22f2) SHA1(069d5eafa859acbebc35394344df78ea84055cf7) )
 
@@ -536,7 +536,7 @@ ROM_START( mslug3hacks24 ) //mslug3c
 	ROM_LOAD16_WORD_SWAP( "256_hacks24.p2", 0x100000, 0x400000, CRC(b948a472) SHA1(e0135911f7d7e21285e6965cc6b4446277eea405) )
     MSLUG3H_MAINCPU
 
-	NEO_SFIX_128K( "256_hacks06.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
+	NEO_SFIX_128K( "256hd.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
 
 	NEO_BIOS_AUDIO_512K( "256.m1", CRC(eaeec116) SHA1(54419dbb21edc8c4b37eaac2e7ad9496d2de037a) )
 
@@ -555,7 +555,7 @@ ROM_START( mslug3hacks25 ) //mslug3hacksr, mslug3nsj
 	ROM_LOAD16_WORD_SWAP( "256_hacks25.p2", 0x100000, 0x400000, CRC(c34322ae) SHA1(774cc4e4e6fb4596c3e4daf18e7d8b6be2e43ea7) )
     MSLUG3H_MAINCPU
 
-	NEO_SFIX_128K( "256_hacks06.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
+	NEO_SFIX_128K( "256hd.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
 
 	NEO_BIOS_AUDIO_256K( "256_hacks25.m1", CRC(2f88e0c0) SHA1(bf95881d1c8861cba1a154eb26552520a764c5ba) )
 
@@ -573,7 +573,7 @@ ROM_START( mslug3hacks26 )
 	ROM_LOAD16_WORD_SWAP( "256_hacks26.p2", 0x100000, 0x400000, CRC(55293e04) SHA1(ec018fa657a12f1445bc9824cabfe429e39fa857) )
     MSLUG3H_MAINCPU
 
-	NEO_SFIX_128K( "256_hacks06.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
+	NEO_SFIX_128K( "256hd.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
 
 	NEO_BIOS_AUDIO_256K( "256_hacks25.m1", CRC(2f88e0c0) SHA1(bf95881d1c8861cba1a154eb26552520a764c5ba) )
 
@@ -782,7 +782,7 @@ ROM_START( mslug3hd )
 	ROM_LOAD16_WORD_SWAP( "256h.p2", 0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
     MSLUG3H_MAINCPU
 
-	NEO_SFIX_MT_512K
+	NEO_SFIX_128K( "256hd.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
 
 	NEO_BIOS_AUDIO_512K( "256.m1", CRC(eaeec116) SHA1(54419dbb21edc8c4b37eaac2e7ad9496d2de037a) )
 
@@ -1754,7 +1754,7 @@ ROM_START( mslug3li01 )
 	ROM_LOAD16_WORD_SWAP( "256_li01.p2", 0x100000, 0x400000, CRC(4f04faa7) SHA1(44769d46237c9db8920548e64ed67d2b4bcbc042) )
     MSLUG3RM_MAINCPU
 
-	NEO_SFIX_128K( "256_hacks06.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
+	NEO_SFIX_128K( "256hd.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
 
 	NEO_BIOS_AUDIO_256K( "256_hacks25.m1", CRC(2f88e0c0) SHA1(bf95881d1c8861cba1a154eb26552520a764c5ba) )
 
@@ -1771,7 +1771,7 @@ ROM_START( mslug3li02 )
 	ROM_LOAD16_WORD_SWAP( "256_li01.p2", 0x100000, 0x400000, CRC(4f04faa7) SHA1(44769d46237c9db8920548e64ed67d2b4bcbc042) )
     MSLUG3RM_MAINCPU
 
-	NEO_SFIX_128K( "256_hacks06.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
+	NEO_SFIX_128K( "256hd.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
 
 	NEO_BIOS_AUDIO_256K( "256_hacks25.m1", CRC(2f88e0c0) SHA1(bf95881d1c8861cba1a154eb26552520a764c5ba) )
 
@@ -2336,7 +2336,7 @@ ROM_START( mslug3rmxe8s01 )
 	ROM_LOAD16_WORD_SWAP( "256_rmxe8s01.p2", 0x100000, 0x400000, CRC(4586dcb0) SHA1(021adc091b26662c3fb0bc79aa8fa456ebbc7377) )
     MSLUG3RMXE_MAINCPU
 
-	NEO_SFIX_128K( "256_hacks06.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
+	NEO_SFIX_128K( "256hd.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
 
 	NEO_BIOS_AUDIO_256K( "256_hacks25.m1", CRC(2f88e0c0) SHA1(bf95881d1c8861cba1a154eb26552520a764c5ba) )
 
@@ -2353,7 +2353,7 @@ ROM_START( mslug3rmxe8s02 )
 	ROM_LOAD16_WORD_SWAP( "256_rmxe8s01.p2", 0x100000, 0x400000, CRC(4586dcb0) SHA1(021adc091b26662c3fb0bc79aa8fa456ebbc7377) )
     MSLUG3RMXE_MAINCPU
 
-	NEO_SFIX_128K( "256_hacks06.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
+	NEO_SFIX_128K( "256hd.s1", CRC(8458fff9) SHA1(b120d096deae8abf0ad98362ce230b66e7315a14) )
 
 	NEO_BIOS_AUDIO_256K( "256_hacks25.m1", CRC(2f88e0c0) SHA1(bf95881d1c8861cba1a154eb26552520a764c5ba) )
 
@@ -2396,7 +2396,7 @@ GAME( 2020, mslug3hacks27,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  
 GAME( 2019, mslug3hacks28,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_neogeo,    ROT0, "GOTVG",                  "Metal Slug 3 (Multi-Function Version 2019-03-05)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2017, mslug3hacks29,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_mslug3h,   ROT0, "Wanghua123",             "Metal Slug 3 (Summon Mount Slug 2017-10-09)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug3hacks30,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_mslug3,    ROT0, "GOTVG",                  "Metal Slug 3 (Generation 1V2 2019-05-11)" , MACHINE_SUPPORTS_SAVE )
-GAME( 2018, mslug3hacks31,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_mslug3h,   ROT0, "hack",                   "Metal Slug 3 (Easy Mode Difficulty 2018-11-16)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2018, mslug3hacks31,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_mslug3h,   ROT0, "hack",                   "Metal Slug 3 (Easy Mode 2018-11-16)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug3hacks32,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_mslug3,    ROT0, "KofKill, Wang Hua, Czk", "Metal Slug 3 (Unity Time 2021-02-21)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug3hacks33,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_mslug3h,   ROT0, "hack",                   "Metal Slug 3 (Ammo Increases 2021-06-13)", MACHINE_SUPPORTS_SAVE )
 //GAME( 2021, mslug3hacks34,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_mslug3,    ROT0, "hack",                 "Metal Slug 3 (I 2021-03-17)" , MACHINE_SUPPORTS_SAVE )
@@ -2405,7 +2405,7 @@ GAME( 2022, mslug3hacks36,      mslug3,   neogeo_noslot, neogeo, neogeo_state,  
 
 // Decrypted And Bootleg
 GAME( 2000, mslug3d,            mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_mslug3d,   ROT0, "bootleg",                "Metal Slug 3 (Decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, mslug3hd,           mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_cmc42sfix, ROT0, "bootleg",                "Metal Slug 3 (Non-encrypted P, decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, mslug3hd,           mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_neogeo,    ROT0, "bootleg",                "Metal Slug 3 (Non-encrypted P, decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2000, mslug3nd,           mslug3,   neogeo_noslot, neogeo, neogeo_state,  init_cmc42sfix, ROT0, "bootleg",                "Metal Slug 3 (Fully Decrypted C)", MACHINE_SUPPORTS_SAVE )
 
 // Metal Slug 6" is a hack/bootleg of Metal Slug 3

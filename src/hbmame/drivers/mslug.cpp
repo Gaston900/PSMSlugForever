@@ -320,7 +320,7 @@ GAME( 2017, mslughacks02,      mslug,    neogeo_noslot, neogeo, neogeo_state,   
 GAME( 2016, mslughacks03,      mslug,    neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "DDJ",           "Metal Slug (War Chariot 2016-03-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslughacks04,      mslug,    neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "GOTVG",         "Metal Slug (Multi-Function Version 2018-04-30)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslughacks05,      mslug,    neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "I love Nimes",  "Metal Slug (Burst Enhanced Edition 2021-09-19)", MACHINE_SUPPORTS_SAVE )
-GAME( 2018, mslughacks06,      mslug,    neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",          "Metal Slug (Easy Mode Difficulty 2018-11-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, mslughacks06,      mslug,    neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",          "Metal Slug (Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslughacks07,      mslug,    neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "KofKill, Wang Hua, Czk", "Metal Slug (Unity Time 2021-02-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslughacks08,      mslug,    neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "DDJ",           "Metal Slug (Stage Select 2016-10-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslughacks09,      mslug,    neogeo_noslot, neogeo, neogeo_state,         init_neogeo,    ROT0, "hack",          "Metal Slug (Random Items Explosives 2021-06-08)", MACHINE_SUPPORTS_SAVE )
