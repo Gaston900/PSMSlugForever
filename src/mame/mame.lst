@@ -7,25 +7,25 @@
 ******************************************************************************/
 
 @source:neogeo.cpp
-neogeo            //Bios
-ms5pcb            //Neogeo
+neogeo            //Bios MVS
+ms5pcb            //SNK Playmore
 ms4plus           //Bootleg
 ms5plus           //Bootleg
-mslug             //Neogeo
-mslug2            //Neogeo
-mslug3            //Neogeo
-mslug3a           //Neogeo
-mslug3h           //Neogeo
+mslug             //Nazca
+mslug2            //SNK
+mslug3            //SNK
+mslug3a           //SNK
+mslug3h           //SNK
 mslug3b6          //Bootleg
-mslug4            //Neogeo
-mslug4h           //Neogeo
-mslug5            //Neogeo
+mslug4            //Mega / Playmore
+mslug4h           //Mega / Playmore
+mslug5            //SNK Playmore
+mslug5h           //SNK Playmore
 mslug5b           //Neogeo
-mslug5h           //Neogeo
-mslugx            //Neogeo
+mslugx            //SNK
 
 @source:neogeo.cpp
-msluge            //Earlier
+msluge            //Nazca
 msboot            //Bootleg
 mslughacks01      //Hack
 mslughacks02      //Hack
@@ -89,8 +89,9 @@ mslug2rmxe1s04    //Hack
 mslug2rmxe1s05    //Hack
 
 @source:neogeo.cpp
-mslug3hd          //Bootleg
-mslug3nd          //Bootleg
+mslug3d           //SNK
+mslug3hd          //SNK
+mslug3nd          //SNK
 mslug3hacks01     //Hack
 mslug3hacks02     //Hack
 mslug3hacks03     //Hack
@@ -218,10 +219,10 @@ mslug3rmxe8s02    //Hack
 
 @source:neogeo.cpp
 ms4boot           //Bootleg
-mslug4d           //Bootleg
-mslug4hd          //Bootleg
-mslug4nd          //Bootleg
-mslug4dd          //Bootleg
+mslug4d           //SNK Playmore
+mslug4hd          //SNK Playmore
+mslug4nd          //SNK Playmore
+mslug4dd          //SNK Playmore
 mslug4hacks01     //Hack
 mslug4hacks02     //Hack
 mslug4hacks03     //Hack
@@ -270,18 +271,18 @@ mslug4rmxe4s01    //Hack
 
 @source:neogeo.cpp
 ms5boot           //Bootleg
-ms5pcbd           //Bootleg
-mslug5nd          //Bootleg
-mslug5d           //Bootleg
-mslug5d1          //Bootleg
+ms5pcbd           //SNK Playmore
+mslug5nd          //SNK Playmore
+mslug5d           //SNK Playmore
+mslug5d1          //SNK Playmore
 mslug5b1          //Bootleg
 ms5plusd          //Bootleg
-mslug5n           //Bootleg
+mslug5n           //SNK Playmore
 mslug5b3          //Bootleg
-mslug5n2          //Bootleg
-mslug5hd          //Bootleg
+mslug5n2          //SNK Playmore
+mslug5hd          //SNK Playmore
 ms5plusc          //Bootleg
-mslug5fd          //Bootleg
+mslug5fd          //SNK Playmore
 mslug5hacks01     //Hack
 mslug5hacks02     //Hack
 mslug5hacks03     //Hack
