@@ -84,7 +84,7 @@
 #endif
 #define MAMENAME			"PSMame Plus"
 
-#define MAME_VERSION		"4.1"
+#define MAME_VERSION		"4.2"
 #define MAMEUIFX_VERSION	MAME_VERSION " (" __DATE__")"
 
 #define SEARCH_PROMPT		"<search here>"
