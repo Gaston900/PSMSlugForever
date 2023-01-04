@@ -1,10 +1,10 @@
 ﻿What's new in PSMAME PLUS (Metal Slug Forever Special Edition Final)
 =====================================================================
-2023-01-X0
+2023-01-04
 
 - Removed the black border on NeoGeo systems, now has full screen.
 - Updated Roms Metal Slug 5 (Stone Tortoise Edition 2022-11-15)
-- Updated Roms Metal Slug 5 (The Longest Battle 2022-12-15)(The Longest Battle 2022-12-15) 
+- Updated Roms Metal Slug 5 (The Longest Battle 2022-12-15)
 - Updated Roms Metal Slug X (Survival Edition 2022-12-31)
 
 New Games
