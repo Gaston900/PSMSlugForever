@@ -1545,14 +1545,6 @@ void neogeo_state::init_mslug3a()
 	m_sma_prot->mslug3a_install_protection(m_maincpu,m_banked_cart);
 }
 
-void neogeo_state::init_mslug3n() // decrypt gfx and extract sx
-{
-	init_neogeo();
-	m_sprgen->m_fixed_layer_bank_type = 1;
-	m_cmc_prot->cmc42_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG3_GFX_KEY);
-	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
-}
-
 /*********************************************** CMC42 */
 
 void neogeo_state::init_mslug3h()
@@ -1563,16 +1555,36 @@ void neogeo_state::init_mslug3h()
 	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
 }
 
-void neogeo_state::init_s1945p()
+void neogeo_state::init_mslug3d()
+{
+	init_neogeo();
+	m_sma_prot->mslug3_decrypt_68k(cpuregion);
+	m_sprgen->m_fixed_layer_bank_type = 1;
+	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+	m_sma_prot->mslug3_install_protection(m_maincpu,m_banked_cart);
+}
+
+
+void neogeo_state::init_mslug3nd()
 {
 	init_neogeo();
 	m_sprgen->m_fixed_layer_bank_type = 1;
-	m_cmc_prot->cmc42_neogeo_gfx_decrypt(spr_region, spr_region_size, S1945P_GFX_KEY);
 	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
 }
 
-/*********************************************** CMC50 + PCM2 */
 
+void neogeo_state::init_mslug3b6()
+{
+	init_neogeo();
+	m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size,2);
+	m_cmc_prot->cmc42_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG3_GFX_KEY);
+}
+
+void neogeo_state::init_mslug3n6p()
+{
+	init_neogeo();
+	m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size,2);
+}
 
 void neogeo_state::init_mslug4()
 {
@@ -1618,9 +1630,6 @@ void neogeo_state::init_mslug4hb()
 	}
 }
 
-/*********************************************** CMC50 + PCM2 + PVC */
-
-
 void neogeo_state::init_mslug5()
 {
 	init_neogeo();
@@ -1631,6 +1640,20 @@ void neogeo_state::init_mslug5()
 	m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG5_GFX_KEY);
 	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
 	m_pvc_prot->install_pvc_protection(m_maincpu,m_banked_cart);
+}
+
+void neogeo_state::init_mslug5b()
+{
+	init_neogeo();
+	m_bootleg_prot->mslug5b_vx_decrypt(ym_region, ym_region_size);
+	m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size, 2);
+	m_bootleg_prot->mslug5b_cx_decrypt(spr_region, spr_region_size);
+}
+
+void neogeo_state::init_mslug5b1()
+{
+	init_mslug5hb();
+	m_pvc_prot->install_pvc_protection(m_maincpu, m_banked_cart);
 }
 
 void neogeo_state::init_mslug5hb()
@@ -1676,6 +1699,14 @@ void neogeo_state::init_mslug5hb()
 	}
 }
 
+void neogeo_state::init_mslug5rm()
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 1;
+	m_cmc_prot->cmc42_neogeo_gfx_decrypt(spr_region, spr_region_size, S1945P_GFX_KEY);
+	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+}
+
 void neogeo_state::init_ms5pcbd()
 {
 	init_neogeo();
@@ -1689,16 +1720,11 @@ void neogeo_state::init_ms5pcbd()
 	install_banked_bios();
 }
 
-/*********************************************** misc carts */
-
 void neogeo_state::init_mslugx()
 {
 	init_neogeo();
 	m_mslugx_prot->mslugx_install_protection(m_maincpu);
 }
-
-/*********************************************** bootlegs - can use original prot */
-
 
 void neogeo_state::init_ms4plus()
 {
@@ -1708,19 +1734,15 @@ void neogeo_state::init_ms4plus()
 	m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region,audio_region_size);
 }
 
-/*********************************************** bootleg hybrid */
-
-void neogeo_state::init_mslug3b6()
+void neogeo_state::init_ms4plusd()
 {
 	init_neogeo();
-	m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size,2);
-	m_cmc_prot->cmc42_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG3_GFX_KEY);
-}
-
-void neogeo_state::init_mslug3n6p()
-{
-	init_neogeo();
-	m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size,2);
+	//m_sprgen->m_fixed_layer_bank_type = 1;
+	//m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+	m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size,0);
+	//m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG4_GFX_KEY);
+	m_pcm2_prot->neo_pcm2_snk_1999(ym_region, ym_region_size, 8);
+	m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region,audio_region_size);
 }
 
 void neogeo_state::init_ms5plus()
@@ -1734,18 +1756,11 @@ void neogeo_state::init_ms5plus()
 	m_bootleg_prot->install_ms5plus_protection(m_maincpu,m_banked_cart);
 }
 
-void neogeo_state::init_mslug5b()
+void neogeo_state::init_ms5plusc()
 {
 	init_neogeo();
-	m_bootleg_prot->mslug5b_vx_decrypt(ym_region, ym_region_size);
-	m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size, 2);
-	m_bootleg_prot->mslug5b_cx_decrypt(spr_region, spr_region_size);
-}
-
-void neogeo_state::init_mslug5b1()
-{
-	init_mslug5hb();
-	m_pvc_prot->install_pvc_protection(m_maincpu, m_banked_cart);
+	m_sprgen->m_fixed_layer_bank_type = 1;
+	m_bootleg_prot->install_ms5plus_protection(m_maincpu,m_banked_cart);
 }
 
 /*********************************************** non-carts */
@@ -1777,14 +1792,6 @@ void neogeo_state::init_ms5pcb()
 	m_pvc_prot->install_pvc_protection(m_maincpu,m_banked_cart);
 	install_banked_bios();
 }
-
-void neogeo_state::init_cmc42sfix()
-{
-	init_neogeo();
-	m_sprgen->m_fixed_layer_bank_type = 1;
-	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
-}
-
 
 /* dummy entry for the dummy bios driver */
 ROM_START( neogeo )

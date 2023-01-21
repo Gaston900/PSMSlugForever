@@ -101,16 +101,17 @@ public:
 	void gsc(machine_config &config);
 
 	void init_neogeo();
-	void init_cmc42sfix();
 	void init_ms5pcb();
 	void init_ms5pcbd();
 	void init_ms4plus();
+	void init_ms4plusd();
 	void init_ms5plus();
+	void init_ms5plusc();
 	void init_mslug3();
 	void init_mslug3a();
-	void init_mslug3h();
-	void init_mslug3n();
 	void init_mslug3d();
+	void init_mslug3h();
+	void init_mslug3nd();
     void init_mslug3b6();
 	void init_mslug3n6p();
 	void init_mslug4();
@@ -119,8 +120,8 @@ public:
 	void init_mslug5b();
 	void init_mslug5b1();
 	void init_mslug5hb();
+	void init_mslug5rm();
 	void init_mslugx();
-	void init_s1945p();
 
 	DECLARE_CUSTOM_INPUT_MEMBER(get_memcard_status);
 	DECLARE_CUSTOM_INPUT_MEMBER(get_audio_result);
