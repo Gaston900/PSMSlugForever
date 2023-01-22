@@ -1,5 +1,22 @@
 ﻿What's new in PSMAME PLUS (Metal Slug Forever Special Edition Final)
 =====================================================================
+2023-01-22
+
+- Renamed all roms hack remix standard and Extreme Megamods.
+- A cleanup has been done, thus deleting several unnecessary hack roms.
+- A specific configuration has been developed, now you can play for free, 
+  you will no longer have to insert credits with the "5" button, 
+  now press "start" and you can play with infinite credit.
+- A credit counter has been added for 1 players and in turn for 2 players, now individually.
+- With this we finish the collection of Metal Slug decrypted/bootleg roms.
+
+New Games
+---------------------------------
+- [mslug3d]               Metal Slug 3 (Decrypted C)
+- [ms4plusd]              Metal Slug 4 Plus (bootleg, Fully Decrypted)
+
+
+
 2023-01-04
 
 - Removed the black border on NeoGeo systems, now has full screen.
