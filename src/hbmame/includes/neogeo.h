@@ -113,7 +113,7 @@ public:
 	void init_mslug3h();
 	void init_mslug3nd();
     void init_mslug3b6();
-	void init_mslug3n6p();
+	void init_mslug3b6d();
 	void init_mslug4();
 	void init_mslug4hb();
 	void init_mslug5();
@@ -424,7 +424,6 @@ INPUT_PORTS_EXTERN(dualbios);
 	ROM_LOAD( name, 0x00000, 0x80000, hash ) \
 	ROM_RELOAD(     0x10000, 0x80000 )
 
-
 #define NEO_BIOS_AUDIO_ENCRYPTED_128K(name, hash) \
 	NEOGEO_BIOS \
 	ROM_REGION( 0x20000, "audiobios", 0 ) \
@@ -447,7 +446,6 @@ INPUT_PORTS_EXTERN(dualbios);
 	ROM_REGION( 0x80000, "audiocrypt", 0 ) \
 	ROM_LOAD( name,      0x00000, 0x80000, hash )
 
-
 #define ROM_Y_ZOOM \
 	ROM_REGION( 0x20000, "zoomy", 0 ) \
 	ROM_LOAD( "000-lo.lo", 0x00000, 0x20000, CRC(5a86cff2) SHA1(5992277debadeb64d1c1c64b0a92d9293eaf7e4a) )
@@ -463,13 +461,6 @@ INPUT_PORTS_EXTERN(dualbios);
 
 #define NEO_SFIX_MT_512K \
 	NEO_SFIX_MT( 0x80000 )
-
-#define NEO_SFIX_MSLUG(name, hash) \
-	NEO_SFIX_MT( 0x80000 ) \
-	ROM_LOAD( name, 0x00000, 0x20000, hash ) \
-	ROM_RELOAD( 0x20000, 0x20000 ) \
-	ROM_RELOAD( 0x40000, 0x20000 ) \
-	ROM_RELOAD( 0x60000, 0x20000 )
 
 #define NEO_SFIX(bytes, name, hash) \
 	NEO_SFIX_MT( bytes ) \

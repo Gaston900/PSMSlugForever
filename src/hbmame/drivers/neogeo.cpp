@@ -1580,7 +1580,7 @@ void neogeo_state::init_mslug3b6()
 	m_cmc_prot->cmc42_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG3_GFX_KEY);
 }
 
-void neogeo_state::init_mslug3n6p()
+void neogeo_state::init_mslug3b6d()
 {
 	init_neogeo();
 	m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size,2);
@@ -1737,10 +1737,7 @@ void neogeo_state::init_ms4plus()
 void neogeo_state::init_ms4plusd()
 {
 	init_neogeo();
-	//m_sprgen->m_fixed_layer_bank_type = 1;
-	//m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
 	m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size,0);
-	//m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG4_GFX_KEY);
 	m_pcm2_prot->neo_pcm2_snk_1999(ym_region, ym_region_size, 8);
 	m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region,audio_region_size);
 }
