@@ -1,5 +1,37 @@
 ﻿What's new in PSMAME PLUS (Metal Slug Forever Special Edition Final)
 =====================================================================
+What is PSMAMEPLUS?
+
+It is called Project Shadow Mame Plus (Metal Slug Forever Special Edition Final), this project was part of the HBMAME emulator 
+in the year 2018 – 2020.
+
+Afterwards, it has been decided to make the project independent in 2021, providing all kinds of support, repairing all bugs 
+and glitches, correcting incompatibility with the NeoGeo system, etc.
+
+I am only giving support for the Windows XP, Windows 7, Windows 8, Windows 10 and Windows 11 operating systems, 
+for the 86/64 bit cpu of the compatible microprocessors.
+
+===============================================================================================================================
+2023-02-01
+
+- The controls have been configured, now you will have much easier access to access it:
+  *Command to save games, with the keyboard button "7".
+  *Command to load games, with the keyboard button "8".
+  *Command to reset games, with the keyboard button "9".
+  *Command to enter the NeoGeo bios, with the keyboard button "0".
+  *Command to pause the game, with the keyboard button "P".
+  *Command to display the time in real time in the game, with the keyboard button "O".
+  *Command to speed up the game, with the keyboard button "I".
+  *Command for the window mode screen, with the keyboard button "U".
+- A "bgfx" filter has been applied by default, for all games.
+- With this we finish the collection of Metal Slug decrypted/bootleg.
+
+New Games
+---------------------------------
+- [mslug3b6d]             Metal Slug 6 (Metal Slug 3 bootleg, decrypted C)
+
+
+
 2023-01-22
 
 - Renamed all roms hack remix standard and Extreme Megamods.
@@ -8,7 +40,6 @@
   you will no longer have to insert credits with the "5" button, 
   now press "start" and you can play with infinite credit.
 - A credit counter has been added for 1 players and in turn for 2 players, now individually.
-- With this we finish the collection of Metal Slug decrypted/bootleg roms.
 
 New Games
 ---------------------------------
