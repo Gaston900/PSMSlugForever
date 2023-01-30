@@ -1518,7 +1518,7 @@ ROM_END
 
 ROM_START( mslug2hc04 ) //mslug2sh
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "241_hc04.p1", 0x000000, 0x100000, CRC(4e4c8d1d) SHA1(bdb30f68fa1345511cbe1afcdf04c5f59d8965a1) )
+	ROM_LOAD16_WORD_SWAP( "241_hc04.p1", 0x000000, 0x100000, CRC(4c1a2f2c) SHA1(5e6b411187bce616066507a86b415ff69b8e9cf3) )
 	ROM_LOAD16_WORD_SWAP( "241.p2",      0x100000, 0x200000, CRC(38883f44) SHA1(fcf34b8c6e37774741542393b963635412484a27) )
     MSLUG2_ROM_FILL
     MSLUG2_SFIX_128K
@@ -5510,13 +5510,13 @@ GAME( 2021, mslugrma01,        mslug,    neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2014, mslug2hc01,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "GOTVG",          "Metal Slug 2 (Enemies Resetting Version 2014-09-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug2hc02,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "GOTVG",          "Metal Slug 2 (Generation 1V2 2019-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslug2hc03,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "DDJ",            "Metal Slug 2 (Stage Select 2016-10-19)", MACHINE_SUPPORTS_SAVE )
-GAME( 2008, mslug2hc04,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "hack",           "Metal Slug 2 (Hybrid bullets version 2008-12-04)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2008, mslug2hc04,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "hack",           "Metal Slug 2 (Hybrid bullets Fix Version 2008-12-04)", MACHINE_SUPPORTS_SAVE ) // This version 2023 has been fix
 GAME( 2021, mslug2hc05,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "phengzheng",     "Metal Slug 2 (Extraction Green Turbo 2021-09-16)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug2hc06,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "DDJ",            "Metal Slug 2 (Ward Charior 2018-01-25)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug2hc07,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "DDJ",            "Metal Slug 2 (Change Weapon And Mummy 2018-08-25)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2hc08,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "I love Nimes",   "Metal Slug 2 (Burst Enhanced Edition 2021-04-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, mslug2hc09,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "GOTVG",          "Metal Slug 2 (Multi-Function Version 2017-05-09)", MACHINE_SUPPORTS_SAVE )
-GAME( 2018, mslug2hc10,       mslug2,   neogeo_noslot, mslughw, neogeo_state,    init_neogeo,    ROT0, "GOTVG",          "Metal Slug 2 (Survival Version 2018-07-31)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
+GAME( 2018, mslug2hc10,       mslug2,   neogeo_noslot, mslughw, neogeo_state,    init_neogeo,    ROT0, "GOTVG",          "Metal Slug 2 (Survival Version 2018-07-31)", MACHINE_SUPPORTS_SAVE ) // To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
 GAME( 2021, mslug2hc11,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "phengzheng",     "Metal Slug 2 (Extraction Green Turbo Enemies Resetting 2021-09-16)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug2hc12,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "hack",           "Metal Slug 2 (Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2hc13,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "KofKill, Wang Hua, Czk", "Metal Slug 2 (Unity Time! 2021-01-22)", MACHINE_SUPPORTS_SAVE )

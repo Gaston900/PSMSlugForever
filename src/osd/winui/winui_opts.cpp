@@ -71,7 +71,7 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_LIST_COLOR,					"255,255,255",  OPTION_INTEGER, nullptr },
 	{ MUIOPTION_HISTORY_COLOR,				"255,255,255",  OPTION_INTEGER, nullptr },
 	{ MUIOPTION_TREE_COLOR,					"255,255,255",  OPTION_INTEGER, nullptr },
-	{ MUIOPTION_TREEBG_COLOR,				"0,0,0", 	    OPTION_INTEGER, nullptr },
+	{ MUIOPTION_TREEBG_COLOR,				"154,13,13", 	OPTION_INTEGER, nullptr },
 	{ MUIOPTION_LISTBG_COLOR,				"0,0,0", 	    OPTION_INTEGER, nullptr },
 	{ MUIOPTION_HISTORYBG_COLOR,			"0,0,0", 	    OPTION_INTEGER, nullptr },
 	{ MUIOPTION_CUSTOM_COLOR,				"0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0", OPTION_STRING, nullptr },

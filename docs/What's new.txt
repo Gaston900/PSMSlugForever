@@ -14,6 +14,7 @@ for the 86/64 bit cpu of the compatible microprocessors.
 ===============================================================================================================================
 2023-02-01
 
+- Fixed the Hybrid bullets version, now it skips level 2 that causes a crash.
 - The controls have been configured, now you will have much easier access to access it:
   *Command to save games, with the keyboard button "7".
   *Command to load games, with the keyboard button "8".
