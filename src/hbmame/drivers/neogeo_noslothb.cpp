@@ -305,7 +305,7 @@ INPUT_PORTS_END
     NEO_SFIX_512K( "263nd.s1", CRC(2628d663) SHA1(a976bdac2d7908e3203c7ffdc6a103cd327c656e) )
 
 #define MSLUG3G_SFIX_128K \
-    NEO_SFIX_128K( "256_hc22.s1", CRC(af90d166) SHA1(2e925b0bfbbf57aa5bf3522939502bfd97b381df) )
+    NEO_SFIX_128K( "256_hc03.s1", CRC(af90d166) SHA1(2e925b0bfbbf57aa5bf3522939502bfd97b381df) )
 
 #define MSLUG3_AUDIO_512K \
     NEO_BIOS_AUDIO_512K( "256.m1", CRC(eaeec116) SHA1(54419dbb21edc8c4b37eaac2e7ad9496d2de037a) )
@@ -371,8 +371,8 @@ INPUT_PORTS_END
 	ROM_LOAD16_BYTE( "256d.c4",     0x1000001, 0x800000, CRC(1463add6) SHA1(4db91b46d6430da272d27d00a6dc0eb25949bea1) )\
 	ROM_LOAD16_BYTE( "256d.c5",     0x2000000, 0x800000, CRC(48ca7f28) SHA1(e903876be5fb4fa582c988d74c6bef1c3b9c7083) )\
 	ROM_LOAD16_BYTE( "256d.c6",     0x2000001, 0x800000, CRC(806eb36f) SHA1(a412a9cab80c326733dde7652d1db2a46afb3ebb) )\
-	ROM_LOAD16_BYTE( "256_hc22.c7", 0x3000000, 0x800000, CRC(ed559fac) SHA1(e2e73b068785226cd97abbb8c2bd2b5800e9bf19) )\
-	ROM_LOAD16_BYTE( "256_hc22.c8", 0x3000001, 0x800000, CRC(1c52378b) SHA1(05cd499f5444eae6360c96bfd3d3db8870d9656a) )
+	ROM_LOAD16_BYTE( "256_hc03.c7", 0x3000000, 0x800000, CRC(ed559fac) SHA1(e2e73b068785226cd97abbb8c2bd2b5800e9bf19) )\
+	ROM_LOAD16_BYTE( "256_hc03.c8", 0x3000001, 0x800000, CRC(1c52378b) SHA1(05cd499f5444eae6360c96bfd3d3db8870d9656a) )
 
 #define MSLUG3DD_SPRITES \
 	ROM_REGION( 0x4000000, "sprites", 0 ) \
@@ -1731,15 +1731,16 @@ ROM_START( mslug3hc02 )
     MSLUG3D_SPRITES
 ROM_END
 
-ROM_START( mslug3hc03 ) //mslug3ki
+ROM_START( mslug3hc03 ) //mslug3g
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_hc03.p1", 0x000000, 0x100000, CRC(16a83b0a) SHA1(a898890bcd13d194333271c0d445913ba8d2cda7) )
-	ROM_LOAD16_WORD_SWAP( "256_hc03.p2", 0x100000, 0x400000, CRC(57f01937) SHA1(da9e106619c2fb264a2ba492b78828468a7265d6) )
+	ROM_LOAD16_WORD_SWAP( "256_hc03.p1", 0x000000, 0x100000, CRC(b23bd9b7) SHA1(4a5e877bc0d4853dc9c5a2c179049fbdd5285239) )
+	ROM_LOAD16_WORD_SWAP( "256_hc03.p2", 0x100000, 0x400000, CRC(8053a3fb) SHA1(baf40ca915d30f3dbf6cc440131e824e889940e7) )
+    ROM_DEFAULT_BIOS("euro")
     MSLUG3H_ROM_FILL
-	MSLUG3HD_SFIX_128K
+    MSLUG3G_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
-	MSLUG3DD_SPRITES
+	MSLUG3G_SPRITES
 ROM_END
 
 ROM_START( mslug3hc04 ) //mslug3se
@@ -1921,11 +1922,25 @@ ROM_START( mslug3hc19 ) //mslug3c
 	MSLUG3G_SPRITES
 ROM_END
 
+ /***********************************************************************************************************************************
+  This Roms Hack is very problematic with the HBMAME/PSMAMEPLUS emulator, it prevents you from being able to play most of the random 
+  scenarios that are included in this version, this mentioned problem does not occur with the FB Alpha/FBNEO emulator.
+  How is this?
+  It is established through three random scenarios, interspersing the scenarios of each level that will be played.
+  The problem this causes is that the rom starts with two random scenarios instead of three,
+  apart from when the game starts, 99% will start one of the random scenarios, 1% the second of the random scenarios and 0% for the 
+  third random scenarios.
+  For this the roms have been corrected, now either separating by each random scenario becomes an individual roms:
+  Random enemies that reset version #1
+  Random enemies that reset version #2
+  Random enemies that reset version #3
+***************************************************************************************************************************************/
+
 ROM_START( mslug3hc20 ) //mslug3hcr, mslug3nsj
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	//ROM_LOAD16_WORD_SWAP( "256_hc20.p1", 0x000000, 0x100000, CRC(f804b927) SHA1(a1a6bcc0fe65416c3ab04f84513da2138515fed0) ) //CRC32 SHA1 Official Rom Hack
 	//ROM_LOAD16_WORD_SWAP( "256_hc20.p2", 0x100000, 0x400000, CRC(94dcc314) SHA1(9d3990eef3ca3d46981495b83729479045963f51) ) //CRC32 SHA1 Official Rom Hack
-	ROM_LOAD16_WORD_SWAP( "256_hc20.p1", 0x000000, 0x100000, CRC(22e48b3d) SHA1(1a35a0b9dac0000e01dabb369a6a7cadb6d733c2) )
+	ROM_LOAD16_WORD_SWAP( "256_hc20.p1", 0x000000, 0x100000, CRC(0f459443) SHA1(1e57eb4f5a473e8fb1e9edb51f3ad15819940da2) )
 	ROM_LOAD16_WORD_SWAP( "256_hc20.p2", 0x100000, 0x400000, CRC(c34322ae) SHA1(774cc4e4e6fb4596c3e4daf18e7d8b6be2e43ea7) )
     MSLUG3H_ROM_FILL
 	MSLUG3HD_SFIX_128K
@@ -1936,7 +1951,7 @@ ROM_END
 
 ROM_START( mslug3hc21 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_hc21.p1", 0x000000, 0x100000, CRC(a9bbd429) SHA1(4c3a018928c892523be185c1221714633bfbff64) )
+	ROM_LOAD16_WORD_SWAP( "256_hc21.p1", 0x000000, 0x100000, CRC(0cf2daa7) SHA1(aa3d5f537ef3595c2043677aacd60daeaf6a21f0) )
 	ROM_LOAD16_WORD_SWAP( "256_hc20.p2", 0x100000, 0x400000, CRC(c34322ae) SHA1(774cc4e4e6fb4596c3e4daf18e7d8b6be2e43ea7) )
     MSLUG3H_ROM_FILL
 	MSLUG3HD_SFIX_128K
@@ -1945,16 +1960,15 @@ ROM_START( mslug3hc21 )
     MSLUG3D_SPRITES
 ROM_END
 
-ROM_START( mslug3hc22 ) //mslug3g
+ROM_START( mslug3hc22 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_hc22.p1", 0x000000, 0x100000, CRC(b23bd9b7) SHA1(4a5e877bc0d4853dc9c5a2c179049fbdd5285239) )
-	ROM_LOAD16_WORD_SWAP( "256_hc22.p2", 0x100000, 0x400000, CRC(8053a3fb) SHA1(baf40ca915d30f3dbf6cc440131e824e889940e7) )
-    ROM_DEFAULT_BIOS("euro")
+	ROM_LOAD16_WORD_SWAP( "256_hc22.p1", 0x000000, 0x100000, CRC(5e142d61) SHA1(12377caf04fa5734cb2d3ae3a244992cfb27c4a4) )
+	ROM_LOAD16_WORD_SWAP( "256_hc20.p2", 0x100000, 0x400000, CRC(c34322ae) SHA1(774cc4e4e6fb4596c3e4daf18e7d8b6be2e43ea7) )
     MSLUG3H_ROM_FILL
-    MSLUG3G_SFIX_128K
-	MSLUG3_AUDIO_512K
+	MSLUG3HD_SFIX_128K
+    MSLUG3ER_AUDIO_512K
     MSLUG3_YMSND
-	MSLUG3G_SPRITES
+    MSLUG3D_SPRITES
 ROM_END
 
 ROM_START( mslug3hc23 )
@@ -2016,6 +2030,17 @@ ROM_START( mslug3hc28 ) //mslug3dd
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc28.p1", 0x000000, 0x100000, CRC(9a83cb7a) SHA1(07f2c4602d7c4cc011a5271d39af92a329fbcff0) )
 	ROM_LOAD16_WORD_SWAP( "256_hc28.p2", 0x100000, 0x400000, CRC(e82fc07a) SHA1(3fa3da5aff90229a1bbd636f761d4eb4a66958d8) )
+    MSLUG3H_ROM_FILL
+	MSLUG3HD_SFIX_128K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+	MSLUG3DD_SPRITES
+ROM_END
+
+ROM_START( mslug3hc29 ) //mslug3ki
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256_hc29.p1", 0x000000, 0x100000, CRC(16a83b0a) SHA1(a898890bcd13d194333271c0d445913ba8d2cda7) )
+	ROM_LOAD16_WORD_SWAP( "256_hc29.p2", 0x100000, 0x400000, CRC(57f01937) SHA1(da9e106619c2fb264a2ba492b78828468a7265d6) )
     MSLUG3H_ROM_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
@@ -5257,11 +5282,11 @@ GAME( 1996, msluge,            mslug,    neogeo_noslot, mslughb, neogeo_state,  
 ********************************************************************************************/
 
 //Version Remastering
-GAME( 2021, msluger01,         mslug,    neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "Team Remix (Gaston90 And Unknown Author)",             "Metal Slug (Multi-Function Items Explosives Edition Remastering 2022-10-18)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, msluger01,         mslug,    neogeo_noslot, mslughb, neogeo_state,   init_neogeo,    ROT0, "Team Remix (Gaston90 And Unknown Author)",             "Metal Slug (Multi-Function Items Explosives Edition Remastering 2022-10-18)", MACHINE_SUPPORTS_SAVE )
 // Revised Remix Standard Edition
-GAME( 2021, mslugla01,         mslug,    neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "Team Remix (Gaston90, Ydmis And I love Nimes)",        "Metal Slug (Revised Multi-Function Remix Standard Edition 2021-12-31)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslugla01,         mslug,    neogeo_noslot, mslughb, neogeo_state,   init_neogeo,    ROT0, "Team Remix (Gaston90, Ydmis And I love Nimes)",        "Metal Slug (Revised Multi-Function Remix Standard Edition 2021-12-31)", MACHINE_SUPPORTS_SAVE )
 // Extreme MegaMods Edition
-GAME( 2021, mslugrma01,        mslug,    neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "Team Remix (Gaston90, Ydmis, DDJ And I love Nimes)",   "Metal Slug (Revised Multi-Function Heavy Machine Gun Extreme MegaMods Edition 2021-12-31)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslugrma01,        mslug,    neogeo_noslot, mslughb, neogeo_state,   init_neogeo,    ROT0, "Team Remix (Gaston90, Ydmis, DDJ And I love Nimes)",   "Metal Slug (Revised Multi-Function Heavy Machine Gun Extreme MegaMods Edition 2021-12-31)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR       NAME          PARENT       MACHINE     INPUT                       INIT       MONITOR COMPANY          FULLNAME FLAGS */
 // Metal Slug 2
@@ -5338,7 +5363,7 @@ GAME( 2022, mslug2rmb05,       mslug2,   neogeo_noslot, mslughb, neogeo_state,  
 // Metal Slug 3
 GAME( 2000, mslug3hc01,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "HappyAsr",       "Metal Slug 3 (Super D version)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3hc02,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "I love Nimes",   "Metal Slug 3 (Burst Enhanced Edition 2022-10-13)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslug3hc03,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "GOTVG",          "Metal Slug 3 (Komorebi 2022-05-11)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, mslug3hc03,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "GOTVG",          "Metal Slug 3 (Multi-Function Version 2019-03-05)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3hc04,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "GOTVG",          "Metal Slug 3 (SE Special Edition 2022-03-31)", MACHINE_SUPPORTS_SAVE ) 
 GAME( 2013, mslug3hc05,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "GOTVG",          "Metal Slug 3 (Green Blue Edition 2013-02-27)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug3hc06,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "GOTVG",          "Metal Slug 3 (Shop Version 2017-12-16)" , MACHINE_SUPPORTS_SAVE )
@@ -5355,15 +5380,16 @@ GAME( 2017, mslug3hc16,        mslug3,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2020, mslug3hc17,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "FBN4DROID",      "Metal Slug 3 (The Last Warhead 2020-09-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug3hc18,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "GOTVG",          "Metal Slug 3 (Unlimited Firepower 2021-03-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug3hc19,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "GOTVG",          "Metal Slug 3 (Enemies Resetting Version 2019-07-20)" , MACHINE_SUPPORTS_SAVE )
-GAME( 2017, mslug3hc20,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "FBN4DROID",      "Metal Slug 3 (Random Enemies Resetting Version A 2017-12-08)" , MACHINE_SUPPORTS_SAVE )
-GAME( 2017, mslug3hc21,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "FBN4DROID",      "Metal Slug 3 (Random Enemies Resetting Version B 2017-12-08)" , MACHINE_SUPPORTS_SAVE )
-GAME( 2019, mslug3hc22,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "GOTVG",          "Metal Slug 3 (Multi-Function Version 2019-03-05)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, mslug3hc20,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "FBN4DROID",      "Metal Slug 3 (Random Enemies Resetting Version #1 2017-12-08)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, mslug3hc21,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "FBN4DROID",      "Metal Slug 3 (Random Enemies Resetting Version #2 2017-12-08)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, mslug3hc22,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "GOTVG",          "Metal Slug 3 (Random Enemies Resetting Version #3 2017-12-08)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2017, mslug3hc23,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "Wanghua123",     "Metal Slug 3 (Summon Mount Slug 2017-10-09)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug3hc24,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "GOTVG",          "Metal Slug 3 (Generation 1V2 2019-05-11)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug3hc25,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "hack",           "Metal Slug 3 (Easy Mode 2018-11-16)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug3hc26,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "KofKill, Wang Hua, Czk", "Metal Slug 3 (Unity Time! 2021-02-21)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3hc27,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "GOTVG",          "Metal Slug 3 (Legendary Edition 2022-12-10)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3hc28,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "GOTVG",          "Metal Slug 3 (Early Summer Starry Sky 2022-05-11)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslug3hc29,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "GOTVG",          "Metal Slug 3 (Komorebi 2022-05-11)", MACHINE_SUPPORTS_SAVE )
 // Decrypted And Bootleg
 GAME( 2000, mslug3d,           mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "SNK",            "Metal Slug 3 (Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2000, mslug3hd,          mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "SNK",            "Metal Slug 3 (Non-encrypted, decrypted C)", MACHINE_SUPPORTS_SAVE )
@@ -5420,18 +5446,17 @@ GAME( 2019, mslug3b6hc05,      mslug3,   neogeo_noslot, mslughb, neogeo_state,  
   Command disabled in file 256.p1: 
   00003C20 //CF 51 FC FF 75 4E [B9 4E 0F 00 10 A2] 00 46 00 02
   
-  At last a bugs that caused it with the HBMAME / PSMAMEPLUS emulator has been corrected, it is that 
-  it prevented you from being able to play the most random scenarios it has, which this problem does 
-  not cause in the FB Alpha emulator.
+  This Roms Hack is very problematic with the HBMAME/PSMAMEPLUS emulator, it prevents you from being able to play most of the random 
+  scenarios that are included in this version, this mentioned problem does not occur with the FB Alpha/FBNEO emulator.
   How is this?
-  It is established by three random scenarios, interspersing the scenarios of each level that one will be playing.
-  The problem that this causes is that the rom starts with two random scenarios instead of three, 
-  apart from when the game starts, 99% will start one of the random scenarios, 1% the second of the random scenarios 
-  and 0% for the third random scenarios.
-  For this, the roms have been corrected, now either by separating by each random scenario it is converted into an individual roms:
-  Random Enemies Resetting Version # 1
-  Random Enemies Resetting Version # 2
-  Random Enemies Resetting Version # 3 
+  It is established through three random scenarios, interspersing the scenarios of each level that will be played.
+  The problem this causes is that the rom starts with two random scenarios instead of three,
+  apart from when the game starts, 99% will start one of the random scenarios, 1% the second of the random scenarios and 0% for the 
+  third random scenarios.
+  For this the roms have been corrected, now either separating by each random scenario becomes an individual roms:
+  Random enemies that reset version #1
+  Random enemies that reset version #2
+  Random enemies that reset version #3
   
   030F360//[CC 04 2F 01 00 00 00 00 00 00 01 00]14 08 00 0C [Level 4-2]
   030F360// 74 03 5C 00 84 03 00 00 00 00 01 00 14 08 00 0C [Replace To Correct]
@@ -5527,8 +5552,8 @@ GAME( 2021, mslug3lh02,        mslug3,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2021, mslug3lh03,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "Team Remix (Gaston90, Ydmis And I love Nimes)",         "Metal Slug 3 (Revised Multi-Function Enemies Resetting #7 Mummy Players Mode Remix Standard Edition 2021-11-18)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug3lh04,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "Team Remix (Gaston90, Ydmis And I love Nimes)",         "Metal Slug 3 (Revised Multi-Function Enemies Resetting #7 Hybrid Bullets Remix Standard Edition 2021-11-18)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug3lh05,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "Team Remix (Gaston90 And Wanghua123)",                  "Metal Slug 3 (Revised Summon Mount Enemies Resetting #7 Remix Standard Edition 2021-11-18)" , MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug3li01,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "Team Remix (Gaston90, I love Nimes And Ydmis)",         "Metal Slug 3 (Revised Random Enemies Resetting Remix Standard Edition A 2021-11-18)" , MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug3li02,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "Team Remix (Gaston90, I love Nimes And Ydmis)",         "Metal Slug 3 (Revised Random Enemies Resetting Remix Standard Edition B 2021-11-18)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug3li01,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "Team Remix (Gaston90, I love Nimes And Ydmis)",         "Metal Slug 3 (Revised Random Enemies Resetting Remix Standard Edition #1 2021-11-18)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug3li02,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "Team Remix (Gaston90, I love Nimes And Ydmis)",         "Metal Slug 3 (Revised Random Enemies Resetting Remix Standard Edition #2 2021-11-18)" , MACHINE_SUPPORTS_SAVE )
 // Extreme MegaMods Edition
 GAME( 2021, mslug3rma01,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "Team Remix (Gaston90, Shyma.X, Ydmis And I love Nimes)",    "Metal Slug 3 (Revised Multi-Function Big Heavy Machine Gun Extreme MegaMods Edition 2021-11-18)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug3rma02,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "Team Remix (Gaston90, Shyma.X, Ydmis And I love Nimes)",    "Metal Slug 3 (Revised Multi-Function Zombie Players Mode Extreme Remix Edition 2021-11-18)" , MACHINE_SUPPORTS_SAVE )
@@ -5562,8 +5587,8 @@ GAME( 2021, mslug3rmh01,       mslug3,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2021, mslug3rmh02,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "Team Remix (Gaston90, Shyma.X, Ydmis And I love Nimes)",    "Metal Slug 3 (Revised Multi-Function Enemies Resetting #7 Zombie Players Mode Extreme Remix Edition 2021-11-18)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug3rmh03,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "Team Remix (Gaston90, Shyma.X, Ydmis And I love Nimes)",    "Metal Slug 3 (Revised Multi-Function Enemies Resetting #7 Mummy Players Mode Extreme MegaMods Edition 2021-11-18)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug3rmh04,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "Team Remix (Gaston90, Shyma.X, Ydmis And I love Nimes)",    "Metal Slug 3 (Revised Multi-Function Enemies Resetting #7 Hybrid Bullets Extreme MegaMods Edition 2021-11-18)" , MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug3rmi01,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "Team Remix (Gaston90, I love Nimes And Ydmis)",             "Metal Slug 3 (Revised Random Enemies Resetting Big Heavy Machine Gun Extreme MegaMods Edition A 2021-11-18)" , MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug3rmi02,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "Team Remix (Gaston90, I love Nimes And Ydmis)",             "Metal Slug 3 (Revised Random Enemies Resetting Big Heavy Machine Gun Extreme MegaMods Edition B 2021-11-18)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug3rmi01,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "Team Remix (Gaston90, I love Nimes And Ydmis)",             "Metal Slug 3 (Revised Random Enemies Resetting Big Heavy Machine Gun Extreme MegaMods Edition #1 2021-11-18)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug3rmi02,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "Team Remix (Gaston90, I love Nimes And Ydmis)",             "Metal Slug 3 (Revised Random Enemies Resetting Big Heavy Machine Gun Extreme MegaMods Edition #2 2021-11-18)" , MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR       NAME          PARENT       MACHINE      INPUT                        INIT       MONITOR COMPANY          FULLNAME FLAGS */
 // Metal Slug 4
@@ -5778,15 +5803,15 @@ GAME( 2022, mslugxesp05,       mslugx,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2022, mslugxesp06,       mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Team Remix (Gaston90, PlayerX China, Wang Hua)",                   "Metal Slug X (Extreme Space 2R Remastering Edition 2022-10-12)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxesp07,       mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Team Remix (Gaston90, Azstar China Soda, PlayerX China, Wang Hua)","Metal Slug X (Enemy Soldiers Reset 2R Extreme Space Remastering Edition 2022-10-12)", MACHINE_SUPPORTS_SAVE )
 //All Apocalyptic Time Edition, Test, Allen O'Neil See You In Hell Edition
-GAME( 2021, mslugxtst01,       mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Testing My First Level 2020-04-07)", MACHINE_SUPPORTS_SAVE ) // Update 2021
+GAME( 2020, mslugxtst01,       mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Testing My First Level 2020-04-07)", MACHINE_SUPPORTS_SAVE ) // Update 2021
 GAME( 2020, mslugxtao01,       mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Allen O'Neil See You In Hell 1.0 2R Edition 2020-07-16)", MACHINE_SUPPORTS_SAVE ) // Update 2021 
-GAME( 2021, mslugxat01,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Apocalyptic Time 0.1 2R Edition 2020-03-22)", MACHINE_SUPPORTS_SAVE ) // Update 2021
-GAME( 2021, mslugxat02,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Apocalyptic Time 1.0 2R Edition 2020-04-20)", MACHINE_SUPPORTS_SAVE ) // Update 2021
-GAME( 2021, mslugxat03,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Apocalyptic Time 2.1 2R Edition 2020-05-01)", MACHINE_SUPPORTS_SAVE ) // Update 2021 
-GAME( 2021, mslugxat04,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Apocalyptic Time 2.2 2R Edition 2020-05-11)", MACHINE_SUPPORTS_SAVE ) // Update 2021 
-GAME( 2021, mslugxat05,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Apocalyptic Time 3.0 2R Edition 2020-05-21)", MACHINE_SUPPORTS_SAVE ) // Update 2021
-GAME( 2021, mslugxat06,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Apocalyptic Time 4.0 2R Edition 2020-06-23)", MACHINE_SUPPORTS_SAVE ) // Update 2021
-GAME( 2021, mslugxat07,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Apocalyptic Time 5.5 2R Edition 2020-08-04)", MACHINE_SUPPORTS_SAVE ) // Update 2021
+GAME( 2020, mslugxat01,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Apocalyptic Time 0.1 2R Edition 2020-03-22)", MACHINE_SUPPORTS_SAVE ) // Update 2021
+GAME( 2020, mslugxat02,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Apocalyptic Time 1.0 2R Edition 2020-04-20)", MACHINE_SUPPORTS_SAVE ) // Update 2021
+GAME( 2020, mslugxat03,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Apocalyptic Time 2.1 2R Edition 2020-05-01)", MACHINE_SUPPORTS_SAVE ) // Update 2021 
+GAME( 2020, mslugxat04,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Apocalyptic Time 2.2 2R Edition 2020-05-11)", MACHINE_SUPPORTS_SAVE ) // Update 2021 
+GAME( 2020, mslugxat05,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Apocalyptic Time 3.0 2R Edition 2020-05-21)", MACHINE_SUPPORTS_SAVE ) // Update 2021
+GAME( 2020, mslugxat06,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Apocalyptic Time 4.0 2R Edition 2020-06-23)", MACHINE_SUPPORTS_SAVE ) // Update 2021
+GAME( 2020, mslugxat07,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Apocalyptic Time 5.5 2R Edition 2020-08-04)", MACHINE_SUPPORTS_SAVE ) // Update 2021
 GAME( 2021, mslugxat08,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Apocalyptic Time The 1 Beginning Of The End Of Time 6.0 2R Edition 2021-04-20)", MACHINE_SUPPORTS_SAVE ) 
 GAME( 2021, mslugxat09,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Apocalyptic Time The 2 Beginning Of The End Of Time 7.1 2R Edition 2021-12-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxat10,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Apocalyptic Time The 3 Beginning Of The End Of Time 8.1 2R Edition 2022-02-20)", MACHINE_SUPPORTS_SAVE )
