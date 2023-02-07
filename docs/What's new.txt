@@ -17,7 +17,19 @@ for the 86/64 bit cpu of the compatible microprocessors.
 2023-02-01...Update 02-06
 
 - The next update to be published will be in June or July 2023.
+- Fixed the text of the Metal Slug 5 Encrypted Set and metal slug bios.
 - Fixed the Hybrid bullets version, now it skips level 2 that causes a crash.
+- This Roms Hack "Metal Slug 3 (Random Enemies Resetting Version)" is very problematic with the HBMAME/PSMAMEPLUS emulator, it prevents you from being able to play most of the random 
+  scenarios that are included in this version, this mentioned problem does not occur with the FB Alpha/FBNEO emulator.
+  How is this?
+  It is established through three random scenarios, interspersing the scenarios of each level that will be played.
+  The problem this causes is that the rom starts with two random scenarios instead of three,
+  apart from when the game starts, 99% will start one of the random scenarios, 1% the second of the random scenarios and 0% for the 
+  third random scenarios.
+  For this the roms have been corrected, now either separating by each random scenario becomes an individual roms:
+  Random enemies that reset version #1
+  Random enemies that reset version #2
+  Random enemies that reset version #3
 - The controls have been configured, now you will have much easier access to access it:
   * Command to save games, with the keyboard button "7".
   * Command to load games, with the keyboard button "8".
