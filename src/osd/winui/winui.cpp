@@ -3557,7 +3557,7 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			return true;
 
 		case ID_HELP_WHATS_NEW :
-			ShellExecuteCommon(hMain, ".\\config/docs\\whatsnew.txt");
+			ShellExecuteCommon(hMain, ".\\config/docs\\What's new.txt");
 			SetFocus(hWndList);
 			return true;
 

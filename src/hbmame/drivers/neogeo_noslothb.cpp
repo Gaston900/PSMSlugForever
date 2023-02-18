@@ -68,14 +68,18 @@ INPUT_PORTS_END
     ROM_FILL(0x1783E7,1,0x78)\
 	ROM_FILL(0x1783EB,1,0x12)\
 	ROM_FILL(0x1783E8,1,0x34)\
-	ROM_FILL(0x1783EE,1,0x23)
+	ROM_FILL(0x1783EE,1,0x23)\
+	ROM_FILL(0x1783EA,1,0x02)
 	//ROM_FILL(0x1783ED,1,0x34)
+	//ROM_FILL(0x1783E9,1,0x32)
+	//ROM_FILL(0x1783E6,1,0x32)
 
 #define MSLUGLZ_ROM_FILL \
     ROM_FILL(0x1783E7,1,0x78)\
 	ROM_FILL(0x1783EB,1,0x12)\
 	ROM_FILL(0x1783E8,1,0x34)\
 	ROM_FILL(0x1783EE,1,0x23)\
+	ROM_FILL(0x1783EA,1,0x02)\
 	ROM_FILL(0x1783E4,1,0x1A)
 	
 #define MSLUGRMZ_ROM_FILL \
@@ -83,6 +87,7 @@ INPUT_PORTS_END
 	ROM_FILL(0x1783EB,1,0x12)\
 	ROM_FILL(0x1783E8,1,0x34)\
 	ROM_FILL(0x1783EE,1,0x23)\
+	ROM_FILL(0x1783EA,1,0x02)\
 	ROM_FILL(0x1783E4,1,0x98)
 
 #define MSLUG2_ROM_FILL \
@@ -90,7 +95,8 @@ INPUT_PORTS_END
 	ROM_FILL(0x1011,1,0x12)\
 	ROM_FILL(0x1013,1,0x34)\
 	ROM_FILL(0x100E,1,0x34)\
-	ROM_FILL(0x1014,1,0x34)
+	ROM_FILL(0x1014,1,0x34)\
+	ROM_FILL(0x1010,1,0x02)
 
 #define MSLUG2LZ_ROM_FILL \
     ROM_FILL(0x100D,1,0x78)\
@@ -98,6 +104,7 @@ INPUT_PORTS_END
 	ROM_FILL(0x1013,1,0x34)\
 	ROM_FILL(0x100E,1,0x34)\
 	ROM_FILL(0x1014,1,0x34)\
+	ROM_FILL(0x1010,1,0x02)\
     ROM_FILL(0x100A,1,0x1A)
 
 #define MSLUG2RMZ_ROM_FILL \
@@ -106,6 +113,7 @@ INPUT_PORTS_END
 	ROM_FILL(0x1013,1,0x34)\
 	ROM_FILL(0x100E,1,0x34)\
 	ROM_FILL(0x1014,1,0x34)\
+	ROM_FILL(0x1010,1,0x02)\
     ROM_FILL(0x100A,1,0x98)
 
 #define MSLUG3H_ROM_FILL \
@@ -114,7 +122,8 @@ INPUT_PORTS_END
 	ROM_FILL(0x2EAF,1,0x12)\
 	ROM_FILL(0x2EAB,1,0x34)\
 	ROM_FILL(0x2EA8,1,0x34)\
-	ROM_FILL(0x2EAD,1,0x24)
+	ROM_FILL(0x2EAD,1,0x24)\
+	ROM_FILL(0x2EAA,1,0x02)
 
 #define MSLUG3LZ_ROM_FILL \
     ROM_FILL(0x2EA7,1,0x78)\
@@ -123,6 +132,7 @@ INPUT_PORTS_END
 	ROM_FILL(0x2EAB,1,0x34)\
 	ROM_FILL(0x2EA8,1,0x34)\
 	ROM_FILL(0x2EAD,1,0x24)\
+	ROM_FILL(0x2EAA,1,0x02)\
 	ROM_FILL(0x2EA4,1,0x1A)
 
 #define MSLUG3RMZ_ROM_FILL \
@@ -132,6 +142,7 @@ INPUT_PORTS_END
 	ROM_FILL(0x2EAB,1,0x34)\
 	ROM_FILL(0x2EA8,1,0x34)\
 	ROM_FILL(0x2EAD,1,0x24)\
+	ROM_FILL(0x2EAA,1,0x02)\
 	ROM_FILL(0x2EA4,1,0x98)
 
 #define MSLUG4_ROM_FILL \
@@ -140,7 +151,8 @@ INPUT_PORTS_END
 	ROM_FILL(0x1749,1,0x12)\
 	ROM_FILL(0x1745,1,0x34)\
 	ROM_FILL(0x1742,1,0x34)\
-	ROM_FILL(0x1747,1,0x24)
+	ROM_FILL(0x1747,1,0x24)\
+	ROM_FILL(0x1744,1,0x02)
 
 #define MSLUG4LZ_ROM_FILL \
     ROM_FILL(0x1741,1,0x78)\
@@ -149,6 +161,7 @@ INPUT_PORTS_END
 	ROM_FILL(0x1745,1,0x34)\
 	ROM_FILL(0x1742,1,0x34)\
 	ROM_FILL(0x1747,1,0x24)\
+	ROM_FILL(0x1744,1,0x02)\
 	ROM_FILL(0x173E,1,0x1A)
 
 #define MSLUG4RMZ_ROM_FILL \
@@ -158,6 +171,7 @@ INPUT_PORTS_END
 	ROM_FILL(0x1745,1,0x34)\
 	ROM_FILL(0x1742,1,0x34)\
 	ROM_FILL(0x1747,1,0x24)\
+	ROM_FILL(0x1744,1,0x02)\
 	ROM_FILL(0x173E,1,0x98)
 
 #define MSLUG5_ROM_FILL \
@@ -165,7 +179,8 @@ INPUT_PORTS_END
 	ROM_FILL(0x2CD7,1,0x3B)\
 	ROM_FILL(0x2CDA,1,0x8B)\
     ROM_FILL(0x2CD4,1,0x71)\
-	ROM_FILL(0x2CDB,1,0x09)
+	ROM_FILL(0x2CDB,1,0x09)\
+	ROM_FILL(0x2CD6,1,0x26)
 
 #define MSLUG5HD_ROM_FILL \
     ROM_FILL(0x2CD3,1,0x78)\
@@ -173,7 +188,8 @@ INPUT_PORTS_END
 	ROM_FILL(0x2CDB,1,0x12)\
 	ROM_FILL(0x2CD7,1,0x34)\
 	ROM_FILL(0x2CD4,1,0x34)\
-	ROM_FILL(0x2CD9,1,0x24)
+	ROM_FILL(0x2CD9,1,0x24)\
+	ROM_FILL(0x2CD6,1,0x02)
 
 #define MSLUG5LZ_ROM_FILL \
     ROM_FILL(0x2CD3,1,0x78)\
@@ -182,6 +198,7 @@ INPUT_PORTS_END
 	ROM_FILL(0x2CD7,1,0x34)\
 	ROM_FILL(0x2CD4,1,0x34)\
 	ROM_FILL(0x2CD9,1,0x24)\
+	ROM_FILL(0x2CD6,1,0x02)\
 	ROM_FILL(0x2CD0,1,0x1A)
 
 #define MSLUG5RMZ_ROM_FILL \
@@ -191,6 +208,7 @@ INPUT_PORTS_END
 	ROM_FILL(0x2CD7,1,0x34)\
 	ROM_FILL(0x2CD4,1,0x34)\
 	ROM_FILL(0x2CD9,1,0x24)\
+	ROM_FILL(0x2CD6,1,0x02)\
 	ROM_FILL(0x2CD0,1,0x98)
 
 #define MSLUGX_ROM_FILL \
@@ -199,7 +217,8 @@ INPUT_PORTS_END
 	ROM_FILL(0x318D,1,0x12)\
 	ROM_FILL(0x318B,1,0x34)\
 	ROM_FILL(0x3186,1,0x34)\
-	ROM_FILL(0x318C,1,0x34)
+	ROM_FILL(0x318C,1,0x34)\
+	ROM_FILL(0x3188,1,0x02)
 
 #define MSLUGXLZ_ROM_FILL \
     ROM_FILL(0x3185,1,0x78)\
@@ -208,6 +227,7 @@ INPUT_PORTS_END
 	ROM_FILL(0x318B,1,0x34)\
 	ROM_FILL(0x3186,1,0x34)\
 	ROM_FILL(0x318C,1,0x34)\
+	ROM_FILL(0x3188,1,0x02)\
     ROM_FILL(0x3182,1,0x18)
 
 #define MSLUGXRMZ_ROM_FILL \
@@ -217,6 +237,7 @@ INPUT_PORTS_END
 	ROM_FILL(0x318B,1,0x34)\
 	ROM_FILL(0x3186,1,0x34)\
 	ROM_FILL(0x318C,1,0x34)\
+	ROM_FILL(0x3188,1,0x02)\
     ROM_FILL(0x3182,1,0x98)
 
 #define MSLUG_SFIX_128K \
@@ -827,8 +848,8 @@ INPUT_PORTS_END
 	ROM_LOAD16_BYTE( "250.c2",      0x0000001, 0x800000, CRC(31679821) SHA1(554f600a3aa09c16c13c625299b087a79d0d15c5) )\
 	ROM_LOAD16_BYTE( "250.c3",      0x1000000, 0x800000, CRC(fd602019) SHA1(c56646c62387bc1439d46610258c755beb8d7dd8) )\
 	ROM_LOAD16_BYTE( "250.c4",      0x1000001, 0x800000, CRC(31354513) SHA1(31be8ea2498001f68ce4b06b8b90acbf2dcab6af) )\
-	ROM_LOAD16_BYTE( "250_hc20.c5", 0x2000000, 0x800000, CRC(b2d7bf98) SHA1(1526564518aaf19a2eebc90175abbcc47c3e1147) )\
-	ROM_LOAD16_BYTE( "250_hc20.c6", 0x2000001, 0x800000, CRC(e0f7a059) SHA1(571d67ed24512bffc81554599c29e585dd533cf4) )
+	ROM_LOAD16_BYTE( "250_hc24.c5", 0x2000000, 0x800000, CRC(b2d7bf98) SHA1(1526564518aaf19a2eebc90175abbcc47c3e1147) )\
+	ROM_LOAD16_BYTE( "250_hc24.c6", 0x2000001, 0x800000, CRC(e0f7a059) SHA1(571d67ed24512bffc81554599c29e585dd533cf4) )
 
 #define MSLUGXLB_SPRITES \
 	ROM_REGION( 0x3000000, "sprites", 0 ) \
@@ -4421,15 +4442,15 @@ ROM_START( mslugxhc19 ) //mslugx2r
 	MSLUGX_SPRITES
 ROM_END
 
-ROM_START( mslugxhc20 ) //mslugxdd
+ROM_START( mslugxhc20 ) //mslugxc1
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250_hc20.p1", 0x000000, 0x100000, CRC(aa09586a) SHA1(246579b58babcf696f988a2d57dc8fab0019b3de) )
-	ROM_LOAD16_WORD_SWAP( "250_hc20.p2", 0x100000, 0x400000, CRC(1791d721) SHA1(cdc6231f1fde1eef90c51ef9a5c22e900055c3f5) )
+	ROM_LOAD16_WORD_SWAP( "250_hc20.p1", 0x000000, 0x100000, CRC(e74f36c2) SHA1(b17d66f36e6ac31433179566ea07a0ed8790b161) )
+	ROM_LOAD16_WORD_SWAP( "250_hc20.p2", 0x100000, 0x400000, CRC(e954b8aa) SHA1(b339b1fd05d50ac3a9d3992bb0fc8e3fd1a95557) )
     MSLUGX_ROM_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
-	MSLUGXDD_SPRITES
+	MSLUGX_SPRITES
 ROM_END
 
 ROM_START( mslugxhc21 ) //mslugxmax+ 
@@ -4465,15 +4486,15 @@ ROM_START( mslugxhc23 ) //mslugx2r1v2
 	MSLUGX_SPRITES
 ROM_END
 
-ROM_START( mslugxhc24 ) //mslugxc1
+ROM_START( mslugxhc24 ) //mslugxdd
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250_hc24.p1", 0x000000, 0x100000, CRC(e74f36c2) SHA1(b17d66f36e6ac31433179566ea07a0ed8790b161) )
-	ROM_LOAD16_WORD_SWAP( "250_hc24.p2", 0x100000, 0x400000, CRC(e954b8aa) SHA1(b339b1fd05d50ac3a9d3992bb0fc8e3fd1a95557) )
+	ROM_LOAD16_WORD_SWAP( "250_hc24.p1", 0x000000, 0x100000, CRC(aa09586a) SHA1(246579b58babcf696f988a2d57dc8fab0019b3de) )
+	ROM_LOAD16_WORD_SWAP( "250_hc24.p2", 0x100000, 0x400000, CRC(1791d721) SHA1(cdc6231f1fde1eef90c51ef9a5c22e900055c3f5) )
     MSLUGX_ROM_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
-	MSLUGX_SPRITES
+	MSLUGXDD_SPRITES
 ROM_END
 
 /***************
@@ -5378,13 +5399,13 @@ GAME( 2014, mslug2hc01,       mslug2,   neogeo_noslot, mslughb, neogeo_state,   
 GAME( 2019, mslug2hc02,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "GOTVG",          "Metal Slug 2 (Generation 1V2 2019-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslug2hc03,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "DDJ",            "Metal Slug 2 (Stage Select 2016-10-19)", MACHINE_SUPPORTS_SAVE )
 GAME( 2008, mslug2hc04,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "hack",           "Metal Slug 2 (Hybrid bullets Fix Version 2008-12-04)", MACHINE_SUPPORTS_SAVE ) // This version 2023 has been fix
-GAME( 2021, mslug2hc05,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "phengzheng",     "Metal Slug 2 (Extraction Green Turbo 2021-09-16)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug2hc05,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "FBN4DROID",      "Metal Slug 2 (Extraction Green Turbo 2021-09-16)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug2hc06,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "DDJ",            "Metal Slug 2 (Ward Charior 2018-01-25)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug2hc07,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "DDJ",            "Metal Slug 2 (Change Weapon And Mummy 2018-08-25)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2hc08,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "I love Nimes",   "Metal Slug 2 (Burst Enhanced Edition 2021-04-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, mslug2hc09,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "GOTVG",          "Metal Slug 2 (Multi-Function Version 2017-05-09)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug2hc10,       mslug2,   neogeo_noslot, mslughw, neogeo_state,    init_neogeo,    ROT0, "GOTVG",          "Metal Slug 2 (Survival Version 2018-07-31)", MACHINE_SUPPORTS_SAVE ) // To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
-GAME( 2021, mslug2hc11,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "phengzheng",     "Metal Slug 2 (Extraction Green Turbo Enemies Resetting 2021-09-16)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug2hc11,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "FBN4DROID",      "Metal Slug 2 (Extraction Green Turbo Enemies Resetting 2021-09-16)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug2hc12,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "hack",           "Metal Slug 2 (Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2hc13,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "KofKill, Wang Hua, Czk", "Metal Slug 2 (Unity Time! 2021-01-22)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2hc14,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "GOTVG",          "Metal Slug 2 (Friendly Fire Edition 2021-04-23)", MACHINE_SUPPORTS_SAVE )
@@ -5484,7 +5505,7 @@ GAME( 2019, mslug3b6hc01,      mslug3,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2020, mslug3b6hc02,      mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3b6d, ROT0, "hack",           "Metal Slug 6 (The Last Warhead 2020-09-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3b6hc03,      mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3b6d, ROT0, "hack",           "Metal Slug 6 (The Future 2020-09-29)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3b6hc04,      mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3b6d, ROT0, "hack",           "Metal Slug 6 (Enemy Remake 2017-09-27)", MACHINE_SUPPORTS_SAVE )
-GAME( 2019, mslug3b6hc05,      mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3b6d, ROT0, "hack",           "Metal Slug 6 (Enemy Soldiers Reset 2019-01-02)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, mslug3b6hc05,      mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3b6d, ROT0, "FBN4DROID",      "Metal Slug 6 (Enemy Soldiers Reset 2019-01-02)", MACHINE_SUPPORTS_SAVE )
 
  /**************
  Only exclusive
@@ -5712,7 +5733,7 @@ GAME( 2022, mslug4hc16,        mslug4,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2022, mslug4hc17,        mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "GOTVG",          "Metal Slug 4 (Komorebi 2022-05-11)", MACHINE_SUPPORTS_SAVE )
 // Decrypted And Bootleg
 GAME( 2002, ms4plusd,          mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_ms4plushb, ROT0, "bootleg",        "Metal Slug 4 Plus (bootleg, Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, ms4boot,           mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "Bootleg",        "Metal Slug 4 (Bootleg)", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, ms4boot,           mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "bootleg",        "Metal Slug 4 (bootleg)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, mslug4d,           mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "Mega / Playmore","Metal Slug 4 (Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, mslug4hd,          mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "Mega / Playmore","Metal Slug 4 (Non-encrypted, decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, mslug4nd,          mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "Mega / Playmore","Metal Slug 4 (Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
@@ -5858,7 +5879,7 @@ GAME( 2018, mslugxhc08,        mslugx,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2020, mslugxhc09,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (Generation SV 2020-11-04)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslugxhc10,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "DDJ",            "Metal Slug X (War Chariot 2016-03-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, mslugxhc11,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "PlayerX China",  "Metal Slug X (Enemy Soldiers Remake Version 3 2017-12-31)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxhc12,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (Survival Edition 2023-02-04)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslugxhc12,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (Legendary Edition 2023-02-04)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslugxhc13,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "hack",           "Metal Slug X (Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxhc14,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "I love Nimes",   "Metal Slug X (Burst Enhanced Edition 2022-10-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslugxhc15,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (Enemy Soldiers Reset Version 2.7 2021-04-03)", MACHINE_SUPPORTS_SAVE )
@@ -5866,11 +5887,11 @@ GAME( 2014, mslugxhc16,        mslugx,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2019, mslugxhc17,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (Generation 1V2 2019-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslugxhc18,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "FBN4DROID",      "Metal Slug X (Big Heavy Machine Gun Flame Edition 2018-12-08)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslugxhc19,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (2R Version 2020-04-27)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslugxhc20,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (Early Summer Starry Sky 2022-08-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2013, mslugxhc20,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (Multi-Carrier Version 2013-05-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslugxhc21,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (Unlimited Firepower SV Edition 2021-03-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslugxhc22,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (2R Blue Edition 2020-06-24)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslugxhc23,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (2R Generation 1V2 2020-05-18)", MACHINE_SUPPORTS_SAVE )
-GAME( 2013, mslugxhc24,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (Multi-Carrier Version 2013-05-28)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslugxhc24,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (Early Summer Starry Sky 2022-08-10)", MACHINE_SUPPORTS_SAVE )
 
 /***************
  Only exclusive
@@ -5889,13 +5910,13 @@ GAME( 2013, mslugxhc24,        mslugx,   neogeo_noslot, mslughb, neogeo_state,  
 ********************************************************************************************/
 
 //Version Remastering
-GAME( 2022, mslugxer01,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Team Remix (Gaston90, Wang Hua)",                                  "Metal Slug X (Unlimited Firepower 2R Survival Remastering Edition 2022-10-12)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslugxer02,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Team Remix (Gaston90, Wang Hua)",                                  "Metal Slug X (Enemy Heavy Plate 2R Survival Remastering Edition 2022-10-12)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslugxer03,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Team Remix (Gaston90, Wang Hua)",                                  "Metal Slug X (Enemy Soldiers Remake 2R Survival Remastering Edition 2022-10-12)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslugxer04,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Team Remix (Gaston90, Wang Hua)",                                  "Metal Slug X (Allen O'Neil See You In Hell 2R Survival Remastering Edition 2022-10-12)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslugxer05,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Team Remix (Gaston90, Metroid, Wang Hua)",                         "Metal Slug X (Multi-Carrier 2R Survival Remastering Edition 2022-10-12)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslugxer06,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Team Remix (Gaston90, Wang Hua)",                                  "Metal Slug X (Level Reset Special 2R Survival Remastering Edition 2022-10-12)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslugxer07,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Team Remix (Gaston90, Azstar China Soda, Wang Hua)",               "Metal Slug X (Enemy Soldiers Reset 2R Survival Remastering Edition 2022-10-12)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslugxer01,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Team Remix (Gaston90, Wang Hua)",                                  "Metal Slug X (Unlimited Firepower 2R Legendary Remastering Edition 2022-10-12)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslugxer02,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Team Remix (Gaston90, Wang Hua)",                                  "Metal Slug X (Enemy Heavy Plate 2R Legendary Remastering Edition 2022-10-12)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslugxer03,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Team Remix (Gaston90, Wang Hua)",                                  "Metal Slug X (Enemy Soldiers Remake 2R Legendary Remastering Edition 2022-10-12)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslugxer04,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Team Remix (Gaston90, Wang Hua)",                                  "Metal Slug X (Allen O'Neil See You In Hell 2R Legendary Remastering Edition 2022-10-12)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslugxer05,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Team Remix (Gaston90, Metroid, Wang Hua)",                         "Metal Slug X (Multi-Carrier 2R Legendary Remastering Edition 2022-10-12)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslugxer06,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Team Remix (Gaston90, Wang Hua)",                                  "Metal Slug X (Level Reset Special 2R Legendary Remastering Edition 2022-10-12)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslugxer07,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Team Remix (Gaston90, Azstar China Soda, Wang Hua)",               "Metal Slug X (Enemy Soldiers Reset 2R Legendary Remastering Edition 2022-10-12)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxesp01,       mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Team Remix (Gaston90, PlayerX China, Wang Hua)",                   "Metal Slug X (Unlimited Firepower 2R Extreme Space Remastering Edition 2022-10-12)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxesp02,       mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Team Remix (Gaston90, PlayerX China, Wang Hua)",                   "Metal Slug X (Enemy Heavy Plate 2R Extreme Space Remastering Edition 2022-10-12)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxesp03,       mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Team Remix (Gaston90, PlayerX China, Wang Hua)",                   "Metal Slug X (Enemy Soldiers Remake 2R Extreme Space Remastering Edition 2022-10-12)", MACHINE_SUPPORTS_SAVE )
@@ -5969,5 +5990,5 @@ GAME( 2022, mslugxrmh03,       mslugx,   neogeo_noslot, mslughb, neogeo_state,  
 
 /*    YEAR   NAME             PARENT       MACHINE       INPUT                       INIT       MONITOR COMPANY          FULLNAME FLAGS */
 // HomeBrew
-GAME( 2022, mslughz,          neogeo,    neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "CB, Willnie",     "Metal Slug HomeBrew (Mothership Armageddon Easter Egg 2021-06-13)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslughz,          neogeo,    neogeo_noslot, neogeo,  neogeo_state,    init_mslug5ast, ROT0, "CB, Willnie",     "Metal Slug HomeBrew (Mothership Armageddon Easter Egg 2021-06-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2010, neopang,          mslughz,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "CeL",             "Metal Slug HomeBrew (Neo Pang)", MACHINE_SUPPORTS_SAVE )

@@ -1609,6 +1609,18 @@ void neogeo_state::init_mslug4hb()
 	}
 }
 
+void neogeo_state::init_mslug5ast()
+{
+	init_neogeo();
+	m_pvc_prot->mslug5_decrypt_68k(cpuregion, cpuregion_size);
+	m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 2);
+	m_sprgen->m_fixed_layer_bank_type = 1;
+	m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region,audio_region_size);
+	m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG5_GFX_KEY);
+	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+	m_pvc_prot->install_pvc_protection(m_maincpu,m_banked_cart);
+}
+
 void neogeo_state::init_mslug5b()
 {
 	init_neogeo();
