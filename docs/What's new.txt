@@ -14,7 +14,7 @@ I am only giving support for the Windows XP, Windows 7, Windows 8, Windows 10 an
 for the 86/64 bit cpu of the compatible microprocessors.
 
 ===============================================================================================================================
-2023-02-01...Update 02-06
+2023-02-01...Update 02-18
 
 - The next update to be published will be in June or July 2023.
 - Fixed the text of the Metal Slug 5 Encrypted Set and metal slug bios.
@@ -30,26 +30,50 @@ for the 86/64 bit cpu of the compatible microprocessors.
   Random enemies that reset version #1
   Random enemies that reset version #2
   Random enemies that reset version #3
-- The controls have been configured, now you will have much easier access to access it:
-  * Command to save games, with the keyboard button "7".
-  * Command to load games, with the keyboard button "8".
-  * Command to reset games, with the keyboard button "9".
-  * Command to enter the NeoGeo bios, with the keyboard button "0".
-  * Command to pause the game, with the keyboard button "P".
-  * Command to display the time in real time in the game, with the keyboard button "O".
-  * Command to overclock the game, with the keyboard button "I".
-  * Command for the window mode screen, with the keyboard button "U".
-  * Command to apply a graphic filter to the games, with the keyboard button "Ñ".
-  * Command to speed up the game, with the keyboard button "Back Space".
-  * The command to enable god mode, with the keyboard button "L". [For more information please read the note that is in the emulator folder]
-  * The command to enable god mode, with the keyboard button "M". [For more information please read the note that is in the emulator folder]
-  * The command to enable god mode, with the keyboard button "N". [For more information please read the note that is in the emulator folder]
-  * The command to enable the debug menu, with the keyboard button "J" [This works only in Metal Slug 2/X up to Metal Slug 5 version]
-  * Once enabled, you have to hold down the "3" button in turn plus the "Z" button, it will be enabled. The Debug menu is written in a mixture of Japanese and English
-    [Remember that the "Z" button represents the "Button" D"NeoGeo]
+- The commands have been configured, now you will have a much easier access to access it:
+  * The command to enable save games, with the "7" key.
+  * The command to enable loading games, with the "8" key.
+  * The command to reset games, with the "9" key.
+  * The command to enter the NeoGeo bios, with the "0" key.
+  * The command to pause the game, with the "P" key.
+  * The command to display the time in real time in the game, with the "O" key.
+  * The command to speed up the "FPS" Frames per second to the game, with the "I" key.
+  * The command to be able to play on the screen in windowed mode, with the "U" key.
+  * The command to apply a graphic filter to it, with the "Ñ" key.
+  * The command to accelerate the game, with the "Back Space" key.
+  * The command to apply God mode, with the "L" key.
+  * The command to apply God mode II, with the "M" key.
+  * The command to apply God mode III, with the "N" key.
+  * The command to apply God mode IV, with the "B" key.
+  * The command to apply God mode V, with the "V" key.
+  * The command to apply God mode VI, with the "C" key.
+  * The command to enable the debug menu, with the "K" key [This works only in Metal Slug 2/X up to Metal Slug 5]
+   * Once enabled you have to hold down the "3" button in turn plus the "Z" button, it will be enabled. The Debug menu is written in a mixture of Japanese and English text
+    [Remember that the "Z" button represents the "D" Button in the NeoGeo system]
    * Once achieved, it opens up endless possibilities during the games. With it we can access many hidden options in the
-    game that would otherwise go unnoticed.
-  * The command to end the current mission instantly, with the "J" key [This includes in Metal Slug 1, 2, 3, 4, 5, X]
+     game that would otherwise go unnoticed.
+   * The command to end the current mission instantly, with the "J" key.
+  * The command to enable Console Mode, with the "Space Bar" key.
+   * For it to work correctly you have to apply the "9" command to reset the game, if it worked it wouldn't work
+     a will inform on the screen that the "Hardware Test Failed The Bios" we will press the "S" key [Remember that the "S" button represents the "B" button in the NeoGeo system]
+     Now it will launch the Console Mode.
+  * The command to enable the ability to destroy all enemies on the screen, with the "." key.
+    Once enabled you have to press the "Z" key [Remember that the "Z" button represents the "D" button in the NeoGeo system]
+    We will press the "Z" key every time we want to destroy all the enemies on the screen.
+
+  * There is some unique command that is only used in some Metal Slug:
+  * The command to skip missions only Works in Metal Slug 2:
+   * With the "R" key, jump to mission 2.
+   * With the "T" key, jump to mission 3.
+   * With the "Y" key, jump to mission 4.
+   * With the "G" key, jump to mission 5.
+   * With the "H" key, jump to mission 6.
+  * The command to enable Hit Anywhere, with the "," key. [Works on Metal Slug 2/3]
+  * The command to enable Pin Point Attack, with the "Alt" key. [Works on Metal Slug X]
+  * The command to enable Survival Attack, with the "AltGr" key. [Works on Metal Slug X]
+   * It is recommended to use it with some God Mode command, since since it does not have infinite life, there is a possibility that it ends
+     the game crashing will have to restart once you lose all life.
+
 - With this we finish the collection of Metal Slug decrypted/bootleg.
   * Metal Slug 6 (Metal Slug 3 bootleg, decrypted C)
 - Causes the game to crash "mslug3ly01-07", which is generated by repeatedly pressing the "D" button
