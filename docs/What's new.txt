@@ -14,9 +14,31 @@ I am only giving support for the Windows XP, Windows 7, Windows 8, Windows 10 an
 for the 86/64 bit cpu of the compatible microprocessors.
 
 ===============================================================================================================================
-2023-02-01...Update 02-18
+
+2023-03-14
 
 - The next update to be published will be in June or July 2023.
+- Updated Roms Metal Slug 3 (Legendary Edition 2023-03-01)
+- Updated Roms Metal Slug 4 (Last Bullet Remix 2023-02-25)
+- Updated Roms Metal Slug 4 (Ammunition Random Edition 2023-02-25)
+- Updated Roms Metal Slug 4 (Last Bullet Remix Bulletproof Vest Removed 2023-02-25)
+- Updated Roms Metal Slug 5 (Stone Tortoise Edition 2023-03-09)
+- Updated Roms Metal Slug 5 (The Longest Battle 2023-02-08)
+- Updated Roms Metal Slug X (Legendary Last Edition 2023-03-07)
+- the games that do not work have been added to keep it:
+  * Metal Slug 2 (Weapon Storage 2015-11-11) [NOT WORKING]
+  * Metal Slug 3 (Last Bullet Remix 2023-03-09 [NOT WORKING]
+
+New Games
+---------------------------------
+- [mslughc09]                Metal Slug (1v2 Generation 2023-03-02)
+- [mslughc10]                Metal Slug (Origin 2023-03-01)
+- [mslug3hc30]               Metal Slug 3 (Legendary Latest Random Level Version 2023-03-02)
+
+
+
+2023-02-01...Update 02-18
+
 - Fixed the text of the Metal Slug 5 Encrypted Set and metal slug bios.
 - Fixed the Hybrid bullets version, now it skips level 2 that causes a crash.
 - This Roms Hack "Metal Slug 3 (Random Enemies Resetting Version)" is very problematic with the HBMAME/PSMAMEPLUS emulator, it prevents you from being able to play most of the random 
