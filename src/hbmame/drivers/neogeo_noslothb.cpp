@@ -458,13 +458,6 @@ INPUT_PORTS_END
 	ROM_LOAD( "263_hc03.v4", 0xc00000, 0x400000, CRC(b1e5ac70) SHA1(0d6eea68085c0e6cd7c7e29edb06f05a712f6d62) )\
 	ROM_IGNORE(0x400000)
 
-#define MSLUG4LWD_YMSND \
-	ROM_REGION( 0x1000000, "ymsnd", 0 ) \
-	ROM_LOAD( "263lwd.v1", 0x000000, 0x400000, CRC(8cb5a9ef) SHA1(272ad312f8694acf9190ebf48d1c8a5fec73c130) )\
-	ROM_LOAD( "263lwd.v2", 0x400000, 0x400000, CRC(94217b1e) SHA1(c468a192e2ec0952a20cfd9e391cf6c12346efb3) )\
-	ROM_LOAD( "263lwd.v3", 0x800000, 0x400000, CRC(7616fcec) SHA1(83006094379d0373b967603dcaa1cec69c2f746f) )\
-	ROM_LOAD( "263lwd.v4", 0xc00000, 0x400000, CRC(c5967f91) SHA1(874562109c3df9e1fdefbb3970092128aaa31a17) )
-
 #define MSLUG4_SPRITES \
 	ROM_REGION( 0x3000000, "sprites", 0 ) \
  	ROM_LOAD16_BYTE( "263.c1", 0x0000000, 0x800000, CRC(84865f8a) SHA1(34467ada896eb7c7ca58658bf2a932936d8b632c) )\
@@ -576,14 +569,14 @@ INPUT_PORTS_END
 #define MSLUG5_AUDIO_ENCRYPTED_512K \
 	NEO_BIOS_AUDIO_ENCRYPTED_512K( "268.m1", CRC(4a5a6e0e) SHA1(df0f660f2465e1db7be5adfcaf5e88ad61a74a42) )
 
-#define MSLUG5ND_AUDIO_512K \
-	NEO_BIOS_AUDIO_512K( "268nd.m1", CRC(2f621a2b) SHA1(e88f645b4935157608c32843f203180c796f5304) )
+#define MSLUG5N_AUDIO_512K \
+	NEO_BIOS_AUDIO_512K( "268n.m1", CRC(2f621a2b) SHA1(e88f645b4935157608c32843f203180c796f5304) )
 
 #define MSLUG5W_AUDIO_512K \
     NEO_BIOS_AUDIO_512K( "268_hc04.m1", CRC(464c72ad) SHA1(9e8a01c2bad897e2bbf32563a30f0474f8fcd2b5) )
 
-#define MSLUG5N_AUDIO_128K \
-	NEO_BIOS_AUDIO_128K( "268n.m1", CRC(6fa01c9a) SHA1(3dab7593bfcce318d22ec3df672ee3b4ab73dcf5) )
+#define MSLUG5ND_AUDIO_128K \
+	NEO_BIOS_AUDIO_128K( "268nd.m1", CRC(6fa01c9a) SHA1(3dab7593bfcce318d22ec3df672ee3b4ab73dcf5) )
 
 #define MSLUG5D_AUDIO_64K \
 	NEO_BIOS_AUDIO_64K( "268d.m1", CRC(3c0655a7) SHA1(ae839d4c2b87a7aa3dd8e5caddc43eb75ee9b732) )
@@ -620,12 +613,12 @@ INPUT_PORTS_END
 	ROM_LOAD( "268boot.v3", 0x800000, 0x400000, CRC(39b14567) SHA1(1658612a93ba30130f9260bc41d3f18f6b90c1e7) )\
 	ROM_LOAD( "268boot.v4", 0xc00000, 0x400000, CRC(969ff3b2) SHA1(50feceb741a1c08b000b077a33151ab1352eb798) )
 
-#define MSLUG5ND_YMSND \
+#define MSLUG5N_YMSND \
 	ROM_REGION( 0x1000000, "ymsnd", 0 ) \
-	ROM_LOAD( "268nd.v1", 0x000000, 0x400000, CRC(dc7f03f0) SHA1(e1e31dcaff1f8d2c4b2d657aa856a60771d82c26) )\
-	ROM_LOAD( "268nd.v2", 0x400000, 0x400000, CRC(eeb7c926) SHA1(4d71f59948bdc5ed2e6daf101f16fd979e1ab193) )\
-	ROM_LOAD( "268nd.v3", 0x800000, 0x400000, CRC(02fd519e) SHA1(6fbda5bf8dbf52bc110aba7b9d20b24bdc2fe0d7) )\
-	ROM_LOAD( "268nd.v4", 0xc00000, 0x400000, CRC(d7c67794) SHA1(345dcbf76b25b2fbd10bcaf08ee395da0a52c5ce) )
+	ROM_LOAD( "268n.v1", 0x000000, 0x400000, CRC(dc7f03f0) SHA1(e1e31dcaff1f8d2c4b2d657aa856a60771d82c26) )\
+	ROM_LOAD( "268n.v2", 0x400000, 0x400000, CRC(eeb7c926) SHA1(4d71f59948bdc5ed2e6daf101f16fd979e1ab193) )\
+	ROM_LOAD( "268n.v3", 0x800000, 0x400000, CRC(02fd519e) SHA1(6fbda5bf8dbf52bc110aba7b9d20b24bdc2fe0d7) )\
+	ROM_LOAD( "268n.v4", 0xc00000, 0x400000, CRC(d7c67794) SHA1(345dcbf76b25b2fbd10bcaf08ee395da0a52c5ce) )
 
 #define MSLUG5F_YMSND \
 	ROM_REGION( 0x1000000, "ymsnd", 0 ) \
@@ -639,7 +632,7 @@ INPUT_PORTS_END
 	ROM_REGION( 0x1000000, "ymsnd", 0 ) \
 	ROM_LOAD( "268_hc04.v1", 0x000000, 0x400000, CRC(a8e12a92) SHA1(b23d80d131649c1d243bb30cf5b2141354a7ac55) )\
 	ROM_LOAD( "268_hc04.v2", 0x400000, 0x400000, CRC(0608cba3) SHA1(ad7c985a25abd68c58e502c008b45e0b14422829) )\
-	ROM_LOAD( "268nd.v3",    0x800000, 0x400000, CRC(02fd519e) SHA1(6fbda5bf8dbf52bc110aba7b9d20b24bdc2fe0d7) )\
+	ROM_LOAD( "268n.v3",     0x800000, 0x400000, CRC(02fd519e) SHA1(6fbda5bf8dbf52bc110aba7b9d20b24bdc2fe0d7) )\
 	ROM_LOAD( "268_hc04.v4", 0xc00000, 0x400000, CRC(179cbca3) SHA1(fdcb0df0c2f73d11cd32a8625ad6fa24cedb9dc9) )\
 	ROM_IGNORE(0x2f0)
 
@@ -700,29 +693,29 @@ INPUT_PORTS_END
 	ROM_LOAD16_BYTE( "ms5b-c7.bin", 0x3000000, 0x800000, CRC(57f4e53f) SHA1(813d98175288045c0750d45afe03c74973d70cee) )\
 	ROM_LOAD16_BYTE( "ms5b-c8.bin", 0x3000001, 0x800000, CRC(9d59ff7c) SHA1(ff90dc79598de0880df17624c76df81c92f267ce) )
 
+#define MS5BOOT_SPRITES \
+	ROM_REGION( 0x4000000, "sprites", 0 ) \
+	ROM_LOAD16_BYTE( "268d.c1",   0x0000000, 0x800000, CRC(969c0d62) SHA1(DE3C5CFA980CCA2FAB0416AC0D292948B5D4C9C3) )\
+	ROM_LOAD16_BYTE( "268d.c2",   0x0000001, 0x800000, CRC(c69ae867) SHA1(3198EE5C7C2C7563B49EBD9F7BA95D9B0B303F6C) )\
+	ROM_LOAD16_BYTE( "268d.c3",   0x1000000, 0x800000, CRC(d7beaeaf) SHA1(99443EA4C1BAB45F1977A390EB7E1A0163915110) )\
+	ROM_LOAD16_BYTE( "268boot.c4",0x1000001, 0x800000, CRC(e1b1131b) SHA1(68a36d336582069e79ad481638d92f57c4cd6523) )\
+	ROM_LOAD16_BYTE( "268d.c5",   0x2000000, 0x800000, CRC(2fa1a5ad) SHA1(4AE15D29BA979601598EDDF8905072FE1D9E0A98) )\
+	ROM_LOAD16_BYTE( "268d.c6",   0x2000001, 0x800000, CRC(6de89589) SHA1(86A6C036BF51AF516FEA83A30874026EC1586A83) )\
+	ROM_LOAD16_BYTE( "268d.c7",   0x3000000, 0x800000, CRC(97bd0c0a) SHA1(30F3280FE527098ECF46541CC645A59B366105EA) )\
+	ROM_LOAD16_BYTE( "268d.c8",   0x3000001, 0x800000, CRC(c0d5bc20) SHA1(b5d0d81d5cc624538b0651c568295e578a1330d1) )
+
 #define MSLUG5ND_SPRITES \
 	ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD16_BYTE( "268d.c1", 0x0000000, 0x800000, CRC(969c0d62) SHA1(DE3C5CFA980CCA2FAB0416AC0D292948B5D4C9C3) )\
-	ROM_LOAD16_BYTE( "268d.c2", 0x0000001, 0x800000, CRC(c69ae867) SHA1(3198EE5C7C2C7563B49EBD9F7BA95D9B0B303F6C) )\
-	ROM_LOAD16_BYTE( "268d.c3", 0x1000000, 0x800000, CRC(d7beaeaf) SHA1(99443EA4C1BAB45F1977A390EB7E1A0163915110) )\
-	ROM_LOAD16_BYTE( "268nd.c4",0x1000001, 0x800000, CRC(e1b1131b) SHA1(68a36d336582069e79ad481638d92f57c4cd6523) )\
-	ROM_LOAD16_BYTE( "268d.c5", 0x2000000, 0x800000, CRC(2fa1a5ad) SHA1(4AE15D29BA979601598EDDF8905072FE1D9E0A98) )\
-	ROM_LOAD16_BYTE( "268d.c6", 0x2000001, 0x800000, CRC(6de89589) SHA1(86A6C036BF51AF516FEA83A30874026EC1586A83) )\
-	ROM_LOAD16_BYTE( "268d.c7", 0x3000000, 0x800000, CRC(97bd0c0a) SHA1(30F3280FE527098ECF46541CC645A59B366105EA) )\
-	ROM_LOAD16_BYTE( "268d.c8", 0x3000001, 0x800000, CRC(c0d5bc20) SHA1(b5d0d81d5cc624538b0651c568295e578a1330d1) )
+	ROM_LOAD16_BYTE( "268nd.c1", 0x0000000, 0x800000, CRC(969c0d62) SHA1(DE3C5CFA980CCA2FAB0416AC0D292948B5D4C9C3) )\
+	ROM_LOAD16_BYTE( "268nd.c2", 0x0000001, 0x800000, CRC(c69ae867) SHA1(3198EE5C7C2C7563B49EBD9F7BA95D9B0B303F6C) )\
+	ROM_LOAD16_BYTE( "268nd.c3", 0x1000000, 0x800000, CRC(d7beaeaf) SHA1(99443EA4C1BAB45F1977A390EB7E1A0163915110) )\
+	ROM_LOAD16_BYTE( "268nd.c4", 0x1000001, 0x800000, CRC(899fb2af) SHA1(A06A424C813C1B4F922C5404405779F605C90A06) )\
+	ROM_LOAD16_BYTE( "268nd.c5", 0x2000000, 0x800000, CRC(2fa1a5ad) SHA1(4AE15D29BA979601598EDDF8905072FE1D9E0A98) )\
+	ROM_LOAD16_BYTE( "268nd.c6", 0x2000001, 0x800000, CRC(6de89589) SHA1(86A6C036BF51AF516FEA83A30874026EC1586A83) )\
+	ROM_LOAD16_BYTE( "268nd.c7", 0x3000000, 0x800000, CRC(97bd0c0a) SHA1(30F3280FE527098ECF46541CC645A59B366105EA) )\
+	ROM_LOAD16_BYTE( "268nd.c8", 0x3000001, 0x800000, CRC(c0d5bc20) SHA1(b5d0d81d5cc624538b0651c568295e578a1330d1) )
 
 #define MSLUG5D_SPRITES \
-	ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD16_BYTE( "268d.c1", 0x0000000, 0x800000, CRC(969c0d62) SHA1(DE3C5CFA980CCA2FAB0416AC0D292948B5D4C9C3) )\
-	ROM_LOAD16_BYTE( "268d.c2", 0x0000001, 0x800000, CRC(c69ae867) SHA1(3198EE5C7C2C7563B49EBD9F7BA95D9B0B303F6C) )\
-	ROM_LOAD16_BYTE( "268d.c3", 0x1000000, 0x800000, CRC(d7beaeaf) SHA1(99443EA4C1BAB45F1977A390EB7E1A0163915110) )\
-	ROM_LOAD16_BYTE( "268d.c4", 0x1000001, 0x800000, CRC(899fb2af) SHA1(A06A424C813C1B4F922C5404405779F605C90A06) )\
-	ROM_LOAD16_BYTE( "268d.c5", 0x2000000, 0x800000, CRC(2fa1a5ad) SHA1(4AE15D29BA979601598EDDF8905072FE1D9E0A98) )\
-	ROM_LOAD16_BYTE( "268d.c6", 0x2000001, 0x800000, CRC(6de89589) SHA1(86A6C036BF51AF516FEA83A30874026EC1586A83) )\
-	ROM_LOAD16_BYTE( "268d.c7", 0x3000000, 0x800000, CRC(97bd0c0a) SHA1(30F3280FE527098ECF46541CC645A59B366105EA) )\
-	ROM_LOAD16_BYTE( "268d.c8", 0x3000001, 0x800000, CRC(c0d5bc20) SHA1(b5d0d81d5cc624538b0651c568295e578a1330d1) )
-
-#define MSLUG5HD_SPRITES \
 	ROM_REGION( 0x4000000, "sprites", 0 ) \
     ROM_LOAD16_BYTE( "268hd.c1", 0x0000000, 0x800000, CRC(e8239365) SHA1(E0A75902A783110049730B66AD3CBCCDD804BF62) )\
 	ROM_LOAD16_BYTE( "268hd.c2", 0x0000001, 0x800000, CRC(89b21d4c) SHA1(862AC31CE9570529B33E6F58ADA0AC867A442679) )\
@@ -1049,19 +1042,19 @@ ROM_END
 
 /*    YEAR   NAME       PARENT       MACHINE        INPUT                     INIT        MONITOR COMPANY          FULLNAME FLAGS */
 GAME( 2003, ms5pcb,     mslug5,   neogeo_noslot,   ms5pcb,   neogeo_state, init_ms5pcb,   ROT0, "SNK Playmore",    "Metal Slug 5 (JAMMA PCB)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, ms4plus,    mslug4,   neogeo_noslot,   mslughb,  neogeo_state, init_ms4plushb,ROT0, "bootleg",         "Metal Slug 4 Plus (bootleg)",  MACHINE_SUPPORTS_SAVE )
-GAME( 2003, ms5plus,    mslug5,   neogeo_noslot,   mslughb,  neogeo_state, init_ms5plushb,ROT0, "bootleg",         "Metal Slug 5 Plus (bootleg)", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, ms4plus,    mslug4,   neogeo_noslot,   mslughb,  neogeo_state, init_ms4plushb,ROT0, "Bootleg",         "Metal Slug 4 Plus (Bootleg)",  MACHINE_SUPPORTS_SAVE )
+GAME( 2003, ms5plus,    mslug5,   neogeo_noslot,   mslughb,  neogeo_state, init_ms5plushb,ROT0, "Bootleg",         "Metal Slug 5 Plus (Bootleg)", MACHINE_SUPPORTS_SAVE )
 GAME( 1996, mslug,      neogeo,   neogeo_noslot,   mslughb,  neogeo_state, init_neogeo,   ROT0, "Nazca",           "Metal Slug - Super Vehicle-001", MACHINE_SUPPORTS_SAVE )
 GAME( 1998, mslug2,     neogeo,   neogeo_noslot,   mslughb,  neogeo_state, init_neogeo,   ROT0, "SNK",             "Metal Slug 2 - Super Vehicle-001/II (NGM-2410)(NGH-2410)", MACHINE_SUPPORTS_SAVE )
 GAME( 2000, mslug3,     neogeo,   neogeo_noslot,   mslughb,  neogeo_state, init_mslug3hb, ROT0, "SNK",             "Metal Slug 3 (NGM-2560)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
-GAME( 2000, mslug3a,    mslug3,   neogeo_noslot,   mslughb,  neogeo_state, init_mslug3a,  ROT0, "SNK",             "Metal Slug 3 (NGM-2560, earlier)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX - revision Mar/17/2000 1:36 (from SMA rom) */
+GAME( 2000, mslug3a,    mslug3,   neogeo_noslot,   mslughb,  neogeo_state, init_mslug3a,  ROT0, "SNK",             "Metal Slug 3 (NGM-2560, Earlier)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX - revision Mar/17/2000 1:36 (from SMA rom) */
 GAME( 2000, mslug3h,    mslug3,   neogeo_noslot,   mslughb,  neogeo_state, init_mslug3hb, ROT0, "SNK",             "Metal Slug 3 (NGH-2560)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-GAME( 2000, mslug3b6,   mslug3,   neogeo_noslot,   mslughb,  neogeo_state, init_mslug3b6, ROT0, "bootleg",         "Metal Slug 6 (Metal Slug 3 bootleg)", MACHINE_SUPPORTS_SAVE ) /* real Metal Slug 6 is an Atomiswave HW game, see naomi.c ;-) */
+GAME( 2000, mslug3b6,   mslug3,   neogeo_noslot,   mslughb,  neogeo_state, init_mslug3b6, ROT0, "Bootleg",         "Metal Slug 6 (Metal Slug 3 Bootleg)", MACHINE_SUPPORTS_SAVE ) /* real Metal Slug 6 is an Atomiswave HW game, see naomi.c ;-) */
 GAME( 2002, mslug4,     neogeo,   neogeo_noslot,   mslughb,  neogeo_state, init_mslug4hb, ROT0, "Mega / Playmore", "Metal Slug 4 (NGM-2630)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, mslug4h,    mslug4,   neogeo_noslot,   mslughb,  neogeo_state, init_mslug4hb, ROT0, "Mega / Playmore", "Metal Slug 4 (NGH-2630)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5,     neogeo,   neogeo_noslot,   mslughb,  neogeo_state, init_mslug5hb, ROT0, "SNK Playmore",    "Metal Slug 5 (NGM-2680)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5h,    mslug5,   neogeo_noslot,   mslughb,  neogeo_state, init_mslug5hb, ROT0, "SNK Playmore",    "Metal Slug 5 (NGH-2680)", MACHINE_SUPPORTS_SAVE ) /* Also found in later MVS carts */
-GAME( 2003, mslug5b,    mslug5,   neogeo_noslot,   mslughb,  neogeo_state, init_mslug5b,  ROT0, "bootleg",         "Metal Slug 5 (bootleg)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, mslug5b,    mslug5,   neogeo_noslot,   mslughb,  neogeo_state, init_mslug5b,  ROT0, "Bootleg",         "Metal Slug 5 (Bootleg)", MACHINE_SUPPORTS_SAVE )
 GAME( 1999, mslugx,     neogeo,   neogeo_noslot,   mslughb,  neogeo_state, init_mslugx,   ROT0, "SNK",             "Metal Slug X - Super Vehicle-001 (NGM-2500)(NGH-2500)", MACHINE_SUPPORTS_SAVE )
 
 /***********
@@ -3412,17 +3405,6 @@ ROM_START( mslug4nd )
 	MSLUG4ND_SPRITES
 ROM_END
 
-ROM_START( mslug4lwd )
-	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263.p1",    0x000000, 0x100000, CRC(27e4def3) SHA1(a08785e8145981bb6b5332a3b2df7eb321253cca) )
-	ROM_LOAD16_WORD_SWAP( "263lwd.p2", 0x100000, 0x800000, CRC(5daa5872) SHA1(3ffa27f363d35809851f18c3865f9ce47220fdc8) )
-    MSLUG4_ROM_FILL
-    MSLUG4HD_SFIX_128K
-	MSLUG4ND_AUDIO_128K
-	MSLUG4LWD_YMSND
-	MSLUG4LWD_SPRITES
-ROM_END
-
  /**************
  Only exclusive
 ******************/
@@ -3675,12 +3657,12 @@ ROM_END
 ROM_START( mslug5hc01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc01.p1", 0x000000, 0x100000, CRC(3c8588d7) SHA1(5dada21b9530586f8941e027d3f2195e72a3ca5d) )
-	ROM_LOAD16_WORD_SWAP( "268nd.p2",    0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
+	ROM_LOAD16_WORD_SWAP( "268n.p2",     0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
     MSLUG5HD_ROM_FILL
     MSLUG5_SFIX_MT_128K
 	MSLUG5_AUDIO_ENCRYPTED_512K
     MSLUG5_YMSND
-	MSLUG5HD_SPRITES
+	MSLUG5D_SPRITES
 ROM_END
 
 ROM_START( mslug5hc02 )
@@ -3688,9 +3670,9 @@ ROM_START( mslug5hc02 )
 	ROM_LOAD16_WORD_SWAP( "268_hc02.p1", 0x000000, 0x600000, CRC(faeffb08) SHA1(9fe401d8252c5d46f3a84f59e1e182eecaa4c069) )
     MSLUG5HD_ROM_FILL
     MSLUG5D_SFIX_128K
-    MSLUG5N_AUDIO_128K
+    MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
-	MSLUG5ND_SPRITES
+	MS5BOOT_SPRITES
 ROM_END
 
 ROM_START( mslug5hc03 ) //mslug5ext
@@ -3698,9 +3680,9 @@ ROM_START( mslug5hc03 ) //mslug5ext
 	ROM_LOAD16_WORD_SWAP( "268_hc03.p1", 0x000000, 0x600000, CRC(7ff5364b) SHA1(698373c6c3fb37fe20c4194c5c51251f6a251c18) )
     MSLUG5HD_ROM_FILL
     MSLUG5D_SFIX_128K
-    MSLUG5N_AUDIO_128K
+    MSLUG5ND_AUDIO_128K
 	MSLUG5EXT_YMSND
-	MSLUG5ND_SPRITES
+	MS5BOOT_SPRITES
 ROM_END
 
 ROM_START( mslug5hc04 ) //mslug5w
@@ -3717,12 +3699,12 @@ ROM_END
 ROM_START( mslug5hc05 ) //mslug5es
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc05.p1", 0x000000, 0x100000, CRC(8eb95f3a) SHA1(4353d141544056d34b22adca0615f0ea9d32e376) )
-    ROM_LOAD16_WORD_SWAP( "268nd.p2",    0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
+    ROM_LOAD16_WORD_SWAP( "268n.p2",     0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
     MSLUG5HD_ROM_FILL
     MSLUG5D_SFIX_128K
-    MSLUG5N_AUDIO_128K
+    MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
-	MSLUG5ND_SPRITES
+	MS5BOOT_SPRITES
 ROM_END
 
 ROM_START( mslug5hc06 ) //mslug5f
@@ -3739,12 +3721,12 @@ ROM_END
 ROM_START( mslug5hc07 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc07.p1", 0x000000, 0x100000, CRC(de60d4a5) SHA1(54a157cdb98dac018dae5f2ddae4fbcdf04857f2) )
-	ROM_LOAD16_WORD_SWAP( "268nd.p2",    0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
+	ROM_LOAD16_WORD_SWAP( "268n.p2",     0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
     MSLUG5HD_ROM_FILL
     MSLUG5_SFIX_MT_128K
 	MSLUG5_AUDIO_ENCRYPTED_512K
 	MSLUG5_YMSND
-	MSLUG5HD_SPRITES
+	MSLUG5D_SPRITES
 ROM_END
 
 ROM_START( mslug5hc08 ) //mslug5unity
@@ -3763,9 +3745,9 @@ ROM_START( mslug5hc09 ) //mslug5x
 	ROM_LOAD16_WORD_SWAP( "268_hc09.p1", 0x000000, 0x600000, CRC(afffcd5b) SHA1(4383bd6903e49a5c0a390b77b746b9f53509542d) )
     MSLUG5HD_ROM_FILL
     MSLUG5D_SFIX_128K
-    MSLUG5N_AUDIO_128K
+    MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
-	MSLUG5ND_SPRITES
+	MS5BOOT_SPRITES
 ROM_END
 
 ROM_START( mslug5hc10 ) //mslug5es update mslug5es2
@@ -3773,20 +3755,20 @@ ROM_START( mslug5hc10 ) //mslug5es update mslug5es2
 	ROM_LOAD16_WORD_SWAP( "268_hc10.p1", 0x000000, 0x600000, CRC(760cd052) SHA1(70d9ef0c4e906fce940108dd84077d981efaacc0) )
     MSLUG5HD_ROM_FILL
     MSLUG5D_SFIX_128K
-    MSLUG5N_AUDIO_128K
+    MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
-	MSLUG5ND_SPRITES
+	MS5BOOT_SPRITES
 ROM_END
 
 ROM_START( mslug5hc11 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc11.p1", 0x000000, 0x100000, CRC(f1f02331) SHA1(d768c70f86032b53aa1c3d55138c6c5ebc735ea2) )
-	ROM_LOAD16_WORD_SWAP( "268nd.p2",    0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
+	ROM_LOAD16_WORD_SWAP( "268n.p2",     0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
     MSLUG5HD_ROM_FILL
     MSLUG5_SFIX_MT_128K
 	MSLUG5_AUDIO_ENCRYPTED_512K
 	MSLUG5_YMSND
-	MSLUG5HD_SPRITES
+	MSLUG5D_SPRITES
 ROM_END
 
 ROM_START( mslug5hc12 ) //mslug5c
@@ -3794,9 +3776,9 @@ ROM_START( mslug5hc12 ) //mslug5c
 	ROM_LOAD16_WORD_SWAP( "268_hc12.p1", 0x000000, 0x600000, CRC(e876d1e7) SHA1(01508fc02789603e85ac13e0d5fcddda6fadc346) )
     MSLUG5HD_ROM_FILL
     MSLUG5D_SFIX_128K
-    MSLUG5N_AUDIO_128K
+    MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
-	MSLUG5ND_SPRITES
+	MS5BOOT_SPRITES
 ROM_END
 
 ROM_START( mslug5hc13 ) //mslug5dbj
@@ -3804,9 +3786,9 @@ ROM_START( mslug5hc13 ) //mslug5dbj
 	ROM_LOAD16_WORD_SWAP( "268_hc13.p1", 0x000000, 0x600000, CRC(1527c4dd) SHA1(5a83fa57e09b0529f30ee7f70e0b488dde3ba203) )
     MSLUG5HD_ROM_FILL
     MSLUG5D_SFIX_128K
-    MSLUG5N_AUDIO_128K
+    MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
-	MSLUG5ND_SPRITES
+	MS5BOOT_SPRITES
 ROM_END
 
 ROM_START( mslug5hc14 ) //mslug5mg
@@ -3814,9 +3796,9 @@ ROM_START( mslug5hc14 ) //mslug5mg
 	ROM_LOAD16_WORD_SWAP( "268_hc14.p1", 0x000000, 0x600000, CRC(1fc7de70) SHA1(c9f8f70706db9832dacb70723d5525aab4bfb9ac) )
     MSLUG5HD_ROM_FILL
     MSLUG5D_SFIX_128K
-    MSLUG5N_AUDIO_128K
+    MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
-	MSLUG5ND_SPRITES
+	MS5BOOT_SPRITES
 ROM_END
 
 ROM_START( mslug5hc15 ) //mslug51v2
@@ -3824,9 +3806,9 @@ ROM_START( mslug5hc15 ) //mslug51v2
 	ROM_LOAD16_WORD_SWAP( "268_hc15.p1", 0x000000, 0x600000, CRC(953d6e11) SHA1(d4faa3c515c7c4337e89513ea2bda13685b38a06) )
     MSLUG5HD_ROM_FILL
     MSLUG5D_SFIX_128K
-    MSLUG5N_AUDIO_128K
+    MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
-	MSLUG5ND_SPRITES
+	MS5BOOT_SPRITES
 ROM_END
 
 ROM_START( mslug5hc16 ) //mslug5zh
@@ -3834,9 +3816,9 @@ ROM_START( mslug5hc16 ) //mslug5zh
 	ROM_LOAD16_WORD_SWAP( "268_hc16.p1", 0x000000, 0x600000, CRC(dc057a7a) SHA1(54ca7d543916424fad5dab82c67bb70cb4b5dc11) )
     MSLUG5HD_ROM_FILL
     MSLUG5D_SFIX_128K
-    MSLUG5N_AUDIO_128K
+    MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
-	MSLUG5ND_SPRITES
+	MS5BOOT_SPRITES
 ROM_END
 
 ROM_START( mslug5hc17 ) //mslug5g
@@ -3844,9 +3826,9 @@ ROM_START( mslug5hc17 ) //mslug5g
 	ROM_LOAD16_WORD_SWAP( "268_hc17.p1", 0x000000, 0x600000, CRC(3be747ab) SHA1(48ab8b6bedbd854a74b7fe4055d1a5c7a4b9cda8) )
     MSLUG5HD_ROM_FILL
     MSLUG5D_SFIX_128K
-    MSLUG5N_AUDIO_128K
+    MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
-	MSLUG5ND_SPRITES
+	MS5BOOT_SPRITES
 ROM_END
 
 ROM_START( mslug5hc18 ) //mslug5sg
@@ -3854,9 +3836,9 @@ ROM_START( mslug5hc18 ) //mslug5sg
 	ROM_LOAD16_WORD_SWAP( "268_hc18.p1", 0x000000, 0x600000, CRC(8bf8a485) SHA1(79a9b29a10430931a25502994d47bb90b64bd1c3) )
     MSLUG5HD_ROM_FILL
     MSLUG5D_SFIX_128K
-    MSLUG5N_AUDIO_128K
+    MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
-	MSLUG5ND_SPRITES
+	MS5BOOT_SPRITES
 ROM_END
 
 ROM_START( mslug5hc19 ) //mslug5pv
@@ -3864,20 +3846,20 @@ ROM_START( mslug5hc19 ) //mslug5pv
 	ROM_LOAD16_WORD_SWAP( "268_hc19.p1", 0x000000, 0x600000, CRC(5288f47b) SHA1(137ca41e06f787204c50b2e6f1ceee91ffef3310) )
     MSLUG5HD_ROM_FILL
     MSLUG5D_SFIX_128K
-    MSLUG5N_AUDIO_128K
+    MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
-	MSLUG5ND_SPRITES
+	MS5BOOT_SPRITES
 ROM_END
 
 ROM_START( mslug5hc20 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc20.p1", 0x000000, 0x100000, CRC(ce788ab1) SHA1(89061d49e40e8774ff337ae4601f5c7676eac583) )
-	ROM_LOAD16_WORD_SWAP( "268nd.p2",    0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
+	ROM_LOAD16_WORD_SWAP( "268n.p2",     0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
     MSLUG5HD_ROM_FILL
     MSLUG5_SFIX_MT_128K
 	MSLUG5_AUDIO_ENCRYPTED_512K
 	MSLUG5_YMSND
-	MSLUG5HD_SPRITES
+	MSLUG5D_SPRITES
 ROM_END
 
 ROM_START( mslug5hc21 ) //mslug5dd
@@ -3885,9 +3867,9 @@ ROM_START( mslug5hc21 ) //mslug5dd
 	ROM_LOAD16_WORD_SWAP( "268_hc21.p1", 0x000000, 0x600000, CRC(40917fba) SHA1(7e8e407c2936435be2b1909f582ae9025b1c7a8d) )
     MSLUG5HD_ROM_FILL
     MSLUG5D_SFIX_128K
-    MSLUG5N_AUDIO_128K
+    MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
-	MSLUG5ND_SPRITES
+	MS5BOOT_SPRITES
 ROM_END
 
 ROM_START( mslug5hc22 ) //mslug5ki
@@ -3895,9 +3877,9 @@ ROM_START( mslug5hc22 ) //mslug5ki
 	ROM_LOAD16_WORD_SWAP( "268_hc22.p1", 0x000000, 0x600000, CRC(846bc220) SHA1(d0a6ac7a5c04adc5bec65313f632f16b83b70628) )
     MSLUG5HD_ROM_FILL
     MSLUG5D_SFIX_128K
-    MSLUG5N_AUDIO_128K
+    MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
-	MSLUG5ND_SPRITES
+	MS5BOOT_SPRITES
 ROM_END
 
 /**********************
@@ -3914,7 +3896,7 @@ ROM_START( ms5boot )
     // The official file has problems for the emulation that until today I could not fix.
     ROM_LOAD16_WORD_SWAP( "268boot_original file.p1", 0x000000, 0x100000, BAD_DUMP CRC(e6d297af) SHA1(5bb3f72ce26e3f46c523b955f425056eb246e855) )
 	// Only the roms are kept even though they don't work
-	ROM_LOAD16_WORD_SWAP( "268nd.p1",   0x000000, 0x100000, CRC(ca50afdf) SHA1(e3780b77f20d139a0dcaa2ded2c6ee323b8b4279) )
+	ROM_LOAD16_WORD_SWAP( "268n.p1",    0x000000, 0x100000, CRC(ca50afdf) SHA1(e3780b77f20d139a0dcaa2ded2c6ee323b8b4279) )
 	ROM_LOAD16_WORD_SWAP( "268boot.p2", 0x100000, 0x100000, CRC(3fc46cfa) SHA1(f20d3d359f6cdbf6aabb6920020621b02bafee91) )
 	ROM_CONTINUE(0x300000, 0x100000 )
 	ROM_LOAD16_WORD_SWAP( "268boot.p3", 0x200000, 0x100000, CRC(742c955a) SHA1(96c0f08b1f2f6877f5169a96c13b67f3be6082c6) )
@@ -3923,7 +3905,7 @@ ROM_START( ms5boot )
     MS5BOOT_SFIX_128K
 	MS5BOOT_AUDIO_128K
 	MS5BOOT_YMSND
-	MSLUG5ND_SPRITES
+	MS5BOOT_SPRITES
 ROM_END
 
 ROM_START( ms5pcbd )
@@ -3946,7 +3928,7 @@ ROM_START( ms5plusd )
     MS5PLUSD_SFIX_128K
     MS5PLUSD_AUDIO_512K
 	MS5PLUSD_YMSND
-	MSLUG5HD_SPRITES
+	MSLUG5D_SPRITES
 ROM_END
 
 ROM_START( ms5plusc )
@@ -3958,7 +3940,7 @@ ROM_START( ms5plusc )
     MS5PLUSD_SFIX_128K
     MS5PLUSD_AUDIO_512K
 	MS5PLUSD_YMSND
-	MSLUG5HD_SPRITES
+	MSLUG5D_SPRITES
 ROM_END
 
 ROM_START( mslug5d )
@@ -3980,18 +3962,28 @@ ROM_START( mslug5hd )
     MSLUG5_SFIX_MT_128K
 	MSLUG5_AUDIO_ENCRYPTED_512K
 	MSLUG5_YMSND
-	MSLUG5HD_SPRITES
+	MSLUG5D_SPRITES
 ROM_END
 
-ROM_START( mslug5nd )
-	ROM_REGION( 0x800000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268nd.p1", 0x000000, 0x100000, CRC(ca50afdf) SHA1(e3780b77f20d139a0dcaa2ded2c6ee323b8b4279) )
-	ROM_LOAD16_WORD_SWAP( "268nd.p2", 0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
+ROM_START( mslug5n ) /* Decrypted Set */
+	ROM_REGION( 0x600000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "268n.p1", 0x000000, 0x100000, CRC(ca50afdf) SHA1(e3780b77f20d139a0dcaa2ded2c6ee323b8b4279) )
+	ROM_LOAD16_WORD_SWAP( "268n.p2", 0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
     MSLUG5HD_ROM_FILL
     MSLUG5_SFIX_MT_128K
-	MSLUG5ND_AUDIO_512K
-	MSLUG5ND_YMSND
-	MSLUG5HD_SPRITES
+	MSLUG5N_AUDIO_512K
+	MSLUG5N_YMSND
+	MS5BOOT_SPRITES
+ROM_END
+
+ROM_START( mslug5nd ) /* Decrypted Set */
+	ROM_REGION( 0x800000, "maincpu", 0 )
+    ROM_LOAD16_WORD_SWAP( "268nd.p1", 0x000000, 0x600000, CRC(975eb06a) SHA1(d3d4824a0b9f077c6503959da54edb53820e6a8d) )
+    MSLUG5HD_ROM_FILL
+	MSLUG5_SFIX_MT_128K
+    MSLUG5ND_AUDIO_128K
+	MSLUG5_YMSND
+	MSLUG5ND_SPRITES
 ROM_END
 
 ROM_START( mslug5b1 )
@@ -4009,28 +4001,19 @@ ROM_START( mslug5b1 )
 ROM_END
 
 ROM_START( mslug5b2 )
-	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268b3.p1", 0x000000, 0x100000, CRC(3f1cf3d2) SHA1(2c85eb5acdede4816675b91f8989c9e13c1573f8) )
-	ROM_IGNORE( 0x300000 )
+	ROM_REGION( 0x800000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "268b2.p1", 0x000000, 0x100000, CRC(3f1cf3d2) SHA1(2c85eb5acdede4816675b91f8989c9e13c1573f8) )
 	ROM_CONTINUE( 0x200000, 0x100000 )
 	ROM_CONTINUE( 0x400000, 0x100000 )
 	ROM_CONTINUE( 0x300000, 0x100000 )
 	ROM_CONTINUE( 0x500000, 0x100000 )
+	ROM_CONTINUE( 0x100000, 0x100000 )
+	ROM_CONTINUE( 0x600000, 0x200000 )
     MSLUG5HD_ROM_FILL
     MSLUG5_SFIX_MT_128K
     MSLUG5_AUDIO_ENCRYPTED_512K
 	MSLUG5_YMSND
 	MSLUG5_SPRITES
-ROM_END
-
-ROM_START( mslug5n )
-	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268n.p1", 0x000000, 0x600000, CRC(975eb06a) SHA1(d3d4824a0b9f077c6503959da54edb53820e6a8d) )
-    MSLUG5HD_ROM_FILL
-	MSLUG5_SFIX_MT_128K
-    MSLUG5N_AUDIO_128K
-	MSLUG5_YMSND
-	MSLUG5HD_SPRITES
 ROM_END
 
  /*******************************
@@ -5343,10 +5326,10 @@ GAME( 2023, mslug3hc30,        mslug3,   neogeo_noslot, mslughb, neogeo_state,  
 // It doesn't work, it causes the game to crash.
 GAME( 2023, mslug3dw01,        mslug3,   no_watchdog,   mslughb, neogeo_state,    init_mslug3a,   ROT0, "GOTVG",          "Metal Slug 3 (Last Bullet Remix 2023-03-09)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 // Decrypted And Bootleg
-GAME( 2000, mslug3d,           mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "SNK",            "Metal Slug 3 (Decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, mslug3hd,          mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "SNK",            "Metal Slug 3 (Non-encrypted, decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, mslug3d,           mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "SNK",            "Metal Slug 3 (NGM-2560)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, mslug3hd,          mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "SNK",            "Metal Slug 3 (NGH-2560)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2000, mslug3nd,          mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "SNK",            "Metal Slug 3 (Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, mslug3b6d,         mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3b6d, ROT0, "bootleg",        "Metal Slug 6 (Metal Slug 3 bootleg, decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, mslug3b6d,         mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3b6d, ROT0, "Bootleg",        "Metal Slug 6 (Metal Slug 3 Bootleg, decrypted C)", MACHINE_SUPPORTS_SAVE )
 // Metal Slug 6" is a hack/bootleg of Metal Slug 3
 GAME( 2019, mslug3b6hc01,      mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3b6d, ROT0, "hack",           "Metal Slug 6 (Enemies Resetting Version 2019-07-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3b6hc02,      mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3b6d, ROT0, "hack",           "Metal Slug 6 (The Last Warhead 2020-09-05)", MACHINE_SUPPORTS_SAVE )
@@ -5579,12 +5562,11 @@ GAME( 2021, mslug4hc15,        mslug4,   neogeo_noslot, mslughw, neogeo_state,  
 GAME( 2022, mslug4hc16,        mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "GOTVG",          "Metal Slug 4 (Early Summer Starry Sky 2022-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4hc17,        mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "GOTVG",          "Metal Slug 4 (Komorebi 2022-05-11)", MACHINE_SUPPORTS_SAVE )
 // Decrypted And Bootleg
-GAME( 2002, ms4plusd,          mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_ms4plushb, ROT0, "bootleg",        "Metal Slug 4 Plus (bootleg, Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, ms4boot,           mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "bootleg",        "Metal Slug 4 (bootleg)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, mslug4d,           mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "Mega / Playmore","Metal Slug 4 (Decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, mslug4hd,          mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "Mega / Playmore","Metal Slug 4 (Non-encrypted, decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, ms4plusd,          mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_ms4plushb, ROT0, "Bootleg",        "Metal Slug 4 Plus (Bootleg, Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, ms4boot,           mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "Bootleg",        "Metal Slug 4 (Bootleg)", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, mslug4d,           mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "Mega / Playmore","Metal Slug 4 (NGM-2630)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, mslug4hd,          mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "Mega / Playmore","Metal Slug 4 (NGH-2630)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, mslug4nd,          mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "Mega / Playmore","Metal Slug 4 (Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, mslug4lwd,         mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "Mega / Playmore","Metal Slug 4 (Last Bullet Remix, Decrypted C)", MACHINE_SUPPORTS_SAVE )
 
  /**************
  Only exclusive
@@ -5667,7 +5649,7 @@ GAME( 2019, mslug5hc14,        mslug5,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2019, mslug5hc15,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "GOTVG",          "Metal Slug 5 (1v2 Generation 2019-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug5hc16,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "GOTVG",          "Metal Slug 5 (Summon Slug Edition 2018-09-18)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, mslug5hc17,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "GOTVG",          "Metal Slug 5 (Multi-Function Version 2017-05-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug5hc18,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "GOTVG",          "Metal Slug 5 (Stone Tortoise Edition 2023-03-09)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug5hc18,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "GOTVG",          "Metal Slug 5 (Stone Tortoise Edition 2023-03-09)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug5hc19,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "FBN4DROID",      "Metal Slug 5 (Crazy Fire Edition 2020-09-02)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug5hc20,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "hack",           "Metal Slug 5 (War Chariot 2015-05-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc21,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "GOTVG",          "Metal Slug 5 (Early Summer Starry Sky 2022-08-10)", MACHINE_SUPPORTS_SAVE )
@@ -5677,12 +5659,12 @@ GAME( 2003, ms5boot,           mslug5,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2003, ms5pcbd,           mslug5,   neogeo_noslot, ms5pcb,  neogeo_state,    init_mslug5hb,  ROT0, "SNK Playmore",   "Metal Slug 5 (JAMMA PCB, Decrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, ms5plusd,          mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "Bootleg",        "Metal Slug 5 Plus (Bootleg, Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, ms5plusc,          mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_ms5plushb, ROT0, "Bootleg",        "Metal Slug 5 Plus (Bootleg, Chinese)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, mslug5d,           mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "SNK Playmore",   "Metal Slug 5 (Decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, mslug5hd,          mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "SNK Playmore",   "Metal Slug 5 (Non-encrypted, Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, mslug5d,           mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "SNK Playmore",   "Metal Slug 5 (NGM-2680)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, mslug5hd,          mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "SNK Playmore",   "Metal Slug 5 (NGH-2680)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, mslug5n,           mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "SNK Playmore",   "Metal Slug 5 (Not-Encrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5nd,          mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "SNK Playmore",   "Metal Slug 5 (Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5b1,          mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5b1,  ROT0, "Bootleg",        "Metal Slug 5 (Bootleg, Set 1)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5b2,          mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5b1,  ROT0, "Bootleg",        "Metal Slug 5 (Bootleg, Set 2)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, mslug5n,           mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "SNK Playmore",   "Metal Slug 5 (Not-Encrypted, Decrypted P &  C)", MACHINE_SUPPORTS_SAVE )
 
  /**************
  Only exclusive

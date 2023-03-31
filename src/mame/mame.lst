@@ -222,7 +222,6 @@ ms4boot           // Bootleg
 mslug4d           // Mega / Playmore
 mslug4hd          // Mega / Playmore
 mslug4nd          // Mega / Playmore
-mslug4lwd         // Mega / Playmore
 mslug4hc01        // Hack
 mslug4hc02        // Hack
 mslug4hc03        // Hack
@@ -271,10 +270,10 @@ ms5plusd          // Bootleg
 ms5plusc          // Bootleg
 mslug5d           // SNK Playmore
 mslug5hd          // SNK Playmore
+mslug5n           // SNK Playmore
 mslug5nd          // SNK Playmore
 mslug5b1          // Bootleg
 mslug5b2          // Bootleg
-mslug5n           // SNK Playmore
 mslug5hc01        // Hack
 mslug5hc02        // Hack
 mslug5hc03        // Hack
