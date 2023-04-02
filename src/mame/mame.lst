@@ -37,6 +37,7 @@ mslughc07         // Hack
 mslughc08         // Hack
 mslughc09         // Hack
 mslughc10         // Hack
+mslughc11         // Hack
 msluger01         // Hack
 mslugla01         // Hack
 mslugrma01        // Hack
@@ -89,6 +90,7 @@ mslug3d           // SNK
 mslug3hd          // SNK
 mslug3nd          // SNK
 mslug3b6d         // bootleg
+mslug3b6de        // bootleg (Predecrypted)
 mslug3hc01        // Hack
 mslug3hc02        // Hack
 mslug3hc03        // Hack
@@ -218,10 +220,13 @@ mslug3rmi02       // Hack
 
 @source:neogeo.cpp
 ms4plusd          // Bootleg
+ms4plusde         // Bootleg (Predecrypted)
 ms4boot           // Bootleg
 mslug4d           // Mega / Playmore
+mslug4e           // Mega / Playmore (Predecrypted)
 mslug4hd          // Mega / Playmore
 mslug4nd          // Mega / Playmore
+mslug4nde         // Mega / Playmore (Predecrypted)
 mslug4hc01        // Hack
 mslug4hc02        // Hack
 mslug4hc03        // Hack
@@ -267,11 +272,17 @@ mslug4rme01       // Hack
 ms5boot           // Bootleg
 ms5pcbd           // SNK Playmore
 ms5plusd          // Bootleg
+ms5plusde         // Bootleg (Predecrypted)
 ms5plusc          // Bootleg
 mslug5d           // SNK Playmore
+mslug5e           // SNK Playmore (Predecrypted)
+mslug5de          // SNK Playmore (Predecrypted)
 mslug5hd          // SNK Playmore
 mslug5n           // SNK Playmore
+mslug5ne          // SNK Playmore
+mslug5nep         // SNK Playmore (Predecrypted)
 mslug5nd          // SNK Playmore
+mslug5nde         // SNK Playmore (Predecrypted)
 mslug5b1          // Bootleg
 mslug5b2          // Bootleg
 mslug5hc01        // Hack
@@ -296,6 +307,7 @@ mslug5hc19        // Hack
 mslug5hc20        // Hack
 mslug5hc21        // Hack
 mslug5hc22        // Hack
+mslug5hc23
 mslug5la01        // Hack
 mslug5lb01        // Hack
 mslug5lc01        // Hack
@@ -307,6 +319,7 @@ mslug5rme01       // Hack
 mslug5rmf01       // Hack
 
 @source:neogeo.cpp
+mslugxe
 mslugxhc01        // Hack
 mslugxhc02        // Hack
 mslugxhc03        // Hack

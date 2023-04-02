@@ -1575,6 +1575,16 @@ void neogeo_state::init_mslug3b6d()
 	m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size,2);
 }
 
+void neogeo_state::init_mslug4e()
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 1; /* USA violent content screen is wrong -- not a bug, confirmed on real hardware! */
+	m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region,audio_region_size);
+	m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG4_GFX_KEY);
+	m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size,0);
+	m_pcm2_prot->neo_pcm2_snk_1999(ym_region, ym_region_size, 8);
+}
+
 void neogeo_state::init_mslug4hb()
 {
 	init_neogeo();
