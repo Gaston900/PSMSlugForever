@@ -37,7 +37,6 @@ mslughc07         // Hack
 mslughc08         // Hack
 mslughc09         // Hack
 mslughc10         // Hack
-mslughc11         // Hack
 msluger01         // Hack
 mslugla01         // Hack
 mslugrma01        // Hack
@@ -279,7 +278,7 @@ mslug5e           // SNK Playmore (Predecrypted)
 mslug5de          // SNK Playmore (Predecrypted)
 mslug5hd          // SNK Playmore
 mslug5n           // SNK Playmore
-mslug5ne          // SNK Playmore
+mslug5ne          // SNK Playmore (Predecrypted)
 mslug5nep         // SNK Playmore (Predecrypted)
 mslug5nd          // SNK Playmore
 mslug5nde         // SNK Playmore (Predecrypted)
@@ -307,7 +306,7 @@ mslug5hc19        // Hack
 mslug5hc20        // Hack
 mslug5hc21        // Hack
 mslug5hc22        // Hack
-mslug5hc23
+mslug5hc23        // Hack
 mslug5la01        // Hack
 mslug5lb01        // Hack
 mslug5lc01        // Hack
@@ -345,6 +344,7 @@ mslugxhc22        // Hack
 mslugxhc23        // Hack
 mslugxhc24        // Hack
 mslugxhc25        // Hack
+mslugxhc26        // Hack
 mslugxer01        // Hack
 mslugxer02        // Hack
 mslugxer03        // Hack
