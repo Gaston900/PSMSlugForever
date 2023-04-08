@@ -122,20 +122,20 @@ void menu_main::populate(float &customtop, float &custombottom)
 		item_append(_("External DAT View"), "", 0, (void *)EXTERNAL_DATS);
 
 // MAMEFX items commented out
-//	item_append(menu_item_type::SEPARATOR);
+	item_append(menu_item_type::SEPARATOR);
 
 	/* add favorite menu */
-//	if (!mame_machine_manager::instance()->favorite().isgame_favorite())
-//		item_append(_("Add To Favorites"), "", 0, (void *)ADD_FAVORITE);
-//	else
-//		item_append(_("Remove From Favorites"), "", 0, (void *)REMOVE_FAVORITE);
+	if (!mame_machine_manager::instance()->favorite().is_favorite(machine()))
+		item_append(_("Add To Favorites"), "", 0, (void *)ADD_FAVORITE);
+	else
+		item_append(_("Remove From Favorites"), "", 0, (void *)REMOVE_FAVORITE);
 
 	item_append(menu_item_type::SEPARATOR);
 
 	item_append(_("Quit from Machine"), "", 0, (void *)QUIT_GAME);
 
 	/* add reset and exit menus */
-//	item_append(_("Select New Machine"), "", 0, (void *)SELECT_GAME);
+	item_append(_("Select New Machine"), "", 0, (void *)SELECT_GAME);
 }
 
 menu_main::~menu_main()

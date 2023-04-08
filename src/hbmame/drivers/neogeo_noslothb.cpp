@@ -26,7 +26,9 @@
                                                                                                 NEOGEO ROM-cart:2004/02/19
 ************************************************************************************************************************************/
 
-// Game specific input definitions
+/*************************************
+    Game specific input definitions
+ *************************************/
 
 INPUT_PORTS_START( ms5pcb )
 	PORT_INCLUDE( neogeo )
@@ -5468,7 +5470,7 @@ GAME( 2022, mslug2hc15,       mslug2,   neogeo_noslot, mslughb, neogeo_state,   
 // Bootleg
 GAME( 2015, mslug2t,          mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "SNK",            "Metal Slug 2 Turbo", MACHINE_SUPPORTS_SAVE )
 // It doesn't work, it causes the game to crash.
-GAME( 2015, mslug2dw01,       mslug2,   no_watchdog,   mslughb, neogeo_state,    init_neogeo,    ROT0, "GOTVG",          "Metal Slug 2 (Weapon Storage 2015-11-11)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2015, mslug2dw01,       mslug2,   neogeo_arcade, mslughb, neogeo_state,    init_neogeo,    ROT0, "GOTVG",          "Metal Slug 2 (Weapon Storage 2015-11-11)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 /***************
  Only exclusive
 *****************/
@@ -5553,7 +5555,7 @@ GAME( 2022, mslug3hc28,        mslug3,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2022, mslug3hc29,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "GOTVG",          "Metal Slug 3 (Komorebi 2022-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3hc30,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "hack",           "Metal Slug 3 (Legendary Latest Random Level Version 2023-03-02)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 // It doesn't work, it causes the game to crash.
-GAME( 2023, mslug3dw01,        mslug3,   no_watchdog,   mslughb, neogeo_state,    init_mslug3a,   ROT0, "GOTVG",          "Metal Slug 3 (Last Bullet Remix 2023-03-20)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug3dw01,        mslug3,   neogeo_arcade, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "GOTVG",          "Metal Slug 3 (Last Bullet Remix 2023-03-20)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 // Predecrypted, Decrypted, Earlier And Bootleg
 GAME( 2000, mslug3d,           mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "SNK",            "Metal Slug 3 (NGM-2560)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2000, mslug3hd,          mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "SNK",            "Metal Slug 3 (NGH-2560)(Decrypted C)", MACHINE_SUPPORTS_SAVE )

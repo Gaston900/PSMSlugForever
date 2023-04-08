@@ -139,8 +139,6 @@ DECLARE_DEVICE_TYPE(CMC_PROT, cmc_prot_device)
 #define MSLUG5_GFX_KEY (0x19)
 #define SVC_GFX_KEY (0x57)
 #define KOF2003_GFX_KEY (0x9d)
-#define JOCKEYGP_GFX_KEY (0xac)
-
 
 class cmc_prot_device :  public device_t
 {

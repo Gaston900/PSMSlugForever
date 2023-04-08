@@ -617,8 +617,6 @@ WRITE8_MEMBER(neogeo_state::audio_cpu_enable_nmi_w)
 	audio_cpu_check_nmi();
 }
 
-
-
 /*************************************
  *
  *  Input ports / Controllers
@@ -633,11 +631,6 @@ READ16_MEMBER(neogeo_state::in0_r)
 READ16_MEMBER(neogeo_state::in1_r)
 {
 	return ((m_edge->in1_r(space, offset) & m_ctrl2->ctrl_r(space, offset)) << 8) | 0xff;
-}
-
-CUSTOM_INPUT_MEMBER(neogeo_state::kizuna4p_start_r)
-{
-	return (m_edge->read_start_sel() & 0x05) | ~0x05;
 }
 
 WRITE8_MEMBER(neogeo_state::io_control_w)
@@ -683,7 +676,6 @@ WRITE8_MEMBER(neogeo_state::io_control_w)
 	}
 }
 
-
 /*************************************
  *
  *  Unmapped memory access
@@ -709,8 +701,6 @@ READ16_MEMBER(neogeo_state::neogeo_unmapped_r)
 	return ret;
 }
 
-
-
 /*************************************
  *
  *  NVRAM (Save RAM)
@@ -728,8 +718,6 @@ WRITE16_MEMBER(neogeo_state::save_ram_w)
 	if (m_save_ram_unlocked)
 		COMBINE_DATA(&m_save_ram[offset]);
 }
-
-
 
 /*************************************
  *
@@ -886,8 +874,6 @@ void neogeo_state::neogeo_audio_cpu_banking_init(int set_entry)
 	m_bank_audio_cart[3]->set_entry(0x02);
 }
 
-
-
 /*************************************
  *
  *  System control register
@@ -939,8 +925,6 @@ WRITE8_MEMBER(neogeo_state::system_control_w)
 
 	if (LOG_VIDEO_SYSTEM && ((offset & 0x07) != 0x06)) logerror("PC: %x  System control write.  Offset: %x  Data: %x\n", machine().describe_context(), offset & 0x07, bit);
 }
-
-
 
 /*************************************
  *
@@ -1012,8 +996,6 @@ void neogeo_state::init_neogeo()
 	// install controllers
 	m_maincpu->space(AS_PROGRAM).install_read_handler(0x300000, 0x300001, 0, 0x01ff7e, 0, read16_delegate(FUNC(neogeo_state::in0_r), this));
 	m_maincpu->space(AS_PROGRAM).install_read_handler(0x340000, 0x340001, 0, 0x01fffe, 0, read16_delegate(FUNC(neogeo_state::in1_r), this));
-
-//	m_maincpu->space(AS_PROGRAM).install_read_port(0x340000, 0x340001, 0x01fffe, "P2");
 }
 
 
@@ -1077,8 +1059,6 @@ void neogeo_state::machine_start()
 	m_sprgen->set_fixed_regions(m_region_fixed->base(), m_region_fixed->bytes(), m_region_fixedbios);
 
 }
-
-
 
 /*************************************
  *
@@ -1144,7 +1124,6 @@ READ16_MEMBER(neogeo_state::neogeo_slot_rom_low_vectors_r)
 
 }
 
-
 /*************************************
  *
  *  Main CPU memory handlers
@@ -1202,8 +1181,6 @@ void neogeo_state::audio_map(address_map &map)
 	map(0xf800,0xffff).ram();
 }
 
-
-
 /*************************************
  *
  *  Audio CPU port handlers
@@ -1218,8 +1195,6 @@ void neogeo_state::audio_io_map(address_map &map)
 	map(0x08,0x0b).mirror(0x00f0).select(0xff00).r(FUNC(neogeo_state::audio_cpu_bank_select_r));
 	map(0x0c,0x0c).mirror(0xff00).w("soundlatch2",FUNC(generic_latch_8_device::write));
 }
-
-
 
 /*************************************
  *
@@ -1253,25 +1228,6 @@ INPUT_PORTS_START( neogeo )
 	PORT_DIPNAME( 0x80, 0x80, "Freeze" ) PORT_DIPLOCATION("SW:8")
 	PORT_DIPSETTING(    0x80, DEF_STR( Off ) )
 	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
-//	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_JOYSTICK_UP )
-//	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_JOYSTICK_DOWN )
-//	PORT_BIT( 0x0400, IP_ACTIVE_LOW, IPT_JOYSTICK_LEFT )
-//	PORT_BIT( 0x0800, IP_ACTIVE_LOW, IPT_JOYSTICK_RIGHT )
-//	PORT_BIT( 0x1000, IP_ACTIVE_LOW, IPT_BUTTON1 )
-//	PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_BUTTON2 )
-//	PORT_BIT( 0x4000, IP_ACTIVE_LOW, IPT_BUTTON3 )
-//	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON4 )
-
-//	PORT_START("P2")
-//	PORT_BIT( 0x00ff, IP_ACTIVE_LOW, IPT_UNUSED )
-//	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_JOYSTICK_UP ) PORT_PLAYER(2)
-//	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_JOYSTICK_DOWN ) PORT_PLAYER(2)
-//	PORT_BIT( 0x0400, IP_ACTIVE_LOW, IPT_JOYSTICK_LEFT ) PORT_PLAYER(2)
-//	PORT_BIT( 0x0800, IP_ACTIVE_LOW, IPT_JOYSTICK_RIGHT ) PORT_PLAYER(2)
-//	PORT_BIT( 0x1000, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(2)
-//	PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_PLAYER(2)
-//	PORT_BIT( 0x4000, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(2)
-//	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_PLAYER(2)
 
 	PORT_START("SYSTEM")
 	PORT_BIT( 0x00ff, IP_ACTIVE_LOW, IPT_UNUSED )
@@ -1306,8 +1262,6 @@ static INPUT_PORTS_START( neogeo_6slot )
 	PORT_MODIFY("TEST")
 	PORT_BIT( 0x0040, IP_ACTIVE_LOW, IPT_CUSTOM )
 INPUT_PORTS_END
-
-
 
 
 // Fixed
@@ -1436,84 +1390,6 @@ void neogeo_state::neogeo_noslot(machine_config &config)
 	KOF98_PROT(config, "kof98_prot");
 	SBP_PROT(config, "sbp_prot");
 }
-
-void neogeo_state::neogeo_kog(machine_config &config)
-{
-	neogeo_arcade(config);
-	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::main_map_noslot);
-
-	//joystick controller
-	NEOGEO_CTRL_EDGE_CONNECTOR(config, m_edge, neogeo_arc_edge, "joy", true);
-
-	//no mahjong controller
-	NEOGEO_CONTROL_PORT(config, "ctrl1", neogeo_arc_pin15, "", true);
-	NEOGEO_CONTROL_PORT(config, "ctrl2", neogeo_arc_pin15, "", true);
-
-	NGBOOTLEG_PROT(config, "bootleg_prot");
-	KOG_PROT(config, "kog_prot");
-}
-
-// these basically correspond to the cabinets which were available in arcades:
-// with mahjong panel, with dial for Pop'n Bounce and with 4 controls for Kizuna...
-void neogeo_state::neogeo_mj(machine_config &config)
-{
-	neogeo_noslot(config);
-
-	//no joystick panel
-	NEOGEO_CTRL_EDGE_CONNECTOR(config.replace(), m_edge, neogeo_arc_edge_fixed, "", true);
-
-	//P1 mahjong controller
-	config.device_remove("ctrl1");
-	config.device_remove("ctrl2");
-	NEOGEO_CONTROL_PORT(config, "ctrl1", neogeo_arc_pin15, "mahjong", false);
-	NEOGEO_CONTROL_PORT(config, "ctrl2", neogeo_arc_pin15, "", true);
-}
-
-void neogeo_state::neogeo_dial(machine_config &config)
-{
-	neogeo_noslot(config);
-	NEOGEO_CTRL_EDGE_CONNECTOR(config.replace(), m_edge, neogeo_arc_edge_fixed, "dial", true);
-}
-
-void neogeo_state::neogeo_imaze(machine_config &config)
-{
-	neogeo_noslot(config);
-	NEOGEO_CTRL_EDGE_CONNECTOR(config.replace(), m_edge, neogeo_arc_edge_fixed, "irrmaze", true);
-}
-
-void neogeo_state::neogeo_kiz4p(machine_config &config)
-{
-	neogeo_noslot(config);
-	NEOGEO_CTRL_EDGE_CONNECTOR(config.replace(), m_edge, neogeo_arc_edge_fixed, "kiz4p", true);
-}
-
-// this is used by V-Liner, which handles differently inputs...
-void neogeo_state::neogeo_noctrl(machine_config &config)
-{
-	neogeo_noslot(config);
-	config.device_remove("ctrl1");
-	config.device_remove("ctrl2");
-}
-
-void neogeo_state::no_watchdog(machine_config &config)
-{
-	neogeo_noslot(config);
-	subdevice<watchdog_timer_device>("watchdog")->set_time(attotime::from_seconds(0.0));
-}
-
-
-void neogeo_state::gsc_map(address_map &map)
-{
-	main_map_noslot(map);
-	map(0x900000,0x91ffff).rom().region("gsc", 0);  // extra rom
-}
-
-void neogeo_state::gsc(machine_config &config)
-{
-	neogeo_noslot(config);
-	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::gsc_map);
-}
-
 
 /*************************************
  *
@@ -1787,20 +1663,6 @@ void neogeo_state::init_ms4plushb()
 	}
 }
 
-/*********************************************** non-carts */
-
-void neogeo_state::install_banked_bios()
-{
-	m_maincpu->space(AS_PROGRAM).install_read_bank(0xc00000, 0xc1ffff, 0x0e0000, "bankedbios");
-	membank("bankedbios")->configure_entries(0, 2, memregion("mainbios")->base(), 0x20000);
-	membank("bankedbios")->set_entry(1);
-}
-
-INPUT_CHANGED_MEMBER(neogeo_state::select_bios)
-{
-	membank("bankedbios")->set_entry(newval ? 0 : 1);
-}
-
 void neogeo_state::init_ms5pcb()
 {
 	init_neogeo();
@@ -1815,6 +1677,20 @@ void neogeo_state::init_ms5pcb()
 	m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 2);
 	m_pvc_prot->install_pvc_protection(m_maincpu,m_banked_cart);
 	install_banked_bios();
+}
+
+/*********************************************** non-carts */
+
+void neogeo_state::install_banked_bios()
+{
+	m_maincpu->space(AS_PROGRAM).install_read_bank(0xc00000, 0xc1ffff, 0x0e0000, "bankedbios");
+	membank("bankedbios")->configure_entries(0, 2, memregion("mainbios")->base(), 0x20000);
+	membank("bankedbios")->set_entry(1);
+}
+
+INPUT_CHANGED_MEMBER(neogeo_state::select_bios)
+{
+	membank("bankedbios")->set_entry(newval ? 0 : 1);
 }
 
 /* dummy entry for the dummy bios driver */

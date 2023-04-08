@@ -86,21 +86,12 @@ public:
 		, m_out_digit(*this, "digit%u", 0U)
 	{ }
 
-	void hbmame_kog(machine_config &config);
 	void mvs(machine_config &config);
 	void neogeo_arcade(machine_config &config);
 	void neogeo_base(machine_config &config);
-	void neogeo_dial(machine_config &config);
-	void neogeo_imaze(machine_config &config);
-	void neogeo_kiz4p(machine_config &config);
-	void neogeo_kog(machine_config &config);
-	void neogeo_mj(machine_config &config);
-	void neogeo_noctrl(machine_config &config);
 	void neogeo_noslot(machine_config &config);
-	void no_watchdog(machine_config &config);
-	void gsc(machine_config &config);
 
-	void init_neogeo();
+	void init_neogeo();	
 	void init_ms5pcb();
 	void init_ms4plushb();
 	void init_ms5plushb();
@@ -119,7 +110,6 @@ public:
 
 	DECLARE_CUSTOM_INPUT_MEMBER(get_memcard_status);
 	DECLARE_CUSTOM_INPUT_MEMBER(get_audio_result);
-	DECLARE_CUSTOM_INPUT_MEMBER(kizuna4p_start_r);
 	DECLARE_INPUT_CHANGED_MEMBER(select_bios);
 
 private:
@@ -153,7 +143,6 @@ private:
 	void audio_map(address_map &map);
 	void audio_io_map(address_map &map);
 	void main_map_noslot(address_map &map);
-	void gsc_map(address_map &map);
 	void main_map1(address_map &map);
 
 	void neogeo_postload();
@@ -271,7 +260,6 @@ private:
 /*----------- defined in drivers/neogeo.c -----------*/
 
 INPUT_PORTS_EXTERN(neogeo);
-INPUT_PORTS_EXTERN(jockeygp);
 INPUT_PORTS_EXTERN(dualbios);
 
 /*************************************
