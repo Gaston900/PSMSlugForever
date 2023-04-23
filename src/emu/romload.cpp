@@ -398,42 +398,44 @@ void rom_load_manager::dump_wrong_and_correct_checksums(const util::hash_collect
 
 void rom_load_manager::verify_length_and_hash(const char *name, u32 explength, const util::hash_collection &hashes)
 {
-	/* we've already complained if there is no file */
+/*
+    //we've already complained if there is no file
 	if (m_file == nullptr)
 		return;
 
-	/* verify length */
+	// verify length
 	u32 actlength = m_file->size();
 	if (explength != actlength)
 	{
-		m_errorstring.append(string_format("%s WRONG LENGTH (expected: %08x found: %08x)\n", name, explength, actlength));
+	    m_errorstring.append(string_format("%s WRONG LENGTH (expected: %08x found: %08x)\n", name, explength, actlength));
 		m_warnings++;
 	}
 
-	/* If there is no good dump known, write it */
+	// If there is no good dump known, write it
 	util::hash_collection &acthashes = m_file->hashes(hashes.hash_types().c_str());
 	if (hashes.flag(util::hash_collection::FLAG_NO_DUMP))
 	{
-		m_errorstring.append(string_format("%s NO GOOD DUMP KNOWN\n", name));
+	    m_errorstring.append(string_format("%s NO GOOD DUMP KNOWN\n", name));
 		m_knownbad++;
 	}
-	/* verify checksums */
+	// verify checksums
 	else if (hashes != acthashes)
 	{
-		/* otherwise, it's just bad */
-		util::hash_collection &all_acthashes = acthashes.hash_types() == util::hash_collection::HASH_TYPES_ALL
+		//otherwise, it's just bad
+	    util::hash_collection &all_acthashes = acthashes.hash_types() == util::hash_collection::HASH_TYPES_ALL
 			? acthashes
 			: m_file->hashes(util::hash_collection::HASH_TYPES_ALL);
 		m_errorstring.append(string_format("%s WRONG CHECKSUMS:\n", name));
 		dump_wrong_and_correct_checksums(hashes, all_acthashes);
 		m_warnings++;
 	}
-	/* If it matches, but it is actually a bad dump, write it */
+	   //If it matches, but it is actually a bad dump, write it
 	else if (hashes.flag(util::hash_collection::FLAG_BAD_DUMP))
 	{
-		m_errorstring.append(string_format("%s ROM NEEDS REDUMP\n", name));
+	    m_errorstring.append(string_format("%s ROM NEEDS REDUMP\n", name));
 		m_knownbad++;
 	}
+*/
 }
 
 
@@ -444,7 +446,8 @@ void rom_load_manager::verify_length_and_hash(const char *name, u32 explength, c
 
 void rom_load_manager::display_loading_rom_message(const char *name, bool from_list)
 {
-    /*char buffer[200];
+/*
+    char buffer[200];
 
 	if (name != nullptr)
 		sprintf(buffer, "%s (%d%%)", from_list ? "Loading Software" : "Loading Machine", u32(100 * u64(m_romsloadedsize) / u64(m_romstotalsize)));
@@ -452,7 +455,8 @@ void rom_load_manager::display_loading_rom_message(const char *name, bool from_l
 		sprintf(buffer, "Loading Complete");
 
 	if (!machine().ui().is_menu_active())
-		machine().ui().set_startup_text(buffer, false);*/
+		machine().ui().set_startup_text(buffer, false);
+*/
 }
 
 
