@@ -78,13 +78,13 @@
 #endif
 
 #ifdef PTR64
-#define MAMEUINAME			"PSMame Plus (Metal Slug Forever Special Edition Final)"
+#define MAMEUINAME			"PSMSlugForever (Metal Slug Forever Special Edition Final)"
 #else
-#define MAMEUINAME			"PSMame Plus (Metal Slug Forever Special Edition Final)"
+#define MAMEUINAME			"PSMSlugForever (Metal Slug Forever Special Edition Final)"
 #endif
-#define MAMENAME			"PSMame Plus"
+#define MAMENAME			"PSMSlugForever"
 
-#define MAME_VERSION		"4.2"
+#define MAME_VERSION		"4.3"
 #define MAMEUIFX_VERSION	MAME_VERSION " (" __DATE__")"
 
 #define SEARCH_PROMPT		"<search here>"

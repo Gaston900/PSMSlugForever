@@ -30,10 +30,10 @@ function maintargetosdoptions(_target,_subtarget)
 		}
 
 	configuration { "x64", "Release" }
-		targetname "arcade"
+		targetname "PSMSlugForever"
 
 	configuration { "x32", "Release" }
-		targetname "arcade32"
+		targetname "PSMSlugForever32"
 
 	configuration { }
 

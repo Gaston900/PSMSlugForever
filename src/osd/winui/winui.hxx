@@ -3398,7 +3398,7 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			int nGame = Picker_GetSelectedItem(hWndList);
 			if (nGame >= 0)
 			{
-				char m1exe [MAX_PATH] = "Emulator/MSForever/m1fx.exe";
+				char m1exe [MAX_PATH] = "Emulator/m1fx.exe";
 				TCHAR *t_s = win_wstring_from_utf8(m1exe);
 				if (t_s)
 				{
