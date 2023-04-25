@@ -241,7 +241,7 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_MAMEUI_ICON         ICON                    "res\\psmameplus.ico"
+IDI_MAMEUI_ICON         ICON                    "res\\psmslugforever.ico"
 IDI_WIN_ROMS            ICON                    "res\\win_roms.ico"
 IDI_WIN_NOROMS          ICON                    "res\\win_noro.ico"
 IDI_WIN_UNKNOWN         ICON                    "res\\win_unkn.ico"
@@ -280,7 +280,7 @@ IDI_FOLDER_CPU          ICON                     "res\\foldcsb.ico"
 IDI_FOLDER_SOUND        ICON                     "res\\foldcsb.ico"
 IDI_FOLDER_BIOS         ICON                     "res\\foldbios.ico"
 IDI_FOLDER_DUMP         ICON                     "res\\foldcsb.ico"
-IDI_SYSTRAY             ICON                    "res\\psmameplus.ico"
+IDI_SYSTRAY             ICON                    "res\\psmslugforever.ico"
 IDI_DEBUG                ICON                    "res\\debug.ico"
 IDI_MONITOR                ICON                     "res\\monitor.ico"
 IDI_MECHANICAL            ICON                     "res\\mechanical.ico"
@@ -1070,4 +1070,4 @@ IDC_CURSOR_HSPLIT       CURSOR                  "res\\splith.cur"
 //
 
 1                       RT_MANIFEST             "res\\mameui.manifest"
-2                       ICON                     "res\\psmameplus.ico"
+2                       ICON                     "res\\psmslugforever.ico"

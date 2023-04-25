@@ -9,6 +9,6 @@
 #include <windows.h>
 //#include "mamevers.rc"
 
-1                       24      MOVEABLE PURE   "psmameplus.man"
+1                       24      MOVEABLE PURE   "psmslugforever.man"
 
-2                       ICON    DISCARDABLE     "psmameplus.ico"
+2                       ICON    DISCARDABLE     "psmslugforever.ico"

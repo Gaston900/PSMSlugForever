@@ -111,13 +111,13 @@ elif build == "hbmame":
 else:
     # MAME
     author = "Gaston90"
-    comments = "Proyecto Shadow MAME Plus"
+    comments = "Proyecto Shadow Metal Slug Forever"
     company_name = "MAME Team"
-    file_description = "PSMame plus"
-    internal_name = "PSMame plus"
-    original_filename = "PSMame plus"
-    product_name = "PSMame plus"
-    bundle_identifier = "org.mamedev.PSMame plus"
+    file_description = "PSMSlugForever"
+    internal_name = "PSMSlugForever"
+    original_filename = "PSMSlugForever"
+    product_name = "PSMSlugForever"
+    bundle_identifier = "org.mamedev.PSMSlugForever"
 
 if outfmt == 'rc':
     fp.write('VS_VERSION_INFO VERSIONINFO\n')
