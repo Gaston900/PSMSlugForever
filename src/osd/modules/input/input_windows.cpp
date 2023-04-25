@@ -117,7 +117,7 @@ void windows_osd_interface::customize_input_type_list(simple_list<input_type_ent
 			// alt-enter for fullscreen
 			case IPT_OSD_1:
 				entry.configure_osd("TOGGLE_FULLSCREEN", "Toggle Fullscreen");
-				entry.defseq(SEQ_TYPE_STANDARD).set(KEYCODE_U);
+				entry.defseq(SEQ_TYPE_STANDARD).set(KEYCODE_SPACE);
 				break;
 
 			// lalt-F12 for fullscreen snap (HLSL)
@@ -154,7 +154,7 @@ void windows_osd_interface::customize_input_type_list(simple_list<input_type_ent
 			// lctrl-lalt-F5 to toggle post-processing
 			case IPT_OSD_4:
 				entry.configure_osd("POST_PROCESS", "Toggle Post-Processing");
-				entry.defseq(SEQ_TYPE_STANDARD).set(KEYCODE_COLON);
+				entry.defseq(SEQ_TYPE_STANDARD).set(KEYCODE_U);
 				break;
 			// add a NOT-lctrl-lalt to our default F5
 			case IPT_UI_TOGGLE_DEBUG: // emu/input.c: input_seq(KEYCODE_F5)

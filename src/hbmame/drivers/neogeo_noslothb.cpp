@@ -2141,7 +2141,7 @@ ROM_START( mslug3hc29 ) //mslug3ki
 	MSLUG3DD_SPRITES
 ROM_END
 
-ROM_START( mslug3hc30 ) //mslug3sc
+ROM_START( mslug3hc30 ) //mslug3sc, 
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc30.p1", 0x000000, 0x100000, BAD_DUMP CRC(7b4dd96c) SHA1(c4b84e80cedeca35116b26b16f7d18ea0e06a25a) )
 	ROM_LOAD16_WORD_SWAP( "256_hc30.p2", 0x100000, 0x400000, CRC(a9cad8f1) SHA1(188ae36f01f027d2ff7d3dea0026ea55c9b2f17d) )
@@ -2160,8 +2160,8 @@ ROM_END
 ROM_START( mslug3dw01 ) //mslug3lw, mslug3nd
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	// The official file has problems for the emulation that until today I could not fix.
-	ROM_LOAD16_WORD_SWAP( "256_dw01.p1", 0x000000, 0x100000, BAD_DUMP CRC(b4c7de94) SHA1(a1674c7c2589ac9d6bd650cbadb6b40a08ce088c) )
-	ROM_LOAD16_WORD_SWAP( "256_dw01.p2", 0x100000, 0x400000, BAD_DUMP CRC(a66e5c26) SHA1(aa4b44d8f8f6504d3358d837a209383c19ac720d) )
+	ROM_LOAD16_WORD_SWAP( "256_dw01.p1", 0x000000, 0x100000, BAD_DUMP CRC(0f3a5e65) SHA1(8404a4a1dee9c6498c49f1d233a122b40803efad) )
+	ROM_LOAD16_WORD_SWAP( "256_dw01.p2", 0x100000, 0x400000, BAD_DUMP CRC(47a73593) SHA1(86a586d739fcb9174d36a6a24c918c4c4b709979) )
 	// Only the roms are kept even though they don't work
 	MSLUG3HD_SFIX_128K
     MSLUG3LW_AUDIO_512K
@@ -4007,15 +4007,14 @@ ROM_START( mslug5hc22 ) //mslug5ki
 	MS5BOOT_SPRITES
 ROM_END
 
-ROM_START( mslug5hc23 )
-	ROM_REGION( 0x800000, "maincpu", 0 )
-	ROM_LOAD32_WORD_SWAP( "268_hc23.p1", 0x000000, 0x400000, CRC(21f0f4d1) SHA1(7129a819e0775dce7ffab5aba80eb9cc2fdcb600) )
-	ROM_LOAD32_WORD_SWAP( "268_hc23.p2", 0x000002, 0x400000, CRC(2a1ac3b8) SHA1(0c46d9a0ed6f70ca550b3328ad600eaa3abd4b1d) )
-    MSLUG5_ROM_FILL
-    MSLUG5_SFIX_MT_128K
-	MSLUG5_AUDIO_ENCRYPTED_512K
-	MSLUG5_YMSND
-	MSLUG5_SPRITES
+ROM_START( mslug5hc23 ) //mslug5boss
+	ROM_REGION( 0x600000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "268_hc23.p1", 0x000000, 0x600000, CRC(db66b94c) SHA1(1f64785b0bd408c374a7fcdd1a58cb015b3b04aa) )
+    MSLUG5HD_ROM_FILL
+    MSLUG5D_SFIX_128K
+    MSLUG5ND_AUDIO_128K
+	MS5BOOT_YMSND
+	MS5BOOT_SPRITES
 ROM_END
 
 /**********************
@@ -4600,10 +4599,10 @@ ROM_START( mslugxhc25 ) //mslugxscb
 	MSLUGXCQ_SPRITES
 ROM_END
 
-ROM_START( mslugxhc26 ) //mslugxg
+ROM_START( mslugxhc26 ) //mslugxdg
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250_hc26.p1", 0x000000, 0x100000, CRC(4868b5ce) SHA1(1cdb628d1d284f4abbf7b3e4dc8c85c0665374c6) )
-	ROM_LOAD16_WORD_SWAP( "250_hc26.p2", 0x100000, 0x400000, CRC(da239a0d) SHA1(e641419cc207cdc52220b3925122d5e39c35087f) )
+	ROM_LOAD16_WORD_SWAP( "250_hc26.p1", 0x000000, 0x100000, CRC(38cffcb9) SHA1(218fce4e825831932f51b592ebbbe3076ba9432c) )
+	ROM_LOAD16_WORD_SWAP( "250_hc26.p2", 0x100000, 0x400000, CRC(431cb335) SHA1(d05f7eb5759bbb5da87a97959a5d0d692700bd9e) )
     MSLUGX_ROM_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
@@ -4615,7 +4614,7 @@ ROM_END
  Decrypted And Bootleg
 ************************/
 
-ROM_START( mslugxe ) //Neoragex 5.0
+ROM_START( mslugxe )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250e.p1", 0x000000, 0x100000, CRC(60c33b1a) SHA1(8999bfc42b233cdb58778857c87d9f3187c61025) )
 	ROM_LOAD16_WORD_SWAP( "250.p2",  0x100000, 0x400000, CRC(1fda2e12) SHA1(18aaa7a3ba8da99f78c430e9be69ccde04bc04d9) )
@@ -5396,7 +5395,7 @@ ROM_END
   HomeBrew
 ************/
 
-ROM_START( mslughz ) //mslug5ast
+ROM_START( mslughb ) //mslug5ast
 	ROM_REGION( 0x800000, "maincpu", 0 )
 	ROM_LOAD32_WORD_SWAP( "268_hz.p1", 0x000000, 0x400000, CRC(1e0506cf) SHA1(f1a20f1f0fc3fd74dd5d258eaf75965eb2b4cd91) )
 	ROM_LOAD32_WORD_SWAP( "268_hz.p2", 0x000002, 0x400000, CRC(894cd3dd) SHA1(553f90fce8c04940892bd797dc4f1dddf7276c81) )
@@ -5553,7 +5552,7 @@ GAME( 2021, mslug3hc26,        mslug3,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2023, mslug3hc27,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "GOTVG",          "Metal Slug 3 (Legendary Edition 2023-03-01)" , MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3hc28,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "GOTVG",          "Metal Slug 3 (Early Summer Starry Sky 2022-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3hc29,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "GOTVG",          "Metal Slug 3 (Komorebi 2022-05-11)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug3hc30,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "hack",           "Metal Slug 3 (Legendary Latest Random Level Version 2023-03-02)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug3hc30,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "hack",           "Metal Slug 3 (Legendary Latest Random Level Version 2023-03-28)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 // It doesn't work, it causes the game to crash.
 GAME( 2023, mslug3dw01,        mslug3,   neogeo_arcade, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "GOTVG",          "Metal Slug 3 (Last Bullet Remix 2023-03-20)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 // Predecrypted, Decrypted, Earlier And Bootleg
@@ -5889,7 +5888,7 @@ GAME( 2020, mslug5hc19,        mslug5,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2015, mslug5hc20,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "hack",           "Metal Slug 5 (War Chariot 2015-05-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc21,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "GOTVG",          "Metal Slug 5 (Early Summer Starry Sky 2022-08-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc22,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "GOTVG",          "Metal Slug 5 (Komorebi 2022-08-10)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslug5hc23,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "hack",           "Metal Slug 5 (Boss Edition 2023-03-16)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslug5hc23,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "hack",           "Metal Slug 5 (Boss Edition 2023-04-14)", MACHINE_SUPPORTS_SAVE )
 // Predecrypted, Decrypted, Earlier And Bootleg
 GAME( 2003, ms5boot,           mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "Bootleg",        "Metal Slug 5 (Bootleg)(Earlier)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, ms5pcbd,           mslug5,   neogeo_noslot, ms5pcb,  neogeo_state,    init_mslug5hb,  ROT0, "SNK Playmore",   "Metal Slug 5 (JAMMA PCB, Decrypted C)", MACHINE_SUPPORTS_SAVE )
@@ -5964,7 +5963,7 @@ GAME( 2020, mslugxhc22,        mslugx,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2020, mslugxhc23,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (2R Generation 1V2 2020-05-18)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxhc24,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (Early Summer Starry Sky 2022-08-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxhc25,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (Legendary Origin Edition 2023-02-13)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxhc26,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (Multi-Function Version 2023-04-03)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslugxhc26,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (Multi-Function Version 2023-04-16)", MACHINE_SUPPORTS_SAVE )
 
 // Predecrypted
 GAME( 1999, mslugxe,           mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "SNK",            "Metal Slug X (Predecrypted)", MACHINE_SUPPORTS_SAVE ) 
@@ -6066,5 +6065,5 @@ GAME( 2022, mslugxrmh03,       mslugx,   neogeo_noslot, mslughb, neogeo_state,  
 
 /*    YEAR   NAME             PARENT       MACHINE       INPUT                       INIT       MONITOR COMPANY          FULLNAME FLAGS */
 // HomeBrew
-GAME( 2022, mslughz,          neogeo,    neogeo_noslot, neogeo,  neogeo_state,    init_mslug5ast, ROT0, "CB, Willnie",     "Metal Slug HomeBrew (Mothership Armageddon Easter Egg 2021-06-13)", MACHINE_SUPPORTS_SAVE )
-GAME( 2010, neopang,          mslughz,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "CeL",             "Metal Slug HomeBrew (Neo Pang)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslughb,          neogeo,    neogeo_noslot, neogeo,  neogeo_state,    init_mslug5ast, ROT0, "CB, Willnie",     "Metal Slug HomeBrew (Mothership Armageddon Easter Egg 2021-06-13)", MACHINE_SUPPORTS_SAVE )
+GAME( 2010, neopang,          mslughb,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "CeL",             "Metal Slug HomeBrew (Neo Pang)", MACHINE_SUPPORTS_SAVE )
