@@ -37,6 +37,8 @@ mslughc07         // Hack
 mslughc08         // Hack
 mslughc09         // Hack
 mslughc10         // Hack
+mslughc11         // Hack
+mslughc12         // Hack
 msluger01         // Hack
 mslugla01         // Hack
 mslugrma01        // Hack
@@ -58,6 +60,9 @@ mslug2hc12        // Hack
 mslug2hc13        // Hack
 mslug2hc14        // Hack
 mslug2hc15        // Hack
+mslug2hc16        // Hack
+mslug2hc17        // Hack
+mslug2hc18        // Hack
 mslug2dw01        // Hack [Doesn't Work]
 mslug2er01        // Hack
 mslug2er02        // Hack
@@ -120,6 +125,11 @@ mslug3hc27        // Hack
 mslug3hc28        // Hack
 mslug3hc29        // Hack
 mslug3hc30        // Hack
+mslug3hc31        // Hack
+mslug3hc32        // Hack
+mslug3hc33        // Hack
+mslug3hc34        // Hack
+mslug3hc35        // Hack
 mslug3dw01        // Hack [Doesn't Work]
 mslug3b6hc01      // Hack
 mslug3b6hc02      // Hack
@@ -243,6 +253,10 @@ mslug4hc14        // Hack
 mslug4hc15        // Hack
 mslug4hc16        // Hack
 mslug4hc17        // Hack
+mslug4hc18        // Hack
+mslug4hc19        // Hack
+mslug4hc20        // Hack
+mslug4hc21        // Hack
 mslug4er01        // Hack
 mslug4er02        // Hack
 mslug4la01        // Hack
@@ -279,9 +293,7 @@ mslug5de          // SNK Playmore (Predecrypted)
 mslug5hd          // SNK Playmore
 mslug5n           // SNK Playmore
 mslug5ne          // SNK Playmore (Predecrypted)
-mslug5nep         // SNK Playmore (Predecrypted)
 mslug5nd          // SNK Playmore
-mslug5nde         // SNK Playmore (Predecrypted)
 mslug5b1          // Bootleg
 mslug5b2          // Bootleg
 mslug5hc01        // Hack
@@ -307,6 +319,7 @@ mslug5hc20        // Hack
 mslug5hc21        // Hack
 mslug5hc22        // Hack
 mslug5hc23        // Hack
+mslug5hc24        // Hack
 mslug5la01        // Hack
 mslug5lb01        // Hack
 mslug5lc01        // Hack
@@ -345,6 +358,11 @@ mslugxhc23        // Hack
 mslugxhc24        // Hack
 mslugxhc25        // Hack
 mslugxhc26        // Hack
+mslugxhc27        // Hack
+mslugxhc28        // Hack
+mslugxhc29        // Hack
+mslugxhc30        // Hack
+mslugxhc31        // Hack
 mslugxer01        // Hack
 mslugxer02        // Hack
 mslugxer03        // Hack

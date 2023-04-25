@@ -15,9 +15,17 @@ for the 86/64 bit cpu of the compatible microprocessors.
 
 ===============================================================================================================================
 
+2023-04-25
+
+New Games
+---------------------------------
+- [mslug5hc23]               Metal Slug 5 (Boss Edition 2023-04-14)
+- [mslugxhc26]               Metal Slug X (Multi-Function Version 2023-04-16)
+
+
+
 2023-03-14
 
-- The next update to be published will be in June or July 2023.
 - Updated Roms Metal Slug 3 (Legendary Edition 2023-03-01)
 - Updated Roms Metal Slug 4 (Last Bullet Remix 2023-02-25)
 - Updated Roms Metal Slug 4 (Ammunition Random Edition 2023-02-25)
