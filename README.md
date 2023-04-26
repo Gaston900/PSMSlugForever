@@ -1,5 +1,5 @@
 # PSMETAL SLUG FOREVER
-What is PSMAMEPLUS?
+What is PSMSlugForever?
 
 It is called Project Shadow Mame Plus (Metal Slug Forever Special Edition Final), this project was part of the HBMAME emulator in the year 2018 – 2020.
 
