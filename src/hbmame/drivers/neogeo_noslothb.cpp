@@ -1,4 +1,4 @@
-// Proyecto Shadows Mame Plus (Metal Slug Forever Special Edition Final)
+// Proyecto Shadows Metal Slug Forever
 // copyright-holders:Gaston90
 
 #include "includes/neogeo.h"
@@ -1435,6 +1435,7 @@ ROM_START( mslug2hc05 ) //mslug2eg
 	ROM_REGION( 0x400000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc05.p1", 0x000000, 0x100000, CRC(bb312904) SHA1(08766b1ffb8686aa4d07370dc825c9f09a100fa6) )
 	ROM_LOAD16_WORD_SWAP( "241_hc05.p2", 0x100000, 0x300000, CRC(abf37360) SHA1(09347f0502fba4965dc14fd6db89bb3cabdeea1f) )
+    ROM_DEFAULT_BIOS("euro")
     MSLUG2_ROM_FILL
     MSLUG2EG_SFIX_128K
     MSLUG2_AUDIO_128K
@@ -1501,6 +1502,7 @@ ROM_START( mslug2hc11 )
 	ROM_REGION( 0x400000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc11.p1", 0x000000, 0x100000, CRC(aab0c2a7) SHA1(8501f543ec2a26a870195ead3dd531133390f203) )
 	ROM_LOAD16_WORD_SWAP( "241_hc05.p2", 0x100000, 0x300000, CRC(abf37360) SHA1(09347f0502fba4965dc14fd6db89bb3cabdeea1f) )
+    ROM_DEFAULT_BIOS("euro")
     MSLUG2_ROM_FILL
     MSLUG2EG_SFIX_128K
     MSLUG2_AUDIO_128K
@@ -2293,6 +2295,7 @@ ROM_START( mslug3hc35 )
 	ROM_LOAD16_WORD_SWAP( "neo-sma_hc35.sma", 0x0c0000, 0x040000, CRC(c2dc0b28) SHA1(3aff37ec62def5a8f23523cb7c1988934e27ea30) )
 	ROM_LOAD16_WORD_SWAP( "256_hc35.p1",      0x100000, 0x400000, CRC(6ec2e58d) SHA1(d83dd522a5c8a8b4bd32722967e3d934d2e73e08) )
 	ROM_LOAD16_WORD_SWAP( "256_hc35.p2",      0x500000, 0x400000, CRC(faaf8cd8) SHA1(264018877eab84582ba553cb42d75f15c0c08f65) )
+    ROM_DEFAULT_BIOS("euro")
 	MSLUG3_SFIX_MT_512K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -3497,6 +3500,7 @@ ROM_START( mslug4hc10 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc10.p1", 0x000000, 0x100000, CRC(3f7ce3c5) SHA1(a0a9cf5d887f2ff9c048d2bb22cfba168b393df0) )
 	ROM_LOAD16_WORD_SWAP( "263.p2",      0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
+    ROM_DEFAULT_BIOS("euro")
     MSLUG4_ROM_FILL
     MSLUG4HD_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
@@ -4804,6 +4808,7 @@ ROM_START( mslugxhc28 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc28.p1", 0x000000, 0x100000, CRC(5836f4d7) SHA1(002c6a519c118d33e3cef92066b0e8fc96f52627) )
 	ROM_LOAD16_WORD_SWAP( "250_hc28.p2", 0x100000, 0x400000, CRC(9033c16c) SHA1(13336d2d9a042973dd744966c37a0a3d5f574808) )
+    ROM_DEFAULT_BIOS("euro")
     MSLUGX_ROM_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
@@ -6029,7 +6034,7 @@ GAME( 2017, mslug4hc06,        mslug4,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2021, mslug4hc07,        mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "hack",           "Metal Slug 4 (Children's Version 2021-06-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug4hc08,        mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "DDJ",            "Metal Slug 4 (Jump In Mid Air 2015-08-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4hc09,        mslug4,   neogeo_noslot, mslughw, neogeo_state,    init_mslug4hb,  ROT0, "GOTVG",          "Metal Slug 4 (The Longest Fight 2022-06-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2016, mslug4hc10,        mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "DDJ",            "Metal Slug 4 (War Chariot 2016-02-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2013, mslug4hc10,        mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "DDJ",            "Metal Slug 4 (War Chariot 2013-02-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug4hc11,        mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "GOTVG",          "Metal Slug 4 (1V2 Generation 2019-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug4hc12,        mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "GOTVG",          "Metal Slug 4 (Last Bullet Remix Bulletproof Vest Removed 2023-02-25)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4hc13,        mslug4,   neogeo_noslot, mslughw, neogeo_state,    init_mslug4hb,  ROT0, "hack",           "Metal Slug 4 (The Longest Fight Enemies Resetting Version 2022-10-24)", MACHINE_SUPPORTS_SAVE )
@@ -6195,7 +6200,7 @@ GAME( 2013, mslugxhc05,        mslugx,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2020, mslugxhc06,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (Infinite Firepower Edition 2021-03-20 )", MACHINE_SUPPORTS_SAVE )
 GAME( 2013, mslugxhc07,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "PlayerX China",  "Metal Slug X (Enemy Heavy Plate 2013-06-18)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslugxhc08,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "DDJ",            "Metal Slug X (Change Weapon And Mummy 2018-09-26)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslugxhc09,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (Generation SV 2020-11-04)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslugxhc09,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (SV Generation 2020-11-04)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslugxhc10,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "DDJ",            "Metal Slug X (War Chariot 2016-03-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, mslugxhc11,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "PlayerX China",  "Metal Slug X (Enemy Soldiers Remake Version 3 2017-12-31)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxhc12,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (Last Legendary Edition 2023-03-11)", MACHINE_SUPPORTS_SAVE )
