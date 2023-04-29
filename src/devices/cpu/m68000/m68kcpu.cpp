@@ -2271,12 +2271,12 @@ void m68000_base_device::m68ki_exception_interrupt(u32 int_level)
 	u32 vector;
 	u32 sr;
 	u32 new_pc;
-
+/*
 	if(CPU_TYPE_IS_000())
 	{
 		m_instr_mode = INSTRUCTION_NO;
 	}
-
+*/
 	/* Turn off the m_stopped state */
 	m_stopped &= ~STOP_LEVEL_STOP;
 
