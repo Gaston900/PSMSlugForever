@@ -1,9 +1,8 @@
-﻿What's new in PSMAME PLUS (Metal Slug Forever Special Edition Final)
-=====================================================================
-What is PSMAMEPLUS?
+﻿What's new in PSMSlugForever
+============================
+What is PSMSlugForever?
 
-It is called Project Shadow Mame Plus (Metal Slug Forever Special Edition Final), this project was part of the HBMAME emulator 
-in the year 2018 – 2020.
+It is called Project Shadow Metal Slug Forever, this project was part of the HBMAME emulator in the year 2018 – 2020.
 
 Afterwards, it has been decided to make the project independent in 2021, providing all kinds of support, repairing all bugs 
 and glitches, correcting incompatibility with the NeoGeo system, etc.
@@ -14,6 +13,17 @@ I am only giving support for the Windows XP, Windows 7, Windows 8, Windows 10 an
 for the 86/64 bit cpu of the compatible microprocessors.
 
 ===============================================================================================================================
+
+2023-0X-XX
+
+- Updated Roms Metal Slug 5 (Boss Edition 2023-04-29)
+- Updated Roms Metal Slug X (Multi-Function Version 2023-04-30)
+- Updated Roms Metal Slug 3 (Pigeon Slug 2023-04-28)
+
+New Games
+---------------------------------
+
+
 
 2023-04-25 / 04-30
 

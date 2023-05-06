@@ -394,14 +394,14 @@ INPUT_PORTS_END
 
 #define MSLUG3RMZ_SPRITES \
     ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD16_BYTE( "256_hc34.c1", 0x0000000, 0x800000, CRC(d799f41c) SHA1(d87cda305d054c56197112ba515299883d419bb4) )\
-	ROM_LOAD16_BYTE( "256_hc34.c2", 0x0000001, 0x800000, CRC(c9725cd0) SHA1(59a0a2778ae35ddcac17fba05a81f3da5eaca1f1) )\
+	ROM_LOAD16_BYTE( "256_hc32.c1", 0x0000000, 0x800000, CRC(d799f41c) SHA1(d87cda305d054c56197112ba515299883d419bb4) )\
+	ROM_LOAD16_BYTE( "256_hc32.c2", 0x0000001, 0x800000, CRC(c9725cd0) SHA1(59a0a2778ae35ddcac17fba05a81f3da5eaca1f1) )\
 	ROM_LOAD16_BYTE( "256d.c3", 0x1000000, 0x800000, CRC(bfaade82) SHA1(66b07e592c9a9b35567fe463496f8f75c32a7db9) )\
 	ROM_LOAD16_BYTE( "256d.c4", 0x1000001, 0x800000, CRC(1463add6) SHA1(4db91b46d6430da272d27d00a6dc0eb25949bea1) )\
 	ROM_LOAD16_BYTE( "256_hc34.c5", 0x2000000, 0x800000, CRC(3dd2c01f) SHA1(8485ba8940ae60d0a2a9561d5a82fd5f32452e01) )\
 	ROM_LOAD16_BYTE( "256_hc34.c6", 0x2000001, 0x800000, CRC(1ea253a8) SHA1(c3134199eff0dfe47b9c05caea0245ffbee4e8c3) )\
-	ROM_LOAD16_BYTE( "256_hc34.c7", 0x3000000, 0x800000, CRC(82097fdb) SHA1(04ff6755087df0995c196e8817827fda3b9f9d08) )\
-	ROM_LOAD16_BYTE( "256_hc34.c8", 0x3000001, 0x800000, CRC(aa7ca14d) SHA1(876ed262200535b82f74e56b64128df23140338b) )
+	ROM_LOAD16_BYTE( "256_hc32.c7", 0x3000000, 0x800000, CRC(82097fdb) SHA1(04ff6755087df0995c196e8817827fda3b9f9d08) )\
+	ROM_LOAD16_BYTE( "256_hc32.c8", 0x3000001, 0x800000, CRC(aa7ca14d) SHA1(876ed262200535b82f74e56b64128df23140338b) )
 
 #define MSLUG3N6P_SPRITES \
 	ROM_REGION( 0x4000000, "sprites", 0 ) \
@@ -1590,6 +1590,7 @@ ROM_START( mslug2hc19 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc19.p1", 0x000000, 0x100000, CRC(fe803784) SHA1(1966f8c896d564570cceb108617021849a418484) )
 	ROM_LOAD16_WORD_SWAP( "241.p2",  0x100000, 0x200000, CRC(38883f44) SHA1(fcf34b8c6e37774741542393b963635412484a27) )
+    MSLUG2_ROM_FILL
     MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -2247,8 +2248,9 @@ ROM_END
 
 ROM_START( mslug3hc34 ) //mslug3lw, mslug3nd
 	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_hc34.p1", 0x000000, 0x100000, CRC(0f3a5e65) SHA1(8404a4a1dee9c6498c49f1d233a122b40803efad) )
-	ROM_LOAD16_WORD_SWAP( "256_hc34.p2", 0x100000, 0x400000, CRC(47a73593) SHA1(86a586d739fcb9174d36a6a24c918c4c4b709979) )
+	ROM_LOAD16_WORD_SWAP( "256_hc34.p1", 0x000000, 0x100000, CRC(94527837) SHA1(5af3de12ed91b38f84c96f91d10ca8f23826b8b4) )
+	ROM_LOAD16_WORD_SWAP( "256_hc34.p2", 0x100000, 0x400000, CRC(8a2e9f38) SHA1(4dd034df84b0d09188aeaef6ad4dc2eb6aed26d9) )
+    MSLUG3H_ROM_FILL
 	MSLUG3HD_SFIX_128K
     MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -2459,7 +2461,7 @@ ROM_END
 
 ROM_START( mslug3ly01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_ly01.p1", 0x000000, 0x100000, CRC(3aab9873) SHA1(4d170ee4c6d1247034555d5cb517b2b234a70856) )
+	ROM_LOAD16_WORD_SWAP( "256_ly01.p1", 0x000000, 0x100000, CRC(887acb32) SHA1(e949263b629ae532fa65635bfec80931eb9694ab) )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p2", 0x100000, 0x400000, CRC(3eec5fc4) SHA1(dbc33fb9daa076f8b64852db0729255f383983c5) )
 	MSLUG3HD_SFIX_128K
 	MSLUG3LW_AUDIO_512K
@@ -2469,7 +2471,7 @@ ROM_END
 
 ROM_START( mslug3ly02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_ly02.p1", 0x000000, 0x100000, CRC(3176a901) SHA1(37d4d4059360ff9eb8c788761dc911c1f3526190) )
+	ROM_LOAD16_WORD_SWAP( "256_ly02.p1", 0x000000, 0x100000, CRC(83a7fa40) SHA1(2582a77a496ca8ff8a36bb01eb828249b2597e20) )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p2", 0x100000, 0x400000, CRC(3eec5fc4) SHA1(dbc33fb9daa076f8b64852db0729255f383983c5) )
 	MSLUG3HD_SFIX_128K
 	MSLUG3LW_AUDIO_512K
@@ -2479,7 +2481,7 @@ ROM_END
 
 ROM_START( mslug3ly03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_ly03.p1", 0x000000, 0x100000, CRC(a9756910) SHA1(f82d9833cde7530f494f46415c893aea33295b10) )
+	ROM_LOAD16_WORD_SWAP( "256_ly03.p1", 0x000000, 0x100000, CRC(1ba43a51) SHA1(f5993284cde589d482cbdcef858218177ea55974) )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p2", 0x100000, 0x400000, CRC(3eec5fc4) SHA1(dbc33fb9daa076f8b64852db0729255f383983c5) )
 	MSLUG3HD_SFIX_128K
 	MSLUG3LW_AUDIO_512K
@@ -2489,7 +2491,7 @@ ROM_END
 
 ROM_START( mslug3ly04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_ly04.p1", 0x000000, 0x100000, CRC(7ec734a0) SHA1(f49f7b39030bba969761ea463574229a3eac925d) )
+	ROM_LOAD16_WORD_SWAP( "256_ly04.p1", 0x000000, 0x100000, CRC(cc1667e1) SHA1(e1d766e60a3679cad48e2b1c2f0d8a371eca8ace) )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p2", 0x100000, 0x400000, CRC(3eec5fc4) SHA1(dbc33fb9daa076f8b64852db0729255f383983c5) )
 	MSLUG3HD_SFIX_128K
 	MSLUG3LW_AUDIO_512K
@@ -2499,7 +2501,7 @@ ROM_END
 
 ROM_START( mslug3ly05 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_ly05.p1", 0x000000, 0x100000, CRC(b7bc09ac) SHA1(f98a15190384448865fea9f258062ccc6a794d91) )
+	ROM_LOAD16_WORD_SWAP( "256_ly05.p1", 0x000000, 0x100000, CRC(056d5aed) SHA1(db05f683d413fc0afca65a52fbe412a04ee8cf5a) )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p2", 0x100000, 0x400000, CRC(3eec5fc4) SHA1(dbc33fb9daa076f8b64852db0729255f383983c5) )
 	MSLUG3HD_SFIX_128K
 	MSLUG3LW_AUDIO_512K
@@ -2509,7 +2511,7 @@ ROM_END
 
 ROM_START( mslug3ly06 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_ly06.p1", 0x000000, 0x100000, CRC(cb9167ee) SHA1(e6d2edcfb59c489f42063f60e79c849866351eec) )
+	ROM_LOAD16_WORD_SWAP( "256_ly06.p1", 0x000000, 0x100000, CRC(794034af) SHA1(9bb22e29d53b79e852c95312104883c07f6e1c16) )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p2", 0x100000, 0x400000, CRC(3eec5fc4) SHA1(dbc33fb9daa076f8b64852db0729255f383983c5) )
 	MSLUG3HD_SFIX_128K
 	MSLUG3LW_AUDIO_512K
@@ -2519,7 +2521,7 @@ ROM_END
 
 ROM_START( mslug3ly07 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_ly07.p1", 0x000000, 0x100000, CRC(9f9f2725) SHA1(4198b0ad0f1d580fb2075e569813035b7529b836) )
+	ROM_LOAD16_WORD_SWAP( "256_ly07.p1", 0x000000, 0x100000, CRC(2d4e7464) SHA1(ce04903da6a266eb3eb86d1b82f41ec1787cbb99) )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p2", 0x100000, 0x400000, CRC(3eec5fc4) SHA1(dbc33fb9daa076f8b64852db0729255f383983c5) )
 	MSLUG3HD_SFIX_128K
 	MSLUG3LW_AUDIO_512K
@@ -4133,7 +4135,7 @@ ROM_END
 
 ROM_START( mslug5hc23 ) //mslug5boss
 	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_hc23.p1", 0x000000, 0x600000, CRC(db66b94c) SHA1(1f64785b0bd408c374a7fcdd1a58cb015b3b04aa) )
+	ROM_LOAD16_WORD_SWAP( "268_hc23.p1", 0x000000, 0x600000, CRC(ff3a4b86) SHA1(e3a66f56d78dc0efd18d0d18bf52222d7833c66d) )
     MSLUG5HD_ROM_FILL
     MSLUG5D_SFIX_128K
     MSLUG5ND_AUDIO_128K
@@ -4715,7 +4717,7 @@ ROM_END
 
 ROM_START( mslugxhc26 ) //mslugxdg
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250_hc26.p1", 0x000000, 0x100000, CRC(38cffcb9) SHA1(218fce4e825831932f51b592ebbbe3076ba9432c) )
+	ROM_LOAD16_WORD_SWAP( "250_hc26.p1", 0x000000, 0x100000, CRC(095b7f44) SHA1(3ee849e73c6ab4d6ad8c8b538de15d6baae13c66) )
 	ROM_LOAD16_WORD_SWAP( "250_hc26.p2", 0x100000, 0x400000, CRC(431cb335) SHA1(d05f7eb5759bbb5da87a97959a5d0d692700bd9e) )
     MSLUGX_ROM_FILL
     MSLUGX_SFIX_128K
@@ -5598,6 +5600,7 @@ GAME( 2023, mslughc09,         mslug,    neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2023, mslughc10,         mslug,    neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "GOTVG",         "Metal Slug (Origin 2023-03-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, mslughc11,         mslug,    neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "DDJ",           "Metal Slug (Jump In Mid Air 2017-08-24)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslughc12,         mslug,    neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "hack",          "Metal Slug (Immortal Edition 2021-06-08)", MACHINE_SUPPORTS_SAVE )
+
 // Earlier And Bootleg
 GAME( 2005, msboot,            mslug,    neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "Bootleg",       "Metal Slug (Bootleg)", MACHINE_SUPPORTS_SAVE )
 GAME( 1996, msluge,            mslug,    neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "Nazca",         "Metal Slug (Earlier)", MACHINE_SUPPORTS_SAVE )
@@ -5605,19 +5608,13 @@ GAME( 1996, msluge,            mslug,    neogeo_noslot, mslughb, neogeo_state,  
  /**************
  Only exclusive
 *****************/
-/*********************************************************************************
-* This game sector is exclusive, its modifications that load have been customized
-  241.p1 and 241.p2 files. Therefore, a unique and distinctive game will be displayed 
-  from the rest, we have been working to Optimize performance and avoid any type of crash 
-  that occurs during the game. This it just means there are some details of the roms that 
-  still need to be improved, things to add and things that could later be updated or 
-  permanently removed if some kind a problem is detected that cannot be solved ...
-********************************************************************************************/
 
 //Version Remastering
 GAME( 2021, msluger01,         mslug,    neogeo_noslot, mslughb, neogeo_state,   init_neogeo,    ROT0, "PSMSlugForever",        "Metal Slug (Multi-Function Items Explosives Remastering Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
+
 // Remix Edition
 GAME( 2021, mslugla01,         mslug,    neogeo_noslot, mslughb, neogeo_state,   init_neogeo,    ROT0, "PSMSlugForever",        "Metal Slug (Multi-Function Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
+
 // Extreme Edition
 GAME( 2021, mslugrma01,        mslug,    neogeo_noslot, mslughb, neogeo_state,   init_neogeo,    ROT0, "PSMSlugForever",        "Metal Slug (Multi-Function Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 
@@ -5642,38 +5639,22 @@ GAME( 2015, mslug2hc16,       mslug2,   neogeo_noslot, mslughb, neogeo_state,   
 GAME( 2006, mslug2hc17,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "hack",           "Metal Slug 2 (Traduction French)", MACHINE_SUPPORTS_SAVE )
 GAME( 2011, mslug2hc18,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "hack",           "Metal Slug 2 (A Full Screen Attack 2011-01-16)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug2hc19,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "GOTVG",          "Metal Slug 2 (Weapon Storage 2015-11-11)", MACHINE_SUPPORTS_SAVE )
+
 // Bootleg
 GAME( 2015, mslug2t,          mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "SNK",            "Metal Slug 2 Turbo", MACHINE_SUPPORTS_SAVE )
-// It doesn't work, it causes the game to crash.
 
 /***************
  Only exclusive
 *****************/
-/*********************************************************************************
-* This game sector is exclusive, its modifications that load have been customized
-  241.p1 and 241.p2 files. Therefore, a unique and distinctive game will be displayed 
-  from the rest, we have been working to Optimize performance and avoid any type of crash 
-  that occurs during the game. This it just means there are some details of the roms that 
-  still need to be improved, things to add and things that could later be updated or 
-  permanently removed if some kind a problem is detected that cannot be solved ...
-********************************************************************************************/
-/*********************************************************************************************************
-  A definitive solution has been found in the hacks of roms called Version Hybrid Bullets, 
-  which has been included in HBMAME around 8 years ago, this rom hacks have a very serious problem 
-  that generates a crash in mission 2 / phase 2 and phase 3 , its way of manifesting is to make the 
-  torso disappear from the body that if the button is pressed shooting, the game crashes immediately 
-  and will restart the game from scratch and will not allow you to continue playing at level 2, 
-  now you can skip level 2 playing Normally, the mission will be finished at the beginning of level 2 
-  of phase 2 and phase 3, the rest of the levels work normally, it will no longer be an impediment to 
-  continue playing until the end of the game.
- ***********************************************************************************************************/
 
 //Version Remastering
 GAME( 2022, mslug2er01,        mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "PSMSlugForever",             "Metal Slug 2 Turbo (Enemies Resetting XR Improved Remastering Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug2er02,        mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "PSMSlugForever",             "Metal Slug 2 Turbo (Multi-Function Enemies Resetting XR Remastering Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug2er03,        mslug2,   neogeo_noslot, mslughw, neogeo_state,    init_neogeo,    ROT0, "PSMSlugForever",             "Metal Slug 2 Turbo (Survival Enemies Resetting XR Remastering Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
+
 //All Apocalyptic Time Edition
 GAME( 2021, mslug2at01,        mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "Gaston90",                   "Metal Slug 2 Turbo (Apocalyptic Time Ports 0.2 2021-07-17)", MACHINE_SUPPORTS_SAVE ) //2023-03-21
+
 // Remix Edition
 GAME( 2021, mslug2la01,        mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "PSMSlugForever",             "Metal Slug 2 Turbo (XR Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2la02,        mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "PSMSlugForever",             "Metal Slug 2 Turbo (XR Multi-Function Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
@@ -5685,6 +5666,7 @@ GAME( 2022, mslug2lb02,        mslug2,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2022, mslug2lb03,        mslug2,   neogeo_noslot, mslughw, neogeo_state,    init_neogeo,    ROT0, "PSMSlugForever",             "Metal Slug 2 Turbo (Survival Enemies Resetting XR Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
 GAME( 2022, mslug2lb04,        mslug2,   neogeo_noslot, mslughw, neogeo_state,    init_neogeo,    ROT0, "PSMSlugForever",             "Metal Slug 2 Turbo (Survival Enemies Resetting XR Hybrid Bullets Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
 GAME( 2022, mslug2lb05,        mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "PSMSlugForever",             "Metal Slug 2 Turbo (Enemies Resetting XR Hybrid Bullets Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
+
 // Extreme Edition
 GAME( 2021, mslug2rma01,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "PSMSlugForever",             "Metal Slug 2 Turbo (XR Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2rma02,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "PSMSlugForever",             "Metal Slug 2 Turbo (XR Multi-Function Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
@@ -5732,13 +5714,15 @@ GAME( 2016, mslug3hc30,        mslug3,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2012, mslug3hc31,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "hack",           "Metal Slug 3 (Violence Edition 2012-03-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2004, mslug3hc32,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "hack",           "Metal Slug 3 (French Traduction)", MACHINE_SUPPORTS_SAVE )
 GAME( 2014, mslug3hc33,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "hack",           "Metal Slug 3 (Green Edition 2014-10-15)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug3hc34,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "GOTVG",          "Metal Slug 3 (Last Bullet Remix 2023-03-20)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug3hc34,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "GOTVG",          "Metal Slug 3 (Pigeon Slug 2023-03-28)", MACHINE_SUPPORTS_SAVE )
+
 // Predecrypted, Decrypted, Earlier And Bootleg
 GAME( 2000, mslug3d,           mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "SNK",            "Metal Slug 3 (NGM-2560)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2000, mslug3hd,          mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "SNK",            "Metal Slug 3 (NGH-2560)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2000, mslug3nd,          mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "SNK",            "Metal Slug 3 (Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2000, mslug3b6d,         mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3b6d, ROT0, "Bootleg",        "Metal Slug 6 (Metal Slug 3 Bootleg)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2000, mslug3b6de,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "Bootleg",        "Metal Slug 6 (Metal Slug 3 Bootleg)(Predecrypted)", MACHINE_SUPPORTS_SAVE )
+
 // Metal Slug 6" is a hack/bootleg of Metal Slug 3
 GAME( 2019, mslug3b6hc01,      mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3b6d, ROT0, "hack",           "Metal Slug 6 (Enemies Resetting Version 2019-07-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3b6hc02,      mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3b6d, ROT0, "hack",           "Metal Slug 6 (The Last Warhead 2020-09-05)", MACHINE_SUPPORTS_SAVE )
@@ -5749,103 +5733,6 @@ GAME( 2019, mslug3b6hc05,      mslug3,   neogeo_noslot, mslughb, neogeo_state,  
  /**************
  Only exclusive
 *****************/
-/***************************************************************************************
-* This game sector is exclusive, its modifications that load have been customized
-  241.p1 and 241.p2 files. Therefore, a unique and distinctive game will be displayed 
-  from the rest, we have been working to Optimize performance and avoid any type of crash 
-  that occurs during the game. This it just means there are some details of the roms that 
-  still need to be improved, things to add and things that could later be updated or 
-  permanently removed if some kind a problem is detected that cannot be solved ...
-********************************************************************************************/
-/***************************************************************************************
-* I have been working very hard to optimize it and to adapt it with the emulator 
-  the Ghost Wu Zuoma version, which the original version is 100% incompatible with this 
-  emulator, because it causes the emulator to freeze completely when the players have Contact 
-  with any enemy and one by quickly pressing the command A + B generates random items and in 
-  this way the game crashes. I have managed to disable this command so that you do not cause 
-  this case of fatal accident or the discomfort of one when one is playing through the game.
-  Command disabled in file 256.p1:
-  00025DA0 // 00 00 9C 00 [B9 4E 0F 00 30 B0] EE 08 03 00 9B 00
-  00026370 // [B9 4E 0F 00 B6 AF] 2E 08 07 00 5B 00 00 66 08 00
-  00026380 // [B9 4E 0F 00 86 B0] 00 60 AC 00 00 70 2E 10 58 00
-  000271C0 // AE 08 07 00 15 00 [B9 4E 0F 00 60 AF] 2E 08 07 00
-********************************************************************************************/
-/***************************************************************************************
-* The Random Enemies Resetting Version has also been optimized 
-  and adapted correctly to the emulator, which the original version is 50% incompatible 
-  with this emulator, which caused the crash of level 3, of the stages of the confrontation with 
-  the boss of the level called Jupiter King, which one of the boss's action is to attack you with 
-  a rocket and hit it on the ground at the moment two or more lobster-shaped enemies [The Huge Logust]
-  appear at that same moment the game crashes and restarts from scratch. I have managed to disable 
-  this command like this to be able to prevent the enemy lobster [The Huge Logust] from appearing 
-  at level 3 of the boss stage, so this way it will no longer cause this fatal accident or discomfort
-  when one is playing through the match.
-  Command disabled in file 256.p1:
-  000481C0 //02 00 A2 C8 3C 00 01 00 [B9 4E 0F 00 90 DA] 6E 4A
-  
-  Another bug in the roms has been fixed, which is generated by this emulator when playing, since it 
-  is incompatible with a certain action or command that the character is going to take. The problem 
-  that caused suddenly when one pressed the command START + D, quickly causes a crash in the game is 
-  forced to restart all or one of the worst case that the screen freezes.
-  Command disabled in file 256.p1: 
-  00003C20 //CF 51 FC FF 75 4E [B9 4E 0F 00 10 A2] 00 46 00 02
-  
-  This Roms Hack is very problematic with the HBMAME/PSMAMEPLUS emulator, it prevents you from being able to play most of the random 
-  scenarios that are included in this version, this mentioned problem does not occur with the FB Alpha/FBNEO emulator.
-  How is this?
-  It is established through three random scenarios, interspersing the scenarios of each level that will be played.
-  The problem this causes is that the rom starts with two random scenarios instead of three,
-  apart from when the game starts, 99% will start one of the random scenarios, 1% the second of the random scenarios and 0% for the 
-  third random scenarios.
-  For this the roms have been corrected, now either separating by each random scenario becomes an individual roms:
-  Random enemies that reset version #1
-  Random enemies that reset version #2
-  Random enemies that reset version #3
-  
-  030F360//[CC 04 2F 01 00 00 00 00 00 00 01 00]14 08 00 0C [Level 4-2]
-  030F360// 74 03 5C 00 84 03 00 00 00 00 01 00 14 08 00 0C [Replace To Correct]
-
-  Crashes for killing a cursed small crab has settled with new command without replacing ID.
-  0311BB0// 30 00 C4 02 00 00 01 00 78 00 01 00 00 00 0E 09 [Level 4-9]
-  0311BB0// 30 00 C4 02 00 00 00 00 00 00 00 00 00 00 0E 09 [Replace To Correct]
-  
-  0343A40// A0 8D 10 08 0B 01 E0 FF 38 00 A4 02 00 00 78 00 68 00
-  0343A40// A0 8D 10 08 0B 01 E0 FF 38 00 A4 02 00 00 00 00 00 00 [Replace To Correct]
-  
-  Enemy spawns that are floating in the air ship when destroyed crashes immediately, fixed replaced with piranha ID.
-  03894A0// 2C 01 14 08 02 07 40 01 [60 00 A0 00 40 00 2C 00
-  03894B0// FA 00 18 01 00 00] 14 08 02 07 40 01 30 00 EC 01
-
-  03894A0// 2C 01 14 08 02 07 40 01 [30 00 EC 01 01 FF FF 00 [Replace To Correct]
-  03894B0// 40 00 4A 00 2C 01] 14 08 02 07 40 01 30 00 EC 01 
-  
-********************************************************************************************/
-/***************************************************************************************
-* 2021-09-17 "Random Enemies Resetting Version"
-  It seems that this roms is very troublesome for this emulator, the problems do not stop.
-  It was discovered at the last minute that the neutral path of the three random scenarios, from level 4-8 the random 
-  spawning cycle appears a yellowish green crab to the left "does not always appear" if it kills them it crashes 
-  the game of Instantaneously, because of this event it has been decided to put the red label that the machine 
-  that does not work correctly to all the roms that are related. 
-********************************************************************************************/
-/***************************************************************************************
-* 2021-09-24 "Random Enemies Resetting Version 2018-03-01"
-  Fixed crash at level 5-3 
-  0007FD30 //5D 00 [B9 4E 0F 00 90 C3] 3C 3A 08 00 BA 4E 0A 17
-  Fixed crash at level 5-F 
-  0009FE50//54 EE 00 61 B0 EE 7C 3D 00 20 6A 00 [B9 4E 0F 00
-  0009FE60//90 DB] 00 61 3A 00 2D 30 46 6D 40 04 0C 00 00 64
-  0009FE80//10 00 6E 42 6A 00 00 61 A4 FD [B9 4E 0F 00 B0 FA]
-********************************************************************************************/
-/***************************************************************************************
-* Metal Slug 3 Store Version 2017-12-16
-  Another bug in the roms has been fixed, which is generated by this emulator when playing, since it 
-  is incompatible with a certain action or command that the character is going to take. The problem 
-  that caused suddenly when one pressed the command START + D, quickly causes a crash in the game is 
-  forced to restart all or one of the worst case that the screen freezes.
-  Command disabled in file 256.p1: 
-  00003C20 //CF 51 FC FF 75 4E [B9 4E 0F 00 10 A2] 00 46 00 02
-********************************************************************************************/
 
 // Version Remastering
 GAME( 2022, mslug3er01,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "PSMSlugForever",              "Metal Slug 3 (Multi-Function Enemies Resetting #1 Remastering Edition 2023-03-21)" , MACHINE_SUPPORTS_SAVE )
@@ -5855,16 +5742,6 @@ GAME( 2022, mslug3er04,        mslug3,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2022, mslug3er05,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "PSMSlugForever",              "Metal Slug 3 (Multi-Function Enemies Resetting #5 Remastering Edition 2023-03-21)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3er06,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "PSMSlugForever",              "Metal Slug 3 (Multi-Function Enemies Resetting #6 Remastering Edition 2023-03-21)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3er07,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "PSMSlugForever",              "Metal Slug 3 (Multi-Function Enemies Resetting #7 Remastering Edition 2023-03-21)" , MACHINE_SUPPORTS_SAVE )
-
-/***************************************************************************************
-* It causes a hang in the roms, which is generated by repeatedly pressing the "D" button
-  at the time of death of players 1 o 2 [Even though the character is being ingested
-  by the carnivorous plant, one continues to press the "D" button endlessly and the player's special ability
-  continue doing] when the carnivorous plant is fully ingested, you will lose instantly you will have to enter 
-  more credits continue playing, once past this will happen when selecting a character when you scroll left or 
-  right the game quickly causes a crash you are forced to restart everything.
-* The only way to play smoothly is to enable the Invincibility cheat.
-********************************************************************************************/
 GAME( 2023, mslug3ly01,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "PSMSlugForever",              "Metal Slug 3 (Legendary Enemies Resetting #1 Remastering Edition 2023-03-21)" , MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ly02,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "PSMSlugForever",              "Metal Slug 3 (Legendary Enemies Resetting #2 Remastering Edition 2023-03-21)" , MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ly03,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "PSMSlugForever",              "Metal Slug 3 (Legendary Enemies Resetting #3 Remastering Edition 2023-03-21)" , MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
@@ -5872,6 +5749,7 @@ GAME( 2023, mslug3ly04,        mslug3,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2023, mslug3ly05,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "PSMSlugForever",              "Metal Slug 3 (Legendary Enemies Resetting #5 Remastering Edition 2023-03-21)" , MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ly06,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "PSMSlugForever",              "Metal Slug 3 (Legendary Enemies Resetting #6 Remastering Edition 2023-03-21)" , MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ly07,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "PSMSlugForever",              "Metal Slug 3 (Legendary Enemies Resetting #7 Remastering Edition 2023-03-21)" , MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+
 // Remix Edition
 GAME( 2021, mslug3la01,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "PSMSlugForever",              "Metal Slug 3 (Multi-Function Remix Edition 2023-03-21)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug3la02,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "PSMSlugForever",              "Metal Slug 3 (Multi-Function Zombie Players Mode Remix Edition 2023-03-21)" , MACHINE_SUPPORTS_SAVE )
@@ -5915,6 +5793,7 @@ GAME( 2021, mslug3lh04,        mslug3,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2021, mslug3lh05,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "PSMSlugForever",              "Metal Slug 3 (Summon Mount Enemies Resetting #7 Remix Edition 2023-03-21)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug3li01,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "PSMSlugForever",              "Metal Slug 3 (Random Enemies Resetting Remix Edition #1 2023-03-21)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug3li02,        mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "PSMSlugForever",              "Metal Slug 3 (Random Enemies Resetting Remix Edition #2 2023-03-21)" , MACHINE_SUPPORTS_SAVE )
+
 // Extreme Edition
 GAME( 2021, mslug3rma01,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "PSMSlugForever",    "Metal Slug 3 (Multi-Function Big Heavy Machine Gun Extreme Edition 2023-03-21)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug3rma02,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,  ROT0, "PSMSlugForever",    "Metal Slug 3 (Multi-Function Zombie Players Mode Extreme Edition 2023-03-21)" , MACHINE_SUPPORTS_SAVE )
@@ -5988,41 +5867,11 @@ GAME( 2002, mslug4nde,         mslug4,   neogeo_noslot, mslughb, neogeo_state,  
  /**************
  Only exclusive
 *****************/
-/*********************************************************************************
-* This game sector is exclusive, its modifications that load have been customized
-  241.p1 and 241.p2 files. Therefore, a unique and distinctive game will be displayed 
-  from the rest, we have been working to Optimize performance and avoid any type of crash 
-  that occurs during the game. This it just means there are some details of the roms that 
-  still need to be improved, things to add and things that could later be updated or 
-  permanently removed if some kind a problem is detected that cannot be solved ...
-********************************************************************************************/
-/***************************************************************************************
-* I have been working very hard to optimize and adapt it with the emulator the Mslug 4 
-  roms version Last Bullet 2017-07-27, which caused the emulator to freeze completely when 
-  players quickly press the START + D command. I have managed to disable it this command so 
-  that it does not cause this fatal accident case or one's discomfort when playing the game.
-  Command disabled in file 256.p1:
-  0000FBF0 //[B9 4E 0E 00 E0 0A] 00 46 00 02 0F 00 2D 12 50 E4
-********************************************************************************************/
-/***************************************************************************************
-* I have been working very hard to optimize and adapt it with the emulator the Mslug 4 
-  roms version Last Bullet Removal Of Body Armor 2020-09-16, which caused the emulator to freeze completely when 
-  players quickly press the START + D command. I have managed to disable it this command so 
-  that it does not cause this fatal accident case or one's discomfort when playing the game.
-  Command disabled in file 256.p1:
-  00001E50 //92 80 7C 3B 00 00 D2 DB B9 4E 00 00 [F0 FB] B9 4E
-********************************************************************************************/
-/***************************************************************************************
-* This version of the Metal Slug 4 20th Anniversary Edition And Metal Slug 4 Longest Fight, is optimized to work correctly 
-  with the emulator by disabling a command that caused immortality to all the enemies 
-  that are inside the screens, thus making the game unusable. The modification is 
-  generated in the .P1 file: 
-  00007DD0 //[B9 4E 21 00 C8 BF] 00 62 18 00 EA 08 07 00 5B 00
-********************************************************************************************/
 
 //Version Remastering
 GAME( 2022, mslug4er01,        mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "PSMSlugForever",     "Metal Slug 4 (Enemies Resetting Plus Style Remastering Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4er02,        mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "PSMSlugForever",     "Metal Slug 4 (Multi-Function Enemies Resetting Remastering Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
+
 // Remix Edition
 GAME( 2021, mslug4la01,        mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "PSMSlugForever",     "Metal Slug 4 (Plus Style Model Normal Players Mode Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug4la02,        mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "PSMSlugForever",     "Metal Slug 4 (Plus Style Model Zombie Players Mode Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
@@ -6040,6 +5889,7 @@ GAME( 2021, mslug4ld01,        mslug4,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2021, mslug4ld02,        mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "PSMSlugForever",     "Metal Slug 4 (Multi-Function Enemies Resetting Zombie Players Mode Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE ) 
 GAME( 2021, mslug4ld03,        mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "PSMSlugForever",     "Metal Slug 4 (Multi-Function Enemies Resetting Mummy Players Mode Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug4ld04,        mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "PSMSlugForever",     "Metal Slug 4 (Multi-Function Enemies Resetting Monkeys Players Mode Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
+
 // Extreme Edition
 GAME( 2021, mslug4rma01,       mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "PSMSlugForever",     "Metal Slug 4 (Plus Style Model Big Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug4rmb01,       mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "PSMSlugForever",     "Metal Slug 4 (Plus Style Model Enemies Resetting Big Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
@@ -6071,8 +5921,9 @@ GAME( 2020, mslug5hc19,        mslug5,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2015, mslug5hc20,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "hack",           "Metal Slug 5 (War Chariot 2015-05-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc21,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "GOTVG",          "Metal Slug 5 (Early Summer Starry Sky 2022-08-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc22,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "GOTVG",          "Metal Slug 5 (Komorebi 2022-08-10)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug5hc23,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "hack",           "Metal Slug 5 (Boss Edition 2023-04-14)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug5hc23,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "hack",           "Metal Slug 5 (Boss Edition 2023-04-30)", MACHINE_SUPPORTS_SAVE )
 GAME( 2006, mslug5hc24,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "hack",           "Metal Slug 5 (Traduction French)", MACHINE_SUPPORTS_SAVE )
+
 // Predecrypted, Decrypted, Earlier And Bootleg
 GAME( 2003, ms5boot,           mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,  ROT0, "Bootleg",        "Metal Slug 5 (Bootleg)(Earlier)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, ms5pcbd,           mslug5,   neogeo_noslot, ms5pcb,  neogeo_state,    init_mslug5hb,  ROT0, "SNK Playmore",   "Metal Slug 5 (JAMMA PCB, Decrypted C)", MACHINE_SUPPORTS_SAVE )
@@ -6092,24 +5943,12 @@ GAME( 2003, mslug5b2,          mslug5,   neogeo_noslot, mslughb, neogeo_state,  
  /**************
  Only exclusive
 *****************/
-/*********************************************************************************
-* This game sector is exclusive, its modifications that load have been customized
-  241.p1 and 241.p2 files. Therefore, a unique and distinctive game will be displayed 
-  from the rest, we have been working to Optimize performance and avoid any type of crash 
-  that occurs during the game. This it just means there are some details of the roms that 
-  still need to be improved, things to add and things that could later be updated or 
-  permanently removed if some kind a problem is detected that cannot be solved ...
-********************************************************************************************/
-/*********************************************************************************
-* It ended up eliminating all the Summon Slug Edition hacks roms except the original roms, 
- it will be preserved, a bug or eternal glicher was found at level 5-5 that causes the game 
- camera to go crazy, because of this it prevents it from reaching at the end of the level.
-********************************************************************************************/
 
 // Remix Edition
 GAME( 2021, mslug5la01,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5rm,  ROT0, "PSMSlugForever",        "Metal Slug 5 (Multi-Function Enemy Soldiers Enhanced Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug5lb01,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5rm,  ROT0, "PSMSlugForever",        "Metal Slug 5 (Multi-Function Enemies Resetting Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug5lc01,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5rm,  ROT0, "PSMSlugForever",        "Metal Slug 5 (Enemies Resetting Hybrid bullets Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
+
 // Extreme Edition
 GAME( 2021, mslug5rma01,       mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5rm,  ROT0, "PSMSlugForever",        "Metal Slug 5 (Big Heavy Machine Gun Extreme Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug5rmb01,       mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5rm,  ROT0, "PSMSlugForever",        "Metal Slug 5 (Multi-Function Enemy Soldiers Enhanced Big Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
@@ -6145,7 +5984,7 @@ GAME( 2020, mslugxhc22,        mslugx,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2020, mslugxhc23,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (2R Generation 1V2 2020-05-18)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxhc24,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (Early Summer Starry Sky 2022-08-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxhc25,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (Legendary Origin Edition 2023-02-13)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxhc26,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (Multi-Function Version 2023-04-16)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslugxhc26,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "GOTVG",          "Metal Slug X (Multi-Function Version 2023-04-29)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslugxhc27,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "DDJ",            "Metal Slug X (Jump In Mid Air 2015-08-24)", MACHINE_SUPPORTS_SAVE )
 GAME( 2014, mslugxhc28,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "hack",           "Metal Slug X (Green Edition 2014-10-15)", MACHINE_SUPPORTS_SAVE )
 GAME( 2012, mslugxhc29,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "hack",           "Metal Slug X (Violence Version 2012-01-08)", MACHINE_SUPPORTS_SAVE )
@@ -6158,18 +5997,6 @@ GAME( 1999, mslugxe,           mslugx,   neogeo_noslot, mslughb, neogeo_state,  
 /***************
  Only exclusive
 *****************/
-/*********************************************************************************
-* This game sector is exclusive, its modifications that load have been customized
-  241.p1 and 241.p2 files. Therefore, a unique and distinctive game will be displayed 
-  from the rest, we have been working to Optimize performance and avoid any type of crash 
-  that occurs during the game. This it just means there are some details of the roms that 
-  still need to be improved, things to add and things that could later be updated or 
-  permanently removed if some kind a problem is detected that cannot be solved ...
-********************************************************************************************/
-/*********************************************************************************
-* All the roms related to the Level Reset Special modification have been blocked due to this 
-  repetition, this modification is already included in the roms called Extreme Space.
-********************************************************************************************/
 
 //Version Remastering
 GAME( 2022, mslugxer01,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "PSMSlugForever",      "Metal Slug X (Unlimited Firepower 2R Legendary Remastering Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
@@ -6186,6 +6013,7 @@ GAME( 2022, mslugxesp04,       mslugx,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2022, mslugxesp05,       mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "PSMSlugForever",      "Metal Slug X (Multi-Carrier 2R Extreme Space Remastering Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxesp06,       mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "PSMSlugForever",      "Metal Slug X (Extreme Space 2R Remastering Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxesp07,       mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "PSMSlugForever",      "Metal Slug X (Enemy Soldiers Reset 2R Extreme Space Remastering Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
+
 //All Apocalyptic Time Edition, Test, Allen O'Neil See You In Hell Edition
 GAME( 2020, mslugxtst01,       mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Testing My First Level 2020-04-07)", MACHINE_SUPPORTS_SAVE ) // Update 2023-03-21
 GAME( 2020, mslugxtao01,       mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Allen O'Neil See You In Hell 1.0 2R Edition 2020-07-16)", MACHINE_SUPPORTS_SAVE ) // Update 2023-03-21 
@@ -6199,6 +6027,7 @@ GAME( 2020, mslugxat07,        mslugx,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2021, mslugxat08,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Apocalyptic Time The 1 Beginning Of The End Of Time 6.0 2R Edition 2021-04-20)", MACHINE_SUPPORTS_SAVE ) // Update 2023-03-21
 GAME( 2021, mslugxat09,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Apocalyptic Time The 2 Beginning Of The End Of Time 7.1 2R Edition 2021-12-05)", MACHINE_SUPPORTS_SAVE ) // Update 2023-03-21
 GAME( 2022, mslugxat10,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "Gaston90",            "Metal Slug X (Apocalyptic Time The 3 Beginning Of The End Of Time 8.1 2R Edition 2022-02-20)", MACHINE_SUPPORTS_SAVE ) // Update 2023-03-21
+
 // Remix Edition
 GAME( 2022, mslugxla01,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "PSMSlugForever",          "Metal Slug X (Unlimited Firepower 2R Extreme Space Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxla02,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "PSMSlugForever",          "Metal Slug X (Unlimited Firepower 2R Extreme Space Hybrid Bullets Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
@@ -6224,6 +6053,7 @@ GAME( 2022, mslugxlg03,        mslugx,   neogeo_noslot, mslughb, neogeo_state,  
 GAME( 2022, mslugxlh01,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "PSMSlugForever",          "Metal Slug X (Enemy Soldiers Reset 2R Extreme Space Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxlh02,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "PSMSlugForever",          "Metal Slug X (Enemy Soldiers Reset 2R Extreme Space Hybrid Bullets Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxlh03,        mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "PSMSlugForever",          "Metal Slug X (Enemy Soldiers Reset 2R Extreme Space Big Heavy Machine Gun Flame Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
+
 // Extreme Edition
 GAME( 2022, mslugxrma01,       mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "PSMSlugForever",          "Metal Slug X (Unlimited Firepower 2R Extreme Space Big Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxrma02,       mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,    ROT0, "PSMSlugForever",          "Metal Slug X (Unlimited Firepower 2R Extreme Space Big Heavy Machine Gun Flame Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
