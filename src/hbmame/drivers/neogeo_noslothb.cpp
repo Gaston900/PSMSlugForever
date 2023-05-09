@@ -143,6 +143,9 @@ INPUT_PORTS_END
 	ROM_FILL(0x3186,1,0x34)\
 	ROM_FILL(0x318C,1,0x34)\
 	ROM_FILL(0x3188,1,0x02)
+//  ROM_FILL(0x24F6,1,0xFF) //Fix AES
+//  ROM_FILL(0x24F7,1,0xFF) //Fix AES
+//	ROM_FILL(0x156F4,1,0x60) //Fix AES
 //  ROM_FILL(0x3187,1,0x02)
 //	ROM_FILL(0x3184,1,0x02)
 //	ROM_FILL(0x3182,1,0x04)
@@ -1057,6 +1060,7 @@ ROM_START( mslug2 ) /* MVS AND AES VERSION */
 	MSLUG2_SPRITES
 ROM_END
 
+/*Fixed by remikare*/
 ROM_START( mslug3 ) /* Original Version - Encrypted Code & GFX */ /* revision 2000.4.1 */ /* MVS VERSION */
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "neo-sma", 0x0c0000, 0x040000, CRC(9cd55736) SHA1(d6efb2b313127c2911d47d9324626b3f1e7c6ccb) )
@@ -1145,6 +1149,7 @@ ROM_START( mslug5h ) /* Encrypted Set */ /* AES release of the game but is also 
 	MSLUG5_SPRITES
 ROM_END
 
+/*Fixed by remikare*/
 ROM_START( mslug5b )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268b.p1", 0x000000, 0x100000, CRC(1376f43c) SHA1(7ca4a8b11c7effda2603d04e793cf664e7aa39bf) )
@@ -3632,6 +3637,7 @@ ROM_START( mslug4hc22 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc22.p1", 0x000000, 0x100000, CRC(7af9a7c4) SHA1(186c17130bf210cc33065101d10ec08f275e5b96) )
     ROM_LOAD16_WORD_SWAP( "263.p2",      0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
+    ROM_DEFAULT_BIOS("euro")
 	MSLUG4_ROM_FILL
     MSLUG4HD_SFIX_128K
     MSLUG4_AUDIO_ENCRYPTED_128K
@@ -4277,26 +4283,19 @@ ROM_END
  Decrypted And Bootleg
 ************************/
 
-/******************************************************************************************************************************************
- For this roms to work correctly you have to create a custom command init_ms5boot , which you have to declare a new command 
- in the file neogeo/prot.cpp and prot.h m_bootleg_prot->install_ms5boot_protection(m_maincpu,m_banked_cart). Until today I could not fix it.
-******************************************************************************************************************************************/
-
+/*Fixed by remikare*/
 ROM_START( ms5boot )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-    // The official file has problems for the emulation that until today I could not fix.
-    ROM_LOAD_OPTIONAL( "268boot_original_file.p1", 0x000000, 0x100000, BAD_DUMP CRC(e6d297af) SHA1(5bb3f72ce26e3f46c523b955f425056eb246e855) )
-	// Only the roms are kept even though they don't work
-	ROM_LOAD16_WORD_SWAP( "268n.p1",    0x000000, 0x100000, CRC(ca50afdf) SHA1(e3780b77f20d139a0dcaa2ded2c6ee323b8b4279) )
-	ROM_LOAD16_WORD_SWAP( "268boot.p2", 0x100000, 0x100000, CRC(3fc46cfa) SHA1(f20d3d359f6cdbf6aabb6920020621b02bafee91) )
-	ROM_CONTINUE(0x300000, 0x100000 )
-	ROM_LOAD16_WORD_SWAP( "268boot.p3", 0x200000, 0x100000, CRC(742c955a) SHA1(96c0f08b1f2f6877f5169a96c13b67f3be6082c6) )
-	ROM_CONTINUE(0x400000, 0x100000 )
+    ROM_REGION( 0x600000, "maincpu", 0 )
+    ROM_LOAD16_WORD_SWAP( "268boot.p1", 0x000000, 0x100000, CRC(e6d297af) SHA1(5bb3f72ce26e3f46c523b955f425056eb246e855) )
+    ROM_LOAD16_WORD_SWAP( "268boot.p2", 0x200000, 0x100000, CRC(3fc46cfa) SHA1(f20d3d359f6cdbf6aabb6920020621b02bafee91) )
+    ROM_CONTINUE(0x400000, 0x100000 )
+    ROM_LOAD16_WORD_SWAP( "268boot.p3", 0x300000, 0x100000, CRC(742c955a) SHA1(96c0f08b1f2f6877f5169a96c13b67f3be6082c6) )
+    ROM_CONTINUE(0x500000, 0x100000 )
     MSLUG5HD_ROM_FILL
     MS5BOOT_SFIX_128K
-	MS5BOOT_AUDIO_128K
-	MS5BOOT_YMSND
-	MS5BOOT_SPRITES
+    MS5BOOT_AUDIO_128K
+    MS5BOOT_YMSND
+    MS5BOOT_SPRITES
 ROM_END
 
 ROM_START( ms5pcbd )
@@ -4322,7 +4321,7 @@ ROM_START( ms5plusd )
 	MSLUG5HD_SPRITES
 ROM_END
 
-ROM_START( ms5plusde ) // NeoRagex 5.0/5.3
+ROM_START( ms5plusde )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "ms5-p1pe.p1",  0x000000, 0x100000, CRC(65639fcc) SHA1(4317c62e2e2548c8d83a9f3fcfe61921b36124a7) )
 	ROM_LOAD16_WORD_SWAP( "ms5-p2pe.bin", 0x100000, 0x400000, CRC(38b7a73a) SHA1(b0588a14ed99bbd930c3130b86625b3bbcdf6645) )
@@ -4356,7 +4355,7 @@ ROM_START( mslug5d )
 	MSLUG5HD_SPRITES
 ROM_END
 
-ROM_START( mslug5de ) //Neoragex 5.0
+ROM_START( mslug5de )
 	ROM_REGION( 0xc00000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268de.p1", 0x000000, 0x400000, CRC(5d1a8668) SHA1(bd35cb1e772e9406da1eda2daf0ed4782eb98dea) )
 	ROM_LOAD16_WORD_SWAP( "268de.p2", 0x400000, 0x400000, CRC(47662c5e) SHA1(68d055343e26d13f39dbc241d91f863364b04eaa) )
@@ -4389,7 +4388,7 @@ ROM_START( mslug5hd )
 	MSLUG5HD_SPRITES
 ROM_END
 
-ROM_START( mslug5n ) /* Decrypted Set */
+ROM_START( mslug5n )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268n.p1", 0x000000, 0x100000, CRC(ca50afdf) SHA1(e3780b77f20d139a0dcaa2ded2c6ee323b8b4279) )
 	ROM_LOAD16_WORD_SWAP( "268n.p2", 0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
@@ -4400,22 +4399,22 @@ ROM_START( mslug5n ) /* Decrypted Set */
 	MS5BOOT_SPRITES
 ROM_END
 
+/*Fixed by remikare*/
 ROM_START( mslug5ne )
-	ROM_REGION( 0x800000, "maincpu", 0 )
-    // The official file has problems for the emulation that until today I could not fix.
-	ROM_LOAD_OPTIONAL( "268boot_original_file.p1", 0x000000, 0x100000, BAD_DUMP CRC(e6d297af) SHA1(5bb3f72ce26e3f46c523b955f425056eb246e855) )
-    ROM_LOAD_OPTIONAL( "268ne_original_file.p2", 0x100000, 0x400000, BAD_DUMP CRC(84def63e) SHA1(fddd68e8879d6f5c1aac42997ff2245ea54d5869) )	
-	// Only the roms are kept even though they don't work
-	ROM_LOAD16_WORD_SWAP( "268n.p1",  0x000000, 0x100000, CRC(ca50afdf) SHA1(e3780b77f20d139a0dcaa2ded2c6ee323b8b4279) )
-    ROM_LOAD16_WORD_SWAP( "268n.p2",  0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
-	MSLUG5HD_ROM_FILL
-	MSLUG5D_SFIX_128K
+    ROM_REGION( 0x600000, "maincpu", 0 )
+    ROM_LOAD16_WORD_SWAP( "268boot.p1", 0x000000, 0x100000, CRC(e6d297af) SHA1(5bb3f72ce26e3f46c523b955f425056eb246e855) )
+    ROM_LOAD16_WORD_SWAP( "268ne.p2",   0x200000, 0x100000, CRC(84def63e) SHA1(fddd68e8879d6f5c1aac42997ff2245ea54d5869) )
+    ROM_CONTINUE( 0x400000, 0x100000 )
+    ROM_CONTINUE( 0x300000, 0x100000 )
+    ROM_CONTINUE( 0x500000, 0x100000 )
+    MSLUG5HD_ROM_FILL
+    MSLUG5D_SFIX_128K
     MSLUG5D_AUDIO_64K
-	MSLUG5N_YMSND
-	MSLUG5D_SPRITES
+    MSLUG5N_YMSND
+    MSLUG5D_SPRITES
 ROM_END
 
-ROM_START( mslug5nd ) /* Decrypted Set */
+ROM_START( mslug5nd )
 	ROM_REGION( 0x800000, "maincpu", 0 )
     ROM_LOAD16_WORD_SWAP( "268nd.p1", 0x000000, 0x600000, CRC(975eb06a) SHA1(d3d4824a0b9f077c6503959da54edb53820e6a8d) )
     MSLUG5HD_ROM_FILL
@@ -5816,7 +5815,7 @@ GAME( 2021, mslugla01,         mslug,    neogeo_noslot, mslughb, neogeo_state,  
 // Extreme Edition
 GAME( 2021, mslugrma01,        mslug,    neogeo_noslot, mslughb, neogeo_state,    init_neogeo,    ROT0, "PSMSlugForever", "Metal Slug (Multi-Function Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 
-/*    YEAR       NAME          PARENT       MACHINE     INPUT                       INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR       NAME         PARENT       MACHINE     INPUT                       INIT         MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug 2
 GAME( 2014, mslug2hc01,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,     ROT0, "GOTVG",          "Metal Slug 2 (Enemies Resetting Version 2014-09-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug2hc02,       mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,     ROT0, "GOTVG",          "Metal Slug 2 (1V2 Generation 2019-05-11)", MACHINE_SUPPORTS_SAVE )
@@ -6131,7 +6130,7 @@ GAME( 2023, mslug5hc26,       mslug5,   neogeo_noslot, mslughb, neogeo_state,   
 GAME( 2023, mslug5hc27,       mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Red Tank Expansion 2023-03-14)", MACHINE_SUPPORTS_SAVE )
 
 // Predecrypted, Decrypted, Earlier And Bootleg
-GAME( 2003, ms5boot,          mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "Bootleg",         "Metal Slug 5 (Bootleg)(Earlier)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, ms5boot,          mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5b1,   ROT0, "Bootleg",         "Metal Slug 5 (Bootleg)(Earlier)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, ms5pcbd,          mslug5,   neogeo_noslot, ms5pcb,  neogeo_state,    init_mslug5hb,   ROT0, "SNK Playmore",    "Metal Slug 5 (JAMMA PCB, Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, ms5plusd,         mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,     ROT0, "Bootleg",         "Metal Slug 5 Plus (Bootleg)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, ms5plusde,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,     ROT0, "Bootleg",         "Metal Slug 5 Plus (Bootleg)(Predecrypted)", MACHINE_SUPPORTS_SAVE )
@@ -6141,7 +6140,7 @@ GAME( 2003, mslug5de,         mslug5,   neogeo_noslot, mslughb, neogeo_state,   
 GAME( 2003, mslug5e,          mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "SNK Playmore",    "Metal Slug 5 (Earlier)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5hd,         mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "SNK Playmore",    "Metal Slug 5 (NGH-2680)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5n,          mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "SNK Playmore",    "Metal Slug 5 (Not-Encrypted)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, mslug5ne,         mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "SNK Playmore",    "Metal Slug 5 (Not-Encrypted)(Earlier)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, mslug5ne,         mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5b1,   ROT0, "SNK Playmore",    "Metal Slug 5 (Not-Encrypted)(Earlier)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5nd,         mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "SNK Playmore",    "Metal Slug 5 (Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5nde,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "SNK Playmore",    "Metal Slug 5 (Fully Decrypted)(Predecrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5b1,         mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5b1,   ROT0, "Bootleg",         "Metal Slug 5 (Bootleg, Set 1)", MACHINE_SUPPORTS_SAVE )
