@@ -39,8 +39,9 @@ New Games
 - [mslugxhc33]              Metal Slug X (Enemy Speed Up 2023-03-14)
 - [mslugxhc34]              Metal Slug X (Optimize 2023-03-14)
 - [mslugxhc35]              Metal Slug X (Pin Point Attack 2023-03-14)
-- [mslugxhc36]              Metal Slug X (The Train Track Background 2023-03-14)
-- [mslugxhc37]              Metal Slug X (Plus v0.3 2020-07-26)
+- [mslugxhc36]              Metal Slug X (Survival Attack 2023-03-14)
+- [mslugxhc37]              Metal Slug X (The Train Track Background 2023-03-14)
+- [mslugxhc38]              Metal Slug X (Plus v0.3 2020-07-26)
 
 
 
