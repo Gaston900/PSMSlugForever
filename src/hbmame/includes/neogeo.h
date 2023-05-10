@@ -298,8 +298,10 @@ INPUT_PORTS_EXTERN(dualbios);
 		ROMX_LOAD(name, offset, length, hash, ROM_GROUPWORD | ROM_REVERSE | ROM_BIOS(bios))
 
 #define NEOGEO_UNIBIOS(x) \
-	ROM_SYSTEM_BIOS( x+ 0, "unibios40_europe", "Universe Bios (Hack, Ver.Europe 4.0)" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( x+ 0, "uni-bios_4_0_europe.rom",  0x00000, 0x020000, CRC(94c741c6) SHA1(2b0aa0295b733bf6d1b47df25b61ef7cbeabf9a9) ) /* Universe Bios v4.0 - Region: Europe (hack) */ \
+	ROM_SYSTEM_BIOS( x+ 0, "unibios40", "Universe Bios (Hack, Ver. 4.0)" ) \
+	ROM_LOAD16_WORD_SWAP_BIOS( x+ 0, "uni-bios_4_0.rom",  0x00000, 0x020000, CRC(0d55e742) SHA1(22e5aecab69a912c9d845070cdceda58a32f25a6) ) /* Universe Bios v4.0 - Region: Europe (hack) */ \
+	ROM_SYSTEM_BIOS( x+ 1, "unibios40_europe", "Universe Bios (Hack, Ver.Europe 4.0)" ) \
+	ROM_LOAD16_WORD_SWAP_BIOS( x+ 1, "uni-bios_4_0_europe.rom",  0x00000, 0x020000, CRC(94c741c6) SHA1(2b0aa0295b733bf6d1b47df25b61ef7cbeabf9a9) ) /* Universe Bios v4.0 - Region: Europe (hack) */ \
 
 #define NEOGEO_BIOS \
 	ROM_REGION16_BE( 0x80000, "mainbios", 0 ) \

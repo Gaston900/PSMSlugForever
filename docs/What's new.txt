@@ -14,14 +14,33 @@ for the 86/64 bit cpu of the compatible microprocessors.
 
 ===============================================================================================================================
 
-2023-0X-XX
+2023-05-10
 
+- Fixed roms Metal Slug 5 (Bootleg)(Earlier) "remikare"
+- Fixed roms Metal Slug 5 (Fully Decrypted)(Predecrypted) "remikare"
+- Updated Roms Metal Slug 3 (Pigeon Slug 2023-05-01)
 - Updated Roms Metal Slug 5 (Boss Edition 2023-04-29)
 - Updated Roms Metal Slug X (Multi-Function Version 2023-04-30)
-- Updated Roms Metal Slug 3 (Pigeon Slug 2023-04-28)
+- Updated Roms Metal Slug X (Multi-Function Version 2023-04-30)
+- Updated Roms Metal Slug X (Apocalyptic Time The 3 Beginning Of The End Of Time 8.2 2R Edition 2023-05-09)
 
 New Games
 ---------------------------------
+- [mslughc13]               Metal Slug (3 Enemy Soldiers Forced To Fight 2023-03-14)
+- [mslughc14]               Metal Slug (Enemy Speed Up 2023-03-14)
+- [mslug3hc36]              Metal Slug 3 (Enemy Speed Up 2023-03-14)
+- [mslug3hc37]              Metal Slug 3 (Longest Campaign Version 2023-03-14)
+- [mslug4hc22]              Metal Slug 4 (Easy Mode 2018-11-16)
+- [mslug4hc23]              Metal Slug 4 (Enemy Speed Up 2023-03-14)
+- [mslug5hc25]              Metal Slug 5 (Full Line Version 2022-08-10)
+- [mslug5hc26]              Metal Slug 5 Plus (Hide Oh Big Mode 2023-01-27)
+- [mslug5hc27]              Metal Slug 5 (Red Tank Expansion 2023-03-14)
+- [mslugxhc32]              Metal Slug X (Accumulation Of Large And Small Guns 2023-03-14)
+- [mslugxhc33]              Metal Slug X (Enemy Speed Up 2023-03-14)
+- [mslugxhc34]              Metal Slug X (Optimize 2023-03-14)
+- [mslugxhc35]              Metal Slug X (Pin Point Attack 2023-03-14)
+- [mslugxhc36]              Metal Slug X (The Train Track Background 2023-03-14)
+- [mslugxhc37]              Metal Slug X (Plus v0.3 2020-07-26)
 
 
 
