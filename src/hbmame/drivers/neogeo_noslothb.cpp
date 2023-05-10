@@ -30,21 +30,6 @@
     Game specific input definitions
  *************************************/
 
-INPUT_PORTS_START( ms5pcb )
-	PORT_INCLUDE( neogeo )
-
-	PORT_MODIFY("DSW")
-	PORT_DIPNAME( 0x02, 0x00, DEF_STR( Cabinet ) ) PORT_DIPLOCATION("SW:2")
-	PORT_DIPSETTING(    0x00, DEF_STR( Normal ) )
-	PORT_DIPSETTING(    0x02, "VS Mode" )
-	PORT_DIPNAME( 0x04, 0x00, DEF_STR( Region ) ) PORT_DIPLOCATION("SW:3") PORT_CHANGED_MEMBER(DEVICE_SELF, neogeo_state, select_bios, 0)
-	PORT_DIPSETTING(    0x00, DEF_STR( Asia ) )
-	PORT_DIPSETTING(    0x04, DEF_STR( Japan ) )
-	PORT_DIPNAME( 0x40, 0x00, DEF_STR( Free_Play ) ) PORT_DIPLOCATION("SW:7")
-	PORT_DIPSETTING(    0x00, DEF_STR( Off ) )
-	PORT_DIPSETTING(    0x40, DEF_STR( On ) )
-INPUT_PORTS_END
-
 INPUT_PORTS_START( mslughb )
 	PORT_INCLUDE( neogeo )
 
@@ -64,6 +49,40 @@ INPUT_PORTS_START( mslughw )
 	PORT_DIPNAME( 0x40, 0x00, DEF_STR( Free_Play ) ) PORT_DIPLOCATION("SW:7")
 	PORT_DIPSETTING(    0x00, DEF_STR( Off ) )
 	PORT_DIPSETTING(    0x40, DEF_STR( On ) )
+INPUT_PORTS_END
+
+INPUT_PORTS_START( ms5pcb )
+	PORT_INCLUDE( mslughb )
+
+	PORT_MODIFY("DSW")
+	PORT_DIPNAME( 0x04, 0x00, DEF_STR( Region ) ) PORT_DIPLOCATION("SW:3") PORT_CHANGED_MEMBER(DEVICE_SELF, neogeo_state, select_bios, 0)
+	PORT_DIPSETTING(    0x00, DEF_STR( Asia ) )
+	PORT_DIPSETTING(    0x04, DEF_STR( Japan ) )
+INPUT_PORTS_END
+
+INPUT_PORTS_START( mslug5sg )
+	PORT_INCLUDE( mslughb )
+
+	PORT_MODIFY("DSW")
+	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_JOYSTICK_UP )
+	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_JOYSTICK_DOWN )
+	PORT_BIT( 0x0400, IP_ACTIVE_LOW, IPT_JOYSTICK_LEFT )
+	PORT_BIT( 0x0800, IP_ACTIVE_LOW, IPT_JOYSTICK_RIGHT )
+	PORT_BIT( 0x1000, IP_ACTIVE_LOW, IPT_BUTTON1 )
+	PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_BUTTON2 )
+	PORT_BIT( 0x4000, IP_ACTIVE_LOW, IPT_BUTTON3 )
+	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON4 )
+
+	PORT_MODIFY("P2")
+	PORT_BIT( 0x00ff, IP_ACTIVE_LOW, IPT_UNUSED )
+	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_JOYSTICK_UP ) PORT_CODE(KEYCODE_EQUALS) PORT_PLAYER(2)
+	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_JOYSTICK_DOWN ) PORT_CODE(KEYCODE_EQUALS) PORT_PLAYER(2)
+	PORT_BIT( 0x0400, IP_ACTIVE_LOW, IPT_JOYSTICK_LEFT ) PORT_PLAYER(2)
+	PORT_BIT( 0x0800, IP_ACTIVE_LOW, IPT_JOYSTICK_RIGHT ) PORT_PLAYER(2)
+	PORT_BIT( 0x1000, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(2)
+	PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_PLAYER(2)
+	PORT_BIT( 0x4000, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(2)
+	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_PLAYER(2)
 INPUT_PORTS_END
 
 #define MSLUG_ROM_FILL \
@@ -94,7 +113,7 @@ INPUT_PORTS_END
 	ROM_FILL(0x2EAF,1,0x12)\
 	ROM_FILL(0x2EAB,1,0x34)\
 	ROM_FILL(0x2EA8,1,0x34)\
-	ROM_FILL(0x2EAD,1,0x24)\
+	ROM_FILL(0x2EAD,1,0x23)\
 	ROM_FILL(0x2EAA,1,0x02)
 //	ROM_FILL(0x2EA9,1,0x02)
 //	ROM_FILL(0x2EA6,1,0x02)
@@ -106,7 +125,7 @@ INPUT_PORTS_END
 	ROM_FILL(0x1749,1,0x12)\
 	ROM_FILL(0x1745,1,0x34)\
 	ROM_FILL(0x1742,1,0x34)\
-	ROM_FILL(0x1747,1,0x24)\
+	ROM_FILL(0x1747,1,0x23)\
 	ROM_FILL(0x1744,1,0x02)
 //	ROM_FILL(0x1743,1,0x02)
 //	ROM_FILL(0x1740,1,0x02)
@@ -129,8 +148,20 @@ INPUT_PORTS_END
 	ROM_FILL(0x2CDB,1,0x12)\
 	ROM_FILL(0x2CD7,1,0x34)\
 	ROM_FILL(0x2CD4,1,0x34)\
-	ROM_FILL(0x2CD9,1,0x24)\
+	ROM_FILL(0x2CD9,1,0x23)\
 	ROM_FILL(0x2CD6,1,0x02)
+//	ROM_FILL(0x2CD5,1,0x02)
+//	ROM_FILL(0x2CD2,1,0x02)
+//	ROM_FILL(0x2CD0,1,0x04)
+
+#define MSLUG5SG_ROM_FILL \
+    ROM_FILL(0x2CD3,1,0x78)\
+	ROM_FILL(0x2CDA,1,0x12)\
+	ROM_FILL(0x2CDB,1,0x12)\
+	ROM_FILL(0x2CD7,1,0x34)\
+	ROM_FILL(0x2CD4,1,0x34)\
+	ROM_FILL(0x2CD9,1,0x23)
+//	ROM_FILL(0x2CD6,1,0x02)
 //	ROM_FILL(0x2CD5,1,0x02)
 //	ROM_FILL(0x2CD2,1,0x02)
 //	ROM_FILL(0x2CD0,1,0x04)
@@ -1060,7 +1091,6 @@ ROM_START( mslug2 ) /* MVS AND AES VERSION */
 	MSLUG2_SPRITES
 ROM_END
 
-/*Fixed by remikare*/
 ROM_START( mslug3 ) /* Original Version - Encrypted Code & GFX */ /* revision 2000.4.1 */ /* MVS VERSION */
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "neo-sma", 0x0c0000, 0x040000, CRC(9cd55736) SHA1(d6efb2b313127c2911d47d9324626b3f1e7c6ccb) )
@@ -1072,6 +1102,7 @@ ROM_START( mslug3 ) /* Original Version - Encrypted Code & GFX */ /* revision 20
 	MSLUG3_SPRITES
 ROM_END
 
+/*Fixed by remikare*/
 ROM_START( mslug3a ) /* Original Version - Encrypted Code & GFX */ /* MVS VERSION */
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "white.neo-sma", 0x0c0000, 0x040000, CRC(c60d29b2) SHA1(1647260ccbda833b35005608ef1fdc82fba02f04) ) /* stored in the custom SMA chip, the SMA has a white colour marking */
@@ -2282,6 +2313,7 @@ ROM_START( mslug3hc33 )
 	MSLUG3_SPRITES
 ROM_END
 
+/*Fixed by remikare*/
 ROM_START( mslug3hc34 ) //mslug3lw, mslug3nd
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc34.p1", 0x000000, 0x100000, CRC(94527837) SHA1(5af3de12ed91b38f84c96f91d10ca8f23826b8b4) )
@@ -4174,10 +4206,11 @@ ROM_START( mslug5hc17 ) //mslug5g
 	MS5BOOT_SPRITES
 ROM_END
 
+/*Fixed by remikare*/
 ROM_START( mslug5hc18 ) //mslug5sg
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc18.p1", 0x000000, 0x600000, CRC(8bf8a485) SHA1(79a9b29a10430931a25502994d47bb90b64bd1c3) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5SG_ROM_FILL
     MSLUG5D_SFIX_128K
     MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
@@ -6187,7 +6220,7 @@ GAME( 2019, mslug5hc14,       mslug5,   neogeo_noslot, mslughb, neogeo_state,   
 GAME( 2019, mslug5hc15,       mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (1v2 Generation 2019-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug5hc16,       mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Summon Slug Edition 2018-09-18)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, mslug5hc17,       mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Multi-Function Version 2017-05-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug5hc18,       mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Stone Tortoise Edition 2023-03-09)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug5hc18,       mslug5,   neogeo_noslot, mslug5sg, neogeo_state,   init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Stone Tortoise Edition 2023-03-09)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug5hc19,       mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "FBN4DROID",       "Metal Slug 5 (Crazy Fire Edition 2020-09-02)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug5hc20,       mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (War Chariot 2015-05-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc21,       mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Early Summer Starry Sky 2022-08-10)", MACHINE_SUPPORTS_SAVE )
