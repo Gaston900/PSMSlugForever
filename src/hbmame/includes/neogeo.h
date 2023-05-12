@@ -66,9 +66,9 @@ public:
 		, m_dsw(*this, "DSW")
 		, m_trackx(*this, "TRACK_X")
 		, m_tracky(*this, "TRACK_Y")
-		, m_edge(*this, "edge")
-		, m_ctrl1(*this, "ctrl1")
-		, m_ctrl2(*this, "ctrl2")
+//		, m_ctrl1(*this, "ctrl1")
+//		, m_ctrl2(*this, "ctrl2")
+//		, m_edge(*this, "edge")
 		, m_sprgen(*this, "spritegen")
 		, m_soundlatch(*this, "soundlatch")
 		, m_soundlatch2(*this, "soundlatch2")
@@ -128,8 +128,8 @@ private:
 	DECLARE_READ16_MEMBER(neogeo_video_register_r);
 	DECLARE_WRITE16_MEMBER(neogeo_video_register_w);
 	READ16_MEMBER(banked_vectors_r);
-	DECLARE_READ16_MEMBER(in0_r);
-	DECLARE_READ16_MEMBER(in1_r);
+//	DECLARE_READ16_MEMBER(in0_r);
+//	DECLARE_READ16_MEMBER(in1_r);
 	DECLARE_WRITE16_MEMBER(save_ram_w);
 
 	TIMER_CALLBACK_MEMBER(display_position_interrupt_callback);
@@ -237,9 +237,9 @@ private:
 	optional_ioport m_dsw;
 	optional_ioport m_trackx;
 	optional_ioport m_tracky;
-	optional_device<neogeo_ctrl_edge_port_device> m_edge;
-	optional_device<neogeo_control_port_device> m_ctrl1;
-	optional_device<neogeo_control_port_device> m_ctrl2;
+//	optional_device<neogeo_ctrl_edge_port_device> m_edge;
+//	optional_device<neogeo_control_port_device> m_ctrl1;
+//	optional_device<neogeo_control_port_device> m_ctrl2;
 	required_device<neosprite_device> m_sprgen;
 	optional_device<generic_latch_8_device> m_soundlatch;
 	optional_device<generic_latch_8_device> m_soundlatch2;
@@ -261,177 +261,3 @@ private:
 
 INPUT_PORTS_EXTERN(neogeo);
 INPUT_PORTS_EXTERN(dualbios);
-
-/*************************************
- *
- *  Neo-Geo bios
- *
- *************************************
-
-    These are the known Bios Roms, Set options.bios to the one you want.
-
-    The Universe bios roms are supported because they're now used on enough PCBs
-    to be considered 'in active arcade use' rather than just homebrew hacks.
-    Some may be missing, there have been multiple CRCs reported for the same
-    revision in some cases (the Universe bios has an option for entering / displaying
-    a serial number; these should be noted as such if they're added).
-    Universe bios prior to version 1.3 was incompatible with AES.
-
-    The 'japan-hotel' BIOS is a dump of an MVS which could be found in some japanese
-    hotels. it is a custom MVS mobo which uses MVS carts but it hasn't jamma
-    connector and it's similar to a console with a coin mechanism, so it's a sort
-    of little coin op console installed in hotels.
-
-    The sp-45.sp1 bios is the latest 'ASIA' revision. Japan-j3.bin is the latest 'JAPAN'
-    revision. Both of them are also used in the sp-4x.sp1 bios of the Jamma PCB boards.
-
-    The current Neo-Geo MVS system set (SFIX/SM1/000-LO) used is from a NEO-MVH MV1FS board.
-    Other boards (MV1xx / MV2x / MV4x /MV6x) other system sets?
-
-    Zoom ROM (LO)    128K   TC531000CP      1x 128Kx8   Zoom look-up table ROM
-    Fix ROM (SFIX)   128K   27C1000         1x 128Kx8   Text layer graphics ROM
-    Sound ROM (SM1)  128K   27C1000/23C1000 1x 128Kx8   Z80 program ROM
-
-*/
-
-#define ROM_LOAD16_WORD_SWAP_BIOS(bios,name,offset,length,hash) \
-		ROMX_LOAD(name, offset, length, hash, ROM_GROUPWORD | ROM_REVERSE | ROM_BIOS(bios))
-
-#define NEOGEO_UNIBIOS(x) \
-	ROM_SYSTEM_BIOS( x+ 0, "unibios40", "Universe Bios (Hack, Ver. 4.0)" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( x+ 0, "uni-bios_4_0.rom",  0x00000, 0x020000, CRC(0d55e742) SHA1(22e5aecab69a912c9d845070cdceda58a32f25a6) ) /* Universe Bios v4.0 - Region: Europe (hack) */ \
-	ROM_SYSTEM_BIOS( x+ 1, "unibios40_europe", "Universe Bios (Hack, Ver.Europe 4.0)" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( x+ 1, "uni-bios_4_0_europe.rom",  0x00000, 0x020000, CRC(94c741c6) SHA1(2b0aa0295b733bf6d1b47df25b61ef7cbeabf9a9) ) /* Universe Bios v4.0 - Region: Europe (hack) */ \
-
-#define NEOGEO_BIOS \
-	ROM_REGION16_BE( 0x80000, "mainbios", 0 ) \
-	ROMX_LOAD( "sp-s2.sp1", 0x00000, 0x020000, CRC(9036d879) SHA1(4f5ed7105b7128794654ce82b51723e16e389543), ROM_GROUPWORD | ROM_REVERSE ) \
-	ROM_SYSTEM_BIOS( 0, "euro", "Europe MVS (Ver. 2)" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( 0, "sp-s2.sp1",         0x00000, 0x020000, CRC(9036d879) SHA1(4f5ed7105b7128794654ce82b51723e16e389543) ) /* 5 Dark Blue - Europe, 1 Slot, has also been found on 2 Slot and 4 Slot (the old hacks were designed for this one) */ \
-	ROM_SYSTEM_BIOS( 1, "euro-s1", "Europe MVS (Ver. 1)" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( 1, "sp-s.sp1",          0x00000, 0x020000, CRC(c7f2fa45) SHA1(09576ff20b4d6b365e78e6a5698ea450262697cd) ) /* 3 Dark Blue - Europe, 4 Slot */ \
-	ROM_SYSTEM_BIOS( 2, "asia-mv1c", "Asia NEO-MVH MV1C" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( 2, "sp-45.sp1",         0x00000, 0x080000, CRC(03cc9f6a) SHA1(cdf1f49e3ff2bac528c21ed28449cf35b7957dc1) ) /* 6 Dark Blue - Latest Asia bios (MV1C - mask ROM) */ \
-	ROM_SYSTEM_BIOS( 3, "asia-mv1b", "Asia MV1B" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( 3, "sp-s3.sp1",         0x00000, 0x020000, CRC(91b64be3) SHA1(720a3e20d26818632aedf2c2fd16c54f213543e1) ) /* 6 Dark Blue - Asia (MV1B) */ \
-	\
-	ROM_SYSTEM_BIOS( 4, "us", "US MVS (Ver. 2?)" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( 4, "sp-u2.sp1",         0x00000, 0x020000, CRC(e72943de) SHA1(5c6bba07d2ec8ac95776aa3511109f5e1e2e92eb) ) /* 5 Cyan - US, 2 Slot */ \
-	ROM_SYSTEM_BIOS( 5, "us-e", "US MVS (Ver. 1)" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( 5, "sp-e.sp1",          0x00000, 0x020000, CRC(2723a5b5) SHA1(5dbff7531cf04886cde3ef022fb5ca687573dcb8) ) /* 5 Yellow - US, 6 Slot (V5?) */ \
-	ROM_SYSTEM_BIOS( 6, "us-v2", "US MVS (4 slot, Ver 2)" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( 6, "sp1-u2",            0x00000, 0x020000, CRC(62f021f4) SHA1(62d372269e1b3161c64ae21123655a0a22ffd1bb) ) /* 3 Cyan - US, 4 slot - also seen with "v2" label*/ \
-	ROM_SYSTEM_BIOS( 7, "us-u4", "US MVS (U4)" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( 7, "sp1-u4.bin",        0x00000, 0x020000, CRC(1179a30f) SHA1(866817f47aa84d903d0b819d61f6ef356893d16a) ) /* 3 Green - 4 Slot (MV-4F) */ \
-	ROM_SYSTEM_BIOS( 8, "us-u3", "US MVS (U3)" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( 8, "sp1-u3.bin",        0x00000, 0x020000, CRC(2025b7a2) SHA1(73d774746196f377111cd7aa051cc8bb5dd948b3) ) /* 2 Green - 6 Slot */ \
-	\
-	ROM_SYSTEM_BIOS( 9, "japan", "Japan MVS (Ver. 3)" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( 9, "vs-bios.rom",       0x00000, 0x020000, CRC(f0e8f27d) SHA1(ecf01eda815909f1facec62abf3594eaa8d11075) ) /* 6 Red - Japan, Ver 6 VS Bios */ \
-	ROM_SYSTEM_BIOS( 10, "japan-s2", "Japan MVS (Ver. 2)" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( 10, "sp-j2.sp1",        0x00000, 0x020000, CRC(acede59c) SHA1(b6f97acd282fd7e94d9426078a90f059b5e9dd91) ) /* 5 Red - Japan, Older */ \
-	ROM_SYSTEM_BIOS( 11, "japan-s1", "Japan MVS (Ver. 1)" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( 11, "sp1.jipan.1024",   0x00000, 0x020000, CRC(9fb0abe4) SHA1(18a987ce2229df79a8cf6a84f968f0e42ce4e59d) ) /* 3 Red - Japan, Older */ \
-	ROM_SYSTEM_BIOS( 12, "japan-mv1b", "Japan MV1B" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( 12, "japan-j3.bin",     0x00000, 0x020000, CRC(dff6d41f) SHA1(e92910e20092577a4523a6b39d578a71d4de7085) ) /* 6 Red - Latest Japan bios (MV1B) */ \
-	ROM_SYSTEM_BIOS( 13, "japan-j3a", "Japan MVS (J3, alt)" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( 13, "sp1-j3.bin",       0x00000, 0x020000, CRC(fbc6d469) SHA1(46b2b409b5b68869e367b40c846373623edb632a) ) /* 2 Red - 6 Slot */ \
-	ROM_SYSTEM_BIOS( 14, "japan-mv1c", "Japan NEO-MVH MV1C" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( 14, "sp-j3.sp1",        0x00000, 0x080000, CRC(486cb450) SHA1(52c21ea817928904b80745a8c8d15cbad61e1dc1) ) /* 6 Red - Latest Japan bios (MV1C - mask ROM) */ \
-	\
-	ROM_SYSTEM_BIOS( 15, "japan-hotel", "Custom Japanese Hotel" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( 15, "sp-1v1_3db8c.bin", 0x00000, 0x020000, CRC(162f0ebe) SHA1(fe1c6dd3dfcf97d960065b1bb46c1e11cb7bf271) ) /* 6 Red - 'rare MVS found in japanese hotels' shows v1.3 in test mode */ \
-	\
-	NEOGEO_UNIBIOS(16) \
-	ROM_DEFAULT_BIOS("unibios40_europe")
-
-
-#define NEO_BIOS_AUDIO_64K(name, hash) \
-	NEOGEO_BIOS \
-	ROM_REGION( 0x20000, "audiobios", 0 ) \
-	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
-	ROM_REGION( 0x20000, "audiocpu", 0 ) \
-	ROM_LOAD( name, 0x00000, 0x10000, hash ) \
-	ROM_RELOAD(     0x10000, 0x10000 )
-
-#define NEO_BIOS_AUDIO_128K(name, hash) \
-	NEOGEO_BIOS \
-	ROM_REGION( 0x20000, "audiobios", 0 ) \
-	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
-	ROM_REGION( 0x30000, "audiocpu", 0 ) \
-	ROM_LOAD( name, 0x00000, 0x20000, hash ) \
-	ROM_RELOAD(     0x10000, 0x20000 )
-
-#define NEO_BIOS_AUDIO_256K(name, hash) \
-	NEOGEO_BIOS \
-	ROM_REGION( 0x20000, "audiobios", 0 ) \
-	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
-	ROM_REGION( 0x50000, "audiocpu", 0 ) \
-	ROM_LOAD( name, 0x00000, 0x40000, hash ) \
-	ROM_RELOAD(     0x10000, 0x40000 )
-
-#define NEO_BIOS_AUDIO_512K(name, hash) \
-	NEOGEO_BIOS \
-	ROM_REGION( 0x20000, "audiobios", 0 ) \
-	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
-	ROM_REGION( 0x90000, "audiocpu", 0 ) \
-	ROM_LOAD( name, 0x00000, 0x80000, hash ) \
-	ROM_RELOAD(     0x10000, 0x80000 )
-
-#define NEO_BIOS_AUDIO_ENCRYPTED_64K(name, hash) \
-	NEOGEO_BIOS \
-	ROM_REGION( 0x20000, "audiobios", 0 ) \
-	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
-	ROM_REGION( 0x90000, "audiocpu", ROMREGION_ERASEFF ) \
-	ROM_REGION( 0x80000, "audiocrypt", 0 ) \
-	ROM_LOAD( name, 0x00000, 0x10000, hash )
-#define NEO_BIOS_AUDIO_ENCRYPTED_128K(name, hash) \
-	NEOGEO_BIOS \
-	ROM_REGION( 0x20000, "audiobios", 0 ) \
-	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
-	ROM_REGION( 0x90000, "audiocpu", ROMREGION_ERASEFF ) \
-	ROM_REGION( 0x80000, "audiocrypt", 0 ) \
-	ROM_LOAD( name, 0x00000, 0x20000, hash )
-#define NEO_BIOS_AUDIO_ENCRYPTED_256K(name, hash) \
-	NEOGEO_BIOS \
-	ROM_REGION( 0x20000, "audiobios", 0 ) \
-	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
-	ROM_REGION( 0x90000, "audiocpu", ROMREGION_ERASEFF ) \
-	ROM_REGION( 0x80000, "audiocrypt", 0 ) \
-	ROM_LOAD( name, 0x00000, 0x40000, hash )
-#define NEO_BIOS_AUDIO_ENCRYPTED_512K(name, hash) \
-	NEOGEO_BIOS \
-	ROM_REGION( 0x20000, "audiobios", 0 ) \
-	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
-	ROM_REGION( 0x90000, "audiocpu", ROMREGION_ERASEFF ) \
-	ROM_REGION( 0x80000, "audiocrypt", 0 ) \
-	ROM_LOAD( name,      0x00000, 0x80000, hash )
-
-#define ROM_Y_ZOOM \
-	ROM_REGION( 0x20000, "zoomy", 0 ) \
-	ROM_LOAD( "000-lo.lo", 0x00000, 0x20000, CRC(5a86cff2) SHA1(5992277debadeb64d1c1c64b0a92d9293eaf7e4a) )
-
-#define NEO_SFIX_MT(bytes) \
-	ROM_Y_ZOOM \
-	ROM_REGION( 0x20000, "fixedbios", 0 ) \
-	ROM_LOAD( "sfix.sfix",  0, 0x20000, CRC(c2ea0cfd) SHA1(fd4a618cdcdbf849374f0a50dd8efe9dbab706c3) ) \
-	ROM_REGION( bytes, "fixed", ROMREGION_ERASE00 )
-
-#define NEO_SFIX_MT_128K \
-	NEO_SFIX_MT( 0x20000 )
-
-#define NEO_SFIX_MT_512K \
-	NEO_SFIX_MT( 0x80000 )
-
-#define NEO_SFIX(bytes, name, hash) \
-	NEO_SFIX_MT( bytes ) \
-	ROM_LOAD( name, 0x00000, bytes, hash )
-
-#define NEO_SFIX_64K(name, hash) \
-	NEO_SFIX( 0x10000, name, hash )
-
-#define NEO_SFIX_128K(name, hash) \
-	NEO_SFIX( 0x20000, name, hash )
-
-#define NEO_SFIX_512K(name, hash) \
-	NEO_SFIX( 0x80000, name, hash )

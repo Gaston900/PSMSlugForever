@@ -72,19 +72,12 @@ function createProjects_mame_arcade(_target, _subtarget)
 
 createMAMEProjects(_target, _subtarget, "neogeo")
 files {
-	MAME_DIR .. "src/hbmame/drivers/neogeo.cpp",
 	MAME_DIR .. "src/hbmame/drivers/neogeo_noslothb.cpp",
 	MAME_DIR .. "src/hbmame/video/neogeo.cpp",
 	MAME_DIR .. "src/hbmame/video/neogeo_spr.cpp",
 	MAME_DIR .. "src/hbmame/machine/ng_memcard.cpp",
 	MAME_DIR .. "src/hbmame/bus/neogeo/prot.cpp",
 	MAME_DIR .. "src/hbmame/bus/neogeo/banked_cart.cpp",
-	MAME_DIR .. "src/hbmame/bus/neogeo_ctrl/ctrl.cpp",
-	MAME_DIR .. "src/hbmame/bus/neogeo_ctrl/joystick.cpp",
-	MAME_DIR .. "src/hbmame/bus/neogeo_ctrl/mahjong.cpp",
-	MAME_DIR .. "src/hbmame/bus/neogeo_ctrl/dial.cpp",
-	MAME_DIR .. "src/hbmame/bus/neogeo_ctrl/irrmaze.cpp",
-	MAME_DIR .. "src/hbmame/bus/neogeo_ctrl/kizuna4p.cpp",
 }
 
 end

@@ -2,6 +2,7 @@
 // copyright-holders:Gaston90
 
 #include "includes/neogeo.h"
+#include "neogeo.lh"
 
 /************************************************************************************************************************************
     In 2010, SNK Playmore, the successor of SNK, released a title catalogue which lists the released
@@ -25,6 +26,1881 @@
     METAL SLUG 5                                                Action Shooter  SNK Playmore    MV-0:2003/11/14
                                                                                                 NEOGEO ROM-cart:2004/02/19
 ************************************************************************************************************************************/
+
+/*************************************
+ *
+ *  Neo-Geo bios
+ *
+ *************************************
+
+    These are the known Bios Roms, Set options.bios to the one you want.
+
+    The Universe bios roms are supported because they're now used on enough PCBs
+    to be considered 'in active arcade use' rather than just homebrew hacks.
+    Some may be missing, there have been multiple CRCs reported for the same
+    revision in some cases (the Universe bios has an option for entering / displaying
+    a serial number; these should be noted as such if they're added).
+    Universe bios prior to version 1.3 was incompatible with AES.
+
+    The 'japan-hotel' BIOS is a dump of an MVS which could be found in some japanese
+    hotels. it is a custom MVS mobo which uses MVS carts but it hasn't jamma
+    connector and it's similar to a console with a coin mechanism, so it's a sort
+    of little coin op console installed in hotels.
+
+    The sp-45.sp1 bios is the latest 'ASIA' revision. Japan-j3.bin is the latest 'JAPAN'
+    revision. Both of them are also used in the sp-4x.sp1 bios of the Jamma PCB boards.
+
+    The current Neo-Geo MVS system set (SFIX/SM1/000-LO) used is from a NEO-MVH MV1FS board.
+    Other boards (MV1xx / MV2x / MV4x /MV6x) other system sets?
+
+    Zoom ROM (LO)    128K   TC531000CP      1x 128Kx8   Zoom look-up table ROM
+    Fix ROM (SFIX)   128K   27C1000         1x 128Kx8   Text layer graphics ROM
+    Sound ROM (SM1)  128K   27C1000/23C1000 1x 128Kx8   Z80 program ROM
+
+*/
+
+#define ROM_LOAD16_WORD_SWAP_BIOS(bios,name,offset,length,hash) \
+		ROMX_LOAD(name, offset, length, hash, ROM_GROUPWORD | ROM_REVERSE | ROM_BIOS(bios))
+
+#define NEOGEO_BIOS \
+	ROM_REGION16_BE( 0x80000, "mainbios", 0 ) \
+	ROM_SYSTEM_BIOS( 0, "arcade_mode", "Arcade Mode" ) \
+	ROM_LOAD16_WORD_SWAP_BIOS( 0, "arcade mode.rom",  0x00000, 0x020000, CRC(94c741c6) SHA1(2b0aa0295b733bf6d1b47df25b61ef7cbeabf9a9) ) \
+	ROM_SYSTEM_BIOS( 1, "console_mode", "Consola Mode" ) \
+	ROM_LOAD16_WORD_SWAP_BIOS( 1, "console mode.rom",  0x00000, 0x020000, CRC(3a519f3e) SHA1(3dffcf04237fb5a1ead882bfda2799e21b5673c9) ) \
+	ROM_DEFAULT_BIOS("arcade_mode")
+
+#define NEO_BIOS_AUDIO_64K(name, hash) \
+	NEOGEO_BIOS \
+	ROM_REGION( 0x20000, "audiobios", 0 ) \
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
+	ROM_REGION( 0x20000, "audiocpu", 0 ) \
+	ROM_LOAD( name, 0x00000, 0x10000, hash ) \
+	ROM_RELOAD(     0x10000, 0x10000 )
+
+#define NEO_BIOS_AUDIO_128K(name, hash) \
+	NEOGEO_BIOS \
+	ROM_REGION( 0x20000, "audiobios", 0 ) \
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
+	ROM_REGION( 0x30000, "audiocpu", 0 ) \
+	ROM_LOAD( name, 0x00000, 0x20000, hash ) \
+	ROM_RELOAD(     0x10000, 0x20000 )
+
+#define NEO_BIOS_AUDIO_256K(name, hash) \
+	NEOGEO_BIOS \
+	ROM_REGION( 0x20000, "audiobios", 0 ) \
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
+	ROM_REGION( 0x50000, "audiocpu", 0 ) \
+	ROM_LOAD( name, 0x00000, 0x40000, hash ) \
+	ROM_RELOAD(     0x10000, 0x40000 )
+
+#define NEO_BIOS_AUDIO_512K(name, hash) \
+	NEOGEO_BIOS \
+	ROM_REGION( 0x20000, "audiobios", 0 ) \
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
+	ROM_REGION( 0x90000, "audiocpu", 0 ) \
+	ROM_LOAD( name, 0x00000, 0x80000, hash ) \
+	ROM_RELOAD(     0x10000, 0x80000 )
+
+#define NEO_BIOS_AUDIO_ENCRYPTED_64K(name, hash) \
+	NEOGEO_BIOS \
+	ROM_REGION( 0x20000, "audiobios", 0 ) \
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
+	ROM_REGION( 0x90000, "audiocpu", ROMREGION_ERASEFF ) \
+	ROM_REGION( 0x80000, "audiocrypt", 0 ) \
+	ROM_LOAD( name, 0x00000, 0x10000, hash )
+
+#define NEO_BIOS_AUDIO_ENCRYPTED_128K(name, hash) \
+	NEOGEO_BIOS \
+	ROM_REGION( 0x20000, "audiobios", 0 ) \
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
+	ROM_REGION( 0x90000, "audiocpu", ROMREGION_ERASEFF ) \
+	ROM_REGION( 0x80000, "audiocrypt", 0 ) \
+	ROM_LOAD( name, 0x00000, 0x20000, hash )
+
+#define NEO_BIOS_AUDIO_ENCRYPTED_256K(name, hash) \
+	NEOGEO_BIOS \
+	ROM_REGION( 0x20000, "audiobios", 0 ) \
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
+	ROM_REGION( 0x90000, "audiocpu", ROMREGION_ERASEFF ) \
+	ROM_REGION( 0x80000, "audiocrypt", 0 ) \
+	ROM_LOAD( name, 0x00000, 0x40000, hash )
+
+#define NEO_BIOS_AUDIO_ENCRYPTED_512K(name, hash) \
+	NEOGEO_BIOS \
+	ROM_REGION( 0x20000, "audiobios", 0 ) \
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
+	ROM_REGION( 0x90000, "audiocpu", ROMREGION_ERASEFF ) \
+	ROM_REGION( 0x80000, "audiocrypt", 0 ) \
+	ROM_LOAD( name,      0x00000, 0x80000, hash )
+
+#define ROM_Y_ZOOM \
+	ROM_REGION( 0x20000, "zoomy", 0 ) \
+	ROM_LOAD( "000-lo.lo", 0x00000, 0x20000, CRC(5a86cff2) SHA1(5992277debadeb64d1c1c64b0a92d9293eaf7e4a) )
+
+#define NEO_SFIX_MT(bytes) \
+	ROM_Y_ZOOM \
+	ROM_REGION( 0x20000, "fixedbios", 0 ) \
+	ROM_LOAD( "sfix.sfix",  0, 0x20000, CRC(c2ea0cfd) SHA1(fd4a618cdcdbf849374f0a50dd8efe9dbab706c3) ) \
+	ROM_REGION( bytes, "fixed", ROMREGION_ERASE00 )
+
+#define NEO_SFIX_MT_128K \
+	NEO_SFIX_MT( 0x20000 )
+
+#define NEO_SFIX_MT_512K \
+	NEO_SFIX_MT( 0x80000 )
+
+#define NEO_SFIX(bytes, name, hash) \
+	NEO_SFIX_MT( bytes ) \
+	ROM_LOAD( name, 0x00000, bytes, hash )
+
+#define NEO_SFIX_64K(name, hash) \
+	NEO_SFIX( 0x10000, name, hash )
+
+#define NEO_SFIX_128K(name, hash) \
+	NEO_SFIX( 0x20000, name, hash )
+
+#define NEO_SFIX_512K(name, hash) \
+	NEO_SFIX( 0x80000, name, hash )
+
+/***************************************************************************
+
+    Neo-Geo hardware
+
+    Credits:
+        * This driver was made possible by the research done by
+          Charles MacDonald.  For a detailed description of the Neo-Geo
+          hardware, please visit his page at:
+          http://cgfm2.emuviews.com/txt/mvstech.txt
+        * Presented to you by the Shin Emu Keikaku team.
+        * The following people have all spent probably far
+          too much time on this:
+          AVDB
+          Bryan McPhail
+          Fuzz
+          Ernesto Corvi
+          Andrew Prime
+          Zsolt Vasvari
+
+
+    Known driver issues/to-do's:
+    ============================
+
+        * Fatal Fury 3 crashes during the ending - this doesn't occur if
+          the language is set to Japanese, maybe the English endings
+          are incomplete / buggy?
+        * Graphical Glitches caused by incorrect timing?
+          - Some raster effects are imperfect (off by a couple of lines)
+        * Multi-cart support not implemented - the MVS can take up to
+          6 cartridges depending on the board being used
+        * 68000 waitstates on ROM region access, determined by jumpers on cart
+          (garou train stage 3 background bug is probably related to this)
+
+
+    Confirmed non-bugs:
+
+        * Bad zooming in the Kof2003 bootlegs - this is what happens
+          if you try and use the normal bios with a pcb set, it
+          looks like the bootleggers didn't care.
+        * Glitches at the edges of the screen - the real hardware
+          can display 320x224 but most of the games seem designed
+          to work with a width of 304, some less.
+        * Distorted jumping sound in Nightmare in the Dark
+        * Ninja Combat sometimes glitches
+
+
+*****************************************************************************
+
+    The Neo-Geo Multi Video System (MVS), is an arcade system board, being
+    the first product in the Neo-Geo family, designed by Alpha Denshi(ADK)
+    and released in 1990 by SNK. It was known to the coin-op industry, and
+    offered arcade operators the ability to put up to 6 different arcade
+    titles into a single cabinet, a key economic consideration for operators
+    with limited floorspace (games for the Neo-Geo are cartridge based and are
+    easily exchangeable). It comes in many different cabinets but basically
+    consists of an add on board that can be linked to a standard Jamma system.
+    The system was discontinued in 2004.
+    Source (modified): http://en.wikipedia.org/wiki/Neo_Geo
+
+
+    MVS motherboards were produced in 1 / 2 / 4 and 6 Slot versions.
+
+    Known motherboards:
+    ===================
+
+    1 Slot:
+    NEO-MVH MV1
+    NEO-MVH MV1-1
+    NEO-MVH MV1A
+     . NEO-MVH MV1A CHX ??
+    NEO-MVH MV1B (1996.1.19)
+     . NEO-MVH MV1B CHX (1996.1.19) ??
+    NEO-MVH MV1B1 (1998.6.17)
+    NEO-MVH MV1C (1999.4.30)
+    NEO-MVH MV1F
+    NEO-MVH MV1FS
+    NEO-MVH MV1FT
+    NEO-MVH MV1FZ
+    NEO-MVH MV1FZS
+
+    2 Slot:
+    NEO-MVH MV2
+    NEO-MVH MV2F
+    NEO-MVH MV2F-01
+
+    4 Slot:
+    NEO-MVH MV4
+    NEO-MVH MV4F
+    NEO-MVH MV4FS
+    NEO-MVH MV4FT
+    NEO-MVH MV4FT2
+
+    6 Slot:
+    NEO-MVH MV6
+    NEO-MVH MV6F
+
+
+    Neo-Geo Motherboard (info - courtesy of Guru):
+
+          NEO-MVH MV1
+          |---------------------------------------------------------------------|
+          |       4558                                                          |
+          |                                          HC04  HC32                 |
+          |                      SP-S2.SP1  NEO-E0   000-L0.L0   LS244  AS04    |
+          |             YM2610                                                  |
+          | 4558                                                                |
+          |       4558                        5814  HC259   SFIX.SFIX           |
+          |                                                             NEO-I0  |
+          | HA13001 YM3016                    5814                              |
+          --|                                                                   |
+            |     4558                                                          |
+          --|                                                 SM1.SM1   LS32    |
+          |                                                                     |
+          |                           LSPC-A0         PRO-C0            LS244   |
+          |                                                                     |
+          |J              68000                                                 |
+          |A                                                                    |
+          |M                                                                    |
+          |M                                                      NEO-ZMC2      |
+          |A                                                                    |
+          |   LS273  NEO-G0                          58256  58256     Z80A      |
+          |                           58256  58256   58256  58256     6116      |
+          |   LS273 5864                                                        |
+          --| LS05  5864  PRO-B0                                                |
+            |                                                                   |
+          --|             LS06   HC32           D4990A    NEO-F0   24.000MHz    |
+          |                      DSW1    BATT3.6V 32.768kHz       NEO-D0        |
+          |                                           2003  2003                |
+          |---------------------------------------------------------------------|
+
+
+*****************************************************************************
+
+    Neo-Geo game PCB infos:
+    =======================
+
+    The Neo-Geo games for AES (home) and MVS (arcade) systems are cartridge based.
+
+    Each cartridge consists of two PCBs: CHA and PROG.
+    .CHA PCB contains gfx data ('C' - rom), text layer data ('S' - rom) and sound driver ('M' - rom).
+    .PROG PCB contains sample data ('V' - rom) and program code ('P' - rom).
+
+    On most PCBs various custom/protection chips can also be found:
+    (Custom chip detail information (modified) from: http://wiki.neogeodev.org)
+
+    CHA:
+    . NEO-273  (C and S-ROM address latch)
+    . NEO-CMC 90G06CF7042 (NEO-273 logic / NEO-ZMC logic / C-ROM decryption / C and S-ROM multiplexer / S-ROM bankswitching)
+    . NEO-CMC 90G06CF7050 (NEO-273 logic / NEO-ZMC logic / C-ROM decryption / M-ROM decryption / C and S-ROM multiplexer / S-ROM bankswitching)
+    . NEO-ZMC  (Z80 memory controller)
+    . NEO-ZMC2 (Z80 memory controller / Tile serializer)
+    . PRO-CT0  (C-ROM serializer and multiplexer?; used on early AES-CHA boards)
+    . SNK-9201 (C-ROM serializer and multiplexer?; used on early AES-CHA boards)
+
+    PROG:
+    . 0103 (QFP144) (Only found on Metal Slug X NEO-MVS PROGEOP board; function unknown)
+    . ALTERA   (EPM7128SQC100-15) (P-ROM protection chip used for KOF98 NEO-MVS PROGSF1 board and Metal Slug X NEO-MVS PROGEOP board)
+    . NEO-COMA (Microcontroller; used for MULTI PLAY MODE, boards and sets see below)
+    . NEO-PCM2 (SNK 1999) (PCM functionality / V-ROM decryption / P-ROM decoding and bankswitching)
+    . NEO-PCM2 (PLAYMORE 2002) (PCM functionality / V-ROM decryption / P-ROM decoding and bankswitching)
+    . NEO-PVC  (P-ROM decryption and bankswitching) / RAM
+    . NEO-SMA  (P-ROM decryption and bankswitching / RNG / Storage of 256kb game data)
+    . PCM      (ADPCM bus latches / V-ROM multiplexer)
+    . PRO-CT0  (On PROG board used for P-ROM protection -> Fatal Fury 2)
+    . SNK-9201 (On PROG board used for P-ROM protection -> Fatal Fury 2)
+
+
+
+    Known PCBs:
+    ============
+
+    MVS CHA:
+    -- SNK --
+    . NEO-MVS CHA-32
+    . NEO-MVS CHA-8M
+    . NEO-MVS CHA42G
+    . NEO-MVS CHA42G-1
+    . NEO-MVS CHA 42G-2
+    . NEO-MVS CHA 42G-3
+    . NEO-MVS CHA42G-3B
+    . NEO-MVS CHA256
+    . NEO-MVS CHA256B
+    . NEO-MVS CHA512Y
+    . NEO-MVS CHAFIO (1999.6.14) - used with NEO-CMC 90G06C7042 or NEO-CMC 90G06C7050
+    . MVS CHAFIO REV1.0 (KOF-2001)
+    . NEO-MVS CHAFIO (SNK 2002) - MADE IN KOREA
+    -- SNKPLAYMORE --
+    . NEO-MVS CHAFIO (2003.7.24) - used only with NEO-CMC 90G06C7050
+
+    -- SNK development boards --
+    . NEO-MVS CHAMC2
+
+    MVS PROG:
+    -- SNK --
+    . NEO-MVS PROG-NAM
+    . NEO-MVS PROG-HERO
+    . NEO-MVS PROG-EP
+    . NEO-MVS PROG-8MB
+    . NEO-MVS PROGEP8M
+    . NEO-MVS PROG8M42
+    . NEO-MVS PROG16
+    . NEO-MVS PROG42G
+    . NEO-MVS PROG42G-COM
+    . NEO-MVS PROG42G-1
+    . NEO-MVS PROG-G2
+    . NEO-MVS PROG 4096
+    . NEO-MVS PROG 4096 B
+    . NEO-MVS PROGGSC
+    . NEO-MVS PROGSM
+    . NEO-MVS PROGSS3
+    . NEO-MVS PROGTOP
+    . NEO-MVS PROGSF1 (1998.6.17)
+    . NEO-MVS PROGSF1E (1998.6.18)
+    . NEO-MVS PROGEOP (1999.2.2)
+    . NEO-MVS PROGLBA (1999.4.12) - LBA-SUB (2000.2.24)
+    . NEO-MVS PROGBK1 (1994)
+    . NEO-MVS PROGBK1 (2001)
+    . NEO-MVS PROGBK2 (2000.3.21) - used with NEO-PCM2 (1999 SNK) or NEO-PCM2 (2002 PLAYMORE)
+    . MVS PROGBK2 REV1.0 (KOF-2001)
+    . NEO-MVS PROGBK2 (SNK 2002) - MADE IN KOREA
+    -- SNKPLAYMORE --
+    . NEO-MVS PROGBK2R (2003.8.26) - NEO-HYCS (2003.9.29)
+    . NEO-MVS PROGBK3R (2003.9.2) - NEO-HYCS (2003.9.29)
+    . NEO-MVS PROGBK3S (2003.10.1)
+    . NEO-MVS PROGBK2S (2003.10.18)
+
+    -- SNK development boards --
+    . NEO-MVS PROGMC2
+
+
+    AES CHA:
+    -- SNK --
+    . NEO-AEG CHA-32
+    . NEO-AEG CHA-8M
+    . NEO-AEG CHA42G
+    . NEO-AEG CHA42G-1
+    . NEO-AEG CHA42G-2B
+    . NEO-AEG CHA42G-3
+    . NEO-AEG CHA42G-4
+    . NEO-AEG CHA256
+    . NEO-AEG CHA256 B
+    . NEO-AEG CHA256[B]
+    . NEO-AEG CHA256BY
+    . NEO-AEG CHA256RY
+    . NEO-AEG CHA512Y
+    . NEO-AEG CHAFIO (1999.8.10) - used with NEO-CMC 90G06C7042 or NEO-CMC 90G06C7050
+    -- SNKPLAYMORE --
+    . NEO-AEG CHAFIO (2003.7.24) - used only with NEO-CMC 90G06C7050
+
+    AES PROG:
+    -- SNK --
+    . NEO-AEG PROG-NAM
+    . NEO-AEG PROG-HERO
+    . NEO-AEG PROG-4A
+    . NEO-AEG PROG-4B
+    . NEO-AEG PROG 8M42
+    . NEO-AEG PROG B
+    . NEO-AEG PROG16
+    . NEO-AEG PROG42G
+    . NEO-AEG PROG42G-COM
+    . NEO-AEG PROG42G-1
+    . NEO-AEG PROG-G2
+    . NEO-AEG PROG4096 B
+    . NEO-AEG PROGGS
+    . NEO-AEG PROGTOP2
+    . NEO-AEG PROGTOP2Y
+    . NEO-AEG PROGEOP (1999.4.2)
+    . NEO-AEG PROGLBA (1999.7.6)
+    . NEO-AEG PROGRK
+    . NEO-AEG PROGRKB
+    . NEO-AEG PROGBK1Y
+    . NEO-AEG PROGBK1F
+    -- PLAYMORE --
+    . NEO-AEG PROGBK2 (2002.4.1) - used with NEO-PCM2 (1999 SNK) or NEO-PCM2 (2002 PLAYMORE)
+    -- SNKPLAYMORE --
+    . NEO-AEG PROGBK3R (2003.8.29) - NEO-HYCS (2003.9.29)
+    . NEO-AEG PROGBK3S (2003.10.6)
+    . NEO-AEG PROGBK2S (2003.10.16)
+
+
+
+    Cartridge colours:
+    ==================
+
+    MVS cartridges were produced in different colours.
+
+    Known cartridge colours:
+    . Black
+    . Blue
+    . Green
+    . Grey
+    . Red
+    . Transparent
+    . Transparent Blue
+    . Transparent Green
+    . White
+    . Yellow
+
+    The above listed only covers SNK / PLAYMORE / SNKPLAYMORE PCBs. There also exists a
+    wide range of 'bootleg' PCBs.
+
+
+    Unofficial pcb's from NG:DEV.TEAM:
+
+    MVS CHA:
+    GIGA CHAR Board 1.0 Rev. A
+    GIGA CHAR Board 1.5 Rev. 0
+    GIGA CHAR Board 1.5 Rev. C
+
+    MVS PROG:
+    GIGA PROG Board 1.0 Rev. B
+    GIGA PROG Board 1.5 Rev. A
+    GIGA PROG Board 1.5 Rev. C
+
+
+    Unofficial pcb's from NEOBITZ:
+
+    MVS CHA:
+    CHARBITZ1 2013.12.01
+
+    MVS PROG:
+    PROGBITZ1 2013.12.01
+
+
+    Neo-Geo game PCB infos by Johnboy
+
+
+
+    MVS cart pinout:
+    ================
+
+    Kindly submitted by Apollo69 (apollo69@columbus.rr.com)
+    =================================================================
+                CTRG1                            CTRG2
+    =================================================================
+         GND = 01A | 01B = GND            GND = 01A | 01B = GND
+         GND = 02A | 02B = GND            GND = 02A | 02B = GND
+          P0 = 03A | 03B = P1             GND = 03A | 03B = GND
+          P2 = 04A | 04B = P3             GND = 04A | 04B = GND
+          P4 = 05A | 05B = P5              D0 = 05A | 05B = A1
+          P6 = 06A | 06B = P7              D1 = 06A | 06B = A2
+          P8 = 07A | 07B = P9              D2 = 07A | 07B = A3
+         P10 = 08A | 08B = P11             D3 = 08A | 08B = A4
+         P12 = 09A | 09B = P13             D4 = 09A | 09B = A5
+         P14 = 10A | 10B = P15             D5 = 10A | 10B = A6
+         P16 = 11A | 11B = P17             D6 = 11A | 11B = A7
+         P18 = 12A | 12B = P19             D7 = 12A | 12B = A8
+         P20 = 13A | 13B = P21             D8 = 13A | 13B = A9
+         P22 = 14A | 14B = P23             D9 = 14A | 14B = A10
+       PCK1B = 15A | 15B = 24M            D10 = 15A | 15B = A11
+       PCK2B = 16A | 16B = 12M            D11 = 16A | 16B = A12
+         2H1 = 17A | 17B = 8M             D12 = 17A | 17B = A13
+         CA4 = 18A | 18B = RESET          D13 = 18A | 18B = A14
+         CR0 = 19A | 19B = CR1            D14 = 19A | 19B = A15
+         CR2 = 20A | 20B = CR3            D15 = 20A | 20B = A16
+         CR4 = 21A | 21B = CR5            R/W = 21A | 21B = A17
+         CR6 = 22A | 22B = CR7             AS = 22A | 22B = A18
+         CR8 = 23A | 23B = CR9         ROMOEU = 23A | 23B = A19
+        CR10 = 24A | 24B = CR11        ROMOEL = 24A | 24B = 68KCLKB
+        CR12 = 25A | 25B = CR13       PORTOEU = 25A | 25B = ROMWAIT
+        CR14 = 26A | 26B = CR15       PORTOEL = 26A | 26B = PWAIT0
+        CR16 = 27A | 27B = CR17       PORTWEU = 27A | 27B = PWAIT1
+        CR18 = 28A | 28B = CR19       PORTWEL = 28A | 28B = PDTACT
+         VCC = 29A | 29B = VCC            VCC = 29A | 29B = VCC
+         VCC = 30A | 30B = VCC            VCC = 30A | 30B = VCC
+         VCC = 31A | 31B = VCC            VCC = 31A | 31B = VCC
+         VCC = 32A | 32B = VCC            VCC = 32A | 32B = VCC
+        CR20 = 33A | 33B = CR21      PORTADRS = 33A | 33B = 4MB
+        CR22 = 34A | 34B = CR23            NC = 34A | 34B = ROMOE
+        CR24 = 35A | 35B = CR25            NC = 35A | 35B = RESET
+        CR26 = 36A | 36B = CR27            NC = 36A | 36B = NC
+        CR28 = 37A | 37B = CR29            NC = 37A | 37B = NC
+        CR30 = 38A | 38B = CR31            NC = 38A | 38B = NC
+          NC = 39A | 39B = FIX00           NC = 39A | 39B = NC
+          NC = 40A | 40B = FIX01           NC = 40A | 40B = NC
+          NC = 41A | 41B = FIX02           NC = 41A | 41B = SDPAD0
+     SYSTEMB = 42A | 42B = FIX03      SYSTEMB = 42A | 42B = SDPAD1
+        SDA0 = 43A | 43B = FIX04        SDPA8 = 43A | 43B = SDPAD2
+        SDA1 = 44A | 44B = FIX05        SDPA9 = 44A | 44B = SDPAD3
+        SDA2 = 45A | 45B = FIX06       SDPA10 = 45A | 45B = SDPAD4
+        SDA3 = 46A | 46B = FIX07       SDPA11 = 46A | 46B = SDPAD5
+        SDA4 = 47A | 47B = SDRD0       SDPMPX = 47A | 47B = SDPAD6
+        SDA5 = 48A | 48B = SDRD1        SDPOE = 48A | 48B = SDPAD7
+        SDA6 = 49A | 49B = SDROM        SDRA8 = 49A | 49B = SDRA00
+        SDA7 = 50A | 50B = SDMRD        SDRA9 = 50A | 50B = SDRA01
+        SDA8 = 51A | 51B = SDDO        SDRA20 = 51A | 51B = SDRA02
+        SDA9 = 52A | 52B = SDD1        SDRA21 = 52A | 52B = SDRA03
+       SDA10 = 53A | 53B = SDD2        SDRA22 = 53A | 53B = SDRA04
+       SDA11 = 54A | 54B = SDD3        SDRA23 = 54A | 54B = SDRA05
+       SDA12 = 55A | 55B = SDD4        SDRMPX = 55A | 55B = SDRA06
+       SDA13 = 56A | 56B = SDD5         SDROE = 56A | 56B = SDRA07
+       SDA14 = 57A | 57B = SDD6           GND = 57A | 57B = GND
+       SDA15 = 58A | 58B = SDD7           GND = 58A | 58B = GND
+         GND = 59A | 59B = GND            GND = 59A | 59B = GND
+         GND = 60A | 60B = GND            GND = 60A | 60B = GND
+
+    CTRG1 (CHA)  = Contains gfx data ('C' - rom), text layer data ('S' - rom) and sound driver ('M' - rom)
+    CTRG2 (PROG) = Contains sample data ('V' - rom) and program code ('P' - rom)
+
+    NOTE: On CTRG2-B, The "A" lines start at "A1". If you trace this on an
+    actual cart, you will see that this is actually "A0" (A0 - A18).
+
+    These are from a very hard to read copy of the schematics, so
+    I hope that I got the pin names correct.
+
+    Apollo69 10/19/99
+
+
+*****************************************************************************
+
+    Watchdog:
+    =========
+
+    The watchdog timer will reset the system after ~0.13 seconds.
+    By cgfm's research, exactly 3,244,030 cycles (based on 24MHz clock).
+
+    Newer games force a reset using the following code (this from kof99):
+        009CDA  203C 0003 0D40             MOVE.L   #0x30D40,D0
+        009CE0  5380                       SUBQ.L   #1,D0
+        009CE2  64FC                       BCC.S    *-0x2 [0x9CE0]
+    Note however that there is a valid code path after this loop.
+
+    The watchdog is used as a form of protection on a number of games,
+    previously this was implemented as a specific hack which locked a single
+    address of SRAM.
+
+    What actually happens is if the game doesn't find valid data in the
+    backup ram it will initialize it, then sit in a loop.  The watchdog
+    should then reset the system while it is in this loop.  If the watchdog
+    fails to reset the system the code will continue and set a value in
+    backup ram to indiate that the protection check has failed.
+
+
+    Mahjong Panel notes (2009-03 FP):
+    =================================
+
+    * In Service Mode menu with mahjong panel active, controls are as
+      follows:
+
+        A = select / up (for options)
+        B = down (for options)
+        C = go to previous menu
+        E = up (for menu entries)
+        F = down (for menu entries)
+        G = left (for options)
+        H = right (for options)
+
+    * These only work with Japanese BIOS, but I think it's not a bug: I
+      doubt other BIOS were programmed to be compatible with mahjong panels
+
+****************************************************************************/
+
+#define LOG_VIDEO_SYSTEM         (0)
+#define LOG_MAIN_CPU_BANKING     (0)
+#define LOG_AUDIO_CPU_BANKING    (0)
+
+
+/*************************************
+ *
+ *  Main CPU interrupt generation
+ *
+ *************************************/
+
+
+
+// The display counter is automatically reloaded with the load register contents on scanline 224,
+// 1146 mclks from the rising edge of /HSYNC.
+#define NEOGEO_VBLANK_RELOAD_HTIM (attotime::from_ticks(1146, NEOGEO_MASTER_CLOCK))
+
+#define IRQ2CTRL_ENABLE             (0x10)
+#define IRQ2CTRL_LOAD_RELATIVE      (0x20)
+#define IRQ2CTRL_AUTOLOAD_VBLANK    (0x40)
+#define IRQ2CTRL_AUTOLOAD_REPEAT    (0x80)
+
+
+void neogeo_state::adjust_display_position_interrupt_timer()
+{
+	attotime period = attotime::from_ticks((uint64_t)m_display_counter + 1, NEOGEO_PIXEL_CLOCK);
+	if (LOG_VIDEO_SYSTEM) logerror("adjust_display_position_interrupt_timer  current y: %02x  current x: %02x   target y: %x  target x: %x\n", m_screen->vpos(), m_screen->hpos(), (m_display_counter + 1) / NEOGEO_HTOTAL, (m_display_counter + 1) % NEOGEO_HTOTAL);
+
+	m_display_position_interrupt_timer->adjust(period);
+}
+
+
+void neogeo_state::neogeo_set_display_position_interrupt_control( uint16_t data )
+{
+	m_display_position_interrupt_control = data;
+}
+
+
+void neogeo_state::neogeo_set_display_counter_msb( uint16_t data )
+{
+	m_display_counter = (m_display_counter & 0x0000ffff) | ((uint32_t)data << 16);
+
+	if (LOG_VIDEO_SYSTEM) logerror("PC %06x: set_display_counter %08x\n", m_maincpu->pc(), m_display_counter);
+}
+
+
+void neogeo_state::neogeo_set_display_counter_lsb( uint16_t data )
+{
+	m_display_counter = (m_display_counter & 0xffff0000) | data;
+
+	if (LOG_VIDEO_SYSTEM) logerror("PC %06x: set_display_counter %08x\n", m_maincpu->pc(), m_display_counter);
+
+	if (m_display_position_interrupt_control & IRQ2CTRL_LOAD_RELATIVE)
+	{
+		if (LOG_VIDEO_SYSTEM) logerror("AUTOLOAD_RELATIVE ");
+		adjust_display_position_interrupt_timer();
+	}
+}
+
+
+void neogeo_state::update_interrupts()
+{
+	m_maincpu->set_input_line(3, m_irq3_pending ? ASSERT_LINE : CLEAR_LINE);
+	m_maincpu->set_input_line(m_raster_level, m_display_position_interrupt_pending ? ASSERT_LINE : CLEAR_LINE);
+	m_maincpu->set_input_line(m_vblank_level, m_vblank_interrupt_pending ? ASSERT_LINE : CLEAR_LINE);
+}
+
+
+void neogeo_state::neogeo_acknowledge_interrupt( uint16_t data )
+{
+	if (data & 0x01)
+		m_irq3_pending = 0;
+	if (data & 0x02)
+		m_display_position_interrupt_pending = 0;
+	if (data & 0x04)
+		m_vblank_interrupt_pending = 0;
+
+	update_interrupts();
+}
+
+
+TIMER_CALLBACK_MEMBER(neogeo_state::display_position_interrupt_callback)
+{
+	if (LOG_VIDEO_SYSTEM) logerror("--- Scanline @ %d,%d\n", m_screen->vpos(), m_screen->hpos());
+
+	if (m_display_position_interrupt_control & IRQ2CTRL_ENABLE)
+	{
+		if (LOG_VIDEO_SYSTEM) logerror("*** Scanline interrupt (IRQ2) ***  y: %02x  x: %02x\n", m_screen->vpos(), m_screen->hpos());
+		m_display_position_interrupt_pending = 1;
+
+		update_interrupts();
+	}
+
+	if (m_display_position_interrupt_control & IRQ2CTRL_AUTOLOAD_REPEAT)
+	{
+		if (LOG_VIDEO_SYSTEM) logerror("AUTOLOAD_REPEAT ");
+		adjust_display_position_interrupt_timer();
+	}
+}
+
+
+TIMER_CALLBACK_MEMBER(neogeo_state::display_position_vblank_callback)
+{
+	if (m_display_position_interrupt_control & IRQ2CTRL_AUTOLOAD_VBLANK)
+	{
+		if (LOG_VIDEO_SYSTEM) logerror("AUTOLOAD_VBLANK ");
+		adjust_display_position_interrupt_timer();
+	}
+
+	/* set timer for next screen */
+	m_display_position_vblank_timer->adjust(m_screen->time_until_pos(NEOGEO_VBSTART) + NEOGEO_VBLANK_RELOAD_HTIM);
+}
+
+
+TIMER_CALLBACK_MEMBER(neogeo_state::vblank_interrupt_callback)
+{
+	if (LOG_VIDEO_SYSTEM) logerror("+++ VBLANK @ %d,%d\n", m_screen->vpos(), m_screen->hpos());
+
+	m_vblank_interrupt_pending = 1;
+	update_interrupts();
+
+	/* set timer for next screen */
+	m_vblank_interrupt_timer->adjust(m_screen->time_until_pos(NEOGEO_VBSTART) + NEOGEO_VBLANK_IRQ_HTIM);
+}
+
+
+void neogeo_state::create_interrupt_timers()
+{
+	m_display_position_interrupt_timer = machine().scheduler().timer_alloc(timer_expired_delegate(FUNC(neogeo_state::display_position_interrupt_callback),this));
+	m_display_position_vblank_timer = machine().scheduler().timer_alloc(timer_expired_delegate(FUNC(neogeo_state::display_position_vblank_callback),this));
+	m_vblank_interrupt_timer = machine().scheduler().timer_alloc(timer_expired_delegate(FUNC(neogeo_state::vblank_interrupt_callback),this));
+}
+
+
+void neogeo_state::start_interrupt_timers()
+{
+	m_vblank_interrupt_timer->adjust(m_screen->time_until_pos(NEOGEO_VBSTART) + NEOGEO_VBLANK_IRQ_HTIM);
+	m_display_position_vblank_timer->adjust(m_screen->time_until_pos(NEOGEO_VBSTART) + NEOGEO_VBLANK_RELOAD_HTIM);
+}
+
+
+
+/*************************************
+ *
+ *  Audio CPU interrupt generation
+ *
+ *************************************/
+
+void neogeo_state::audio_cpu_check_nmi()
+{
+	m_audiocpu->set_input_line(INPUT_LINE_NMI, (m_audio_cpu_nmi_enabled && m_audio_cpu_nmi_pending) ? ASSERT_LINE : CLEAR_LINE);
+}
+
+WRITE8_MEMBER(neogeo_state::audio_cpu_enable_nmi_w)
+{
+	// out ($08) enables the nmi, out ($18) disables it
+	m_audio_cpu_nmi_enabled = !(offset & 0x10);
+	audio_cpu_check_nmi();
+}
+
+/*************************************
+ *
+ *  Input ports / Controllers
+ *
+ *************************************/
+
+/*
+READ16_MEMBER(neogeo_state::in0_r)
+{
+	return ((m_edge->in0_r(space, offset) & m_ctrl1->ctrl_r(space, offset)) << 8) | m_dsw->read();
+}
+
+
+READ16_MEMBER(neogeo_state::in1_r)
+{
+	return ((m_edge->in1_r(space, offset) & m_ctrl2->ctrl_r(space, offset)) << 8) | 0xff;
+}
+*/
+
+WRITE8_MEMBER(neogeo_state::io_control_w)
+{
+	switch (offset)
+	{
+		case 0x00:
+//			if (m_ctrl1) m_ctrl1->write_ctrlsel(data);
+//			if (m_ctrl2) m_ctrl2->write_ctrlsel(data);
+//			if (m_edge) m_edge->write_ctrlsel(data);
+			break;
+
+		case 0x10:
+			break;
+
+		case 0x18:
+			if (m_type == NEOGEO_MVS)
+				set_output_latch(data);
+			break;
+
+		case 0x20:
+			if (m_type == NEOGEO_MVS)
+				set_output_data(data);
+			break;
+
+		case 0x28:
+			if (m_type == NEOGEO_MVS)
+			{
+				m_upd4990a->data_in_w(data >> 0 & 1);
+				m_upd4990a->clk_w(data >> 1 & 1);
+				m_upd4990a->stb_w(data >> 2 & 1);
+			}
+			break;
+
+//  case 0x30: break; // coin counters
+//  case 0x31: break; // coin counters
+//  case 0x32: break; // coin lockout
+//  case 0x33: break; // coin lockout
+
+		default:
+			logerror("PC: %x  Unmapped I/O control write.  Offset: %x  Data: %x\n", machine().describe_context(), offset, data);
+			break;
+	}
+}
+
+
+/*************************************
+ *
+ *  Unmapped memory access
+ *
+ *************************************/
+
+READ16_MEMBER(neogeo_state::neogeo_unmapped_r)
+{
+	uint16_t ret;
+
+	/* unmapped memory returns the last word on the data bus, which is almost always the opcode
+	   of the next instruction due to prefetch */
+
+	/* prevent recursion */
+	if (m_recurse)
+		ret = 0xffff;
+	else
+	{
+		m_recurse = true;
+		ret = space.read_word(m_maincpu->pc());
+		m_recurse = false;
+	}
+	return ret;
+}
+
+/*************************************
+ *
+ *  NVRAM (Save RAM)
+ *
+ *************************************/
+
+void neogeo_state::set_save_ram_unlock( uint8_t data )
+{
+	m_save_ram_unlocked = data;
+}
+
+
+WRITE16_MEMBER(neogeo_state::save_ram_w)
+{
+	if (m_save_ram_unlocked)
+		COMBINE_DATA(&m_save_ram[offset]);
+}
+
+/*************************************
+ *
+ *  Memory card
+ *
+ *************************************/
+
+CUSTOM_INPUT_MEMBER(neogeo_state::get_memcard_status)
+{
+	// D0 and D1 are memcard 1 and 2 presence indicators, D2 indicates memcard
+	// write protect status (we are always write enabled)
+	return (m_memcard->present() == -1) ? 0x07 : 0x00;
+}
+
+
+READ16_MEMBER(neogeo_state::memcard_r)
+{
+	m_maincpu->eat_cycles(2); // insert waitstate
+
+	uint16_t ret;
+
+	if (m_memcard->present() != -1)
+		ret = m_memcard->read(space, offset) | 0xff00;
+	else
+		ret = 0xffff;
+
+	return ret;
+}
+
+
+WRITE16_MEMBER(neogeo_state::memcard_w)
+{
+	m_maincpu->eat_cycles(2); // insert waitstate
+
+	if (ACCESSING_BITS_0_7)
+	{
+		if (m_memcard->present() != -1)
+				m_memcard->write(space, offset, data);
+	}
+}
+
+/*************************************
+ *
+ *  Inter-CPU communications
+ *
+ *************************************/
+
+WRITE8_MEMBER(neogeo_state::audio_command_w)
+{
+	m_soundlatch->write(data);
+
+	m_audio_cpu_nmi_pending = true;
+	audio_cpu_check_nmi();
+
+	/* boost the interleave to let the audio CPU read the command */
+	machine().scheduler().boost_interleave(attotime::zero, attotime::from_usec(50));
+}
+
+
+READ8_MEMBER(neogeo_state::audio_command_r)
+{
+	uint8_t ret = m_soundlatch->read();
+
+	m_audio_cpu_nmi_pending = false;
+	audio_cpu_check_nmi();
+
+	return ret;
+}
+
+
+CUSTOM_INPUT_MEMBER(neogeo_state::get_audio_result)
+{
+	uint8_t ret = m_soundlatch2->read();
+
+	return ret;
+}
+
+
+
+
+void neogeo_state::neogeo_main_cpu_banking_init()
+{
+	m_use_cart_vectors = 0;
+
+	if (m_type != NEOGEO_CD)
+	{
+		m_banked_cart->init_banks();
+	}
+}
+
+
+/*************************************
+ *
+ *  Audio CPU banking
+ *
+ *************************************/
+
+READ8_MEMBER(neogeo_state::audio_cpu_bank_select_r)
+{
+	m_bank_audio_cart[offset & 3]->set_entry(offset >> 8);
+
+	return 0;
+}
+
+
+void neogeo_state::neogeo_audio_cpu_banking_init(int set_entry)
+{
+	if (m_type == NEOGEO_CD) return;
+
+	int region;
+	int bank;
+	uint8_t *rgn;
+	uint32_t address_mask;
+
+	rgn = memregion("audiocpu")->base();
+
+	/* audio bios/cartridge selection */
+	m_bank_audio_main->configure_entry(1, memregion("audiocpu")->base());
+	if (memregion("audiobios"))
+		m_bank_audio_main->configure_entry(0, memregion("audiobios")->base());
+	else /* on hardware with no SM1 ROM, the cart ROM is always enabled */
+		m_bank_audio_main->configure_entry(0, memregion("audiocpu")->base());
+
+	m_bank_audio_main->set_entry(m_use_cart_audio);
+
+	/* audio banking */
+	m_bank_audio_cart[0] = membank("audio_f000");
+	m_bank_audio_cart[1] = membank("audio_e000");
+	m_bank_audio_cart[2] = membank("audio_c000");
+	m_bank_audio_cart[3] = membank("audio_8000");
+
+	address_mask = (memregion("audiocpu")->bytes() - 0x10000 - 1) & 0x3ffff;
+
+
+	for (region = 0; region < 4; region++)
+	{
+		for (bank = 0xff; bank >= 0; bank--)
+		{
+			uint32_t bank_address = 0x10000 + ((bank << (11 + region)) & address_mask);
+			m_bank_audio_cart[region]->configure_entry(bank, &rgn[bank_address]);
+		}
+	}
+
+	// set initial audio banks - THIS IS A HACK
+	// Z80 banking is handled by the NEO-ZMC chip in the cartridge
+	// (in later cartridges, by multifunction banking/protection chips that implement the same bank scheme)
+	// On the real chip, initial banks are all 0.
+	// However, early cartridges with less than 64KB of Z80 code and data don't have ROM banking at all.
+	// These initial bank settings are required so non-banked games will work until we identify them
+	// and use a different Z80 address map for them.
+	m_bank_audio_cart[0]->set_entry(0x1e);
+	m_bank_audio_cart[1]->set_entry(0x0e);
+	m_bank_audio_cart[2]->set_entry(0x06);
+	m_bank_audio_cart[3]->set_entry(0x02);
+}
+
+/*************************************
+ *
+ *  System control register
+ *
+ *************************************/
+
+WRITE8_MEMBER(neogeo_state::system_control_w)
+{
+	uint8_t bit = (offset >> 3) & 0x01;
+
+	switch (offset & 0x07)
+	{
+		default:
+		case 0x00:
+			neogeo_set_screen_shadow(bit);
+			break;
+
+		case 0x01:
+			if (m_type == NEOGEO_CD)
+				printf("NeoCD: write to regular vector change address? %d\n", bit); // what IS going on with "neocdz doubledr" and why do games write here if it's hooked up to nothing?
+			else
+				m_use_cart_vectors = bit;
+			break;
+
+		case 0x05:
+			if (m_type == NEOGEO_MVS)
+			{
+				m_use_cart_audio = bit;
+				m_sprgen->neogeo_set_fixed_layer_source(bit);
+				m_bank_audio_main->set_entry(m_use_cart_audio);
+			}
+			break;
+
+		case 0x06:
+			if (m_type == NEOGEO_MVS)
+				set_save_ram_unlock(bit);
+			break;
+
+		case 0x07:
+			neogeo_set_palette_bank(bit);
+			break;
+
+		case 0x02: // memory card 1: write enable/disable
+		case 0x03: // memory card 2: write disable/enable
+		case 0x04: // memory card: register select enable/set to normal (what does it mean?)
+			logerror("PC: %x  Unmapped system control write.  Offset: %x  Data: %x\n", machine().describe_context(), offset & 0x07, bit);
+			break;
+	}
+
+	if (LOG_VIDEO_SYSTEM && ((offset & 0x07) != 0x06)) logerror("PC: %x  System control write.  Offset: %x  Data: %x\n", machine().describe_context(), offset & 0x07, bit);
+}
+
+/*************************************
+ *
+ *  LEDs
+ *
+ *************************************/
+
+void neogeo_state::set_outputs(  )
+{
+	static const uint8_t led_map[0x10] =
+		{ 0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,0x58,0x4c,0x62,0x69,0x78,0x00 };
+
+	/* EL */
+	m_out_digit[0] = led_map[m_el_value];
+
+	/* LED1 */
+	m_out_digit[1] = led_map[m_led1_value >> 4];
+	m_out_digit[2] = led_map[m_led1_value & 0x0f];
+
+	/* LED2 */
+	m_out_digit[3] = led_map[m_led2_value >> 4];
+	m_out_digit[4] = led_map[m_led2_value & 0x0f];
+}
+
+
+void neogeo_state::set_output_latch( uint8_t data )
+{
+	/* looks like the LEDs are set on the
+	   falling edge */
+	uint8_t falling_bits = m_output_latch & ~data;
+
+	if (falling_bits & 0x08)
+		m_el_value = 16 - (m_output_data & 0x0f);
+
+	if (falling_bits & 0x10)
+		m_led1_value = ~m_output_data;
+
+	if (falling_bits & 0x20)
+		m_led2_value = ~m_output_data;
+
+	if (falling_bits & 0xc7)
+		logerror("%s  Unmaped LED write.  Data: %x\n", machine().describe_context(), falling_bits);
+
+	m_output_latch = data;
+
+	set_outputs();
+}
+
+
+void neogeo_state::set_output_data( uint8_t data )
+{
+	m_output_data = data;
+}
+
+
+
+/*************************************
+ *
+ *  Machine initialization
+ *
+ *************************************/
+
+void neogeo_state::init_neogeo()
+{
+	m_banked_cart->install_banks(machine(), m_maincpu, m_region_maincpu->base(), m_region_maincpu->bytes());
+
+	m_sprgen->m_fixed_layer_bank_type = 0;
+
+	// install controllers
+	//m_maincpu->space(AS_PROGRAM).install_read_handler(0x300000, 0x300001, 0, 0x01ff7e, 0, read16_delegate(FUNC(neogeo_state::in0_r), this));
+	//m_maincpu->space(AS_PROGRAM).install_read_handler(0x340000, 0x340001, 0, 0x01fffe, 0, read16_delegate(FUNC(neogeo_state::in1_r), this));
+
+    m_maincpu->space(AS_PROGRAM).install_read_port(0x340000, 0x340001, 0x01fffe, "P2");
+}
+
+
+void neogeo_state::neogeo_postload()
+{
+	m_bank_audio_main->set_entry(m_use_cart_audio);
+
+	if (m_type == NEOGEO_MVS) set_outputs();
+}
+
+
+void neogeo_state::machine_start()
+{
+	m_out_digit.resolve();
+	m_type = NEOGEO_MVS;
+
+	/* set the initial main CPU bank */
+	neogeo_main_cpu_banking_init();
+
+	/* set the initial audio CPU ROM banks */
+	neogeo_audio_cpu_banking_init(1);
+
+	create_interrupt_timers();
+
+	/* irq levels for MVS / AES */
+	m_vblank_level = 1;
+	m_raster_level = 2;
+
+	/* start with an IRQ3 - but NOT on a reset */
+	m_irq3_pending = 1;
+
+	// enable rtc and serial mode
+	m_upd4990a->cs_w(1);
+	m_upd4990a->oe_w(1);
+	m_upd4990a->c0_w(1);
+	m_upd4990a->c1_w(1);
+	m_upd4990a->c2_w(1);
+
+	/* register state save */
+	save_item(NAME(m_display_position_interrupt_control));
+	save_item(NAME(m_display_counter));
+	save_item(NAME(m_vblank_interrupt_pending));
+	save_item(NAME(m_display_position_interrupt_pending));
+	save_item(NAME(m_irq3_pending));
+	save_item(NAME(m_audio_cpu_nmi_enabled));
+	save_item(NAME(m_audio_cpu_nmi_pending));
+	save_item(NAME(m_save_ram_unlocked));
+	save_item(NAME(m_output_data));
+	save_item(NAME(m_output_latch));
+	save_item(NAME(m_el_value));
+	save_item(NAME(m_led1_value));
+	save_item(NAME(m_led2_value));
+
+	save_item(NAME(m_use_cart_vectors));
+	save_item(NAME(m_use_cart_audio));
+
+	machine().save().register_postload(save_prepost_delegate(FUNC(neogeo_state::neogeo_postload), this));
+
+	m_sprgen->set_screen(m_screen);
+	m_sprgen->set_sprite_region(m_region_sprites->base(), m_region_sprites->bytes());
+	m_sprgen->set_fixed_regions(m_region_fixed->base(), m_region_fixed->bytes(), m_region_fixedbios);
+
+}
+
+/*************************************
+ *
+ *  Machine reset
+ *
+ *************************************/
+
+void neogeo_state::machine_reset()
+{
+	offs_t offs;
+	address_space &space = m_maincpu->space(AS_PROGRAM);
+
+	/* reset system control registers */
+	for (offs = 0; offs < 8; offs++)
+		system_control_w(space, offs, 0);
+
+	// disable audiocpu nmi
+	m_audio_cpu_nmi_enabled = false;
+	m_audio_cpu_nmi_pending = false;
+	audio_cpu_check_nmi();
+
+	m_maincpu->reset();
+
+	start_interrupt_timers();
+
+	/* trigger the IRQ3 that was set by MACHINE_START */
+	update_interrupts();
+
+	m_recurse = false;
+}
+
+READ16_MEMBER(neogeo_state::banked_vectors_r)
+{
+	if (!m_use_cart_vectors)
+	{
+		uint16_t* bios = (uint16_t*)memregion("mainbios")->base();
+		return bios[offset];
+	}
+	else
+	{
+		uint16_t* game = (uint16_t*)m_region_maincpu->base();
+		return game[offset];
+	}
+
+}
+
+READ16_MEMBER(neogeo_state::neogeo_slot_rom_low_r)
+{
+	return 0;
+}
+
+READ16_MEMBER(neogeo_state::neogeo_slot_rom_low_vectors_r)
+{
+	if (!m_use_cart_vectors)
+	{
+		uint16_t* bios = (uint16_t*)memregion("mainbios")->base();
+		return bios[offset];
+	}
+	else
+	{
+		return 0;
+	}
+
+}
+
+/*************************************
+ *
+ *  Main CPU memory handlers
+ *
+ *************************************/
+
+void neogeo_state::neogeo_main_map(address_map &map)
+{
+	map(0x100000,0x10ffff).mirror(0x0f0000).ram();
+	/* some games have protection devices in the 0x200000 region, it appears to map to cart space, not surprising, the ROM is read here too */
+	map(0x300000,0x300001).mirror(0x01ff7e).portr("DSW");
+	map(0x300080,0x300081).mirror(0x01ff7e).portr("TEST");
+	map(0x300000,0x300001).mirror(0x01fffe).w("watchdog",FUNC(watchdog_timer_device::reset_w)).umask16(0x00ff);
+	map(0x320000,0x320001).mirror(0x01fffe).portr("AUDIO/COIN");
+	map(0x320000,0x320001).mirror(0x01fffe).w(FUNC(neogeo_state::audio_command_w)).umask16(0xff00);
+	map(0x340000,0x340001).mirror(0x01fffe).portr("P2");
+	map(0x360000,0x37ffff).r(FUNC(neogeo_state::neogeo_unmapped_r));
+	map(0x380000,0x380001).mirror(0x01fffe).portr("SYSTEM");
+	map(0x380000,0x38007f).mirror(0x01ff80).w(FUNC(neogeo_state::io_control_w)).umask16(0x00ff);
+	map(0x3a0000,0x3a001f).mirror(0x01ffe0).r(FUNC(neogeo_state::neogeo_unmapped_r));
+	map(0x3a0000,0x3a001f).mirror(0x01ffe0).w(FUNC(neogeo_state::system_control_w)).umask16(0x00ff);
+	map(0x3c0000,0x3c0007).mirror(0x01fff8).r(FUNC(neogeo_state::neogeo_video_register_r));
+	map(0x3c0000,0x3c000f).mirror(0x01fff0).w(FUNC(neogeo_state::neogeo_video_register_w));
+	map(0x3e0000,0x3fffff).r(FUNC(neogeo_state::neogeo_unmapped_r));
+	map(0x400000,0x401fff).mirror(0x3fe000).rw(FUNC(neogeo_state::neogeo_paletteram_r),FUNC(neogeo_state::neogeo_paletteram_w));
+	map(0x800000,0x800fff).rw(FUNC(neogeo_state::memcard_r),FUNC(neogeo_state::memcard_w));
+	map(0xc00000,0xc1ffff).mirror(0x0e0000).rom().region("mainbios",0);
+	map(0xd00000,0xd0ffff).mirror(0x0f0000).ram().w(FUNC(neogeo_state::save_ram_w)).share("saveram");
+	map(0xe00000,0xffffff).r(FUNC(neogeo_state::neogeo_unmapped_r));
+}
+
+
+void neogeo_state::main_map_slot(address_map &map)
+{
+	neogeo_main_map(map);
+	map(0x000000,0x00007f).r(FUNC(neogeo_state::neogeo_slot_rom_low_vectors_r));
+	map(0x000080,0x0fffff).r(FUNC(neogeo_state::neogeo_slot_rom_low_r));
+	map(0x200000,0x2fffff).bankr("cartridge");
+//  AM_RANGE(0x2ffff0, 0x2fffff) AM_WRITE(main_cpu_bank_select_w)
+}
+
+/*************************************
+ *
+ *  Audio CPU memory handlers
+ *
+ *************************************/
+
+void neogeo_state::audio_map(address_map &map)
+{
+	map(0x0000,0x7fff).bankr("audio_main");
+	map(0x8000,0xbfff).bankr("audio_8000");
+	map(0xc000,0xdfff).bankr("audio_c000");
+	map(0xe000,0xefff).bankr("audio_e000");
+	map(0xf000,0xf7ff).bankr("audio_f000");
+	map(0xf800,0xffff).ram();
+}
+
+/*************************************
+ *
+ *  Audio CPU port handlers
+ *
+ *************************************/
+
+void neogeo_state::audio_io_map(address_map &map)
+{
+	map(0x00,0x00).mirror(0xff00).r(FUNC(neogeo_state::audio_command_r)).w("soundlatch",FUNC(generic_latch_8_device::clear_w));
+	map(0x04,0x07).mirror(0xff00).rw("ymsnd",FUNC(ym2610_device::read),FUNC(ym2610_device::write));
+	map(0x08,0x08).mirror(0xff00).select(0x0010).w(FUNC(neogeo_state::audio_cpu_enable_nmi_w));
+	map(0x08,0x0b).mirror(0x00f0).select(0xff00).r(FUNC(neogeo_state::audio_cpu_bank_select_r));
+	map(0x0c,0x0c).mirror(0xff00).w("soundlatch2",FUNC(generic_latch_8_device::write));
+}
+
+/*************************************
+ *
+ *  Standard Neo-Geo DIPs and
+ *  input port definition
+ *
+ *************************************/
+
+INPUT_PORTS_START( neogeo )
+	PORT_START("DSW")
+	PORT_DIPNAME( 0x01, 0x01, "Setting Mode" ) PORT_DIPLOCATION("SW:1")
+	PORT_DIPSETTING(    0x01, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x02, 0x02, DEF_STR( Cabinet ) ) PORT_DIPLOCATION("SW:2")
+	PORT_DIPSETTING(    0x02, DEF_STR( Normal ) )
+	PORT_DIPSETTING(    0x00, "VS Mode" )
+	PORT_DIPNAME( 0x04, 0x04, DEF_STR( Controller ) ) PORT_DIPLOCATION("SW:3")
+	PORT_DIPSETTING(    0x04, DEF_STR( Joystick ) )
+	PORT_DIPSETTING(    0x00, "Mahjong Panel" )
+	PORT_DIPNAME( 0x18, 0x18, "COMM Setting (Cabinet No.)" ) PORT_DIPLOCATION("SW:4,5")
+	PORT_DIPSETTING(    0x18, "1" )
+	PORT_DIPSETTING(    0x10, "2" )
+	PORT_DIPSETTING(    0x08, "3" )
+	PORT_DIPSETTING(    0x00, "4" )
+	PORT_DIPNAME( 0x20, 0x20, "COMM Setting (Link Enable)" ) PORT_DIPLOCATION("SW:6")
+	PORT_DIPSETTING(    0x20, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x40, 0x40, DEF_STR( Free_Play ) ) PORT_DIPLOCATION("SW:7")
+	PORT_DIPSETTING(    0x40, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x80, 0x80, "Freeze" ) PORT_DIPLOCATION("SW:8")
+	PORT_DIPSETTING(    0x80, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_JOYSTICK_UP )
+	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_JOYSTICK_DOWN )
+	PORT_BIT( 0x0400, IP_ACTIVE_LOW, IPT_JOYSTICK_LEFT )
+	PORT_BIT( 0x0800, IP_ACTIVE_LOW, IPT_JOYSTICK_RIGHT )
+	PORT_BIT( 0x1000, IP_ACTIVE_LOW, IPT_BUTTON1 )
+	PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_BUTTON2 )
+	PORT_BIT( 0x4000, IP_ACTIVE_LOW, IPT_BUTTON3 )
+	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON4 )
+
+	PORT_START("P2")
+	PORT_BIT( 0x00ff, IP_ACTIVE_LOW, IPT_UNUSED )
+	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_JOYSTICK_UP ) PORT_PLAYER(2)
+	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_JOYSTICK_DOWN ) PORT_PLAYER(2)
+	PORT_BIT( 0x0400, IP_ACTIVE_LOW, IPT_JOYSTICK_LEFT ) PORT_PLAYER(2)
+	PORT_BIT( 0x0800, IP_ACTIVE_LOW, IPT_JOYSTICK_RIGHT ) PORT_PLAYER(2)
+	PORT_BIT( 0x1000, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(2)
+	PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_PLAYER(2)
+	PORT_BIT( 0x4000, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(2)
+	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_PLAYER(2)
+
+	PORT_START("SYSTEM")
+	PORT_BIT( 0x00ff, IP_ACTIVE_LOW, IPT_UNUSED )
+	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_START1 )
+	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_OTHER ) PORT_NAME("Next Game") PORT_CODE(KEYCODE_3)
+	PORT_BIT( 0x0400, IP_ACTIVE_LOW, IPT_START2 )
+	PORT_BIT( 0x0800, IP_ACTIVE_LOW, IPT_OTHER ) PORT_NAME("Previous Game") PORT_CODE(KEYCODE_4)
+	PORT_BIT( 0x7000, IP_ACTIVE_HIGH, IPT_CUSTOM ) PORT_CUSTOM_MEMBER(neogeo_state, get_memcard_status)
+	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_CUSTOM ) /* Hardware type (AES=0, MVS=1). Some games check this and show a piracy warning screen if the hardware and BIOS don't match */
+
+	PORT_START("AUDIO/COIN")
+	PORT_BIT( 0x0001, IP_ACTIVE_LOW, IPT_COIN1 )
+	PORT_BIT( 0x0002, IP_ACTIVE_LOW, IPT_COIN2 )
+	PORT_BIT( 0x0004, IP_ACTIVE_LOW, IPT_SERVICE1 )
+	PORT_BIT( 0x0008, IP_ACTIVE_LOW, IPT_COIN3 ) /* What is this? "us-e" BIOS uses it as a coin input; Universe BIOS uses it to detect MVS or AES hardware */
+	PORT_BIT( 0x0010, IP_ACTIVE_LOW, IPT_COIN4 ) /* What is this? "us-e" BIOS uses it as a coin input; Universe BIOS uses it to detect MVS or AES hardware */
+	PORT_BIT( 0x0020, IP_ACTIVE_LOW, IPT_CUSTOM ) /* what is this? When ACTIVE_HIGH + IN4 bit 6 ACTIVE_LOW MVS-4 slot is detected */
+	PORT_BIT( 0x0040, IP_ACTIVE_HIGH, IPT_CUSTOM ) PORT_READ_LINE_DEVICE_MEMBER("upd4990a", upd1990a_device, tp_r)
+	PORT_BIT( 0x0080, IP_ACTIVE_HIGH, IPT_CUSTOM ) PORT_READ_LINE_DEVICE_MEMBER("upd4990a", upd1990a_device, data_out_r)
+	PORT_BIT( 0xff00, IP_ACTIVE_HIGH, IPT_CUSTOM ) PORT_CUSTOM_MEMBER(neogeo_state,get_audio_result)
+
+	PORT_START("TEST")
+	PORT_BIT( 0x003f, IP_ACTIVE_HIGH, IPT_UNUSED )
+	PORT_BIT( 0x0040, IP_ACTIVE_HIGH, IPT_CUSTOM ) /* what is this? If ACTIVE_LOW, MVS-6 slot detected, when ACTIVE_HIGH MVS-1 slot (AES) detected */
+	PORT_SERVICE_NO_TOGGLE( 0x0080, IP_ACTIVE_LOW )
+	PORT_BIT( 0xff00, IP_ACTIVE_LOW, IPT_UNUSED )
+INPUT_PORTS_END
+
+static INPUT_PORTS_START( neogeo_6slot )
+	PORT_INCLUDE( neogeo )
+
+	PORT_MODIFY("TEST")
+	PORT_BIT( 0x0040, IP_ACTIVE_LOW, IPT_CUSTOM )
+INPUT_PORTS_END
+
+
+// Fixed
+const gfx_layout charlayout =
+{
+	8,8,			/* 8 x 8 chars */
+	RGN_FRAC(1,1),
+	4,				/* 4 bits per pixel */
+	{ 0, 1, 2, 3 },    /* planes are packed in a nibble */
+	{ 33*4, 32*4, 49*4, 48*4, 1*4, 0*4, 17*4, 16*4 },
+	{ 0*8, 1*8, 2*8, 3*8, 4*8, 5*8, 6*8, 7*8 },
+	32*8	/* 32 bytes per char */
+};
+
+// Sprites
+const gfx_layout tilelayout =
+{
+	16,16,	 /* 16*16 sprites */
+	RGN_FRAC(1,1),
+	4,
+	{ GFX_RAW },
+	{ 0 },		/* org displacement */
+	{ 8*8 },	/* line modulo */
+	128*8		/* char modulo */
+};
+
+GFXDECODE_START( gfx_neogeo )
+	GFXDECODE_ENTRY( "fixed",     0x0000, charlayout, 0, 0x1fff )
+	GFXDECODE_ENTRY( "fixedbios", 0x0000, charlayout, 0, 0x1fff )
+	//GFXDECODE_ENTRY( "sprites",   0x0000, tilelayout, 0, 0x1fff )  // not working
+GFXDECODE_END
+
+
+/*************************************
+ *
+ *  Machine driver
+ *
+ *************************************/
+
+void neogeo_state::neogeo_base(machine_config &config)
+{
+	/* basic machine hardware */
+	M68000(config, m_maincpu, NEOGEO_MAIN_CPU_CLOCK);
+	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::neogeo_main_map);
+
+	Z80(config, m_audiocpu, NEOGEO_AUDIO_CPU_CLOCK);
+	m_audiocpu->set_addrmap(AS_PROGRAM, &neogeo_state::audio_map);
+	m_audiocpu->set_addrmap(AS_IO, &neogeo_state::audio_io_map);
+
+	/* video hardware */
+	config.set_default_layout(layout_neogeo);
+
+	SCREEN(config, m_screen, SCREEN_TYPE_RASTER);
+	m_screen->set_raw(NEOGEO_PIXEL_CLOCK, NEOGEO_HTOTAL, NEOGEO_HBEND, NEOGEO_HBSTART, NEOGEO_VTOTAL, NEOGEO_VBEND, NEOGEO_VBSTART);
+	m_screen->set_screen_update(FUNC(neogeo_state::screen_update_neogeo));
+
+	GFXDECODE(config, "gfxdecode", m_palette, gfx_neogeo);
+	/* 4096 colors * two banks * normal and shadow */
+	PALETTE(config, m_palette, palette_device::BLACK, 4096*2*2);
+
+	NEOGEO_SPRITE(config, m_sprgen, 0).set_screen(m_screen);
+
+	/* audio hardware */
+	SPEAKER(config, "lspeaker").front_left();
+	SPEAKER(config, "rspeaker").front_right();
+
+	GENERIC_LATCH_8(config, m_soundlatch);
+	GENERIC_LATCH_8(config, m_soundlatch2);
+
+	YM2610(config, m_ym, NEOGEO_YM2610_CLOCK);
+	m_ym->irq_handler().set_inputline(m_audiocpu, 0);
+	m_ym->add_route(0, "lspeaker", 0.28);
+	m_ym->add_route(0, "rspeaker", 0.28);
+	m_ym->add_route(1, "lspeaker", 0.98);
+	m_ym->add_route(2, "rspeaker", 0.98);
+	NEOGEO_BANKED_CART(config, "banked_cart");
+}
+
+void neogeo_state::neogeo_arcade(machine_config &config)
+{
+	neogeo_base(config);
+	WATCHDOG_TIMER(config, "watchdog").set_time(attotime::from_ticks(3244030, NEOGEO_MASTER_CLOCK));
+	UPD4990A(config, m_upd4990a);
+	NVRAM(config, "saveram", nvram_device::DEFAULT_ALL_0);
+	NG_MEMCARD(config, "memcard");
+}
+
+void neogeo_state::mvs(machine_config &config)
+{
+	neogeo_arcade(config);
+	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::main_map_slot);
+
+//	NEOGEO_CTRL_EDGE_CONNECTOR(config, m_edge, neogeo_arc_edge, "joy", false);
+
+//	NEOGEO_CONTROL_PORT(config, "ctrl1", neogeo_arc_pin15, "", false);
+//	NEOGEO_CONTROL_PORT(config, "ctrl2", neogeo_arc_pin15, "", false);
+}
+
+void neogeo_state::main_map_noslot(address_map &map)
+{
+	neogeo_main_map(map);
+	map(0x000000,0x00007f).r(FUNC(neogeo_state::banked_vectors_r));
+	map(0x000080,0x0fffff).rom();
+}
+
+void neogeo_state::neogeo_noslot(machine_config &config)
+{
+	neogeo_arcade(config); // no slot config (legacy mame)
+	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::main_map_noslot);
+
+	//joystick controller
+///	NEOGEO_CTRL_EDGE_CONNECTOR(config, m_edge, neogeo_arc_edge, "joy", true);
+
+	//no mahjong controller
+//	NEOGEO_CONTROL_PORT(config, "ctrl1", neogeo_arc_pin15, "", true);
+//	NEOGEO_CONTROL_PORT(config, "ctrl2", neogeo_arc_pin15, "", true);
+
+	MSLUGX_PROT(config, "mslugx_prot");
+	SMA_PROT(config, "sma_prot");
+	CMC_PROT(config, "cmc_prot");
+	PCM2_PROT(config, "pcm2_prot");
+	PVC_PROT(config, "pvc_prot");
+	NGBOOTLEG_PROT(config, "bootleg_prot");
+	KOF2002_PROT(config, "kof2002_prot");
+	FATFURY2_PROT(config, "fatfury2_prot");
+	KOF98_PROT(config, "kof98_prot");
+	SBP_PROT(config, "sbp_prot");
+}
+
+/*************************************
+ *
+ *  Game-specific inits
+ *
+ *************************************/
+
+void neogeo_state::init_mslug3a()
+{
+	init_neogeo();
+	m_sma_prot->mslug3a_decrypt_68k(cpuregion);
+	m_sprgen->m_fixed_layer_bank_type = 1;
+	m_cmc_prot->cmc42_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG3_GFX_KEY);
+	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+	m_sma_prot->mslug3a_install_protection(m_maincpu,m_banked_cart);
+}
+
+void neogeo_state::init_mslug3hb()
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 1;
+
+	// decrypt p roms if needed
+	u8 *ram = memregion("maincpu")->base();
+	if (ram[0x100] != 0x45)
+	{
+		//printf("Maincpu=%X\n",ram[0x100]);fflush(stdout);
+		m_sma_prot->mslug3_decrypt_68k(cpuregion);
+	    m_sma_prot->mslug3_install_protection(m_maincpu,m_banked_cart);
+	}
+
+	// decrypt c roms if needed
+	ram = memregion("sprites")->base();
+	if (ram[0] != 0)
+	{
+		//printf("Sprites=%X\n",ram[0]);
+		m_cmc_prot->cmc42_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG3_GFX_KEY);
+	}
+
+	// if no s rom, copy info from end of c roms
+	ram = memregion("fixed")->base();
+	if (ram[0x100] == 0)
+	{
+		//printf("Fixed1=%X\n",ram[0x100]);
+		m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+	}
+}
+
+void neogeo_state::init_mslug3b6()
+{
+	init_neogeo();
+	m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size,2);
+	m_cmc_prot->cmc42_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG3_GFX_KEY);
+}
+
+void neogeo_state::init_mslug3b6d()
+{
+	init_neogeo();
+	m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size,2);
+}
+
+void neogeo_state::init_mslug4e()
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 1; /* USA violent content screen is wrong -- not a bug, confirmed on real hardware! */
+	m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region,audio_region_size);
+	m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG4_GFX_KEY);
+	m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size,0);
+	m_pcm2_prot->neo_pcm2_snk_1999(ym_region, ym_region_size, 8);
+}
+
+void neogeo_state::init_mslug4hb()
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 1;
+
+	// decrypt m1 if needed
+	if (memregion("audiocrypt"))
+		m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region, audio_region_size);
+
+	// decrypt v roms if needed
+	u8 *ram = memregion("ymsnd")->base();
+	if (ram[0x20] != 0x99)
+	{
+		//printf("ym=%X\n",ram[0x20]);
+		m_pcm2_prot->neo_pcm2_snk_1999(ym_region, ym_region_size, 8);
+	}
+
+	// decrypt c roms if needed
+	ram = memregion("sprites")->base();
+	if (ram[0] != 0)
+	{
+		//printf("Sprites=%X\n",ram[0]);
+		m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG4_GFX_KEY);
+	}
+
+	// if no s rom, copy info from end of c roms
+	ram = memregion("fixed")->base();
+	if (ram[0x100] == 0)
+	{
+		//printf("Fixed1=%X\n",ram[0x100]);
+		m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+	}
+}
+
+void neogeo_state::init_mslug5ast()
+{
+	init_neogeo();
+	m_pvc_prot->mslug5_decrypt_68k(cpuregion, cpuregion_size);
+	m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 2);
+	m_sprgen->m_fixed_layer_bank_type = 1;
+	m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region,audio_region_size);
+	m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG5_GFX_KEY);
+	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+	m_pvc_prot->install_pvc_protection(m_maincpu,m_banked_cart);
+}
+
+void neogeo_state::init_mslug5b()
+{
+	init_neogeo();
+	m_bootleg_prot->mslug5b_vx_decrypt(ym_region, ym_region_size);
+	m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size, 2);
+	m_bootleg_prot->mslug5b_cx_decrypt(spr_region, spr_region_size);
+}
+
+void neogeo_state::init_mslug5b1()
+{
+	init_mslug5hb();
+	m_pvc_prot->install_pvc_protection(m_maincpu, m_banked_cart);
+}
+
+void neogeo_state::init_mslug5hb()
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 2; // for those sets with 512k of s1
+
+	// decrypt p roms if needed
+	u8 *ram = memregion("maincpu")->base();
+	if (ram[0x100] != 0x45)
+	{
+		//printf("Maincpu=%X\n",ram[0x100]);fflush(stdout);
+		m_pvc_prot->mslug5_decrypt_68k(cpuregion, cpuregion_size);
+		m_pvc_prot->install_pvc_protection(m_maincpu, m_banked_cart);
+	}
+
+	// decrypt m1 if needed
+	if (memregion("audiocrypt"))
+		m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region, audio_region_size);
+
+	// decrypt v roms if needed
+	ram = memregion("ymsnd")->base();
+	if (ram[0x60] != 0x82)
+	{
+		//printf("ym=%X\n",ram[0x60]);
+		m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 2);
+	}
+
+	// decrypt c roms if needed
+	ram = memregion("sprites")->base();
+	if (ram[0] != 0)
+	{
+		//printf("Sprites=%X\n",ram[0]);
+		m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG5_GFX_KEY);
+	}
+
+	// if no s rom, copy info from end of c roms
+	ram = memregion("fixed")->base();
+	if (ram[0x100] == 0)
+	{
+		//printf("Fixed1=%X\n",ram[0x100]);
+		m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+	}
+
+	// decrypt s1 if needed
+	if (ram[0x100] != 0xBB)
+	{
+		//printf("Fixed2=%X\n",ram[0]);
+		m_sma_prot->svcpcb_s1data_decrypt(fix_region, fix_region_size);
+	    install_banked_bios();
+	}
+}
+
+void neogeo_state::init_ms5plushb()
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 1; // for those sets with 512k of s1
+
+	// decrypt p roms if needed
+	u8 *ram = memregion("maincpu")->base();
+	if (ram[0x100] != 0x25)
+	{
+		//printf("Maincpu=%X\n",ram[0x100]);fflush(stdout);
+		m_bootleg_prot->install_ms5plus_protection(m_maincpu,m_banked_cart);
+	}
+
+	// decrypt m1 if needed
+	if (memregion("audiocrypt"))
+		m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region, audio_region_size);
+
+	// decrypt v roms if needed
+	ram = memregion("ymsnd")->base();
+	if (ram[0x60] != 0x82)
+	{
+		//printf("ym=%X\n",ram[0x60]);
+		m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 2);
+	}
+
+	// decrypt c roms if needed
+	ram = memregion("sprites")->base();
+	if (ram[0] != 0)
+	{
+		//printf("Sprites=%X\n",ram[0]);
+		m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG5_GFX_KEY);
+	    m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size,1);
+	}
+
+	// if no s rom, copy info from end of c roms
+	ram = memregion("fixed")->base();
+	if (ram[0x100] == 0)
+	{
+		//printf("Fixed1=%X\n",ram[0x100]);
+		m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+	    
+	}
+}
+
+void neogeo_state::init_mslug5rm()
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 1;
+	m_cmc_prot->cmc42_neogeo_gfx_decrypt(spr_region, spr_region_size, S1945P_GFX_KEY);
+	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+}
+
+void neogeo_state::init_mslugx()
+{
+	init_neogeo();
+	m_mslugx_prot->mslugx_install_protection(m_maincpu);
+}
+
+void neogeo_state::init_ms4plushb()
+{
+	init_neogeo();
+
+	// decrypt m1 if needed
+	if (memregion("audiocrypt"))
+		m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region, audio_region_size);
+
+	// decrypt v roms if needed
+	u8 *ram = memregion("ymsnd")->base();
+	if (ram[0x20] != 0x99)
+	{
+		//printf("ym=%X\n",ram[0x20]);
+		m_pcm2_prot->neo_pcm2_snk_1999(ym_region, ym_region_size, 8);
+	}
+
+	// decrypt c roms if needed
+	ram = memregion("sprites")->base();
+	if (ram[0] != 0)
+	{
+		//printf("Sprites=%X\n",ram[0]);
+		m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG4_GFX_KEY);
+	}
+
+	// if no s rom, copy info from end of c roms
+	ram = memregion("fixed")->base();
+	if (ram[0x100] == 0)
+	{
+		//printf("Fixed1=%X\n",ram[0x100]);
+		m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size,0);
+	}
+}
+
+void neogeo_state::init_ms5pcb()
+{
+	init_neogeo();
+
+	m_pvc_prot->mslug5_decrypt_68k(cpuregion, cpuregion_size);
+	m_sma_prot->svcpcb_gfx_decrypt(spr_region, spr_region_size);
+	m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region,audio_region_size);
+	m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG5_GFX_KEY);
+	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+	m_sprgen->m_fixed_layer_bank_type = 2;
+	m_sma_prot->svcpcb_s1data_decrypt(fix_region, fix_region_size);
+	m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 2);
+	m_pvc_prot->install_pvc_protection(m_maincpu,m_banked_cart);
+	install_banked_bios();
+}
+
+/*********************************************** non-carts */
+
+void neogeo_state::install_banked_bios()
+{
+	m_maincpu->space(AS_PROGRAM).install_read_bank(0xc00000, 0xc1ffff, 0x0e0000, "bankedbios");
+	membank("bankedbios")->configure_entries(0, 2, memregion("mainbios")->base(), 0x20000);
+	membank("bankedbios")->set_entry(1);
+}
+
+INPUT_CHANGED_MEMBER(neogeo_state::select_bios)
+{
+	membank("bankedbios")->set_entry(newval ? 0 : 1);
+}
+
+/* dummy entry for the dummy bios driver */
+ROM_START( neogeo )
+	NEOGEO_BIOS
+
+	ROM_REGION( 0x100000, "maincpu", ROMREGION_ERASEFF )
+
+	ROM_REGION( 0x20000, "audiobios", 0 )
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) )
+
+	ROM_REGION( 0x50000, "audiocpu", 0 )
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) )
+
+	ROM_Y_ZOOM
+
+	ROM_REGION( 0x20000, "fixed", ROMREGION_ERASEFF )
+
+	ROM_REGION( 0x20000, "fixedbios", 0 )
+	ROM_LOAD( "sfix.sfix", 0x000000, 0x20000, CRC(c2ea0cfd) SHA1(fd4a618cdcdbf849374f0a50dd8efe9dbab706c3) )
+
+	ROM_REGION( 0x100000, "sprites", ROMREGION_ERASEFF )
+ROM_END
+
+
+/*    YEAR  NAME        PARENT    MACHINE   INPUT            CLASS         INIT    */
+GAME( 1990, neogeo,     0,        mvs,      neogeo_6slot,   neogeo_state, init_neogeo,  ROT0, "SNK", "Neo-Geo", MACHINE_IS_BIOS_ROOT | MACHINE_SUPPORTS_SAVE )
 
 /*************************************
     Game specific input definitions
@@ -85,29 +1961,36 @@ INPUT_PORTS_START( mslug5sg )
 	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_PLAYER(2)
 INPUT_PORTS_END
 
-#define MSLUG_ROM_FILL \
+#define MSLUG_MVS_FILL \
     ROM_FILL(0x1783E7,1,0x78)\
 	ROM_FILL(0x1783EB,1,0x12)\
 	ROM_FILL(0x1783E8,1,0x34)\
 	ROM_FILL(0x1783EE,1,0x23)\
-	ROM_FILL(0x1783EA,1,0x02)
+	ROM_FILL(0x1783EA,1,0x02)\
 //	ROM_FILL(0x1783ED,1,0x34)
 //	ROM_FILL(0x1783E9,1,0x02)
 //	ROM_FILL(0x1783E6,1,0x02)
 //	ROM_FILL(0x1783E4,1,0x04)
+/* Fixed Corrections in Menu Deug + the 99 Credits [AES] */
+//	ROM_FILL(0x201009,1,0x99)
 
-#define MSLUG2_ROM_FILL \
+#define MSLUG2_MVS_FILL \
     ROM_FILL(0x100D,1,0x78)\
 	ROM_FILL(0x1011,1,0x12)\
 	ROM_FILL(0x1013,1,0x34)\
 	ROM_FILL(0x100E,1,0x34)\
 	ROM_FILL(0x1014,1,0x34)\
-	ROM_FILL(0x1010,1,0x02) 
+	ROM_FILL(0x1010,1,0x02)
 //	ROM_FILL(0x100F,1,0x02)
 //	ROM_FILL(0x100C,1,0x02)
 //	ROM_FILL(0x100A,1,0x04)
 
-#define MSLUG3H_ROM_FILL \
+#define MSLUG2_AES_FILL \
+	ROM_FILL(0x902,1,0x99) \
+	ROM_FILL(0x903,1,0x99) \
+	ROM_FILL(0x1954,1,0x60)
+
+#define MSLUG3H_MVS_FILL \
     ROM_FILL(0x2EA7,1,0x78)\
 	ROM_FILL(0x2EAE,1,0x12)\
 	ROM_FILL(0x2EAF,1,0x12)\
@@ -115,11 +1998,17 @@ INPUT_PORTS_END
 	ROM_FILL(0x2EA8,1,0x34)\
 	ROM_FILL(0x2EAD,1,0x23)\
 	ROM_FILL(0x2EAA,1,0x02)
+//	ROM_FILL(0x605A,1,0x92)
 //	ROM_FILL(0x2EA9,1,0x02)
 //	ROM_FILL(0x2EA6,1,0x02)
 //	ROM_FILL(0x2EA4,1,0x04)
 
-#define MSLUG4_ROM_FILL \
+#define MSLUG3H_AES_FILL \
+	ROM_FILL(0x27C6,1,0x99)\
+	ROM_FILL(0x27C7,1,0x99)\
+	ROM_FILL(0x6058,1,0x60)
+
+#define MSLUG4_MVS_FILL \
     ROM_FILL(0x1741,1,0x78)\
 	ROM_FILL(0x1748,1,0x12)\
 	ROM_FILL(0x1749,1,0x12)\
@@ -131,18 +2020,26 @@ INPUT_PORTS_END
 //	ROM_FILL(0x1740,1,0x02)
 //	ROM_FILL(0x173E,1,0x04)
 
-#define MSLUG5_ROM_FILL \
+#define MSLUG4_AES_FILL \
+	ROM_FILL(0x7FE,1,0x99)\
+	ROM_FILL(0x7FF,1,0x99)
+
+#define MSLUG5_MVS_FILL \
     ROM_FILL(0x2CD3,1,0x75)\
 	ROM_FILL(0x2CD7,1,0x3B)\
 	ROM_FILL(0x2CDA,1,0x8B)\
     ROM_FILL(0x2CD4,1,0x71)\
 	ROM_FILL(0x2CDB,1,0x09)\
-	ROM_FILL(0x2CD6,1,0x26)\
+	ROM_FILL(0x2CD6,1,0x26)
 //	ROM_FILL(0x2CD5,1,0x70)
 //	ROM_FILL(0x2CD2,1,0x80)
 //	ROM_FILL(0x2CD0,1,0x70)
 
-#define MSLUG5HD_ROM_FILL \
+#define MSLUG5_AES_FILL \
+	ROM_FILL(0x84A,1,0xBB)\
+	ROM_FILL(0x84B,1,0x8C)
+
+#define MSLUG5HD_MVS_FILL \
     ROM_FILL(0x2CD3,1,0x78)\
 	ROM_FILL(0x2CDA,1,0x12)\
 	ROM_FILL(0x2CDB,1,0x12)\
@@ -154,7 +2051,11 @@ INPUT_PORTS_END
 //	ROM_FILL(0x2CD2,1,0x02)
 //	ROM_FILL(0x2CD0,1,0x04)
 
-#define MSLUG5SG_ROM_FILL \
+#define MSLUG5HD_AES_FILL \
+	ROM_FILL(0x84A,1,0x99)\
+	ROM_FILL(0x84B,1,0x99)
+
+#define MSLUG5SG_MVS_FILL \
     ROM_FILL(0x2CD3,1,0x78)\
 	ROM_FILL(0x2CDA,1,0x12)\
 	ROM_FILL(0x2CDB,1,0x12)\
@@ -166,20 +2067,71 @@ INPUT_PORTS_END
 //	ROM_FILL(0x2CD2,1,0x02)
 //	ROM_FILL(0x2CD0,1,0x04)
 
-#define MSLUGX_ROM_FILL \
+#define MSLUGX_MVS_FILL \
     ROM_FILL(0x3185,1,0x78)\
 	ROM_FILL(0x3189,1,0x12)\
 	ROM_FILL(0x318D,1,0x12)\
 	ROM_FILL(0x318B,1,0x34)\
 	ROM_FILL(0x3186,1,0x34)\
 	ROM_FILL(0x318C,1,0x34)\
-	ROM_FILL(0x3188,1,0x02)
-//  ROM_FILL(0x24F6,1,0xFF) //Fix AES
-//  ROM_FILL(0x24F7,1,0xFF) //Fix AES
-//	ROM_FILL(0x156F4,1,0x60) //Fix AES
+	ROM_FILL(0x3188,1,0x02)\
+    ROM_FILL(0x24F6,1,0x99)\
+    ROM_FILL(0x24F7,1,0x99)\
+	ROM_FILL(0x156F4,1,0x60)
 //  ROM_FILL(0x3187,1,0x02)
 //	ROM_FILL(0x3184,1,0x02)
 //	ROM_FILL(0x3182,1,0x04)
+
+#define MSLUGX_AES_FILL \
+    ROM_FILL(0x24F6,1,0x99)\
+    ROM_FILL(0x24F7,1,0x99)\
+    ROM_FILL(0x156F4,1,0x60)
+
+#define DEFAULT_BIOS_BOOT_(EUROPE_MVS) \
+	ROM_REGION16_BE( 0x20000, "mainbios", 0 ) \
+	ROM_LOAD16_WORD_SWAP( "sp-s2.sp1",  0x00000, 0x20000, CRC(9036d879) SHA1(4f5ed7105b7128794654ce82b51723e16e389543) )
+
+#define DEFAULT_BIOS_ASIA_(JAPAN_MVS) \
+	ROM_REGION16_BE( 0x80000, "mainbios", 0 ) \
+	ROM_LOAD16_WORD_SWAP( "sp-4x.sp1", 0x00000, 0x80000, CRC(b4590283) SHA1(47047ed5b6062babc0a0bebcc30e4b3f021e115a) )
+
+#define DEFAULT_BIOS_(MSLUG_FOREVER) \
+	ROM_REGION16_BE( 0x20000, "mainbios", 0 ) \
+	ROM_LOAD16_WORD_SWAP( "sp-5ms.sp1", 0x00000, 0x20000, CRC(0d55e742) SHA1(22e5aecab69a912c9d845070cdceda58a32f25a6) )
+
+#define AUDIOBIOS_128K \
+	ROM_REGION( 0x20000, "audiobios", 0 ) \
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) 
+
+#define MS5PCB_AUDIOBIOS_ENCRYPTED_512K \
+	ROM_REGION( 0x80000, "audiocrypt", 0 ) \
+	ROM_LOAD( "268.m1", 0x00000, 0x80000, CRC(4a5a6e0e) SHA1(df0f660f2465e1db7be5adfcaf5e88ad61a74a42) ) \
+	ROM_REGION( 0x90000, "audiocpu", ROMREGION_ERASEFF )
+
+#define MSLUG2_AUDIOBIOS_128K \
+	ROM_REGION( 0x30000, "audiocpu", 0 ) \
+	ROM_LOAD( "241.m1", 0x00000, 0x20000, CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) ) \
+	ROM_RELOAD(     0x10000, 0x20000 )
+
+#define MSLUG3_AUDIOBIOS_512K \
+	ROM_REGION( 0x90000, "audiocpu", 0 ) \
+	ROM_LOAD( "256.m1", 0x00000, 0x80000, CRC(eaeec116) SHA1(54419dbb21edc8c4b37eaac2e7ad9496d2de037a) ) \
+	ROM_RELOAD(     0x10000, 0x80000 )
+
+#define MSLUG3LW_AUDIOBIOS_512K \
+	ROM_REGION( 0x90000, "audiocpu", 0 ) \
+	ROM_LOAD( "256_hc34.m1", 0x00000, 0x80000, CRC(0c876e7f) SHA1(9d7b7fa03656af4b32f5b64265b98e9182821f82) ) \
+	ROM_RELOAD(     0x10000, 0x80000 )
+
+#define MSLUG4_AUDIOBIOS_ENCRYPTED_128K \
+    ROM_REGION( 0x80000, "audiocrypt", 0 ) \
+	ROM_LOAD( "263.m1", 0x00000, 0x20000, CRC(46ac8228) SHA1(5aeea221050c98e4bb0f16489ce772bf1c80f787) ) \
+	ROM_REGION( 0x90000, "audiocpu", ROMREGION_ERASEFF )
+
+#define MSLUGX_AUDIOBIOS_128K \
+	ROM_REGION( 0x30000, "audiocpu", 0 ) \
+	ROM_LOAD( "250.m1", 0x00000, 0x20000, CRC(fd42a842) SHA1(55769bad4860f64ef53a333e0da9e073db483d6a) ) \
+	ROM_RELOAD(     0x10000, 0x20000 )
 
 #define MSLUG_SFIX_128K \
     NEO_SFIX_128K( "201.s1", CRC(2f55958d) SHA1(550b53628daec9f1e1e11a398854092d90f9505a) )
@@ -640,13 +2592,6 @@ INPUT_PORTS_END
 #define MSLUG5FR_SFIX_128K \
     NEO_SFIX_128K( "268_hc24.s1", CRC(77b18feb) SHA1(2d7cb5838730bfcb45eceeef11557cbcab8aa9da) )
 
-#define MS5PCB_AUDIO_512K \
-	ROM_REGION16_BE( 0x80000, "mainbios", 0 ) \
-	ROM_LOAD16_WORD_SWAP( "sp-4x.sp1", 0x00000, 0x80000, CRC(b4590283) SHA1(47047ed5b6062babc0a0bebcc30e4b3f021e115a) ) \
-	ROM_REGION( 0x80000, "audiocrypt", 0 ) \
-	ROM_LOAD( "268.m1", 0x00000, 0x80000, CRC(4a5a6e0e) SHA1(df0f660f2465e1db7be5adfcaf5e88ad61a74a42) ) \
-	ROM_REGION( 0x90000, "audiocpu", ROMREGION_ERASEFF )
-
 #define MS5BOOT_AUDIO_128K \
 	NEO_BIOS_AUDIO_256K( "268boot.m1", CRC(792e07c1) SHA1(117516e8ec9026c7682ab27857aab6639bef5835) )
 
@@ -1039,9 +2984,11 @@ ROM_START( ms5pcb ) /* Encrypted Set, JAMMA PCB */
 	ROM_REGION( 0x800000, "maincpu", 0 )
 	ROM_LOAD32_WORD_SWAP( "268.p1", 0x000000, 0x400000, CRC(d0466792) SHA1(880819933d997fab398f91061e9dbccb959ae8a1) )
 	ROM_LOAD32_WORD_SWAP( "268.p2", 0x000002, 0x400000, CRC(fbf6b61e) SHA1(9ec743d5988b5e3183f37f8edf45c72a8c0c893e) )
-    MSLUG5_ROM_FILL
+    MSLUG5_MVS_FILL
+    MSLUG5_AES_FILL
+    DEFAULT_BIOS_ASIA_(JAPAN_MVS)
 	MS5PCB_SFIX_MT_128K
-	MS5PCB_AUDIO_512K
+	MS5PCB_AUDIOBIOS_ENCRYPTED_512K
 	MS5PCB_YMSND
 	MS5PCB_SPRITES
 ROM_END
@@ -1050,7 +2997,8 @@ ROM_START( ms4plus ) /* Metal Slug 4 bootleg */
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "ms4-p1p.bin", 0x000000, 0x100000, CRC(806a6e04) SHA1(df503772d607271ea51285154c9fd68e18b143ce) )
 	ROM_LOAD16_WORD_SWAP( "263.p2",      0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
 	MSPLUS4_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
 	MSLUG4_YMSND
@@ -1062,7 +3010,8 @@ ROM_START( ms5plus ) /* Metal Slug 5 bootleg */
 	ROM_LOAD16_WORD_SWAP( "ms5-p1p.bin", 0x000000, 0x100000, CRC(106b276f) SHA1(0e840df95f3813145e5043573483c7610d2d3e68) )
 	ROM_LOAD16_WORD_SWAP( "ms5-p2p.bin", 0x100000, 0x200000, CRC(d6a458e8) SHA1(c0a8bdae06d62859fb6734766ccc190eb2a809a4) )
 	ROM_LOAD16_WORD_SWAP( "ms5-p3p.bin", 0x300000, 0x200000, CRC(439ec031) SHA1(f0ad8f9be7d26bc504593c1321bd23c286a221f0) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
 	MS5PLUS_SFIX_128K
 	MSLUG5_AUDIO_ENCRYPTED_512K
 	MSLUG5_YMSND
@@ -1070,10 +3019,10 @@ ROM_START( ms5plus ) /* Metal Slug 5 bootleg */
 ROM_END
 
 ROM_START( mslug )
-	ROM_REGION( 0x200000, "maincpu", 0 )
+	ROM_REGION( 0xa00000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "201.p1", 0x100000, 0x100000, CRC(08d8daa5) SHA1(b888993dbb7e9f0a28a01d7d2e1da00ef9cf6f38) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
-    MSLUG_ROM_FILL
+    MSLUG_MVS_FILL
 	MSLUG_SFIX_128K
 	MSLUG_AUDIO_128K
 	MSLUG_YMSND
@@ -1084,7 +3033,8 @@ ROM_START( mslug2 ) /* MVS AND AES VERSION */
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241.p1", 0x000000, 0x100000, CRC(2a53c5da) SHA1(5a6aba482cac588a6c2c51179c95b487c6e11899) )
 	ROM_LOAD16_WORD_SWAP( "241.p2", 0x100000, 0x200000, CRC(38883f44) SHA1(fcf34b8c6e37774741542393b963635412484a27) )
-    MSLUG2_ROM_FILL
+    MSLUG2_MVS_FILL
+	MSLUG2_AES_FILL
 	MSLUG2_SFIX_128K
 	MSLUG2_AUDIO_128K
 	MSLUG2_YMSND
@@ -1118,7 +3068,8 @@ ROM_START( mslug3h ) /* Original Version - Encrypted GFX */ /* revision 2000.3.1
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256h.p1", 0x000000, 0x100000, CRC(9c42ca85) SHA1(7a8f77a89867b889295ae9b9dfd4ba28f02d234d) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2", 0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
     MSLUG3_SFIX_MT_512K
 	MSLUG3_AUDIO_512K
 	MSLUG3_YMSND
@@ -1129,7 +3080,8 @@ ROM_START( mslug3b6 ) /* This "Metal Slug 6" is a hack/bootleg of Metal Slug 3, 
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "299-p1.bin", 0x000000, 0x200000, CRC(5f2fe228) SHA1(747775a2dfc0da87ad2ddd4f57ce5b2522f23fa5) )
 	ROM_LOAD16_WORD_SWAP( "299-p2.bin", 0x100000, 0x400000, CRC(193fa835) SHA1(fb1f26db7998b0bb6b1c8b92500c1596ec5dfc71) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
     MSLUG3B6_SFIX_128K
 	MSLUG3_AUDIO_512K
 	MSLUG3_YMSND
@@ -1140,7 +3092,8 @@ ROM_START( mslug4 ) /* Original Version - Encrypted GFX */ /* MVS VERSION */
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263.p1", 0x000000, 0x100000, CRC(27e4def3) SHA1(a08785e8145981bb6b5332a3b2df7eb321253cca) )
 	ROM_LOAD16_WORD_SWAP( "263.p2", 0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
 	MSLUG4HD_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
 	MSLUG4_YMSND
@@ -1151,7 +3104,8 @@ ROM_START( mslug4h ) /* Original Version - Encrypted GFX */ /* AES VERSION */
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263h.p1", 0x000000, 0x100000, CRC(c67f5c8d) SHA1(12af74964843f103520d9f0825069ea2f67eeb2f) )
 	ROM_LOAD16_WORD_SWAP( "263h.p2", 0x100000, 0x400000, CRC(bc3ec89e) SHA1(2cb0626bc4fa57e1d25f208e04532b570d87b3fb) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
 	MSLUG4HD_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
 	MSLUG4_YMSND
@@ -1162,7 +3116,8 @@ ROM_START( mslug5 ) /* Encrypted Set */ /* MVS VERSION */
 	ROM_REGION( 0x800000, "maincpu", 0 )
 	ROM_LOAD32_WORD_SWAP( "268.p1", 0x000000, 0x400000, CRC(d0466792) SHA1(880819933d997fab398f91061e9dbccb959ae8a1) )
 	ROM_LOAD32_WORD_SWAP( "268.p2", 0x000002, 0x400000, CRC(fbf6b61e) SHA1(9ec743d5988b5e3183f37f8edf45c72a8c0c893e) )
-    MSLUG5_ROM_FILL
+    MSLUG5_MVS_FILL
+    MSLUG5_AES_FILL
 	MSLUG5_SFIX_MT_128K
 	MSLUG5_AUDIO_ENCRYPTED_512K
 	MSLUG5_YMSND
@@ -1173,7 +3128,8 @@ ROM_START( mslug5h ) /* Encrypted Set */ /* AES release of the game but is also 
 	ROM_REGION( 0x800000, "maincpu", 0 )
 	ROM_LOAD32_WORD_SWAP( "268h.p1", 0x000000, 0x400000, CRC(3636690a) SHA1(e0da714b4bdc6efffe1250ded02ebddb3ab6d7b3) )
 	ROM_LOAD32_WORD_SWAP( "268h.p2", 0x000002, 0x400000, CRC(8dfc47a2) SHA1(27d618cfbd0107a4d2a836797e967b39d2eb4851) )
-    MSLUG5_ROM_FILL
+    MSLUG5_MVS_FILL
+    MSLUG5_AES_FILL
 	MSLUG5_SFIX_MT_128K
 	MSLUG5_AUDIO_ENCRYPTED_512K
 	MSLUG5_YMSND
@@ -1185,7 +3141,8 @@ ROM_START( mslug5b )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268b.p1", 0x000000, 0x100000, CRC(1376f43c) SHA1(7ca4a8b11c7effda2603d04e793cf664e7aa39bf) )
 	ROM_LOAD16_WORD_SWAP( "268b.p2", 0x100000, 0x400000, CRC(4becfba0) SHA1(fd3708f6c8fa26133b29b4b033148dff54dc1e7d) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5B_SFIX_MT_128K
     MSLUG5B_AUDIO_128K
     MSLUG5B_YMSND
@@ -1196,7 +3153,8 @@ ROM_START( mslugx ) /* MVS AND AES VERSION */
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250.p1", 0x000000, 0x100000, CRC(81f1f60b) SHA1(4c19f2e9824e606178ac1c9d4b0516fbaa625035) )
 	ROM_LOAD16_WORD_SWAP( "250.p2", 0x100000, 0x400000, CRC(1fda2e12) SHA1(18aaa7a3ba8da99f78c430e9be69ccde04bc04d9) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
 	MSLUGX_SFIX_128K
 	MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -1228,7 +3186,7 @@ ROM_START( mslughc01 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "201_hc01.p1", 0x100000, 0x100000, CRC(61e1ba6e) SHA1(aafc5b39a61d330b95f29c663900fbc02b01bd1d) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
-    MSLUG_ROM_FILL
+    MSLUG_MVS_FILL
 	MSLUG_SFIX_128K
 	MSLUG_AUDIO_128K
     MSLUG_YMSND
@@ -1239,7 +3197,7 @@ ROM_START( mslughc02 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "201_hc02.p1", 0x100000, 0x100000, CRC(09888e87) SHA1(d61adb16503c30b3290ea41b3955607b7ebba70f) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
-    MSLUG_ROM_FILL
+    MSLUG_MVS_FILL
 	MSLUG_SFIX_128K
 	MSLUG_AUDIO_128K
     MSLUG_YMSND
@@ -1250,7 +3208,7 @@ ROM_START( mslughc03 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "201_hc03.p1", 0x100000, 0x100000, CRC(2b3d433f) SHA1(94a1a88bff5f1b6bdf8d8a0406004982ef9d7b0c) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
-    MSLUG_ROM_FILL
+    MSLUG_MVS_FILL
 	MSLUG_SFIX_128K
 	MSLUG_AUDIO_128K
     MSLUG_YMSND
@@ -1261,7 +3219,7 @@ ROM_START( mslughc04 ) //mslugdg
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "201_hc04.p1", 0x100000, 0x100000, CRC(0a739521) SHA1(74e637a6a77140f8ce1128cb8f456ecae0a7a7ef) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
-    MSLUG_ROM_FILL
+    MSLUG_MVS_FILL
 	MSLUG_SFIX_128K
 	MSLUG_AUDIO_128K
     MSLUG_YMSND
@@ -1272,7 +3230,7 @@ ROM_START( mslughc05 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "201_hc05.p1", 0x100000, 0x100000, CRC(582b4d77) SHA1(9de833c621d3b26153e3b22c86d6137beb58e5e4) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
-    MSLUG_ROM_FILL
+    MSLUG_MVS_FILL
 	MSLUG_SFIX_128K
 	MSLUG_AUDIO_128K
     MSLUG_YMSND
@@ -1283,7 +3241,7 @@ ROM_START( mslughc06 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "201_hc06.p1", 0x100000, 0x100000, CRC(4d6af5bd) SHA1(2c8d782dba605d9148d8e519c803be2f14145642) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
-    MSLUG_ROM_FILL
+    MSLUG_MVS_FILL
 	MSLUG_SFIX_128K
 	MSLUG_AUDIO_128K
     MSLUG_YMSND
@@ -1294,7 +3252,7 @@ ROM_START( mslughc07 ) //mslugunity
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "201_hc07.p1", 0x100000, 0x100000, CRC(a3186dfd) SHA1(9241e8bf40b878f2372d8da9f008c8895a87394b) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
-    MSLUG_ROM_FILL
+    MSLUG_MVS_FILL
 	MSLUG_SFIX_128K
 	MSLUG_AUDIO_128K
     MSLUG_YMSND
@@ -1305,7 +3263,7 @@ ROM_START( mslughc08 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "201_hc08.p1", 0x100000, 0x100000, CRC(47ae2445) SHA1(615aeb5ed8f7e0197ed599b3f20eaed88ab1086d) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
-    MSLUG_ROM_FILL
+    MSLUG_MVS_FILL
 	MSLUG_SFIX_128K
 	MSLUG_AUDIO_128K
     MSLUG_YMSND
@@ -1316,7 +3274,7 @@ ROM_START( mslughc09 ) //mslug1v2
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "201_hc09.p1", 0x100000, 0x100000, CRC(c6a2f0e9) SHA1(4a3e5c25bb2b51a2dcc468da3dd91e26af679921) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
-    MSLUG_ROM_FILL
+    MSLUG_MVS_FILL
 	MSLUG_SFIX_128K
 	MSLUG_AUDIO_128K
     MSLUG_YMSND
@@ -1327,7 +3285,7 @@ ROM_START( mslughc10 ) //mslugdqy
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "201_hc10.p1", 0x100000, 0x100000, CRC(1226d6b8) SHA1(8710a737e13c5537bc9e12766eb533205be14a82) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
-    MSLUG_ROM_FILL
+    MSLUG_MVS_FILL
 	MSLUG_SFIX_128K
 	MSLUG_AUDIO_128K
     MSLUG_YMSND
@@ -1338,7 +3296,7 @@ ROM_START( mslughc11 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "201_hc11.p1", 0x100000, 0x100000, CRC(2750fe1b) SHA1(0de9e1cf728cdf21fb6ed243637576644e786fc8) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
-    MSLUG_ROM_FILL
+    MSLUG_MVS_FILL
 	MSLUG_SFIX_128K
 	MSLUG_AUDIO_128K
     MSLUG_YMSND
@@ -1349,7 +3307,7 @@ ROM_START( mslughc12 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "201_hc12.p1", 0x100000, 0x100000, CRC(7c900773) SHA1(3ff52fee076b94e3ff79b753b6d2a401b92605bd) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
-    MSLUG_ROM_FILL
+    MSLUG_MVS_FILL
 	MSLUG_SFIX_128K
 	MSLUG_AUDIO_128K
     MSLUG_YMSND
@@ -1360,7 +3318,7 @@ ROM_START( mslughc13 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "201_hc13.p1", 0x100000, 0x100000, CRC(45e61950) SHA1(f59359c867e91e0be5101522135a9b33a7f099b1) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
-    MSLUG_ROM_FILL
+    MSLUG_MVS_FILL
 	MSLUG_SFIX_128K
 	MSLUG_AUDIO_128K
     MSLUG_YMSND
@@ -1371,7 +3329,7 @@ ROM_START( mslughc14 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "201_hc14.p1", 0x100000, 0x100000, CRC(4b1e3452) SHA1(c117dcf66e2ed1ad57efae54b6b5cdeba7178278) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
-    MSLUG_ROM_FILL
+    MSLUG_MVS_FILL
 	MSLUG_SFIX_128K
 	MSLUG_AUDIO_128K
     MSLUG_YMSND
@@ -1386,7 +3344,7 @@ ROM_START( msboot )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "201.p1", 0x100000, 0x100000, CRC(08d8daa5) SHA1(b888993dbb7e9f0a28a01d7d2e1da00ef9cf6f38) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
-    MSLUG_ROM_FILL
+    MSLUG_MVS_FILL
 	MSLUG_SFIX_128K
 	MSLUG_AUDIO_128K
     MSLUGB_YMSND
@@ -1397,7 +3355,7 @@ ROM_START( msluge )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "201.p1", 0x100000, 0x100000, CRC(08d8daa5) SHA1(b888993dbb7e9f0a28a01d7d2e1da00ef9cf6f38) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
-    MSLUG_ROM_FILL
+    MSLUG_MVS_FILL
 	MSLUG_SFIX_128K
 	MSLUG_AUDIO_128K
     MSLUG_YMSND
@@ -1458,8 +3416,9 @@ ROM_START( mslug2hc01 ) //mslug2r
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc01.p1", 0x000000, 0x100000, CRC(f882d50d) SHA1(77fa3169a5631de0a89ef3170bfbe2b45294e8cf) )
 	ROM_LOAD16_WORD_SWAP( "241.p2",      0x100000, 0x200000, CRC(38883f44) SHA1(fcf34b8c6e37774741542393b963635412484a27) )
-    MSLUG2_ROM_FILL
-    MSLUG2_SFIX_128K
+    MSLUG2_MVS_FILL
+    MSLUG2_AES_FILL
+	MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
     MSLUG2_SPRITES
@@ -1469,7 +3428,8 @@ ROM_START( mslug2hc02 ) //mslug21v2
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc02.p1", 0x000000, 0x100000, CRC(c3efed6c) SHA1(ae11a5abf75548271bf26acb645e8b0e5fc22eaa) )
 	ROM_LOAD16_WORD_SWAP( "241.p2",      0x100000, 0x200000, CRC(38883f44) SHA1(fcf34b8c6e37774741542393b963635412484a27) )
-    MSLUG2_ROM_FILL
+    MSLUG2_MVS_FILL
+	MSLUG2_AES_FILL
 	MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1480,8 +3440,9 @@ ROM_START( mslug2hc03 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc03.p1", 0x000000, 0x100000, CRC(f680d167) SHA1(ebeed513de07928679ac4083fd705af51e21078d) )
 	ROM_LOAD16_WORD_SWAP( "241.p2",      0x100000, 0x200000, CRC(38883f44) SHA1(fcf34b8c6e37774741542393b963635412484a27) )
-    MSLUG2_ROM_FILL
-    MSLUG2_SFIX_128K
+    MSLUG2_MVS_FILL
+    MSLUG2_AES_FILL
+	MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
     MSLUG2_SPRITES
@@ -1491,8 +3452,9 @@ ROM_START( mslug2hc04 ) //mslug2sh
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc04.p1", 0x000000, 0x100000, CRC(4c1a2f2c) SHA1(5e6b411187bce616066507a86b415ff69b8e9cf3) )
 	ROM_LOAD16_WORD_SWAP( "241.p2",      0x100000, 0x200000, CRC(38883f44) SHA1(fcf34b8c6e37774741542393b963635412484a27) )
-    MSLUG2_ROM_FILL
-    MSLUG2_SFIX_128K
+    MSLUG2_MVS_FILL
+    MSLUG2_AES_FILL
+	MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
     MSLUG2_SPRITES
@@ -1502,10 +3464,11 @@ ROM_START( mslug2hc05 ) //mslug2eg
 	ROM_REGION( 0x400000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc05.p1", 0x000000, 0x100000, CRC(bb312904) SHA1(08766b1ffb8686aa4d07370dc825c9f09a100fa6) )
 	ROM_LOAD16_WORD_SWAP( "241_hc05.p2", 0x100000, 0x300000, CRC(abf37360) SHA1(09347f0502fba4965dc14fd6db89bb3cabdeea1f) )
-    ROM_DEFAULT_BIOS("euro")
-    MSLUG2_ROM_FILL
+    MSLUG2_MVS_FILL
+	DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG2EG_SFIX_128K
-    MSLUG2_AUDIO_128K
+    MSLUG2_AUDIOBIOS_128K
     MSLUG2_YMSND
     MSLUG2EG_SPRITES
 ROM_END
@@ -1514,8 +3477,9 @@ ROM_START( mslug2hc06 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc06.p1", 0x000000, 0x100000, CRC(882310fb) SHA1(1ed0d6d3a6d37c95cbc0012bf55d32fc75b4d827) )
 	ROM_LOAD16_WORD_SWAP( "241.p2",      0x100000, 0x200000, CRC(38883f44) SHA1(fcf34b8c6e37774741542393b963635412484a27) )
-    MSLUG2_ROM_FILL
-    MSLUG2_SFIX_128K
+    MSLUG2_MVS_FILL
+    MSLUG2_AES_FILL
+	MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
     MSLUG2_SPRITES
@@ -1525,8 +3489,9 @@ ROM_START( mslug2hc07 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc07.p1", 0x000000, 0x100000, CRC(7080ed64) SHA1(f028273a636f3d82481cbb5325657acf59c3b455) )
 	ROM_LOAD16_WORD_SWAP( "241.p2",      0x100000, 0x200000, CRC(38883f44) SHA1(fcf34b8c6e37774741542393b963635412484a27) )
-    MSLUG2_ROM_FILL
-    MSLUG2_SFIX_128K
+    MSLUG2_MVS_FILL
+    MSLUG2_AES_FILL
+	MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
     MSLUG2_SPRITES
@@ -1536,8 +3501,9 @@ ROM_START( mslug2hc08 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc08.p1", 0x000000, 0x100000, CRC(6d309ec1) SHA1(a9554d41f8d5bd96530ca441e5b68a3fa1ecb2c8) )
 	ROM_LOAD16_WORD_SWAP( "241.p2",      0x100000, 0x200000, CRC(38883f44) SHA1(fcf34b8c6e37774741542393b963635412484a27) )
-    MSLUG2_ROM_FILL
-    MSLUG2_SFIX_128K
+    MSLUG2_MVS_FILL
+    MSLUG2_AES_FILL
+	MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
     MSLUG2_SPRITES
@@ -1547,8 +3513,9 @@ ROM_START( mslug2hc09 ) //mslug2dg
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc09.p1", 0x000000, 0x100000, CRC(00c455e7) SHA1(8a20c06a5f92032c0dc1ebd1e8a2709abd725330) )
 	ROM_LOAD16_WORD_SWAP( "241_hc09.p2", 0x100000, 0x200000, CRC(1bf6b12a) SHA1(bdf1cee93c7cf1e57f61797ed4f176fe2a6ebf73) )
-    MSLUG2_ROM_FILL
-    MSLUG2_SFIX_128K
+    MSLUG2_MVS_FILL
+    MSLUG2_AES_FILL
+	MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
     MSLUG2_SPRITES
@@ -1558,8 +3525,9 @@ ROM_START( mslug2hc10 ) //mslug2ct
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc10.p1", 0x000000, 0x100000, CRC(78ad6864) SHA1(d84b0b3fc5991d2ab9d04712d4df3b4318e65923) )
 	ROM_LOAD16_WORD_SWAP( "241_hc10.p2", 0x100000, 0x200000, CRC(fe36f353) SHA1(61df20c7cd9f904552ec672dec11b679122bc5fe) )
-    MSLUG2_ROM_FILL
-    MSLUG2_SFIX_128K
+    MSLUG2_MVS_FILL
+    MSLUG2_AES_FILL
+	MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
     MSLUG2_SPRITES
@@ -1569,10 +3537,11 @@ ROM_START( mslug2hc11 )
 	ROM_REGION( 0x400000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc11.p1", 0x000000, 0x100000, CRC(aab0c2a7) SHA1(8501f543ec2a26a870195ead3dd531133390f203) )
 	ROM_LOAD16_WORD_SWAP( "241_hc05.p2", 0x100000, 0x300000, CRC(abf37360) SHA1(09347f0502fba4965dc14fd6db89bb3cabdeea1f) )
-    ROM_DEFAULT_BIOS("euro")
-    MSLUG2_ROM_FILL
-    MSLUG2EG_SFIX_128K
-    MSLUG2_AUDIO_128K
+    MSLUG2_MVS_FILL
+	DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+    AUDIOBIOS_128K
+	MSLUG2EG_SFIX_128K
+    MSLUG2_AUDIOBIOS_128K
     MSLUG2_YMSND
     MSLUG2EG_SPRITES
 ROM_END
@@ -1581,7 +3550,8 @@ ROM_START( mslug2hc12 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc12.p1", 0x000000, 0x100000, CRC(34233c1f) SHA1(eb137f71bbbdd06672cbb761bc37d39bc06d3d86) )
 	ROM_LOAD16_WORD_SWAP( "241.p2",      0x100000, 0x200000, CRC(38883f44) SHA1(fcf34b8c6e37774741542393b963635412484a27) )
-    MSLUG2_ROM_FILL
+    MSLUG2_MVS_FILL
+    MSLUG2_AES_FILL
     MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1592,7 +3562,8 @@ ROM_START( mslug2hc13 ) //mslug2unity
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc13.p1", 0x000000, 0x100000, CRC(1562cf23) SHA1(dfa2d7ea10f9eac6cd3b1a7a2f2c2f867edc28d1) )
 	ROM_LOAD16_WORD_SWAP( "241.p2",      0x100000, 0x200000, CRC(38883f44) SHA1(fcf34b8c6e37774741542393b963635412484a27) )
-    MSLUG2_ROM_FILL
+    MSLUG2_MVS_FILL
+    MSLUG2_AES_FILL
     MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1603,7 +3574,8 @@ ROM_START( mslug2hc14 ) //mslug2f1
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc14.p1", 0x000000, 0x100000, CRC(56f2c248) SHA1(688685dc3703885279d2e3f95538272474ee3e08) )
 	ROM_LOAD16_WORD_SWAP( "241_hc14.p2", 0x100000, 0x200000, CRC(37a118fc) SHA1(37c913c3d6736362ad83b8aaadf94b9112669a52) )
-    MSLUG2_ROM_FILL
+    MSLUG2_MVS_FILL
+    MSLUG2_AES_FILL
     MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1614,7 +3586,8 @@ ROM_START( mslug2hc15 ) //mslug2dd
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc15.p1", 0x000000, 0x100000, CRC(da22fd32) SHA1(7ecbf665f3d6af1b8f658e22f8df32463d3b9e2d) )
 	ROM_LOAD16_WORD_SWAP( "241_hc15.p2", 0x100000, 0x200000, CRC(89adbf97) SHA1(98b5382d51c7fd0b5ad52dd9649ef847a163a78a) )
-    MSLUG2_ROM_FILL
+    MSLUG2_MVS_FILL
+    MSLUG2_AES_FILL
     MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1625,7 +3598,8 @@ ROM_START( mslug2hc16 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc16.p1", 0x000000, 0x100000, CRC(300d800b) SHA1(3896179061b4025d717cdcc213699a0a9d6183ab) )
 	ROM_LOAD16_WORD_SWAP( "241.p2", 0x100000, 0x200000, CRC(38883f44) SHA1(fcf34b8c6e37774741542393b963635412484a27) )
-    MSLUG2_ROM_FILL
+    MSLUG2_MVS_FILL
+    MSLUG2_AES_FILL
     MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1636,6 +3610,8 @@ ROM_START( mslug2hc17 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc17.p1", 0x000000, 0x100000, CRC(d1b10ed0) SHA1(db992fa93d1afb4adea30d63903fcd7d0e6ce9dd) )
 	ROM_LOAD16_WORD_SWAP( "241.p2", 0x100000, 0x200000, CRC(38883f44) SHA1(fcf34b8c6e37774741542393b963635412484a27) )
+    MSLUG2_MVS_FILL
+    MSLUG2_AES_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1646,7 +3622,8 @@ ROM_START( mslug2hc18 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc18.p1",  0x000000, 0x100000, CRC(5261ffd7) SHA1(d514f35f4d8278c31d7619ff45df6af117c6ee0f) )
 	ROM_LOAD16_WORD_SWAP( "241.p2", 0x100000, 0x200000, CRC(38883f44) SHA1(fcf34b8c6e37774741542393b963635412484a27) )
-    MSLUG2_ROM_FILL
+    MSLUG2_MVS_FILL
+    MSLUG2_AES_FILL
     MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1657,7 +3634,8 @@ ROM_START( mslug2hc19 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc19.p1", 0x000000, 0x100000, CRC(fe803784) SHA1(1966f8c896d564570cceb108617021849a418484) )
 	ROM_LOAD16_WORD_SWAP( "241.p2",  0x100000, 0x200000, CRC(38883f44) SHA1(fcf34b8c6e37774741542393b963635412484a27) )
-    MSLUG2_ROM_FILL
+    MSLUG2_MVS_FILL
+    MSLUG2_AES_FILL
     MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1672,7 +3650,8 @@ ROM_START( mslug2t )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241t.p1", 0x000000, 0x100000, CRC(df5d6fbc) SHA1(b9cc3e29afc12dc98daac9afb4f94e2cdd8b455c) )
 	ROM_LOAD16_WORD_SWAP( "241.p2",  0x100000, 0x200000, CRC(38883f44) SHA1(fcf34b8c6e37774741542393b963635412484a27) )
-    MSLUG2_ROM_FILL
+    MSLUG2_MVS_FILL
+    MSLUG2_AES_FILL
     MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1691,6 +3670,7 @@ ROM_START( mslug2er01 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_er01.p1", 0x000000, 0x100000, CRC(f1a23718) SHA1(19f3376632bb594051f82abcb698513056577f47) )
 	ROM_LOAD16_WORD_SWAP( "241_er01.p2", 0x100000, 0x200000, CRC(120b31f0) SHA1(7f76db3a9ff1a515d06cc59a814e4b1b4049baed) )
+    MSLUG2_AES_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1701,6 +3681,7 @@ ROM_START( mslug2er02 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_er02.p1", 0x000000, 0x100000, CRC(869fe7f8) SHA1(d7fc30840832089fcb15eb5d1666bc4a6196c8b8) )
 	ROM_LOAD16_WORD_SWAP( "241_er02.p2", 0x100000, 0x200000, CRC(19c995b2) SHA1(76cdd0d7d7cb0888646b3689e71fdb6066c0271a) )
+    MSLUG2_AES_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1711,6 +3692,7 @@ ROM_START( mslug2er03 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_er03.p1", 0x000000, 0x100000, CRC(fd407f96) SHA1(4751e07715c229e8d66a196c4245a5ed2a4742bc) )
 	ROM_LOAD16_WORD_SWAP( "241_er03.p2", 0x100000, 0x200000, CRC(fc09d7cb) SHA1(4730b18a518029a1736b57d7ab4bb72653404085) )
+    MSLUG2_AES_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1725,7 +3707,8 @@ ROM_START( mslug2at01 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_at01.p1",     0x000000, 0x100000, CRC(323786b0) SHA1(fcc7ce4c5c61862800c02dc15ed9d831ec2d2eee) )
 	ROM_LOAD16_WORD_SWAP( "241_at01.p2",     0x100000, 0x200000, CRC(83931ab6) SHA1(bd5b527180b3a01eda89d862c08f5414d538fab9) )
-    MSLUG2_ROM_FILL
+    MSLUG2_MVS_FILL
+    MSLUG2_AES_FILL
     MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1740,6 +3723,7 @@ ROM_START( mslug2la01 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_la01.p1", 0x000000, 0x100000, CRC(2efbb752) SHA1(009928a09a1ab39a45e37ddc6ba5f20f5a073774) )
 	ROM_LOAD16_WORD_SWAP( "241_la01.p2", 0x100000, 0x200000, CRC(3a55eb87) SHA1(b82c41988f3d6752bd5de78eef254f924785f6a1) )
+    MSLUG2_AES_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1750,6 +3734,7 @@ ROM_START( mslug2la02 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_la02.p1", 0x000000, 0x100000, CRC(61af823f) SHA1(4df1ede8bfa4ef484acae5da8cc81e239024cf13) )
 	ROM_LOAD16_WORD_SWAP( "241_la02.p2", 0x100000, 0x200000, CRC(192b65e9) SHA1(40b8380306f96a95abe6b638eb786400655535b1) )
+    MSLUG2_AES_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1760,6 +3745,7 @@ ROM_START( mslug2la03 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_la03.p1", 0x000000, 0x100000, CRC(780b24cc) SHA1(9e7f05a325723adf28e6941ce138b41ede35d388) )
 	ROM_LOAD16_WORD_SWAP( "241_la03.p2", 0x100000, 0x200000, CRC(fceb2790) SHA1(6ed39a7b521ee32df92ac7ec580734128b8ad5ee) )
+    MSLUG2_AES_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1770,6 +3756,7 @@ ROM_START( mslug2la04 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_la04.p1", 0x000000, 0x100000, CRC(b29a8226) SHA1(34a2997fa085afc00c1fe3ebc8d01fe45b44f9f6) )
 	ROM_LOAD16_WORD_SWAP( "241_la03.p2", 0x100000, 0x200000, CRC(fceb2790) SHA1(6ed39a7b521ee32df92ac7ec580734128b8ad5ee) )
+    MSLUG2_AES_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1780,6 +3767,7 @@ ROM_START( mslug2la05 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_la05.p1", 0x000000, 0x100000, CRC(8119c049) SHA1(254bbfe7d66b2465fa1fa62ab6f0de33587ac171) )
 	ROM_LOAD16_WORD_SWAP( "241_la01.p2", 0x100000, 0x200000, CRC(3a55eb87) SHA1(b82c41988f3d6752bd5de78eef254f924785f6a1) )
+    MSLUG2_AES_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1790,6 +3778,7 @@ ROM_START( mslug2lb01 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_lb01.p1", 0x000000, 0x100000, CRC(0a51cefc) SHA1(f843927ff3ed4d2a74d23314d0484500a5c0b43c) )
 	ROM_LOAD16_WORD_SWAP( "241_la01.p2", 0x100000, 0x200000, CRC(3a55eb87) SHA1(b82c41988f3d6752bd5de78eef254f924785f6a1) )
+    MSLUG2_AES_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1800,6 +3789,7 @@ ROM_START( mslug2lb02 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_lb02.p1", 0x000000, 0x100000, CRC(b402b28d) SHA1(2d6a532bd8f5be8a86a7f4e44c635a73d3709ac7) )
 	ROM_LOAD16_WORD_SWAP( "241_la02.p2", 0x100000, 0x200000, CRC(192b65e9) SHA1(40b8380306f96a95abe6b638eb786400655535b1) )
+    MSLUG2_AES_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1810,6 +3800,7 @@ ROM_START( mslug2lb03 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_lb03.p1", 0x000000, 0x100000, CRC(5ca15d62) SHA1(241a14edec2d8749396d3e7be54e23a5a72b28d2) )
 	ROM_LOAD16_WORD_SWAP( "241_la03.p2", 0x100000, 0x200000, CRC(fceb2790) SHA1(6ed39a7b521ee32df92ac7ec580734128b8ad5ee) )
+    MSLUG2_AES_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1820,6 +3811,7 @@ ROM_START( mslug2lb04 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_lb04.p1", 0x000000, 0x100000, CRC(f209dd30) SHA1(afb1bf21c9f01d665d5b5ccb8a4eacc0731203ae) )
 	ROM_LOAD16_WORD_SWAP( "241_la03.p2", 0x100000, 0x200000, CRC(fceb2790) SHA1(6ed39a7b521ee32df92ac7ec580734128b8ad5ee) )
+    MSLUG2_AES_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1830,6 +3822,7 @@ ROM_START( mslug2lb05 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_lb05.p1", 0x000000, 0x100000, CRC(bbc4524f) SHA1(59ebce01b53338f7d4cc2173239ddd78a3b27880) )
 	ROM_LOAD16_WORD_SWAP( "241_la01.p2", 0x100000, 0x200000, CRC(3a55eb87) SHA1(b82c41988f3d6752bd5de78eef254f924785f6a1) )
+    MSLUG2_AES_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1844,6 +3837,7 @@ ROM_START( mslug2rma01 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_rma01.p1", 0x000000, 0x100000, CRC(0bf338c7) SHA1(cf686bf4ac52cc67d60e95e472b7ffe2c7abf858) )
 	ROM_LOAD16_WORD_SWAP( "241_rma01.p2", 0x100000, 0x200000, CRC(287f541b) SHA1(3f30846026edc499b0c6126f117e1cb859976dd4) )
+    MSLUG2_AES_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1854,6 +3848,7 @@ ROM_START( mslug2rma02 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_rma02.p1", 0x000000, 0x100000, CRC(03ff7378) SHA1(58a22e28d4da673e108f17f979c830325331d067) )
 	ROM_LOAD16_WORD_SWAP( "241_rma02.p2", 0x100000, 0x200000, CRC(0b01da75) SHA1(f7b658fddae967a0ddd3a1f71235824c62bc53de) )
+    MSLUG2_AES_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1864,6 +3859,7 @@ ROM_START( mslug2rma03 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_rma03.p1", 0x000000, 0x100000, CRC(a2732c55) SHA1(4e73aab0b34fdd8033639990fd30551ebede3138) )
 	ROM_LOAD16_WORD_SWAP( "241_rma03.p2", 0x100000, 0x200000, CRC(eec1980c) SHA1(557529010fba8ed728aa0a89474d0af3b9fd2b50) )
+    MSLUG2_AES_FILL
 	MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1874,6 +3870,7 @@ ROM_START( mslug2rma04 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_rma04.p1", 0x000000, 0x100000, CRC(044cd36e) SHA1(cdfd5e552d43afcdcae8540f8c72e8369d10bcb4) )
 	ROM_LOAD16_WORD_SWAP( "241_rma03.p2", 0x100000, 0x200000, CRC(eec1980c) SHA1(557529010fba8ed728aa0a89474d0af3b9fd2b50) )
+    MSLUG2_AES_FILL
 	MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1884,6 +3881,7 @@ ROM_START( mslug2rma05 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_rma05.p1", 0x000000, 0x100000, CRC(b792822d) SHA1(320b93310e5a6ef92d4b1f67380f11e36142d409) )
 	ROM_LOAD16_WORD_SWAP( "241_rma01.p2", 0x100000, 0x200000, CRC(287f541b) SHA1(3f30846026edc499b0c6126f117e1cb859976dd4) )
+    MSLUG2_AES_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1894,6 +3892,7 @@ ROM_START( mslug2rmb01 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_rmb01.p1", 0x000000, 0x100000, CRC(2f594169) SHA1(44004ecb455ef31123dc442a7dd8ad5e8ce81dcb) )
 	ROM_LOAD16_WORD_SWAP( "241_rma01.p2", 0x100000, 0x200000, CRC(287f541b) SHA1(3f30846026edc499b0c6126f117e1cb859976dd4) )
+    MSLUG2_AES_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1904,6 +3903,7 @@ ROM_START( mslug2rmb02 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_rmb02.p1", 0x000000, 0x100000, CRC(d65243ca) SHA1(54b4c0d0ee6e5c98ec68d4414355c78f474559f6) )
 	ROM_LOAD16_WORD_SWAP( "241_rma02.p2", 0x100000, 0x200000, CRC(0b01da75) SHA1(f7b658fddae967a0ddd3a1f71235824c62bc53de) )
+    MSLUG2_AES_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1914,6 +3914,7 @@ ROM_START( mslug2rmb03 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_rmb03.p1", 0x000000, 0x100000, CRC(86d955fb) SHA1(d96dafbb8db563667067c2f86c1336a008f5849f) )
 	ROM_LOAD16_WORD_SWAP( "241_rma03.p2", 0x100000, 0x200000, CRC(eec1980c) SHA1(557529010fba8ed728aa0a89474d0af3b9fd2b50) )
+    MSLUG2_AES_FILL
 	MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1924,6 +3925,7 @@ ROM_START( mslug2rmb04 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_rmb04.p1", 0x000000, 0x100000, CRC(3e914168) SHA1(933f7c9c48ea40aa477c29e6d7c9332959f8afa9) )
 	ROM_LOAD16_WORD_SWAP( "241_rma03.p2", 0x100000, 0x200000, CRC(eec1980c) SHA1(557529010fba8ed728aa0a89474d0af3b9fd2b50) )
+    MSLUG2_AES_FILL
 	MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1934,6 +3936,7 @@ ROM_START( mslug2rmb05 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_rmb05.p1", 0x000000, 0x100000, CRC(8d4f102b) SHA1(c4fa612f8711678ce25829566cf729a00fdcdb51) )
 	ROM_LOAD16_WORD_SWAP( "241_rma01.p2", 0x100000, 0x200000, CRC(287f541b) SHA1(3f30846026edc499b0c6126f117e1cb859976dd4) )
+    MSLUG2_AES_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -1948,7 +3951,8 @@ ROM_START( mslug3hc01 ) //mslg3eha
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc01.p1", 0x000000, 0x100000, CRC(e04c6624) SHA1(de684f346ab9a2e5730a6753de6d53801a702cc8) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2",     0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -1959,7 +3963,8 @@ ROM_START( mslug3hc02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc02.p1", 0x000000, 0x100000, CRC(b981e587) SHA1(7e193b1e73fe4e921d5809f942df2da41f34d177) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2",     0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -1970,10 +3975,11 @@ ROM_START( mslug3hc03 ) //mslug3g
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc03.p1", 0x000000, 0x100000, CRC(b23bd9b7) SHA1(4a5e877bc0d4853dc9c5a2c179049fbdd5285239) )
 	ROM_LOAD16_WORD_SWAP( "256_hc03.p2", 0x100000, 0x400000, CRC(8053a3fb) SHA1(baf40ca915d30f3dbf6cc440131e824e889940e7) )
-    ROM_DEFAULT_BIOS("euro")
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+    AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3_AUDIO_512K
+	MSLUG3_AUDIOBIOS_512K
     MSLUG3_YMSND
 	MSLUG3G_SPRITES
 ROM_END
@@ -1982,7 +3988,8 @@ ROM_START( mslug3hc04 ) //mslug3se
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc04.p1", 0x000000, 0x100000, CRC(46330db5) SHA1(7d1df5cb86da40b11465e6e017670365cbe234ac) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2",     0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2004,7 +4011,8 @@ ROM_START( mslug3hc06 ) //mslug3sd
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc06.p1", 0x000000, 0x100000, CRC(e1e21cc4) SHA1(c70ef18dfe8edbadadff6004508e838b246b88a5) )
 	ROM_LOAD16_WORD_SWAP( "256_hc06.p2", 0x100000, 0x400000, CRC(7343335b) SHA1(2d694af0c876eb8b4844e918cb707ce011c61c5d) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2015,7 +4023,8 @@ ROM_START( mslug3hc07 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc07.p1", 0x000000, 0x100000, CRC(2591b1f7) SHA1(3af19aad19d741a342d83bf20c564d8294a8daca) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2",     0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2026,7 +4035,8 @@ ROM_START( mslug3hc08 ) //mslug3zh
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc08.p1", 0x000000, 0x100000, CRC(257fa6b9) SHA1(c9ccc0a42a5a34a08316a76dc977ccee74d91245) )
 	ROM_LOAD16_WORD_SWAP( "256_hc08.p2", 0x100000, 0x400000, CRC(badc753c) SHA1(60eae0e02c05448c33cde2666a8b565ee6835216) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2037,7 +4047,8 @@ ROM_START( mslug3hc09 ) //mslug3wz
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc09.p1", 0x000000, 0x100000, CRC(4e6753ee) SHA1(2df01bda8ed450761c5ed24a9ef1a4dfe324ab08) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2",     0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2048,7 +4059,8 @@ ROM_START( mslug3hc10 ) // mslug3gw
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc10.p1", 0x000000, 0x100000, CRC(fafde0b4) SHA1(3eee501ddebda761d93c49cdea135fdf0aa0dc9c) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2",     0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
     MSLUG3GW_AUDIO_512K
     MSLUG3GW_YMSND
@@ -2059,7 +4071,8 @@ ROM_START( mslug3hc11 )  // mslug3c+eb
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc11.p1", 0x000000, 0x100000, CRC(e575a406) SHA1(fcfab75f53c13353fcdd85293dee5bd71f614bb0) )
 	ROM_LOAD16_WORD_SWAP( "256_hc11.p2", 0x100000, 0x400000, CRC(64ae37fc) SHA1(9a82b407f29986138a109d4620fc0a113049047a) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2070,7 +4083,8 @@ ROM_START( mslug3hc12 ) //mslug3es
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc12.p1", 0x000000, 0x100000, CRC(caac7e33) SHA1(098505f23e3a56e2e0cc0ae855e2457061138c9e) )
 	ROM_LOAD16_WORD_SWAP( "256_hc12.p2", 0x100000, 0x400000, CRC(62e699b3) SHA1(eac088b21d2243198034a9796aa0815d686ccfac) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
     MSLUG3GW_AUDIO_512K
     MSLUG3GW_YMSND
@@ -2081,7 +4095,8 @@ ROM_START( mslug3hc13 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc13.p1", 0x000000, 0x100000, CRC(ea7d570f) SHA1(d2419b96347f75fdd386880bc5eaa5766fe07b0c) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2",     0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2092,7 +4107,8 @@ ROM_START( mslug3hc14 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc14.p1", 0x000000, 0x100000, CRC(003ae172) SHA1(63b0ba7c40f11a611904abc3c98a87ae1137b8e2) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2",     0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2103,7 +4119,8 @@ ROM_START( mslug3hc15 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc11.p1", 0x000000, 0x100000, CRC(e575a406) SHA1(fcfab75f53c13353fcdd85293dee5bd71f614bb0) )
 	ROM_LOAD16_WORD_SWAP( "256_hc15.p2", 0x100000, 0x400000, CRC(d53d178c) SHA1(98f0cd74b18d0d63b74fd6d3830548f4c2ce401b) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2114,7 +4131,8 @@ ROM_START( mslug3hc16 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc11.p1", 0x000000, 0x100000, CRC(e575a406) SHA1(fcfab75f53c13353fcdd85293dee5bd71f614bb0) )
 	ROM_LOAD16_WORD_SWAP( "256_hc16.p2", 0x100000, 0x400000, CRC(f55ccb93) SHA1(c52e83c848ba63ca0323aa99f85e8278b6fe4cda) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2125,7 +4143,8 @@ ROM_START( mslug3hc17 ) //mslug3lw
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc11.p1", 0x000000, 0x100000, CRC(e575a406) SHA1(fcfab75f53c13353fcdd85293dee5bd71f614bb0) )
 	ROM_LOAD16_WORD_SWAP( "256_hc17.p2", 0x100000, 0x400000, CRC(7eed7c81) SHA1(1d9a18178b14226be60af683c9c4a7cfada7f0bb) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2136,7 +4155,8 @@ ROM_START( mslug3hc18 ) //mslug3i
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc18.p1", 0x000000, 0x100000, CRC(6ea79265) SHA1(1930a3ff1260d56fdc7559bd5bb56f0ca5479588) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2",     0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2145,12 +4165,10 @@ ROM_END
 
 ROM_START( mslug3hc19 ) //mslug3c
 	ROM_REGION( 0x500000, "maincpu", 0 )
-    // The official file has problems for the emulation that until today I could not fix.
-	ROM_LOAD_OPTIONAL( "256_hc19_original file.p1", 0x000000, 0x100000, BAD_DUMP CRC(05c99714) SHA1(da2e5b959d9327bce7b244629abaa8784af767a6) ) //CRC32 SHA1 Official Rom Hack
-	// Only the roms are kept even though they don't work	
 	ROM_LOAD16_WORD_SWAP( "256_hc11.p1", 0x000000, 0x100000, CRC(e575a406) SHA1(fcfab75f53c13353fcdd85293dee5bd71f614bb0) )
 	ROM_LOAD16_WORD_SWAP( "256_hc19.p2", 0x100000, 0x400000, CRC(b948a472) SHA1(e0135911f7d7e21285e6965cc6b4446277eea405) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2161,7 +4179,8 @@ ROM_START( mslug3hc20 ) //mslug3hcr, mslug3nsj
 	ROM_REGION( 0x500000, "maincpu", 0 )
     ROM_LOAD16_WORD_SWAP( "256_hc20.p1", 0x000000, 0x100000, CRC(f804b927) SHA1(a1a6bcc0fe65416c3ab04f84513da2138515fed0) )
 	ROM_LOAD16_WORD_SWAP( "256_hc20.p2", 0x100000, 0x400000, CRC(c34322ae) SHA1(774cc4e4e6fb4596c3e4daf18e7d8b6be2e43ea7) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
     MSLUG3ER_AUDIO_256K
     MSLUG3_YMSND
@@ -2172,7 +4191,8 @@ ROM_START( mslug3hc21 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc21.p1", 0x000000, 0x100000, CRC(bb448975) SHA1(3b9565ad6f2468ee95b953161d1701c88c9568e5) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2",     0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2194,7 +4214,8 @@ ROM_START( mslug3hc23 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc23.p1", 0x000000, 0x100000, CRC(ec09383d) SHA1(6574976d540b776c6c1db0dbacc9c9e084207324) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2",     0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2216,7 +4237,8 @@ ROM_START( mslug3hc25 ) //mslug3cq, mslug3scb
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc25.p1", 0x000000, 0x100000, CRC(dc0b9622) SHA1(1d80f2349564e6b09fdaffa1306ef03a4e7f1899) )
 	ROM_LOAD16_WORD_SWAP( "256_hc25.p2", 0x100000, 0x400000, CRC(3e880fe2) SHA1(0acc938ce512c9232279bac1e8d7dbe82c309a90) )
-	MSLUG3H_ROM_FILL
+	MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2227,7 +4249,8 @@ ROM_START( mslug3hc26 ) //mslug3dd
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc26.p1", 0x000000, 0x100000, CRC(9a83cb7a) SHA1(07f2c4602d7c4cc011a5271d39af92a329fbcff0) )
 	ROM_LOAD16_WORD_SWAP( "256_hc26.p2", 0x100000, 0x400000, CRC(e82fc07a) SHA1(3fa3da5aff90229a1bbd636f761d4eb4a66958d8) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2238,7 +4261,8 @@ ROM_START( mslug3hc27 ) //mslug3ki
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc27.p1", 0x000000, 0x100000, CRC(16a83b0a) SHA1(a898890bcd13d194333271c0d445913ba8d2cda7) )
 	ROM_LOAD16_WORD_SWAP( "256_hc27.p2", 0x100000, 0x400000, CRC(57f01937) SHA1(da9e106619c2fb264a2ba492b78828468a7265d6) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2249,10 +4273,11 @@ ROM_START( mslug3hc28 ) //mslug3sc,
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc28.p1", 0x000000, 0x100000, BAD_DUMP CRC(7b4dd96c) SHA1(c4b84e80cedeca35116b26b16f7d18ea0e06a25a) )
 	ROM_LOAD16_WORD_SWAP( "256_hc28.p2", 0x100000, 0x400000, CRC(a9cad8f1) SHA1(188ae36f01f027d2ff7d3dea0026ea55c9b2f17d) )
-    ROM_DEFAULT_BIOS("euro")
-	MSLUG3H_ROM_FILL
+	MSLUG3H_MVS_FILL
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+    AUDIOBIOS_128K
 	MSLUG3HD_SFIX_128K
-	MSLUG3_AUDIO_512K
+	MSLUG3_AUDIOBIOS_512K
     MSLUG3_YMSND
 	MSLUG3CQ_SPRITES
 ROM_END
@@ -2261,7 +4286,8 @@ ROM_START( mslug3hc29 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc29.p1", 0x000000, 0x100000, CRC(6e9e2cdd) SHA1(3ed78c9d6adcf605432ecb2905fd39bba7356f08) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2",     0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2272,7 +4298,8 @@ ROM_START( mslug3hc30 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc30.p1", 0x000000, 0x100000, CRC(9c2063d2) SHA1(ded2a73388d9f50ade36c04625d62cd5ec26a244) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2",     0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2283,7 +4310,8 @@ ROM_START( mslug3hc31 ) //mslug3v
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc31.p1", 0x000000, 0x100000, CRC(47f9aeea) SHA1(db1c65681ac12b146e2fa21a8f28000f41a11fe2) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2",     0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2294,7 +4322,8 @@ ROM_START( mslug3hc32 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc32.p1", 0x000000, 0x100000, CRC(ac2fd576) SHA1(f605e6f900aadac0c8637c1b4890f9e0da04309c) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2",     0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2306,9 +4335,10 @@ ROM_START( mslug3hc33 )
 	ROM_LOAD16_WORD_SWAP( "neo-sma_hc33.sma", 0x0c0000, 0x040000, CRC(c2dc0b28) SHA1(3aff37ec62def5a8f23523cb7c1988934e27ea30) )
 	ROM_LOAD16_WORD_SWAP( "256_hc33.p1",      0x100000, 0x400000, CRC(6ec2e58d) SHA1(d83dd522a5c8a8b4bd32722967e3d934d2e73e08) )
 	ROM_LOAD16_WORD_SWAP( "256_hc33.p2",      0x500000, 0x400000, CRC(faaf8cd8) SHA1(264018877eab84582ba553cb42d75f15c0c08f65) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
 	MSLUG3_SFIX_MT_512K
-	MSLUG3_AUDIO_512K
+	MSLUG3_AUDIOBIOS_512K
     MSLUG3_YMSND
 	MSLUG3_SPRITES
 ROM_END
@@ -2318,7 +4348,8 @@ ROM_START( mslug3hc34 ) //mslug3lw, mslug3nd
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc34.p1", 0x000000, 0x100000, CRC(94527837) SHA1(5af3de12ed91b38f84c96f91d10ca8f23826b8b4) )
 	ROM_LOAD16_WORD_SWAP( "256_hc34.p2", 0x100000, 0x400000, CRC(08ee1fe3) SHA1(9f0402b129167a12ad964eaaa79ade283a310f0b) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
     MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -2329,7 +4360,8 @@ ROM_START( mslug3hc35 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc35.p1", 0x000000, 0x100000, CRC(f77edb2a) SHA1(825ebda68220217d56ac2f4e1a21805066800b61) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2",     0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2340,7 +4372,8 @@ ROM_START( mslug3hc36 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc36.p1", 0x000000, 0x100000, CRC(380d190c) SHA1(45abe6f04ac16be7b168d9334bfc858525379733) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2",     0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2351,7 +4384,8 @@ ROM_START( mslug3hc37 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc37.p1", 0x000000, 0x100000, CRC(c23a8e11) SHA1(ccf24e7734b85d45573d34319dfdd14327b0cb39) )
 	ROM_LOAD16_WORD_SWAP( "256_hc37.p2", 0x100000, 0x400000, CRC(c31769f4) SHA1(94848f7e63d864102a79829c91eb867a61d6f87e) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2377,7 +4411,8 @@ ROM_START( mslug3hd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256h.p1", 0x000000, 0x100000, CRC(9c42ca85) SHA1(7a8f77a89867b889295ae9b9dfd4ba28f02d234d) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2", 0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2388,7 +4423,8 @@ ROM_START( mslug3nd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256nd.p1", 0x000000, 0x100000, CRC(c871c036) SHA1(4d1cca29dc27300d52739bee183fa4edf3d36afd) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2",  0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
     MSLUG3ND_SFIX_512K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2399,18 +4435,20 @@ ROM_START( mslug3b6d )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "299-p1.bin", 0x000000, 0x200000, CRC(5f2fe228) SHA1(747775a2dfc0da87ad2ddd4f57ce5b2522f23fa5) )
 	ROM_LOAD16_WORD_SWAP( "299-p2.bin", 0x100000, 0x400000, CRC(193fa835) SHA1(fb1f26db7998b0bb6b1c8b92500c1596ec5dfc71) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
     MSLUG3B6_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
 	MSLUG3D_SPRITES
 ROM_END
 
-ROM_START( mslug3b6de ) //Neoragex 5.0
+ROM_START( mslug3b6de )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "299-p1e.bin", 0x000000, 0x100000, CRC(1f1079a2) SHA1(5d99358f0e513e2087c7594bab09c8d33db40f1f) )
 	ROM_LOAD16_WORD_SWAP( "299-p2.bin",  0x100000, 0x400000, CRC(193fa835) SHA1(fb1f26db7998b0bb6b1c8b92500c1596ec5dfc71) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
     MSLUG3B6E_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3E_YMSND
@@ -2425,7 +4463,8 @@ ROM_START( mslug3b6hc01 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "299_hc01.p1", 0x000000, 0x200000, CRC(6d89096c) SHA1(97c436657512576a954690385c58f08f6510f655) )
 	ROM_LOAD16_WORD_SWAP( "299_hc01.p2", 0x100000, 0x400000, CRC(bf4a80af) SHA1(514f97892375a636b84fb8388261eea645a8da1a) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
     MSLUG3B6_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2436,7 +4475,8 @@ ROM_START( mslug3b6hc02 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "299_hc01.p1", 0x000000, 0x200000, CRC(6d89096c) SHA1(97c436657512576a954690385c58f08f6510f655) )
 	ROM_LOAD16_WORD_SWAP( "299_hc02.p2", 0x100000, 0x400000, CRC(78ef585c) SHA1(89c1d918902d3d2d15d289be3066c35600a331eb) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL 
     MSLUG3B6_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2447,7 +4487,8 @@ ROM_START( mslug3b6hc03 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "299_hc01.p1", 0x000000, 0x200000, CRC(6d89096c) SHA1(97c436657512576a954690385c58f08f6510f655) )
 	ROM_LOAD16_WORD_SWAP( "299_hc03.p2", 0x100000, 0x400000, CRC(d33f3351) SHA1(e76fa46dcbade4c86f1c7e89b86e75e9c0d6b3b2) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
     MSLUG3B6_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2458,7 +4499,8 @@ ROM_START( mslug3b6hc04 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "299_hc01.p1", 0x000000, 0x200000, CRC(6d89096c) SHA1(97c436657512576a954690385c58f08f6510f655) )
 	ROM_LOAD16_WORD_SWAP( "299_hc04.p2", 0x100000, 0x400000, CRC(f35eef4e) SHA1(569867c16142bbcb4153bf437407d9d266a3bffc) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
     MSLUG3B6_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2469,7 +4511,8 @@ ROM_START( mslug3b6hc05 ) //mslug3n6p
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "299-p1e.bin", 0x000000, 0x100000, CRC(1f1079a2) SHA1(5d99358f0e513e2087c7594bab09c8d33db40f1f) )
 	ROM_LOAD16_WORD_SWAP( "299_hc05.p2", 0x100000, 0x400000, CRC(62ac1321) SHA1(49462d899cc4d5006f0d6bc8735e9aa04d36f7ed) )
-    MSLUG3H_ROM_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
     MSLUG3B6_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -2487,9 +4530,10 @@ ROM_START( mslug3er01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_er01.p1", 0x000000, 0x100000, CRC(e7179439) SHA1(74a8e660388cce658eaafaa0f1b424811d79ed3d) )
 	ROM_LOAD16_WORD_SWAP( "256_er01.p2", 0x100000, 0x400000, CRC(f2feb36f) SHA1(45308efb107f4ae744f88c2e8e8f74ab0f9b2b0d) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2498,9 +4542,10 @@ ROM_START( mslug3er02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_er02.p1", 0x000000, 0x100000, CRC(eccaa54b) SHA1(9792b6b7e5934e1ffd138d8753349b3cd056e9f0) )
 	ROM_LOAD16_WORD_SWAP( "256_er01.p2", 0x100000, 0x400000, CRC(f2feb36f) SHA1(45308efb107f4ae744f88c2e8e8f74ab0f9b2b0d) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2509,9 +4554,10 @@ ROM_START( mslug3er03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_er03.p1", 0x000000, 0x100000, CRC(74c9655a) SHA1(66943a134b08a9ed4e5725f0b11e18b1f48445dd) )
 	ROM_LOAD16_WORD_SWAP( "256_er01.p2", 0x100000, 0x400000, CRC(f2feb36f) SHA1(45308efb107f4ae744f88c2e8e8f74ab0f9b2b0d) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2520,9 +4566,10 @@ ROM_START( mslug3er04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_er04.p1", 0x000000, 0x100000, CRC(a37b38ea) SHA1(e7a8683aed77c58173845f0d5a6742e9b593ffd5) )
 	ROM_LOAD16_WORD_SWAP( "256_er01.p2", 0x100000, 0x400000, CRC(f2feb36f) SHA1(45308efb107f4ae744f88c2e8e8f74ab0f9b2b0d) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2531,9 +4578,10 @@ ROM_START( mslug3er05 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_er05.p1", 0x000000, 0x100000, CRC(6a0005e6) SHA1(134f1451d5a185fd315506fe74b6b9c483714bbe) )
 	ROM_LOAD16_WORD_SWAP( "256_er01.p2", 0x100000, 0x400000, CRC(f2feb36f) SHA1(45308efb107f4ae744f88c2e8e8f74ab0f9b2b0d) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2542,9 +4590,10 @@ ROM_START( mslug3er06 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_er06.p1", 0x000000, 0x100000, CRC(b71a4d31) SHA1(193f31506adcb508c709eca082f2796676c9e252) )
 	ROM_LOAD16_WORD_SWAP( "256_er01.p2", 0x100000, 0x400000, CRC(f2feb36f) SHA1(45308efb107f4ae744f88c2e8e8f74ab0f9b2b0d) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2553,9 +4602,10 @@ ROM_START( mslug3er07 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_er07.p1", 0x000000, 0x100000, CRC(42232b6f) SHA1(9dbdd7a3778e9db482db41fe2bdbe3b348bf41a2) )
 	ROM_LOAD16_WORD_SWAP( "256_er01.p2", 0x100000, 0x400000, CRC(f2feb36f) SHA1(45308efb107f4ae744f88c2e8e8f74ab0f9b2b0d) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2564,6 +4614,7 @@ ROM_START( mslug3ly01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p1", 0x000000, 0x100000, CRC(887acb32) SHA1(e949263b629ae532fa65635bfec80931eb9694ab) )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p2", 0x100000, 0x400000, CRC(3eec5fc4) SHA1(dbc33fb9daa076f8b64852db0729255f383983c5) )
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -2574,6 +4625,7 @@ ROM_START( mslug3ly02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_ly02.p1", 0x000000, 0x100000, CRC(83a7fa40) SHA1(2582a77a496ca8ff8a36bb01eb828249b2597e20) )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p2", 0x100000, 0x400000, CRC(3eec5fc4) SHA1(dbc33fb9daa076f8b64852db0729255f383983c5) )
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -2584,6 +4636,7 @@ ROM_START( mslug3ly03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_ly03.p1", 0x000000, 0x100000, CRC(1ba43a51) SHA1(f5993284cde589d482cbdcef858218177ea55974) )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p2", 0x100000, 0x400000, CRC(3eec5fc4) SHA1(dbc33fb9daa076f8b64852db0729255f383983c5) )
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -2594,6 +4647,7 @@ ROM_START( mslug3ly04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_ly04.p1", 0x000000, 0x100000, CRC(cc1667e1) SHA1(e1d766e60a3679cad48e2b1c2f0d8a371eca8ace) )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p2", 0x100000, 0x400000, CRC(3eec5fc4) SHA1(dbc33fb9daa076f8b64852db0729255f383983c5) )
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -2604,6 +4658,7 @@ ROM_START( mslug3ly05 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_ly05.p1", 0x000000, 0x100000, CRC(056d5aed) SHA1(db05f683d413fc0afca65a52fbe412a04ee8cf5a) )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p2", 0x100000, 0x400000, CRC(3eec5fc4) SHA1(dbc33fb9daa076f8b64852db0729255f383983c5) )
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -2614,6 +4669,7 @@ ROM_START( mslug3ly06 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_ly06.p1", 0x000000, 0x100000, CRC(794034af) SHA1(9bb22e29d53b79e852c95312104883c07f6e1c16) )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p2", 0x100000, 0x400000, CRC(3eec5fc4) SHA1(dbc33fb9daa076f8b64852db0729255f383983c5) )
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -2624,6 +4680,7 @@ ROM_START( mslug3ly07 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_ly07.p1", 0x000000, 0x100000, CRC(2d4e7464) SHA1(ce04903da6a266eb3eb86d1b82f41ec1787cbb99) )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p2", 0x100000, 0x400000, CRC(3eec5fc4) SHA1(dbc33fb9daa076f8b64852db0729255f383983c5) )
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -2638,9 +4695,10 @@ ROM_START( mslug3la01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_la01.p1", 0x000000, 0x100000, CRC(714bf96b) SHA1(30e404e98ba85e295240ee666a9a4bf68f49fa04) )
 	ROM_LOAD16_WORD_SWAP( "256_la01.p2", 0x100000, 0x400000, CRC(f9123ba1) SHA1(86e1647ebde622445813b3b09a86bdc5c09b465c) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2649,9 +4707,10 @@ ROM_START( mslug3la02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_la02.p1", 0x000000, 0x100000, CRC(f05cfe31) SHA1(56830c7b005fe10fd207e51f0d5fa76a4c91479b) )
 	ROM_LOAD16_WORD_SWAP( "256_la02.p2", 0x100000, 0x400000, CRC(6ea68fd8) SHA1(5caefc3c950fd5c2cd8a24315cdac8f5404d0d74) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2660,9 +4719,10 @@ ROM_START( mslug3la03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_la03.p1", 0x000000, 0x100000, CRC(01ab3b0f) SHA1(cb65cf5a0d165d167f14450f1698c70890a7e238) )
 	ROM_LOAD16_WORD_SWAP( "256_la02.p2", 0x100000, 0x400000, CRC(6ea68fd8) SHA1(5caefc3c950fd5c2cd8a24315cdac8f5404d0d74) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2671,9 +4731,10 @@ ROM_START( mslug3la04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_la04.p1", 0x000000, 0x100000, CRC(8afe044d) SHA1(0458c0f95cfa04a7a55b35fef8431d9ee63a649d) )
 	ROM_LOAD16_WORD_SWAP( "256_la02.p2", 0x100000, 0x400000, CRC(6ea68fd8) SHA1(5caefc3c950fd5c2cd8a24315cdac8f5404d0d74) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2682,6 +4743,7 @@ ROM_START( mslug3la05 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_la05.p1", 0x000000, 0x100000, CRC(e0ac36b8) SHA1(359d4e3d30290ee9576abc796fffd7b04b2c4015) )
 	ROM_LOAD16_WORD_SWAP( "256_la02.p2", 0x100000, 0x400000, CRC(6ea68fd8) SHA1(5caefc3c950fd5c2cd8a24315cdac8f5404d0d74) )
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -2692,9 +4754,10 @@ ROM_START( mslug3lb01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lb01.p1", 0x000000, 0x100000, CRC(4bda23b2) SHA1(aa69c1d07dbbcd78a9cd31595a7b302a74a49b94) )
 	ROM_LOAD16_WORD_SWAP( "256_lb01.p2", 0x100000, 0x400000, CRC(b1662b21) SHA1(0c9e46276f3e61b87e402a7b010c6efbf48bd34c) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2703,9 +4766,10 @@ ROM_START( mslug3lb02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lb02.p1", 0x000000, 0x100000, CRC(cacd24e8) SHA1(226a85a492aaf4045066f37c3cf2c48504af7c37) )
 	ROM_LOAD16_WORD_SWAP( "256_lb02.p2", 0x100000, 0x400000, CRC(cffda8f2) SHA1(ef9f0fc13fa34aa09d6ec0ff52dfd92627c09f03) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2714,9 +4778,10 @@ ROM_START( mslug3lb03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lb03.p1", 0x000000, 0x100000, CRC(3b3ae1d6) SHA1(30e193ede99f05f2e320fca33236cb5f17f7974b) )
 	ROM_LOAD16_WORD_SWAP( "256_lb02.p2", 0x100000, 0x400000, CRC(cffda8f2) SHA1(ef9f0fc13fa34aa09d6ec0ff52dfd92627c09f03) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2725,9 +4790,10 @@ ROM_START( mslug3lb04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lb04.p1", 0x000000, 0x100000, CRC(b06fde94) SHA1(5ffbfd0c137428728c0e54dcbf7d54757748a98e) )
 	ROM_LOAD16_WORD_SWAP( "256_lb02.p2", 0x100000, 0x400000, CRC(cffda8f2) SHA1(ef9f0fc13fa34aa09d6ec0ff52dfd92627c09f03) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2736,6 +4802,7 @@ ROM_START( mslug3lb05 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lb05.p1", 0x000000, 0x100000, CRC(da3dec61) SHA1(17420f9193006130a9f4dbd42c601e3eb805a4c7) )
 	ROM_LOAD16_WORD_SWAP( "256_lb02.p2", 0x100000, 0x400000, CRC(cffda8f2) SHA1(ef9f0fc13fa34aa09d6ec0ff52dfd92627c09f03) )
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -2746,9 +4813,10 @@ ROM_START( mslug3lc01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lc01.p1", 0x000000, 0x100000, CRC(400712c0) SHA1(f607c56ba728dcf42dc6bf43f487dbedd0ca4b67) )
 	ROM_LOAD16_WORD_SWAP( "256_lc01.p2", 0x100000, 0x400000, CRC(5cfe69c7) SHA1(e77caa4b5c52b5780bf5afbcc376b6465a32de55) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2757,9 +4825,10 @@ ROM_START( mslug3lc02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lc02.p1", 0x000000, 0x100000, CRC(c110159a) SHA1(7559273d44e3dfe207a28bfbf43f1b89401ef57f) )
 	ROM_LOAD16_WORD_SWAP( "256_lc02.p2", 0x100000, 0x400000, CRC(2265ea14) SHA1(db84d5cbc756a13fb1f6286acf3db4d7a3a7d6f4) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2768,9 +4837,10 @@ ROM_START( mslug3lc03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lc03.p1", 0x000000, 0x100000, CRC(30e7d0a4) SHA1(2307ce9516378e6518825da264efc85996472816) )
 	ROM_LOAD16_WORD_SWAP( "256_lc02.p2", 0x100000, 0x400000, CRC(2265ea14) SHA1(db84d5cbc756a13fb1f6286acf3db4d7a3a7d6f4) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2779,9 +4849,10 @@ ROM_START( mslug3lc04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lc04.p1", 0x000000, 0x100000, CRC(bbb2efe6) SHA1(f0d5c9f5f9af05a0e4e326c2cd94132ce1483bdc) )
 	ROM_LOAD16_WORD_SWAP( "256_lc02.p2", 0x100000, 0x400000, CRC(2265ea14) SHA1(db84d5cbc756a13fb1f6286acf3db4d7a3a7d6f4) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2790,6 +4861,7 @@ ROM_START( mslug3lc05 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lc05.p1", 0x000000, 0x100000, CRC(6d39a46a) SHA1(d0414e34600017e559d777756fe485c1b4594480) )
 	ROM_LOAD16_WORD_SWAP( "256_lc02.p2", 0x100000, 0x400000, CRC(2265ea14) SHA1(db84d5cbc756a13fb1f6286acf3db4d7a3a7d6f4) )
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -2800,9 +4872,10 @@ ROM_START( mslug3ld01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_ld01.p1", 0x000000, 0x100000, CRC(d804d2d1) SHA1(69ae41f1c7441f0660cad97b02fe326315128ff9) )
 	ROM_LOAD16_WORD_SWAP( "256_ld01.p2", 0x100000, 0x400000, CRC(7357f3d5) SHA1(3d3e0a69a9d83142c42ac9bae8a70dee284fd111) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2811,9 +4884,10 @@ ROM_START( mslug3ld02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_ld02.p1", 0x000000, 0x100000, CRC(5913d58b) SHA1(e02e4a359f344de1963a7fcdee453db967efe577) )
 	ROM_LOAD16_WORD_SWAP( "256_ld02.p2", 0x100000, 0x400000, CRC(0dcc7006) SHA1(0f66901f670a3c1c62389f18755aaf0fc57e3f30) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2822,9 +4896,10 @@ ROM_START( mslug3ld03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_ld03.p1", 0x000000, 0x100000, CRC(a8e410b5) SHA1(1c65ffbb1e32186fd10fd3376c7c6d5cc23a06ce) )
 	ROM_LOAD16_WORD_SWAP( "256_ld02.p2", 0x100000, 0x400000, CRC(0dcc7006) SHA1(0f66901f670a3c1c62389f18755aaf0fc57e3f30) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2833,9 +4908,10 @@ ROM_START( mslug3ld04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_ld04.p1", 0x000000, 0x100000, CRC(23b12ff7) SHA1(7a3df960d213dba231b8b4619d7adbd3c1cbe7f2) )
 	ROM_LOAD16_WORD_SWAP( "256_ld02.p2", 0x100000, 0x400000, CRC(0dcc7006) SHA1(0f66901f670a3c1c62389f18755aaf0fc57e3f30) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2844,6 +4920,7 @@ ROM_START( mslug3ld05 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_ld05.p1", 0x000000, 0x100000, CRC(2247178a) SHA1(a17768d90c8ad8df1e884412b7fc888becb736af) )
 	ROM_LOAD16_WORD_SWAP( "256_ld02.p2", 0x100000, 0x400000, CRC(0dcc7006) SHA1(0f66901f670a3c1c62389f18755aaf0fc57e3f30) )
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -2854,9 +4931,10 @@ ROM_START( mslug3le01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_le01.p1", 0x000000, 0x100000, CRC(0fb68f61) SHA1(4bfd07fd6bcbe83fd17996869823109a6cbcde2f) )
 	ROM_LOAD16_WORD_SWAP( "256_le01.p2", 0x100000, 0x400000, CRC(86abbe29) SHA1(0a1401e65910da82f5ef0f525908fa87d1143499) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2865,9 +4943,10 @@ ROM_START( mslug3le02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_le02.p1", 0x000000, 0x100000, CRC(8ea1883b) SHA1(5263fc888c2c1a48bbc52a57df956e7d2a72b89d) )
 	ROM_LOAD16_WORD_SWAP( "256_le02.p2", 0x100000, 0x400000, CRC(f8303dfa) SHA1(0566807d0d45e5c214a570856eb483b43f2540ff) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2876,9 +4955,10 @@ ROM_START( mslug3le03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_le03.p1", 0x000000, 0x100000, CRC(7f564d05) SHA1(fab744f49a752f698beada7475533f3eac09854a) )
 	ROM_LOAD16_WORD_SWAP( "256_le02.p2", 0x100000, 0x400000, CRC(f8303dfa) SHA1(0566807d0d45e5c214a570856eb483b43f2540ff) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2887,9 +4967,10 @@ ROM_START( mslug3le04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_le04.p1", 0x000000, 0x100000, CRC(f4037247) SHA1(345816ba23c0c6fd8a2210cdee7fb82b883aad2e) )
 	ROM_LOAD16_WORD_SWAP( "256_le02.p2", 0x100000, 0x400000, CRC(f8303dfa) SHA1(0566807d0d45e5c214a570856eb483b43f2540ff) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2898,6 +4979,7 @@ ROM_START( mslug3le05 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_le05.p1", 0x000000, 0x100000, CRC(9e5140b2) SHA1(54224b37be3297bff86b89a9c348999740a8fd31) )
 	ROM_LOAD16_WORD_SWAP( "256_le02.p2", 0x100000, 0x400000, CRC(f8303dfa) SHA1(0566807d0d45e5c214a570856eb483b43f2540ff) )
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -2908,9 +4990,10 @@ ROM_START( mslug3lf01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lf01.p1", 0x000000, 0x100000, CRC(c6cdb26d) SHA1(69b67e891ebbce7177ac3acf3b905148c144695b) )
 	ROM_LOAD16_WORD_SWAP( "256_lf01.p2", 0x100000, 0x400000, CRC(d5603907) SHA1(f751e2b0bd940f298da9b8f1b47ea2fc0ebda8d9) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2919,9 +5002,10 @@ ROM_START( mslug3lf02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lf02.p1", 0x000000, 0x100000, CRC(47dab537) SHA1(fa07c2c7048a8fd074efa7af61a99c6876405b18) )
 	ROM_LOAD16_WORD_SWAP( "256_lf02.p2", 0x100000, 0x400000, CRC(abfbbad4) SHA1(45edb9e1aa2af12be0561953bd8f4a12cf7654a3) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2930,9 +5014,10 @@ ROM_START( mslug3lf03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lf03.p1", 0x000000, 0x100000, CRC(b62d7009) SHA1(f2bd538179e5df2485bf34ca8381e94a76d40146) )
 	ROM_LOAD16_WORD_SWAP( "256_lf02.p2", 0x100000, 0x400000, CRC(abfbbad4) SHA1(45edb9e1aa2af12be0561953bd8f4a12cf7654a3) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2941,9 +5026,10 @@ ROM_START( mslug3lf04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lf04.p1", 0x000000, 0x100000, CRC(3d784f4b) SHA1(7b5f66ede551df85e5f9bd80cc5956dc3fbb6636) )
 	ROM_LOAD16_WORD_SWAP( "256_lf02.p2", 0x100000, 0x400000, CRC(abfbbad4) SHA1(45edb9e1aa2af12be0561953bd8f4a12cf7654a3) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2952,6 +5038,7 @@ ROM_START( mslug3lf05 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lf05.p1", 0x000000, 0x100000, CRC(572a7dbe) SHA1(9107683b42b1af568bd44ffaf1dcb88393354598) )
 	ROM_LOAD16_WORD_SWAP( "256_lf02.p2", 0x100000, 0x400000, CRC(abfbbad4) SHA1(45edb9e1aa2af12be0561953bd8f4a12cf7654a3) )
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -2962,9 +5049,10 @@ ROM_START( mslug3lg01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lg01.p1", 0x000000, 0x100000, CRC(1bd7faba) SHA1(4da60aeb1e0246d19a30e0ad1c6c2db6404733e1) )
 	ROM_LOAD16_WORD_SWAP( "256_lg01.p2", 0x100000, 0x400000, CRC(c4663428) SHA1(9866d961d52fdc3ed7332e87a5a338b7874f6342) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2973,9 +5061,10 @@ ROM_START( mslug3lg02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lg02.p1", 0x000000, 0x100000, CRC(9ac0fde0) SHA1(f50bfbff7ebc51ffb047288a1b9a0e02796041e5) )
 	ROM_LOAD16_WORD_SWAP( "256_lg02.p2", 0x100000, 0x400000, CRC(bafdb7fb) SHA1(99ff24484805435ca88a97ec068593e76d561326) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2984,9 +5073,10 @@ ROM_START( mslug3lg03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lg03.p1", 0x000000, 0x100000, CRC(6b3738de) SHA1(49cd09072dfb39dd665a5cb543fb36e7dc909523) )
 	ROM_LOAD16_WORD_SWAP( "256_lg02.p2", 0x100000, 0x400000, CRC(bafdb7fb) SHA1(99ff24484805435ca88a97ec068593e76d561326) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -2995,9 +5085,10 @@ ROM_START( mslug3lg04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lg04.p1", 0x000000, 0x100000, CRC(e062079c) SHA1(8e21b442bf2942bf1b193d299ebe81854d2709a9) )
 	ROM_LOAD16_WORD_SWAP( "256_lg02.p2", 0x100000, 0x400000, CRC(bafdb7fb) SHA1(99ff24484805435ca88a97ec068593e76d561326) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -3006,6 +5097,7 @@ ROM_START( mslug3lg05 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lg05.p1", 0x000000, 0x100000, CRC(36e94c10) SHA1(71363c1a3c04f928da3bf366b6017f2b4fc40278) )
 	ROM_LOAD16_WORD_SWAP( "256_lg02.p2", 0x100000, 0x400000, CRC(bafdb7fb) SHA1(99ff24484805435ca88a97ec068593e76d561326) )
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3016,9 +5108,10 @@ ROM_START( mslug3lh01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lh01.p1", 0x000000, 0x100000, CRC(eeee9ce4) SHA1(32433b53f650b1ecf0461596840566458c3e8cde) )
 	ROM_LOAD16_WORD_SWAP( "256_lh01.p2", 0x100000, 0x400000, CRC(b021a698) SHA1(fcaca2c50c9ffe1dc7565a7b9d5606f050515a12) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -3027,9 +5120,10 @@ ROM_START( mslug3lh02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lh02.p1", 0x000000, 0x100000, CRC(6ff99bbe) SHA1(aff5c72970293d2c6a264a1e955663de2b349b13) )
 	ROM_LOAD16_WORD_SWAP( "256_lh02.p2", 0x100000, 0x400000, CRC(ceba254b) SHA1(9ec91440f3b4e97a904a8935d660e4beb258fc67) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -3038,9 +5132,10 @@ ROM_START( mslug3lh03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lh03.p1", 0x000000, 0x100000, CRC(9e0e5e80) SHA1(31232bbadd928bf51e020db2565e3182edfa9c5c) )
 	ROM_LOAD16_WORD_SWAP( "256_lh02.p2", 0x100000, 0x400000, CRC(ceba254b) SHA1(9ec91440f3b4e97a904a8935d660e4beb258fc67) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -3049,9 +5144,10 @@ ROM_START( mslug3lh04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lh04.p1", 0x000000, 0x100000, CRC(155b61c2) SHA1(bc843ca56a5387d275b50c88c67d8143270fb805) )
 	ROM_LOAD16_WORD_SWAP( "256_lh02.p2", 0x100000, 0x400000, CRC(ceba254b) SHA1(9ec91440f3b4e97a904a8935d660e4beb258fc67) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+	AUDIOBIOS_128K
     MSLUG3G_SFIX_128K
-	MSLUG3LW_AUDIO_512K
+	MSLUG3LW_AUDIOBIOS_512K
     MSLUG3LW_YMSND
 	MSLUG3LZ_SPRITES
 ROM_END
@@ -3060,6 +5156,7 @@ ROM_START( mslug3lh05 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_lh05.p1", 0x000000, 0x100000, CRC(14ad59bf) SHA1(dd52fa482e42c6f8caa89b95f65d5c9c397a43c2) )
 	ROM_LOAD16_WORD_SWAP( "256_lh02.p2", 0x100000, 0x400000, CRC(ceba254b) SHA1(9ec91440f3b4e97a904a8935d660e4beb258fc67) )
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3070,6 +5167,7 @@ ROM_START( mslug3li01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_li01.p1", 0x000000, 0x100000, CRC(4e144e8b) SHA1(3e51c661e9ee4891497ba6bbc1cbcd29005c0b20) )
 	ROM_LOAD16_WORD_SWAP( "256_li01.p2", 0x100000, 0x400000, CRC(4f04faa7) SHA1(44769d46237c9db8920548e64ed67d2b4bcbc042) )
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
     MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3080,6 +5178,7 @@ ROM_START( mslug3li02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_li02.p1", 0x000000, 0x100000, CRC(92d60873) SHA1(ba37a8f91f862e3fa6b3f72efb6c3ba9f837ce1d) )
 	ROM_LOAD16_WORD_SWAP( "256_li01.p2", 0x100000, 0x400000, CRC(4f04faa7) SHA1(44769d46237c9db8920548e64ed67d2b4bcbc042) )
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
     MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3094,6 +5193,7 @@ ROM_START( mslug3rma01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rma01.p1", 0x000000, 0x100000, CRC(1540e0f9) SHA1(3b9b03d7862adecb64ef2a605c8bad7994696c27) )
 	ROM_LOAD16_WORD_SWAP( "256_rma01.p2", 0x100000, 0x400000, CRC(7a0efee4) SHA1(1ddb4636a1ed14df8c3bb7423adae67376729566) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3104,6 +5204,7 @@ ROM_START( mslug3rma02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rma02.p1", 0x000000, 0x100000, CRC(d5f206e0) SHA1(b6d81a466dc6c6407ea12a44d863a3900bde5237) )
 	ROM_LOAD16_WORD_SWAP( "256_rma02.p2", 0x100000, 0x400000, CRC(edba4a9d) SHA1(fb00a40c8e47ecb23e279b4c61b450ca8ef1720e) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3114,6 +5215,7 @@ ROM_START( mslug3rma03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rma03.p1", 0x000000, 0x100000, CRC(2405c3de) SHA1(1a00adeea7e18747056adb9eb0eb727757c085d7) )
 	ROM_LOAD16_WORD_SWAP( "256_rma02.p2", 0x100000, 0x400000, CRC(edba4a9d) SHA1(fb00a40c8e47ecb23e279b4c61b450ca8ef1720e) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3124,6 +5226,7 @@ ROM_START( mslug3rma04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rma04.p1", 0x000000, 0x100000, CRC(014d23f8) SHA1(6b1f6a2a8da9612f07a348a0c0f61770ba30d34d) )
 	ROM_LOAD16_WORD_SWAP( "256_rma02.p2", 0x100000, 0x400000, CRC(edba4a9d) SHA1(fb00a40c8e47ecb23e279b4c61b450ca8ef1720e) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3134,6 +5237,7 @@ ROM_START( mslug3rmb01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmb01.p1", 0x000000, 0x100000, CRC(30792065) SHA1(8148c94f584b286bad2bc0b97feaeae67a4742a6) )
 	ROM_LOAD16_WORD_SWAP( "256_rmb01.p2", 0x100000, 0x400000, CRC(fe3cc308) SHA1(052f4841010658a5bfe54f39ddb5826e869e844e) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3144,6 +5248,7 @@ ROM_START( mslug3rmb02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmb02.p1", 0x000000, 0x100000, CRC(f0cbc67c) SHA1(7d49b3bccc867cab8991c70baf8e7c4641f28661) )
 	ROM_LOAD16_WORD_SWAP( "256_rmb02.p2", 0x100000, 0x400000, CRC(80a740db) SHA1(58b4d629647e1f592ba9ef23ca8ba90bbc170241) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3154,6 +5259,7 @@ ROM_START( mslug3rmb03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmb03.p1", 0x000000, 0x100000, CRC(013c0342) SHA1(f5fbef22d9cd862ed883b5daec023d81e233c1b2) )
 	ROM_LOAD16_WORD_SWAP( "256_rmb02.p2", 0x100000, 0x400000, CRC(80a740db) SHA1(58b4d629647e1f592ba9ef23ca8ba90bbc170241) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3164,6 +5270,7 @@ ROM_START( mslug3rmb04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmb04.p1", 0x000000, 0x100000, CRC(2474e364) SHA1(b2e05a070e858668f901de36366ded006a68102e) )
 	ROM_LOAD16_WORD_SWAP( "256_rmb02.p2", 0x100000, 0x400000, CRC(80a740db) SHA1(58b4d629647e1f592ba9ef23ca8ba90bbc170241) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3174,6 +5281,7 @@ ROM_START( mslug3rmc01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmc01.p1", 0x000000, 0x100000, CRC(3ba41117) SHA1(614432cb4e8fe040506cdc446af799cb36ea65c3) )
 	ROM_LOAD16_WORD_SWAP( "256_rmc01.p2", 0x100000, 0x400000, CRC(748fe101) SHA1(23322fcbcca3dc6f6da15d15a99b42e407fd02e7) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3184,6 +5292,7 @@ ROM_START( mslug3rmc02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmc02.p1", 0x000000, 0x100000, CRC(fb16f70e) SHA1(5d5f65082c75d1b6430b63e312a8f3e2e7692863) )
 	ROM_LOAD16_WORD_SWAP( "256_rmc02.p2", 0x100000, 0x400000, CRC(0a1462d2) SHA1(b3695ec0ab7b0e4510c965b09de9b57e0bb76bd6) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3194,6 +5303,7 @@ ROM_START( mslug3rmc03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmc03.p1", 0x000000, 0x100000, CRC(0ae13230) SHA1(6c43750ea0f6d3ae1556c3e74f2fff301ffe908f) )
 	ROM_LOAD16_WORD_SWAP( "256_rmc02.p2", 0x100000, 0x400000, CRC(0a1462d2) SHA1(b3695ec0ab7b0e4510c965b09de9b57e0bb76bd6) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3204,6 +5314,7 @@ ROM_START( mslug3rmc04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmc04.p1", 0x000000, 0x100000, CRC(2fa9d216) SHA1(16c62a3ed734b3c5338627f5ab1b02305579632c) )
 	ROM_LOAD16_WORD_SWAP( "256_rmc02.p2", 0x100000, 0x400000, CRC(0a1462d2) SHA1(b3695ec0ab7b0e4510c965b09de9b57e0bb76bd6) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3214,6 +5325,7 @@ ROM_START( mslug3rmd01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmd01.p1", 0x000000, 0x100000, CRC(a3a7d106) SHA1(7664e9095b669df1c59ec30332044cb8efab6e82) )
 	ROM_LOAD16_WORD_SWAP( "256_rmd01.p2", 0x100000, 0x400000, CRC(855848d2) SHA1(c0850675674519b32b7d906d46780ce1fcf478f4) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3224,6 +5336,7 @@ ROM_START( mslug3rmd02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmd02.p1", 0x000000, 0x100000, CRC(6315371f) SHA1(1b0e9528a351a266b340e37477786be6b7e02180) )
 	ROM_LOAD16_WORD_SWAP( "256_rmd02.p2", 0x100000, 0x400000, CRC(fbc3cb01) SHA1(ac96ec4b6a44a9b0618481ada3718a082c713ec4) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3234,6 +5347,7 @@ ROM_START( mslug3rmd03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmd03.p1", 0x000000, 0x100000, CRC(92e2f221) SHA1(f1e80007f2a57f89b8a7e564d36cb8cbb0d445f6) )
 	ROM_LOAD16_WORD_SWAP( "256_rmd02.p2", 0x100000, 0x400000, CRC(fbc3cb01) SHA1(ac96ec4b6a44a9b0618481ada3718a082c713ec4) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3244,6 +5358,7 @@ ROM_START( mslug3rmd04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmd04.p1", 0x000000, 0x100000, CRC(b7aa1207) SHA1(edad7132b059235e67acc0032eff024703034507) )
 	ROM_LOAD16_WORD_SWAP( "256_rmd02.p2", 0x100000, 0x400000, CRC(fbc3cb01) SHA1(ac96ec4b6a44a9b0618481ada3718a082c713ec4) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3254,6 +5369,7 @@ ROM_START( mslug3rme01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rme01.p1", 0x000000, 0x100000, CRC(74158cb6) SHA1(59c2e1b12ffa3dcce18d27a6fb91aebfa15a7a4b) )
 	ROM_LOAD16_WORD_SWAP( "256_rme01.p2", 0x100000, 0x400000, CRC(8eb1bb97) SHA1(fa629aec7f9c6a66db0f3b7674bd69ec6e6cdf18) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3264,6 +5380,7 @@ ROM_START( mslug3rme02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rme02.p1", 0x000000, 0x100000, CRC(b4a76aaf) SHA1(4dce2218a42a910445dd3f7805092cd27bc9cdaa) )
 	ROM_LOAD16_WORD_SWAP( "256_rme02.p2", 0x100000, 0x400000, CRC(f02a3844) SHA1(fe8ed797e893fd3dc47627f97e33080636bc038b) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3274,6 +5391,7 @@ ROM_START( mslug3rme03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rme03.p1", 0x000000, 0x100000, CRC(4550af91) SHA1(0aae432e42b630ecf866e76908f953e52d89e2ac) )
 	ROM_LOAD16_WORD_SWAP( "256_rme02.p2", 0x100000, 0x400000, CRC(f02a3844) SHA1(fe8ed797e893fd3dc47627f97e33080636bc038b) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3284,6 +5402,7 @@ ROM_START( mslug3rme04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rme04.p1", 0x000000, 0x100000, CRC(60184fb7) SHA1(bb895e53b4977faa9a06f3720a58ecf78569d159) )
 	ROM_LOAD16_WORD_SWAP( "256_rme02.p2", 0x100000, 0x400000, CRC(f02a3844) SHA1(fe8ed797e893fd3dc47627f97e33080636bc038b) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3294,6 +5413,7 @@ ROM_START( mslug3rmf01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmf01.p1", 0x000000, 0x100000, CRC(bd6eb1ba) SHA1(605e19877adf5c7835922ac56504e97190105507) )
 	ROM_LOAD16_WORD_SWAP( "256_rmf01.p2", 0x100000, 0x400000, CRC(787b762a) SHA1(e5ad2a818881e8abf23c124aaccb3ad7a8c727c6) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3304,6 +5424,7 @@ ROM_START( mslug3rmf02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmf02.p1", 0x000000, 0x100000, CRC(7ddc57a3) SHA1(368d6bb909ce1f23694c1d16278ad779004aee66) )
 	ROM_LOAD16_WORD_SWAP( "256_rmf02.p2", 0x100000, 0x400000, CRC(06e0f5f9) SHA1(702c0442a8e2f4d06d47cee99a4628413217ca57) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3314,6 +5435,7 @@ ROM_START( mslug3rmf03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmf03.p1", 0x000000, 0x100000, CRC(8c2b929d) SHA1(45fbdf4c4a67c521c62016ac95daac91af3492c2) )
 	ROM_LOAD16_WORD_SWAP( "256_rmf02.p2", 0x100000, 0x400000, CRC(06e0f5f9) SHA1(702c0442a8e2f4d06d47cee99a4628413217ca57) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3324,6 +5446,7 @@ ROM_START( mslug3rmf04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmf04.p1", 0x000000, 0x100000, CRC(a96372bb) SHA1(93ee191c2fa175e3f6b65e5b12228ee4940d3d62) )
 	ROM_LOAD16_WORD_SWAP( "256_rmf02.p2", 0x100000, 0x400000, CRC(06e0f5f9) SHA1(702c0442a8e2f4d06d47cee99a4628413217ca57) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3334,6 +5457,7 @@ ROM_START( mslug3rmg01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmg01.p1", 0x000000, 0x100000, CRC(6074f96d) SHA1(76ea0678dd819e2a0823c974ee2429d9956df9a5) )
 	ROM_LOAD16_WORD_SWAP( "256_rmg01.p2", 0x100000, 0x400000, CRC(c795c2d3) SHA1(dc9c4c7fc75472efcf7581dc60baa21c88e31f69) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3344,6 +5468,7 @@ ROM_START( mslug3rmg02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmg02.p1", 0x000000, 0x100000, CRC(a0c61f74) SHA1(55613942a95baaf1e63cd57811d48a79f33f4e11) )
 	ROM_LOAD16_WORD_SWAP( "256_rmg02.p2", 0x100000, 0x400000, CRC(b90e4100) SHA1(7d7010599b87d82bd4c3a4f4887a65537f441993) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3354,6 +5479,7 @@ ROM_START( mslug3rmg03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmg03.p1", 0x000000, 0x100000, CRC(5131da4a) SHA1(6e47e7f2f6dfb3de31c8e61133bfc973b8bcfe8e) )
 	ROM_LOAD16_WORD_SWAP( "256_rmg02.p2", 0x100000, 0x400000, CRC(b90e4100) SHA1(7d7010599b87d82bd4c3a4f4887a65537f441993) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3364,6 +5490,7 @@ ROM_START( mslug3rmg04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmg04.p1", 0x000000, 0x100000, CRC(74793a6c) SHA1(672cbb2a5d0674594e2f1f74a4258816d5213e58) )
 	ROM_LOAD16_WORD_SWAP( "256_rmg02.p2", 0x100000, 0x400000, CRC(b90e4100) SHA1(7d7010599b87d82bd4c3a4f4887a65537f441993) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3374,6 +5501,7 @@ ROM_START( mslug3rmh01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmh01.p1", 0x000000, 0x100000, CRC(954d9f33) SHA1(126ae60bab422a75c1b9ccae8ae1fefed9295d05) )
 	ROM_LOAD16_WORD_SWAP( "256_rmh01.p2", 0x100000, 0x400000, CRC(b38ab55a) SHA1(da22fe3575229177ca6da470764bf9afafc95f31) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3384,6 +5512,7 @@ ROM_START( mslug3rmh02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmh02.p1", 0x000000, 0x100000, CRC(55ff792a) SHA1(4209c472dce39b6f8f21bcda2b5a5ad1be086e53) )
 	ROM_LOAD16_WORD_SWAP( "256_rmh02.p2", 0x100000, 0x400000, CRC(cd113689) SHA1(c3e807a26676f25c8271b8736007c2b34122e67c) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3394,6 +5523,7 @@ ROM_START( mslug3rmh03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmh03.p1", 0x000000, 0x100000, CRC(a408bc14) SHA1(960c419ec56f88d6cf4c814c9ff85d13023f7aa1) )
 	ROM_LOAD16_WORD_SWAP( "256_rmh02.p2", 0x100000, 0x400000, CRC(cd113689) SHA1(c3e807a26676f25c8271b8736007c2b34122e67c) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3404,6 +5534,7 @@ ROM_START( mslug3rmh04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmh04.p1", 0x000000, 0x100000, CRC(81405c32) SHA1(eef0a7223f6b4250aefa97e4bd1f550c93cf84c2) )
 	ROM_LOAD16_WORD_SWAP( "256_rmh02.p2", 0x100000, 0x400000, CRC(cd113689) SHA1(c3e807a26676f25c8271b8736007c2b34122e67c) )
+    MSLUG3H_AES_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3414,6 +5545,7 @@ ROM_START( mslug3rmi01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmi01.p1", 0x000000, 0x100000, CRC(e43307a3) SHA1(b7627f4d04395ac68d3a8bc7efb056f5b0455c30) )
 	ROM_LOAD16_WORD_SWAP( "256_rmi01.p2", 0x100000, 0x400000, CRC(4586dcb0) SHA1(021adc091b26662c3fb0bc79aa8fa456ebbc7377) )
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
     MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3424,6 +5556,7 @@ ROM_START( mslug3rmi02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_rmi02.p1", 0x000000, 0x100000, CRC(38f1415b) SHA1(175ad5bfe3af6574a82f01fd9c60e33045d39d2d) )
 	ROM_LOAD16_WORD_SWAP( "256_rmi01.p2", 0x100000, 0x400000, CRC(4586dcb0) SHA1(021adc091b26662c3fb0bc79aa8fa456ebbc7377) )
+    MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
     MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
@@ -3438,7 +5571,8 @@ ROM_START( mslug4hc01 ) //mslug4sd
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc01.p1", 0x000000, 0x100000, CRC(af69d959) SHA1(2bc9796003c8742d681e11ad842978d918fbae40) )
 	ROM_LOAD16_WORD_SWAP( "263_hc01.p2", 0x100000, 0x400000, CRC(2b863b30) SHA1(b5edc43d87faf6540e3154fcbab42efb148cbd04) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4NDE_SFIX_128K
     MSLUG4D_AUDIO_64K
 	MS4BOOT_YMSND
@@ -3449,7 +5583,8 @@ ROM_START( mslug4hc02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc02.p1", 0x000000, 0x100000, CRC(e034a441) SHA1(54cda2ae0a998e9a5f64e207f53d681ed5dea186) )
 	ROM_LOAD16_WORD_SWAP( "263.p2",      0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
     MSLUG4_YMSND
@@ -3460,7 +5595,8 @@ ROM_START( mslug4hc03 ) //mslug4lw
 	ROM_REGION( 0x900000, "maincpu", 0 )
     ROM_LOAD16_WORD_SWAP( "263_hc03.p1", 0x000000, 0x100000, CRC(ad713169) SHA1(51c10dfa1b8fc3b0e7850c71920091dbd91d1ba5) )
 	ROM_LOAD16_WORD_SWAP( "263_hc03.p2", 0x100000, 0x800000, CRC(5aa184e7) SHA1(4850341a52e12d541271926a47714c2bbbcd7cba) )
-	MSLUG4_ROM_FILL
+	MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3471,7 +5607,8 @@ ROM_START( mslug4hc04 ) //mslug4ammor
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc04.p1", 0x000000, 0x100000, CRC(21b68d31) SHA1(97b287e2cbd4eb20fe65339c5d1d42b864e8a440) )
 	ROM_LOAD16_WORD_SWAP( "263_hc03.p2", 0x100000, 0x800000, CRC(5aa184e7) SHA1(4850341a52e12d541271926a47714c2bbbcd7cba) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3482,7 +5619,8 @@ ROM_START( mslug4hc05 ) //mslug4c
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc05.p1", 0x000000, 0x100000, CRC(f8145f8d) SHA1(ba1df84c199e5f552c80ad7725f9cae5512fbb20) )
 	ROM_LOAD16_WORD_SWAP( "263.p2",      0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3493,7 +5631,8 @@ ROM_START( mslug4hc06 ) //mslug4dg
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc06.p1", 0x000000, 0x100000, CRC(36dfa877) SHA1(dd49b6b40d3c2cabac8d5efa71cceea8cf9fc4f8) )
 	ROM_LOAD16_WORD_SWAP( "263_hc06.p2", 0x100000, 0x400000, CRC(cf6feb75) SHA1(133e1d97a3ae14835dcb7b6a642c3968cd174547) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
     MSLUG4_YMSND
@@ -3504,7 +5643,8 @@ ROM_START( mslug4hc07 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc07.p1", 0x000000, 0x100000, CRC(25f5f99f) SHA1(5cad2f17bfaff789de36e02a3b2e92d353924247) )
 	ROM_LOAD16_WORD_SWAP( "263_hc06.p2", 0x100000, 0x400000, CRC(cf6feb75) SHA1(133e1d97a3ae14835dcb7b6a642c3968cd174547) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
     MSLUG4_YMSND
@@ -3515,7 +5655,8 @@ ROM_START( mslug4hc08 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc08.p1", 0x000000, 0x100000, CRC(414416d1) SHA1(78d3f7bc4a5e603c8035a2c9ece3969f9ee1b567) )
 	ROM_LOAD16_WORD_SWAP( "263.p2",      0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
     MSLUG4_YMSND
@@ -3526,7 +5667,8 @@ ROM_START( mslug4hc09 ) //mslug4q
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc09.p1", 0x000000, 0x100000, CRC(461579ae) SHA1(fe7da7ec3e4ee2e0b4281ea76a130a7fe3cac549) )
 	ROM_LOAD16_WORD_SWAP( "263_hc09.p2", 0x100000, 0x400000, CRC(a4d2e871) SHA1(646ac0117a832f1642cffe17478b94635cf294a2) )
-	MSLUG4_ROM_FILL
+	MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
     MSLUG4_YMSND
@@ -3537,10 +5679,11 @@ ROM_START( mslug4hc10 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc10.p1", 0x000000, 0x100000, CRC(3f7ce3c5) SHA1(a0a9cf5d887f2ff9c048d2bb22cfba168b393df0) )
 	ROM_LOAD16_WORD_SWAP( "263.p2",      0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-    ROM_DEFAULT_BIOS("unibios40")
-    MSLUG4_ROM_FILL
-    MSLUG4HD_SFIX_128K
-	MSLUG4_AUDIO_ENCRYPTED_128K
+    MSLUG4_MVS_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
+	MSLUG4HD_SFIX_128K
+	MSLUG4_AUDIOBIOS_ENCRYPTED_128K
     MSLUG4_YMSND
 	MSLUG4D_SPRITES
 ROM_END
@@ -3549,7 +5692,8 @@ ROM_START( mslug4hc11 ) //mslug41v2
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc11.p1", 0x000000, 0x100000, CRC(dddca463) SHA1(d93ca67aed8cdf0765713056a5b6a9a77f09c848) )
 	ROM_LOAD16_WORD_SWAP( "263.p2",      0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
     MSLUG4_YMSND
@@ -3560,7 +5704,8 @@ ROM_START( mslug4hc12 ) //mslug4lwq
 	ROM_REGION( 0x900000, "maincpu", 0 )
     ROM_LOAD16_WORD_SWAP( "263_hc12.p1", 0x000000, 0x100000, CRC(9ebe335e) SHA1(7af10e13b84494393c0e32d01e881060236724db) )
 	ROM_LOAD16_WORD_SWAP( "263_hc03.p2", 0x100000, 0x800000, CRC(5aa184e7) SHA1(4850341a52e12d541271926a47714c2bbbcd7cba) )
-	MSLUG4_ROM_FILL
+	MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3571,7 +5716,8 @@ ROM_START( mslug4hc13 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc13.p1", 0x000000, 0x100000, CRC(851ed337) SHA1(3c7560089461471b971ab9be38f7fce5752f9ef4) )
 	ROM_LOAD16_WORD_SWAP( "263_hc13.p2", 0x100000, 0x400000, CRC(70c810a1) SHA1(7595af7bee4dfe9c664f6bdda2e579385e9fea14) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3582,7 +5728,8 @@ ROM_START( mslug4hc14 ) //mslug4unity
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc14.p1", 0x000000, 0x100000, CRC(ef3501b6) SHA1(ffbf98407e9646590a59887c42aab47f3a2d67dd) )
 	ROM_LOAD16_WORD_SWAP( "263.p2",      0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
     MSLUG4_YMSND
@@ -3593,7 +5740,8 @@ ROM_START( mslug4hc15 ) //mslug4a
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc15.p1", 0x000000, 0x100000, CRC(0f2b0fc2) SHA1(8f12a7e703f331ad2e80ac2d2d9c5e7645066468) )
 	ROM_LOAD16_WORD_SWAP( "263_hc15.p2", 0x100000, 0x400000, CRC(87dc01b9) SHA1(ddad7d72e53e0c6273384119f96b3b7f324ca237) )
-	MSLUG4_ROM_FILL
+	MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
     MSLUG4_YMSND
@@ -3604,7 +5752,8 @@ ROM_START( mslug4hc16 ) //mslug4dd
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc16.p1", 0x000000, 0x100000, CRC(02ce0fcd) SHA1(67534a14ae4455f7b4f8456b395a6a648803fbdc) )
 	ROM_LOAD16_WORD_SWAP( "263_hc16.p2", 0x100000, 0x400000, CRC(4569a092) SHA1(98cbc3a554a810c105a3044f09fa732ebc56cb4a) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
     MSLUG4_YMSND
@@ -3615,7 +5764,8 @@ ROM_START( mslug4hc17 ) //mslug4ki
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc17.p1", 0x000000, 0x100000, CRC(4e2363d3) SHA1(f574745c5c385d7bb753539d8dbeff657c268ea2) )
 	ROM_LOAD16_WORD_SWAP( "263_hc17.p2", 0x100000, 0x400000, CRC(e95f6bd8) SHA1(4aa293f984b5767bf2a640a08cc36a7cb13a9cfb) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
     MSLUG4_YMSND
@@ -3626,7 +5776,8 @@ ROM_START( mslug4hc18 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc18.p1", 0x000000, 0x100000, CRC(6bb85c5b) SHA1(98c338826a8bc8c593a49525aeb3474208335763) )
 	ROM_LOAD16_WORD_SWAP( "263.p2",      0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-	MSLUG4_ROM_FILL
+	MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
     MSLUG4_YMSND
@@ -3637,7 +5788,8 @@ ROM_START( mslug4hc19 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc19.p1", 0x000000, 0x100000, CRC(9a524c97) SHA1(6c2dd09f73e41a18a7e1a3290756d7fcfc8ec6b9) )
 	ROM_LOAD16_WORD_SWAP( "263.p2",      0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-	MSLUG4_ROM_FILL
+	MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
     MSLUG4_YMSND
@@ -3648,6 +5800,8 @@ ROM_START( mslug4hc20 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc20.p1", 0x000000, 0x100000, CRC(a3ceab91) SHA1(f0e125e708bb466308e6846bb943022f4b5785a3) )
 	ROM_LOAD16_WORD_SWAP( "263.p2",      0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4FR_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
     MSLUG4_YMSND
@@ -3658,7 +5812,8 @@ ROM_START( mslug4hc21 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc21.p1", 0x000000, 0x100000, CRC(ffb20602) SHA1(4d3103d613a2452c95ae15b70670664354dce67b) )
     ROM_LOAD16_WORD_SWAP( "263.p2",      0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-	MSLUG4_ROM_FILL
+	MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4IT_SFIX_128K
     MSLUG4D_AUDIO_64K
     MSLUG4_YMSND
@@ -3669,10 +5824,11 @@ ROM_START( mslug4hc22 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc22.p1", 0x000000, 0x100000, CRC(7af9a7c4) SHA1(186c17130bf210cc33065101d10ec08f275e5b96) )
     ROM_LOAD16_WORD_SWAP( "263.p2",      0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-    ROM_DEFAULT_BIOS("euro")
-	MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+	DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+    AUDIOBIOS_128K
     MSLUG4HD_SFIX_128K
-    MSLUG4_AUDIO_ENCRYPTED_128K
+    MSLUG4_AUDIOBIOS_ENCRYPTED_128K
     MSLUG4_YMSND
 	MSLUG4D_SPRITES
 ROM_END
@@ -3681,7 +5837,8 @@ ROM_START( mslug4hc23 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc23.p1", 0x000000, 0x100000, CRC(19836d5a) SHA1(0133872676d3936ca94aaa918d4e2e1d13d68979) )
     ROM_LOAD16_WORD_SWAP( "263.p2",      0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-	MSLUG4_ROM_FILL
+	MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
     MSLUG4_AUDIO_ENCRYPTED_128K
     MSLUG4_YMSND
@@ -3696,7 +5853,8 @@ ROM_START( ms4plusd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "ms4-p1p.bin", 0x000000, 0x100000, CRC(806a6e04) SHA1(df503772d607271ea51285154c9fd68e18b143ce) )
 	ROM_LOAD16_WORD_SWAP( "263.p2",      0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSPLUS4_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
 	MSLUG4_YMSND
@@ -3707,7 +5865,8 @@ ROM_START( ms4plusde ) //Neoragex 5.0
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "ms4-p1pe.bin", 0x000000, 0x100000, CRC(ce15b634) SHA1(d4d73a1d464c472fc0961f6e62b21f52c19a3ba5) )
 	ROM_LOAD16_WORD_SWAP( "263.p2",       0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSPLUS4_SFIX_128K
     MSLUG4ND_AUDIO_128K
     MS4BOOT_YMSND
@@ -3718,7 +5877,8 @@ ROM_START( ms4boot )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263nd.p1", 0x000000, 0x100000, CRC(4d7e6624) SHA1(125d5203e89cce23a851fa74cc8cbe003ef978f3) )
 	ROM_LOAD16_WORD_SWAP( "263.p2",   0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
 	MSLUG4ND_AUDIO_128K
 	MS4BOOT_YMSND
@@ -3729,7 +5889,8 @@ ROM_START( mslug4d )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263.p1", 0x000000, 0x100000, CRC(27e4def3) SHA1(a08785e8145981bb6b5332a3b2df7eb321253cca) )
 	ROM_LOAD16_WORD_SWAP( "263.p2", 0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
     MSLUG4D_AUDIO_64K
     MSLUG4_YMSND
@@ -3740,7 +5901,8 @@ ROM_START( mslug4e )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263.p1", 0x000000, 0x100000, CRC(27e4def3) SHA1(a08785e8145981bb6b5332a3b2df7eb321253cca) )
 	ROM_LOAD16_WORD_SWAP( "263.p2", 0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
     MSLUG4E_AUDIO_ENCRYPTED_64K
     MSLUG4E_YMSND
@@ -3751,7 +5913,8 @@ ROM_START( mslug4hd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263h.p1", 0x000000, 0x100000, CRC(c67f5c8d) SHA1(12af74964843f103520d9f0825069ea2f67eeb2f) )
 	ROM_LOAD16_WORD_SWAP( "263h.p2", 0x100000, 0x400000, CRC(bc3ec89e) SHA1(2cb0626bc4fa57e1d25f208e04532b570d87b3fb) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
     MSLUG4_YMSND
@@ -3762,18 +5925,20 @@ ROM_START( mslug4nd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263nd.p1", 0x000000, 0x100000, CRC(4d7e6624) SHA1(125d5203e89cce23a851fa74cc8cbe003ef978f3) )
 	ROM_LOAD16_WORD_SWAP( "263.p2",   0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
 	MSLUG4ND_AUDIO_128K
 	MSLUG4ND_YMSND
 	MSLUG4ND_SPRITES
 ROM_END
 
-ROM_START( mslug4nde ) //Nebula
+ROM_START( mslug4nde )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263nde.p1", 0x000000, 0x100000, CRC(249c1411) SHA1(47ff05641bb97c706e67cf58e36d857540ff5afd) )
 	ROM_LOAD16_WORD_SWAP( "263.p2",    0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-    MSLUG4_ROM_FILL
+    MSLUG4_MVS_FILL
+    MSLUG4_AES_FILL
     MSLUG4NDE_SFIX_128K
     MSLUG4NDE_AUDIO_128K
     MSLUG4NDE_YMSND
@@ -3791,6 +5956,7 @@ ROM_START( mslug4er01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_er01.p1", 0x000000, 0x100000, CRC(eac0132f) SHA1(8311cbea5cbc0abea630b85b3564f88b99103ed1) )
 	ROM_LOAD16_WORD_SWAP( "263_er01.p2", 0x100000, 0x400000, CRC(3902e9fb) SHA1(3523c4060404ea930d0b8f0a49be8a38ce62056b) )
+    MSLUG4_AES_FILL
     MSLUG4lZW_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3801,6 +5967,7 @@ ROM_START( mslug4er02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_er02.p1", 0x000000, 0x100000, CRC(8227ec42) SHA1(7b470ca8db5ec7607776c96ce90ca81e7ec09dca) )
 	ROM_LOAD16_WORD_SWAP( "263_er02.p2", 0x100000, 0x400000, CRC(f4732a52) SHA1(cf219c0bdd911f066de047be3f99f797193af923) )
+    MSLUG4_AES_FILL
     MSLUG4FR_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3815,6 +5982,7 @@ ROM_START( mslug4la01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_la01.p1", 0x000000, 0x100000, CRC(7c6e2f90) SHA1(5fdccdbe5049c10d7ced96f23602584108bfa7bb) )
 	ROM_LOAD16_WORD_SWAP( "263_la01.p2", 0x100000, 0x400000, CRC(1782d963) SHA1(207d0c1384db302b61a3efb025d677cdef253049) )
+    MSLUG4_AES_FILL
     MSLUG4lZW_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3825,6 +5993,7 @@ ROM_START( mslug4la02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_la02.p1", 0x000000, 0x100000, CRC(aad98100) SHA1(cd94b4360387b9a68910cbace9608989803c5263) )
 	ROM_LOAD16_WORD_SWAP( "263_la02.p2", 0x100000, 0x400000, CRC(3842f3f5) SHA1(7d519ac718b0558f534c3dc0dfb7503cb8a592e2) )
+    MSLUG4_AES_FILL
     MSLUG4lZW_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3835,6 +6004,7 @@ ROM_START( mslug4la03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_la03.p1", 0x000000, 0x100000, CRC(f7850c57) SHA1(89a0f772b82f476ee1c6de2e11ab101b7535da7d) )
 	ROM_LOAD16_WORD_SWAP( "263_la03.p2", 0x100000, 0x400000, CRC(4724c370) SHA1(e6d3890ffeaff36c85b6d92f32220082d2d164cc) )
+    MSLUG4_AES_FILL
     MSLUG4lZW_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3845,6 +6015,7 @@ ROM_START( mslug4la04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_la04.p1", 0x000000, 0x100000, CRC(6e770222) SHA1(9b588e67a5c253ffff58007b6c0d675b32d1df59) )
 	ROM_LOAD16_WORD_SWAP( "263_la04.p2", 0x100000, 0x400000, CRC(fb4ce2cc) SHA1(9da1cee1833e694b37b8a1fd52963e50f456c25f) )
+    MSLUG4_AES_FILL
     MSLUG4lZW_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3855,6 +6026,7 @@ ROM_START( mslug4lb01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_lb01.p1", 0x000000, 0x100000, CRC(85489fea) SHA1(8453c8c6e7eb46a96620e1f0957fe47c99cf132c) )
 	ROM_LOAD16_WORD_SWAP( "263_la01.p2", 0x100000, 0x400000, CRC(1782d963) SHA1(207d0c1384db302b61a3efb025d677cdef253049) )
+    MSLUG4_AES_FILL
     MSLUG4lZW_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3865,6 +6037,7 @@ ROM_START( mslug4lb02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_lb02.p1", 0x000000, 0x100000, CRC(53ff317a) SHA1(a4149f6b810820e80219bd3c9fcd8c359ca1e410) )
 	ROM_LOAD16_WORD_SWAP( "263_la02.p2", 0x100000, 0x400000, CRC(3842f3f5) SHA1(7d519ac718b0558f534c3dc0dfb7503cb8a592e2) )
+    MSLUG4_AES_FILL
     MSLUG4lZW_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3875,6 +6048,7 @@ ROM_START( mslug4lb03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_lb03.p1", 0x000000, 0x100000, CRC(0ea3bc2d) SHA1(ddf1a418d72fbfa8425679ab95b3a1af5f6e989b) )
 	ROM_LOAD16_WORD_SWAP( "263_la03.p2", 0x100000, 0x400000, CRC(4724c370) SHA1(e6d3890ffeaff36c85b6d92f32220082d2d164cc) )
+    MSLUG4_AES_FILL
     MSLUG4lZW_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3885,6 +6059,7 @@ ROM_START( mslug4lb04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_lb04.p1", 0x000000, 0x100000, CRC(9751b258) SHA1(52545d9f62cb3b69a01eb4f2f7351d04c626170e) )
 	ROM_LOAD16_WORD_SWAP( "263_la04.p2", 0x100000, 0x400000, CRC(fb4ce2cc) SHA1(9da1cee1833e694b37b8a1fd52963e50f456c25f) )
+    MSLUG4_AES_FILL
     MSLUG4lZW_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3895,6 +6070,7 @@ ROM_START( mslug4lc01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_lc01.p1", 0x000000, 0x100000, CRC(ce28959f) SHA1(df4a25c4475dfa5654be214a5bb4807ec028b584) )
 	ROM_LOAD16_WORD_SWAP( "263_lc01.p2", 0x100000, 0x400000, CRC(daf31aca) SHA1(9e807c89733ff1e77c38436d44430cd65f1b5d29) )
+    MSLUG4_AES_FILL
     MSLUG4FR_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3905,6 +6081,7 @@ ROM_START( mslug4lc02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_lc02.p1", 0x000000, 0x100000, CRC(7b8d1463) SHA1(f9812c0298284cb23d4c8126367b2db0cfd31177) )
 	ROM_LOAD16_WORD_SWAP( "263_lc02.p2", 0x100000, 0x400000, CRC(f533305c) SHA1(50c63f30a419c080d0d9c51e1befb332b8a03147) )
+    MSLUG4_AES_FILL
     MSLUG4FR_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3915,6 +6092,7 @@ ROM_START( mslug4lc03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_lc03.p1", 0x000000, 0x100000, CRC(26d19934) SHA1(988f7ee2327f880dd8b22a88cb47e7a8a435a738) )
 	ROM_LOAD16_WORD_SWAP( "263_lc03.p2", 0x100000, 0x400000, CRC(8a5500d9) SHA1(7c96c092b72faf688a14e64ef2561bd5a5a74355) )
+    MSLUG4_AES_FILL
     MSLUG4FR_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3925,6 +6103,7 @@ ROM_START( mslug4lc04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_lc04.p1", 0x000000, 0x100000, CRC(bf239741) SHA1(335b5220cf700c94bb54de94cfc3a6c3bc65863d) )
 	ROM_LOAD16_WORD_SWAP( "263_lc04.p2", 0x100000, 0x400000, CRC(363d2165) SHA1(ff395dcc4ec9bf556062bfd9d834eee30f7356bd) )
+    MSLUG4_AES_FILL
     MSLUG4FR_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3935,6 +6114,7 @@ ROM_START( mslug4ld01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_ld01.p1", 0x000000, 0x100000, CRC(924ebcf7) SHA1(8dc4bbd6b40c70ddabf287a3f330ff410d2899a8) )
 	ROM_LOAD16_WORD_SWAP( "263_lc01.p2", 0x100000, 0x400000, CRC(daf31aca) SHA1(9e807c89733ff1e77c38436d44430cd65f1b5d29) )
+    MSLUG4_AES_FILL
     MSLUG4FR_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3945,6 +6125,7 @@ ROM_START( mslug4ld02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_ld02.p1", 0x000000, 0x100000, CRC(4ca3390b) SHA1(b54a6a8247d817832391703283d72695a7390b72) )
 	ROM_LOAD16_WORD_SWAP( "263_lc02.p2", 0x100000, 0x400000, CRC(f533305c) SHA1(50c63f30a419c080d0d9c51e1befb332b8a03147) )
+    MSLUG4_AES_FILL
     MSLUG4FR_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3955,6 +6136,7 @@ ROM_START( mslug4ld03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_ld03.p1", 0x000000, 0x100000, CRC(11ffb45c) SHA1(0983fc661b5a637bb9b6a8671509a890a229736a) )
 	ROM_LOAD16_WORD_SWAP( "263_lc03.p2", 0x100000, 0x400000, CRC(8a5500d9) SHA1(7c96c092b72faf688a14e64ef2561bd5a5a74355) )
+    MSLUG4_AES_FILL
     MSLUG4FR_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3965,6 +6147,7 @@ ROM_START( mslug4ld04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_ld04.p1", 0x000000, 0x100000, CRC(880dba29) SHA1(27084e5c819789c0ea82735b58566d9500464d92) )
 	ROM_LOAD16_WORD_SWAP( "263_lc04.p2", 0x100000, 0x400000, CRC(363d2165) SHA1(ff395dcc4ec9bf556062bfd9d834eee30f7356bd) )
+    MSLUG4_AES_FILL
     MSLUG4FR_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3979,6 +6162,7 @@ ROM_START( mslug4rma01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rma01.p1", 0x000000, 0x100000, CRC(790a8679) SHA1(cec466631754057436f7eb459c6cf9cb55d67008) )
 	ROM_LOAD16_WORD_SWAP( "263_rma01.p2", 0x100000, 0x400000, CRC(dcc2cc7d) SHA1(70e2be80829f078d4494aa3a173592ae5fcc5c20) )
+    MSLUG4_AES_FILL
     MSLUG4lZW_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3989,6 +6173,7 @@ ROM_START( mslug4rmb01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmb01.p1", 0x000000, 0x100000, CRC(5277ccdd) SHA1(c0a13e42b282d71360a52ed99a590d02d7dcbb7a) )
 	ROM_LOAD16_WORD_SWAP( "263_rmb01.p2", 0x100000, 0x400000, CRC(c86b7563) SHA1(27b4c17cca341dc049ee003dcc4067aab6a491ff) )
+    MSLUG4_AES_FILL
     MSLUG4lZW_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -3999,6 +6184,7 @@ ROM_START( mslug4rmc01 )
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmc01.p1", 0x000000, 0x100000, CRC(42d58642) SHA1(68a221dfe63d596108ff28fec56478a1835ee3da) )
 	ROM_LOAD16_WORD_SWAP( "263_rmc01.p2", 0x100000, 0x400000, CRC(6982e3a2) SHA1(dedca273c1b05325f6054db389d34eecf604ccb2) )
+    MSLUG4_AES_FILL
     MSLUG4FR_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -4009,6 +6195,7 @@ ROM_START( mslug4rmd01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rmd01.p1", 0x000000, 0x100000, CRC(e26f65c5) SHA1(7cdba9b479a494a1ec279753713ae21d108d8065) )
 	ROM_LOAD16_WORD_SWAP( "263_rmd01.p2", 0x100000, 0x400000, CRC(359e2ebe) SHA1(9e897bf804acfd8e8a3d6eff33ae00e82c54351c) )
+    MSLUG4_AES_FILL
     MSLUG4FR_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -4019,6 +6206,7 @@ ROM_START( mslug4rme01 )
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_rme01.p1", 0x000000, 0x100000, CRC(b46ffe42) SHA1(87a61b730a22e93e0c44b81475685ba38893ce24) )
 	ROM_LOAD16_WORD_SWAP( "263_rme01.p2", 0x100000, 0x800000, CRC(2126b58e) SHA1(664ab22cbe44f226da4b6f27aab1d8579028eb71) )
+    MSLUG4_AES_FILL
     MSLUG4HD_SFIX_128K
     MSLUG4LW_AUDIO_128K
 	MSLUG4LW_YMSND
@@ -4033,7 +6221,8 @@ ROM_START( mslug5hc01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc01.p1", 0x000000, 0x100000, CRC(3c8588d7) SHA1(5dada21b9530586f8941e027d3f2195e72a3ca5d) )
 	ROM_LOAD16_WORD_SWAP( "268n.p2",     0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5_SFIX_MT_128K
 	MSLUG5_AUDIO_ENCRYPTED_512K
     MSLUG5_YMSND
@@ -4043,7 +6232,8 @@ ROM_END
 ROM_START( mslug5hc02 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc02.p1", 0x000000, 0x600000, CRC(faeffb08) SHA1(9fe401d8252c5d46f3a84f59e1e182eecaa4c069) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
@@ -4053,7 +6243,8 @@ ROM_END
 ROM_START( mslug5hc03 ) //mslug5ext
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc03.p1", 0x000000, 0x600000, CRC(7ff5364b) SHA1(698373c6c3fb37fe20c4194c5c51251f6a251c18) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5ND_AUDIO_128K
 	MSLUG5EXT_YMSND
@@ -4064,7 +6255,8 @@ ROM_START( mslug5hc04 ) //mslug5w
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc04.p1", 0x000000, 0x100000, CRC(b0c126da) SHA1(9081ec2c3cfc27baf759417b24f2ebc07ceffab0) )
 	ROM_LOAD16_WORD_SWAP( "268_hc04.p2", 0x100000, 0x400000, CRC(f06c589a) SHA1(0882ee5221ab873f87a719e34bd5250b79b82730) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5W_AUDIO_512K
 	MSLUG5W_YMSND
@@ -4075,7 +6267,8 @@ ROM_START( mslug5hc05 ) //mslug5es
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc05.p1", 0x000000, 0x100000, CRC(8eb95f3a) SHA1(4353d141544056d34b22adca0615f0ea9d32e376) )
     ROM_LOAD16_WORD_SWAP( "268n.p2",     0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
@@ -4086,7 +6279,8 @@ ROM_START( mslug5hc06 ) //mslug5f
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc06.p1", 0x000000, 0x100000, CRC(6be7043d) SHA1(caaf24cc653abbd435de7732f6489c613f3911ac) )
 	ROM_LOAD16_WORD_SWAP( "268_hc04.p2", 0x100000, 0x400000, CRC(f06c589a) SHA1(0882ee5221ab873f87a719e34bd5250b79b82730) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5W_AUDIO_512K
 	MSLUG5F_YMSND
@@ -4097,7 +6291,8 @@ ROM_START( mslug5hc07 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc07.p1", 0x000000, 0x100000, CRC(de60d4a5) SHA1(54a157cdb98dac018dae5f2ddae4fbcdf04857f2) )
 	ROM_LOAD16_WORD_SWAP( "268n.p2",     0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5_SFIX_MT_128K
 	MSLUG5_AUDIO_ENCRYPTED_512K
 	MSLUG5_YMSND
@@ -4108,7 +6303,8 @@ ROM_START( mslug5hc08 ) //mslug5unity
 	ROM_REGION( 0x800000, "maincpu", 0 )
 	ROM_LOAD32_WORD_SWAP( "268_hc08.p1", 0x000000, 0x400000, CRC(ced9f5a8) SHA1(c1e6c8c9a7d2220b956486f2154540fcda38e650) )
 	ROM_LOAD32_WORD_SWAP( "268_hc08.p2", 0x000002, 0x400000, CRC(1c08dbb6) SHA1(8796efebcfabb9bb5444ed0264d327abf7c32b98) )
-    MSLUG5_ROM_FILL
+    MSLUG5_MVS_FILL
+    MSLUG5_AES_FILL
     MSLUG5_SFIX_MT_128K
 	MSLUG5_AUDIO_ENCRYPTED_512K
 	MSLUG5_YMSND
@@ -4118,7 +6314,8 @@ ROM_END
 ROM_START( mslug5hc09 ) //mslug5x 
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc09.p1", 0x000000, 0x600000, CRC(afffcd5b) SHA1(4383bd6903e49a5c0a390b77b746b9f53509542d) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
@@ -4128,7 +6325,8 @@ ROM_END
 ROM_START( mslug5hc10 ) //mslug5es update mslug5es2
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc10.p1", 0x000000, 0x600000, CRC(760cd052) SHA1(70d9ef0c4e906fce940108dd84077d981efaacc0) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
@@ -4139,7 +6337,8 @@ ROM_START( mslug5hc11 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc11.p1", 0x000000, 0x100000, CRC(f1f02331) SHA1(d768c70f86032b53aa1c3d55138c6c5ebc735ea2) )
 	ROM_LOAD16_WORD_SWAP( "268n.p2",     0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5_SFIX_MT_128K
 	MSLUG5_AUDIO_ENCRYPTED_512K
 	MSLUG5_YMSND
@@ -4149,7 +6348,8 @@ ROM_END
 ROM_START( mslug5hc12 ) //mslug5c
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc12.p1", 0x000000, 0x600000, CRC(e876d1e7) SHA1(01508fc02789603e85ac13e0d5fcddda6fadc346) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
@@ -4159,7 +6359,8 @@ ROM_END
 ROM_START( mslug5hc13 ) //mslug5dbj
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc13.p1", 0x000000, 0x600000, CRC(1527c4dd) SHA1(5a83fa57e09b0529f30ee7f70e0b488dde3ba203) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
@@ -4169,7 +6370,8 @@ ROM_END
 ROM_START( mslug5hc14 ) //mslug5mg
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc14.p1", 0x000000, 0x600000, CRC(1fc7de70) SHA1(c9f8f70706db9832dacb70723d5525aab4bfb9ac) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
@@ -4179,7 +6381,8 @@ ROM_END
 ROM_START( mslug5hc15 ) //mslug51v2
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc15.p1", 0x000000, 0x600000, CRC(953d6e11) SHA1(d4faa3c515c7c4337e89513ea2bda13685b38a06) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
@@ -4189,7 +6392,8 @@ ROM_END
 ROM_START( mslug5hc16 ) //mslug5zh
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc16.p1", 0x000000, 0x600000, CRC(dc057a7a) SHA1(54ca7d543916424fad5dab82c67bb70cb4b5dc11) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
@@ -4199,7 +6403,8 @@ ROM_END
 ROM_START( mslug5hc17 ) //mslug5g
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc17.p1", 0x000000, 0x600000, CRC(3be747ab) SHA1(48ab8b6bedbd854a74b7fe4055d1a5c7a4b9cda8) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
@@ -4210,7 +6415,8 @@ ROM_END
 ROM_START( mslug5hc18 ) //mslug5sg
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc18.p1", 0x000000, 0x600000, CRC(8bf8a485) SHA1(79a9b29a10430931a25502994d47bb90b64bd1c3) )
-    MSLUG5SG_ROM_FILL
+    MSLUG5SG_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
@@ -4220,7 +6426,8 @@ ROM_END
 ROM_START( mslug5hc19 ) //mslug5pv
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc19.p1", 0x000000, 0x600000, CRC(5288f47b) SHA1(137ca41e06f787204c50b2e6f1ceee91ffef3310) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
@@ -4231,7 +6438,8 @@ ROM_START( mslug5hc20 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc20.p1", 0x000000, 0x100000, CRC(ce788ab1) SHA1(89061d49e40e8774ff337ae4601f5c7676eac583) )
 	ROM_LOAD16_WORD_SWAP( "268n.p2",     0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5_SFIX_MT_128K
 	MSLUG5_AUDIO_ENCRYPTED_512K
 	MSLUG5_YMSND
@@ -4241,7 +6449,8 @@ ROM_END
 ROM_START( mslug5hc21 ) //mslug5dd
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc21.p1", 0x000000, 0x600000, CRC(40917fba) SHA1(7e8e407c2936435be2b1909f582ae9025b1c7a8d) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
@@ -4251,7 +6460,8 @@ ROM_END
 ROM_START( mslug5hc22 ) //mslug5ki
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc22.p1", 0x000000, 0x600000, CRC(846bc220) SHA1(d0a6ac7a5c04adc5bec65313f632f16b83b70628) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
@@ -4261,7 +6471,8 @@ ROM_END
 ROM_START( mslug5hc23 ) //mslug5boss
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc23.p1", 0x000000, 0x600000, CRC(ff3a4b86) SHA1(e3a66f56d78dc0efd18d0d18bf52222d7833c66d) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
@@ -4272,7 +6483,8 @@ ROM_START( mslug5hc24 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc24.p1", 0x000000, 0x100000, CRC(63cc3c2d) SHA1(b4543c65427d15f784641617dcab53663031a9f3) )
 	ROM_LOAD16_WORD_SWAP( "268n.p2",     0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5FR_SFIX_128K
     MSLUG5D_AUDIO_64K
 	MS5PLUSD_YMSND
@@ -4283,7 +6495,8 @@ ROM_START( mslug5hc25 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc25.p1", 0x000000, 0x100000, CRC(442642e2) SHA1(0c589ef5d1117a7f7fedd006040e30ab95257b19) )
 	ROM_LOAD16_WORD_SWAP( "268n.p2",     0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
@@ -4294,7 +6507,8 @@ ROM_START( mslug5hc26 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc26.p1", 0x000000, 0x100000, CRC(b18a1826) SHA1(b424f40804561ce79115c7d64c45a650bad8635d) )
 	ROM_LOAD16_WORD_SWAP( "268n.p2",     0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MS5PLUSD_SFIX_128K
     MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
@@ -4305,7 +6519,8 @@ ROM_START( mslug5hc27 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc27.p1", 0x000000, 0x200000, CRC(257e6ed0) SHA1(a4c68014f19c3a0bf46a0ed7f6c928aa630dd6e0) )
 	ROM_LOAD16_WORD_SWAP( "268n.p2",     0x200000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5ND_AUDIO_128K
 	MS5BOOT_YMSND
@@ -4324,7 +6539,8 @@ ROM_START( ms5boot )
     ROM_CONTINUE(0x400000, 0x100000 )
     ROM_LOAD16_WORD_SWAP( "268boot.p3", 0x300000, 0x100000, CRC(742c955a) SHA1(96c0f08b1f2f6877f5169a96c13b67f3be6082c6) )
     ROM_CONTINUE(0x500000, 0x100000 )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MS5BOOT_SFIX_128K
     MS5BOOT_AUDIO_128K
     MS5BOOT_YMSND
@@ -4335,9 +6551,11 @@ ROM_START( ms5pcbd )
 	ROM_REGION( 0x800000, "maincpu", 0 )
 	ROM_LOAD32_WORD_SWAP( "268.p1", 0x000000, 0x400000, CRC(d0466792) SHA1(880819933d997fab398f91061e9dbccb959ae8a1) )
 	ROM_LOAD32_WORD_SWAP( "268.p2", 0x000002, 0x400000, CRC(fbf6b61e) SHA1(9ec743d5988b5e3183f37f8edf45c72a8c0c893e) )
-    MSLUG5_ROM_FILL
-    MS5PCBD_SFIX_MT_512K
-    MS5PCB_AUDIO_512K
+    MSLUG5_MVS_FILL
+    MSLUG5_AES_FILL
+    DEFAULT_BIOS_ASIA_(JAPAN_MVS)
+	MS5PCBD_SFIX_MT_512K
+    MS5PCB_AUDIOBIOS_ENCRYPTED_512K
 	MS5PCBD_YMSND
 	MS5PCBD_SPRITES
 ROM_END
@@ -4347,7 +6565,8 @@ ROM_START( ms5plusd )
 	ROM_LOAD16_WORD_SWAP( "ms5-p1pd.p1",  0x000000, 0x100000, CRC(76af334f) SHA1(cbd890a9c14d42acd1923bb5074fb560a306cce3) )
 	ROM_LOAD16_WORD_SWAP( "ms5-p2p.bin",  0x100000, 0x200000, CRC(d6a458e8) SHA1(c0a8bdae06d62859fb6734766ccc190eb2a809a4) )
 	ROM_LOAD16_WORD_SWAP( "ms5-p3p.bin",  0x300000, 0x200000, CRC(439ec031) SHA1(f0ad8f9be7d26bc504593c1321bd23c286a221f0) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MS5PLUSD_SFIX_128K
     MS5PLUSD_AUDIO_512K
 	MS5PLUSD_YMSND
@@ -4358,7 +6577,8 @@ ROM_START( ms5plusde )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "ms5-p1pe.p1",  0x000000, 0x100000, CRC(65639fcc) SHA1(4317c62e2e2548c8d83a9f3fcfe61921b36124a7) )
 	ROM_LOAD16_WORD_SWAP( "ms5-p2pe.bin", 0x100000, 0x400000, CRC(38b7a73a) SHA1(b0588a14ed99bbd930c3130b86625b3bbcdf6645) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MS5PLUSD_SFIX_128K
     MS5PLUSD_AUDIO_512K
     MS5PCBD_YMSND
@@ -4370,7 +6590,8 @@ ROM_START( ms5plusc )
 	ROM_LOAD16_WORD_SWAP( "ms5-p1pc.bin", 0x000000, 0x100000, CRC(c61e6444) SHA1(9aec69201472080d2205af14ecc3f9a30ab4c6c2) )
 	ROM_LOAD16_WORD_SWAP( "ms5-p2p.bin",  0x100000, 0x200000, CRC(d6a458e8) SHA1(c0a8bdae06d62859fb6734766ccc190eb2a809a4) )
 	ROM_LOAD16_WORD_SWAP( "ms5-p3p.bin",  0x300000, 0x200000, CRC(439ec031) SHA1(f0ad8f9be7d26bc504593c1321bd23c286a221f0) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MS5PLUSD_SFIX_128K
     MS5PLUSD_AUDIO_512K
 	MS5PLUSD_YMSND
@@ -4381,7 +6602,8 @@ ROM_START( mslug5d )
 	ROM_REGION( 0x800000, "maincpu", 0 )
 	ROM_LOAD32_WORD_SWAP( "268.p1", 0x000000, 0x400000, CRC(d0466792) SHA1(880819933d997fab398f91061e9dbccb959ae8a1) )
 	ROM_LOAD32_WORD_SWAP( "268.p2", 0x000002, 0x400000, CRC(fbf6b61e) SHA1(9ec743d5988b5e3183f37f8edf45c72a8c0c893e) )
-    MSLUG5_ROM_FILL
+    MSLUG5_MVS_FILL
+    MSLUG5_AES_FILL
     MSLUG5_SFIX_MT_128K
 	MSLUG5_AUDIO_ENCRYPTED_512K
 	MSLUG5_YMSND
@@ -4392,7 +6614,9 @@ ROM_START( mslug5de )
 	ROM_REGION( 0xc00000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268de.p1", 0x000000, 0x400000, CRC(5d1a8668) SHA1(bd35cb1e772e9406da1eda2daf0ed4782eb98dea) )
 	ROM_LOAD16_WORD_SWAP( "268de.p2", 0x400000, 0x400000, CRC(47662c5e) SHA1(68d055343e26d13f39dbc241d91f863364b04eaa) )
-    MSLUG5_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MS5PLUSD_AUDIO_512K
     MS5PCBD_YMSND
@@ -4403,7 +6627,8 @@ ROM_START( mslug5e )
 	ROM_REGION( 0x800000, "maincpu", 0 )
 	ROM_LOAD32_WORD_SWAP( "268.p1", 0x000000, 0x400000, CRC(d0466792) SHA1(880819933d997fab398f91061e9dbccb959ae8a1) )
 	ROM_LOAD32_WORD_SWAP( "268.p2", 0x000002, 0x400000, CRC(fbf6b61e) SHA1(9ec743d5988b5e3183f37f8edf45c72a8c0c893e) )
-    MSLUG5_ROM_FILL
+    MSLUG5_MVS_FILL
+    MSLUG5_AES_FILL
     MSLUG5_SFIX_MT_128K
 	MSLUG5E_AUDIO_256K
     MSLUG5E_YMSND
@@ -4414,7 +6639,8 @@ ROM_START( mslug5hd )
 	ROM_REGION( 0x800000, "maincpu", 0 )
 	ROM_LOAD32_WORD_SWAP( "268h.p1", 0x000000, 0x400000, CRC(3636690a) SHA1(e0da714b4bdc6efffe1250ded02ebddb3ab6d7b3) )
 	ROM_LOAD32_WORD_SWAP( "268h.p2", 0x000002, 0x400000, CRC(8dfc47a2) SHA1(27d618cfbd0107a4d2a836797e967b39d2eb4851) )
-    MSLUG5_ROM_FILL
+    MSLUG5_MVS_FILL
+    MSLUG5_AES_FILL
     MSLUG5_SFIX_MT_128K
 	MSLUG5_AUDIO_ENCRYPTED_512K
 	MSLUG5_YMSND
@@ -4425,7 +6651,8 @@ ROM_START( mslug5n )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268n.p1", 0x000000, 0x100000, CRC(ca50afdf) SHA1(e3780b77f20d139a0dcaa2ded2c6ee323b8b4279) )
 	ROM_LOAD16_WORD_SWAP( "268n.p2", 0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5_SFIX_MT_128K
 	MSLUG5N_AUDIO_512K
 	MSLUG5N_YMSND
@@ -4440,7 +6667,8 @@ ROM_START( mslug5ne )
     ROM_CONTINUE( 0x400000, 0x100000 )
     ROM_CONTINUE( 0x300000, 0x100000 )
     ROM_CONTINUE( 0x500000, 0x100000 )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5D_AUDIO_64K
     MSLUG5N_YMSND
@@ -4450,7 +6678,8 @@ ROM_END
 ROM_START( mslug5nd )
 	ROM_REGION( 0x800000, "maincpu", 0 )
     ROM_LOAD16_WORD_SWAP( "268nd.p1", 0x000000, 0x600000, CRC(975eb06a) SHA1(d3d4824a0b9f077c6503959da54edb53820e6a8d) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
 	MSLUG5_SFIX_MT_128K
     MSLUG5ND_AUDIO_128K
 	MSLUG5_YMSND
@@ -4461,7 +6690,8 @@ ROM_START( mslug5nde )
 	ROM_REGION( 0x800000, "maincpu", 0 )
     ROM_LOAD16_WORD_SWAP( "268nde.p1",  0x000000, 0x200000, CRC(f23968bf) SHA1(ed4caee7caf1b2b06a5a0c76f48952d883ae6922) )
     ROM_LOAD16_WORD_SWAP( "268n.p2",    0x200000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
 	MSLUG5_SFIX_MT_128K
     MSLUG5NDE_AUDIO_256K
 	MSLUG5NDE_YMSND
@@ -4475,7 +6705,8 @@ ROM_START( mslug5b1 )
 	ROM_CONTINUE( 0x400000, 0x100000 )
 	ROM_CONTINUE( 0x300000, 0x100000 )
 	ROM_CONTINUE( 0x500000, 0x100000 )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
     MSLUG5_SFIX_MT_128K
 	MSLUG5_AUDIO_ENCRYPTED_512K
 	MSLUG5_YMSND
@@ -4491,7 +6722,8 @@ ROM_START( mslug5b2 )
 	ROM_CONTINUE( 0x500000, 0x100000 )
 	ROM_CONTINUE( 0x100000, 0x100000 )
 	ROM_CONTINUE( 0x600000, 0x200000 )
-    MSLUG5HD_ROM_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL 
     MSLUG5_SFIX_MT_128K
     MSLUG5_AUDIO_ENCRYPTED_512K
 	MSLUG5_YMSND
@@ -4506,6 +6738,7 @@ ROM_START( mslug5la01 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_la01.p1", 0x000000, 0x200000, CRC(7ac06952) SHA1(9d826fc6285657ae9464d65dcacd36e9f606c043) )
 	ROM_LOAD16_WORD_SWAP( "268_la01.p2", 0x200000, 0x400000, CRC(20dd03ac) SHA1(2edfbe5975b43a9b304ec4f113e8de31d96b0ae6) )
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5W_AUDIO_512K
 	MSLUG5LA_YMSND
@@ -4516,6 +6749,7 @@ ROM_START( mslug5lb01 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_lb01.p1", 0x000000, 0x200000, CRC(70677fa9) SHA1(ed29fa032ebef2bb99ec4253527e4d49ae8c504c) )
 	ROM_LOAD16_WORD_SWAP( "268_lb01.p2", 0x200000, 0x400000, CRC(b3110397) SHA1(57d8f35d46475d95ee843adfd9387d863cc6718e) )
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5W_AUDIO_512K
 	MSLUG5LA_YMSND
@@ -4526,6 +6760,7 @@ ROM_START( mslug5lc01 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_lc01.p1", 0x000000, 0x200000, CRC(c32454bc) SHA1(aff0c47053e77bef22fe1466accd157b6c8340aa) )
 	ROM_LOAD16_WORD_SWAP( "268_lc01.p2", 0x200000, 0x400000, CRC(131013dc) SHA1(52f4cb85ebd395fdf0aa19fbd66e3c39e3d08689) )
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5W_AUDIO_512K
 	MSLUG5LA_YMSND
@@ -4540,6 +6775,7 @@ ROM_START( mslug5rma01 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_rma01.p1", 0x000000, 0x200000, CRC(605fde98) SHA1(857b8159640428e75da6d80e84db700021443a97) )
 	ROM_LOAD16_WORD_SWAP( "268_rma01.p2", 0x200000, 0x400000, CRC(b2671f9d) SHA1(6fc8834183813dcfe649c93c1ac407fc5342bf36) )
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5W_AUDIO_512K
 	MSLUG5RMXE_YMSND
@@ -4550,6 +6786,7 @@ ROM_START( mslug5rmb01 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_rmb01.p1", 0x000000, 0x200000, CRC(ac435570) SHA1(31658227fadfc5c323639f793aac760476d0ea23) )
 	ROM_LOAD16_WORD_SWAP( "268_rmb01.p2", 0x200000, 0x400000, CRC(81aa0fed) SHA1(9bdeb734d16f8fd33e0ed0b07facd28ada383190) )
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5W_AUDIO_512K
 	MSLUG5RMXE_YMSND
@@ -4560,6 +6797,7 @@ ROM_START( mslug5rmc01 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_rmc01.p1", 0x000000, 0x200000, CRC(4093804a) SHA1(f1f8ed5707d45039d7ffd4cdb4d048a4f01e88ac) )
 	ROM_LOAD16_WORD_SWAP( "268_rmc01.p2", 0x200000, 0x400000, CRC(2aa0f0a1) SHA1(1f91c6274b9aa59a4f5944293da2a866e6f1029b) )
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5W_AUDIO_512K
 	MSLUG5RMXE_YMSND
@@ -4570,6 +6808,7 @@ ROM_START( mslug5rmd01 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_rmd01.p1", 0x000000, 0x200000, CRC(0bdbb8c7) SHA1(d050c19d41096366220dbf5e0f6769036cc15381) )
 	ROM_LOAD16_WORD_SWAP( "268_rmd01.p2", 0x200000, 0x400000, CRC(1d956047) SHA1(535be6dad8201e25207e6ffb5d45685f8d4d2558) )
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5W_AUDIO_512K
 	MSLUG5RMXE_YMSND
@@ -4580,6 +6819,7 @@ ROM_START( mslug5rme01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_rme01.p1", 0x000000, 0x100000, CRC(4084cba2) SHA1(e12eda8ca61ed4b06da11927ebbc38d7afdae8ec) )
 	ROM_LOAD16_WORD_SWAP( "268_rme01.p2", 0x100000, 0x400000, CRC(c850f9c0) SHA1(bf997c7bc02c83e98176e572e6733f8788f17ff4) )
+    MSLUG5HD_AES_FILL
     MSLUG5_SFIX_MT_128K
     MSLUG5W_AUDIO_512K
 	MSLUG5LA_YMSND
@@ -4590,6 +6830,7 @@ ROM_START( mslug5rmf01 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_rmf01.p1", 0x000000, 0x200000, CRC(e65a37e3) SHA1(0e433e804c62f8e644e8979ecaca1358768da16b) )
 	ROM_LOAD16_WORD_SWAP( "268_rma01.p2", 0x200000, 0x400000, CRC(b2671f9d) SHA1(6fc8834183813dcfe649c93c1ac407fc5342bf36) )
+    MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
     MSLUG5W_AUDIO_512K
 	MSLUG5RMXE_YMSND
@@ -4604,7 +6845,8 @@ ROM_START( mslugxhc01 ) //mslugxc2
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc01.p1", 0x000000, 0x100000, CRC(944ac109) SHA1(4bba27627a565d60f807993e96efae2f256d1007) )
 	ROM_LOAD16_WORD_SWAP( "250_hc01.p2", 0x100000, 0x400000, CRC(5d1c52cd) SHA1(b2b131fa845b0098cbf0750fee20b402e276483b) )
-	MSLUGX_ROM_FILL
+	MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
     MSLUGX_YMSND
@@ -4615,7 +6857,8 @@ ROM_START( mslugxhc02 ) //mslugxlb
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc02.p1", 0x000000, 0x100000, CRC(41fc71cc) SHA1(82c9f78edb0cba74491f755fc2f349fc7131ade0) )
 	ROM_LOAD16_WORD_SWAP( "250_hc02.p2", 0x100000, 0x400000, CRC(6a114e1a) SHA1(3da62274252d36226dcccda0e05593f7f18c7193) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4626,7 +6869,8 @@ ROM_START( mslugxhc03 ) //mslugxmax
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc03.p1", 0x000000, 0x100000, CRC(1ffd4613) SHA1(796c3f4af17692ef74cc9ddf771b1a23c53b914b) )
 	ROM_LOAD16_WORD_SWAP( "250_hc03.p2", 0x100000, 0x400000, CRC(8d595131) SHA1(523401915e5b751c9d67c169173de7e17fe7ff00) )
-	MSLUGX_ROM_FILL
+	MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4637,7 +6881,8 @@ ROM_START( mslugxhc04 ) //mslugxunity
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc04.p1", 0x000000, 0x100000, CRC(36102d34) SHA1(b60d41e7cd3395910e7aa5cc0a843d68bfcc2ac6) )
 	ROM_LOAD16_WORD_SWAP( "250.p2",      0x100000, 0x400000, CRC(1fda2e12) SHA1(18aaa7a3ba8da99f78c430e9be69ccde04bc04d9) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4648,7 +6893,8 @@ ROM_START( mslugxhc05 ) //mslugxeb
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc05.p1", 0x000000, 0x100000, CRC(764d1bb1) SHA1(e46824646aa46121e8591865f609f457fbb6521e) )
 	ROM_LOAD16_WORD_SWAP( "250_hc05.p2", 0x100000, 0x400000, CRC(a51363d1) SHA1(7b6b3490a975ac1e549df60b9d70ccd6d2f2ba6e) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4659,7 +6905,8 @@ ROM_START( mslugxhc06 ) //mslugxr
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc06.p1", 0x000000, 0x100000, CRC(a507546f) SHA1(ab6e9e969c2b3728cb0b13e0b1d62bda09037ac0) )
 	ROM_LOAD16_WORD_SWAP( "250_hc06.p2", 0x100000, 0x400000, CRC(78a66189) SHA1(a0689ea58b12873c939ebe949b42145ef49aff3f) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4670,7 +6917,8 @@ ROM_START( mslugxhc07 ) //mslugxhp
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc01.p1", 0x000000, 0x100000, CRC(944ac109) SHA1(4bba27627a565d60f807993e96efae2f256d1007) )
 	ROM_LOAD16_WORD_SWAP( "250_hc07.p2", 0x100000, 0x400000, CRC(eac6830a) SHA1(27927f5341c128f93d74113514f2d099d01acbdf) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4681,7 +6929,8 @@ ROM_START( mslugxhc08 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc08.p1", 0x000000, 0x100000, CRC(c0911075) SHA1(2645c9d59915811addc2ab048afbfb9e605bca24) )
 	ROM_LOAD16_WORD_SWAP( "250.p2",      0x100000, 0x400000, CRC(1fda2e12) SHA1(18aaa7a3ba8da99f78c430e9be69ccde04bc04d9) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4692,7 +6941,8 @@ ROM_START( mslugxhc09 ) //mslugxsv
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc09.p1", 0x000000, 0x100000, CRC(1b213460) SHA1(23f14b2e97582552e6db1e95f98b12f73140d9a5) )
 	ROM_LOAD16_WORD_SWAP( "250_hc09.p2", 0x100000, 0x400000, CRC(718d6d66) SHA1(d15f0394cab7c84f8434a3095b25014fd9bb3000) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4703,7 +6953,8 @@ ROM_START( mslugxhc10 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc10.p1", 0x000000, 0x100000, CRC(c405753d) SHA1(bed7426145fd15e972334d7ef04759edcccd8864) )
 	ROM_LOAD16_WORD_SWAP( "250.p2",      0x100000, 0x400000, CRC(1fda2e12) SHA1(18aaa7a3ba8da99f78c430e9be69ccde04bc04d9) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4714,7 +6965,8 @@ ROM_START( mslugxhc11 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc01.p1", 0x000000, 0x100000, CRC(944ac109) SHA1(4bba27627a565d60f807993e96efae2f256d1007) )
 	ROM_LOAD16_WORD_SWAP( "250_hc11.p2", 0x100000, 0x400000, CRC(8d20ccca) SHA1(53cb23cf489fa29f5b31847c82d51765ce32e633) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4725,10 +6977,11 @@ ROM_START( mslugxhc12 ) //mslugxsc
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc12.p1", 0x000000, 0x100000, CRC(da458e67) SHA1(79d717e45e03d32ca46c73a0b55ae85e0e9c7b7e) )
 	ROM_LOAD16_WORD_SWAP( "250_hc12.p2", 0x100000, 0x400000, CRC(7a27bd7f) SHA1(25c1bb147495f816c0ffd0da741c89b662216a1b) )
-    ROM_DEFAULT_BIOS("euro")
-    MSLUGX_ROM_FILL
-    MSLUGXSC_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_MVS_FILL
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+    AUDIOBIOS_128K
+	MSLUGXSC_SFIX_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXSCU_SPRITES
 ROM_END
@@ -4737,7 +6990,8 @@ ROM_START( mslugxhc13 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc13.p1", 0x000000, 0x100000, CRC(b606e809) SHA1(a477647cf470a115b9df1d37ab859188de49f9a9) )
 	ROM_LOAD16_WORD_SWAP( "250.p2",      0x100000, 0x400000, CRC(1fda2e12) SHA1(18aaa7a3ba8da99f78c430e9be69ccde04bc04d9) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4748,7 +7002,8 @@ ROM_START( mslugxhc14 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc14.p1", 0x000000, 0x100000, CRC(a11473d5) SHA1(83f6665e88e8b9d33545e5c57ac8a5e923787bd2) )
 	ROM_LOAD16_WORD_SWAP( "250.p2",      0x100000, 0x400000, CRC(1fda2e12) SHA1(18aaa7a3ba8da99f78c430e9be69ccde04bc04d9) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4759,7 +7014,8 @@ ROM_START( mslugxhc15 ) //mslugxxr
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc15.p1", 0x000000, 0x100000, CRC(bea1f7e5) SHA1(52148032328e4f2e4b6fe93f9df816891ebd50bb) )
 	ROM_LOAD16_WORD_SWAP( "250_hc15.p2", 0x100000, 0x400000, CRC(0efc5d67) SHA1(21a370ebc96e1b17ecfb12085732512dc51491d3) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4770,7 +7026,8 @@ ROM_START( mslugxhc16 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc16.p1", 0x000000, 0x100000, CRC(e75a6d64) SHA1(529130f7ebb43231e6bf1b1703266b6c09356f9c) )
 	ROM_LOAD16_WORD_SWAP( "250.p2",      0x100000, 0x400000, CRC(1fda2e12) SHA1(18aaa7a3ba8da99f78c430e9be69ccde04bc04d9) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4781,7 +7038,8 @@ ROM_START( mslugxhc17 ) //mslugx1v2
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc17.p1", 0x000000, 0x100000, CRC(0cf1f95b) SHA1(857af8721c5929ba7c60e16223cab4879ec382b9) )
 	ROM_LOAD16_WORD_SWAP( "250.p2",      0x100000, 0x400000, CRC(1fda2e12) SHA1(18aaa7a3ba8da99f78c430e9be69ccde04bc04d9) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4792,7 +7050,8 @@ ROM_START( mslugxhc18 ) //mslugxh
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc18.p1", 0x000000, 0x100000, CRC(6a116211) SHA1(92b1d87248e03d21eb87201cbadc5de0eaaf4b47) )
 	ROM_LOAD16_WORD_SWAP( "250_hc18.p2", 0x100000, 0x400000, CRC(91e82e00) SHA1(402790a5f99d4909d472b3ca45c8a27bf36c5de6) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4803,7 +7062,8 @@ ROM_START( mslugxhc19 ) //mslugx2r
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc19.p1", 0x000000, 0x100000, CRC(721f11aa) SHA1(49c4c5f86f37d0e33a0ece707608de2ca1855be2) )
 	ROM_LOAD16_WORD_SWAP( "250_hc19.p2", 0x100000, 0x400000, CRC(4f875278) SHA1(ca6e474171e8bebc63033c883a8acfbfbce43f28) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4814,7 +7074,8 @@ ROM_START( mslugxhc20 ) //mslugxc1
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc20.p1", 0x000000, 0x100000, CRC(e74f36c2) SHA1(b17d66f36e6ac31433179566ea07a0ed8790b161) )
 	ROM_LOAD16_WORD_SWAP( "250_hc20.p2", 0x100000, 0x400000, CRC(e954b8aa) SHA1(b339b1fd05d50ac3a9d3992bb0fc8e3fd1a95557) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4825,7 +7086,8 @@ ROM_START( mslugxhc21 ) //mslugxmax+
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc06.p1", 0x000000, 0x100000, CRC(a507546f) SHA1(ab6e9e969c2b3728cb0b13e0b1d62bda09037ac0) )
 	ROM_LOAD16_WORD_SWAP( "250_hc21.p2", 0x100000, 0x400000, CRC(9cf91e0f) SHA1(ed094f66d5b3e231ceb709bd578b47ce436709fe) )
-	MSLUGX_ROM_FILL
+	MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4836,7 +7098,8 @@ ROM_START( mslugxhc22 ) //mslugx2reb
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc22.p1", 0x000000, 0x100000, CRC(dba3f1a1) SHA1(2d2a5b67bb1b23470d032dbcb6bd454a4ff86da7) )
 	ROM_LOAD16_WORD_SWAP( "250_hc22.p2", 0x100000, 0x400000, CRC(3866eb68) SHA1(38fb15f428388a17c70841fea9d1503dad710c90) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4847,7 +7110,8 @@ ROM_START( mslugxhc23 ) //mslugx2r1v2
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc23.p1", 0x000000, 0x100000, CRC(d13fd368) SHA1(ea2d8a78c23090ba0424ad41fcc9935bc1dcf277) )
 	ROM_LOAD16_WORD_SWAP( "250_hc23.p2", 0x100000, 0x400000, CRC(730e94a2) SHA1(590b5950bce33b24122dcad99c91d9bc436d16d7) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4858,7 +7122,8 @@ ROM_START( mslugxhc24 ) //mslugxdd
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc24.p1", 0x000000, 0x100000, CRC(aa09586a) SHA1(246579b58babcf696f988a2d57dc8fab0019b3de) )
 	ROM_LOAD16_WORD_SWAP( "250_hc24.p2", 0x100000, 0x400000, CRC(1791d721) SHA1(cdc6231f1fde1eef90c51ef9a5c22e900055c3f5) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4869,10 +7134,11 @@ ROM_START( mslugxhc25 ) //mslugxscb
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc25.p1", 0x000000, 0x100000, CRC(e0792609) SHA1(e98096a5ad7181e95cf544cd345693599ecce08a) )
 	ROM_LOAD16_WORD_SWAP( "250_hc25.p2", 0x100000, 0x400000, CRC(01f48336) SHA1(a5c42ca203427bfd978df8119aa4f0306d074d47) )
-    ROM_DEFAULT_BIOS("euro")
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+    AUDIOBIOS_128K
     MSLUGXSC_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXCQ_SPRITES
 ROM_END
@@ -4881,7 +7147,8 @@ ROM_START( mslugxhc26 ) //mslugxdg
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc26.p1", 0x000000, 0x100000, CRC(095b7f44) SHA1(3ee849e73c6ab4d6ad8c8b538de15d6baae13c66) )
 	ROM_LOAD16_WORD_SWAP( "250_hc26.p2", 0x100000, 0x400000, CRC(431cb335) SHA1(d05f7eb5759bbb5da87a97959a5d0d692700bd9e) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4892,7 +7159,8 @@ ROM_START( mslugxhc27 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc27.p1", 0x000000, 0x100000, CRC(27d836c8) SHA1(4b110e1f1094cea607914156c69298017153a9d8) )
 	ROM_LOAD16_WORD_SWAP( "250.p2", 0x100000, 0x400000, CRC(1fda2e12) SHA1(18aaa7a3ba8da99f78c430e9be69ccde04bc04d9) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4903,10 +7171,11 @@ ROM_START( mslugxhc28 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc28.p1", 0x000000, 0x100000, CRC(5836f4d7) SHA1(002c6a519c118d33e3cef92066b0e8fc96f52627) )
 	ROM_LOAD16_WORD_SWAP( "250_hc28.p2", 0x100000, 0x400000, CRC(9033c16c) SHA1(13336d2d9a042973dd744966c37a0a3d5f574808) )
-    ROM_DEFAULT_BIOS("euro")
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+    AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGX_SPRITES
 ROM_END
@@ -4915,7 +7184,8 @@ ROM_START( mslugxhc29 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc29.p1", 0x000000, 0x100000, CRC(a3764c51) SHA1(791e23b6953aba236fe18182efa7445291c991ba) )
 	ROM_LOAD16_WORD_SWAP( "250.p2",      0x100000, 0x400000, CRC(1fda2e12) SHA1(18aaa7a3ba8da99f78c430e9be69ccde04bc04d9) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4926,7 +7196,8 @@ ROM_START( mslugxhc30 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc30.p1", 0x000000, 0x100000, CRC(d8834fcc) SHA1(2391af1873d33b49452fa5178c568bbd7154aaef) )
 	ROM_LOAD16_WORD_SWAP( "250.p2",      0x100000, 0x400000, CRC(1fda2e12) SHA1(18aaa7a3ba8da99f78c430e9be69ccde04bc04d9) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGXFR_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4937,7 +7208,8 @@ ROM_START( mslugxhc31 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc31.p1", 0x000000, 0x100000, CRC(f3e154ea) SHA1(bb8260deefa7b048772625085e6f41cab717a147) )
 	ROM_LOAD16_WORD_SWAP( "250.p2",      0x100000, 0x400000, CRC(1fda2e12) SHA1(18aaa7a3ba8da99f78c430e9be69ccde04bc04d9) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4948,7 +7220,8 @@ ROM_START( mslugxhc32 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc32.p1", 0x000000, 0x100000, CRC(56456150) SHA1(d43805996ef741c019e816e13d89575ad03da7ce) )
 	ROM_LOAD16_WORD_SWAP( "250_hc32.p2", 0x100000, 0x400000, CRC(bc9b3e8b) SHA1(d331c5cbdb99da327c69ea0aa562c8240e117ac1) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4959,7 +7232,8 @@ ROM_START( mslugxhc33 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc33.p1", 0x000000, 0x100000, CRC(a7edd6ea) SHA1(d0bca9bbcfd1458ed9777b319b92fd1ebf9e5a89) )
 	ROM_LOAD16_WORD_SWAP( "250.p2",      0x100000, 0x400000, CRC(1fda2e12) SHA1(18aaa7a3ba8da99f78c430e9be69ccde04bc04d9) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4970,7 +7244,8 @@ ROM_START( mslugxhc34 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc34.p1", 0x000000, 0x100000, CRC(32cea24b) SHA1(059a2f3d70667e8202918f14c9a6d6142f6866d8) )
 	ROM_LOAD16_WORD_SWAP( "250_hc34.p2", 0x100000, 0x400000, CRC(304da36a) SHA1(e8ff1682cc9d8581533d2ce83f050f0ab55d9495) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4981,7 +7256,8 @@ ROM_START( mslugxhc35 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc35.p1", 0x000000, 0x100000, CRC(530d97ec) SHA1(4c5af2f5c0d1a46885313bcf898d3457763fbb62) )
 	ROM_LOAD16_WORD_SWAP( "250.p2",      0x100000, 0x400000, CRC(1fda2e12) SHA1(18aaa7a3ba8da99f78c430e9be69ccde04bc04d9) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -4992,7 +7268,8 @@ ROM_START( mslugxhc36 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc36.p1", 0x000000, 0x100000, CRC(971f8454) SHA1(73033339931de870bb5a5a64f34ce51c63c4ed15) )
 	ROM_LOAD16_WORD_SWAP( "250.p2",      0x100000, 0x400000, CRC(1fda2e12) SHA1(18aaa7a3ba8da99f78c430e9be69ccde04bc04d9) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -5003,7 +7280,8 @@ ROM_START( mslugxhc37 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc37.p1", 0x000000, 0x100000, CRC(69f68b04) SHA1(5280da3c2eb8bd01c4b018ee9093016f14f4170d) )
 	ROM_LOAD16_WORD_SWAP( "250_hc37.p2", 0x100000, 0x400000, CRC(3567ea11) SHA1(86f1168c625c162778859d511e694bab47be8a16) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -5014,7 +7292,8 @@ ROM_START( mslugxhc38 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hc38.p1", 0x000000, 0x100000, CRC(540ef88a) SHA1(4a2bab7359fc54760a8fb2dfc6fc8ed9b7b9e5a3) )
 	ROM_LOAD16_WORD_SWAP( "250_hc38.p2", 0x100000, 0x400000, CRC(8082b833) SHA1(78d381950bb08b51a911a72b1a1c9f14823911d1) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -5029,7 +7308,8 @@ ROM_START( mslugxe )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250e.p1", 0x000000, 0x100000, CRC(60c33b1a) SHA1(8999bfc42b233cdb58778857c87d9f3187c61025) )
 	ROM_LOAD16_WORD_SWAP( "250.p2",  0x100000, 0x400000, CRC(1fda2e12) SHA1(18aaa7a3ba8da99f78c430e9be69ccde04bc04d9) )
-    MSLUGX_ROM_FILL
+    MSLUGX_MVS_FILL
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -5047,9 +7327,10 @@ ROM_START( mslugxer01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_er01.p1", 0x000000, 0x100000, CRC(70ae67e2) SHA1(02a3347212c5e732fa891315899e05765963cbbc) )
 	ROM_LOAD16_WORD_SWAP( "250_er01.p2", 0x100000, 0x400000, CRC(26c43520) SHA1(0001d35829021df68a65ded4bc2955c3c5d29f15) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+    AUDIOBIOS_128K
     MSLUGXSC_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXER_SPRITES
 ROM_END
@@ -5058,9 +7339,10 @@ ROM_START( mslugxer02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_er01.p1", 0x000000, 0x100000, CRC(70ae67e2) SHA1(02a3347212c5e732fa891315899e05765963cbbc) )
 	ROM_LOAD16_WORD_SWAP( "250_er02.p2", 0x100000, 0x400000, CRC(98cf700a) SHA1(bd95e398f22a5e5df1e402fef1db59a1a3236774) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+    AUDIOBIOS_128K
     MSLUGXSC_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXER_SPRITES
 ROM_END
@@ -5069,9 +7351,10 @@ ROM_START( mslugxer03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_er01.p1", 0x000000, 0x100000, CRC(70ae67e2) SHA1(02a3347212c5e732fa891315899e05765963cbbc) )
 	ROM_LOAD16_WORD_SWAP( "250_er03.p2", 0x100000, 0x400000, CRC(a5a51a43) SHA1(7e8d54b1b67a56c1696bd9fcd8fb862fc879fa7d) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+    AUDIOBIOS_128K
     MSLUGXSC_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXER_SPRITES
 ROM_END
@@ -5080,9 +7363,10 @@ ROM_START( mslugxer04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_er04.p1", 0x000000, 0x100000, CRC(9419404d) SHA1(43c3db2f6f06ac29e83387604c6161f743221819) )
 	ROM_LOAD16_WORD_SWAP( "250_er04.p2", 0x100000, 0x400000, CRC(b79b9f68) SHA1(aa33e9e450b8530b31af76aa55f5322ac5888e6e) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+    AUDIOBIOS_128K
     MSLUGXSC_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXER_SPRITES
 ROM_END
@@ -5091,9 +7375,10 @@ ROM_START( mslugxer05 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_er05.p1", 0x000000, 0x100000, CRC(1706f46b) SHA1(93ff19b9b92797a523ea3d419c2ca662d749cbf0) )
 	ROM_LOAD16_WORD_SWAP( "250_er05.p2", 0x100000, 0x400000, CRC(8f1c7d24) SHA1(d32127573a7473a16d0b4c0f8e1cbae54aacd699) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+    AUDIOBIOS_128K
     MSLUGXSC_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXER_SPRITES
 ROM_END
@@ -5102,9 +7387,10 @@ ROM_START( mslugxer06 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_er01.p1", 0x000000, 0x100000, CRC(70ae67e2) SHA1(02a3347212c5e732fa891315899e05765963cbbc) )
 	ROM_LOAD16_WORD_SWAP( "250_er06.p2", 0x100000, 0x400000, CRC(9edf51d1) SHA1(8b16e82c5b0c76c33350d3c4d69d5b07f20d1b96) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+    AUDIOBIOS_128K
     MSLUGXSC_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXER_SPRITES
 ROM_END
@@ -5113,9 +7399,10 @@ ROM_START( mslugxer07 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_er01.p1", 0x000000, 0x100000, CRC(70ae67e2) SHA1(02a3347212c5e732fa891315899e05765963cbbc) )
 	ROM_LOAD16_WORD_SWAP( "250_er07.p2", 0x100000, 0x400000, CRC(68bd7a19) SHA1(f1c216e6fd23fb1fdfba50650989605f8cea2e2b) )
-    ROM_DEFAULT_BIOS("euro")
+    DEFAULT_BIOS_BOOT_(EUROPE_MVS)
+    AUDIOBIOS_128K
     MSLUGXSC_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXER_SPRITES
 ROM_END
@@ -5124,9 +7411,11 @@ ROM_START( mslugxesp01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_esp01.p1", 0x000000, 0x100000, CRC(c4119cd6) SHA1(ba5039ad352b84cc4b52af9c17fcc20a95f30873) )
 	ROM_LOAD16_WORD_SWAP( "250_esp01.p2", 0x100000, 0x400000, CRC(c91741ea) SHA1(afe4bb43fc7e1139638d9dc5860a553df425755b) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5135,9 +7424,11 @@ ROM_START( mslugxesp02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_esp01.p1", 0x000000, 0x100000, CRC(c4119cd6) SHA1(ba5039ad352b84cc4b52af9c17fcc20a95f30873) )
 	ROM_LOAD16_WORD_SWAP( "250_esp02.p2", 0x100000, 0x400000, CRC(d86db57f) SHA1(f71149407ce21aef612ecfbf0f32a63fe7b2dd94) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5146,9 +7437,11 @@ ROM_START( mslugxesp03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_esp01.p1", 0x000000, 0x100000, CRC(c4119cd6) SHA1(ba5039ad352b84cc4b52af9c17fcc20a95f30873) )
 	ROM_LOAD16_WORD_SWAP( "250_esp03.p2", 0x100000, 0x400000, CRC(c414b0e5) SHA1(5be371a914ca891e34a041d4474ed890545e8435) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5157,9 +7450,11 @@ ROM_START( mslugxesp04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_esp01.p1", 0x000000, 0x100000, CRC(c4119cd6) SHA1(ba5039ad352b84cc4b52af9c17fcc20a95f30873) )
 	ROM_LOAD16_WORD_SWAP( "250_esp04.p2", 0x100000, 0x400000, CRC(5d641902) SHA1(72a98f498d19766f462cbae40de0ca639c9b2d2d) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5168,10 +7463,12 @@ ROM_START( mslugxesp05 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_esp05.p1", 0x000000, 0x100000, CRC(1d9279a1) SHA1(6b2a797ba01c1931e69715a99aa045d88160180d) )
 	ROM_LOAD16_WORD_SWAP( "250_esp05.p2", 0x100000, 0x400000, CRC(0362bcda) SHA1(63438964dc31debd0ebec87946032f0e895b03ab) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
-    MSLUGX_YMSND
+    MSLUGX_AUDIOBIOS_128K
+	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
 
@@ -5179,9 +7476,11 @@ ROM_START( mslugxesp06 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_esp06.p1", 0x000000, 0x100000, CRC(07244e95) SHA1(d5cec957dc5a1ca4cce05a45808f81aaf86b3840) )
 	ROM_LOAD16_WORD_SWAP( "250_esp06.p2", 0x100000, 0x400000, CRC(7c3f1838) SHA1(04694d4f03d4152591013aafa7f1f318042e8e89) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5190,9 +7489,11 @@ ROM_START( mslugxesp07 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_esp01.p1", 0x000000, 0x100000, CRC(c4119cd6) SHA1(ba5039ad352b84cc4b52af9c17fcc20a95f30873) )
 	ROM_LOAD16_WORD_SWAP( "250_esp07.p2", 0x100000, 0x400000, CRC(cba0882b) SHA1(d2cc62d3be0df6520ee610c8c74023f977859ab1) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5205,6 +7506,7 @@ ROM_START( mslugxtst01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_at01.p1",  0x000000, 0x100000, CRC(be79f97a) SHA1(970284113cd7683b511fa6fc562fdc17796e93cc) )
 	ROM_LOAD16_WORD_SWAP( "250_tst01.p2", 0x100000, 0x400000, CRC(9ddd0f21) SHA1(bbeea5ed3c4021bd14249b416e25ff88731b8a65) )
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -5215,6 +7517,7 @@ ROM_START( mslugxtao01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_at01.p1",  0x000000, 0x100000, CRC(be79f97a) SHA1(970284113cd7683b511fa6fc562fdc17796e93cc) )
 	ROM_LOAD16_WORD_SWAP( "250_ao01.p2",  0x100000, 0x400000, CRC(ee8f9d31) SHA1(d99ca53fc94b869b4ddd2d4de633a0a78827d01e) )
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -5225,6 +7528,7 @@ ROM_START( mslugxat01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_at01.p1", 0x000000, 0x100000, CRC(be79f97a) SHA1(970284113cd7683b511fa6fc562fdc17796e93cc) )
 	ROM_LOAD16_WORD_SWAP( "250_at01.p2", 0x100000, 0x400000, CRC(94fce740) SHA1(9cb3ac56df2104eb2b623eb238fd3734df46e52d) )
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -5235,6 +7539,7 @@ ROM_START( mslugxat02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_at01.p1", 0x000000, 0x100000, CRC(be79f97a) SHA1(970284113cd7683b511fa6fc562fdc17796e93cc) )
 	ROM_LOAD16_WORD_SWAP( "250_at02.p2", 0x100000, 0x400000, CRC(0da76952) SHA1(d2544a4153fa8e6edd593bd9b672f76c73a9f123) )
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -5245,6 +7550,7 @@ ROM_START( mslugxat03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_at01.p1", 0x000000, 0x100000, CRC(be79f97a) SHA1(970284113cd7683b511fa6fc562fdc17796e93cc) )
 	ROM_LOAD16_WORD_SWAP( "250_at03.p2", 0x100000, 0x400000, CRC(97839838) SHA1(1186ba34ca4423ee0fa19db19d9ae79811c8117d) )
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -5255,6 +7561,7 @@ ROM_START( mslugxat04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_at01.p1", 0x000000, 0x100000, CRC(be79f97a) SHA1(970284113cd7683b511fa6fc562fdc17796e93cc) )
 	ROM_LOAD16_WORD_SWAP( "250_at04.p2", 0x100000, 0x400000, CRC(1ad67b97) SHA1(70ec0cc7f4316027dcd4108bcbc06780df69067a) )
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -5265,6 +7572,7 @@ ROM_START( mslugxat05 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_at01.p1", 0x000000, 0x100000, CRC(be79f97a) SHA1(970284113cd7683b511fa6fc562fdc17796e93cc) )
 	ROM_LOAD16_WORD_SWAP( "250_at05.p2", 0x100000, 0x400000, CRC(8713362a) SHA1(52f4fd9f34aa9738f30fec6e418163ebf3cf8417) )
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -5275,6 +7583,7 @@ ROM_START( mslugxat06 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_at01.p1", 0x000000, 0x100000, CRC(be79f97a) SHA1(970284113cd7683b511fa6fc562fdc17796e93cc) )
 	ROM_LOAD16_WORD_SWAP( "250_at06.p2", 0x100000, 0x400000, CRC(e17e2ba5) SHA1(5ded8fc351926555c71edbab66e7b6e8a82729a0) )
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -5285,6 +7594,7 @@ ROM_START( mslugxat07 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_at01.p1", 0x000000, 0x100000, CRC(be79f97a) SHA1(970284113cd7683b511fa6fc562fdc17796e93cc) )
 	ROM_LOAD16_WORD_SWAP( "250_at07.p2", 0x100000, 0x400000, CRC(67e0d521) SHA1(aac12a294c031fe8b06228ee2a01b87537d5b49a) )
+    MSLUGX_AES_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGX_YMSND
@@ -5295,9 +7605,11 @@ ROM_START( mslugxat08 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_at08.p1", 0x000000, 0x100000, CRC(a6bc7d09) SHA1(f6818072d0f5123526b2f7c0852599e2b5a665b4) )
 	ROM_LOAD16_WORD_SWAP( "250_at08.p2", 0x100000, 0x400000, CRC(96cda2b9) SHA1(d9eff5de6578c04d05110239c61b3390f35e2547) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGX_SPRITES
 ROM_END
@@ -5306,9 +7618,11 @@ ROM_START( mslugxat09 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_at09.p1", 0x000000, 0x100000, CRC(4f365912) SHA1(a4fd6ab9bad2093323676e8877e2b9ef0688156d) )
 	ROM_LOAD16_WORD_SWAP( "250_at09.p2", 0x100000, 0x400000, CRC(9d8ec80f) SHA1(9b75d57a7e71574144936c05073e8538ad2fed83) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5317,9 +7631,11 @@ ROM_START( mslugxat10 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_at10.p1", 0x000000, 0x100000, CRC(76aed1e2) SHA1(0308d3d49a7967657ef5e6b1f2784484654af312) )
 	ROM_LOAD16_WORD_SWAP( "250_at10.p2", 0x100000, 0x400000, CRC(fd7f67ae) SHA1(2f60ae3a130d766acf21c89d6b557018e30c5252) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5332,9 +7648,11 @@ ROM_START( mslugxla01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_la01.p1", 0x000000, 0x100000, CRC(d31a7198) SHA1(3fd5cf02242f3436ac8bd5a50dc1862aac238209) )
 	ROM_LOAD16_WORD_SWAP( "250_la01.p2", 0x100000, 0x400000, CRC(a67301ac) SHA1(6ee37e924db019f7b3d5ffc5e8eeeaa1376ca86e) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5343,9 +7661,11 @@ ROM_START( mslugxla02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_la02.p1", 0x000000, 0x100000, CRC(d4848cd3) SHA1(a2c4e2d7d89c805a6cc628e4cdc9cd0bb474bc4a) )
 	ROM_LOAD16_WORD_SWAP( "250_la01.p2", 0x100000, 0x400000, CRC(a67301ac) SHA1(6ee37e924db019f7b3d5ffc5e8eeeaa1376ca86e) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5354,9 +7674,11 @@ ROM_START( mslugxla03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_la03.p1", 0x000000, 0x100000, CRC(3b3b6c95) SHA1(b170d86c02a6e93eef396486117fdc2737fbe9ea) )
 	ROM_LOAD16_WORD_SWAP( "250_la01.p2", 0x100000, 0x400000, CRC(a67301ac) SHA1(6ee37e924db019f7b3d5ffc5e8eeeaa1376ca86e) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5365,9 +7687,11 @@ ROM_START( mslugxlb01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_lb01.p1", 0x000000, 0x100000, CRC(a5d5ddb3) SHA1(aca16be431e5541d7895897b7f2c87d0abc73fcd) )
 	ROM_LOAD16_WORD_SWAP( "250_lb01.p2", 0x100000, 0x400000, CRC(b709f539) SHA1(59a1fb08724957354c885d7160e6aad1dd2b7130) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5376,9 +7700,11 @@ ROM_START( mslugxlb02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_la02.p1", 0x000000, 0x100000, CRC(d4848cd3) SHA1(a2c4e2d7d89c805a6cc628e4cdc9cd0bb474bc4a) )
 	ROM_LOAD16_WORD_SWAP( "250_lb01.p2", 0x100000, 0x400000, CRC(b709f539) SHA1(59a1fb08724957354c885d7160e6aad1dd2b7130) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5387,9 +7713,11 @@ ROM_START( mslugxlb03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_la03.p1", 0x000000, 0x100000, CRC(3b3b6c95) SHA1(b170d86c02a6e93eef396486117fdc2737fbe9ea) )
 	ROM_LOAD16_WORD_SWAP( "250_lb01.p2", 0x100000, 0x400000, CRC(b709f539) SHA1(59a1fb08724957354c885d7160e6aad1dd2b7130) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5398,9 +7726,11 @@ ROM_START( mslugxlc01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_lc01.p1", 0x000000, 0x100000, CRC(e3966bcc) SHA1(45d5158a132a49b407e00199226f7b2ed5748b38) )
 	ROM_LOAD16_WORD_SWAP( "250_lc01.p2", 0x100000, 0x400000, CRC(ab70f0a3) SHA1(7de44785b78d0fbb7b606578b710783cd1928953) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5409,9 +7739,11 @@ ROM_START( mslugxlc02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_la02.p1", 0x000000, 0x100000, CRC(d4848cd3) SHA1(a2c4e2d7d89c805a6cc628e4cdc9cd0bb474bc4a) )
 	ROM_LOAD16_WORD_SWAP( "250_lc01.p2", 0x100000, 0x400000, CRC(ab70f0a3) SHA1(7de44785b78d0fbb7b606578b710783cd1928953) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5420,9 +7752,11 @@ ROM_START( mslugxlc03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_la03.p1", 0x000000, 0x100000, CRC(3b3b6c95) SHA1(b170d86c02a6e93eef396486117fdc2737fbe9ea) )
 	ROM_LOAD16_WORD_SWAP( "250_lc01.p2", 0x100000, 0x400000, CRC(ab70f0a3) SHA1(7de44785b78d0fbb7b606578b710783cd1928953) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5431,9 +7765,11 @@ ROM_START( mslugxld01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_ld01.p1", 0x000000, 0x100000, CRC(a3f6be51) SHA1(8bb5e42800cb32511775afedad4459e56d98fde1) )
 	ROM_LOAD16_WORD_SWAP( "250_ld01.p2", 0x100000, 0x400000, CRC(d30ef51a) SHA1(737c1aad94d17477206b1379080f3e3ec3fc345b) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5442,9 +7778,11 @@ ROM_START( mslugxld02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_ld02.p1", 0x000000, 0x100000, CRC(b5f8a734) SHA1(33580d0f105f8a9a5c0b4ff6836efb9535f388c1) )
 	ROM_LOAD16_WORD_SWAP( "250_ld01.p2", 0x100000, 0x400000, CRC(d30ef51a) SHA1(737c1aad94d17477206b1379080f3e3ec3fc345b) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5453,9 +7791,11 @@ ROM_START( mslugxld03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_ld03.p1", 0x000000, 0x100000, CRC(101d2371) SHA1(3acf826bf6e1e9727dcc618df57b6b51cba64ac1) )
 	ROM_LOAD16_WORD_SWAP( "250_ld01.p2", 0x100000, 0x400000, CRC(d30ef51a) SHA1(737c1aad94d17477206b1379080f3e3ec3fc345b) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5464,9 +7804,11 @@ ROM_START( mslugxle01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_le01.p1", 0x000000, 0x100000, CRC(be42ce37) SHA1(fd5f18529a5954c84bca9953d6eb05373364ef02) )
 	ROM_LOAD16_WORD_SWAP( "250_le01.p2", 0x100000, 0x400000, CRC(32005944) SHA1(9acdbae063c1f780e9873b24ad2f164318bf339d) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5475,9 +7817,11 @@ ROM_START( mslugxle02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_le02.p1", 0x000000, 0x100000, CRC(bbfbf264) SHA1(395beb97f6373f0b9182f1cdb98662f9a08da848) )
 	ROM_LOAD16_WORD_SWAP( "250_le01.p2", 0x100000, 0x400000, CRC(32005944) SHA1(9acdbae063c1f780e9873b24ad2f164318bf339d) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5486,9 +7830,11 @@ ROM_START( mslugxle03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_le03.p1", 0x000000, 0x100000, CRC(54441222) SHA1(413f63f798222409ae3fd9d9da18184f947fc22a) )
 	ROM_LOAD16_WORD_SWAP( "250_le01.p2", 0x100000, 0x400000, CRC(32005944) SHA1(9acdbae063c1f780e9873b24ad2f164318bf339d) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5497,9 +7843,11 @@ ROM_START( mslugxlf01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_lf01.p1", 0x000000, 0x100000, CRC(0a9994ef) SHA1(17ccdb7622e51c28952b5ef746ae87cb31cd2e3a) )
 	ROM_LOAD16_WORD_SWAP( "250_lf01.p2", 0x100000, 0x400000, CRC(6c06fc9c) SHA1(c6df84e0027a605a7b693c14fdb1b64ae7bb33d3) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5508,9 +7856,11 @@ ROM_START( mslugxlf02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_lf02.p1", 0x000000, 0x100000, CRC(0d0769a4) SHA1(ef41294ad0ff9d1ad65b8fdc2473c8dd29b0dbaa) )
 	ROM_LOAD16_WORD_SWAP( "250_lf01.p2", 0x100000, 0x400000, CRC(6c06fc9c) SHA1(c6df84e0027a605a7b693c14fdb1b64ae7bb33d3) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5519,9 +7869,11 @@ ROM_START( mslugxlf03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_lf03.p1", 0x000000, 0x100000, CRC(e2b889e2) SHA1(fbe74522a8cc0c4e29553de7bd2fcc2caf5c5d8d) )
 	ROM_LOAD16_WORD_SWAP( "250_lf01.p2", 0x100000, 0x400000, CRC(6c06fc9c) SHA1(c6df84e0027a605a7b693c14fdb1b64ae7bb33d3) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5530,9 +7882,11 @@ ROM_START( mslugxlg01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_lg01.p1", 0x000000, 0x100000, CRC(e9af0881) SHA1(22a53be24ef91d20fac59c3231877f3c5c8a6728) )
 	ROM_LOAD16_WORD_SWAP( "250_lg01.p2", 0x100000, 0x400000, CRC(42a873bf) SHA1(bc06115386798aea79d9f803bc2960ba50dc8001) )
-    ROM_DEFAULT_BIOS("unibios40")
-	MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
+    MSLUGX_SFIX_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5541,9 +7895,11 @@ ROM_START( mslugxlg02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_la02.p1", 0x000000, 0x100000, CRC(d4848cd3) SHA1(a2c4e2d7d89c805a6cc628e4cdc9cd0bb474bc4a) )
 	ROM_LOAD16_WORD_SWAP( "250_lg01.p2", 0x100000, 0x400000, CRC(42a873bf) SHA1(bc06115386798aea79d9f803bc2960ba50dc8001) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5552,9 +7908,11 @@ ROM_START( mslugxlg03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_la03.p1", 0x000000, 0x100000, CRC(3b3b6c95) SHA1(b170d86c02a6e93eef396486117fdc2737fbe9ea) )
 	ROM_LOAD16_WORD_SWAP( "250_lg01.p2", 0x100000, 0x400000, CRC(42a873bf) SHA1(bc06115386798aea79d9f803bc2960ba50dc8001) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5563,9 +7921,11 @@ ROM_START( mslugxlh01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_lh01.p1", 0x000000, 0x100000, CRC(8e95a9c4) SHA1(9aa7fcb5ca9bfe9186335ae864977d3876a220cf) )
 	ROM_LOAD16_WORD_SWAP( "250_lh01.p2", 0x100000, 0x400000, CRC(a4c4c86d) SHA1(172c68613fe04fcf20f08c0528981d80b4e5974a) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5574,9 +7934,11 @@ ROM_START( mslugxlh02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_la02.p1", 0x000000, 0x100000, CRC(d4848cd3) SHA1(a2c4e2d7d89c805a6cc628e4cdc9cd0bb474bc4a) )
 	ROM_LOAD16_WORD_SWAP( "250_lh01.p2", 0x100000, 0x400000, CRC(a4c4c86d) SHA1(172c68613fe04fcf20f08c0528981d80b4e5974a) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5585,9 +7947,11 @@ ROM_START( mslugxlh03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_la03.p1", 0x000000, 0x100000, CRC(3b3b6c95) SHA1(b170d86c02a6e93eef396486117fdc2737fbe9ea) )
 	ROM_LOAD16_WORD_SWAP( "250_lh01.p2", 0x100000, 0x400000, CRC(a4c4c86d) SHA1(172c68613fe04fcf20f08c0528981d80b4e5974a) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5600,9 +7964,11 @@ ROM_START( mslugxrma01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rma01.p1", 0x000000, 0x100000, CRC(c9080afe) SHA1(2ebefce518039bed3fa6d72c9d1b8b5bf51d9612) )
 	ROM_LOAD16_WORD_SWAP( "250_rma01.p2", 0x100000, 0x400000, CRC(228c9f6d) SHA1(e1a298ee901bf7ce8077da6038d9f03d213e61b6) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5611,9 +7977,11 @@ ROM_START( mslugxrma02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rma02.p1", 0x000000, 0x100000, CRC(e2ee9b15) SHA1(4aed465b42a2a19365b1ce7be849e2e88252bf54) )
 	ROM_LOAD16_WORD_SWAP( "250_rma01.p2", 0x100000, 0x400000, CRC(228c9f6d) SHA1(e1a298ee901bf7ce8077da6038d9f03d213e61b6) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5622,9 +7990,11 @@ ROM_START( mslugxrma03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rma03.p1", 0x000000, 0x100000, CRC(fffa664c) SHA1(775aca3c158f51f0011a6c2b1e122de6722e179d) )
 	ROM_LOAD16_WORD_SWAP( "250_rma01.p2", 0x100000, 0x400000, CRC(228c9f6d) SHA1(e1a298ee901bf7ce8077da6038d9f03d213e61b6) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5633,9 +8003,11 @@ ROM_START( mslugxrmb01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rma01.p1", 0x000000, 0x100000, CRC(c9080afe) SHA1(2ebefce518039bed3fa6d72c9d1b8b5bf51d9612) )
 	ROM_LOAD16_WORD_SWAP( "250_rmb01.p2", 0x100000, 0x400000, CRC(33f66bf8) SHA1(a0f3adef3521537a63908ceb8ef765573e878f91) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5644,9 +8016,11 @@ ROM_START( mslugxrmb02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rma02.p1", 0x000000, 0x100000, CRC(e2ee9b15) SHA1(4aed465b42a2a19365b1ce7be849e2e88252bf54) )
 	ROM_LOAD16_WORD_SWAP( "250_rmb01.p2", 0x100000, 0x400000, CRC(33f66bf8) SHA1(a0f3adef3521537a63908ceb8ef765573e878f91) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5655,9 +8029,11 @@ ROM_START( mslugxrmb03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rma03.p1", 0x000000, 0x100000, CRC(fffa664c) SHA1(775aca3c158f51f0011a6c2b1e122de6722e179d) )
 	ROM_LOAD16_WORD_SWAP( "250_rmb01.p2", 0x100000, 0x400000, CRC(33f66bf8) SHA1(a0f3adef3521537a63908ceb8ef765573e878f91) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5666,9 +8042,11 @@ ROM_START( mslugxrmc01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rma01.p1", 0x000000, 0x100000, CRC(c9080afe) SHA1(2ebefce518039bed3fa6d72c9d1b8b5bf51d9612) )
 	ROM_LOAD16_WORD_SWAP( "250_rmc01.p2", 0x100000, 0x400000, CRC(2f8f6e62) SHA1(c64f52d9a20eb50b6edd388dd384d015f958ba9f) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5677,9 +8055,11 @@ ROM_START( mslugxrmc02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rma02.p1", 0x000000, 0x100000, CRC(e2ee9b15) SHA1(4aed465b42a2a19365b1ce7be849e2e88252bf54) )
 	ROM_LOAD16_WORD_SWAP( "250_rmc01.p2", 0x100000, 0x400000, CRC(2f8f6e62) SHA1(c64f52d9a20eb50b6edd388dd384d015f958ba9f) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5688,9 +8068,11 @@ ROM_START( mslugxrmc03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rma03.p1", 0x000000, 0x100000, CRC(fffa664c) SHA1(775aca3c158f51f0011a6c2b1e122de6722e179d) )
 	ROM_LOAD16_WORD_SWAP( "250_rmc01.p2", 0x100000, 0x400000, CRC(2f8f6e62) SHA1(c64f52d9a20eb50b6edd388dd384d015f958ba9f) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5699,9 +8081,11 @@ ROM_START( mslugxrmd01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rmd01.p1", 0x000000, 0x100000, CRC(3137bc1f) SHA1(60d2c96530996efa1e7327baa97c4a26ffb95c4c) )
 	ROM_LOAD16_WORD_SWAP( "250_rmd01.p2", 0x100000, 0x400000, CRC(57f16bdb) SHA1(6b4f07d5d6a2668e25598f64a8a6eb29b5046ea3) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5710,9 +8094,11 @@ ROM_START( mslugxrmd02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rmd02.p1", 0x000000, 0x100000, CRC(06e76119) SHA1(26d654cc9c8f6fd44961e813f992a789e9764e2f) )
 	ROM_LOAD16_WORD_SWAP( "250_rmd01.p2", 0x100000, 0x400000, CRC(57f16bdb) SHA1(6b4f07d5d6a2668e25598f64a8a6eb29b5046ea3) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5721,9 +8107,11 @@ ROM_START( mslugxrmd03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rmd03.p1", 0x000000, 0x100000, CRC(506ab47f) SHA1(db149d2db1b735b39133e2d9dba40a1138102af7) )
 	ROM_LOAD16_WORD_SWAP( "250_rmd01.p2", 0x100000, 0x400000, CRC(57f16bdb) SHA1(6b4f07d5d6a2668e25598f64a8a6eb29b5046ea3) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5732,9 +8120,11 @@ ROM_START( mslugxrme01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rme01.p1", 0x000000, 0x100000, CRC(a6777449) SHA1(cce07e011593560fd2683424d0a0a90a660709bd) )
 	ROM_LOAD16_WORD_SWAP( "250_rme01.p2", 0x100000, 0x400000, CRC(b6ffc785) SHA1(caea53d1c35a5cd724680581094fb37bafa93d47) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5743,9 +8133,11 @@ ROM_START( mslugxrme02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rme02.p1", 0x000000, 0x100000, CRC(8d91e5a2) SHA1(2f30a8139906d7aa9523941f0837944f82b8f39a) )
 	ROM_LOAD16_WORD_SWAP( "250_rme01.p2", 0x100000, 0x400000, CRC(b6ffc785) SHA1(caea53d1c35a5cd724680581094fb37bafa93d47) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5754,9 +8146,11 @@ ROM_START( mslugxrme03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rme03.p1", 0x000000, 0x100000, CRC(908518fb) SHA1(ec2f09a432795857cf381fa01a3708d2a6c4818c) )
 	ROM_LOAD16_WORD_SWAP( "250_rme01.p2", 0x100000, 0x400000, CRC(b6ffc785) SHA1(caea53d1c35a5cd724680581094fb37bafa93d47) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5765,9 +8159,11 @@ ROM_START( mslugxrmf01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rmf01.p1", 0x000000, 0x100000, CRC(108bef89) SHA1(cf13df74e22cb39ad0cc60e6ba330fe8d44fd4ae) )
 	ROM_LOAD16_WORD_SWAP( "250_rmf01.p2", 0x100000, 0x400000, CRC(e8f9625d) SHA1(ac6b2304140d928b2c9212f1a68f0d861a904ca1) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5776,9 +8172,11 @@ ROM_START( mslugxrmf02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rmf02.p1", 0x000000, 0x100000, CRC(3b6d7e62) SHA1(51a898d1b0a45e7c62abcce415cc08e1dfabe23d) )
 	ROM_LOAD16_WORD_SWAP( "250_rmf01.p2", 0x100000, 0x400000, CRC(e8f9625d) SHA1(ac6b2304140d928b2c9212f1a68f0d861a904ca1) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5787,9 +8185,11 @@ ROM_START( mslugxrmf03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rmf03.p1", 0x000000, 0x100000, CRC(2679833b) SHA1(07fa1a3c80279f1a92eb9c94cb4783c68c7f7083) )
 	ROM_LOAD16_WORD_SWAP( "250_rmf01.p2", 0x100000, 0x400000, CRC(e8f9625d) SHA1(ac6b2304140d928b2c9212f1a68f0d861a904ca1) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5798,9 +8198,11 @@ ROM_START( mslugxrmg01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rma01.p1", 0x000000, 0x100000, CRC(c9080afe) SHA1(2ebefce518039bed3fa6d72c9d1b8b5bf51d9612) )
 	ROM_LOAD16_WORD_SWAP( "250_rmg01.p2", 0x100000, 0x400000, CRC(2be58ede) SHA1(12556c287be74be3ebdcb7698964d51ce7ce5d2a) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5809,9 +8211,11 @@ ROM_START( mslugxrmg02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rma02.p1", 0x000000, 0x100000, CRC(e2ee9b15) SHA1(4aed465b42a2a19365b1ce7be849e2e88252bf54) )
 	ROM_LOAD16_WORD_SWAP( "250_rmg01.p2", 0x100000, 0x400000, CRC(2be58ede) SHA1(12556c287be74be3ebdcb7698964d51ce7ce5d2a) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5820,9 +8224,11 @@ ROM_START( mslugxrmg03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rma03.p1", 0x000000, 0x100000, CRC(fffa664c) SHA1(775aca3c158f51f0011a6c2b1e122de6722e179d) )
 	ROM_LOAD16_WORD_SWAP( "250_rmg01.p2", 0x100000, 0x400000, CRC(2be58ede) SHA1(12556c287be74be3ebdcb7698964d51ce7ce5d2a) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5831,9 +8237,11 @@ ROM_START( mslugxrmh01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rma01.p1", 0x000000, 0x100000, CRC(c9080afe) SHA1(2ebefce518039bed3fa6d72c9d1b8b5bf51d9612) )
 	ROM_LOAD16_WORD_SWAP( "250_rmh01.p2", 0x100000, 0x400000, CRC(203b56ac) SHA1(22d48572fe2b7e771c777434d2ca06e8dfc869c7) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5842,9 +8250,11 @@ ROM_START( mslugxrmh02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rma02.p1", 0x000000, 0x100000, CRC(e2ee9b15) SHA1(4aed465b42a2a19365b1ce7be849e2e88252bf54) )
 	ROM_LOAD16_WORD_SWAP( "250_rmh01.p2", 0x100000, 0x400000, CRC(203b56ac) SHA1(22d48572fe2b7e771c777434d2ca06e8dfc869c7) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
@@ -5853,9 +8263,11 @@ ROM_START( mslugxrmh03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rma03.p1", 0x000000, 0x100000, CRC(fffa664c) SHA1(775aca3c158f51f0011a6c2b1e122de6722e179d) )
 	ROM_LOAD16_WORD_SWAP( "250_rmh01.p2", 0x100000, 0x400000, CRC(203b56ac) SHA1(22d48572fe2b7e771c777434d2ca06e8dfc869c7) )
-    ROM_DEFAULT_BIOS("unibios40")
+    MSLUGX_AES_FILL
+    DEFAULT_BIOS_(MSLUG_FOREVER)
+	AUDIOBIOS_128K
     MSLUGX_SFIX_128K
-    MSLUGX_AUDIO_128K
+    MSLUGX_AUDIOBIOS_128K
 	MSLUGX_YMSND
 	MSLUGXLB_SPRITES
 ROM_END
