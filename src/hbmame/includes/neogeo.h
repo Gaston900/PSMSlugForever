@@ -66,9 +66,9 @@ public:
 		, m_dsw(*this, "DSW")
 		, m_trackx(*this, "TRACK_X")
 		, m_tracky(*this, "TRACK_Y")
-//		, m_ctrl1(*this, "ctrl1")
-//		, m_ctrl2(*this, "ctrl2")
-//		, m_edge(*this, "edge")
+		, m_edge(*this, "edge")
+		, m_ctrl1(*this, "ctrl1")
+		, m_ctrl2(*this, "ctrl2")
 		, m_sprgen(*this, "spritegen")
 		, m_soundlatch(*this, "soundlatch")
 		, m_soundlatch2(*this, "soundlatch2")
@@ -86,11 +86,13 @@ public:
 		, m_out_digit(*this, "digit%u", 0U)
 	{ }
 
+	// mainboard configurations
 	void mvs(machine_config &config);
 	void neogeo_arcade(machine_config &config);
 	void neogeo_base(machine_config &config);
 	void neogeo_noslot(machine_config &config);
 
+	// fixed software configurations
 	void init_neogeo();	
 	void init_ms5pcb();
 	void init_ms4plushb();
@@ -128,8 +130,8 @@ private:
 	DECLARE_READ16_MEMBER(neogeo_video_register_r);
 	DECLARE_WRITE16_MEMBER(neogeo_video_register_w);
 	READ16_MEMBER(banked_vectors_r);
-//	DECLARE_READ16_MEMBER(in0_r);
-//	DECLARE_READ16_MEMBER(in1_r);
+	DECLARE_READ16_MEMBER(in0_r);
+	DECLARE_READ16_MEMBER(in1_r);
 	DECLARE_WRITE16_MEMBER(save_ram_w);
 
 	TIMER_CALLBACK_MEMBER(display_position_interrupt_callback);
@@ -237,9 +239,9 @@ private:
 	optional_ioport m_dsw;
 	optional_ioport m_trackx;
 	optional_ioport m_tracky;
-//	optional_device<neogeo_ctrl_edge_port_device> m_edge;
-//	optional_device<neogeo_control_port_device> m_ctrl1;
-//	optional_device<neogeo_control_port_device> m_ctrl2;
+	optional_device<neogeo_ctrl_edge_port_device> m_edge;
+	optional_device<neogeo_control_port_device> m_ctrl1;
+	optional_device<neogeo_control_port_device> m_ctrl2;
 	required_device<neosprite_device> m_sprgen;
 	optional_device<generic_latch_8_device> m_soundlatch;
 	optional_device<generic_latch_8_device> m_soundlatch2;

@@ -139,6 +139,8 @@ mslug3b6hc02      // Hack
 mslug3b6hc03      // Hack
 mslug3b6hc04      // Hack
 mslug3b6hc05      // Hack
+mslug3b6hc06      // Hack
+mslug3b6hc07      // Hack
 mslug3er01        // Hack
 mslug3er02        // Hack
 mslug3er03        // Hack
@@ -194,7 +196,6 @@ mslug3lh03        // Hack
 mslug3lh04        // Hack
 mslug3lh05        // Hack
 mslug3li01        // Hack
-mslug3li02        // Hack
 mslug3rma01       // Hack
 mslug3rma02       // Hack
 mslug3rma03       // Hack
@@ -228,7 +229,6 @@ mslug3rmh02       // Hack
 mslug3rmh03       // Hack
 mslug3rmh04       // Hack
 mslug3rmi01       // Hack
-mslug3rmi02       // Hack
 
 @source:neogeo.cpp
 ms4plusd          // Bootleg

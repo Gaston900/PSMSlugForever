@@ -37,34 +37,35 @@ inline void construct_core_types_P1(simple_list<input_type_entry> &typelist)
 	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICK_DOWN,       "P1 Down",                input_seq(KEYCODE_DOWN, input_seq::or_code, JOYCODE_Y_DOWN_SWITCH_INDEXED(0)) )
 	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICK_LEFT,       "P1 Left",                input_seq(KEYCODE_LEFT, input_seq::or_code, JOYCODE_X_LEFT_SWITCH_INDEXED(0)) )
 	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICK_RIGHT,      "P1 Right",               input_seq(KEYCODE_RIGHT, input_seq::or_code, JOYCODE_X_RIGHT_SWITCH_INDEXED(0)) )
-	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKRIGHT_UP,    "P1 Right Stick/Up",      input_seq(JOYCODE_BUTTON2_INDEXED(0)) )
-	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKRIGHT_DOWN,  "P1 Right Stick/Down",    input_seq(JOYCODE_BUTTON3_INDEXED(0)) )
-	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKRIGHT_LEFT,  "P1 Right Stick/Left",    input_seq(JOYCODE_BUTTON1_INDEXED(0)) )
-	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKRIGHT_RIGHT, "P1 Right Stick/Right",   input_seq(JOYCODE_BUTTON4_INDEXED(0)) )
-	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKLEFT_UP,     "P1 Left Stick/Up",       input_seq(JOYCODE_Y_UP_SWITCH_INDEXED(0)) )
-	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKLEFT_DOWN,   "P1 Left Stick/Down",     input_seq(JOYCODE_Y_DOWN_SWITCH_INDEXED(0)) )
-	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKLEFT_LEFT,   "P1 Left Stick/Left",     input_seq(JOYCODE_X_LEFT_SWITCH_INDEXED(0)) )
-	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKLEFT_RIGHT,  "P1 Left Stick/Right",    input_seq(JOYCODE_X_RIGHT_SWITCH_INDEXED(0)) )
+//	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKRIGHT_UP,    "P1 Right Stick/Up",      input_seq(JOYCODE_BUTTON2_INDEXED(0)) )
+//	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKRIGHT_DOWN,  "P1 Right Stick/Down",    input_seq(JOYCODE_BUTTON3_INDEXED(0)) )
+//	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKRIGHT_LEFT,  "P1 Right Stick/Left",    input_seq(JOYCODE_BUTTON1_INDEXED(0)) )
+//	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKRIGHT_RIGHT, "P1 Right Stick/Right",   input_seq(JOYCODE_BUTTON4_INDEXED(0)) )
+//	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKLEFT_UP,     "P1 Left Stick/Up",       input_seq(JOYCODE_Y_UP_SWITCH_INDEXED(0)) )
+//	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKLEFT_DOWN,   "P1 Left Stick/Down",     input_seq(JOYCODE_Y_DOWN_SWITCH_INDEXED(0)) )
+//	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKLEFT_LEFT,   "P1 Left Stick/Left",     input_seq(JOYCODE_X_LEFT_SWITCH_INDEXED(0)) )
+//	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKLEFT_RIGHT,  "P1 Left Stick/Right",    input_seq(JOYCODE_X_RIGHT_SWITCH_INDEXED(0)) )
 	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON1,             "P1 Button 1",            input_seq(KEYCODE_A, input_seq::or_code, JOYCODE_BUTTON1_INDEXED(0)) )
 	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON2,             "P1 Button 2",            input_seq(KEYCODE_S, input_seq::or_code, JOYCODE_BUTTON2_INDEXED(0)) )
 	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON3,             "P1 Button 3",            input_seq(KEYCODE_D, input_seq::or_code, JOYCODE_BUTTON3_INDEXED(0)) )
 	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON4,             "P1 Button 4",            input_seq(KEYCODE_Z, input_seq::or_code, JOYCODE_BUTTON4_INDEXED(0)) )
-	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON5,             "P1 Button 5",            input_seq(JOYCODE_BUTTON5_INDEXED(0)) )
-	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON6,             "P1 Button 6",            input_seq(JOYCODE_BUTTON6_INDEXED(0)) )
-	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON7,             "P1 Button 7",            input_seq(JOYCODE_BUTTON7_INDEXED(0)) )
-	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON8,             "P1 Button 8",            input_seq(JOYCODE_BUTTON8_INDEXED(0)) )
-	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON9,             "P1 Button 9",            input_seq(JOYCODE_BUTTON9_INDEXED(0)) )
-	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON10,            "P1 Button 10",           input_seq(JOYCODE_BUTTON10_INDEXED(0)) )
-	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON11,            "P1 Button 11",           input_seq(JOYCODE_BUTTON11_INDEXED(0)) )
-	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON12,            "P1 Button 12",           input_seq(JOYCODE_BUTTON12_INDEXED(0)) )
-	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON13,            "P1 Button 13",           input_seq(JOYCODE_BUTTON13_INDEXED(0)) )
-	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON14,            "P1 Button 14",           input_seq(JOYCODE_BUTTON14_INDEXED(0)) )
-	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON15,            "P1 Button 15",           input_seq(JOYCODE_BUTTON15_INDEXED(0)) )
-	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON16,            "P1 Button 16",           input_seq(JOYCODE_BUTTON16_INDEXED(0)) )
+//	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON5,             "P1 Button 5",            input_seq(JOYCODE_BUTTON5_INDEXED(0)) )
+//	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON6,             "P1 Button 6",            input_seq(JOYCODE_BUTTON6_INDEXED(0)) )
+//	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON7,             "P1 Button 7",            input_seq(JOYCODE_BUTTON7_INDEXED(0)) )
+//	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON8,             "P1 Button 8",            input_seq(JOYCODE_BUTTON8_INDEXED(0)) )
+//	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON9,             "P1 Button 9",            input_seq(JOYCODE_BUTTON9_INDEXED(0)) )
+//	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON10,            "P1 Button 10",           input_seq(JOYCODE_BUTTON10_INDEXED(0)) )
+//	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON11,            "P1 Button 11",           input_seq(JOYCODE_BUTTON11_INDEXED(0)) )
+//	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON12,            "P1 Button 12",           input_seq(JOYCODE_BUTTON12_INDEXED(0)) )
+//	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON13,            "P1 Button 13",           input_seq(JOYCODE_BUTTON13_INDEXED(0)) )
+//	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON14,            "P1 Button 14",           input_seq(JOYCODE_BUTTON14_INDEXED(0)) )
+//	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON15,            "P1 Button 15",           input_seq(JOYCODE_BUTTON15_INDEXED(0)) )
+//	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON16,            "P1 Button 16",           input_seq(JOYCODE_BUTTON16_INDEXED(0)) )
 	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, START,               "P1 Start",               input_seq(KEYCODE_1, input_seq::or_code, JOYCODE_START_INDEXED(0)) )
 	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, SELECT,              "P1 Select",              input_seq(KEYCODE_5, input_seq::or_code, JOYCODE_SELECT_INDEXED(0)) )
 }
 
+/*
 inline void construct_core_types_P1_mahjong(simple_list<input_type_entry> &typelist)
 {
 	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, MAHJONG_A,           "P1 Mahjong A",           input_seq() )
@@ -149,6 +150,7 @@ inline void construct_core_types_slot(simple_list<input_type_entry> &typelist)
 	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, SLOT_STOP4,          "Stop Reel 4",            input_seq() )
 	INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, SLOT_STOP_ALL,       "Stop All Reels",         input_seq() )
 }
+*/
 
 inline void construct_core_types_P2(simple_list<input_type_entry> &typelist)
 {
@@ -156,34 +158,35 @@ inline void construct_core_types_P2(simple_list<input_type_entry> &typelist)
 	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, JOYSTICK_DOWN,       "P2 Down",                input_seq(KEYCODE_DOWN, input_seq::or_code, JOYCODE_Y_DOWN_SWITCH_INDEXED(1)) )
 	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, JOYSTICK_LEFT,       "P2 Left",                input_seq(KEYCODE_LEFT, input_seq::or_code, JOYCODE_X_LEFT_SWITCH_INDEXED(1)) )
 	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, JOYSTICK_RIGHT,      "P2 Right",               input_seq(KEYCODE_RIGHT, input_seq::or_code, JOYCODE_X_RIGHT_SWITCH_INDEXED(1)) )
-	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, JOYSTICKRIGHT_UP,    "P2 Right Stick/Up",      input_seq() )
-	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, JOYSTICKRIGHT_DOWN,  "P2 Right Stick/Down",    input_seq() )
-	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, JOYSTICKRIGHT_LEFT,  "P2 Right Stick/Left",    input_seq() )
-	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, JOYSTICKRIGHT_RIGHT, "P2 Right Stick/Right",   input_seq() )
-	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, JOYSTICKLEFT_UP,     "P2 Left Stick/Up",       input_seq() )
-	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, JOYSTICKLEFT_DOWN,   "P2 Left Stick/Down",     input_seq() )
-	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, JOYSTICKLEFT_LEFT,   "P2 Left Stick/Left",     input_seq() )
-	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, JOYSTICKLEFT_RIGHT,  "P2 Left Stick/Right",    input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, JOYSTICKRIGHT_UP,    "P2 Right Stick/Up",      input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, JOYSTICKRIGHT_DOWN,  "P2 Right Stick/Down",    input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, JOYSTICKRIGHT_LEFT,  "P2 Right Stick/Left",    input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, JOYSTICKRIGHT_RIGHT, "P2 Right Stick/Right",   input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, JOYSTICKLEFT_UP,     "P2 Left Stick/Up",       input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, JOYSTICKLEFT_DOWN,   "P2 Left Stick/Down",     input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, JOYSTICKLEFT_LEFT,   "P2 Left Stick/Left",     input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, JOYSTICKLEFT_RIGHT,  "P2 Left Stick/Right",    input_seq() )
 	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON1,             "P2 Button 1",            input_seq(KEYCODE_A, input_seq::or_code, JOYCODE_BUTTON1_INDEXED(1)) )
 	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON2,             "P2 Button 2",            input_seq(KEYCODE_S, input_seq::or_code, JOYCODE_BUTTON2_INDEXED(1)) )
 	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON3,             "P2 Button 3",            input_seq(KEYCODE_D, input_seq::or_code, JOYCODE_BUTTON3_INDEXED(1)) )
 	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON4,             "P2 Button 4",            input_seq(KEYCODE_Z, input_seq::or_code, JOYCODE_BUTTON4_INDEXED(1)) )
-	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON5,             "P2 Button 5",            input_seq(KEYCODE_C, input_seq::or_code, JOYCODE_BUTTON5_INDEXED(1)) )
-	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON6,             "P2 Button 6",            input_seq(JOYCODE_BUTTON6_INDEXED(1)) )
-	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON7,             "P2 Button 7",            input_seq(JOYCODE_BUTTON7_INDEXED(1)) )
-	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON8,             "P2 Button 8",            input_seq(JOYCODE_BUTTON8_INDEXED(1)) )
-	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON9,             "P2 Button 9",            input_seq(JOYCODE_BUTTON9_INDEXED(1)) )
-	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON10,            "P2 Button 10",           input_seq(JOYCODE_BUTTON10_INDEXED(1)) )
-	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON11,            "P2 Button 11",           input_seq(JOYCODE_BUTTON11_INDEXED(1)) )
-	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON12,            "P2 Button 12",           input_seq(JOYCODE_BUTTON12_INDEXED(1)) )
-	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON13,            "P2 Button 13",           input_seq(JOYCODE_BUTTON13_INDEXED(1)) )
-	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON14,            "P2 Button 14",           input_seq(JOYCODE_BUTTON14_INDEXED(1)) )
-	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON15,            "P2 Button 15",           input_seq(JOYCODE_BUTTON15_INDEXED(1)) )
-	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON16,            "P2 Button 16",           input_seq(JOYCODE_BUTTON16_INDEXED(1)) )
+//	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON5,             "P2 Button 5",            input_seq(JOYCODE_BUTTON5_INDEXED(1)) )
+//	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON6,             "P2 Button 6",            input_seq(JOYCODE_BUTTON6_INDEXED(1)) )
+//	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON7,             "P2 Button 7",            input_seq(JOYCODE_BUTTON7_INDEXED(1)) )
+//	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON8,             "P2 Button 8",            input_seq(JOYCODE_BUTTON8_INDEXED(1)) )
+//	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON9,             "P2 Button 9",            input_seq(JOYCODE_BUTTON9_INDEXED(1)) )
+//	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON10,            "P2 Button 10",           input_seq(JOYCODE_BUTTON10_INDEXED(1)) )
+//	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON11,            "P2 Button 11",           input_seq(JOYCODE_BUTTON11_INDEXED(1)) )
+//	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON12,            "P2 Button 12",           input_seq(JOYCODE_BUTTON12_INDEXED(1)) )
+//	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON13,            "P2 Button 13",           input_seq(JOYCODE_BUTTON13_INDEXED(1)) )
+//	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON14,            "P2 Button 14",           input_seq(JOYCODE_BUTTON14_INDEXED(1)) )
+//	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON15,            "P2 Button 15",           input_seq(JOYCODE_BUTTON15_INDEXED(1)) )
+//	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON16,            "P2 Button 16",           input_seq(JOYCODE_BUTTON16_INDEXED(1)) )
 	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, START,               "P2 Start",               input_seq(KEYCODE_2, input_seq::or_code, JOYCODE_START_INDEXED(1)) )
 	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, SELECT,              "P2 Select",              input_seq(KEYCODE_6, input_seq::or_code, JOYCODE_SELECT_INDEXED(1)) )
 }
 
+/*
 inline void construct_core_types_P2_mahjong(simple_list<input_type_entry> &typelist)
 {
 	INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, MAHJONG_A,           "P2 Mahjong A",           input_seq() )
@@ -502,44 +505,46 @@ inline void construct_core_types_P10(simple_list<input_type_entry> &typelist)
 	INPUT_PORT_DIGITAL_TYPE( 10, PLAYER10, START,               "P10 Start",               input_seq() )
 	INPUT_PORT_DIGITAL_TYPE( 10, PLAYER10, SELECT,              "P10 Select",              input_seq() )
 }
+*/
 
 inline void construct_core_types_start(simple_list<input_type_entry> &typelist)
 {
 	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   START1,              "1 Player Start",         input_seq(KEYCODE_1, input_seq::or_code, JOYCODE_START_INDEXED(0)) )
 	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   START2,              "2 Players Start",        input_seq(KEYCODE_2, input_seq::or_code, JOYCODE_START_INDEXED(1)) )
-	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   START3,              "3 Players Start",        input_seq(JOYCODE_START_INDEXED(2)) )
-	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   START4,              "4 Players Start",        input_seq(JOYCODE_START_INDEXED(3)) )
-	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   START5,              "5 Players Start",        input_seq() )
-	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   START6,              "6 Players Start",        input_seq() )
-	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   START7,              "7 Players Start",        input_seq() )
-	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   START8,              "8 Players Start",        input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   START3,              "3 Players Start",        input_seq(JOYCODE_START_INDEXED(2)) )
+//	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   START4,              "4 Players Start",        input_seq(JOYCODE_START_INDEXED(3)) )
+//	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   START5,              "5 Players Start",        input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   START6,              "6 Players Start",        input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   START7,              "7 Players Start",        input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   START8,              "8 Players Start",        input_seq() )
 }
 
 inline void construct_core_types_coin(simple_list<input_type_entry> &typelist)
 {
 	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN1,               "Coin 1",                 input_seq(KEYCODE_5, input_seq::or_code, JOYCODE_SELECT_INDEXED(0)) )
 	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN2,               "Coin 2",                 input_seq(KEYCODE_6, input_seq::or_code, JOYCODE_SELECT_INDEXED(1)) )
-	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN3,               "Coin 3",                 input_seq(JOYCODE_SELECT_INDEXED(2)) )
-	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN4,               "Coin 4",                 input_seq(JOYCODE_SELECT_INDEXED(3)) )
-	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN5,               "Coin 5",                 input_seq() )
-	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN6,               "Coin 6",                 input_seq() )
-	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN7,               "Coin 7",                 input_seq() )
-	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN8,               "Coin 8",                 input_seq() )
-	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN9,               "Coin 9",                 input_seq() )
-	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN10,              "Coin 10",                input_seq() )
-	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN11,              "Coin 11",                input_seq() )
-	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN12,              "Coin 12",                input_seq() )
-	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   BILL1,               "Bill 1",                 input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN3,               "Coin 3",                 input_seq(JOYCODE_SELECT_INDEXED(2)) )
+//	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN4,               "Coin 4",                 input_seq(JOYCODE_SELECT_INDEXED(3)) )
+//	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN5,               "Coin 5",                 input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN6,               "Coin 6",                 input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN7,               "Coin 7",                 input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN8,               "Coin 8",                 input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN9,               "Coin 9",                 input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN10,              "Coin 10",                input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN11,              "Coin 11",                input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN12,              "Coin 12",                input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   BILL1,               "Bill 1",                 input_seq() )
 }
 
 inline void construct_core_types_service(simple_list<input_type_entry> &typelist)
 {
 	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   SERVICE1,            "Service 1",              input_seq() )
-	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   SERVICE2,            "Service 2",              input_seq() )
-	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   SERVICE3,            "Service 3",              input_seq() )
-	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   SERVICE4,            "Service 4",              input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   SERVICE2,            "Service 2",              input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   SERVICE3,            "Service 3",              input_seq() )
+//	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   SERVICE4,            "Service 4",              input_seq() )
 }
 
+/*
 inline void construct_core_types_tilt(simple_list<input_type_entry> &typelist)
 {
 	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   TILT1,               "Tilt 1",                 input_seq() )
@@ -547,6 +552,7 @@ inline void construct_core_types_tilt(simple_list<input_type_entry> &typelist)
 	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   TILT3,               "Tilt 3",                 input_seq() )
 	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   TILT4,               "Tilt 4",                 input_seq() )
 }
+*/
 
 inline void construct_core_types_other(simple_list<input_type_entry> &typelist)
 {
@@ -560,6 +566,7 @@ inline void construct_core_types_other(simple_list<input_type_entry> &typelist)
 	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   VOLUME_UP,           "Volume Up",              input_seq(KEYCODE_EQUALS) )
 }
 
+/*
 inline void construct_core_types_pedal(simple_list<input_type_entry> &typelist)
 {
 	INPUT_PORT_ANALOG_TYPE(  1, PLAYER1, PEDAL,               "P1 Pedal 1",             input_seq(JOYCODE_Z_NEG_ABSOLUTE_INDEXED(0)), input_seq(), input_seq(JOYCODE_BUTTON1_INDEXED(0)) )
@@ -817,6 +824,7 @@ inline void construct_core_types_keypad(simple_list<input_type_entry> &typelist)
 	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   KEYPAD,              "Keypad",                 input_seq() )
 	INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   KEYBOARD,            "Keyboard",               input_seq() )
 }
+*/
 
 inline void construct_core_types_UI(simple_list<input_type_entry> &typelist)
 {
@@ -909,46 +917,46 @@ inline void construct_core_types_invalid(simple_list<input_type_entry> &typelist
 inline void construct_core_types(simple_list<input_type_entry> &typelist)
 {
 	construct_core_types_P1(typelist);
-	construct_core_types_P1_mahjong(typelist);
-	construct_core_types_P1_hanafuda(typelist);
-	construct_core_types_gamble(typelist);
-	construct_core_types_poker(typelist);
-	construct_core_types_slot(typelist);
+//	construct_core_types_P1_mahjong(typelist);
+//	construct_core_types_P1_hanafuda(typelist);
+//	construct_core_types_gamble(typelist);
+//	construct_core_types_poker(typelist);
+//	construct_core_types_slot(typelist);
 	construct_core_types_P2(typelist);
-	construct_core_types_P2_mahjong(typelist);
-	construct_core_types_P2_hanafuda(typelist);
-	construct_core_types_P3(typelist);
-	construct_core_types_P4(typelist);
-	construct_core_types_P5(typelist);
-	construct_core_types_P6(typelist);
-	construct_core_types_P7(typelist);
-	construct_core_types_P8(typelist);
-	construct_core_types_P9(typelist);
-	construct_core_types_P10(typelist);
+//	construct_core_types_P2_mahjong(typelist);
+//	construct_core_types_P2_hanafuda(typelist);
+//	construct_core_types_P3(typelist);
+//	construct_core_types_P4(typelist);
+//	construct_core_types_P5(typelist);
+//	construct_core_types_P6(typelist);
+//	construct_core_types_P7(typelist);
+//	construct_core_types_P8(typelist);
+//	construct_core_types_P9(typelist);
+//	construct_core_types_P10(typelist);
 	construct_core_types_start(typelist);
 	construct_core_types_coin(typelist);
 	construct_core_types_service(typelist);
-	construct_core_types_tilt(typelist);
+//	construct_core_types_tilt(typelist);
 	construct_core_types_other(typelist);
-	construct_core_types_pedal(typelist);
-	construct_core_types_pedal2(typelist);
-	construct_core_types_pedal3(typelist);
-	construct_core_types_paddle(typelist);
-	construct_core_types_paddle_v(typelist);
-	construct_core_types_positional(typelist);
-	construct_core_types_positional_v(typelist);
-	construct_core_types_dial(typelist);
-	construct_core_types_dial_v(typelist);
-	construct_core_types_trackball_X(typelist);
-	construct_core_types_trackball_Y(typelist);
-	construct_core_types_AD_stick_X(typelist);
-	construct_core_types_AD_stick_Y(typelist);
-	construct_core_types_AD_stick_Z(typelist);
-	construct_core_types_lightgun_X(typelist);
-	construct_core_types_lightgun_Y(typelist);
-	construct_core_types_mouse_X(typelist);
-	construct_core_types_mouse_Y(typelist);
-	construct_core_types_keypad(typelist);
+//	construct_core_types_pedal(typelist);
+//	construct_core_types_pedal2(typelist);
+//	construct_core_types_pedal3(typelist);
+//	construct_core_types_paddle(typelist);
+//	construct_core_types_paddle_v(typelist);
+//	construct_core_types_positional(typelist);
+//	construct_core_types_positional_v(typelist);
+//	construct_core_types_dial(typelist);
+//	construct_core_types_dial_v(typelist);
+//	construct_core_types_trackball_X(typelist);
+//	construct_core_types_trackball_Y(typelist);
+//	construct_core_types_AD_stick_X(typelist);
+//	construct_core_types_AD_stick_Y(typelist);
+//	construct_core_types_AD_stick_Z(typelist);
+//	construct_core_types_lightgun_X(typelist);
+//	construct_core_types_lightgun_Y(typelist);
+//	construct_core_types_mouse_X(typelist);
+//	construct_core_types_mouse_Y(typelist);
+//	construct_core_types_keypad(typelist);
 	construct_core_types_UI(typelist);
 	construct_core_types_OSD(typelist);
 	construct_core_types_invalid(typelist);
