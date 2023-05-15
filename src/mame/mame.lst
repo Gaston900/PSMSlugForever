@@ -1,10 +1,8 @@
 // Proyecto Shadows Metal Slug Forever
 // copyright-holders:Gaston90
-/******************************************************************************
-
+/***********************************************
     List of all enabled drivers in the system.
-
-******************************************************************************/
+**************************************************/
 
 @source:neogeo.cpp
 neogeo            // MVS
@@ -73,6 +71,10 @@ mslug5hdd         // SNK Playmore (Decrypter / Darksoft)
 mslugxdd          // SNK (Decrypter / Darksoft)
 
 @source:neogeo.cpp
+mslughb           //HomeBrew 
+neopang           //HomeBrew
+
+@source:neogeo.cpp
 mslughc01         // Hack
 mslughc02         // Hack
 mslughc03         // Hack
@@ -87,11 +89,6 @@ mslughc11         // Hack
 mslughc12         // Hack
 mslughc13         // Hack
 mslughc14         // Hack
-msluger01         // Hack
-mslugla01         // Hack
-mslugrma01        // Hack
-
-@source:neogeo.cpp
 mslug2hc01        // Hack
 mslug2hc02        // Hack
 mslug2hc03        // Hack
@@ -111,32 +108,6 @@ mslug2hc16        // Hack
 mslug2hc17        // Hack
 mslug2hc18        // Hack
 mslug2hc19        // Hack
-mslug2er01        // Hack
-mslug2er02        // Hack
-mslug2er03        // Hack
-mslug2at01        // Hack
-mslug2la01        // Hack
-mslug2la02        // Hack
-mslug2la03        // Hack
-mslug2la04        // Hack
-mslug2la05        // Hack
-mslug2lb01        // Hack
-mslug2lb02        // Hack
-mslug2lb03        // Hack
-mslug2lb04        // Hack
-mslug2lb05        // Hack
-mslug2rma01       // Hack
-mslug2rma02       // Hack
-mslug2rma03       // Hack
-mslug2rma04       // Hack
-mslug2rma05       // Hack
-mslug2rmb01       // Hack
-mslug2rmb02       // Hack
-mslug2rmb03       // Hack
-mslug2rmb04       // Hack
-mslug2rmb05       // Hack
-
-@source:neogeo.cpp
 mslug3hc01        // Hack
 mslug3hc02        // Hack
 mslug3hc03        // Hack
@@ -181,6 +152,104 @@ mslug3b6hc04      // Hack
 mslug3b6hc05      // Hack
 mslug3b6hc06      // Hack
 mslug3b6hc07      // Hack
+mslug4hc01        // Hack
+mslug4hc02        // Hack
+mslug4hc03        // Hack
+mslug4hc04        // Hack
+mslug4hc05        // Hack
+mslug4hc06        // Hack
+mslug4hc07        // Hack
+mslug4hc08        // Hack
+mslug4hc09        // Hack
+mslug4hc10        // Hack
+mslug4hc11        // Hack
+mslug4hc12        // Hack
+mslug4hc13        // Hack
+mslug4hc14        // Hack
+mslug4hc15        // Hack
+mslug4hc16        // Hack
+mslug4hc17        // Hack
+mslug4hc18        // Hack
+mslug4hc19        // Hack
+mslug4hc20        // Hack
+mslug4hc21        // Hack
+mslug4hc22        // Hack
+mslug4hc23        // Hack
+mslug5hc01        // Hack
+mslug5hc02        // Hack
+mslug5hc03        // Hack
+mslug5hc04        // Hack
+mslug5hc05        // Hack
+mslug5hc06        // Hack
+mslug5hc07        // Hack
+mslug5hc08        // Hack
+mslug5hc09        // Hack
+mslug5hc10        // Hack
+mslug5hc11        // Hack
+mslug5hc12        // Hack
+mslug5hc13        // Hack
+mslug5hc14        // Hack
+mslug5hc15        // Hack
+mslug5hc16        // Hack
+mslug5hc17        // Hack
+mslug5hc18        // Hack
+mslug5hc19        // Hack
+mslug5hc20        // Hack
+mslug5hc21        // Hack
+mslug5hc22        // Hack
+mslug5hc23        // Hack
+mslug5hc24        // Hack
+mslug5hc25        // Hack
+mslug5hc26        // Hack
+mslug5hc27        // Hack
+mslugxhc01        // Hack
+mslugxhc02        // Hack
+mslugxhc03        // Hack
+mslugxhc04        // Hack
+mslugxhc05        // Hack
+mslugxhc06        // Hack
+mslugxhc07        // Hack
+mslugxhc08        // Hack
+mslugxhc09        // Hack
+mslugxhc10        // Hack
+mslugxhc11        // Hack
+mslugxhc12        // Hack
+mslugxhc13        // Hack
+mslugxhc14        // Hack
+mslugxhc15        // Hack
+mslugxhc16        // Hack
+mslugxhc17        // Hack
+mslugxhc18        // Hack
+mslugxhc19        // Hack
+mslugxhc20        // Hack
+mslugxhc21        // Hack
+mslugxhc22        // Hack
+mslugxhc23        // Hack
+mslugxhc24        // Hack
+mslugxhc25        // Hack
+mslugxhc26        // Hack
+mslugxhc27        // Hack
+mslugxhc28        // Hack
+mslugxhc29        // Hack
+mslugxhc30        // Hack
+mslugxhc31        // Hack
+mslugxhc32        // Hack
+mslugxhc33        // Hack
+mslugxhc34        // Hack
+mslugxhc35        // Hack
+mslugxhc36        // Hack
+mslugxhc37        // Hack
+mslugxhc38        // Hack
+
+/*****************
+  Only exclusive
+********************/
+
+@source:neogeo.cpp
+msluger01         // Hack
+mslug2er01        // Hack
+mslug2er02        // Hack
+mslug2er03        // Hack
 mslug3er01        // Hack
 mslug3er02        // Hack
 mslug3er03        // Hack
@@ -188,13 +257,57 @@ mslug3er04        // Hack
 mslug3er05        // Hack
 mslug3er06        // Hack
 mslug3er07        // Hack
-mslug3ly01        // Hack [It is in testing, because it will crash if you do not apply the Invincibility cheat]
-mslug3ly02        // Hack [It is in testing, because it will crash if you do not apply the Invincibility cheat]
-mslug3ly03        // Hack [It is in testing, because it will crash if you do not apply the Invincibility cheat]
-mslug3ly04        // Hack [It is in testing, because it will crash if you do not apply the Invincibility cheat]
-mslug3ly05        // Hack [It is in testing, because it will crash if you do not apply the Invincibility cheat]
-mslug3ly06        // Hack [It is in testing, because it will crash if you do not apply the Invincibility cheat]
-mslug3ly07        // Hack [It is in testing, because it will crash if you do not apply the Invincibility cheat]
+mslug3ly01        // Hack [It is in testing, because it will crash if you don't apply the infinite life cheat to it.]
+mslug3ly02        // Hack [It is in testing, because it will crash if you don't apply the infinite life cheat to it.]
+mslug3ly03        // Hack [It is in testing, because it will crash if you don't apply the infinite life cheat to it.]
+mslug3ly04        // Hack [It is in testing, because it will crash if you don't apply the infinite life cheat to it.]
+mslug3ly05        // Hack [It is in testing, because it will crash if you don't apply the infinite life cheat to it.]
+mslug3ly06        // Hack [It is in testing, because it will crash if you don't apply the infinite life cheat to it.]
+mslug3ly07        // Hack [It is in testing, because it will crash if you don't apply the infinite life cheat to it.]
+mslug4er01        // Hack
+mslug4er02        // Hack
+mslugxer01        // Hack
+mslugxer02        // Hack
+mslugxer03        // Hack
+mslugxer04        // Hack
+mslugxer05        // Hack
+mslugxer06        // Hack
+mslugxer07        // Hack
+mslugxesp01       // Hack
+mslugxesp02       // Hack
+mslugxesp03       // Hack
+mslugxesp04       // Hack
+mslugxesp05       // Hack
+mslugxesp06       // Hack
+mslugxesp07       // Hack
+
+@source:neogeo.cpp
+mslug2at01        // Hack
+mslugxtst01       // Hack
+mslugxtao01       // Hack
+mslugxat01        // Hack
+mslugxat02        // Hack
+mslugxat03        // Hack
+mslugxat04        // Hack
+mslugxat05        // Hack
+mslugxat06        // Hack
+mslugxat07        // Hack
+mslugxat08        // Hack
+mslugxat09        // Hack
+mslugxat10        // Hack
+
+@source:neogeo.cpp
+mslugla01         // Hack
+mslug2la01        // Hack
+mslug2la02        // Hack
+mslug2la03        // Hack
+mslug2la04        // Hack
+mslug2la05        // Hack
+mslug2lb01        // Hack
+mslug2lb02        // Hack
+mslug2lb03        // Hack
+mslug2lb04        // Hack
+mslug2lb05        // Hack
 mslug3la01        // Hack
 mslug3la02        // Hack
 mslug3la03        // Hack
@@ -236,6 +349,62 @@ mslug3lh03        // Hack
 mslug3lh04        // Hack
 mslug3lh05        // Hack
 mslug3li01        // Hack
+mslug4la01        // Hack
+mslug4la02        // Hack
+mslug4la03        // Hack
+mslug4la04        // Hack
+mslug4lb01        // Hack
+mslug4lb02        // Hack
+mslug4lb03        // Hack
+mslug4lb04        // Hack
+mslug4lc01        // Hack
+mslug4lc02        // Hack
+mslug4lc03        // Hack
+mslug4lc04        // Hack
+mslug4ld01        // Hack
+mslug4ld02        // Hack
+mslug4ld03        // Hack
+mslug4ld04        // Hack
+mslug5la01        // Hack
+mslug5lb01        // Hack
+mslug5lc01        // Hack
+mslugxla01        // Hack
+mslugxla02        // Hack
+mslugxla03        // Hack
+mslugxlb01        // Hack
+mslugxlb02        // Hack
+mslugxlb03        // Hack
+mslugxlc01        // Hack
+mslugxlc02        // Hack
+mslugxlc03        // Hack
+mslugxld01        // Hack
+mslugxld02        // Hack
+mslugxld03        // Hack
+mslugxle01        // Hack
+mslugxle02        // Hack
+mslugxle03        // Hack
+mslugxlf01        // Hack
+mslugxlf02        // Hack
+mslugxlf03        // Hack
+mslugxlg01        // Hack
+mslugxlg02        // Hack
+mslugxlg03        // Hack
+mslugxlh01        // Hack
+mslugxlh02        // Hack
+mslugxlh03        // Hack
+
+@source:neogeo.cpp
+mslugrma01        // Hack
+mslug2rma01       // Hack
+mslug2rma02       // Hack
+mslug2rma03       // Hack
+mslug2rma04       // Hack
+mslug2rma05       // Hack
+mslug2rmb01       // Hack
+mslug2rmb02       // Hack
+mslug2rmb03       // Hack
+mslug2rmb04       // Hack
+mslug2rmb05       // Hack
 mslug3rma01       // Hack
 mslug3rma02       // Hack
 mslug3rma03       // Hack
@@ -269,182 +438,17 @@ mslug3rmh02       // Hack
 mslug3rmh03       // Hack
 mslug3rmh04       // Hack
 mslug3rmi01       // Hack
-
-@source:neogeo.cpp
-mslug4hc01        // Hack
-mslug4hc02        // Hack
-mslug4hc03        // Hack
-mslug4hc04        // Hack
-mslug4hc05        // Hack
-mslug4hc06        // Hack
-mslug4hc07        // Hack
-mslug4hc08        // Hack
-mslug4hc09        // Hack
-mslug4hc10        // Hack
-mslug4hc11        // Hack
-mslug4hc12        // Hack
-mslug4hc13        // Hack
-mslug4hc14        // Hack
-mslug4hc15        // Hack
-mslug4hc16        // Hack
-mslug4hc17        // Hack
-mslug4hc18        // Hack
-mslug4hc19        // Hack
-mslug4hc20        // Hack
-mslug4hc21        // Hack
-mslug4hc22        // Hack
-mslug4hc23        // Hack
-mslug4er01        // Hack
-mslug4er02        // Hack
-mslug4la01        // Hack
-mslug4la02        // Hack
-mslug4la03        // Hack
-mslug4la04        // Hack
-mslug4lb01        // Hack
-mslug4lb02        // Hack
-mslug4lb03        // Hack
-mslug4lb04        // Hack
-mslug4lc01        // Hack
-mslug4lc02        // Hack
-mslug4lc03        // Hack
-mslug4lc04        // Hack
-mslug4ld01        // Hack
-mslug4ld02        // Hack
-mslug4ld03        // Hack
-mslug4ld04        // Hack
 mslug4rma01       // Hack
 mslug4rmb01       // Hack
 mslug4rmc01       // Hack
 mslug4rmd01       // Hack
 mslug4rme01       // Hack
-
-@source:neogeo.cpp
-mslug5hc01        // Hack
-mslug5hc02        // Hack
-mslug5hc03        // Hack
-mslug5hc04        // Hack
-mslug5hc05        // Hack
-mslug5hc06        // Hack
-mslug5hc07        // Hack
-mslug5hc08        // Hack
-mslug5hc09        // Hack
-mslug5hc10        // Hack
-mslug5hc11        // Hack
-mslug5hc12        // Hack
-mslug5hc13        // Hack
-mslug5hc14        // Hack
-mslug5hc15        // Hack
-mslug5hc16        // Hack
-mslug5hc17        // Hack
-mslug5hc18        // Hack
-mslug5hc19        // Hack
-mslug5hc20        // Hack
-mslug5hc21        // Hack
-mslug5hc22        // Hack
-mslug5hc23        // Hack
-mslug5hc24        // Hack
-mslug5hc25        // Hack
-mslug5hc26        // Hack
-mslug5hc27        // Hack
-mslug5la01        // Hack
-mslug5lb01        // Hack
-mslug5lc01        // Hack
 mslug5rma01       // Hack
 mslug5rmb01       // Hack
 mslug5rmc01       // Hack
 mslug5rmd01       // Hack
 mslug5rme01       // Hack
 mslug5rmf01       // Hack
-
-@source:neogeo.cpp
-mslugxhc01        // Hack
-mslugxhc02        // Hack
-mslugxhc03        // Hack
-mslugxhc04        // Hack
-mslugxhc05        // Hack
-mslugxhc06        // Hack
-mslugxhc07        // Hack
-mslugxhc08        // Hack
-mslugxhc09        // Hack
-mslugxhc10        // Hack
-mslugxhc11        // Hack
-mslugxhc12        // Hack
-mslugxhc13        // Hack
-mslugxhc14        // Hack
-mslugxhc15        // Hack
-mslugxhc16        // Hack
-mslugxhc17        // Hack
-mslugxhc18        // Hack
-mslugxhc19        // Hack
-mslugxhc20        // Hack
-mslugxhc21        // Hack
-mslugxhc22        // Hack
-mslugxhc23        // Hack
-mslugxhc24        // Hack
-mslugxhc25        // Hack
-mslugxhc26        // Hack
-mslugxhc27        // Hack
-mslugxhc28        // Hack
-mslugxhc29        // Hack
-mslugxhc30        // Hack
-mslugxhc31        // Hack
-mslugxhc32        // Hack
-mslugxhc33        // Hack
-mslugxhc34        // Hack
-mslugxhc35        // Hack
-mslugxhc36        // Hack
-mslugxhc37        // Hack
-mslugxhc38        // Hack
-mslugxer01        // Hack
-mslugxer02        // Hack
-mslugxer03        // Hack
-mslugxer04        // Hack
-mslugxer05        // Hack
-mslugxer06        // Hack
-mslugxer07        // Hack
-mslugxesp01       // Hack
-mslugxesp02       // Hack
-mslugxesp03       // Hack
-mslugxesp04       // Hack
-mslugxesp05       // Hack
-mslugxesp06       // Hack
-mslugxesp07       // Hack
-mslugxtst01       // Hack
-mslugxtao01       // Hack
-mslugxat01        // Hack
-mslugxat02        // Hack
-mslugxat03        // Hack
-mslugxat04        // Hack
-mslugxat05        // Hack
-mslugxat06        // Hack
-mslugxat07        // Hack
-mslugxat08        // Hack
-mslugxat09        // Hack
-mslugxat10        // Hack
-mslugxla01        // Hack
-mslugxla02        // Hack
-mslugxla03        // Hack
-mslugxlb01        // Hack
-mslugxlb02        // Hack
-mslugxlb03        // Hack
-mslugxlc01        // Hack
-mslugxlc02        // Hack
-mslugxlc03        // Hack
-mslugxld01        // Hack
-mslugxld02        // Hack
-mslugxld03        // Hack
-mslugxle01        // Hack
-mslugxle02        // Hack
-mslugxle03        // Hack
-mslugxlf01        // Hack
-mslugxlf02        // Hack
-mslugxlf03        // Hack
-mslugxlg01        // Hack
-mslugxlg02        // Hack
-mslugxlg03        // Hack
-mslugxlh01        // Hack
-mslugxlh02        // Hack
-mslugxlh03        // Hack
 mslugxrma01       // Hack
 mslugxrma02       // Hack
 mslugxrma03       // Hack
@@ -469,7 +473,3 @@ mslugxrmg03       // Hack
 mslugxrmh01       // Hack
 mslugxrmh02       // Hack
 mslugxrmh03       // Hack
-
-@source:neogeo.cpp
-mslughb           //HomeBrew 
-neopang           //HomeBrew
