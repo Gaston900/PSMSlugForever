@@ -99,6 +99,7 @@ public:
 	void init_ms5plushb();
 	void init_mslug3a();
 	void init_mslug3hb();
+	void init_mslug3dd();
     void init_mslug3b6();
 	void init_mslug3b6d();
 	void init_mslug4e();
