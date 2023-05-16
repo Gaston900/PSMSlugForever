@@ -1571,12 +1571,6 @@ void neogeo_state::neogeo_noslot(machine_config &config)
  *
  *************************************/
 
-void neogeo_state::init_ms4plushb()
-{
-	init_mslug4hb();
-    m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size,0);
-}
-
 void neogeo_state::init_ms5plushb()
 {
 	init_neogeo();
@@ -1620,19 +1614,56 @@ void neogeo_state::init_ms5plushb()
 	}
 }
 
-void neogeo_state::init_ms5pcb()
+void neogeo_state::init_ms5pcbhb()
 {
 	init_neogeo();
-	m_pvc_prot->mslug5_decrypt_68k(cpuregion, cpuregion_size);
-	m_sma_prot->svcpcb_gfx_decrypt(spr_region, spr_region_size);
-	m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region,audio_region_size);
-	m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG5_GFX_KEY);
-	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
-	m_sprgen->m_fixed_layer_bank_type = 2;
-	m_sma_prot->svcpcb_s1data_decrypt(fix_region, fix_region_size);
-	m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 2);
-	m_pvc_prot->install_pvc_protection(m_maincpu,m_banked_cart);
-	install_banked_bios();
+	m_sprgen->m_fixed_layer_bank_type = 2; // for those sets with 512k of s1
+
+	// decrypt p roms if needed
+	u8 *ram = memregion("maincpu")->base();
+	if (ram[0x100] != 0x45)
+	{
+		//printf("Maincpu=%X\n",ram[0x100]);fflush(stdout);
+		m_pvc_prot->mslug5_decrypt_68k(cpuregion, cpuregion_size);
+		m_pvc_prot->install_pvc_protection(m_maincpu, m_banked_cart);
+	}
+
+	// decrypt m1 if needed
+	if (memregion("audiocrypt"))
+		m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region, audio_region_size);
+
+	// decrypt v roms if needed
+	ram = memregion("ymsnd")->base();
+	if (ram[0x60] != 0x82)
+	{
+		//printf("ym=%X\n",ram[0x60]);
+		m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 2);
+	}
+
+	// decrypt c roms if needed
+	ram = memregion("sprites")->base();
+	if (ram[0] != 0)
+	{
+		//printf("Sprites=%X\n",ram[0]);
+        m_sma_prot->svcpcb_gfx_decrypt(spr_region, spr_region_size);
+		m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG5_GFX_KEY);
+	}
+
+	// if no s rom, copy info from end of c roms
+	ram = memregion("fixed")->base();
+	if (ram[0x100] == 0)
+	{
+		//printf("Fixed1=%X\n",ram[0x100]);
+		m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+	}
+
+	// decrypt s1 if needed
+	if (ram[0x100] != 0xBB)
+	{
+		//printf("Fixed2=%X\n",ram[0]);
+		m_sma_prot->svcpcb_s1data_decrypt(fix_region, fix_region_size);
+	    install_banked_bios();
+	}
 }
 
 void neogeo_state::init_mslug3a()
@@ -1728,18 +1759,6 @@ void neogeo_state::init_mslug4p()
 	m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG4_GFX_KEY);
 }
 
-void neogeo_state::init_mslug5a()
-{
-	init_neogeo();
-	m_pvc_prot->mslug5_decrypt_68k(cpuregion, cpuregion_size);
-	m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 2);
-	m_sprgen->m_fixed_layer_bank_type = 1;
-	m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region,audio_region_size);
-	m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG5_GFX_KEY);
-	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
-	m_pvc_prot->install_pvc_protection(m_maincpu,m_banked_cart);
-}
-
 void neogeo_state::init_mslug5b()
 {
 	init_neogeo();
@@ -1796,18 +1815,11 @@ void neogeo_state::init_mslug5hb()
 		m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
 	}
 
-	// decrypt s1 if needed
-	if (ram[0x100] != 0xBB)
-	{
-		//printf("Fixed2=%X\n",ram[0]);
-		m_sma_prot->svcpcb_s1data_decrypt(fix_region, fix_region_size);
-	    install_banked_bios();
-	}
 }
 
 void neogeo_state::init_mslug5rm()
 {
-	init_mslug5a();
+	init_neogeo();
 	m_sprgen->m_fixed_layer_bank_type = 1;
 	m_cmc_prot->cmc42_neogeo_gfx_decrypt(spr_region, spr_region_size, S1945P_GFX_KEY);
 	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
@@ -3313,8 +3325,8 @@ ROM_START( mslugx ) /* MVS AND AES VERSION */
 ROM_END
 
 /*    YEAR   NAME       PARENT       MACHINE        INPUT                     INIT        MONITOR COMPANY          FULLNAME FLAGS */
-GAME( 2003, ms5pcb,     mslug5,   neogeo_noslot,   ms5pcb,   neogeo_state, init_ms5pcb,   ROT0, "SNK Playmore",    "Metal Slug 5 (JAMMA PCB)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, ms4plus,    mslug4,   neogeo_noslot,   mslughb,  neogeo_state, init_ms4plushb,ROT0, "Bootleg",         "Metal Slug 4 Plus (Bootleg)",  MACHINE_SUPPORTS_SAVE )
+GAME( 2003, ms5pcb,     mslug5,   neogeo_noslot,   ms5pcb,   neogeo_state, init_ms5pcbhb, ROT0, "SNK Playmore",    "Metal Slug 5 (JAMMA PCB)", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, ms4plus,    mslug4,   neogeo_noslot,   mslughb,  neogeo_state, init_mslug4hb,ROT0, "Bootleg",         "Metal Slug 4 Plus (Bootleg)",  MACHINE_SUPPORTS_SAVE )
 GAME( 2003, ms5plus,    mslug5,   neogeo_noslot,   mslughb,  neogeo_state, init_ms5plushb,ROT0, "Bootleg",         "Metal Slug 5 Plus (Bootleg)", MACHINE_SUPPORTS_SAVE )
 GAME( 1996, mslug,      neogeo,   neogeo_noslot,   mslughb,  neogeo_state, init_neogeo,   ROT0, "Nazca",           "Metal Slug - Super Vehicle-001", MACHINE_SUPPORTS_SAVE )
 GAME( 1998, mslug2,     neogeo,   neogeo_noslot,   mslughb,  neogeo_state, init_neogeo,   ROT0, "SNK",             "Metal Slug 2 - Super Vehicle-001/II (NGM-2410)(NGH-2410)", MACHINE_SUPPORTS_SAVE )
@@ -8525,7 +8537,7 @@ ROM_END
 
 /*    YEAR       NAME        PARENT       MACHINE       INPUT                       INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Predecrypted)
-GAME( 2002, ms4plusdp,        mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_ms4plushb,  ROT0, "Bootleg",        "Metal Slug 4 Plus (Bootleg)(Predecrypted)", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, ms4plusdp,        mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,   ROT0, "Bootleg",        "Metal Slug 4 Plus (Bootleg)(Predecrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, ms5plusdp,        mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,     ROT0, "Bootleg",        "Metal Slug 5 Plus (Bootleg)(Predecrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2000, mslug3b6dp,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "Bootleg",        "Metal Slug 6 (Metal Slug 3 Bootleg)(Predecrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, mslug4p,          mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4p,    ROT0, "Mega / Playmore", "Metal Slug 4 (NGM-2630)(Predecrypted)", MACHINE_SUPPORTS_SAVE )
@@ -8542,8 +8554,8 @@ GAME( 1999, mslugxp,          mslugx,   neogeo_noslot, mslughb, neogeo_state,   
 GAME( 2005, msboot,           mslug,    neogeo_noslot, mslughb, neogeo_state,    init_neogeo,     ROT0, "Bootleg",        "Metal Slug (Bootleg)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, ms4boot,          mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,   ROT0, "Bootleg",        "Metal Slug 4 (Bootleg)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, ms5boot,          mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5b1,   ROT0, "Bootleg",        "Metal Slug 5 (Bootleg)(Earlier)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, ms5pcbd,          mslug5,   neogeo_noslot, ms5pcb,  neogeo_state,    init_mslug5hb,   ROT0, "SNK Playmore",   "Metal Slug 5 (JAMMA PCB, Decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, ms4plusd,         mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_ms4plushb,  ROT0, "Bootleg",        "Metal Slug 4 Plus (Bootleg)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, ms5pcbd,          mslug5,   neogeo_noslot, ms5pcb,  neogeo_state,    init_ms5pcbhb,   ROT0, "SNK Playmore",   "Metal Slug 5 (JAMMA PCB, Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, ms4plusd,         mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,  ROT0, "Bootleg",        "Metal Slug 4 Plus (Bootleg)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, ms5plusd,         mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,     ROT0, "Bootleg",        "Metal Slug 5 Plus (Bootleg)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, ms5plusc,         mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_ms5plushb,  ROT0, "Bootleg",        "Metal Slug 5 Plus (Bootleg, Chinese)", MACHINE_SUPPORTS_SAVE )
 GAME( 1996, msluge,           mslug,    neogeo_noslot, mslughb, neogeo_state,    init_neogeo,     ROT0, "Nazca",          "Metal Slug (Earlier)", MACHINE_SUPPORTS_SAVE )
@@ -8564,7 +8576,7 @@ GAME( 2003, mslug5b2,         mslug5,   neogeo_noslot, mslughb, neogeo_state,   
 
 /*    YEAR       NAME        PARENT       MACHINE       INPUT                       INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Decrypter / Darksoft)
-GAME( 2002, ms4plusdd,        mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_ms4plushb,  ROT0, "Bootleg",        "Metal Slug 4 Plus (Decrypter / Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, ms4plusdd,        mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,   ROT0, "Bootleg",        "Metal Slug 4 Plus (Decrypter / Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 1996, mslugdd,          mslug,    neogeo_noslot, mslughb, neogeo_state,    init_neogeo,     ROT0, "Nazca",          "Metal Slug (Decrypter / Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 1998, mslug2dd,         mslug2,   neogeo_noslot, mslughb, neogeo_state,    init_neogeo,     ROT0, "SNK",            "Metal Slug 2 (Decrypter / Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2000, mslug3dd,         mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3dd,   ROT0, "SNK",            "Metal Slug 3 (Decrypter / Darksoft)", MACHINE_SUPPORTS_SAVE )
@@ -8761,7 +8773,7 @@ GAME( 2023, mslugxhc38,       mslugx,   neogeo_noslot, mslughb, neogeo_state,   
 
 /*    YEAR   NAME             PARENT       MACHINE       INPUT                       INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // HomeBrew
-GAME( 2022, mslughb,          neogeo,   neogeo_noslot, neogeo,  neogeo_state,    init_mslug5a,    ROT0, "CB, Willnie",     "Metal Slug HomeBrew (Mothership Armageddon Easter Egg 2021-06-13)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslughb,          neogeo,   neogeo_noslot, neogeo,  neogeo_state,    init_mslug5hb,   ROT0, "CB, Willnie",     "Metal Slug HomeBrew (Mothership Armageddon Easter Egg 2021-06-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2010, neopang,          mslughb,  neogeo_noslot, mslughb, neogeo_state,    init_neogeo,     ROT0, "CeL",             "Metal Slug HomeBrew (Neo Pang)", MACHINE_SUPPORTS_SAVE )
 
 /***************

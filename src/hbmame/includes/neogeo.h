@@ -94,8 +94,7 @@ public:
 
 	// fixed software configurations
 	void init_neogeo();	
-	void init_ms5pcb();
-	void init_ms4plushb();
+	void init_ms5pcbhb();
 	void init_ms5plushb();
 	void init_mslug3a();
 	void init_mslug3hb();
@@ -103,7 +102,6 @@ public:
     void init_mslug3b6hb();
 	void init_mslug4hb();
 	void init_mslug4p();
-	void init_mslug5a();
 	void init_mslug5b();
 	void init_mslug5b1();
 	void init_mslug5hb();
