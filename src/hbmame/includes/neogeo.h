@@ -100,11 +100,10 @@ public:
 	void init_mslug3a();
 	void init_mslug3hb();
 	void init_mslug3dd();
-    void init_mslug3b6();
-	void init_mslug3b6d();
-	void init_mslug4e();
+    void init_mslug3b6hb();
 	void init_mslug4hb();
-	void init_mslug5ast();
+	void init_mslug4p();
+	void init_mslug5a();
 	void init_mslug5b();
 	void init_mslug5b1();
 	void init_mslug5hb();
@@ -211,7 +210,7 @@ private:
 
 	// color/palette related
 	std::vector<uint16_t> m_paletteram;
-	uint8_t        m_palette_lookup[32][4];
+	uint8_t      m_palette_lookup[32][4];
 	const pen_t *m_bg_pen;
 	int          m_screen_shadow;
 	int          m_palette_bank;
