@@ -1814,15 +1814,6 @@ void neogeo_state::init_mslug5hb()
 		//printf("Fixed1=%X\n",ram[0x100]);
 		m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
 	}
-
-}
-
-void neogeo_state::init_mslug5rm()
-{
-	init_neogeo();
-	m_sprgen->m_fixed_layer_bank_type = 1;
-	m_cmc_prot->cmc42_neogeo_gfx_decrypt(spr_region, spr_region_size, S1945P_GFX_KEY);
-	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
 }
 
 void neogeo_state::init_mslugx()
@@ -2857,7 +2848,7 @@ INPUT_PORTS_END
 	ROM_REGION( 0x1000000, "ymsnd", 0 ) \
 	ROM_LOAD( "268_rma01.v1", 0x000000, 0x400000, CRC(fcc8ba01) SHA1(c187c318c65f6aefae05e6cef9f17492edf2e4db) )\
 	ROM_LOAD( "268_rma01.v2", 0x400000, 0x400000, CRC(386f32bd) SHA1(d49fc812c442563b9e82da43bf5c6b9deea0f687) )\
-	ROM_LOAD( "268_hc06.v3",     0x800000, 0x400000, CRC(dc737e12) SHA1(f940ea767404f6a15dea526eda56ad66517ba79e) )\
+	ROM_LOAD( "268_la01.v3",  0x800000, 0x400000, CRC(aeff1982) SHA1(ac777a12639e21f0f227be84a59c7bb543c6ddd9) )\
 	ROM_LOAD( "268_rma01.v4", 0xc00000, 0x400000, CRC(2b310542) SHA1(5f0050d36cd1f722d78d9ae98db537eacc4d8548) )\
 	ROM_IGNORE(0x37510)
 
@@ -2977,28 +2968,6 @@ INPUT_PORTS_END
 	ROM_LOAD16_BYTE( "268_hc06.c6", 0x2000001, 0x800000, CRC(0db5ce14) SHA1(aa2c4bb143e3bba18523df645c5be249eb9fc147) )\
 	ROM_LOAD16_BYTE( "268_hc06.c7", 0x3000000, 0x800000, CRC(aa4f3214) SHA1(dc3a8fac2cc81e60abafc209eb4bcccdaafde380) )\
 	ROM_LOAD16_BYTE( "268_hc06.c8", 0x3000001, 0x800000, CRC(c86d0d81) SHA1(1a00aa65481410c0b64fe971e547638c05c5a0ce) )
-
-#define MSLUG5LA_SPRITES \
-	ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD16_BYTE( "268_la01.c1", 0x0000000, 0x800000, CRC(aad8ff17) SHA1(f8c5f7bd9aa4b930ceb38b25934650ac810563df) )\
-	ROM_LOAD16_BYTE( "268_la01.c2", 0x0000001, 0x800000, CRC(b0404dd4) SHA1(0ab1f81072dac777c3269811dfb69cb40bd7a245) )\
-	ROM_LOAD16_BYTE( "268_la01.c3", 0x1000000, 0x800000, CRC(95dda158) SHA1(7ec4625a17f815e8d7e690cb01f3c9dbce75e39b) )\
-	ROM_LOAD16_BYTE( "268_la01.c4", 0x1000001, 0x800000, CRC(c052cf1f) SHA1(198041e813914570b943fc1927e986e5553c6bd4) )\
-	ROM_LOAD16_BYTE( "268_la01.c5", 0x2000000, 0x800000, CRC(8b9f7e21) SHA1(0dcefc5efc67d520a880b3da6122c342ebdc5e2f) )\
-	ROM_LOAD16_BYTE( "268_la01.c6", 0x2000001, 0x800000, CRC(4a0693cf) SHA1(c4bdf72754f85250dfccdd4444941931a6596569) )\
-	ROM_LOAD16_BYTE( "268_la01.c7", 0x3000000, 0x800000, CRC(3ad5eaf4) SHA1(b4c4cf0425d42bd47bc85acfab93006c003af341) )\
-	ROM_LOAD16_BYTE( "268_la01.c8", 0x3000001, 0x800000, CRC(3e7c670d) SHA1(166eda40c01d01b1d8ec82f2482e8cb4e5ca0e79) )
-
-#define MSLUG5RMXE_SPRITES \
-	ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD16_BYTE( "268_rma01.c1", 0x0000000, 0x800000, CRC(5e2e9087) SHA1(2366df8b0ee03e8938dcae571dccf32cfcfd685b) )\
-	ROM_LOAD16_BYTE( "268_rma01.c2", 0x0000001, 0x800000, CRC(d15770e3) SHA1(162c166c3fdc2a29af88dfea8a10138284029e36) )\
-	ROM_LOAD16_BYTE( "268_rma01.c3", 0x1000000, 0x800000, CRC(3e104b8f) SHA1(ee8467e07f27fbcad35a239b45e1e7e5aed79a25) )\
-	ROM_LOAD16_BYTE( "268_rma01.c4", 0x1000001, 0x800000, CRC(03f32dda) SHA1(64bc08dce4a8188878d683a6290e370e4d3488a1) )\
-	ROM_LOAD16_BYTE( "268_rma01.c5", 0x2000000, 0x800000, CRC(fd3e0f24) SHA1(5143c521c79a011465c93717171bb24b550bdc1f) )\
-	ROM_LOAD16_BYTE( "268_rma01.c6", 0x2000001, 0x800000, CRC(3c873aba) SHA1(b1c882f7c228046929f82a24d9f635c1b6443a94) )\
-	ROM_LOAD16_BYTE( "268_rma01.c7", 0x3000000, 0x800000, CRC(0d070c3b) SHA1(2d785bd095726b4e48aa65578b9694372f4c46c3) )\
-	ROM_LOAD16_BYTE( "268_rma01.c8", 0x3000001, 0x800000, CRC(09751dd8) SHA1(5a1378faa3bd3ebb6573d7c171639df153b5202b) )
 
 #define MSLUGX_SFIX_128K \
 	NEO_SFIX_128K( "250.s1", CRC(fb6f441d) SHA1(2cc392ecde5d5afb28ddbaa1030552b48571dcfb) )
@@ -6724,7 +6693,6 @@ ROM_START( mslug4ld04 )
 	MSLUG4FR_SPRITES
 ROM_END
 
-
 ROM_START( mslug5la01 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_la01.p1", 0x000000, 0x200000, CRC(7ac06952) SHA1(9d826fc6285657ae9464d65dcacd36e9f606c043) )
@@ -6733,7 +6701,7 @@ ROM_START( mslug5la01 )
     MSLUG5D_SFIX_128K
     MSLUG5W_AUDIO_512K
 	MSLUG5LA_YMSND
-	MSLUG5LA_SPRITES
+	MSLUG5F_SPRITES
 ROM_END
 
 ROM_START( mslug5lb01 )
@@ -6744,7 +6712,7 @@ ROM_START( mslug5lb01 )
     MSLUG5D_SFIX_128K
     MSLUG5W_AUDIO_512K
 	MSLUG5LA_YMSND
-	MSLUG5LA_SPRITES
+	MSLUG5F_SPRITES
 ROM_END
 
 ROM_START( mslug5lc01 )
@@ -6755,9 +6723,8 @@ ROM_START( mslug5lc01 )
     MSLUG5D_SFIX_128K
     MSLUG5W_AUDIO_512K
 	MSLUG5LA_YMSND
-	MSLUG5LA_SPRITES
+	MSLUG5F_SPRITES
 ROM_END
-
 
 ROM_START( mslugxla01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
@@ -7622,7 +7589,7 @@ ROM_START( mslug5rma01 )
     MSLUG5D_SFIX_128K
     MSLUG5W_AUDIO_512K
 	MSLUG5RMXE_YMSND
-	MSLUG5RMXE_SPRITES
+	MSLUG5W_SPRITES
 ROM_END
 
 ROM_START( mslug5rmb01 )
@@ -7633,7 +7600,7 @@ ROM_START( mslug5rmb01 )
     MSLUG5D_SFIX_128K
     MSLUG5W_AUDIO_512K
 	MSLUG5RMXE_YMSND
-	MSLUG5RMXE_SPRITES
+	MSLUG5W_SPRITES
 ROM_END
 
 ROM_START( mslug5rmc01 )
@@ -7644,7 +7611,7 @@ ROM_START( mslug5rmc01 )
     MSLUG5D_SFIX_128K
     MSLUG5W_AUDIO_512K
 	MSLUG5RMXE_YMSND
-	MSLUG5RMXE_SPRITES
+	MSLUG5W_SPRITES
 ROM_END
 
 ROM_START( mslug5rmd01 )
@@ -7655,7 +7622,7 @@ ROM_START( mslug5rmd01 )
     MSLUG5D_SFIX_128K
     MSLUG5W_AUDIO_512K
 	MSLUG5RMXE_YMSND
-	MSLUG5RMXE_SPRITES
+	MSLUG5W_SPRITES
 ROM_END
 
 ROM_START( mslug5rme01 )
@@ -7666,7 +7633,7 @@ ROM_START( mslug5rme01 )
     MSLUG5_SFIX_MT_128K
     MSLUG5W_AUDIO_512K
 	MSLUG5LA_YMSND
-	MSLUG5RMXE_SPRITES
+	MSLUG5W_SPRITES
 ROM_END
 
 ROM_START( mslug5rmf01 )
@@ -7677,7 +7644,7 @@ ROM_START( mslug5rmf01 )
     MSLUG5D_SFIX_128K
     MSLUG5W_AUDIO_512K
 	MSLUG5RMXE_YMSND
-	MSLUG5RMXE_SPRITES
+	MSLUG5W_SPRITES
 ROM_END
 
 ROM_START( mslugxrma01 )
@@ -8911,9 +8878,9 @@ GAME( 2021, mslug4ld01,       mslug4,   neogeo_noslot, mslughb, neogeo_state,   
 GAME( 2021, mslug4ld02,       mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Multi-Function Enemies Resetting Zombie Players Mode Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE ) 
 GAME( 2021, mslug4ld03,       mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Multi-Function Enemies Resetting Mummy Players Mode Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug4ld04,       mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Multi-Function Enemies Resetting Monkeys Players Mode Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug5la01,       mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5rm,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Multi-Function Enemy Soldiers Enhanced Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug5lb01,       mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5rm,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Multi-Function Enemies Resetting Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug5lc01,       mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5rm,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemies Resetting Hybrid bullets Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug5la01,       mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Multi-Function Enemy Soldiers Enhanced Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug5lb01,       mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Multi-Function Enemies Resetting Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug5lc01,       mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemies Resetting Hybrid bullets Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxla01,       mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower 2R Extreme Space Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxla02,       mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower 2R Extreme Space Hybrid Bullets Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxla03,       mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower 2R Extreme Space Big Heavy Machine Gun Flame Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
@@ -8990,12 +8957,12 @@ GAME( 2021, mslug4rmb01,      mslug4,   neogeo_noslot, mslughb, neogeo_state,   
 GAME( 2021, mslug4rmc01,      mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Multi-Function Big Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug4rmd01,      mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Multi-Function Enemies Resetting Big Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug4rme01,      mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Last Bullet Big Heavy Machine Gun Extreme Edition 2023-02-25)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug5rma01,      mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5rm,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Big Heavy Machine Gun Extreme Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug5rmb01,      mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5rm,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Multi-Function Enemy Soldiers Enhanced Big Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug5rmc01,      mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5rm,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Enhanced Big Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug5rmd01,      mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5rm,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic Big Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug5rme01,      mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5rm,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Fighting Machine Latest Big Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug5rmf01,      mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5rm,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemies Resetting Big Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug5rma01,      mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Big Heavy Machine Gun Extreme Edition 2020-12-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug5rmb01,      mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Multi-Function Enemy Soldiers Enhanced Big Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug5rmc01,      mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Enhanced Big Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug5rmd01,      mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic Big Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug5rme01,      mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Fighting Machine Latest Big Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug5rmf01,      mslug5,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemies Resetting Big Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxrma01,      mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower 2R Extreme Space Big Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxrma02,      mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower 2R Extreme Space Big Heavy Machine Gun Flame Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxrma03,      mslugx,   neogeo_noslot, mslughb, neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower 2R Extreme Space Hybrid Bullets Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )

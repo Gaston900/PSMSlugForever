@@ -105,7 +105,6 @@ public:
 	void init_mslug5b();
 	void init_mslug5b1();
 	void init_mslug5hb();
-	void init_mslug5rm();
 	void init_mslugx();
 
 	DECLARE_CUSTOM_INPUT_MEMBER(get_memcard_status);
