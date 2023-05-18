@@ -75,6 +75,7 @@ public:
 	void samsho5b_px_decrypt(uint8_t* cpurom, uint32_t cpurom_size);
 	void samsho5b_vx_decrypt(uint8_t* ymsndrom, uint32_t ymsndrom_size);
 	void matrimbl_decrypt(uint8_t* sprrom, uint32_t sprrom_size, uint8_t* audiorom, uint32_t audiorom_size);
+    void neogeo_darksoft_cx_decrypt(uint8_t*sprrom, uint32_t sprrom_size);
 
 	uint16_t m_cartridge_ram[0x1000]; // bootlegs
 

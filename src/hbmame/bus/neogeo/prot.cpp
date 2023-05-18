@@ -665,8 +665,8 @@ void ngbootleg_prot_device::install_ms5plus_protection(cpu_device* maincpu, neog
 	m_bankdev = bankdev;
 }
 
+/* Fixed by remikare */
 /* Metal Slug 5 (bootleg) */
-
 void ngbootleg_prot_device::mslug5b_vx_decrypt(uint8_t* ymsndrom, uint32_t ymsndrom_size)
 {
 	// only odd bytes are scrambled
@@ -676,6 +676,7 @@ void ngbootleg_prot_device::mslug5b_vx_decrypt(uint8_t* ymsndrom, uint32_t ymsnd
 		rom[i] = bitswap<8>(rom[i], 3, 2, 4, 1, 5, 0, 6, 7);
 }
 
+/* Fixed by remikare */
 void ngbootleg_prot_device::mslug5b_cx_decrypt(uint8_t* sprrom, uint32_t sprrom_size)
 {
 	// rom a18/a19 lines are swapped
@@ -1028,6 +1029,20 @@ void ngbootleg_prot_device::matrimbl_decrypt(uint8_t* sprrom, uint32_t sprrom_si
 
 	/* decrypt gfx */
 	cthd2003_c(sprrom,sprrom_size, 0 );
+}
+
+/* Fixed by remikare */
+void ngbootleg_prot_device::neogeo_darksoft_cx_decrypt(uint8_t*sprrom, uint32_t sprrom_size)
+{
+	//int i;
+	int cx_size = sprrom_size;
+	uint8_t *rom = sprrom;
+	//std::vector<uint8_t> buf( cx_size );
+
+	//memcpy( &buf[0], rom, cx_size );
+
+	for (int i = 0; i < cx_size; i+=4)
+		std::swap(rom[i+1], rom[i+2]);
 }
 
 /***********************************************************************************************************************************/
@@ -2773,6 +2788,7 @@ WRITE16_MEMBER( sma_prot_device::mslug3_bankswitch_w )
 	m_bankdev->neogeo_set_main_cpu_bank_address(bankaddress);
 }
 
+/* Fixed by remikare */
 WRITE16_MEMBER( sma_prot_device::mslug3a_bankswitch_w )
 {
 	/* thanks to Razoola and Mr K for the info */
@@ -2895,6 +2911,7 @@ void sma_prot_device::mslug3_install_protection(cpu_device* maincpu, neogeo_bank
 //  sma_install_random_read_handler(maincpu, 0x2ffff8, 0x2ffffa);
 }
 
+/* Fixed by remikare */
 void sma_prot_device::mslug3a_install_protection(cpu_device* maincpu, neogeo_banked_cart_device* bankdev)
 {
 	maincpu->space(AS_PROGRAM).install_write_handler(0x2fffe4, 0x2fffe5, write16_delegate(FUNC(sma_prot_device::mslug3a_bankswitch_w),this));
@@ -3020,6 +3037,7 @@ void sma_prot_device::mslug3_decrypt_68k(uint8_t* base)
 	}
 }
 
+/* Fixed by remikare */
 void sma_prot_device::mslug3a_decrypt_68k(uint8_t* base)
 {
 	int i,j;

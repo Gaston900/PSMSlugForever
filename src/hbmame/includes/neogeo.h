@@ -93,6 +93,7 @@ public:
 	void neogeo_noslot(machine_config &config);
 
 	// fixed software configurations
+	void init_darksoft();
 	void init_neogeo();	
 	void init_ms5pcbhb();
 	void init_ms5plushb();
@@ -100,12 +101,15 @@ public:
 	void init_mslug3hb();
 	void init_mslug3dd();
     void init_mslug3b6hb();
+    void init_mslug4dd();
 	void init_mslug4hb();
 	void init_mslug4p();
 	void init_mslug5b();
+	void init_mslug5dd();
 	void init_mslug5b1();
 	void init_mslug5hb();
 	void init_mslugx();
+	void init_mslugxdd();
 
 	DECLARE_CUSTOM_INPUT_MEMBER(get_memcard_status);
 	DECLARE_CUSTOM_INPUT_MEMBER(get_audio_result);
