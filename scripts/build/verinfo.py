@@ -85,7 +85,7 @@ if dstfile is not None:
 else:
     fp = sys.stdout
 
-legal_copyright = "Gaston90"
+legal_copyright = "Gaston90 And The Collaborators"
 
 if build == "mess":
     # MESS
@@ -110,7 +110,7 @@ elif build == "hbmame":
     bundle_identifier = "org.mamedev.hbmame"
 else:
     # MAME
-    author = "Gaston90"
+    author = "Gaston90 And The Collaborators"
     comments = "Proyecto Shadow Metal Slug Forever"
     company_name = "MAME Team"
     file_description = "PSMSlugForever"

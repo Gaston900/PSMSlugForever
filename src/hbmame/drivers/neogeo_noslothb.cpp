@@ -1,5 +1,6 @@
 // Proyecto Shadows Metal Slug Forever
-// copyright-holders:Gaston90
+// Copyright-Holders:Gaston90
+// Thanks To The Collaborators Who Have Made A Great Contribution To The Project: Remikare And Robbert.
 
 #include "includes/neogeo.h"
 #include "neogeo.lh"
@@ -64,9 +65,9 @@
 
 #define NEOGEO_BIOS \
 	ROM_REGION16_BE( 0x80000, "mainbios", 0 ) \
-	ROM_SYSTEM_BIOS( 0, "arcade_mode", "Arcade Mode" ) \
+	ROM_SYSTEM_BIOS( 0, "arcade_mode", "Arcade Mode MVS" ) \
 	ROM_LOAD16_WORD_SWAP_BIOS( 0, "arcade mode.rom",  0x00000, 0x020000, CRC(94c741c6) SHA1(2b0aa0295b733bf6d1b47df25b61ef7cbeabf9a9) ) \
-	ROM_SYSTEM_BIOS( 1, "console_mode", "Consola Mode" ) \
+	ROM_SYSTEM_BIOS( 1, "console_mode", "Consola Mode AES" ) \
 	ROM_LOAD16_WORD_SWAP_BIOS( 1, "console mode.rom",  0x00000, 0x020000, CRC(3a519f3e) SHA1(3dffcf04237fb5a1ead882bfda2799e21b5673c9) ) \
 	ROM_DEFAULT_BIOS("arcade_mode")
 
@@ -8638,7 +8639,7 @@ GAME( 1998, mslug2,           neogeo,   neogeo_noslot, mslughb, neogeo_state,   
 GAME( 2000, mslug3,           neogeo,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "SNK",            "Metal Slug 3 (NGM-2560)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2000, mslug3a,          mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3a,    ROT0, "SNK",            "Metal Slug 3 (NGM-2560, Earlier)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX - revision Mar/17/2000 1:36 (from SMA rom) */
 GAME( 2000, mslug3h,          mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "SNK",            "Metal Slug 3 (NGH-2560)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-GAME( 2000, mslug3b6,         mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3b6hb,   ROT0, "Bootleg",        "Metal Slug 6 (Metal Slug 3 Bootleg)", MACHINE_SUPPORTS_SAVE ) /* real Metal Slug 6 is an Atomiswave HW game, see naomi.c ;-) */
+GAME( 2000, mslug3b6,         mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3b6hb, ROT0, "Bootleg",        "Metal Slug 6 (Metal Slug 3 Bootleg)", MACHINE_SUPPORTS_SAVE ) /* real Metal Slug 6 is an Atomiswave HW game, see naomi.c ;-) */
 GAME( 2002, mslug4,           neogeo,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,   ROT0, "Mega / Playmore", "Metal Slug 4 (NGM-2630)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, mslug4h,          mslug4,   neogeo_noslot, mslughb, neogeo_state,    init_mslug4hb,   ROT0, "Mega / Playmore", "Metal Slug 4 (NGH-2630)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5,           neogeo,   neogeo_noslot, mslughb, neogeo_state,    init_mslug5hb,   ROT0, "SNK Playmore",   "Metal Slug 5 (NGM-2680)", MACHINE_SUPPORTS_SAVE )

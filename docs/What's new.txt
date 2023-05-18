@@ -14,13 +14,29 @@ for the 86/64 bit cpu of the compatible microprocessors.
 
 ===============================================================================================================================
 
+2023-0X-XX
+
+- Controls Have Been Optimized For Player 1 And Player 2.
+- The AES Console Mode System Was Supported.
+- In The Bios Selection You Will Have The Choice If You Want To Play "The MVS Arcade Mode" Or "The AES Console Mode".
+- Now You will Be Able To Access The Debug Menu With The Button Of The "3" Key, With The AES Console Mode.
+- Fixed level selection bug for Metal Slug 5 (Stone Tortoise Edition) "By Remikare"
+- Metal Slug Decrypter / Darksoft Roms Set Included. "By Remikare"
+- Updated Roms Metal Slug 5 (Stone Tortoise Edition 2023-03-09)
+- Updated Roms Metal Slug 5 (Boss Edition 2023-05-09)
+- Updated Roms Metal Slug X (Multi-Function Version 2023-05-07)
+
+New Games
+---------------------------------
+
+
+
 2023-05-10
 
-- Fixed roms Metal Slug 5 (Bootleg)(Earlier) "remikare"
-- Fixed roms Metal Slug 5 (Fully Decrypted)(Predecrypted) "remikare"
+- Fixed roms Metal Slug 5 (Bootleg)(Earlier) "By Remikare"
+- Fixed roms Metal Slug 5 (Fully Decrypted)(Predecrypted) "By Remikare"
 - Updated Roms Metal Slug 3 (Pigeon Slug 2023-05-01)
 - Updated Roms Metal Slug 5 (Boss Edition 2023-04-29)
-- Updated Roms Metal Slug X (Multi-Function Version 2023-04-30)
 - Updated Roms Metal Slug X (Multi-Function Version 2023-04-30)
 - Updated Roms Metal Slug X (Apocalyptic Time The 3 Beginning Of The End Of Time 8.2 2R Edition 2023-05-09)
 
@@ -47,7 +63,7 @@ New Games
 
 2023-04-25 / 04-30
 
-- Fixed portal bug Metal Slug hack "remikare"
+- Fixed portal bug Metal Slug hack "By Remikare"
 
 New Games
 ---------------------------------
@@ -292,7 +308,7 @@ New Games
 2022-05-10
 
 - The latest version.
-- A huge thank you is given to user Remikare for his cooperation in sharing the code that allowed 
+- A huge thank you is given to user By Remikare for his cooperation in sharing the code that allowed 
   us to get the latest NeoGeo encrypted roms working.
 - The entire Neo Geo system configuration has been optimized, now all the system is pre-configured.
 - It has been possible to integrate the graphical interface "GUI" of the Arcade64 emulator + modernize it and update the system.
