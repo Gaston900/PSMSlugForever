@@ -23,9 +23,9 @@ mslug5b           // Neogeo
 mslugx            // SNK
 
 @source:neogeo.cpp
-ms4plusdp         // Bootleg (Predecrypted)
-ms5plusdp         // Bootleg (Predecrypted)
-mslug3b6dp        // bootleg (Predecrypted)
+ms4plusp          // Bootleg (Predecrypted)
+ms5plusp          // Bootleg (Predecrypted)
+mslug3b6p         // bootleg (Predecrypted)
 mslug4p           // Mega / Playmore (Predecrypted)
 mslug4hp          // Mega / Playmore (Predecrypted)
 mslug4ndp         // Mega / Playmore (Predecrypted)
@@ -44,11 +44,11 @@ ms4plusd          // Bootleg
 ms5plusd          // Bootleg
 ms5plusc          // Bootleg
 msluge            // Nazca
-mslug2t           // SNK
+mslug2t           // Bootleg
 mslug3d           // SNK
 mslug3hd          // SNK
 mslug3nd          // SNK
-mslug3b6d         // bootleg
+mslug3b6d         // Bootleg
 mslug4d           // Mega / Playmore
 mslug4hd          // Mega / Playmore
 mslug4nd          // Mega / Playmore
@@ -61,9 +61,12 @@ mslug5b2          // Bootleg
 
 @source:neogeo.cpp
 ms4plusdd         // Bootleg (Decrypter / Darksoft)
+ms5plusdd         // Bootleg (Decrypter / Darksoft)
 mslugdd           // Nazca (Decrypter / Darksoft)
 mslug2dd          // SNK (Decrypter / Darksoft)
+mslug2tdd         // SNK (Decrypter / Darksoft)
 mslug3dd          // SNK (Decrypter / Darksoft)
+mslug3b6dd        // Bootleg (Decrypter / Darksoft)
 mslug4dd          // Mega / Playmore (Decrypter / Darksoft)
 mslug4hdd         // Mega / Playmore (Decrypter / Darksoft)
 mslug5dd          // SNK Playmore (Decrypter / Darksoft)
