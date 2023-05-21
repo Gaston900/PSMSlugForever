@@ -14,17 +14,21 @@ for the 86/64 bit cpu of the compatible microprocessors.
 
 ===============================================================================================================================
 
-2023-0X-XX
+2023-05-2X
 
+- Updated All Roms Metal Slug 1, 2, 3, 4, 5 And X (Now It difference More The Remix Standard And Extreme MegaMods Edition)
 - Controls Have Been Optimized For Player 1 And Player 2.
 - The AES Console Mode System Was Supported.
 - In The Bios Selection You Will Have The Choice If You Want To Play "The MVS Arcade Mode" Or "The AES Console Mode".
 - Now You will Be Able To Access The Debug Menu With The Button Of The "3" Key, With The AES Console Mode.
+- Now you can enable the debug menu, for the Arcade MVS system. "By Remikare"
+  * To enable it, you need to press the "5" key in the Metal Slug menu. 
+  * Once enabled, you need to hold the "3" button, turn plus the "D" button within the game
 - Fixed level selection bug for Metal Slug 5 (Stone Tortoise Edition) "By Remikare"
 - Metal Slug Decrypter / Darksoft Roms Set Included. "By Remikare"
-- Updated Roms Metal Slug 5 (Stone Tortoise Edition 2023-03-09)
-- Updated Roms Metal Slug 5 (Boss Edition 2023-05-09)
-- Updated Roms Metal Slug X (Multi-Function Version 2023-05-07)
+- Updated Roms Metal Slug 5 (Stone Tortoise Edition 2023-05-17)
+- Updated Roms Metal Slug 5 (Boss Edition 2023-05-17)
+- Updated Roms Metal Slug X (Multi-Function Version 2023-05-17)
 
 New Games
 ---------------------------------
