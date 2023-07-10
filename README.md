@@ -11,8 +11,7 @@ Unofficial versions known as "hacks" are also included.
 
 What has been optimized in this version?
 ---------------------------------------
-
-The command of all the game systems was optimized, now it is much more practical to be able to play, the command of the arrow keys "Up, Down, Left, Right" comes by default, this command is used to be able to move and to take actions For shooting or jumping and throwing grenades, the A, S, D key is used and the rest of the keys are used for certain kinds of games Z, X, C, Q, W, E.
+The NeoGeo systems command was optimized, now it is much more practical to be able to play player 1 and player 2, the arrow command "Up, Down, Left, Right" comes by default, this command is used to move and to perform actions To shoot or jump and throw grenades use the A, S, D, Z key.
 
 Removed the black border on NeoGeo systems, now has full screen.
 
