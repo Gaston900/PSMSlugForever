@@ -59,7 +59,7 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_HIDE_FOLDERS,				nullptr,        OPTION_STRING, nullptr },
 	{ MUIOPTION_SHOW_FOLDER_SECTION,		"1",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_SHOW_TABS,					"1",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_HIDE_TABS,					"versus, artpreview",         	OPTION_STRING, nullptr },
+	{ MUIOPTION_HIDE_TABS,					"versus",       OPTION_STRING, nullptr },
 	{ MUIOPTION_HISTORY_TAB,				"0",        	OPTION_INTEGER, nullptr },
 	{ MUIOPTION_SORT_COLUMN,				"1",        	OPTION_INTEGER, nullptr },
 	{ MUIOPTION_SORT_REVERSED,				"0",        	OPTION_BOOLEAN, nullptr },
