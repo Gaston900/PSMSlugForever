@@ -66,7 +66,7 @@ BEGIN
             MENUITEM "Scores",                            ID_TOGGLE_TAB_SCORES
             MENUITEM "How To",                            ID_TOGGLE_TAB_HOWTO
             MENUITEM "Select",                            ID_TOGGLE_TAB_SELECT
-            MENUITEM "Versus",                            ID_TOGGLE_TAB_VERSUS
+            MENUITEM "Controls",                            ID_TOGGLE_TAB_VERSUS
             MENUITEM "Boss",                            ID_TOGGLE_TAB_BOSSES
             MENUITEM "End",                                ID_TOGGLE_TAB_ENDS
             MENUITEM "Game Over",                        ID_TOGGLE_TAB_GAMEOVER
