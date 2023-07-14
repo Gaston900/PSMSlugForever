@@ -1,4 +1,4 @@
-// Proyecto Shadows Metal Slug Foreverr
+// Proyecto Shadows Metal Slug Forever
 // Copyright-Holders:Gaston90
 // Thanks To The Collaborators Who Have Made A Great Contribution To The Project: Remikare And Robbert.
 
