@@ -115,14 +115,14 @@ BEGIN
     END
     POPUP "&Help"
     BEGIN
-        MENUITEM "Online Manual\tF1",                      ID_HELP_CONTENTS
-        MENUITEM "Support Forum\tF3",                       ID_HELP_TROUBLE
-        MENUITEM SEPARATOR
+//        MENUITEM "Online Manual\tF1",                      ID_HELP_CONTENTS
+//      MENUITEM "Support Forum\tF3",                       ID_HELP_TROUBLE
+//      MENUITEM SEPARATOR
         MENUITEM "Mame release notes\tF6",              ID_HELP_WHATS_NEW
-        MENUITEM SEPARATOR
-        MENUITEM "MAME development site\tF7",             ID_MAME_HOMEPAGE
-        MENUITEM "Frequently Asked Questions\tF8",         ID_MAME_FAQ
-        MENUITEM SEPARATOR
+//      MENUITEM SEPARATOR
+//      MENUITEM "MAME development site\tF7",             ID_MAME_HOMEPAGE
+//      MENUITEM "Frequently Asked Questions\tF8",         ID_MAME_FAQ
+//      MENUITEM SEPARATOR
         MENUITEM "About\tF9",                            ID_HELP_ABOUT
     END
 END
