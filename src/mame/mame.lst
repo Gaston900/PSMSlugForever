@@ -95,6 +95,7 @@ mslug2ctma07      // Hack
 mslug2ctma08      // Hack
 mslug2ctma09      // Hack
 mslug2ctma10      // Hack
+mslug2ctma11      // Hack
 mslug2ctmb01      // Hack
 mslug2ctmb02      // Hack
 mslug2ctmb03      // Hack
@@ -106,6 +107,7 @@ mslug2ctmb08      // Hack
 mslug2ctmb09      // Hack
 mslug2ctmb10      // Hack
 mslug2ctmb11      // Hack
+mslug2ctmb12      // Hack
 mslug2ctmc01      // Hack
 mslug3ctma01      // Hack
 mslug3ctma02      // Hack
@@ -257,6 +259,14 @@ mslug3ctmk14      // Hack
 mslug3ctml01      // Hack
 mslug4ctma01      // Hack
 mslug4ctma02      // Hack
+mslug4ctma03      // Hack
+mslug4ctma04      // Hack
+mslug4ctma05      // Hack
+mslug4ctma06      // Hack
+mslug4ctma07      // Hack
+mslug4ctma08      // Hack
+mslug4ctma09      // Hack
+mslug4ctma10      // Hack
 mslugxctma01      // Hack
 mslugxctma02      // Hack
 mslugxctma03      // Hack
@@ -270,6 +280,7 @@ mslugxctma10      // Hack
 mslugxctma11      // Hack
 mslugxctma12      // Hack
 mslugxctma13      // Hack
+mslugxctma14      // Hack
 mslugxctmb01      // Hack
 mslugxctmb02      // Hack
 mslugxctmb03      // Hack
@@ -283,6 +294,7 @@ mslugxctmb10      // Hack
 mslugxctmb11      // Hack
 mslugxctmb12      // Hack
 mslugxctmb13      // Hack
+mslugxctmb14      // Hack
 mslugxctmc01      // Hack
 mslugxctmc02      // Hack
 mslugxctmc03      // Hack
@@ -296,6 +308,7 @@ mslugxctmc10      // Hack
 mslugxctmc11      // Hack
 mslugxctmc12      // Hack
 mslugxctmc13      // Hack
+mslugxctmc14      // Hack
 mslugxctmd01      // Hack
 mslugxctmd02      // Hack
 mslugxctmd03      // Hack
@@ -309,6 +322,7 @@ mslugxctmd10      // Hack
 mslugxctmd11      // Hack
 mslugxctmd12      // Hack
 mslugxctmd13      // Hack
+mslugxctmd14      // Hack
 mslugxctme01      // Hack
 mslugxctme02      // Hack
 mslugxctme03      // Hack
@@ -322,6 +336,7 @@ mslugxctme10      // Hack
 mslugxctme11      // Hack
 mslugxctme12      // Hack
 mslugxctme13      // Hack
+mslugxctme14      // Hack
 mslugxctmf01      // Hack
 mslugxctmf02      // Hack
 mslugxctmf03      // Hack
@@ -335,6 +350,7 @@ mslugxctmf10      // Hack
 mslugxctmf11      // Hack
 mslugxctmf12      // Hack
 mslugxctmf13      // Hack
+mslugxctmf14      // Hack
 mslugxctmg01      // Hack
 mslugxctmg02      // Hack
 mslugxctmg03      // Hack
@@ -348,6 +364,7 @@ mslugxctmg10      // Hack
 mslugxctmg11      // Hack
 mslugxctmg12      // Hack
 mslugxctmg13      // Hack
+mslugxctmg14      // Hack
 
 @source:neogeo.cpp
 mslughc01         // Hack
