@@ -78,9 +78,9 @@
 #endif
 
 #ifdef PTR64
-#define MAMEUINAME			"PSMSlugForever (Gold Collection Limited Edicion)"
+#define MAMEUINAME			"PSMSlugForever (Metal Slug MVS Gold Collection Limited Edition)"
 #else
-#define MAMEUINAME			"PSMSlugForever (Gold Collection Limited Edicion)"
+#define MAMEUINAME			"PSMSlugForever (Metal Slug MVS Gold Collection Limited Edition)"
 #endif
 #define MAMENAME			"PSMSlugForever"
 
