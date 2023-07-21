@@ -14,9 +14,27 @@ for the 86/64 bit cpu of the compatible microprocessors.
 
 ===============================================================================================================================
 
-2023-05-2X
+2023-07-22
 
-- Updated All Roms Metal Slug 1, 2, 3, 4, 5 And X (Now It difference More The Remix Standard And Extreme MegaMods Edition)
+- The custom Metal Slug version was included again "They are the first hack remix roms that I have made in a basic way for the HBMAME emulator"
+- Fixed the special ability that Fio has (hadouken) now has a normal speed that it should have when using it "Metal Slug X (Legendary Origin Edition 2023-02-13)"
+- Fixed crash of level 3-3 "Metal Slug 3 (Enemy Soldiers Reset 2019-01-02)"
+- Fixed starting path A, B, C AND D. "Metal Slug 3 (Pigeon Slug 2023-03-28)" "A huge thanks By Remikare, for taking your time to Fix"
+- Fixed crash on level 1-1, path C. "Metal Slug 3 (Pigeon Slug 2023-03-28)"
+- Fixed the crash caused by the enemy chaser weapon "Metal Slug 4 (Easy Mode 2018-11-16)"
+- Updated Roms Metal Slug 5 (Stone Tortoise Edition 2023-06-25)
+- Updated Roms Metal Slug 5 (Boss Edition 2023-06-25)
+- Updated Roms Metal Slug X (Multi-Function Version 2023-06-30)
+
+New Games
+---------------------------------
+- [mslug5hc28]              Metal Slug 5 (Legendary Edition 2023-06-12)
+
+
+
+2023-05-21
+
+- Updated All Roms Metal Slug 1, 3, 4 And X (Now It difference More The Remix Standard And Extreme MegaMods Edition)
 - Controls Have Been Optimized For Player 1 And Player 2.
 - The AES Console Mode System Was Supported.
 - In The Bios Selection You Will Have The Choice If You Want To Play "The MVS Arcade Mode" Or "The AES Console Mode".
