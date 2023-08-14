@@ -3177,6 +3177,13 @@ INPUT_PORTS_END
 	ROM_FILL(0xD302,1,0x4E)\
 	ROM_FILL(0xD303,1,0x71)
 
+#define MSLUG3CQ_ESSENTIALPATCH_MODS_FILL \
+    ROM_FILL(0x96902,1,0x5E)\
+    ROM_FILL(0x8E4BE,1,0x4E)\
+	ROM_FILL(0x8E4BF,1,0x71)\
+	ROM_FILL(0x8E4C0,1,0x4E)\
+	ROM_FILL(0x8E4C1,1,0x71)
+
 #define MSLUG3H_CUSTOMPATCH_MODS_FILL \
 	ROM_FILL(0x333661,1,0x02)\
 	ROM_FILL(0x333662,1,0x84)\
@@ -5550,6 +5557,7 @@ ROM_START( mslug4hdd )
     MSLUG4DX_SPRITES
 ROM_END
 
+ /* Decrypt -> Encrypt P Roms Mslug5 */
 /* Fixed by remikare */
 ROM_START( mslug5dd )
 	ROM_REGION( 0x800000, "maincpu", 0 )
@@ -6059,6 +6067,7 @@ ROM_START( mslug3hc04 ) //mslug3se
     MSLUG3D_SPRITES
 ROM_END
 
+ /* Decrypt -> Encrypt P Roms */
 /* the roms hack crashes when one has a weapon in his possession by pressing the start button at any time, the curious thing is that this error also occurs in the gotvg emulator. */
 ROM_START( mslug3hc05 ) //mslug3eb
 	ROM_REGION( 0x900000, "maincpu", 0 )
@@ -6230,6 +6239,7 @@ ROM_START( mslug3hc17 ) //mslug3lw
     MSLUG3G_SPRITES
 ROM_END
 
+ /* Decrypt -> Encrypt P Roms */
 ROM_START( mslug3hc18 ) //mslug3i
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc18.p1", 0x000000, 0x100000, CRC(6ea79265) SHA1(1930a3ff1260d56fdc7559bd5bb56f0ca5479588) )
@@ -6308,6 +6318,7 @@ ROM_START( mslug3hc23 )
     MSLUG3D_SPRITES
 ROM_END
 
+ /* Decrypt -> Encrypt P Roms */
 ROM_START( mslug3hc24 ) //mslug3unity
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc24.p1", 0x000000, 0x900000, CRC(9a1f8842) SHA1(464e12df13967219089d1694fd8bf65fa9521973) )
@@ -6425,6 +6436,7 @@ ROM_START( mslug3hc32 )
     MSLUG3FR_SPRITES
 ROM_END
 
+ /* Decrypt -> Encrypt P Roms */
 ROM_START( mslug3hc33 )
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc33.p1", 0x000000, 0x900000, CRC(e15e9f6e) SHA1(cd0068ecbace9c375378eae7a9459984d1e1a148) )
@@ -6494,9 +6506,10 @@ ROM_START( mslug3hc37 )
     MSLUG3DD_SPRITES
 ROM_END
 
+ /* Decrypt -> Encrypt P Roms */
 ROM_START( mslug3hc38 ) //mslug31v2
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_hc38.p2", 0x000000, 0x900000, CRC(3eed1b04) SHA1(922805ec7178ebd0f4cdfc87a8395dfe5294561a) )
+	ROM_LOAD16_WORD_SWAP( "256_hc38.p1", 0x000000, 0x900000, CRC(3eed1b04) SHA1(922805ec7178ebd0f4cdfc87a8395dfe5294561a) )
     MSLUG3DD_ESSENTIALPATCH_MODS_FILL
     MSLUG3H_MVS_FILL
     MSLUG3H_AES_FILL
@@ -7051,17 +7064,17 @@ ROM_START( mslug5hc07 )
 	MSLUG5HD_SPRITES
 ROM_END
 
+ /* Decrypt -> Encrypt P Roms */
 ROM_START( mslug5hc08 ) //mslug5unity
 	ROM_REGION( 0x800000, "maincpu", 0 )
-	ROM_LOAD32_WORD_SWAP( "268_hc08.p1", 0x000000, 0x400000, CRC(ced9f5a8) SHA1(c1e6c8c9a7d2220b956486f2154540fcda38e650) )
-	ROM_LOAD32_WORD_SWAP( "268_hc08.p2", 0x000002, 0x400000, CRC(1c08dbb6) SHA1(8796efebcfabb9bb5444ed0264d327abf7c32b98) )
-    MSLUG5_ESSENTIALPATCH_MVS_FILL
-    MSLUG5_MVS_FILL
-    MSLUG5_AES_FILL
-    MSLUG5_SFIX_MT_128K
-	MSLUG5_AUDIO_ENCRYPTED_512K
-	MSLUG5_YMSND
-	MSLUG5_SPRITES
+	ROM_LOAD16_WORD_SWAP( "268_hc08.p1", 0x000000, 0x600000, CRC(e2a8a381) SHA1(39d69d396729ccff708875585d337e1c905a5341) )
+    MSLUG5HD_ESSENTIALPATCH_MODS_FILL
+    MSLUG5HD_MVS_FILL
+    MSLUG5HD_AES_FILL
+    MSLUG5D_SFIX_128K
+    MSLUG5ND_AUDIO_128K
+	MS5BOOT_YMSND
+	MS5BOOT_SPRITES
 ROM_END
 
 ROM_START( mslug5hc09 ) //mslug5x 
@@ -8264,6 +8277,19 @@ ROM_START( mslug3ctma15 )
 	MSLUG3DD_SPRITES
 ROM_END
 
+ROM_START( mslug3ctma16 )
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256_cma16.p1", 0x000000, 0x100000, CRC(86e4e90d) SHA1(455fd5b6ff116d4d65524775aa6966b729a55366) )
+	ROM_LOAD16_WORD_SWAP( "256_hc19.p2",  0x100000, 0x400000, CRC(b948a472) SHA1(e0135911f7d7e21285e6965cc6b4446277eea405) )
+    MSLUG3H_ESSENTIALPATCH_MODS_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
+	MSLUG3HD_SFIX_128K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+	MSLUG3G_SPRITES
+ROM_END
+
 ROM_START( mslug3ctmb01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc03.p1",  0x000000, 0x100000, CRC(b23bd9b7) SHA1(4a5e877bc0d4853dc9c5a2c179049fbdd5285239) )
@@ -8460,6 +8486,19 @@ ROM_START( mslug3ctmb15 )
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
 	MSLUG3DD_SPRITES
+ROM_END
+
+ROM_START( mslug3ctmb16 )
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256_cma16.p1", 0x000000, 0x100000, CRC(86e4e90d) SHA1(455fd5b6ff116d4d65524775aa6966b729a55366) )
+	ROM_LOAD16_WORD_SWAP( "256_hc15.p2",  0x100000, 0x400000, CRC(d53d178c) SHA1(98f0cd74b18d0d63b74fd6d3830548f4c2ce401b) )
+    MSLUG3H_ESSENTIALPATCH_MODS_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
+	MSLUG3HD_SFIX_128K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+	MSLUG3G_SPRITES
 ROM_END
 
 ROM_START( mslug3ctmc01 )
@@ -8660,6 +8699,19 @@ ROM_START( mslug3ctmc15 )
 	MSLUG3DD_SPRITES
 ROM_END
 
+ROM_START( mslug3ctmc16 )
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256_cma16.p1", 0x000000, 0x100000, CRC(86e4e90d) SHA1(455fd5b6ff116d4d65524775aa6966b729a55366) )
+	ROM_LOAD16_WORD_SWAP( "256_hc11.p2",  0x100000, 0x400000, CRC(29de4e23) SHA1(1591403b39ecadd33380020e9f801688ed996e94) )
+    MSLUG3H_ESSENTIALPATCH_MODS_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
+	MSLUG3HD_SFIX_128K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+	MSLUG3G_SPRITES
+ROM_END
+
 ROM_START( mslug3ctmd01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc03.p1",  0x000000, 0x100000, CRC(b23bd9b7) SHA1(4a5e877bc0d4853dc9c5a2c179049fbdd5285239) )
@@ -8858,6 +8910,19 @@ ROM_START( mslug3ctmd15 )
 	MSLUG3DD_SPRITES
 ROM_END
 
+ROM_START( mslug3ctmd16 )
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256_cma16.p1", 0x000000, 0x100000, CRC(86e4e90d) SHA1(455fd5b6ff116d4d65524775aa6966b729a55366) )
+	ROM_LOAD16_WORD_SWAP( "256_hc16.p2",  0x100000, 0x400000, CRC(f55ccb93) SHA1(c52e83c848ba63ca0323aa99f85e8278b6fe4cda) )
+    MSLUG3H_ESSENTIALPATCH_MODS_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
+	MSLUG3HD_SFIX_128K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+	MSLUG3G_SPRITES
+ROM_END
+
 ROM_START( mslug3ctme01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_cme01.p1", 0x000000, 0x100000, CRC(2b4f11f6) SHA1(e7eec428c74046b6083e94a3a771d876ac0862b9) )
@@ -9033,6 +9098,19 @@ ROM_END
 ROM_START( mslug3ctme14 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_cme14.p1", 0x000000, 0x100000, CRC(ac689717) SHA1(2c9ca19e55c4d07e90076853a722e3b92500e5d2) )
+	ROM_LOAD16_WORD_SWAP( "256_cme02.p2", 0x100000, 0x400000, CRC(a9f938ab) SHA1(f1ef4bc5bb06444f6a77924ad30421996d65c980) )
+    MSLUG3H_ESSENTIALPATCH_MODS_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
+	MSLUG3HD_SFIX_128K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+	MSLUG3G_SPRITES
+ROM_END
+
+ROM_START( mslug3ctme16 )
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256_cme16.p1", 0x000000, 0x100000, CRC(c0f12915) SHA1(8d92b0100c977f9a80b5d5b380527f888227cede) )
 	ROM_LOAD16_WORD_SWAP( "256_cme02.p2", 0x100000, 0x400000, CRC(a9f938ab) SHA1(f1ef4bc5bb06444f6a77924ad30421996d65c980) )
     MSLUG3H_ESSENTIALPATCH_MODS_FILL
     MSLUG3H_MVS_FILL
@@ -9228,6 +9306,19 @@ ROM_START( mslug3ctmf14 )
 	MSLUG3G_SPRITES
 ROM_END
 
+ROM_START( mslug3ctmf16 )
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256_cmf16.p1", 0x000000, 0x100000, CRC(3ebe349a) SHA1(36c74d44f994c23955b46c7c02a0cb688f46e2c0) )
+	ROM_LOAD16_WORD_SWAP( "256_cme02.p2", 0x100000, 0x400000, CRC(a9f938ab) SHA1(f1ef4bc5bb06444f6a77924ad30421996d65c980) )
+    MSLUG3H_ESSENTIALPATCH_MODS_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
+	MSLUG3HD_SFIX_128K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+	MSLUG3G_SPRITES
+ROM_END
+
 ROM_START( mslug3ctmg01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_cmg01.p1", 0x000000, 0x100000, CRC(89f870e6) SHA1(5e2f422ad8b999a6599cbd9d95aed8d39299012e) )
@@ -9403,6 +9494,19 @@ ROM_END
 ROM_START( mslug3ctmg14 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_cmg14.p1", 0x000000, 0x100000, CRC(0edff607) SHA1(db5df70d1a4ded40b695e65185bf4694d70d568a) )
+	ROM_LOAD16_WORD_SWAP( "256_cme02.p2", 0x100000, 0x400000, CRC(a9f938ab) SHA1(f1ef4bc5bb06444f6a77924ad30421996d65c980) )
+    MSLUG3H_ESSENTIALPATCH_MODS_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
+	MSLUG3HD_SFIX_128K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+	MSLUG3G_SPRITES
+ROM_END
+
+ROM_START( mslug3ctmg16 )
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256_cmg16.p1", 0x000000, 0x100000, CRC(62464805) SHA1(2466016d09e0f3745f61dea803f700363bbf0fc0) )
 	ROM_LOAD16_WORD_SWAP( "256_cme02.p2", 0x100000, 0x400000, CRC(a9f938ab) SHA1(f1ef4bc5bb06444f6a77924ad30421996d65c980) )
     MSLUG3H_ESSENTIALPATCH_MODS_FILL
     MSLUG3H_MVS_FILL
@@ -9598,6 +9702,19 @@ ROM_START( mslug3ctmh14 )
     MSLUG3LW_SPRITES
 ROM_END
 
+ROM_START( mslug3ctmh16 )
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256_cmh16.p1", 0x000000, 0x100000, CRC(2cffa5ac) SHA1(d98d97f7864a95307c9f15240caa83a7bf6a0147) )
+	ROM_LOAD16_WORD_SWAP( "256_cmh02.p2", 0x100000, 0x400000, CRC(ab5a98c3) SHA1(e13baf82d4f2d7862cc142a961e63d082f3157e8) )
+    MSLUG3H_ESSENTIALPATCH_MODS_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
+	MSLUG3HD_SFIX_128K
+    MSLUG3LW_AUDIO_512K
+    MSLUG3LW_YMSND
+    MSLUG3LW_SPRITES
+ROM_END
+
 ROM_START( mslug3ctmi01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_cmi01.p1", 0x000000, 0x100000, CRC(70f868b5) SHA1(45a0ec6d81a5fe260fdcff6a93a856ea536e1d60) )
@@ -9773,6 +9890,19 @@ ROM_END
 ROM_START( mslug3ctmi14 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_cmi14.p1", 0x000000, 0x100000, CRC(f7dfee54) SHA1(cbdf4362cd4f07573c4262ffc0b16f0824ea2db0) )
+	ROM_LOAD16_WORD_SWAP( "256_cmh02.p2", 0x100000, 0x400000, CRC(ab5a98c3) SHA1(e13baf82d4f2d7862cc142a961e63d082f3157e8) )
+    MSLUG3H_ESSENTIALPATCH_MODS_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
+	MSLUG3HD_SFIX_128K
+    MSLUG3LW_AUDIO_512K
+    MSLUG3LW_YMSND
+    MSLUG3LW_SPRITES
+ROM_END
+
+ROM_START( mslug3ctmi16 )
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256_cmi16.p1", 0x000000, 0x100000, CRC(9b465056) SHA1(86e8555805487fdeeb1ed0c1319c47cb60861dc2) )
 	ROM_LOAD16_WORD_SWAP( "256_cmh02.p2", 0x100000, 0x400000, CRC(ab5a98c3) SHA1(e13baf82d4f2d7862cc142a961e63d082f3157e8) )
     MSLUG3H_ESSENTIALPATCH_MODS_FILL
     MSLUG3H_MVS_FILL
@@ -9968,6 +10098,19 @@ ROM_START( mslug3ctmj14 )
     MSLUG3LW_SPRITES
 ROM_END
 
+ROM_START( mslug3ctmj16 )
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256_cmj16.p1", 0x000000, 0x100000, CRC(713d025a) SHA1(a094db5d4fe1fbb52b35f9a99bdce9af1fdeb713) )
+	ROM_LOAD16_WORD_SWAP( "256_cmh02.p2", 0x100000, 0x400000, CRC(ab5a98c3) SHA1(e13baf82d4f2d7862cc142a961e63d082f3157e8) )
+    MSLUG3H_ESSENTIALPATCH_MODS_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
+	MSLUG3HD_SFIX_128K
+    MSLUG3LW_AUDIO_512K
+    MSLUG3LW_YMSND
+    MSLUG3LW_SPRITES
+ROM_END
+
 ROM_START( mslug3ctmk01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_cmk01.p1", 0x000000, 0x100000, CRC(665d0153) SHA1(98e1e7a0f0be40a944ac7406c32da3d9a586b977) )
@@ -10142,7 +10285,20 @@ ROM_END
 
 ROM_START( mslug3ctmk14 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_cmk14.p1", 0x000000, 0x100000, CRC(a750860f) SHA1(924f3baf0e539bf2fd82a45abc77ebab8d615d71) )
+	ROM_LOAD16_WORD_SWAP( "256_cmk14.p1", 0x000000, 0x100000, CRC(e17a87b2) SHA1(8bad5b9133e8700b4484b63abd95785edfdc442d) )
+	ROM_LOAD16_WORD_SWAP( "256_cmh02.p2", 0x100000, 0x400000, CRC(ab5a98c3) SHA1(e13baf82d4f2d7862cc142a961e63d082f3157e8) )
+    MSLUG3H_ESSENTIALPATCH_MODS_FILL
+    MSLUG3H_MVS_FILL
+    MSLUG3H_AES_FILL
+	MSLUG3HD_SFIX_128K
+    MSLUG3LW_AUDIO_512K
+    MSLUG3LW_YMSND
+    MSLUG3LW_SPRITES
+ROM_END
+
+ROM_START( mslug3ctmk16 )
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256_cmk16.p1", 0x000000, 0x100000, CRC(8de339b0) SHA1(d4a4b7042410749b2458a068edf8e8b434346045) )
 	ROM_LOAD16_WORD_SWAP( "256_cmh02.p2", 0x100000, 0x400000, CRC(ab5a98c3) SHA1(e13baf82d4f2d7862cc142a961e63d082f3157e8) )
     MSLUG3H_ESSENTIALPATCH_MODS_FILL
     MSLUG3H_MVS_FILL
@@ -12067,6 +12223,7 @@ ROM_START( mslug3ly01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p1", 0x000000, 0x100000, CRC(c721577c) SHA1(43fc3cbcccc0e181282d24d74a46d7c3e077dde3) )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p2", 0x100000, 0x400000, CRC(2e73c3e6) SHA1(9daf7b0b0fdb01e85913520c247bd282b2abbb25) )
+    MSLUG3CQ_ESSENTIALPATCH_MODS_FILL
     MSLUG3H_CUSTOMPATCH_MODS_FILL
     MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
@@ -12079,6 +12236,7 @@ ROM_START( mslug3ly02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_ly02.p1", 0x000000, 0x100000, CRC(332ae55e) SHA1(1cebb668278be9b8eaaba61a4e48256bf9f75f99) )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p2", 0x100000, 0x400000, CRC(2e73c3e6) SHA1(9daf7b0b0fdb01e85913520c247bd282b2abbb25) )
+    MSLUG3CQ_ESSENTIALPATCH_MODS_FILL
     MSLUG3H_CUSTOMPATCH_MODS_FILL
     MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
@@ -12091,6 +12249,7 @@ ROM_START( mslug3ly03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_ly03.p1", 0x000000, 0x100000, CRC(7c43b5a0) SHA1(28106f26cfe16bbb01baf3598171e0386ba82b4f) )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p2", 0x100000, 0x400000, CRC(2e73c3e6) SHA1(9daf7b0b0fdb01e85913520c247bd282b2abbb25) )
+    MSLUG3CQ_ESSENTIALPATCH_MODS_FILL
     MSLUG3H_CUSTOMPATCH_MODS_FILL
     MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
@@ -12103,6 +12262,7 @@ ROM_START( mslug3ly04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_ly04.p1", 0x000000, 0x100000, CRC(2d877c3a) SHA1(1c93d648708c7879b77936b349f9ccef972e9f6e) )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p2", 0x100000, 0x400000, CRC(2e73c3e6) SHA1(9daf7b0b0fdb01e85913520c247bd282b2abbb25) )
+    MSLUG3CQ_ESSENTIALPATCH_MODS_FILL
     MSLUG3H_CUSTOMPATCH_MODS_FILL
     MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
@@ -12115,6 +12275,7 @@ ROM_START( mslug3ly05 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_ly05.p1", 0x000000, 0x100000, CRC(4c7e5522) SHA1(39fa7c1403b9752a31db09c37eecc85a7ba02dbd) )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p2", 0x100000, 0x400000, CRC(2e73c3e6) SHA1(9daf7b0b0fdb01e85913520c247bd282b2abbb25) )
+    MSLUG3CQ_ESSENTIALPATCH_MODS_FILL
     MSLUG3H_CUSTOMPATCH_MODS_FILL
     MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
@@ -12125,8 +12286,9 @@ ROM_END
 
 ROM_START( mslug3ly06 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_ly06.p1", 0x000000, 0x100000, CRC(a68853ce) SHA1(cfbcad74e012f7cf914b1ce4646fbb015a358c66) )
+	ROM_LOAD16_WORD_SWAP( "256_ly06.p1", 0x000000, 0x100000, CRC(ca9225ab) SHA1(f537036ea8e1063fe40260a0a159b08041d60ae8) )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p2", 0x100000, 0x400000, CRC(2e73c3e6) SHA1(9daf7b0b0fdb01e85913520c247bd282b2abbb25) )
+    MSLUG3CQ_ESSENTIALPATCH_MODS_FILL
     MSLUG3H_CUSTOMPATCH_MODS_FILL
     MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
@@ -12139,6 +12301,7 @@ ROM_START( mslug3ly07 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_ly07.p1", 0x000000, 0x100000, CRC(2a40ac4f) SHA1(1147c9425b645a3785c84d19869cb275aab2c4de) )
 	ROM_LOAD16_WORD_SWAP( "256_ly01.p2", 0x100000, 0x400000, CRC(2e73c3e6) SHA1(9daf7b0b0fdb01e85913520c247bd282b2abbb25) )
+    MSLUG3CQ_ESSENTIALPATCH_MODS_FILL
     MSLUG3H_CUSTOMPATCH_MODS_FILL
     MSLUG3H_AES_FILL
 	MSLUG3HD_SFIX_128K
@@ -12636,6 +12799,7 @@ ROM_START( mslug2lb08 )
     MSLUG2_YMSND
 	MSLUG2FR_SPRITES
 ROM_END
+
 
 ROM_START( mslug3la01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
@@ -13137,7 +13301,7 @@ ROM_END
 
 ROM_START( mslug3lg01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_lg01.p1", 0x000000, 0x100000, CRC(6528bb4e) SHA1(c77af097972402a62b8e42be52b53c0c20597390) )
+	ROM_LOAD16_WORD_SWAP( "256_lg01.p1", 0x000000, 0x100000, CRC(0932cd2b) SHA1(d49ccaae4f415fd12c951c4ff9efe567093cf3fb) )
 	ROM_LOAD16_WORD_SWAP( "256_lg01.p2", 0x100000, 0x400000, CRC(71387ea0) SHA1(345636d254742d216b1819bdd5ecff4a431ba22e) )
     MSLUG3H_CUSTOMPATCH_MODS_FILL
     MSLUG3H_AES_FILL
@@ -13151,7 +13315,7 @@ ROM_END
 
 ROM_START( mslug3lg02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_lg01.p1", 0x000000, 0x100000, CRC(6528bb4e) SHA1(c77af097972402a62b8e42be52b53c0c20597390) )
+	ROM_LOAD16_WORD_SWAP( "256_lg01.p1", 0x000000, 0x100000, CRC(0932cd2b) SHA1(d49ccaae4f415fd12c951c4ff9efe567093cf3fb) )
 	ROM_LOAD16_WORD_SWAP( "256_lg01.p2", 0x100000, 0x400000, CRC(71387ea0) SHA1(345636d254742d216b1819bdd5ecff4a431ba22e) )
     MSLUG3H_CUSTOMPATCH_MODS_FILL
     MSLUG3H_FATPLAYERS_MODS_FILL
@@ -13166,7 +13330,7 @@ ROM_END
 
 ROM_START( mslug3lg03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_lg03.p1", 0x000000, 0x100000, CRC(973ab954) SHA1(4e211b8073e018ae2371e941fc6cc71c9e5f3eeb) )
+	ROM_LOAD16_WORD_SWAP( "256_lg03.p1", 0x000000, 0x100000, CRC(fb20cf31) SHA1(b71c0544850824a926f19fdbc750dec0c2b88446) )
 	ROM_LOAD16_WORD_SWAP( "256_lg03.p2", 0x100000, 0x400000, CRC(c9a11f2f) SHA1(67c4fedc96414112da0fad5947f93d7bf3974448) )
     MSLUG3H_CUSTOMPATCH_MODS_FILL
     MSLUG3H_AES_FILL
@@ -13180,7 +13344,7 @@ ROM_END
 
 ROM_START( mslug3lg04 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_lg04.p1", 0x000000, 0x100000, CRC(66cd7c6a) SHA1(e5b8bca44beeb1bfebd93eb45a0dd8ba1ec1186a) )
+	ROM_LOAD16_WORD_SWAP( "256_lg04.p1", 0x000000, 0x100000, CRC(0ad70a0f) SHA1(0d6e99be02c90d2b73b034c043e90edb2b84e3de) )
 	ROM_LOAD16_WORD_SWAP( "256_lg03.p2", 0x100000, 0x400000, CRC(c9a11f2f) SHA1(67c4fedc96414112da0fad5947f93d7bf3974448) )
     MSLUG3H_CUSTOMPATCH_MODS_FILL
     MSLUG3H_AES_FILL
@@ -13194,7 +13358,7 @@ ROM_END
 
 ROM_START( mslug3lg05 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_lg05.p1", 0x000000, 0x100000, CRC(ed984328) SHA1(6b26d8a2e5248161eae5e90bf46f2366c2160435) )
+	ROM_LOAD16_WORD_SWAP( "256_lg05.p1", 0x000000, 0x100000, CRC(8182354d) SHA1(b1b7a1223dcc417c6a9f25eb45990b44ae5a4db5) )
 	ROM_LOAD16_WORD_SWAP( "256_lg03.p2", 0x100000, 0x400000, CRC(c9a11f2f) SHA1(67c4fedc96414112da0fad5947f93d7bf3974448) )
     MSLUG3H_CUSTOMPATCH_MODS_FILL
     MSLUG3H_AES_FILL
@@ -13208,7 +13372,7 @@ ROM_END
 
 ROM_START( mslug3lg06 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_lg06.p1", 0x000000, 0x100000, CRC(87ca71dd) SHA1(cb24f004d5623c76e0d296b07885e20596870ecd) )
+	ROM_LOAD16_WORD_SWAP( "256_lg06.p1", 0x000000, 0x100000, CRC(ebd007b8) SHA1(0052a6112739dfd3e6347f37b4b37327b255c378) )
 	ROM_LOAD16_WORD_SWAP( "256_lg03.p2", 0x100000, 0x400000, CRC(c9a11f2f) SHA1(67c4fedc96414112da0fad5947f93d7bf3974448) )
     MSLUG3H_CUSTOMPATCH_MODS_FILL
     MSLUG3H_AES_FILL
@@ -13303,7 +13467,7 @@ ROM_END
 
 ROM_START( mslug3li01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_li01.p1", 0x000000, 0x100000, CRC(852a2d77) SHA1(fecbed715bf7d3f59c844d7f4afab80525aa5a5b) )
+	ROM_LOAD16_WORD_SWAP( "256_li01.p1", 0x000000, 0x100000, CRC(4734e1a1) SHA1(520083125241fd6ae0715375a74735248baf2bfc) )
 	ROM_LOAD16_WORD_SWAP( "256_li01.p2", 0x100000, 0x400000, CRC(97083d5d) SHA1(c716aa3acec2976b469b4c5b91ad0d5ad12d80c3) )
     MSLUG3H_CUSTOMPATCH_MODS_FILL
     MSLUG3H_AES_FILL
@@ -14093,7 +14257,7 @@ ROM_END
 
 ROM_START( mslug3rmg01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_rmg01.p1", 0x000000, 0x100000, CRC(6c332994) SHA1(40d165c37c09c1d2af80f8293d50942242b9af11) )
+	ROM_LOAD16_WORD_SWAP( "256_rmg01.p1", 0x000000, 0x100000, CRC(00295ff1) SHA1(eda26a36b7d72aa7f6e72e2df1a70f7a442e48cc) )
 	ROM_LOAD16_WORD_SWAP( "256_rmg01.p2", 0x100000, 0x400000, CRC(72cb885b) SHA1(5fc0034f4d864cb9017bb117a970bc21f62f9226) )
     MSLUG3H_CUSTOMPATCH_MODS_FILL
     MSLUG3H_AES_FILL
@@ -14115,10 +14279,9 @@ ROM_START( mslug3rmh01 )
 	MSLUG3RMZ_SPRITES
 ROM_END
 
-
 ROM_START( mslug3rmi01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_rmi01.p1", 0x000000, 0x100000, CRC(430cc6cc) SHA1(ffaf4329ab5d958d9f819da17358dedc3a3ab235) )
+	ROM_LOAD16_WORD_SWAP( "256_rmi01.p1", 0x000000, 0x100000, CRC(81120a1a) SHA1(26458c940dd0d0108734a88e3043067915b197db) )
 	ROM_LOAD16_WORD_SWAP( "256_rmi01.p2", 0x100000, 0x400000, CRC(3beaf121) SHA1(8b5722067c471b216e2d15a2b1afb0b4999fadee) )
     MSLUG3H_CUSTOMPATCH_MODS_FILL
     MSLUG3H_AES_FILL
@@ -14716,6 +14879,7 @@ GAME( 2020, mslug3ctma12,       mslug3,   neogeo_noslot, mslughb, neogeo_state, 
 GAME( 2020, mslug3ctma13,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Automatic Storage Custom Version 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctma14,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Hybrid Bullets Version 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctma15,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Early Summer Starry Sky Version 2020-05-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug3ctma16,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting 1V2 Generation 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmb01,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Multi-Function Custom Version 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmb02,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Onimusha Samanosuke Custom Version 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmb03,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Summon Mount Custom Edition 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
@@ -14731,6 +14895,7 @@ GAME( 2020, mslug3ctmb12,       mslug3,   neogeo_noslot, mslughb, neogeo_state, 
 GAME( 2020, mslug3ctmb13,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Automatic Storage Custom Version 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmb14,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Hybrid Bullets Version 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmb15,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Early Summer Starry Sky Version 2020-05-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug3ctmb16,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future 1V2 Generation 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmc01,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Soldiers Reset Multi-Function Custom Version 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmc02,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Soldiers Reset Onimusha Samanosuke Custom Version 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmc03,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Soldiers Reset Summon Mount Custom Edition 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
@@ -14746,6 +14911,7 @@ GAME( 2020, mslug3ctmc12,       mslug3,   neogeo_noslot, mslughb, neogeo_state, 
 GAME( 2020, mslug3ctmc13,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Soldiers Reset Automatic Storage Custom Version 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmc14,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Soldiers Reset Hybrid Bullets Version 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmc15,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Soldiers Reset Early Summer Starry Sky Version 2020-05-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug3ctmc16,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Soldiers Reset 1V2 Generation 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmd01,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Multi-Function Custom Version 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmd02,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Onimusha Samanosuke Custom Version 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmd03,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Summon Mount Custom Edition 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
@@ -14761,6 +14927,7 @@ GAME( 2020, mslug3ctmd12,       mslug3,   neogeo_noslot, mslughb, neogeo_state, 
 GAME( 2020, mslug3ctmd13,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Automatic Storage Custom Version 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmd14,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Hybrid Bullets Version 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmd15,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Early Summer Starry Sky Version 2020-05-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug3ctmd16,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake 1V2 Generation 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctme01,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting #1 Multi-Function Custom Version 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctme02,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting #1 Onimusha Samanosuke Custom Version 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctme03,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting #1 Summon Mount Custom Edition 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
@@ -14775,6 +14942,7 @@ GAME( 2020, mslug3ctme11,       mslug3,   neogeo_noslot, mslughb, neogeo_state, 
 GAME( 2020, mslug3ctme12,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting #1 Enemy Speed Up Custom Version 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 //GAME( 2020, mslug3ctme13,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting #1 Automatic Storage Custom Version 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctme14,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting #1 Hybrid Bullets Version 2020-05-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug3ctme16,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting #1 1V2 Generation 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmf01,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting #2 Multi-Function Custom Version 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmf02,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting #2 Onimusha Samanosuke Custom Version 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmf03,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting #2 Summon Mount Custom Edition 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
@@ -14789,6 +14957,7 @@ GAME( 2020, mslug3ctmf11,       mslug3,   neogeo_noslot, mslughb, neogeo_state, 
 GAME( 2020, mslug3ctmf12,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting #2 Enemy Speed Up Custom Version 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 //GAME( 2020, mslug3ctmf13,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting #2 Automatic Storage Custom Version 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmf14,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting #2 Hybrid Bullets Version 2020-05-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug3ctmf16,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting #2 1V2 Generation 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmg01,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting #3 Multi-Function Custom Version 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmg02,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting #3 Onimusha Samanosuke Custom Version 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmg03,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting #3 Summon Mount Custom Edition 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
@@ -14803,6 +14972,7 @@ GAME( 2020, mslug3ctmg11,       mslug3,   neogeo_noslot, mslughb, neogeo_state, 
 GAME( 2020, mslug3ctmg12,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting #3 Enemy Speed Up Custom Version 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 //GAME( 2020, mslug3ctmg13,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting #3 Automatic Storage Custom Version 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmg14,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting #3 Hybrid Bullets Version 2020-05-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug3ctmg16,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting #3 1V2 Generation 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ctmh01,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Multi-Function Custom Version 2023-03-28)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ctmh02,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Onimusha Samanosuke Custom Version 2023-03-28)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ctmh03,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Summon Mount Custom Edition 2023-03-28)" , MACHINE_SUPPORTS_SAVE )
@@ -14817,6 +14987,7 @@ GAME( 2023, mslug3ctmh11,       mslug3,   neogeo_noslot, mslughb, neogeo_state, 
 GAME( 2023, mslug3ctmh12,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Enemy Speed Up Custom Version 2023-03-28)", MACHINE_SUPPORTS_SAVE )
 //GAME( 2023, mslug3ctmh13,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Automatic Storage Custom Version 2023-03-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ctmh14,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Hybrid Bullets Version 2023-03-28)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug3ctmh16,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 1V2 Generation 2023-03-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ctmi01,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Multi-Function Custom Version 2023-03-28)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ctmi02,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Onimusha Samanosuke Custom Version 2023-03-28)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ctmi03,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Summon Mount Custom Edition 2023-03-28)" , MACHINE_SUPPORTS_SAVE )
@@ -14831,6 +15002,7 @@ GAME( 2023, mslug3ctmi11,       mslug3,   neogeo_noslot, mslughb, neogeo_state, 
 GAME( 2023, mslug3ctmi12,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Enemy Speed Up Custom Version 2023-03-28)", MACHINE_SUPPORTS_SAVE )
 //GAME( 2023, mslug3ctmi13,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Automatic Storage Custom Version 2023-03-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ctmi14,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Hybrid Bullets Version 2023-03-28)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug3ctmi16,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 1V2 Generation 2023-03-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ctmj01,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Multi-Function Custom Version 2023-03-28)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ctmj02,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Onimusha Samanosuke Custom Version 2023-03-28)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ctmj03,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Summon Mount Custom Edition 2023-03-28)" , MACHINE_SUPPORTS_SAVE )
@@ -14845,6 +15017,7 @@ GAME( 2023, mslug3ctmj11,       mslug3,   neogeo_noslot, mslughb, neogeo_state, 
 GAME( 2023, mslug3ctmj12,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Enemy Speed Up Custom Version 2023-03-28)", MACHINE_SUPPORTS_SAVE )
 //GAME( 2023, mslug3ctmj13,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Automatic Storage Custom Version 2023-03-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ctmj14,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Hybrid Bullets Version 2023-03-28)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug3ctmj16,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 1V2 Generation 2023-03-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ctmk01,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Multi-Function Custom Version 2023-03-28)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ctmk02,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Onimusha Samanosuke Custom Version 2023-03-28)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ctmk03,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Summon Mount Custom Edition 2023-03-28)" , MACHINE_SUPPORTS_SAVE )
@@ -14859,6 +15032,7 @@ GAME( 2023, mslug3ctmk11,       mslug3,   neogeo_noslot, mslughb, neogeo_state, 
 GAME( 2023, mslug3ctmk12,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Enemy Speed Up Custom Version 2023-03-28)", MACHINE_SUPPORTS_SAVE )
 //GAME( 2023, mslug3ctmk13,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Automatic Storage Custom Version 2023-03-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ctmk14,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Hybrid Bullets Version 2023-03-28)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug3ctmk16,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 1V2 Generation 2023-03-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ctml01,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug Custom Version 2023-07-04)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4ctma01,       mslug4,   neogeo_noslot, mslughw, neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting The Longest Fight Version 2022-10-24)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4ctma02,       mslug4,   neogeo_noslot, mslughw, neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Multi-Function Version 2022-10-24)", MACHINE_SUPPORTS_SAVE )

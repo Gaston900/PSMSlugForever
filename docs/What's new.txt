@@ -12,7 +12,23 @@ Version 0.215 [HBMAME] is being used as the base system.
 I am only giving support for the Windows XP, Windows 7, Windows 8, Windows 10 and Windows 11 operating systems, 
 for the 86/64 bit cpu of the compatible microprocessors.
 
+Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use Or Using The Project For A Fundraising Fundraiser.
+
 ===============================================================================================================================
+
+2023-08-14
+
+- It has been discarded and a cleanup of many hack roms has been produced.
+- All hack roms remixes and extreme Metal Slug 3/X have been updated.
+- All Metal Slug 2 hack roms now have Turbo effect. Clarification: none of the roms have been modified, all of them keep the original CRC.
+- There are 5 hack roms that have gone through the decrypt -> encrypt p process, now the emulator configurations are compatible by default.
+- Fixed the amount of credits now has 99 credits player 1 and player 2 of Metal Slug 5 that has AES mode.
+- Added an essential patch for all Metal Slug franchises, which many of these will fix some bugs in the roms themselves.
+- Fixed, Metal Slug 3 SE Special Edition player stamina will now be visible.
+- Fixed a bug that caused player not to die causing an infinite drop loop in space travel when switching weapons with the D key. 
+  Player will now spawn on the mothership, Metal Slug 3 Onimusha Samanosuke.
+
+
 
 2023-07-22
 
