@@ -27,7 +27,8 @@ Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use O
 - Fixed, Metal Slug 3 SE Special Edition player stamina will now be visible.
 - Fixed a bug that caused player not to die causing an infinite drop loop in space travel when switching weapons with the D key. 
   Player will now spawn on the mothership, Metal Slug 3 Onimusha Samanosuke.
-
+- Updated Roms Metal Slug (Origin 2023-08-03)
+- Updated Roms Metal Slug 3 (Legendary Latest Random Level Version 2023-08-14)
 
 
 2023-07-22

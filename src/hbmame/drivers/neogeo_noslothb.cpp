@@ -5720,7 +5720,7 @@ ROM_END
 
 ROM_START( mslughc10 ) //mslugdqy
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "201_hc10.p1", 0x100000, 0x100000, CRC(1226d6b8) SHA1(8710a737e13c5537bc9e12766eb533205be14a82) )
+	ROM_LOAD16_WORD_SWAP( "201_hc10.p1", 0x100000, 0x100000, CRC(f10ef09b) SHA1(18fe49d1b5ec8bd9c945ed8f1c9b35e625239fa3) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
     MSLUG_ESSENTIALPATCH_MODS_FILL
     MSLUG_MVS_FILL
@@ -6370,10 +6370,10 @@ ROM_START( mslug3hc27 ) //mslug3ki
 	MSLUG3DD_SPRITES
 ROM_END
 
-ROM_START( mslug3hc28 ) //mslug3sc, 
+ROM_START( mslug3hc28 ) //mslug3sc, mslug3cq
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_hc28.p1", 0x000000, 0x100000, CRC(a1d0a37a) SHA1(059f464e733ffd9b1344b30c41d89683063468e4) )
-	ROM_LOAD16_WORD_SWAP( "256_hc28.p2", 0x100000, 0x400000, CRC(8585d898) SHA1(ed35d67f339ba1bb78d3a36c438c2f5fdae95684) )
+	ROM_LOAD16_WORD_SWAP( "256_hc28.p1", 0x000000, 0x100000, CRC(5a35434b) SHA1(7fd7690f772a18cb5d6431742f892023d41bbcd8) )
+	ROM_LOAD16_WORD_SWAP( "256_hc28.p2", 0x100000, 0x400000, CRC(587bb26d) SHA1(1802aa525bec26dbd46c43e38a1e8148872b88c1) )
     MSLUG3H_ESSENTIALPATCH_MODS_FILL
 	MSLUG3H_MVS_FILL
     DEFAULT_BIOS_BOOT_(EUROPE_MVS)
@@ -14648,7 +14648,7 @@ GAME( 2018, mslughc06,        mslug,    neogeo_noslot, mslughb, neogeo_state,   
 GAME( 2021, mslughc07,        mslug,    neogeo_noslot, mslughb, neogeo_state,    init_neogeo,     ROT0, "KofKill, Wang Hua, Czk", "Metal Slug (Unity Time! 2021-02-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslughc08,        mslug,    neogeo_noslot, mslughb, neogeo_state,    init_neogeo,     ROT0, "DDJ",            "Metal Slug (Stage Select 2016-10-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslughc09,        mslug,    neogeo_noslot, mslughb, neogeo_state,    init_neogeo,     ROT0, "GOTVG",          "Metal Slug (1v2 Generation 2023-06-26)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslughc10,        mslug,    neogeo_noslot, mslughb, neogeo_state,    init_neogeo,     ROT0, "GOTVG",          "Metal Slug (Origin 2023-03-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslughc10,        mslug,    neogeo_noslot, mslughb, neogeo_state,    init_neogeo,     ROT0, "GOTVG",          "Metal Slug (Origin 2023-08-03)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, mslughc11,        mslug,    neogeo_noslot, mslughb, neogeo_state,    init_neogeo,     ROT0, "DDJ",            "Metal Slug (Jump In Mid Air 2017-08-24)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslughc12,        mslug,    neogeo_noslot, mslughb, neogeo_state,    init_neogeo,     ROT0, "hack",           "Metal Slug (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
 
@@ -14703,7 +14703,7 @@ GAME( 2021, mslug3hc24,       mslug3,   neogeo_noslot, mslughb, neogeo_state,   
 GAME( 2023, mslug3hc25,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Edition 2023-03-01)" , MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3hc26,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Early Summer Starry Sky 2022-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3hc27,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Komorebi 2022-05-11)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug3hc28,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Latest Random Level Version 2023-06-01)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug3hc28,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Latest Random Level Version 2023-08-14)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 GAME( 2012, mslug3hc29,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Change Weapons 2012-05-22)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslug3hc30,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "DDJ",             "Metal Slug 3 (Change Body 2016-03-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2012, mslug3hc31,       mslug3,   neogeo_noslot, mslughb, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Violence Edition 2012-03-01)", MACHINE_SUPPORTS_SAVE )
