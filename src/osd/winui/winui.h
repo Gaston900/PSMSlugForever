@@ -84,7 +84,7 @@
 #endif
 #define MAMENAME			"PSMSlugForever"
 
-#define MAME_VERSION		"4.5,2"
+#define MAME_VERSION		"4.6"
 #define MAMEUIFX_VERSION	MAME_VERSION " (" __DATE__")"
 
 #define SEARCH_PROMPT		"<search here>"
