@@ -16,6 +16,22 @@ Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use O
 
 ===============================================================================================================================
 
+2023-09-05
+
+- Now all hack roms Metal Slug 2 became the turbo version.
+- Now all hack roms Metal Slug 3/4/5 became the longest fight version. Except Metal Slug 4 HP version, it is not compatible, it crashes.
+- Now all hack roms Metal Slug 1/2/X became version 1V2 generation.
+- Now all hack roms Metal Slug 2/3/4/5/X have infinite health. Except Metal Slug 1 is not compatible.
+- Now all Metal Slug 3/4/5 hack roms have included 2X Ammunition.
+- Fixed some Metal Slug X hack roms causing a crash at the start of level 6.
+- Fixed the special ability that Fio has (hadouken) now has a normal speed that it should have when using it for player 2. "Metal Slug X (Legendary Origin Edition 2023-02-13)"
+- Fixed the damage bar bug that is now enabled. "Metal Slug X (Last Legendary Edition 2023-03-11)"
+- Fixed a crash that occurred at level 3-2. "Metal Slug 3 (Pigeon Slug 2023-03-28)"
+- Updated Roms Metal Slug (Origin 2023-08-19)
+- Updated Roms Metal Slug 3 (Legendary Latest Random Level Version 2023-08-19)
+
+
+
 2023-08-14
 
 - It has been discarded and a cleanup of many hack roms has been produced.
