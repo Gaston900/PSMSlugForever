@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, René Single, Mamesick
+// copyright-holders:Chris Kirmse, Mike Haaland, RenÃ© Single, Mamesick
 
 #include "winui.h"
 #include <fstream>
@@ -1446,11 +1446,13 @@ static LRESULT CALLBACK MameWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPAR
 		case WM_CLOSE:
 			if (GetExitDialog())
 			{
+/*
 				if (winui_message_box_utf8(hMain, "Are you sure you want to quit?", MAMEUINAME, MB_ICONQUESTION | MB_YESNO) == IDNO)
 				{
 					SetFocus(hWndList);
 					return true;
 				}
+*/
 			}
 
 			Win32UI_exit();
