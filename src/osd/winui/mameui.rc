@@ -16,16 +16,16 @@ BEGIN
     POPUP "&File"
     BEGIN
         MENUITEM "Play\tAlt+O",                         ID_FILE_PLAY
-        MENUITEM SEPARATOR
-        MENUITEM "Play INP Playback\tAlt+F1",           ID_FILE_PLAY_BACK
-        MENUITEM "Play WAV sound\tAlt+F2",                 ID_PLAY_AUDIO
-        MENUITEM "Play MNG video\tAlt+F3",                 ID_PLAY_MNG
-        MENUITEM "Play AVI video\tAlt+F5",                 ID_PLAY_VIDEO
-        MENUITEM SEPARATOR
-        MENUITEM "Record game INP playback\tCtrl+F1",   ID_FILE_PLAY_RECORD
-        MENUITEM "Record game WAV sound\tCtrl+F2",         ID_FILE_PLAY_RECORD_WAVE
-        MENUITEM "Record game MNG video\tCtrl+F3",         ID_FILE_PLAY_RECORD_MNG
-        MENUITEM "Record game AVI video\tCtrl+F5",         ID_FILE_PLAY_RECORD_AVI
+//        MENUITEM SEPARATOR
+//        MENUITEM "Play INP Playback\tAlt+F1",           ID_FILE_PLAY_BACK
+//        MENUITEM "Play WAV sound\tAlt+F2",                 ID_PLAY_AUDIO
+//        MENUITEM "Play MNG video\tAlt+F3",                 ID_PLAY_MNG
+//        MENUITEM "Play AVI video\tAlt+F5",                 ID_PLAY_VIDEO
+//        MENUITEM SEPARATOR
+//        MENUITEM "Record game INP playback\tCtrl+F1",   ID_FILE_PLAY_RECORD
+//        MENUITEM "Record game WAV sound\tCtrl+F2",         ID_FILE_PLAY_RECORD_WAVE
+//        MENUITEM "Record game MNG video\tCtrl+F3",         ID_FILE_PLAY_RECORD_MNG
+//        MENUITEM "Record game AVI video\tCtrl+F5",         ID_FILE_PLAY_RECORD_AVI
         MENUITEM SEPARATOR
         MENUITEM "Load game savestate\tAlt+F7",         ID_FILE_LOADSTATE
         MENUITEM SEPARATOR
@@ -104,18 +104,18 @@ BEGIN
     BEGIN
         MENUITEM "Select random game\tAlt+R",              ID_CONTEXT_SELECT_RANDOM
         MENUITEM SEPARATOR
-        MENUITEM "Custom filters\tCtrl+F",              ID_CONTEXT_FILTERS
-        MENUITEM "Customize fields\tCtrl+C",             ID_CUSTOMIZE_FIELDS
-        MENUITEM SEPARATOR
+//        MENUITEM "Custom filters\tCtrl+F",              ID_CONTEXT_FILTERS
+//        MENUITEM "Customize fields\tCtrl+C",             ID_CUSTOMIZE_FIELDS
+//        MENUITEM SEPARATOR
         MENUITEM "Audit all games\tCtrl+A",                ID_FILE_AUDIT
         MENUITEM "Refresh games list\tF5",               ID_UPDATE_GAMELIST
-        MENUITEM SEPARATOR
-        MENUITEM "Save current games list\tAlt+F8",        ID_FILE_GAMELIST
-        MENUITEM "Save current ROMs list\tAlt+F9",      ID_FILE_ROMSLIST
+//        MENUITEM SEPARATOR
+//        MENUITEM "Save current games list\tAlt+F8",        ID_FILE_GAMELIST
+//        MENUITEM "Save current ROMs list\tAlt+F9",      ID_FILE_ROMSLIST
     END
     POPUP "&Help"
     BEGIN
-//        MENUITEM "Online Manual\tF1",                      ID_HELP_CONTENTS
+//      MENUITEM "Online Manual\tF1",                      ID_HELP_CONTENTS
 //      MENUITEM "Support Forum\tF3",                       ID_HELP_TROUBLE
 //      MENUITEM SEPARATOR
         MENUITEM "Mame release notes\tF6",              ID_HELP_WHATS_NEW
@@ -133,27 +133,27 @@ BEGIN
     BEGIN
         MENUITEM "Play\tAlt+O",                         ID_FILE_PLAY
         MENUITEM SEPARATOR
-        MENUITEM "Record INP playback\tCtrl+F1",           ID_FILE_PLAY_RECORD
+//        MENUITEM "Record INP playback\tCtrl+F1",           ID_FILE_PLAY_RECORD
         MENUITEM "Load savestate\tAlt+F7",              ID_FILE_LOADSTATE
         MENUITEM SEPARATOR
-        MENUITEM "Add to custom folder\tAlt+W",         ID_CONTEXT_ADD_CUSTOM
-        MENUITEM "Remove from this folder\tAlt+X",      ID_CONTEXT_REMOVE_CUSTOM
+//        MENUITEM "Add to custom folder\tAlt+W",         ID_CONTEXT_ADD_CUSTOM
+//        MENUITEM "Remove from this folder\tAlt+X",      ID_CONTEXT_REMOVE_CUSTOM
         MENUITEM SEPARATOR
         MENUITEM "Information\tAlt+I",                  ID_GAME_INFO
         MENUITEM "Audit\tAlt+A",                        ID_GAME_AUDIT
-        MENUITEM SEPARATOR
-        MENUITEM "Reset played counts\tAlt+V",            ID_CONTEXT_RESET_PLAYCOUNT
-        MENUITEM "Reset played time\tAlt+Y",            ID_CONTEXT_RESET_PLAYTIME
-        MENUITEM SEPARATOR
-        MENUITEM "Play ProgettoSnaps MP4 movie\tCtrl+M",ID_VIDEO_SNAP
-        MENUITEM "Read the PDF Manual",                 ID_MANUAL
-        MENUITEM "Open Info in Notepad",                ID_NOTEPAD
-        MENUITEM "Listen to music with M1FX\tAlt+M",    ID_PLAY_M1
+//        MENUITEM SEPARATOR
+//        MENUITEM "Reset played counts\tAlt+V",          ID_CONTEXT_RESET_PLAYCOUNT
+//        MENUITEM "Reset played time\tAlt+Y",            ID_CONTEXT_RESET_PLAYTIME
+//        MENUITEM SEPARATOR
+//        MENUITEM "Play ProgettoSnaps MP4 movie\tCtrl+M",ID_VIDEO_SNAP
+//        MENUITEM "Read the PDF Manual",                 ID_MANUAL
+//        MENUITEM "Open Info in Notepad",                ID_NOTEPAD
+//        MENUITEM "Listen to music with M1FX\tAlt+M",    ID_PLAY_M1
         MENUITEM SEPARATOR
         MENUITEM "Properties\tAlt+G",                   ID_GAME_PROPERTIES
         MENUITEM "Properties for driver\tAlt+D",        ID_FOLDER_SOURCEPROPERTIES
-        MENUITEM SEPARATOR
-        MENUITEM "View ZIP file content\tAlt+Z",          ID_VIEW_ZIP
+//        MENUITEM SEPARATOR
+//        MENUITEM "View ZIP file content\tAlt+Z",          ID_VIEW_ZIP
     END
 END
 
