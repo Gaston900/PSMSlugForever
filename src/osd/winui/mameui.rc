@@ -135,7 +135,7 @@ BEGIN
         MENUITEM SEPARATOR
 //        MENUITEM "Record INP playback\tCtrl+F1",           ID_FILE_PLAY_RECORD
         MENUITEM "Load savestate\tAlt+F7",              ID_FILE_LOADSTATE
-        MENUITEM SEPARATOR
+//        MENUITEM SEPARATOR
 //        MENUITEM "Add to custom folder\tAlt+W",         ID_CONTEXT_ADD_CUSTOM
 //        MENUITEM "Remove from this folder\tAlt+X",      ID_CONTEXT_REMOVE_CUSTOM
         MENUITEM SEPARATOR

@@ -56,7 +56,7 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_CURRENT_TAB,				"0",        	OPTION_STRING, nullptr },
 	{ MUIOPTION_SHOW_TOOLBAR,				"1",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_SHOW_STATUS_BAR,			"1",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_HIDE_FOLDERS,				nullptr,        OPTION_STRING, nullptr },
+	{ MUIOPTION_HIDE_FOLDERS,				"source",       OPTION_STRING, nullptr },
 	{ MUIOPTION_SHOW_FOLDER_SECTION,		"1",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_SHOW_TABS,					"1",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_HIDE_TABS,					"",             OPTION_STRING, nullptr },
