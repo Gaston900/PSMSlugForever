@@ -18,6 +18,9 @@
 #define NUMSNAPVIEW 			WINUI_ARRAY_LENGTH(g_ComboBoxSnapView)
 #define NUMGLSLFILTER 			WINUI_ARRAY_LENGTH(g_ComboBoxGLSLFilter)
 
+#define NUMSELECTVIDEOMODE 		WINUI_ARRAY_LENGTH(g_ComboBoxVideo)
+
+#define NUMSCALEEFFECTS			18
 /* Called in winui.c to create the property page */
 void InitPropertyPage(HINSTANCE hInst, HWND hWnd, OPTIONS_TYPE opt_type, int folder_id, int game_num);
 intptr_t CALLBACK GamePropertiesDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);

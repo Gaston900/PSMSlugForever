@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, Ren� Single, Mamesick
+// copyright-holders:Chris Kirmse, Mike Haaland, Ren챕 Single, Mamesick
 
 #include "winui.h"
 
@@ -171,6 +171,16 @@ const char * GetDriverGameName(int nIndex)
 {
 	return driver_list::driver(nIndex).name;
 }
+
+int GetDriverIsClone(int nIndex)
+{
+	return driver_list::clone(nIndex);
+}
+
+//const char * GetDriverCloneName(int nIndex)
+//{
+//	return driver_list::clone(nIndex).name;
+//}
 
 const char * GetDriverGameManufacturer(int nIndex)
 {
@@ -643,12 +653,16 @@ bool winui_move_file_utf8(const char* existingfilename, const char* newfilename)
 void CenterWindow(HWND hWnd)
 {
 	RECT rcCenter, rcWnd;
+
+	// 부모윈도 획득(없으면 NULL이 리턴됨)
 	HWND hWndParent = GetParent(hWnd);
 
+	// Center에 위치시킬려는 윈도의 크기
 	GetWindowRect(hWnd, &rcWnd);
 	int iWndWidth  = rcWnd.right - rcWnd.left;
 	int iWndHeight = rcWnd.bottom - rcWnd.top;
-
+	
+	// Center의 기준이 될 타겟좌표 계산 - 부모윈도가 있는 경우 부모의 위치가 기준
 	if (hWndParent != NULL)
 	{
 		GetWindowRect(hWndParent, &rcCenter);
@@ -663,6 +677,8 @@ void CenterWindow(HWND hWnd)
 
 	int iScrWidth  = rcCenter.right - rcCenter.left;
 	int iScrHeight = rcCenter.bottom - rcCenter.top;
+
+	// 새로운 위치를 계산	
 	int xLeft = rcCenter.left;
 	int yTop = rcCenter.top;
 

@@ -17,11 +17,12 @@
 #include "validity.h"
 #include "clifront.h"
 #include "luaengine.h"
-#include <time.h>
+#include <ctime>
 #include "ui/ui.h"
 #include "ui/selgame.h"
 #include "ui/simpleselgame.h"
 #include "cheat.h"
+#include "ui/datfile.h"// EKMAME 
 #include "ui/inifile.h"
 #include "xmlfile.h"
 
@@ -309,8 +310,9 @@ ui_manager* mame_machine_manager::create_ui(running_machine& machine)
 	m_ui->init();
 
 	machine.add_notifier(MACHINE_NOTIFY_RESET, machine_notify_delegate(&mame_machine_manager::reset, this));
-
-	/*m_ui->set_startup_text("Initializing...", true);*/
+/*
+	m_ui->set_startup_text("Initializing...", true);
+*/
 	return m_ui.get();
 }
 
@@ -337,6 +339,8 @@ void mame_machine_manager::create_custom(running_machine& machine)
 
 	// start favorite manager
 	m_favorite = std::make_unique<favorite_manager>(m_ui->options());
+	// start datfile manager // EKMAME 
+	m_datfile = std::make_unique<ui::datfile_manager>(machine, m_ui->options());
 }
 
 void mame_machine_manager::load_cheatfiles(running_machine& machine)

@@ -69,6 +69,9 @@ static const DIRECTORYINFO g_directoryInfo[] =
 	{ "Titles",                 GetTitlesDir,       SetTitlesDir,       true,  0 },
 	{ "Versus",                 GetVersusDir,       SetVersusDir,       true,  0 },
 	{ "Videos and Movies",      GetVideoDir,        SetVideoDir,        false, 0 },
+#ifdef MAME_AVI	
+	{ "AVI Record Files",       GetAVIDir,          SetAVIDir,        false, 0 },
+#endif	
 	{ NULL }
 };
 

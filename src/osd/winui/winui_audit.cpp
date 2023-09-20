@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, René Single, Mamesick
+// copyright-holders:Chris Kirmse, Mike Haaland, RenÃ© Single, Mamesick
 
 #include "winui.h"
 
@@ -27,8 +27,8 @@ static int roms_incorrect = 0;
 static int roms_notfound = 0;
 static int audit_color = 0;
 static int audit_samples = 0;
-static char rom_path[MAX_DIRS][MAX_PATH];
-static int num_path = 0;
+char rom_path[MAX_DIRS][MAX_PATH];
+int num_path = 0;
 static HWND hAudit = NULL;
 static HICON audit_icon = NULL;
 static HICON hIcon = NULL;
@@ -388,7 +388,7 @@ static void ProcessNextRom(void)
 
 	switch (retval)
 	{
-		case media_auditor::BEST_AVAILABLE: 	/* correct, incorrect or separate count? */
+		case media_auditor::BEST_AVAILABLE: /* correct, incorrect or separate count? */
 		case media_auditor::CORRECT:
 		case media_auditor::NONE_NEEDED:
 			roms_correct++;

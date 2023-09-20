@@ -10,6 +10,8 @@
 ---------------------------------------------------------------------------
 
 dofile("arcade.lua")
+dofile("mess.lua")
+dofile("virtual.lua")
 
 function createProjects_mame_mame(_target, _subtarget)
 	createProjects_mame_arcade(_target, _subtarget)

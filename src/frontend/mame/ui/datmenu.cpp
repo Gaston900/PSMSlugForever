@@ -149,10 +149,11 @@ void menu_dats_view::populate(float &customtop, float &custombottom)
 
 void menu_dats_view::draw(uint32_t flags)
 {
+	float const aspect = machine().render().ui_aspect(&container());
 	float const line_height = ui().get_line_height();
-	float const ud_arrow_width = line_height * machine().render().ui_aspect();
-	float const gutter_width = 0.52f * line_height * machine().render().ui_aspect();
-	float const visible_width = 1.0f - (2.0f * ui().box_lr_border());
+	float const ud_arrow_width = line_height * aspect;
+	float const gutter_width = 0.52f * line_height * aspect;
+	float const visible_width = 1.0f - (2.0f * ui().box_lr_border() * aspect);
 	float const visible_left = (1.0f - visible_width) * 0.5f;
 	float const extra_height = 2.0f * line_height;
 	float const visible_extra_menu_height = get_customtop() + get_custombottom() + extra_height;
@@ -180,7 +181,7 @@ void menu_dats_view::draw(uint32_t flags)
 	float y2 = visible_top + visible_main_menu_height + ui().box_tb_border() + extra_height;
 	float line = visible_top + float(m_visible_lines) * line_height;
 
-	ui().draw_outlined_box(container(), x1, y1, x2, y2, ui().colors().background_color());
+	ui().draw_outlined_box(container(), x1, y1, x2, y2, UI_BACKGROUND_CMD_COLOR);
 
 	m_visible_lines = (std::min)(visible_items, m_visible_lines);
 	top_line = (std::max)(0, top_line);
@@ -191,7 +192,7 @@ void menu_dats_view::draw(uint32_t flags)
 	int const n_loop = (std::min)(visible_items, m_visible_lines);
 	for (int linenum = 0; linenum < n_loop; linenum++)
 	{
-		float const line_y = visible_top + (float)linenum * line_height;
+		float const line_y = visible_top + float(linenum) * line_height;
 		int const itemnum = top_line + linenum;
 		menu_item const &pitem = item(itemnum);
 		char const *const itemtext = pitem.text.c_str();
@@ -200,8 +201,8 @@ void menu_dats_view::draw(uint32_t flags)
 		float const line_x1 = x2 - 0.5f * UI_LINE_WIDTH;
 		float const line_y1 = line_y + line_height;
 
-		rgb_t fgcolor = ui().colors().text_color();
-		rgb_t bgcolor = ui().colors().text_bg_color();
+		rgb_t fgcolor = UI_TEXT_CMD_COLOR;
+		rgb_t bgcolor = UI_TEXT_BG_CMD_COLOR;
 
 		if (!linenum && top_line)
 		{
@@ -263,7 +264,7 @@ void menu_dats_view::draw(uint32_t flags)
 		{
 			container().add_line(
 					visible_left, line + 0.5f * line_height, visible_left + visible_width, line + 0.5f * line_height,
-					UI_LINE_WIDTH, ui().colors().text_color(), PRIMFLAG_BLENDMODE(BLENDMODE_ALPHA));
+					UI_LINE_WIDTH, UI_TEXT_CMD_COLOR, PRIMFLAG_BLENDMODE(BLENDMODE_ALPHA));
 		}
 		else
 		{
@@ -295,9 +296,10 @@ void menu_dats_view::custom_render(void *selectedref, float top, float bottom, f
 	float width;
 	std::string driver = (m_issoft == true) ? m_swinfo->longname : m_driver->type.fullname();
 
+	float const lr_border = ui().box_lr_border() * machine().render().ui_aspect(&container());
 	ui().draw_text_full(container(), driver.c_str(), 0.0f, 0.0f, 1.0f, ui::text_layout::CENTER, ui::text_layout::TRUNCATE,
 		mame_ui_manager::NONE, rgb_t::white(), rgb_t::black(), &width, nullptr);
-	width += 2 * ui().box_lr_border();
+	width += 2 * lr_border;
 	maxwidth = std::max(maxwidth, width);
 
 	// compute our bounds
@@ -307,15 +309,15 @@ void menu_dats_view::custom_render(void *selectedref, float top, float bottom, f
 	float y2 = origy1 - 2.0f * ui().box_tb_border() - ui().get_line_height();
 
 	// draw a box
-	ui().draw_outlined_box(container(), x1, y1, x2, y2, ui().colors().background_color());
+	ui().draw_outlined_box(container(), x1, y1, x2, y2, UI_BACKGROUND_CMD_COLOR);
 
 	// take off the borders
-	x1 += ui().box_lr_border();
-	x2 -= ui().box_lr_border();
+	x1 += lr_border;
+	x2 -= lr_border;
 	y1 += ui().box_tb_border();
 
 	ui().draw_text_full(container(), driver.c_str(), x1, y1, x2 - x1, ui::text_layout::CENTER, ui::text_layout::NEVER,
-		mame_ui_manager::NORMAL, ui().colors().text_color(), ui().colors().text_bg_color(), nullptr, nullptr);
+		mame_ui_manager::NORMAL, UI_TEXT_CMD_COLOR, UI_TEXT_BG_CMD_COLOR, nullptr, nullptr);
 
 	maxwidth = 0;
 	for (auto & elem : m_items_list)
@@ -328,13 +330,13 @@ void menu_dats_view::custom_render(void *selectedref, float top, float bottom, f
 	float space = (1.0f - maxwidth) / (m_items_list.size() * 2);
 
 	// compute our bounds
-	x1 -= ui().box_lr_border();
-	x2 += ui().box_lr_border();
+	x1 -= lr_border;
+	x2 += lr_border;
 	y1 = y2 + ui().box_tb_border();
 	y2 += ui().get_line_height() + 2.0f * ui().box_tb_border();
 
 	// draw a box
-	ui().draw_outlined_box(container(), x1, y1, x2, y2, ui().colors().background_color());
+	ui().draw_outlined_box(container(), x1, y1, x2, y2, UI_BACKGROUND_CMD_COLOR);
 
 	// take off the borders
 	y1 += ui().box_tb_border();
@@ -344,8 +346,8 @@ void menu_dats_view::custom_render(void *selectedref, float top, float bottom, f
 	for (auto & elem : m_items_list)
 	{
 		x1 += space;
-		rgb_t fcolor = (m_actual == x) ? rgb_t(0xff, 0xff, 0xff, 0x00) : ui().colors().text_color();
-		rgb_t bcolor = (m_actual == x) ? rgb_t(0xff, 0xff, 0xff, 0xff) : ui().colors().text_bg_color();
+		rgb_t fcolor = (m_actual == x) ? rgb_t(0xff, 0xff, 0xff, 0x00) : UI_TEXT_CMD_COLOR;
+		rgb_t bcolor = (m_actual == x) ? rgb_t(0xff, 0xff, 0xff, 0xff) : UI_TEXT_BG_CMD_COLOR;
 		ui().draw_text_full(container(), elem.label.c_str(), x1, y1, 1.0f, ui::text_layout::LEFT, ui::text_layout::NEVER, mame_ui_manager::NONE, fcolor, bcolor, &width, nullptr);
 
 		if (bcolor != ui().colors().text_bg_color())
@@ -361,7 +363,7 @@ void menu_dats_view::custom_render(void *selectedref, float top, float bottom, f
 	std::string revision;
 	revision.assign(_("Revision: ")).append(m_items_list[m_actual].revision);
 	ui().draw_text_full(container(), revision.c_str(), 0.0f, 0.0f, 1.0f, ui::text_layout::CENTER, ui::text_layout::TRUNCATE, mame_ui_manager::NONE, rgb_t::white(), rgb_t::black(), &width, nullptr);
-	width += 2 * ui().box_lr_border();
+	width += 2 * lr_border;
 	maxwidth = std::max(origx2 - origx1, width);
 
 	// compute our bounds
@@ -371,16 +373,16 @@ void menu_dats_view::custom_render(void *selectedref, float top, float bottom, f
 	y2 = origy2 + bottom;
 
 	// draw a box
-	ui().draw_outlined_box(container(), x1, y1, x2, y2, ui().colors().background_color());
+	ui().draw_outlined_box(container(), x1, y1, x2, y2, UI_BACKGROUND_CMD_COLOR);
 
 	// take off the borders
-	x1 += ui().box_lr_border();
-	x2 -= ui().box_lr_border();
+	x1 += lr_border;
+	x2 -= lr_border;
 	y1 += ui().box_tb_border();
 
 	// draw the text within it
 	ui().draw_text_full(container(), revision.c_str(), x1, y1, x2 - x1, ui::text_layout::CENTER, ui::text_layout::TRUNCATE,
-		mame_ui_manager::NORMAL, ui().colors().text_color(), ui().colors().text_bg_color(), nullptr, nullptr);
+		mame_ui_manager::NORMAL, UI_TEXT_CMD_COLOR, UI_TEXT_BG_CMD_COLOR, nullptr, nullptr);
 }
 
 //-------------------------------------------------
@@ -393,9 +395,10 @@ void menu_dats_view::get_data()
 	std::string buffer;
 	mame_machine_manager::instance()->lua()->call_plugin("data", m_items_list[m_actual].option, buffer);
 
+	float const aspect = machine().render().ui_aspect(&container());
 	float const line_height = ui().get_line_height();
-	float const gutter_width = 0.52f * line_height * machine().render().ui_aspect();
-	float const visible_width = 1.0f - (2.0f * ui().box_lr_border());
+	float const gutter_width = 0.52f * line_height * aspect;
+	float const visible_width = 1.0f - (2.0f * ui().box_lr_border() * aspect);
 	float const effective_width = visible_width - 2.0f * gutter_width;
 
 	auto lines = ui().wrap_text(container(), buffer.c_str(), 0.0f, 0.0f, effective_width, xstart, xend);
@@ -417,7 +420,7 @@ void menu_dats_view::get_data_sw()
 	else
 		mame_machine_manager::instance()->lua()->call_plugin("data", m_items_list[m_actual].option - 1, buffer);
 
-	auto lines = ui().wrap_text(container(), buffer.c_str(), 0.0f, 0.0f, 1.0f - (4.0f * ui().box_lr_border()), xstart, xend);
+	auto lines = ui().wrap_text(container(), buffer.c_str(), 0.0f, 0.0f, 1.0f - (4.0f * ui().box_lr_border() * machine().render().ui_aspect(&container())), xstart, xend);
 	for (int x = 0; x < lines; ++x)
 	{
 		std::string tempbuf(buffer.substr(xstart[x], xend[x] - xstart[x]));

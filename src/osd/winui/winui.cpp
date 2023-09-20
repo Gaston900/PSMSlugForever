@@ -2,10 +2,30 @@
 // copyright-holders:Chris Kirmse, Mike Haaland, René Single, Mamesick
 
 #include "winui.h"
+#include "winui_faudit.h"
 #include <fstream>
+
+#ifdef MAME_AVI
+#include "video.h"
+#include "Avi.h"
+#include "WAV.h"
+
+static struct MAME_AVI_STATUS AviStatus;
+
+static void     MamePlayGameAVI(void);
+static void     MamePlayBackGameAVI(void);
+static char		last_directory_avi[MAX_PATH];
+int				_nAviNo = 0;
+
+#endif /* MAME_AVI */
+
+#define FAST_AUDIT
+//#define LOGSAVE
 
 static int MIN_WIDTH  = DBU_MIN_WIDTH;
 static int MIN_HEIGHT = DBU_MIN_HEIGHT;
+
+static HIMAGELIST   hHeaderImages = NULL;
 
 typedef struct
 {
@@ -79,7 +99,28 @@ struct _play_options
 	const char *wavwrite;		// OPTION_WAVWRITE
 	const char *mngwrite;		// OPTION_MNGWRITE
 	const char *aviwrite;		// OPTION_AVIWRITE
+#ifdef MAME_AVI
+	const char *aviwrite2;		// OPTION_AVIWRITE
+#endif /* MAME_AVI */	
 };
+
+//#ifdef USE_KLIST
+#define TSVNAME "Game List.txt"
+#define LINEBUF_SIZE  1024
+#define NUM_COLUMNS   3
+
+typedef struct
+{
+	char *filename;	
+	char *gamename;
+	char *description;
+	char *manufacturer;
+} TSV;
+
+static TSV  *tsv_index  = NULL;
+static TSV  *tsv_data   = NULL;
+static int  need_update = 0;
+//#endif
 
 /***************************************************************************
     function prototypes
@@ -159,6 +200,9 @@ static intptr_t CALLBACK StartupProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM
 static uintptr_t CALLBACK HookProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
 static uintptr_t CALLBACK OFNHookProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 static char* ConvertAmpersandString(const char *s);
+void SetStatusBarTextW(int part_index, const wchar_t *fmt, ...);
+static const char* GetCloneParentName(int nItem);
+static const char* GetParentDriverGameName(int nItem);
 
 enum
 {
@@ -168,6 +212,16 @@ enum
 
 static bool CommonListDialog(common_file_dialog_proc cfd, int filetype);
 static void SaveGameListToFile(char *szFile, int filetype);
+
+//#ifdef USE_KLIST
+static void LoadGameListFromFile(int games);
+static void SaveAllGameListToFile();
+char *GetDescriptionByIndex(int nIndex, bool bUse);
+char *GetDescriptionByName(const char *name, bool bUse);
+char *GetGameNameByIndex(int nIndex, bool bUse);
+char *GetGameName(const char *name, bool bUse);
+char *GetGameManufactureByIndex(int nIndex, bool bUse);
+//#endif
 
 /***************************************************************************
     Internal structures
@@ -218,6 +272,12 @@ typedef struct
 } Resize;
 
 static void ResizeWindow(HWND hParent, Resize *r);
+
+/* List view Icon defines */
+#define LG_ICONMAP_WIDTH    GetSystemMetrics(SM_CXICON)
+#define LG_ICONMAP_HEIGHT   GetSystemMetrics(SM_CYICON)
+#define ICONMAP_WIDTH       GetSystemMetrics(SM_CXSMICON)
+#define ICONMAP_HEIGHT      GetSystemMetrics(SM_CYSMICON)
 
 /***************************************************************************
     Internal variables
@@ -295,6 +355,7 @@ static HBITMAP hFilters	= NULL;
 static HBITMAP hRemove = NULL;
 static HBITMAP hRename = NULL;
 static HBITMAP hReset = NULL;
+static HBITMAP hklist = NULL;	//use_KLIST
 static int optionfolder_count = 0;
 /* global data--know where to send messages */
 static bool in_emulation = false;
@@ -344,46 +405,62 @@ static HIMAGELIST hSmall = NULL;
 static HICON hIcon = NULL;
 static int *icon_index = NULL; 	/* for custom per-game icons */
 
+
+static bool bklist = true; // USE_KLIST
+static int game_count=0;
+
+static const char* Preinfofilename = "preinfo.vp";
+static const char* StartGameInfofilename = "startinfo.vp";
+
+bool IsFileWritable(const WCHAR* pszFilePath);
+
 static const TBBUTTON tbb[] =
 {
 	{0, ID_VIEW_FOLDERS,    	TBSTATE_ENABLED, BTNS_CHECK,      {0, 0}, 0, 0},
 	{1, ID_VIEW_PICTURE_AREA,	TBSTATE_ENABLED, BTNS_CHECK,      {0, 0}, 0, 1},
 	{0, 0,                  	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-//	{2, ID_VIEW_ICONS_LARGE,  	TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 2},
+	{2, ID_VIEW_ICONS_LARGE,  	TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 2},
 	{3, ID_VIEW_ICONS_SMALL, 	TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 3},
-//	{0, 0,                  	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{15, ID_VIEW_LIST_MENU,  	TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 15},
+	{5, ID_VIEW_DETAIL, 		TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 5},
+//	{6, ID_VIEW_GROUPED,  		TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 6},
+	{0, 0,                  	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
 	{4, ID_ENABLE_INDENT,  		TBSTATE_ENABLED, BTNS_CHECK,      {0, 0}, 0, 12},
 	{0, 0,                  	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{6, ID_UPDATE_GAMELIST,  	TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 4},
+	{7, ID_UPDATE_GAMELIST,  	TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 4},
 	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{7, ID_OPTIONS_INTERFACE,	TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 5},
-	{8, ID_OPTIONS_DEFAULTS, 	TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 6},
-//	{0, 0,                   	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-//	{9, ID_VIDEO_SNAP,			TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 7},
-//	{10,ID_PLAY_M1,   			TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 8},
-//	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-//	{11,ID_HELP_ABOUT,      	TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 9},
-//	{12,ID_HELP_CONTENTS,   	TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 10},
-//	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-//	{13,ID_MAME_HOMEPAGE,     	TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 11},
-//	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0}
+	{8, ID_OPTIONS_INTERFACE,	TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 5},
+	{9, ID_OPTIONS_DEFAULTS, 	TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 6},
+	{0, 0,                   	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{10,ID_VIDEO_SNAP,			TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 7},
+	{11,ID_PLAY_M1,   			TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 8},
+	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{12,ID_HELP_ABOUT,          TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 9},
+	{13,ID_HELP_CONTENTS,       TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 10},
+	{14,ID_MAME_HOMEPAGE,       TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 14},
+	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{6, ID_KOREAN_GAMELIST,     TBSTATE_ENABLED, BTNS_CHECK,	  {0, 0}, 0, 13}, // USE_KLIST
+	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0}
 };
 
 static const wchar_t szTbStrings[NUM_TOOLTIPS][30] =
 {
-	TEXT("Toggle folders list"),
-	TEXT("Toggle pictures area"),
-	TEXT("Large icons"),
-	TEXT("Small icons"),
-	TEXT("Refresh"),
-	TEXT("Interface setttings"),
-	TEXT("Default games options"),
-	TEXT("Play ProgettoSnaps movie"),
-	TEXT("M1FX"),
-	TEXT("About"),
-	TEXT("Help"),
-	TEXT("MAME homepage"),
-	TEXT("Toggle grouped view")
+	L"Toggle folders list",
+	L"Toggle pictures area",
+	L"Large icons",
+	L"Small icons",
+	L"List icons",
+	L"Toggle grouped view",
+	L"Refresh",
+	L"Interface setttings",
+	L"Default games options",
+	L"Play ProgettoSnaps movie",
+	L"M1FX",
+	L"About",
+	L"Help",
+	L"MAME homepage",
+	L"Details icons",
+	L"Language game list"
 };
 
 static const int CommandToString[] =
@@ -392,6 +469,9 @@ static const int CommandToString[] =
 	ID_VIEW_PICTURE_AREA,
 	ID_VIEW_ICONS_LARGE,
 	ID_VIEW_ICONS_SMALL,
+	ID_VIEW_LIST_MENU,
+	ID_VIEW_DETAIL,
+//	ID_VIEW_GROUPED,
 	ID_UPDATE_GAMELIST,
 	ID_OPTIONS_INTERFACE,
 	ID_OPTIONS_DEFAULTS,
@@ -401,6 +481,7 @@ static const int CommandToString[] =
 	ID_HELP_CONTENTS,
 	ID_MAME_HOMEPAGE,
 	ID_ENABLE_INDENT,
+	ID_KOREAN_GAMELIST,
 	-1
 };
 
@@ -484,11 +565,13 @@ public:
 		const char* buffer = s.c_str();
 		if (channel == OSD_OUTPUT_CHANNEL_VERBOSE)
 		{
+#ifdef LOGSAVE		
 			FILE *pFile;
 			pFile = fopen("config/verbose.log", "a");
 			fputs(buffer, pFile);
 			fflush(pFile);
 			fclose (pFile);
+#endif			
 			return;
 		}
 
@@ -520,14 +603,108 @@ public:
 
 //		else
 //			chain_output(channel, msg, args);   // goes down the black hole
+#ifdef LOGSAVE
 		// LOG all messages
 		FILE *pFile;
 		pFile = fopen("config/winui.log", "a");
 		fputs(buffer, pFile);
 		fflush(pFile);
 		fclose (pFile);
+#endif		
 	}
 };
+
+#ifdef MAME_AVI
+void override_options(core_options &opts, void *param)
+{
+	const play_options *playopts = (const play_options *)param;
+
+	if (playopts->aviwrite2)
+	{
+		opts.set_value("avi_avi_filename", playopts->aviwrite2, OPTION_PRIORITY_CMDLINE);
+
+		opts.set_value("avi_def_fps", AviStatus.def_fps, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_fps", AviStatus.fps, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_frame_skip", AviStatus.frame_skip, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_frame_cmp", AviStatus.frame_cmp, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_frame_cmp_pre15", AviStatus.frame_cmp_pre15, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_frame_cmp_few", AviStatus.frame_cmp_few, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_width", AviStatus.width, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_height", AviStatus.height, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_depth", AviStatus.depth, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_orientation", AviStatus.orientation, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_rect_top", AviStatus.rect.m_Top, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_rect_left", AviStatus.rect.m_Left, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_rect_width", AviStatus.rect.m_Width, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_rect_height", AviStatus.rect.m_Height, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_interlace", AviStatus.interlace, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_interlace_odd_field", AviStatus.interlace_odd_number_field, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_avi_filesize", AviStatus.avi_filesize, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_avi_savefile_pause", AviStatus.avi_savefile_pause, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_avi_width", AviStatus.avi_width, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_avi_height", AviStatus.avi_height, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_avi_depth", AviStatus.avi_depth, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_avi_rect_top", AviStatus.avi_rect.m_Top, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_avi_rect_left", AviStatus.avi_rect.m_Left, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_avi_rect_width", AviStatus.avi_rect.m_Width, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_avi_rect_height", AviStatus.avi_rect.m_Height, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_avi_smooth_resize_x", AviStatus.avi_smooth_resize_x, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_avi_smooth_resize_y", AviStatus.avi_smooth_resize_y, OPTION_PRIORITY_CMDLINE);
+
+		if (AviStatus.wav_filename && strlen((const char *)AviStatus.wav_filename))
+			opts.set_value("avi_wav_filename", (const char *)AviStatus.wav_filename, OPTION_PRIORITY_CMDLINE);
+			
+		opts.set_value("avi_audio_type", AviStatus.audio_type, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_audio_channel", AviStatus.audio_channel, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_audio_samples_per_sec", AviStatus.audio_samples_per_sec, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_audio_bitrate", AviStatus.audio_bitrate, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_audio_record_type", AviStatus.avi_audio_record_type, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_avi_audio_channel", AviStatus.avi_audio_channel, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_avi_audio_samples_per_sec", AviStatus.avi_audio_samples_per_sec, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_avi_audio_bitrate", AviStatus.avi_audio_bitrate, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_audio_cmp", AviStatus.avi_audio_cmp, OPTION_PRIORITY_CMDLINE);
+
+		opts.set_value("avi_hour", AviStatus.hour, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_minute", AviStatus.minute, OPTION_PRIORITY_CMDLINE);
+		opts.set_value("avi_second", AviStatus.second, OPTION_PRIORITY_CMDLINE);
+	}
+	else
+	{
+		opts.set_value("avi_avi_filename", nullptr, OPTION_PRIORITY_CMDLINE);
+	}
+
+#ifdef KAILLERA
+	if (playopts->playbacksub)
+		options_set_wstring(opts, "pbsub", playopts->playbacksub, OPTION_PRIORITY_CMDLINE);
+	if (playopts->recordsub)
+		options_set_wstring(opts, "recsub", playopts->recordsub, OPTION_PRIORITY_CMDLINE);
+	if (playopts->record != NULL && playopts->autorecname != NULL)
+		options_set_wstring(opts, "at_rec_name", playopts->autorecname, OPTION_PRIORITY_CMDLINE);
+
+	// kaillera force options
+	if (kPlay)
+	{
+		options_set_bool  (opts, OPTION_AUTOFRAMESKIP, TRUE, OPTION_PRIORITY_CMDLINE);
+		options_set_bool  (opts, OPTION_THROTTLE, TRUE, OPTION_PRIORITY_CMDLINE);
+		options_set_bool  (opts, WINOPTION_WAITVSYNC, 0, OPTION_PRIORITY_CMDLINE);
+		options_set_bool  (opts, WINOPTION_SYNCREFRESH, 0, OPTION_PRIORITY_CMDLINE);
+		options_set_bool  (opts, OPTION_SOUND, TRUE, OPTION_PRIORITY_CMDLINE);
+		options_set_int   (opts, OPTION_SAMPLERATE, 48000, OPTION_PRIORITY_CMDLINE);
+		options_set_bool  (opts, OPTION_SAMPLES, TRUE, OPTION_PRIORITY_CMDLINE);
+#if 0
+		if (!mame_stricmp(GetDriverFilename(nGameIndex), "neogeo.c") && !mame_stricmp(pOpts->bios, "uni-bios.22"))
+			options_set_string(opts, OPTION_BIOS, pOpts->bios, OPTION_PRIORITY_CMDLINE);
+		else
+#endif
+		options_set_string(opts, OPTION_BIOS, "0", OPTION_PRIORITY_CMDLINE);
+		options_set_bool  (opts, OPTION_CHEAT, 0, OPTION_PRIORITY_CMDLINE);
+		options_set_bool  (opts, WINOPTION_MULTITHREADING, 0, OPTION_PRIORITY_CMDLINE);
+		options_set_float (opts, OPTION_SPEED, 1.0, OPTION_PRIORITY_CMDLINE);
+		options_set_bool  (opts, OPTION_REFRESHSPEED, 0, OPTION_PRIORITY_CMDLINE);
+	}
+#endif /* KAILLERA */
+}
+#endif
 
 static void RunMAME(int nGameIndex, const play_options *playopts)
 {
@@ -590,12 +767,39 @@ static void RunMAME(int nGameIndex, const play_options *playopts)
 			mame_opts.set_value(OPTION_AVIWRITE, playopts->aviwrite, OPTION_PRIORITY_CMDLINE);
 	}
 
+#if defined(KAILLERA) || defined(MAME_AVI)
+		override_options(mame_opts, (void *)playopts);
+#endif
+// ekmame info stop
+// preview video start
+	if(IsFileWritable(win_wstring_from_utf8(Preinfofilename)))
+	{
+		FILE *f = NULL;
+
+		f= fopen(StartGameInfofilename, "w");
+		fprintf(f,"%s\n","GAMESTART");
+		fclose(f);	
+	}
+// preview video end
+
 	// start played time
 	time(&start);
 	// run the game
 	manager->execute();
 	// end played time
 	time(&end);
+// ekmame info stop
+// preview video start
+	if(IsFileWritable(win_wstring_from_utf8(Preinfofilename)))
+	{
+		FILE *f = NULL;
+
+		f = fopen(StartGameInfofilename, "w");
+		fprintf(f,"%s\n","GAMEEND");
+		fclose(f);
+	}
+// preview video end
+
 	// free the structure
 	global_free(manager);
 	osd_output::pop(&winerror);
@@ -615,15 +819,13 @@ int MameUIMain(HINSTANCE hInstance, LPWSTR lpCmdLine)
 	unlink("config/winui.log");
 	unlink("config/verbose.log");
 
+	//printf("ARCADE starting\n");fflush(stdout);
+
 	if (__argc != 1)
 	{
 		extern int main_(int argc, char *argv[]);
 		exit(main_(__argc, __argv));
 	}
-
-	// No printf's allowed before here, otherwise they get into queries from mame, such as listxml.
-
-	printf("ARCADE starting\n");fflush(stdout);
 
 	WNDCLASS wndclass;
 	MSG msg;
@@ -631,14 +833,14 @@ int MameUIMain(HINSTANCE hInstance, LPWSTR lpCmdLine)
 
 	// set up window class
 	memset(&wndclass, 0, sizeof(WNDCLASS));
-	wndclass.style = 0; //CS_HREDRAW | CS_VREDRAW;
+	wndclass.style = CS_HREDRAW | CS_VREDRAW;
 	wndclass.lpfnWndProc = MameWindowProc;
 	wndclass.cbClsExtra = 0;
 	wndclass.cbWndExtra = DLGWINDOWEXTRA;
 	wndclass.hInstance = hInstance;
 	wndclass.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_MAMEUI_ICON));
 	wndclass.hCursor = NULL;
-	wndclass.hbrBackground = GetSysColorBrush(COLOR_3DFACE);
+	wndclass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);// GetSysColorBrush(COLOR_3DFACE); 
 	wndclass.lpszMenuName = MAKEINTRESOURCE(IDR_UI_MENU);
 	wndclass.lpszClassName = TEXT("MainClass");
 
@@ -1081,10 +1283,29 @@ int GetMinimumScreenShotWindowWidth(void)
 	return bmp.bmWidth + 6; 	// 6 is for a little breathing room
 }
 
+const char *funcGetParentName(const char *name)
+{
+	int index = GetGameNameIndex(name);// get current game index
+	int parentindex = GetParentIndex(&driver_list::driver(index));
+	//int parentindex = GetParentIndex_2(index);		   // get Parent current game
+	if( parentindex >= 0)
+	{
+		const char *parentname =  GetDriverGameName(parentindex);
+		return parentname;
+	}
+
+	return NULL;
+}
+
 int GetParentIndex(const game_driver *driver)
 {
 	return GetGameNameIndex(driver->parent);
 }
+
+//int GetParentIndex_2(int index)
+//{
+//	return GetParentIndex(&driver_list::driver(index));
+//}
 
 int GetParentRomSetIndex(const game_driver *driver)
 {
@@ -1158,6 +1379,12 @@ static void Win32UI_init(void)
 		winui_set_window_text_utf8(GetDlgItem(hSplash, IDC_PROGBAR), "Loading folders structure...");
 	SendMessage(hProgress, PBM_SETPOS, 10, 0);
 
+#ifdef MAME_AVI
+	strcpy_s(last_directory_avi, GetAVIDir());
+#endif /* MAME_AVI */
+
+	game_count =  driver_list::total();
+
 	srand((unsigned)time(NULL));
 	// create the memory pool
 	mameui_pool = pool_alloc_lib(memory_error);
@@ -1224,6 +1451,10 @@ static void Win32UI_init(void)
 	CheckMenuItem(GetMenu(hMain), ID_VIEW_PAGETAB, (bShowTabCtrl) ? MF_CHECKED : MF_UNCHECKED);
 	CheckMenuItem(GetMenu(hMain), ID_ENABLE_INDENT, (bEnableIndent) ? MF_CHECKED : MF_UNCHECKED);
 	ToolBar_CheckButton(hToolBar, ID_ENABLE_INDENT, (bEnableIndent) ? MF_CHECKED : MF_UNCHECKED);
+
+	CheckMenuItem(GetMenu(hMain), ID_KOREAN_GAMELIST, (bklist) ? MF_CHECKED : MF_UNCHECKED); //USE_KLIST
+	ToolBar_CheckButton(hToolBar, ID_KOREAN_GAMELIST, (bklist) ? MF_CHECKED : MF_UNCHECKED); //USE_KLIST	
+	
 	InitTree(g_folderData, g_filterList);
 	SendMessage(hProgress, PBM_SETPOS, 112, 0);
 	winui_set_window_text_utf8(GetDlgItem(hSplash, IDC_PROGBAR), "Building list structure...");
@@ -1257,6 +1488,10 @@ static void Win32UI_init(void)
 	idle_work = true;
 	bFullScreen = false;
 
+//#ifdef USE_KLIST
+	LoadGameListFromFile(game_total);
+//#endif
+
 	switch (GetViewMode())
 	{
 		case VIEW_ICONS_LARGE :
@@ -1264,8 +1499,20 @@ static void Win32UI_init(void)
 			break;
 
 		case VIEW_ICONS_SMALL :
-		default :
 			SetView(ID_VIEW_ICONS_SMALL);
+			break;
+		
+		case VIEW_INLIST :
+			SetView(ID_VIEW_LIST_MENU);
+			break;
+		
+		case VIEW_REPORT :
+			SetView(ID_VIEW_DETAIL);
+			break;
+		
+		case VIEW_GROUPED :
+		default :
+			SetView(ID_VIEW_GROUPED);
 			break;
 	}
 
@@ -1283,6 +1530,9 @@ static void Win32UI_init(void)
 
 static void Win32UI_exit(void)
 {
+//#ifdef USE_KLIST
+	SaveAllGameListToFile();
+//#endif
 	SaveWindowStatus();
 	ShowWindow(hMain, SW_HIDE);
 
@@ -1291,6 +1541,8 @@ static void Win32UI_exit(void)
 
 	if (g_pJoyGUI != NULL)
 		g_pJoyGUI->exit();
+
+
 
 	DeleteObject(hBrush);
 	DeleteObject(hBrushDlg);
@@ -1350,10 +1602,12 @@ static void Win32UI_exit(void)
 	DeleteBitmap(hRename);
 	DeleteBitmap(hReset);
 	DeleteBitmap(hMissing_bitmap);
+	DeleteBitmap(hklist);// USE_KLIST
 	DeleteFont(hFontGui);
 	DeleteFont(hFontList);
 	DeleteFont(hFontHist);
 	DeleteFont(hFontTree);
+	
 	DestroyIcons();
 	DestroyAcceleratorTable(hAccel);
 	DirectInputClose();
@@ -1447,14 +1701,15 @@ static LRESULT CALLBACK MameWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPAR
 			if (GetExitDialog())
 			{
 /*
-				if (winui_message_box_utf8(hMain, "Are you sure you want to quit?", MAMEUINAME, MB_ICONQUESTION | MB_YESNO) == IDNO)
+				if (winui_message_box_utf8(hMain, "정말 종료하시겠습니까?", MAMEUINAME, MB_ICONQUESTION | MB_YESNO) == IDNO)
 				{
 					SetFocus(hWndList);
 					return true;
 				}
-*/
+*/ 
 			}
 
+			
 			Win32UI_exit();
 			break;
 
@@ -1626,12 +1881,13 @@ static bool GameCheck(void)
 	LVFINDINFO lvfi;
 	int percentage = ((game_index + 1) * 100) / game_total;
 	bool changed = false;
-
+	
 	AuditRefresh();
 
 	if (game_index == 0)
+	{		
 		ProgressBarShow();
-
+	}
 	if (bFolderCheck == true)
 	{
 		LVITEM lvi;
@@ -1644,10 +1900,23 @@ static bool GameCheck(void)
 		changed = true;
 		lvfi.flags  = LVFI_PARAM;
 		lvfi.lParam = lvi.lParam;
+
+		//ErrorMessageBox("bFolderCheck");
 	}
 	else
 	{
+#ifdef 	FAST_AUDIT 
+		if (GetEnableFastAudit())
+		{
+			Mame32FastVerifyRomSet(game_index);
+		}
+		else
+		{
+			MameUIVerifyRomSet(game_index, true);	
+		}
+#else	
 		MameUIVerifyRomSet(game_index, true);
+#endif
 		changed = true;
 		lvfi.flags  = LVFI_PARAM;
 		lvfi.lParam = game_index;
@@ -1660,7 +1929,7 @@ static bool GameCheck(void)
 
 	if (percentage != oldpercent)
 	{
-		SetStatusBarTextF(0, "Game search %d%% completed", percentage);
+		SetStatusBarTextW(0, TEXT("Game search %d%% completed"), percentage);
 		oldpercent = percentage;
 	}
 
@@ -1673,7 +1942,8 @@ static bool GameCheck(void)
 		bFolderCheck = false;
 		ProgressBarHide();
 		ResetWhichGamesInFolders();
-		return false;
+		freeRam_fastAudit();					
+		return false;		
 	}
 
 	return changed;
@@ -1682,6 +1952,16 @@ static bool GameCheck(void)
 bool OnIdle(HWND hWnd)
 {
 	static bool bFirstTime = true;
+	const char *pDescription;
+	const char *pName; 
+
+#ifdef USE_KLIST	// 버그. 게임 실행후 맨 앞으로 가는 문제점이 있음.
+	  int		i;
+	  LV_FINDINFO lvfi;
+#else
+	  int driver_index;
+#endif  
+
 
 	if (bFirstTime)
 		bFirstTime = false;
@@ -1693,10 +1973,31 @@ bool OnIdle(HWND hWnd)
 	}
 
 	// in case it's not found, get it back
-	int driver_index = Picker_GetSelectedItem(hWndList);
-	const char *pDescription = GetDriverGameTitle(driver_index);
+
+#ifdef USE_KLIST
+	lvfi.flags = LVFI_STRING;
+	lvfi.psz   = (LPCWSTR)GetDefaultGame();
+	i = ListView_FindItem(hWndList, -1, &lvfi);
+
+	Picker_SetSelectedPick(hWndList,(i != -1) ? i : 0);
+	i = Picker_GetSelectedItem(hWndList);
+#else	
+	driver_index = Picker_GetSelectedItem(hWndList);
+#endif
+
+#ifdef USE_KLIST
+  	pDescription = GetDescriptionByIndex(i, GetUsekoreanList());
+#else	
+	pDescription = GetDriverGameTitle(driver_index);
+#endif
 	SetStatusBarText(0, pDescription);
-	const char *pName = GetDriverGameName(driver_index);
+
+#ifdef USE_KLIST
+	pName = GetGameNameByIndex(i, GetUsekoreanList());
+#else
+	pName = GetDriverGameName(driver_index);
+#endif
+	
 	SetStatusBarText(1, pName);
 	idle_work = false;
 	UpdateStatusBar();
@@ -2008,6 +2309,8 @@ static void InitMenuIcons(void)
 	hRename = CreateBitmapTransparent(hTemp);
 	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_RESET));
 	hReset = CreateBitmapTransparent(hTemp);
+	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_KLIST)); // USE_KLIST
+	hklist = CreateBitmapTransparent(hTemp);
 }
 
 static void CopyToolTipText(LPTOOLTIPTEXT lpttt)
@@ -2286,11 +2589,32 @@ static void DisableSelection(void)
 	SetStatusBarText(2, "");
 	SetStatusBarText(3, "");
 	SetStatusBarText(4, "");
+
+#ifdef MAME_AVI
+    EnableMenuItem(hMenu, ID_FILE_PLAY_BACK_AVI,   MF_GRAYED);
+	EnableMenuItem(hMenu, ID_FILE_PLAY_WITH_AVI,   MF_GRAYED);
+#endif /* MAME_AVI */
+
 	have_selection = false;
 
 	if (prev_have_selection != have_selection)
 		UpdateScreenShot();
 }
+
+bool IsFileWritable(const WCHAR* pszFilePath)  
+{  
+	HANDLE hFile = INVALID_HANDLE_VALUE;  
+
+	hFile = CreateFile(pszFilePath, GENERIC_READ|GENERIC_WRITE,0, NULL, OPEN_EXISTING, 0, NULL);  
+	if (hFile == INVALID_HANDLE_VALUE)  
+	{  
+		return FALSE;  
+	}  
+
+	CloseHandle(hFile);  
+
+	return TRUE;  
+}  
 
 static void EnableSelection(int nGame)
 {
@@ -2298,6 +2622,8 @@ static void EnableSelection(int nGame)
 	MENUITEMINFO mmi;
 	HMENU hMenu = GetMenu(hMain);
 	wchar_t *t_description = win_wstring_from_utf8(ConvertAmpersandString(GetDriverGameTitle(nGame)));
+	const char *pText;
+	const char *pName;
 
 	if( !t_description )
 		return;
@@ -2311,9 +2637,20 @@ static void EnableSelection(int nGame)
 	mmi.cch = _tcslen(mmi.dwTypeData);
 
 	SetMenuItemInfo(hMenu, ID_FILE_PLAY, false, &mmi);
-	const char *pText = GetDriverGameTitle(nGame);
+
+//#ifdef USE_KLIST
+	pText = GetDescriptionByIndex(nGame, GetUsekoreanList());
+//#else	
+//	pText = GetDriverGameTitle(nGame);
+//#endif
 	SetStatusBarText(0, pText);
-	const char *pName = GetDriverGameName(nGame);
+
+//#ifdef USE_KLIST
+	pName = GetGameNameByIndex(nGame,GetUsekoreanList());
+//#else
+//	pName = GetDriverGameName(nGame);
+//#endif
+
 	SetStatusBarText(1, pName);
 	SendMessage(hStatusBar, SB_SETICON, 1, (LPARAM)GetSelectedPickItemIconSmall());
 	char *pStatus = GameInfoStatusBar(nGame);
@@ -2325,11 +2662,48 @@ static void EnableSelection(int nGame)
 	EnableMenuItem(hMenu, ID_GAME_PROPERTIES, 	MF_ENABLED);
 
 	if (bProgressShown && bListReady == true)
-		SetDefaultGame(GetDriverGameName(nGame));
-
+//#ifdef USE_KLIST
+		SetDefaultGame(GetGameNameByIndex(nGame, GetUsekoreanList()));
+//#else
+//		SetDefaultGame(GetDriverGameName(nGame));
+//#endif
 	have_selection = true;
 	UpdateScreenShot();
+
+// preview video start
+	if(IsFileWritable(win_wstring_from_utf8(Preinfofilename)))
+	{
+		char path[MAX_PATH];
+
+		FILE *f = fopen(Preinfofilename, "w");
+
+		if(f != NULL)
+		{
+			snprintf(path, WINUI_ARRAY_LENGTH(path), "%s\\%s.mp4", GetVideoDir(), GetDriverGameName(nGame));
+			fprintf(f,"%s\n",path );
+			snprintf(path, WINUI_ARRAY_LENGTH(path), "%s\\%s.mp4", GetVideoDir(), GetParentDriverGameName(nGame));
+			fprintf(f,"%s\n",path );
+		}
+		
+		fclose(f);
+	}
+// preview video end
+
+
 	free(t_description);
+}
+
+static const char* GetParentDriverGameName(int nItem)
+{
+	if (DriverIsClone(nItem))
+	{
+		int nParentIndex = GetParentIndex(&driver_list::driver(nItem));
+
+		if( nParentIndex >= 0)
+			return (char*)GetDriverGameName(nParentIndex);
+	}
+
+	return "";
 }
 
 static const char* GetCloneParentName(int nItem)
@@ -2339,7 +2713,11 @@ static const char* GetCloneParentName(int nItem)
 		int nParentIndex = GetParentIndex(&driver_list::driver(nItem));
 
 		if( nParentIndex >= 0)
-			return GetDriverGameTitle(nParentIndex);
+//#ifdef USE_KLIST			
+			return (char*)GetDescriptionByIndex(nParentIndex,GetUsekoreanList());
+//#else
+//			return GetDriverGameTitle(nParentIndex);
+//#endif
 	}
 
 	return "";
@@ -2459,13 +2837,32 @@ static char* ConvertAmpersandString(const char *s)
 	return buf;
 }
 
+
 static void PollGUIJoystick()
 {
 	if (in_emulation)
+	{
 		return;
-
+	}
 	if (g_pJoyGUI == NULL)
+	{
 		return;
+	}
+
+	// FILE *pFile;
+	// pFile = fopen("PollGUIJoystick.txt", "a");
+	// fprintf(pFile, "Joy UP Code %d :",JOYCODE(GetUIJoyUp(0), GetUIJoyUp(1), GetUIJoyUp(2), GetUIJoyUp(3)));
+	// fprintf(pFile, "result %d \n",g_pJoyGUI->is_joy_pressed(JOYCODE(GetUIJoyUp(0), GetUIJoyUp(1), GetUIJoyUp(2), GetUIJoyUp(3))));
+
+	// fprintf(pFile, "Joy down Code %d :",JOYCODE(GetUIJoyDown(0), GetUIJoyDown(1), GetUIJoyDown(2), GetUIJoyDown(3)));
+	// fprintf(pFile, "result %d \n",g_pJoyGUI->is_joy_pressed(JOYCODE(GetUIJoyDown(0), GetUIJoyDown(1), GetUIJoyDown(2), GetUIJoyDown(3))));
+
+	// fprintf(pFile, "Joy left Code %d :",JOYCODE(GetUIJoyLeft(0), GetUIJoyLeft(1), GetUIJoyLeft(2), GetUIJoyLeft(3)));
+	// fprintf(pFile, "result %d \n",g_pJoyGUI->is_joy_pressed(JOYCODE(GetUIJoyLeft(0), GetUIJoyLeft(1), GetUIJoyLeft(2), GetUIJoyLeft(3))));
+
+	// fprintf(pFile, "Joy rightCode  %d :",JOYCODE(GetUIJoyRight(0), GetUIJoyRight(1), GetUIJoyRight(2), GetUIJoyRight(3)));
+	// fprintf(pFile, "result %d \n",g_pJoyGUI->is_joy_pressed(JOYCODE(GetUIJoyRight(0), GetUIJoyRight(1), GetUIJoyRight(2), GetUIJoyRight(3))));
+	// fclose(pFile);
 
 	g_pJoyGUI->poll_joysticks();
 
@@ -2478,12 +2875,12 @@ static void PollGUIJoystick()
 		SendMessage(hMain, WM_COMMAND, ID_UI_DOWN, 0);
 
 	// User pressed LEFT
-	if (g_pJoyGUI->is_joy_pressed(JOYCODE(GetUIJoyLeft(0), GetUIJoyLeft(1), GetUIJoyLeft(2), GetUIJoyLeft(3))))
-		SendMessage(hMain, WM_COMMAND, ID_UI_LEFT, 0);
+	// if (g_pJoyGUI->is_joy_pressed(JOYCODE(GetUIJoyLeft(0), GetUIJoyLeft(1), GetUIJoyLeft(2), GetUIJoyLeft(3))))
+	// 	SendMessage(hMain, WM_COMMAND, ID_UI_LEFT, 0);
 
-	// User pressed RIGHT
-	if (g_pJoyGUI->is_joy_pressed(JOYCODE(GetUIJoyRight(0), GetUIJoyRight(1), GetUIJoyRight(2), GetUIJoyRight(3))))
-		SendMessage(hMain, WM_COMMAND, ID_UI_RIGHT, 0);
+	// // User pressed RIGHT
+	// if (g_pJoyGUI->is_joy_pressed(JOYCODE(GetUIJoyRight(0), GetUIJoyRight(1), GetUIJoyRight(2), GetUIJoyRight(3))))
+	// 	SendMessage(hMain, WM_COMMAND, ID_UI_RIGHT, 0);
 
 	// User pressed START GAME
 	if (g_pJoyGUI->is_joy_pressed(JOYCODE(GetUIJoyStart(0), GetUIJoyStart(1), GetUIJoyStart(2), GetUIJoyStart(3))))
@@ -2520,21 +2917,35 @@ static void PollGUIJoystick()
 
 static void SetView(int menu_id)
 {
+	BOOL force_reset = false;
+
 	// first uncheck previous menu item, check new one
-	CheckMenuRadioItem(GetMenu(hMain), ID_VIEW_ICONS_LARGE, ID_VIEW_ICONS_SMALL, menu_id, MF_CHECKED);
+	CheckMenuRadioItem(GetMenu(hMain), ID_VIEW_ICONS_LARGE, ID_ENABLE_INDENT, menu_id, MF_CHECKED);
 	ToolBar_CheckButton(hToolBar, menu_id, MF_CHECKED);
 
-	// Associate the image lists with the list view control.
-	if (menu_id == ID_VIEW_ICONS_LARGE)
+	if (menu_id == ID_VIEW_DETAIL)
 		(void)ListView_SetImageList(hWndList, hLarge, LVSIL_SMALL);
-	else
-		(void)ListView_SetImageList(hWndList, hSmall, LVSIL_SMALL);
+
+	// Associate the image lists with the list view control.
+//	if (menu_id == ID_VIEW_ICONS_LARGE)
+//		(void)ListView_SetImageList(hWndList, hLarge, LVSIL_SMALL);
+//	else
+//		(void)ListView_SetImageList(hWndList, hSmall, LVSIL_SMALL);
+
+	if (Picker_GetViewID(hWndList) == VIEW_GROUPED || menu_id == ID_VIEW_GROUPED)
+	{
+		// this changes the sort order, so redo everything
+		force_reset = true;
+	}
 
 	for (int i = 0; i < sizeof(s_nPickers) / sizeof(s_nPickers[0]); i++)
 		Picker_SetViewID(GetDlgItem(hMain, s_nPickers[i]), menu_id - ID_VIEW_ICONS_LARGE);
 
-	for (int i = 0; i < sizeof(s_nPickers) / sizeof(s_nPickers[0]); i++)
-		Picker_Sort(GetDlgItem(hMain, s_nPickers[i]));
+	if(force_reset)
+	{
+		for (int i = 0; i < sizeof(s_nPickers) / sizeof(s_nPickers[0]); i++)
+			Picker_Sort(GetDlgItem(hMain, s_nPickers[i]));
+	}
 }
 
 static void ResetListView()
@@ -2602,6 +3013,13 @@ static void ResetListView()
 			Picker_SetSelectedItem(hWndList, current_game);
 	}
 
+	/*RS Instead of the Arrange Call that was here previously on all Views
+         We now need to set the ViewMode for SmallIcon again,
+         for an explanation why, see SetView*/
+	if (GetViewMode() == VIEW_ICONS_SMALL)
+		SetView(ID_VIEW_ICONS_SMALL);
+	
+
 	SetWindowRedraw(hWndList, true);
 	UpdateStatusBar();
 }
@@ -2621,6 +3039,11 @@ static void UpdateGameList(void)
 	idle_work = true;
 	ReloadIcons();
 	Picker_ResetIdle(hWndList);
+
+//#ifdef USE_KLIST
+	SetDefaultGame(GetDescriptionByIndex(Picker_GetSelectedItem(hWndList), GetUsekoreanList()));
+	/*SetSelectedPick(0);*/ /* To avoid flickering. */	
+//#endif		
 }
 
 static uintptr_t CALLBACK HookProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
@@ -2839,6 +3262,16 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			SetFocus(hWndList);
 			return true;
 
+#ifdef MAME_AVI
+		case ID_FILE_PLAY_BACK_AVI:
+			MamePlayBackGameAVI();
+			return true;
+
+		case ID_FILE_PLAY_WITH_AVI:	
+			MamePlayGameAVI();
+			return true;
+ #endif /* MAME_AVI */
+
 		case ID_FILE_PLAY_RECORD:
 			MamePlayRecordGame();
 			SetFocus(hWndList);
@@ -2901,6 +3334,18 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			UpdateListView();
 			return true;
 
+		case ID_VIEW_LIST_MENU:
+			SetView(ID_VIEW_LIST_MENU);
+			return true;
+		
+		case ID_VIEW_DETAIL:
+			SetView(ID_VIEW_DETAIL);
+			return true;
+		
+		case ID_VIEW_GROUPED:
+			SetView(ID_VIEW_GROUPED);
+			return true;
+
 		/* Arrange Icons submenu */
 		case ID_VIEW_BYGAME:
 			SetSortReverse(false);
@@ -2954,6 +3399,14 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			UpdateScreenShot();
 			break;
 
+	    case ID_KOREAN_GAMELIST: // USE_KLIST
+			bklist = !bklist;
+			SetUsekoreanList(bklist);
+			CheckMenuItem(GetMenu(hMain), ID_KOREAN_GAMELIST, (bklist) ? MF_CHECKED : MF_UNCHECKED);
+			ToolBar_CheckButton(hToolBar, ID_KOREAN_GAMELIST, (bklist) ? MF_CHECKED : MF_UNCHECKED);
+			ResetListView();
+			break;
+			
 		case ID_VIEW_TOOLBARS:
 			bShowToolBar = !bShowToolBar;
 			SetShowToolBar(bShowToolBar);
@@ -2988,6 +3441,8 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 
 		case ID_TOOLBAR_EDIT:
 		{
+			setlocale(LC_ALL,"Korean");
+
 			char buf[256];
 			winui_get_window_text_utf8(hWndCtl, buf, WINUI_ARRAY_LENGTH(buf));
 
@@ -3554,7 +4009,7 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			return true;
 
 		case ID_HELP_TROUBLE:
-			ShellExecuteCommon(hMain, "https://psarcadeplus.blogspot.com/2019/10/psmame-plus-04-special-edition.html");
+			ShellExecuteCommon(hMain, "https://www.1emulation.com/forums/forum/127-arcade/");
 			SetFocus(hWndList);
 			return true;
 
@@ -3564,9 +4019,9 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			return true;
 
 		default:
-			if (id >= ID_SHOW_FOLDER_START && id <= ID_SHOW_FOLDER_END)
+			if (id >= ID_SHOW_FOLDER_START1 && id <= ID_SHOW_FOLDER_START28)
 			{
-				ToggleShowFolder(id - ID_SHOW_FOLDER_START);
+				ToggleShowFolder((id - ID_SHOW_FOLDER_START1) + 1);
 				break;
 			}
 			else if (id >= ID_CONTEXT_SHOW_FOLDER_START && id < ID_CONTEXT_SHOW_FOLDER_END)
@@ -3604,8 +4059,12 @@ const wchar_t *GamePicker_GetItemString(HWND hwndPicker, int nItem, int nColumn,
 	{
 		case COLUMN_GAMES:
 			/* Driver description */
-			utf8_s = GetDriverGameTitle(nItem);
-			break;
+//#ifdef USE_KLIST
+			utf8_s = GetDescriptionByIndex(nItem, GetUsekoreanList());
+//#else		
+//			utf8_s = GetDriverGameTitle(nItem);
+//#endif
+  	        break;
 
 		case COLUMN_ROMNAME:
 			/* Driver name (directory) */
@@ -3704,15 +4163,19 @@ static void InitListView(void)
 
 static void AddDriverIcon(int nItem, int default_icon_index)
 {
+	HICON hIcon = 0;
+	int nParentIndex = -1;
+
 	/* if already set to rom or clone icon, we've been here before */
 	if (icon_index[nItem] == 1 || icon_index[nItem] == 3)
 		return;
 
-	HICON hIcon = LoadIconFromFile((char *)GetDriverGameName(nItem));
+	hIcon = LoadIconFromFile((char *)GetDriverGameName(nItem));
 
 	if (hIcon == NULL)
 	{
-		int nParentIndex = GetParentIndex(&driver_list::driver(nItem));
+		//logmsg("Game %s Icon Not Found\n",(char *)GetDriverGameName(nItem));
+		nParentIndex = GetParentIndex(&driver_list::driver(nItem));
 
 		if( nParentIndex >= 0)
 		{
@@ -3726,6 +4189,8 @@ static void AddDriverIcon(int nItem, int default_icon_index)
 
 	if (hIcon != NULL)
 	{
+		//logmsg("Game %s Icon Found\n",(char *)GetDriverGameName(nItem));
+		
 		int nIconPos = ImageList_AddIcon(hSmall, hIcon);
 		ImageList_AddIcon(hLarge, hIcon);
 
@@ -3785,16 +4250,82 @@ static void ReloadIcons(void)
 	}
 }
 
+static DWORD GetShellLargeIconSize(void)
+{
+	DWORD  dwSize = 32, dwLength = 512, dwType = REG_SZ;
+	HKEY   hKey;
+	LPTSTR tErrorMessage = NULL;
+
+	/* Get the Key */
+	LONG lRes = RegOpenKey(HKEY_CURRENT_USER, TEXT("Control Panel\\Desktop\\WindowMetrics"), &hKey);
+	if( lRes != ERROR_SUCCESS )
+	{
+		//GetSystemErrorMessage(lRes, &tErrorMessage);
+		MessageBox(GetMainWindow(), tErrorMessage, TEXT("Large shell icon size registry access"), MB_OK | MB_ICONERROR);
+		LocalFree(tErrorMessage);
+		return dwSize;
+	}
+
+	/* Save the last size */
+	TCHAR  szBuffer[512];
+	lRes = RegQueryValueEx(hKey, TEXT("Shell Icon Size"), NULL, &dwType, (LPBYTE)szBuffer, &dwLength);
+	if( lRes != ERROR_SUCCESS )
+	{
+		//GetSystemErrorMessage(lRes, &tErrorMessage);
+		MessageBox(GetMainWindow(), tErrorMessage, TEXT("Large shell icon size registry query"), MB_OK | MB_ICONERROR);
+		LocalFree(tErrorMessage);
+		RegCloseKey(hKey);
+		return dwSize;
+	}
+
+	dwSize = _ttol(szBuffer);
+	if (dwSize < 32)
+		dwSize = 32;
+
+	if (dwSize > 16)
+		dwSize = 16;
+
+	/* Clean up */
+	RegCloseKey(hKey);
+	return dwSize;
+}
+
+
+static DWORD GetShellSmallIconSize(void)
+{
+	DWORD dwSize = ICONMAP_WIDTH;
+
+	if (dwSize < 48)
+	{
+		if (dwSize < 32)
+			dwSize = 16;
+		else
+			dwSize = 32;
+	}
+	else
+	{
+		dwSize = 48;
+	}
+	return dwSize;
+}
+
 // create iconlist for Listview control
 static void CreateIcons(void)
 {
+	DWORD dwSmallIconSize = GetShellSmallIconSize();
+	DWORD dwLargeIconSize = GetShellLargeIconSize();
+	HICON hIcon;
+	DWORD dwStyle;
 	int icon_count = 0;
-	int grow = 1000;
+	int grow = 5000;
 
 	while(g_iconData[icon_count].icon_name)
 		icon_count++;
 
-	hSmall = ImageList_Create(16, 16, ILC_COLORDDB | ILC_MASK, icon_count, icon_count + grow);
+	dwStyle = GetWindowLong(hWndList,GWL_STYLE);
+	SetWindowLong(hWndList,GWL_STYLE,(dwStyle & ~LVS_TYPEMASK) | LVS_ICON);
+
+	hSmall = ImageList_Create(dwSmallIconSize, dwSmallIconSize, ILC_COLORDDB | ILC_MASK, icon_count, icon_count + grow);
 
 	if (hSmall == NULL) 
 	{
@@ -3802,7 +4333,7 @@ static void CreateIcons(void)
 		PostQuitMessage(0);
 	}
 
-	hLarge = ImageList_Create(32, 32, ILC_COLORDDB | ILC_MASK, icon_count, icon_count + grow);
+	hLarge = ImageList_Create(dwLargeIconSize, dwLargeIconSize, ILC_COLORDDB | ILC_MASK, icon_count, icon_count + grow);
 
 	if (hLarge == NULL) 
 	{
@@ -3811,6 +4342,23 @@ static void CreateIcons(void)
 	}
 
 	ReloadIcons();
+	
+	// Associate the image lists with the list view control.
+	(void)ListView_SetImageList(hWndList, hSmall, LVSIL_SMALL);
+	(void)ListView_SetImageList(hWndList, hLarge, LVSIL_NORMAL);
+
+	// restore our view
+	SetWindowLong(hWndList,GWL_STYLE,dwStyle);
+
+	// Now set up header specific stuff
+	hHeaderImages = ImageList_Create(16,16,ILC_COLORDDB | ILC_MASK,2,2);
+	hIcon = LoadIcon(hInst,MAKEINTRESOURCE(IDI_HEADER_UP));
+	ImageList_AddIcon(hHeaderImages,hIcon);
+	hIcon = LoadIcon(hInst,MAKEINTRESOURCE(IDI_HEADER_DOWN));
+	ImageList_AddIcon(hHeaderImages,hIcon);
+
+	for (int i = 0; i < sizeof(s_nPickers) / sizeof(s_nPickers[0]); i++)
+		Picker_SetHeaderImageList(GetDlgItem(hMain, s_nPickers[i]), hHeaderImages);	
 }
 
 
@@ -3821,7 +4369,11 @@ int GamePicker_Compare(HWND hwndPicker, int index1, int index2, int sort_subitem
 	switch (sort_subitem)
 	{
 		case COLUMN_GAMES:
-			value = core_stricmp(GetDriverGameTitle(index1), GetDriverGameTitle(index2));
+//#ifdef USE_KLIST
+  			value = core_stricmp(GetDescriptionByIndex(index1,GetUsekoreanList()), GetDescriptionByIndex(index2, GetUsekoreanList()));
+//#else			
+//			value = core_stricmp(GetDriverGameTitle(index1), GetDriverGameTitle(index2));
+//#endif
 			break;
 
 		case COLUMN_ROMNAME:
@@ -4095,6 +4647,18 @@ void SetStatusBarText(int part_index, const char *message)
 	free(t_message);
 }
 
+void SetStatusBarTextU(int part_index, const wchar_t *message)
+{
+//	wchar_t *t_message = win_wstring_from_utf8(message);
+//
+//	if(!t_message)
+//		return;
+
+	SendMessage(hStatusBar, SB_SETTEXT, part_index, (LPARAM)message);
+	//free(t_message);
+}
+
+
 void SetStatusBarTextF(int part_index, const char *fmt, ...)
 {
 	char buf[256];
@@ -4105,6 +4669,18 @@ void SetStatusBarTextF(int part_index, const char *fmt, ...)
 	va_end(va);
 	SetStatusBarText(part_index, buf);
 }
+
+void SetStatusBarTextW(int part_index, const wchar_t *fmt, ...)
+{
+	wchar_t buf[256];
+	va_list va;
+
+	va_start(va, fmt);
+	_vstprintf(buf, WINUI_ARRAY_LENGTH(buf), fmt, va);
+	va_end(va);
+	SetStatusBarTextU(part_index, buf);
+}
+
 
 static void MamePlayBackGame(void)
 {
@@ -4305,8 +4881,14 @@ static void MamePlayGameWithOptions(int nGame, const play_options *playopts)
 		KillTimer(hMain, SCREENSHOT_TIMER);
 
 	in_emulation = true;
+
+	//ErrorMessageBox("select game index %d",nGame);
+
 	RunMAME(nGame, playopts);
 	IncrementPlayCount(nGame);
+
+	//ErrorMessageBox("select game index %d",GetSelectedPick());
+
 	(void)ListView_RedrawItems(hWndList, GetSelectedPick(), GetSelectedPick());
 	in_emulation = false;
 	game_launched = true;
@@ -4436,46 +5018,47 @@ static bool UseBrokenIcon(int type)
 
 static int GetIconForDriver(int nItem)
 {
-	int iconRoms = 0;
+	int iconRoms = 1;
 
 	if (DriverUsesRoms(nItem))
 	{
 		int audit_result = GetRomAuditResults(nItem);
-
 		if (audit_result == -1)
-			iconRoms = 2;
+			return 2;
 		else
 		if (IsAuditResultYes(audit_result))
 			iconRoms = 1;
 		else
 			iconRoms = 0;
 	}
-	else
-		iconRoms = 1;
 
 	// iconRoms is now either 0 (no roms), 1 (roms), or 2 (unknown)
 
 	/* these are indices into icon_names, which maps into our image list
-    * also must match IDI_WIN_NOROMS + iconRoms */
+     * also must match IDI_WIN_NOROMS + iconRoms
+     */
 
-	// Show Red-X if the ROMs are present and flagged as NOT WORKING
-	if (iconRoms == 1 && DriverIsBroken(nItem))
-		iconRoms = FindIconIndex(IDI_WIN_REDX);
-
-	// Show imperfect if the ROMs are present and flagged as imperfect
-	if (iconRoms == 1 && DriverIsImperfect(nItem))
-		iconRoms = FindIconIndex(IDI_WIN_IMPERFECT);
-
-	// show clone icon if we have roms and game is working
-	if (iconRoms == 1 && DriverIsClone(nItem))
-		iconRoms = FindIconIndex(IDI_WIN_CLONE);
+	if (iconRoms == 1)
+	{
+		// Show Red-X if the ROMs are present and flagged as NOT WORKING
+		if (DriverIsBroken(nItem))
+			iconRoms = FindIconIndex(IDI_WIN_REDX);  // iconRoms now = 4
+		else
+		// Show imperfect if the ROMs are present and flagged as imperfect
+		if (DriverIsImperfect(nItem))
+			iconRoms = FindIconIndex(IDI_WIN_IMPERFECT); // iconRoms now = 5
+		else
+		// show clone icon if we have roms and game is working
+		if (DriverIsClone(nItem))
+			iconRoms = FindIconIndex(IDI_WIN_CLONE); // iconRoms now = 3
+	}
 
 	// if we have the roms, then look for a custom per-game icon to override
-	if (iconRoms == 1 || iconRoms == 3 || iconRoms == 5 || !UseBrokenIcon(iconRoms))
+	// not 2, because this indicates F5 must be done; not 0, because this indicates roms are missing; only use 4 if user chooses it
+	if (iconRoms == 1 || iconRoms == 3 || iconRoms == 5 || (!UseBrokenIcon(iconRoms)))
 	{
 		if (icon_index[nItem] == 0)
 			AddDriverIcon(nItem,iconRoms);
-
 		iconRoms = icon_index[nItem];
 	}
 
@@ -4569,7 +5152,17 @@ static void UpdateMenu(HMENU hMenu)
 		wchar_t buf[200];
 		int nGame = Picker_GetSelectedItem(hWndList);
 
-		wchar_t *t_description = win_wstring_from_utf8(ConvertAmpersandString(GetDriverGameTitle(nGame)));
+		wchar_t *t_description;
+//#ifdef USE_KLIST
+		t_description= win_wstring_from_utf8(ConvertAmpersandString(GetDescriptionByIndex(nGame, GetUsekoreanList())));
+//#else
+//		t_description= win_wstring_from_utf8(ConvertAmpersandString(GetDriverGameTitle(nGame)));
+//#endif
+
+ #ifdef MAME_AVI
+        EnableMenuItem(hMenu, ID_FILE_PLAY_BACK_AVI,    MF_ENABLED);
+        EnableMenuItem(hMenu, ID_FILE_PLAY_WITH_AVI, 	MF_ENABLED);
+ #endif /* MAME_AVI */
 
 		if( !t_description )
 			return;
@@ -4592,6 +5185,9 @@ static void UpdateMenu(HMENU hMenu)
 		EnableMenuItem(hMenu, ID_FILE_PLAY_RECORD, MF_GRAYED);
 		EnableMenuItem(hMenu, ID_GAME_PROPERTIES, MF_GRAYED);
 		EnableMenuItem(hMenu, ID_CONTEXT_SELECT_RANDOM, MF_GRAYED);
+ #ifdef MAME_AVI
+        EnableMenuItem(hMenu, ID_FILE_PLAY_WITH_AVI,    MF_GRAYED);	
+ #endif /* MAME_AVI */
 	}
 
 	if (lpFolder->m_dwFlags & F_CUSTOM)
@@ -4639,12 +5235,12 @@ static void UpdateMenu(HMENU hMenu)
 		if (GetShowFolder(i))
 		{
 			CheckMenuItem(hMenu, ID_CONTEXT_SHOW_FOLDER_START + i, MF_BYCOMMAND | MF_CHECKED);
-			CheckMenuItem(hMenu, ID_SHOW_FOLDER_START + i, MF_BYCOMMAND | MF_CHECKED);
+			CheckMenuItem(hMenu, (ID_SHOW_FOLDER_START1 + i) - 1, MF_BYCOMMAND | MF_CHECKED);
 		}
 		else
 		{
 			CheckMenuItem(hMenu, ID_CONTEXT_SHOW_FOLDER_START + i, MF_BYCOMMAND | MF_UNCHECKED);
-			CheckMenuItem(hMenu, ID_SHOW_FOLDER_START + i, MF_BYCOMMAND | MF_UNCHECKED);
+			CheckMenuItem(hMenu, (ID_SHOW_FOLDER_START1 + i) - 1, MF_BYCOMMAND | MF_UNCHECKED);
 		}
 	}
 }
@@ -4694,13 +5290,9 @@ void InitMainMenu(HMENU hMainMenu)
 		mif.fType = MFT_STRING;
 		mif.dwTypeData = t_title;
 		mif.cch = _tcslen(mif.dwTypeData);
-		mif.wID = ID_SHOW_FOLDER_START + g_folderData[i].m_nFolderId;
+		mif.wID = ID_SHOW_FOLDER_START1 + i;
 
-		if (i == 0)
-			SetMenuItemInfo(hSubFold, i, true, &mif);
-		else
-			InsertMenuItem(hSubFold, i, true, &mif);
-
+		SetMenuItemInfo(hMainMenu, ID_SHOW_FOLDER_START1 + i, false, &mif);
 		free(t_title);
 	}
 
@@ -4751,6 +5343,9 @@ void InitMainMenu(HMENU hMainMenu)
 	SetMenuItemBitmaps(hMainMenu, ID_FILE_LOADSTATE, MF_BYCOMMAND, hSavestate, hSavestate);
 	SetMenuItemBitmaps(hMainMenu, ID_CONTEXT_FILTERS, MF_BYCOMMAND, hFilters, hFilters);
 	SetMenuItemBitmaps(hMainMenu, ID_OPTIONS_RESET_DEFAULTS, MF_BYCOMMAND, hReset, hReset);
+	SetMenuItemBitmaps(hMainMenu, ID_KOREAN_GAMELIST, MF_BYCOMMAND, hklist, hklist); // USE_KLIST
+	
+	
 }
 
 void InitTreeContextMenu(HMENU hTreeMenu)
@@ -4803,9 +5398,9 @@ void InitTreeContextMenu(HMENU hTreeMenu)
 		// menu in resources has one empty item (needed for the submenu to setup properly)
 		// so overwrite this one, append after
 		if (i == 0)
-			SetMenuItemInfo(hMenuTree, 0, true, &mii);
+			SetMenuItemInfo(hMenuTree, ID_CONTEXT_SHOW_FOLDER_START, false, &mii);
 		else
-			InsertMenuItem(hMenuTree, i, true, &mii);
+			InsertMenuItem(hMenuTree, i, false, &mii);
 
 		free(t_title);
 	}
@@ -5156,9 +5751,12 @@ static LPTREEFOLDER GetSelectedFolder(void)
 /* Updates all currently displayed Items in the List with the latest Data*/
 void UpdateListView(void)
 {
+	//ErrorMessageBox("update listview");
+
 	ResetWhichGamesInFolders();
 	ResetListView();
-	(void)ListView_RedrawItems(hWndList, ListView_GetTopIndex(hWndList), ListView_GetTopIndex(hWndList) + ListView_GetCountPerPage(hWndList));
+	if( (GetViewMode() == VIEW_GROUPED) || (GetViewMode() == VIEW_REPORT ) )
+		(void)ListView_RedrawItems(hWndList, ListView_GetTopIndex(hWndList), ListView_GetTopIndex(hWndList) + ListView_GetCountPerPage(hWndList));
 	SetFocus(hWndList);
 }
 
@@ -5317,6 +5915,16 @@ static void CalculateBestScreenShotRect(HWND hWnd, RECT *pRect, bool restrict_he
 
 static void SwitchFullScreenMode(void)
 {
+	// LONG lStyle = GetWindowLong(hMain, GWL_STYLE);
+	// lStyle &= ~(WS_CAPTION | WS_THICKFRAME );
+	// SetWindowLong(hMain, GWL_STYLE, lStyle);
+
+	// LONG lExStyle = GetWindowLong(hMain, GWL_EXSTYLE);
+	// lExStyle &= ~(WS_EX_DLGMODALFRAME | WS_EX_CLIENTEDGE | WS_EX_STATICEDGE);
+	// SetWindowLong(hMain, GWL_EXSTYLE, lExStyle);
+	
+	// SetWindowPos(hMain, NULL, 0, 0, 0, 0, SWP_FRAMECHANGED | SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_NOOWNERZORDER);
+
 	if (bFullScreen)
 	{
 		// Hide the window
@@ -5330,6 +5938,7 @@ static void SwitchFullScreenMode(void)
 		CheckMenuItem(GetMenu(hMain), ID_VIEW_STATUS, GetShowStatusBar() ? MF_CHECKED : MF_UNCHECKED);
 		CheckMenuItem(GetMenu(hMain), ID_VIEW_PAGETAB, GetShowTabCtrl() ? MF_CHECKED : MF_UNCHECKED);
 		CheckMenuItem(GetMenu(hMain), ID_ENABLE_INDENT, GetEnableIndent() ? MF_CHECKED : MF_UNCHECKED);
+
 		// Add frame to dialog again
 		SetWindowLong(hMain, GWL_STYLE, GetWindowLong(hMain, GWL_STYLE) | WS_OVERLAPPEDWINDOW);
 
@@ -5346,7 +5955,7 @@ static void SwitchFullScreenMode(void)
 		// Hide the window
 		ShowWindow(hMain, SW_HIDE);
 		// Remove menu
-		SetMenu(hMain, NULL);
+		//SetMenu(hMain, NULL);
 		// Frameless dialog
 		SetWindowLong(hMain, GWL_STYLE, GetWindowLong(hMain, GWL_STYLE) & ~WS_OVERLAPPEDWINDOW);
 
@@ -5542,6 +6151,220 @@ static void SaveGameListToFile(char *szFile, int filetype)
 	winui_message_box_utf8(hMain, "File saved successfully.", MAMEUINAME, MB_ICONINFORMATION | MB_OK);
 }
 
+//#ifdef USE_KLIST
+static void TSV_GetPath(char *path)
+{
+	char drive[256];
+	char dir[256];
+	char szFilname[MAX_PATH];
+	
+	GetModuleFileNameA(NULL, szFilname, MAX_PATH);
+	_splitpath(szFilname, drive, dir, NULL, NULL);
+
+	strcpy(szFilname, drive);
+	strcat(szFilname, dir);
+	strcat(szFilname, TSVNAME);
+	
+	strcpy(path,szFilname);	
+}
+
+static void LoadGameListFromFile(int games)
+{
+
+	char tsvname[MAX_PATH];
+	int  i, j;
+
+
+	tsv_index = (TSV *)calloc(games + 1, sizeof(TSV));
+	if (tsv_index == NULL)
+	{
+		return;
+	}
+	
+	tsv_data = (TSV *)calloc(games + 1, sizeof(TSV));
+	if (tsv_data == NULL)
+	{
+		free(tsv_index);
+		tsv_index = NULL;
+		return;
+	}
+
+
+	TSV_GetPath(tsvname);	
+
+	FILE *f = fopen(tsvname, "r");
+
+	//winui_message_box_utf8(hMain, "mame32k list file open complete", MAMEUINAME, MB_ICONINFORMATION | MB_OK);
+
+	if (f != NULL)
+	{	
+		char *line, *p[NUM_COLUMNS], buf[LINEBUF_SIZE];
+		const char *token = "\t\r\n";
+
+		i = 0;
+		while (fgets(buf, LINEBUF_SIZE, f))
+		{
+			line = buf;
+			for (j = 0; j < NUM_COLUMNS; j++)
+			{
+				p[j] = strtok(line,  token);
+				if (p[j] == NULL) break;
+				line = NULL;
+			}
+
+			tsv_data[i].gamename      = strdup(p[0]);
+			tsv_data[i].description   = strdup(p[1]);
+			tsv_data[i].manufacturer  = strdup(p[2]);
+
+			if (++i > games)
+			{
+				tsv_data = (TSV *)realloc(tsv_data, (i + 12) * sizeof(TSV));
+				//games += 12;
+			}
+		}					
+	}
+    else
+    {
+		need_update = 1;
+    }
+
+	//winui_message_box_utf8(hMain, "mame32k list load complete", MAMEUINAME, MB_ICONINFORMATION | MB_OK);
+
+	for (int i = 0; i< games ; i++)
+	{
+		int nIndex = -1;
+
+		for (j = 0; tsv_data[j].gamename; j++)
+		{
+			if (!strcmp(  (char *)GetDriverGameName(i), tsv_data[j].gamename)  )
+			{
+				nIndex = j;
+				break;
+			}
+		}
+		if (nIndex == -1)
+		{				
+			tsv_index[i].gamename     = (char *)GetDriverGameName(i);
+			tsv_index[i].description  = (char *)GetDriverGameTitle(i);
+			tsv_index[i].manufacturer = (char *)GetDriverGameManufacturer(i);
+			need_update = 1;
+		}
+		else
+		{
+			tsv_index[i].gamename	  = tsv_data[nIndex].gamename;
+			tsv_index[i].description  = tsv_data[nIndex].description;
+			tsv_index[i].manufacturer = tsv_data[nIndex].manufacturer;
+		}			
+	}
+
+	//winui_message_box_utf8(hMain, "Game list load complete", MAMEUINAME, MB_ICONINFORMATION | MB_OK);
+
+	
+}
+
+static void SaveAllGameListToFile()
+{
+	if (need_update)
+	{
+		char tsvname[_MAX_PATH];
+		int  i;
+		const char *format = "%s\t%s\t%s\n";
+
+		TSV_GetPath(tsvname);
+		
+		FILE *f = fopen(tsvname, "w");
+
+		if (f != NULL)
+		{
+			for (i = 0; tsv_index[i].gamename != NULL; i++)
+			{
+				fprintf(f, format,					
+						tsv_index[i].gamename,
+						tsv_index[i].description,
+						tsv_index[i].manufacturer);
+			}
+			fclose(f);
+		}
+
+		free(tsv_index);
+		for (i = 0; tsv_data[i].gamename; i++)
+		{			
+			free(tsv_data[i].gamename);
+			free(tsv_data[i].description);
+			free(tsv_data[i].manufacturer);
+		}
+		free(tsv_data);
+	
+	}
+	
+	//winui_message_box_utf8(hMain, "game list save complete", MAMEUINAME, MB_ICONINFORMATION | MB_OK);
+}
+
+int GetGameIndex(const char *name)
+{
+	int i;
+
+	for (i = 0; tsv_index[i].gamename != NULL; i++)
+		if (!strcmp(name, tsv_index[i].gamename)) 
+			return i;
+
+	return 0;
+}
+
+char *GetDescriptionByIndex(int nIndex, bool bUse)
+{
+
+	if (tsv_index && bUse)
+	{
+		return (tsv_index[nIndex].description);
+	}
+	else
+	{
+		return (char *)GetDriverGameTitle(nIndex);
+	}
+}
+
+char *GetDescriptionByName(const char *name, bool bUse)
+{
+	return GetDescriptionByIndex(GetGameIndex(name), bUse);
+}
+
+char *GetGameNameByIndex(int nIndex, bool bUse)
+{
+
+	if (tsv_index && bUse)
+	{
+		return (tsv_index[nIndex].gamename);
+	}
+	else
+	{
+		return (char *)GetDriverGameName(nIndex);
+	}
+
+}
+
+char *GetGameName(const char *name, bool bUse)
+{
+	return GetGameNameByIndex(GetGameIndex(name), bUse);
+}
+
+char *GetGameManufactureByIndex(int nIndex, bool bUse)
+{
+
+	if (tsv_index && bUse)
+	{
+		return (tsv_index[nIndex].manufacturer);
+	}
+	else
+	{
+		return (char *)GetDriverGameManufacturer(nIndex);
+	}
+
+}
+
+
+//#endif
+
 static HBITMAP CreateBitmapTransparent(HBITMAP hSource)
 {
 	BITMAP bm;
@@ -5569,3 +6392,1195 @@ static HBITMAP CreateBitmapTransparent(HBITMAP hSource)
 	DeleteDC(hSrc);
 	return hNew;
 }
+
+int GetNumGames(void)
+{
+	return game_count;
+}
+
+static int logmsg_init = 0;
+void logmsg(const char*lpszFmt,...)
+{
+	CHAR szBuf[2048];
+	va_list vargs;
+	FILE *fp;
+
+	va_start(vargs,lpszFmt);
+	vsprintf(szBuf, lpszFmt, vargs);
+	va_end(vargs);
+
+	if( !logmsg_init ) {
+		remove( "msglog.txt" );
+		logmsg_init = 1;
+	}
+
+	fp = fopen( "msglog.txt", "at" );
+	if( fp == NULL ) {
+		fp = fopen( "msglog.txt", "wt" );
+		if( fp == NULL ) return;
+	}
+
+	fprintf( fp, "%s", szBuf );
+
+	fclose(fp);
+}
+
+
+#ifdef MAME_AVI
+
+#include <math.h>
+
+void AviDialogProcRefresh(HWND hDlg)
+{
+	// '프레임 압축'에 체크된 경우
+	if (Button_GetCheck(GetDlgItem(hDlg, IDC_FRAME_CMP)) && AviStatus.depth == 16	)
+	{
+		Button_Enable(GetDlgItem(hDlg, IDC_FRAME_CMP_PRE), TRUE);
+		Button_Enable(GetDlgItem(hDlg, IDC_FRAME_CMP_FEW), TRUE);
+	}
+	else
+	{
+		Button_Enable(GetDlgItem(hDlg, IDC_FRAME_CMP_PRE), FALSE);
+		Button_Enable(GetDlgItem(hDlg, IDC_FRAME_CMP_FEW), FALSE);
+	}
+
+	// '16bit -> 24bit변환'에 체크된 경우
+	if (Button_GetCheck(GetDlgItem(hDlg, IDC_COLOR_CNV_16TO24)))
+	{
+		Button_Enable(GetDlgItem(hDlg, IDC_INTERLACE), TRUE);
+	} else
+	{
+		Button_Enable(GetDlgItem(hDlg, IDC_INTERLACE), FALSE);
+	}
+
+	// '16bit->24bit변환' 과 '인터레이스드 방식'에 체크가 된 경우
+	if (Button_GetCheck(GetDlgItem(hDlg, IDC_INTERLACE)) && Button_GetCheck(GetDlgItem(hDlg, IDC_COLOR_CNV_16TO24))	)
+	{	
+		Button_Enable(GetDlgItem(hDlg, IDC_INTERLACE_ODD),	 TRUE);
+		Button_Enable(GetDlgItem(hDlg, IDC_SMOOTH_RESIZE_X), TRUE);
+		Button_Enable(GetDlgItem(hDlg, IDC_SMOOTH_RESIZE_Y), TRUE);
+
+		Button_Enable(GetDlgItem(hDlg, IDC_AVISIZE_WIDTH),		TRUE);
+		Button_Enable(GetDlgItem(hDlg, IDC_AVISIZE_HEIGHT),		TRUE);
+		Button_Enable(GetDlgItem(hDlg, IDC_AVI_LEFT),			TRUE);
+		Button_Enable(GetDlgItem(hDlg, IDC_AVI_WIDTH),			TRUE);
+		Button_Enable(GetDlgItem(hDlg, IDC_AVI_TOP),			TRUE);
+		Button_Enable(GetDlgItem(hDlg, IDC_AVI_HEIGHT),			TRUE);
+	
+		Button_Enable(GetDlgItem(hDlg, IDC_AVI_POS_CENTER),			TRUE);
+		Static_SetText(GetDlgItem(hDlg, IDC_TEXT_FPS_DIV2),        TEXT("/2"));
+		Static_SetText(GetDlgItem(hDlg, IDC_TEXT_AVI_TOP_MUL2),    TEXT("x2"));
+		Static_SetText(GetDlgItem(hDlg, IDC_TEXT_AVI_HEIGHT_MUL2), TEXT("x2"));
+	}
+	else
+	{
+		Button_Enable(GetDlgItem(hDlg, IDC_INTERLACE_ODD), FALSE);
+		Button_Enable(GetDlgItem(hDlg, IDC_SMOOTH_RESIZE_X), FALSE);
+		Button_Enable(GetDlgItem(hDlg, IDC_SMOOTH_RESIZE_Y), FALSE);
+
+		Button_Enable(GetDlgItem(hDlg, IDC_AVISIZE_WIDTH),		FALSE);
+		Button_Enable(GetDlgItem(hDlg, IDC_AVISIZE_HEIGHT),		FALSE);
+		Button_Enable(GetDlgItem(hDlg, IDC_AVI_LEFT),			FALSE);
+		Button_Enable(GetDlgItem(hDlg, IDC_AVI_WIDTH),			FALSE);
+		Button_Enable(GetDlgItem(hDlg, IDC_AVI_TOP),			FALSE);
+		Button_Enable(GetDlgItem(hDlg, IDC_AVI_HEIGHT),			FALSE);
+
+		Button_Enable(GetDlgItem(hDlg, IDC_AVI_POS_CENTER),			FALSE);
+		Static_SetText(GetDlgItem(hDlg, IDC_TEXT_FPS_DIV2),        TEXT(""));
+		Static_SetText(GetDlgItem(hDlg, IDC_TEXT_AVI_TOP_MUL2),    TEXT(""));
+		Static_SetText(GetDlgItem(hDlg, IDC_TEXT_AVI_HEIGHT_MUL2), TEXT(""));
+	}
+}
+
+INT_PTR CALLBACK AviDialogProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam)
+{
+
+    switch (Msg)
+    {
+    case WM_INITDIALOG:
+		{// 다이얼로그 초기화
+			WCHAR buf[64];
+			HWND hCtrl = GetDlgItem(hDlg, IDC_AVIFRAMESKIP);
+			int j;
+
+			AviStatus = (*(GetAviStatus()));
+			if (hCtrl)
+			{
+				int i;
+				WCHAR fmt[64];
+				const WCHAR *szFmtStr = TEXT("Skip %d of 12 frames");
+				(void)ComboBox_AddString(hCtrl, TEXT("Draw every frame  @"));
+
+				for (i = 1; i < 12; i++)
+				{
+					wsprintf( fmt, szFmtStr, i );
+					if (i==6 || i==8 || i==9)
+						wsprintf(buf, TEXT("%s @"), fmt);
+					else
+						wsprintf(buf, TEXT("%s"), fmt);
+
+					(void)ComboBox_AddString(hCtrl, buf);
+				}
+				(void)ComboBox_SetCurSel(hCtrl, AviStatus.frame_skip);
+			}
+
+			hCtrl = GetDlgItem(hDlg, IDC_FPS);
+			if (hCtrl)
+			{
+				static const WCHAR *avi_fps_values[]={
+					TEXT("60"),
+					TEXT("59.94"),
+					TEXT("53.333333"),
+					TEXT("48"),
+					TEXT("40"),
+					TEXT("30"),
+					TEXT("29.97"),
+					TEXT("24"),
+					TEXT("20"),
+					TEXT("15"),
+					TEXT("12"),
+					TEXT("10")
+				};
+				swprintf(buf, TEXT("%5.6f"), AviStatus.fps);
+				(void)ComboBox_AddString(hCtrl, buf);
+
+				for (j = 0; j < 12; j++)
+					(void)ComboBox_AddString(hCtrl, avi_fps_values[j]);
+				(void)ComboBox_SetCurSel(hCtrl, 0);
+
+				(void)ComboBox_LimitText(hCtrl, 10);
+				Edit_SetText(hCtrl, buf);
+
+			}
+
+			hCtrl = GetDlgItem(hDlg, IDC_AVISIZE_WIDTH);
+			if (hCtrl)
+			{
+				static const WCHAR *avi_width_values[]={
+					TEXT("720"),
+					TEXT("640"),
+					TEXT("512"),
+					TEXT("480"),
+					TEXT("384"),
+					TEXT("352"),
+					TEXT("320"),
+					TEXT("304"),
+					TEXT("256"),
+					TEXT("240")
+				};
+				wsprintf(buf, TEXT("%u"), AviStatus.avi_width);
+				(void)ComboBox_AddString(hCtrl, buf);
+				for (j = 0; j < 10; j++)
+					(void)ComboBox_AddString(hCtrl, avi_width_values[j]);
+				(void)ComboBox_SetCurSel(hCtrl, 0);
+
+				(void)ComboBox_LimitText(hCtrl, 5);
+				wsprintf(buf, TEXT("%u"), AviStatus.avi_width);
+				Edit_SetText(hCtrl, buf);
+			}
+
+			hCtrl = GetDlgItem(hDlg, IDC_AVISIZE_HEIGHT);
+			if (hCtrl)
+			{
+				static const WCHAR *avi_height_values[]={
+					TEXT("480"),
+					TEXT("384"),
+					TEXT("320"),
+					TEXT("240"),
+					TEXT("232"),
+					TEXT("224")
+				};
+				wsprintf(buf, TEXT("%u"), AviStatus.avi_height);
+				(void)ComboBox_AddString(hCtrl, buf);
+				for (j = 0; j < 6; j++)
+					(void)ComboBox_AddString(hCtrl, avi_height_values[j]);
+				(void)ComboBox_SetCurSel(hCtrl, 0);
+
+				(void)ComboBox_LimitText(hCtrl, 5);
+				wsprintf(buf, TEXT("%u"), AviStatus.avi_height);
+				Edit_SetText(hCtrl, buf);
+			}
+
+			wsprintf(buf, TEXT("%lu"), AviStatus.avi_rect.m_Left);
+			Edit_SetText(GetDlgItem(hDlg, IDC_AVI_LEFT),   buf);
+			wsprintf(buf, TEXT("%lu"), AviStatus.avi_rect.m_Top);
+			Edit_SetText(GetDlgItem(hDlg, IDC_AVI_TOP),    buf);
+			wsprintf(buf, TEXT("%lu"), AviStatus.avi_rect.m_Width);
+			Edit_SetText(GetDlgItem(hDlg, IDC_AVI_WIDTH),  buf);
+			wsprintf(buf, TEXT("%lu"), AviStatus.avi_rect.m_Height);
+			Edit_SetText(GetDlgItem(hDlg, IDC_AVI_HEIGHT), buf);
+			
+			hCtrl = GetDlgItem(hDlg, IDC_AVI_FILESIZE);
+			if (hCtrl)
+			{
+				static const WCHAR *avi_filesize_values[]={
+					TEXT("2000"),
+					TEXT("1500"),
+					TEXT("1000"),
+					TEXT("500"),
+					TEXT("100")
+				};
+				wsprintf(buf, TEXT("%u"), AviStatus.avi_filesize);
+				(void)ComboBox_AddString(hCtrl, buf);
+				for (j = 0; j < 5; j++)
+					(void)ComboBox_AddString(hCtrl, avi_filesize_values[j]);
+				(void)ComboBox_SetCurSel(hCtrl, 0);
+
+				(void)ComboBox_LimitText(hCtrl, 7);
+				wsprintf(buf, TEXT("%u"), AviStatus.avi_filesize);
+				Edit_SetText(hCtrl, buf);
+			}
+			hCtrl = GetDlgItem(hDlg, IDC_AVI_FILESIZE_CHECK_FRAME);
+			if (hCtrl)
+			{
+				static const WCHAR *avi_filesize_ck_values[]={
+					TEXT("60"),
+					TEXT("30"),
+					TEXT("20"),
+					TEXT("15"),
+					TEXT("12"),
+					TEXT("10"),
+					TEXT("6"),
+					TEXT("5"),
+					TEXT("4"),
+					TEXT("3"),
+					TEXT("2"),
+					TEXT("1")
+				};
+				for (j = 0; j < 12; j++)
+					(void)ComboBox_AddString(hCtrl, avi_filesize_ck_values[j]);
+				(void)ComboBox_SetCurSel(hCtrl, 0);
+
+				(void)ComboBox_LimitText(hCtrl, 11);
+				wsprintf(buf, TEXT("%u"), AviStatus.avi_filesizecheck_frame);
+				Edit_SetText(hCtrl, buf);
+			}
+
+			hCtrl = GetDlgItem(hDlg, IDC_AUDIO_RECORD_TYPE);
+			if (hCtrl)
+			{
+				(void)ComboBox_AddString(hCtrl, TEXT("Do not record sound"));
+				(void)ComboBox_AddString(hCtrl, TEXT("Record as WAV file"));
+				(void)ComboBox_AddString(hCtrl, TEXT("Record to AVI"));
+
+				(void)ComboBox_SetCurSel(hCtrl, AviStatus.avi_audio_record_type);
+			}
+
+			Edit_LimitText(	GetDlgItem(hDlg, IDC_HOUR),   3);
+			Edit_LimitText(	GetDlgItem(hDlg, IDC_MINUTE), 3);
+			Edit_LimitText(	GetDlgItem(hDlg, IDC_SECOND), 3);
+
+			{
+				wsprintf(buf, TEXT("%d x %d x %d bit"), AviStatus.width, AviStatus.height, AviStatus.depth);
+				Static_SetText(GetDlgItem(hDlg, IDC_BITMAP_SIZE),       buf);
+
+				if (AviStatus.audio_type == 0)
+				{
+
+					Static_SetText(GetDlgItem(hDlg, IDC_AUDIO_SRC_FORMAT),TEXT("No sound"));
+
+					Static_SetText(GetDlgItem(hDlg, IDC_AUDIO_DEST_FORMAT),TEXT(""));
+
+					Button_Enable(GetDlgItem(hDlg, IDC_AUDIO_RECORD_TYPE), FALSE);
+
+				}else
+				{
+                    const WCHAR *lpszStereo = TEXT("Stereo");
+					const WCHAR *lpszMono   = TEXT("Mono");				
+					wsprintf(buf, TEXT("%uHz %ubit %s"), AviStatus.audio_samples_per_sec, AviStatus.audio_bitrate, (AviStatus.audio_channel == 2) ? lpszStereo:lpszMono);
+					Static_SetText(GetDlgItem(hDlg, IDC_AUDIO_SRC_FORMAT),        buf);
+					wsprintf(buf, TEXT("%uHz %ubit %s"), AviStatus.avi_audio_samples_per_sec, AviStatus.avi_audio_bitrate, (AviStatus.avi_audio_channel == 2) ? lpszStereo:lpszMono);
+					Static_SetText(GetDlgItem(hDlg, IDC_AUDIO_DEST_FORMAT),       buf);
+					Button_Enable(GetDlgItem(hDlg, IDC_AUDIO_RECORD_TYPE), TRUE);
+				}
+
+
+				wsprintf(buf, TEXT("%d"), AviStatus.hour);
+				Edit_SetText(	GetDlgItem(hDlg, IDC_HOUR), buf);
+				wsprintf(buf, TEXT("%d"), AviStatus.minute);
+				Edit_SetText(	GetDlgItem(hDlg, IDC_MINUTE), buf);
+				wsprintf(buf, TEXT("%d"), AviStatus.second);
+				Edit_SetText(	GetDlgItem(hDlg, IDC_SECOND), buf);
+			}
+			
+
+			Button_SetCheck(GetDlgItem(hDlg, IDC_FRAME_CMP),      AviStatus.frame_cmp);
+			Button_SetCheck(GetDlgItem(hDlg, IDC_FRAME_CMP_PRE),  AviStatus.frame_cmp_pre15);
+			Button_SetCheck(GetDlgItem(hDlg, IDC_FRAME_CMP_FEW),  AviStatus.frame_cmp_few);
+			Button_SetCheck(GetDlgItem(hDlg, IDC_WAVE_RECORD),    AviStatus.wave_record);
+			Button_SetCheck(GetDlgItem(hDlg, IDC_INTERLACE),      AviStatus.interlace);
+			Button_SetCheck(GetDlgItem(hDlg, IDC_INTERLACE_ODD),	AviStatus.interlace_odd_number_field);
+
+			Button_SetCheck(GetDlgItem(hDlg, IDC_CHECK_FORCEFLIPY),     AviStatus.force_flip_y);
+
+			Button_SetCheck(GetDlgItem(hDlg, IDC_AVI_SAVEFILE_PAUSE),	AviStatus.avi_savefile_pause);
+			Button_SetCheck(GetDlgItem(hDlg, IDC_SMOOTH_RESIZE_X),		AviStatus.avi_smooth_resize_x);
+			Button_SetCheck(GetDlgItem(hDlg, IDC_SMOOTH_RESIZE_Y),		AviStatus.avi_smooth_resize_y);
+			
+			Button_SetCheck(GetDlgItem(hDlg, IDC_AUDIO_16BIT),    (AviStatus.avi_audio_bitrate>8) ? TRUE:FALSE);
+			Button_SetCheck(GetDlgItem(hDlg, IDC_AUDIO_STEREO),   (AviStatus.avi_audio_channel==2) ? TRUE:FALSE);
+
+	
+			if (AviStatus.depth == 16)
+			{
+				if (AviStatus.avi_depth == 8)	Button_SetCheck(GetDlgItem(hDlg, IDC_COLOR_CNV_16TO8),TRUE);
+				else							Button_SetCheck(GetDlgItem(hDlg, IDC_COLOR_CNV_16TO8),FALSE);
+				if (AviStatus.avi_depth == 24)	Button_SetCheck(GetDlgItem(hDlg, IDC_COLOR_CNV_16TO24),TRUE);
+				else							Button_SetCheck(GetDlgItem(hDlg, IDC_COLOR_CNV_16TO24),FALSE);
+			
+				Button_Enable(GetDlgItem(hDlg, IDC_COLOR_CNV_16TO8), TRUE);
+				Button_Enable(GetDlgItem(hDlg, IDC_COLOR_CNV_16TO24), TRUE);
+
+				Button_Enable(GetDlgItem(hDlg, IDC_INTERLACE), TRUE);
+				Button_Enable(GetDlgItem(hDlg, IDC_SET_TV_DISPLAY_SETTING), TRUE);
+				
+
+			} else
+			{
+				Button_SetCheck(GetDlgItem(hDlg, IDC_COLOR_CNV_16TO8),FALSE);
+				Button_SetCheck(GetDlgItem(hDlg, IDC_COLOR_CNV_16TO24),FALSE);
+				Button_Enable(GetDlgItem(hDlg, IDC_COLOR_CNV_16TO8), FALSE);
+				Button_Enable(GetDlgItem(hDlg, IDC_COLOR_CNV_16TO24), FALSE);
+				Button_Enable(GetDlgItem(hDlg, IDC_INTERLACE), FALSE);
+				Button_Enable(GetDlgItem(hDlg, IDC_SET_TV_DISPLAY_SETTING), FALSE);
+			}
+			
+
+			if (AviStatus.depth == 16)
+			{
+				Button_Enable(GetDlgItem(hDlg, IDC_FRAME_CMP), TRUE);
+				Button_Enable(GetDlgItem(hDlg, IDC_FRAME_CMP_PRE), TRUE);
+				Button_Enable(GetDlgItem(hDlg, IDC_FRAME_CMP_FEW), TRUE);
+			}else 
+			{
+				Button_Enable(GetDlgItem(hDlg, IDC_FRAME_CMP), FALSE);
+				Button_Enable(GetDlgItem(hDlg, IDC_FRAME_CMP_PRE), FALSE);
+				Button_Enable(GetDlgItem(hDlg, IDC_FRAME_CMP_FEW), FALSE);
+			}
+
+			Edit_LimitText(GetDlgItem(hDlg, IDC_LEFT), 4);
+			Edit_SetText(GetDlgItem(hDlg, IDC_LEFT),	TEXT("0"));
+			SendDlgItemMessage(hDlg, IDC_LEFT_SPIN, UDM_SETRANGE, 0,
+										(LPARAM)MAKELONG(AviStatus.width-1, 0));
+		    SendDlgItemMessage(hDlg, IDC_LEFT_SPIN, UDM_SETPOS, 0,
+										(LPARAM)MAKELONG(AviStatus.rect.m_Left, 0));
+
+			Edit_LimitText(GetDlgItem(hDlg, IDC_TOP), 4);
+			Edit_SetText(GetDlgItem(hDlg, IDC_TOP),	TEXT("0"));
+			SendDlgItemMessage(hDlg, IDC_TOP_SPIN, UDM_SETRANGE, 0,
+										(LPARAM)MAKELONG(AviStatus.height-1, 0));
+		    SendDlgItemMessage(hDlg, IDC_TOP_SPIN, UDM_SETPOS, 0,
+										(LPARAM)MAKELONG(AviStatus.rect.m_Top, 0));
+
+			Edit_LimitText(GetDlgItem(hDlg, IDC_WIDTH), 4);
+			SendDlgItemMessage(hDlg, IDC_WIDTH_SPIN, UDM_SETRANGE, 0,
+										(LPARAM)MAKELONG(AviStatus.width, 1));
+		    SendDlgItemMessage(hDlg, IDC_WIDTH_SPIN, UDM_SETPOS, 0,
+										(LPARAM)MAKELONG(AviStatus.rect.m_Width, 0));
+
+			Edit_LimitText(GetDlgItem(hDlg, IDC_HEIGHT), 4);
+			SendDlgItemMessage(hDlg, IDC_HEIGHT_SPIN, UDM_SETRANGE, 0,
+										(LPARAM)MAKELONG(AviStatus.height, 1));
+		    SendDlgItemMessage(hDlg, IDC_HEIGHT_SPIN, UDM_SETPOS, 0,
+										(LPARAM)MAKELONG(AviStatus.rect.m_Height, 0));
+
+
+		}
+
+		AviDialogProcRefresh(hDlg);
+        return TRUE;
+
+    case WM_HELP:
+        break;
+
+    case WM_CONTEXTMENU:
+        break;
+
+    case WM_COMMAND :
+        switch (GET_WM_COMMAND_ID(wParam, lParam))
+        {
+		case IDC_FRAME_CMP:
+			AviDialogProcRefresh(hDlg);
+			break;
+		case IDC_FRAME_CMP_PRE:
+			if (Button_GetCheck(GetDlgItem(hDlg, IDC_FRAME_CMP_PRE)))
+				Button_SetCheck(GetDlgItem(hDlg, IDC_FRAME_CMP_FEW),      FALSE);
+			break;
+		case IDC_FRAME_CMP_FEW:
+			if (Button_GetCheck(GetDlgItem(hDlg, IDC_FRAME_CMP_FEW)))
+				Button_SetCheck(GetDlgItem(hDlg, IDC_FRAME_CMP_PRE),      FALSE);
+			break;
+		case IDC_INTERLACE:
+			if (Button_GetCheck(GetDlgItem(hDlg, IDC_INTERLACE)) == TRUE)
+			{	
+				char buf[32];
+				sprintf(buf, "%lu", AviStatus.rect.m_Height*2);
+				Edit_SetText(GetDlgItem(hDlg, IDC_AVISIZE_HEIGHT),        (LPTSTR)buf);
+			}
+			else
+			{
+				char buf[32];
+				sprintf(buf, "%lu", AviStatus.rect.m_Height);
+				Edit_SetText(GetDlgItem(hDlg, IDC_AVISIZE_HEIGHT),        (LPTSTR)buf);
+			}
+			AviDialogProcRefresh(hDlg);
+			break;
+		case IDC_COLOR_CNV_16TO8:
+			if (Button_GetCheck(GetDlgItem(hDlg, IDC_COLOR_CNV_16TO8)))
+				Button_SetCheck(GetDlgItem(hDlg, IDC_COLOR_CNV_16TO24),      FALSE);
+			AviDialogProcRefresh(hDlg);
+			break;
+		case IDC_COLOR_CNV_16TO24:
+			if (Button_GetCheck(GetDlgItem(hDlg, IDC_COLOR_CNV_16TO24)))
+			{
+				Button_SetCheck(GetDlgItem(hDlg, IDC_COLOR_CNV_16TO8),      FALSE);
+			}
+			AviDialogProcRefresh(hDlg);
+			break;
+		case IDC_SET_TV_DISPLAY_SETTING:
+			{
+				char buf[100];
+				unsigned int x,y,width,height;
+				unsigned int width_src,height_src;
+
+				Button_SetCheck(GetDlgItem(hDlg, IDC_INTERLACE),			TRUE);
+				Button_SetCheck(GetDlgItem(hDlg, IDC_COLOR_CNV_16TO24),		TRUE);
+				Button_SetCheck(GetDlgItem(hDlg, IDC_FRAME_CMP),			FALSE);
+				Button_SetCheck(GetDlgItem(hDlg, IDC_SMOOTH_RESIZE_Y),		TRUE);
+
+				Edit_SetText(GetDlgItem(hDlg, IDC_FPS),					TEXT("59.94"));
+				Edit_SetText(GetDlgItem(hDlg, IDC_AVISIZE_WIDTH),		TEXT("720"));
+				Edit_SetText(GetDlgItem(hDlg, IDC_AVISIZE_HEIGHT),		TEXT("480"));
+
+
+				Edit_GetText(GetDlgItem(hDlg, IDC_WIDTH), (LPTSTR)buf, 100);
+				sscanf(buf,"%u", &width);	if (width == 0)		width = AviStatus.rect.m_Width;
+				Edit_GetText(GetDlgItem(hDlg, IDC_HEIGHT), (LPTSTR)buf, 100);
+				sscanf(buf,"%u", &height);	if (height == 0)	height = AviStatus.rect.m_Height;
+
+				width_src = width; 
+				height_src = height;
+
+				width *= 2;
+				if (height > 240) {height = 240; width = 480*0.75;}
+				y = (240 - height)/2;
+				x = (720 - width)/2;
+				if (width > 670) {width = 670; x = 22;}
+
+				sprintf(buf, "%u", x);
+				Edit_SetText(GetDlgItem(hDlg, IDC_AVI_LEFT),        (LPTSTR)buf);
+				sprintf(buf, "%u", y);
+				Edit_SetText(GetDlgItem(hDlg, IDC_AVI_TOP),        (LPTSTR)buf);
+				sprintf(buf, "%u", width);
+				Edit_SetText(GetDlgItem(hDlg, IDC_AVI_WIDTH),        (LPTSTR)buf);	
+				sprintf(buf, "%u", height);
+				Edit_SetText(GetDlgItem(hDlg, IDC_AVI_HEIGHT),        (LPTSTR)buf);
+				
+				if (width % width_src)		AviStatus.avi_smooth_resize_x = TRUE;
+				else						AviStatus.avi_smooth_resize_x = FALSE;
+				if (height % height_src)	AviStatus.avi_smooth_resize_y = TRUE;
+				else						AviStatus.avi_smooth_resize_y = FALSE;
+
+				Button_SetCheck(GetDlgItem(hDlg, IDC_SMOOTH_RESIZE_X),		AviStatus.avi_smooth_resize_x);
+				Button_SetCheck(GetDlgItem(hDlg, IDC_SMOOTH_RESIZE_Y),		AviStatus.avi_smooth_resize_y);
+				
+				(void)ComboBox_SetCurSel(GetDlgItem(hDlg, IDC_AVIFRAMESKIP), 0);
+
+			}
+			AviDialogProcRefresh(hDlg);
+			break;
+		case IDC_AVI_POS_CENTER:
+			{
+				char buf[100];
+				int x,y,width,height;
+				Edit_GetText(GetDlgItem(hDlg, IDC_AVI_WIDTH), (LPTSTR)buf, 100);
+				sscanf(buf,"%u", &width);
+				Edit_GetText(GetDlgItem(hDlg, IDC_AVI_HEIGHT), (LPTSTR)buf, 100);
+				sscanf(buf,"%u", &height);
+
+				y = (240 - height)/2;
+				x = (720 - width)/2;
+
+				if (x<0) x=0;
+				if (y<0) y=0;
+
+				sprintf(buf, "%u", x);
+				Edit_SetText(GetDlgItem(hDlg, IDC_AVI_LEFT),(LPTSTR)buf);
+				sprintf(buf, "%u", y);
+				Edit_SetText(GetDlgItem(hDlg, IDC_AVI_TOP),(LPTSTR)buf);
+			}
+			break;
+			
+        case IDOK :
+			{
+				char buf[100];
+				char buf2[256];
+
+				Edit_GetText(GetDlgItem(hDlg, IDC_FPS), (LPTSTR)buf2, 100);
+				strcpy(buf, buf2);
+
+				{
+					int i,j;
+					int di,df;
+					int di2,df2,j2;
+
+					AviStatus.fps = 0;
+					j=-1;
+					for(i=0; i<100; i++)
+					{
+						if (buf[i] == 0 ) break;
+						if (buf[i] == '.')
+						{
+							buf[i] = 0;
+							j=i+1;
+							break;
+						}
+					}
+					sscanf(buf,"%d", &di);
+					df = 0;
+					if (j!=-1) sscanf(&buf[j],"%d", &df);
+					j=strlen(&buf[j]);
+					AviStatus.fps = (double)df / pow(10,j);
+					AviStatus.fps += (double)di;
+
+									
+					sprintf(buf, "%5.6f", AviStatus.def_fps);
+					j2=-1;
+					for(i=0; i<100; i++)
+					{
+						if (buf[i] == 0 ) break;
+						if (buf[i] == '.')
+						{
+							buf[i] = 0;
+							j2=i+1;
+							break;
+						}
+					}
+					sscanf(buf,"%d", &di2);
+					df2 = 0;
+					if (j2!=-1) sscanf(&buf[j2],"%d", &df2);
+					j2=strlen(&buf[j2]);
+					if ( AviStatus.fps == (double)df2 / pow(10,j2) + (double)di2 ) AviStatus.fps = AviStatus.def_fps;
+
+				}
+
+				if (AviStatus.fps <= 0) AviStatus.fps = AviStatus.def_fps;
+
+				AviStatus.frame_skip = ComboBox_GetCurSel(GetDlgItem(hDlg, IDC_AVIFRAMESKIP));
+
+				AviStatus.frame_cmp       = Button_GetCheck(GetDlgItem(hDlg, IDC_FRAME_CMP));
+				AviStatus.frame_cmp_pre15 = Button_GetCheck(GetDlgItem(hDlg, IDC_FRAME_CMP_PRE));
+				AviStatus.frame_cmp_few   = Button_GetCheck(GetDlgItem(hDlg, IDC_FRAME_CMP_FEW));
+				AviStatus.wave_record     = Button_GetCheck(GetDlgItem(hDlg, IDC_WAVE_RECORD));
+				AviStatus.interlace       = Button_GetCheck(GetDlgItem(hDlg, IDC_INTERLACE));
+				AviStatus.interlace_odd_number_field = Button_GetCheck(GetDlgItem(hDlg, IDC_INTERLACE_ODD));
+
+				AviStatus.force_flip_y    = Button_GetCheck(GetDlgItem(hDlg, IDC_CHECK_FORCEFLIPY));
+				
+				AviStatus.avi_savefile_pause  = Button_GetCheck(GetDlgItem(hDlg, IDC_AVI_SAVEFILE_PAUSE));
+				AviStatus.avi_smooth_resize_x = Button_GetCheck(GetDlgItem(hDlg, IDC_SMOOTH_RESIZE_X));
+				AviStatus.avi_smooth_resize_y = Button_GetCheck(GetDlgItem(hDlg, IDC_SMOOTH_RESIZE_Y));
+
+				AviStatus.avi_audio_record_type = ComboBox_GetCurSel(GetDlgItem(hDlg, IDC_AUDIO_RECORD_TYPE));
+				AviStatus.avi_audio_bitrate = (Button_GetCheck(GetDlgItem(hDlg, IDC_AUDIO_16BIT))==TRUE) ? 16:8;
+				AviStatus.avi_audio_channel = (Button_GetCheck(GetDlgItem(hDlg, IDC_AUDIO_STEREO))==TRUE) ? 2:1;
+
+				AviStatus.bmp_16to8_cnv = Button_GetCheck(GetDlgItem(hDlg, IDC_COLOR_CNV_16TO8));
+				AviStatus.avi_depth = AviStatus.depth;
+				if (AviStatus.depth == 16)
+				{
+					if (Button_GetCheck(GetDlgItem(hDlg, IDC_COLOR_CNV_16TO8)) == TRUE) AviStatus.avi_depth = 8;
+					if (Button_GetCheck(GetDlgItem(hDlg, IDC_COLOR_CNV_16TO24)) == TRUE) AviStatus.avi_depth = 24;
+				}
+
+
+				Edit_GetText(GetDlgItem(hDlg, IDC_AVI_FILESIZE), (LPTSTR)buf, 100);
+				if (buf[0] != 0)	sscanf(buf,"%d", &AviStatus.avi_filesize);
+				Edit_GetText(GetDlgItem(hDlg, IDC_AVI_FILESIZE_CHECK_FRAME), (LPTSTR)buf, 100);
+				if (buf[0] != 0)	sscanf(buf,"%d", &AviStatus.avi_filesizecheck_frame);
+				Edit_GetText(GetDlgItem(hDlg, IDC_AVISIZE_WIDTH), (LPTSTR)buf, 100);
+				if (buf[0] != 0)	sscanf(buf,"%d", &AviStatus.avi_width);
+				Edit_GetText(GetDlgItem(hDlg, IDC_AVISIZE_HEIGHT), (LPTSTR)buf, 100);
+				if (buf[0] != 0)	sscanf(buf,"%d", &AviStatus.avi_height);
+
+				Edit_GetText(GetDlgItem(hDlg, IDC_AVI_LEFT), (LPTSTR)buf, 100);
+				if (buf[0] != 0)	sscanf(buf,"%lu", &AviStatus.avi_rect.m_Left);
+				Edit_GetText(GetDlgItem(hDlg, IDC_AVI_TOP), (LPTSTR)buf, 100);
+				if (buf[0] != 0)	sscanf(buf,"%lu", &AviStatus.avi_rect.m_Top);
+				Edit_GetText(GetDlgItem(hDlg, IDC_AVI_WIDTH), (LPTSTR)buf, 100);
+				if (buf[0] != 0)	sscanf(buf,"%lu", &AviStatus.avi_rect.m_Width);
+				Edit_GetText(GetDlgItem(hDlg, IDC_AVI_HEIGHT), (LPTSTR)buf, 100);
+				if (buf[0] != 0)	sscanf(buf,"%lu", &AviStatus.avi_rect.m_Height);
+
+				Edit_GetText(GetDlgItem(hDlg, IDC_LEFT), (LPTSTR)buf, 100);
+				if (buf[0] != 0)	sscanf(buf,"%lu", &AviStatus.rect.m_Left);
+				Edit_GetText(GetDlgItem(hDlg, IDC_TOP), (LPTSTR)buf, 100);
+				if (buf[0] != 0)	sscanf(buf,"%lu", &AviStatus.rect.m_Top);
+				Edit_GetText(GetDlgItem(hDlg, IDC_WIDTH), (LPTSTR)buf, 100);
+				if (buf[0] != 0)	sscanf(buf,"%lu", &AviStatus.rect.m_Width);
+				Edit_GetText(GetDlgItem(hDlg, IDC_HEIGHT), (LPTSTR)buf, 100);
+				if (buf[0] != 0)	sscanf(buf,"%lu", &AviStatus.rect.m_Height);
+				
+				Edit_GetText(GetDlgItem(hDlg, IDC_HOUR), (LPTSTR)buf, 100);
+				if (buf[0] != 0)	sscanf(buf,"%d", &AviStatus.hour);
+				Edit_GetText(GetDlgItem(hDlg, IDC_MINUTE), (LPTSTR)buf, 100);
+				if (buf[0] != 0)	sscanf(buf,"%d", &AviStatus.minute);
+				Edit_GetText(GetDlgItem(hDlg, IDC_SECOND), (LPTSTR)buf, 100);
+				if (buf[0] != 0)	sscanf(buf,"%d", &AviStatus.second);
+
+				if (AviStatus.rect.m_Width	> AviStatus.width)	AviStatus.rect.m_Width	= AviStatus.width;
+				if (AviStatus.rect.m_Height	> AviStatus.height)	AviStatus.rect.m_Height	= AviStatus.height;
+				if (AviStatus.rect.m_Left+AviStatus.rect.m_Width	> AviStatus.width)	AviStatus.rect.m_Left	= AviStatus.width - AviStatus.rect.m_Width;
+				if (AviStatus.rect.m_Top+AviStatus.rect.m_Height	> AviStatus.height) AviStatus.rect.m_Top	= AviStatus.height - AviStatus.rect.m_Height;
+
+				SetAviStatus(&AviStatus);
+			}
+            /* Fall through */
+
+			EndDialog(hDlg, 1);
+			return TRUE;
+
+        case IDCANCEL :
+            EndDialog(hDlg, 0);
+            return TRUE;
+        }
+        break;
+    }
+    return 0;
+}
+
+
+static void set_mame_mixer_wfm(int drvindex, core_options &opt)
+{
+	extern int mame_mixer_wave_cnvnmb;
+	extern struct WAV_WAVEFORMAT		mame_mixer_dstwfm, mame_mixer_srcwfm;
+	extern struct WAV_SAMPLES_RESIZE	mame_mixer_wsr;	
+
+	mame_mixer_srcwfm.samplespersec = opt.int_value(OPTION_SAMPLERATE);//options_get_int(o, OPTION_SAMPLERATE);
+	mame_mixer_srcwfm.channel = 2;		// changed from 0.93 (Aaron's big sound system change) - DarkCoder
+	mame_mixer_srcwfm.bitrate = 16;
+
+	mame_mixer_dstwfm = mame_mixer_srcwfm;
+
+	mame_mixer_wave_cnvnmb = wav_convert_select(&mame_mixer_dstwfm, &mame_mixer_srcwfm, 
+												&mame_mixer_wsr, NULL ); //&mame_mixer_wsre );
+}
+
+static void SetupAviStatus(int nGame)
+{
+	extern int neogeo_check_lower_resolution( const char *name );
+	struct MAME_AVI_STATUS *OldAviStatus;	//kt
+	machine_config config(driver_list::driver(nGame), MameUIGlobal());
+
+	//machine_config config(*drivers[nGame]);
+	//const device_config *screen;
+	//const screen_device_config *scrconfig;
+	
+	const screen_device *screen = screen_device_iterator(config.root_device()).first();
+
+	//core_options *o = load_options(OPTIONS_GAME, nGame);
+	windows_options opt;
+
+	LoadOptions(opt, OPTIONS_GAME, nGame);
+
+	//screen = config.first_screen();
+	//scrconfig = downcast<const screen_device_config *>(config.first_screen());
+
+	AviStatus.source_file = (char*)GetDriverFileName(nGame);//(char*)drivers[nGame]->source_file;
+	AviStatus.index = nGame + 1;
+
+	AviStatus.def_fps = ATTOSECONDS_TO_HZ(screen->refresh_attoseconds()); // fps
+	AviStatus.fps     = AviStatus.def_fps;
+	AviStatus.depth   = 16; //playing_game_options.depth;	// (auto/16bit/32bit)
+	AviStatus.flags   = DriverIsBios(nGame);//drivers[nGame]->flags;
+	AviStatus.orientation = AviStatus.flags;// & ORIENTATION_MASK;
+
+	if (opt.int_value(OPTION_ROR))
+	{
+		if ((AviStatus.orientation & ROT180) == ORIENTATION_FLIP_X ||(AviStatus.orientation & ROT180) == ORIENTATION_FLIP_Y) 
+		{
+			AviStatus.orientation ^= ROT180;
+		}
+		AviStatus.orientation ^= ROT90;
+	}
+	else if(opt.int_value(OPTION_ROL))
+	{
+		if ((AviStatus.orientation & ROT180) == ORIENTATION_FLIP_X ||(AviStatus.orientation & ROT180) == ORIENTATION_FLIP_Y) 
+		{
+			AviStatus.orientation ^= ROT180;
+		}
+		AviStatus.orientation ^= ROT270;
+	}
+
+	if (opt.int_value(OPTION_FLIPX))
+		AviStatus.orientation ^= ORIENTATION_FLIP_X;
+	if (opt.int_value(OPTION_FLIPY))
+		AviStatus.orientation ^= ORIENTATION_FLIP_Y;
+
+	AviStatus.frame_skip		= 0;
+	AviStatus.frame_cmp			= TRUE;
+	AviStatus.frame_cmp_pre15	= FALSE;
+	AviStatus.frame_cmp_few		= FALSE;
+	AviStatus.wave_record		= FALSE;
+	AviStatus.bmp_16to8_cnv		= FALSE;
+
+	AviStatus.force_flip_y		= FALSE;
+
+	AviStatus.avi_filesize				= 1800;
+	AviStatus.avi_filesizecheck_frame	= 10;
+	AviStatus.avi_savefile_pause		= FALSE;
+
+
+	AviStatus.interlace	= FALSE;
+	AviStatus.interlace_odd_number_field = FALSE;
+
+	{
+		extern struct WAV_WAVEFORMAT mame_mixer_dstwfm, mame_mixer_srcwfm;
+		set_mame_mixer_wfm(nGame, opt);
+
+		AviStatus.audio_channel         = mame_mixer_srcwfm.channel;
+		AviStatus.audio_samples_per_sec	= mame_mixer_srcwfm.samplespersec;
+		AviStatus.audio_bitrate			= mame_mixer_srcwfm.bitrate;
+		
+		AviStatus.avi_audio_channel			= mame_mixer_dstwfm.channel;
+		AviStatus.avi_audio_samples_per_sec = mame_mixer_dstwfm.samplespersec;
+		AviStatus.avi_audio_bitrate			= mame_mixer_dstwfm.bitrate;
+
+		AviStatus.audio_type			= opt.int_value(OPTION_AVI_AUDIO_TYPE);
+		AviStatus.avi_audio_record_type	= (AviStatus.audio_type!=0) ? 2:0;
+	}
+
+	AviStatus.hour   = 0;
+	AviStatus.minute = 0;
+	AviStatus.second = 0;
+
+	if (AviStatus.orientation & ORIENTATION_SWAP_XY)
+	{
+		AviStatus.width  = screen->height();
+		AviStatus.height = screen->width();
+		AviStatus.rect.m_Left   = screen->visible_area().min_y;
+		AviStatus.rect.m_Top    = screen->visible_area().min_x;
+		AviStatus.rect.m_Width  = screen->visible_area().max_y - screen->visible_area().min_y + 1;
+		AviStatus.rect.m_Height = screen->visible_area().max_x - screen->visible_area().min_x + 1;
+	}
+	else
+	{
+		AviStatus.width  = screen->width();
+		AviStatus.height = screen->height();
+		AviStatus.rect.m_Left   = screen->visible_area().min_x;
+		AviStatus.rect.m_Top    = screen->visible_area().min_y;
+		AviStatus.rect.m_Width  = screen->visible_area().max_x - screen->visible_area().min_x + 1;
+		AviStatus.rect.m_Height = screen->visible_area().max_y - screen->visible_area().min_y + 1;
+	}
+	
+#if 0
+	//neogeo
+	if (!strcmp(drivers[nGame]->source_file+17, "neogeo.c") && neogeo_check_lower_resolution(drivers[nGame]->name))
+	{
+		AviStatus.rect.m_Left   = 1*8;
+		AviStatus.rect.m_Top    = scrconfig->defstate.visarea.min_y;
+		AviStatus.rect.m_Width  = 39*8-1 - 1*8 + 1;
+		AviStatus.rect.m_Height = scrconfig->defstate.visarea.max_y - scrconfig->defstate.visarea.min_y + 1;
+	}
+#endif
+
+	AviStatus.avi_width			= AviStatus.rect.m_Width;
+	AviStatus.avi_height		= AviStatus.rect.m_Height;
+	AviStatus.avi_depth			= 16;
+	AviStatus.avi_rect.m_Left	= 0;
+	AviStatus.avi_rect.m_Top	= 0;
+	AviStatus.avi_rect.m_Width	= AviStatus.rect.m_Width;
+	AviStatus.avi_rect.m_Height	= AviStatus.rect.m_Height;
+	AviStatus.avi_smooth_resize_x	= FALSE;
+	AviStatus.avi_smooth_resize_y	= FALSE;
+
+	if (AviStatus.avi_rect.m_Width < AviStatus.rect.m_Width ||
+		(int)((double)(AviStatus.avi_rect.m_Width<<16) / (double)AviStatus.rect.m_Width) & 0xffff)	
+		AviStatus.avi_smooth_resize_x	= TRUE;
+
+	if (AviStatus.avi_rect.m_Height < AviStatus.rect.m_Height ||
+		(int)((double)(AviStatus.avi_rect.m_Height<<16) / (double)AviStatus.rect.m_Height) & 0xffff)
+		AviStatus.avi_smooth_resize_y	= TRUE;		
+
+
+	OldAviStatus = GetAviStatus();
+
+	if (OldAviStatus->source_file)
+	if (!strcmp(AviStatus.source_file, OldAviStatus->source_file))
+	{
+		if (AviStatus.def_fps == OldAviStatus->def_fps)
+			AviStatus.fps = OldAviStatus->fps;
+
+		AviStatus.frame_skip = OldAviStatus->frame_skip;
+		AviStatus.frame_cmp = OldAviStatus->frame_cmp;
+		AviStatus.frame_cmp_pre15 = OldAviStatus->frame_cmp_pre15;
+		AviStatus.frame_cmp_few = OldAviStatus->frame_cmp_few;
+		AviStatus.wave_record = OldAviStatus->wave_record;
+		AviStatus.bmp_16to8_cnv = OldAviStatus->bmp_16to8_cnv;
+
+		AviStatus.avi_depth = OldAviStatus->avi_depth;
+		AviStatus.interlace = OldAviStatus->interlace;
+		AviStatus.interlace_odd_number_field = OldAviStatus->interlace_odd_number_field;
+		AviStatus.avi_filesize = OldAviStatus->avi_filesize;
+		AviStatus.avi_filesizecheck_frame = OldAviStatus->avi_filesizecheck_frame;
+		AviStatus.avi_savefile_pause = OldAviStatus->avi_savefile_pause;
+
+
+		if (AviStatus.audio_type == OldAviStatus->audio_type)
+			AviStatus.avi_audio_record_type	= OldAviStatus->avi_audio_record_type;
+		
+		AviStatus.hour = OldAviStatus->hour;
+		AviStatus.minute = OldAviStatus->minute;
+		AviStatus.second = OldAviStatus->second;
+
+		if ((AviStatus.flags & ORIENTATION_SWAP_XY) == (OldAviStatus->flags & ORIENTATION_SWAP_XY) &&
+				AviStatus.orientation == OldAviStatus->orientation)
+		{
+			AviStatus.rect = OldAviStatus->rect;
+			AviStatus.avi_width = OldAviStatus->avi_width;
+			AviStatus.avi_height = OldAviStatus->avi_height;
+			AviStatus.avi_rect = OldAviStatus->avi_rect;
+			AviStatus.avi_smooth_resize_x = OldAviStatus->avi_smooth_resize_x;
+			AviStatus.avi_smooth_resize_y = OldAviStatus->avi_smooth_resize_y;
+		}
+	}
+
+	SetAviStatus(&AviStatus);
+	//options_free(o);
+}
+
+void get_autofilename(int nGame, char *avidir, WCHAR *avifilename, WCHAR *ext)
+{
+	WCHAR sztmpfile[MAX_PATH];
+
+	wsprintf( sztmpfile, TEXT("%s\\%s.%s"), avidir, GetDriverGameName(nGame), ext );
+	if( _waccess(sztmpfile, 0) != -1 ) {
+		do
+		{
+			wsprintf(sztmpfile, TEXT("%s\\%.4s%04d.%s"), avidir, GetDriverGameName(nGame), _nAviNo++, ext);
+		} while (_waccess(sztmpfile, 0) != -1);
+	}
+
+	wcscpy( avifilename, sztmpfile );
+}
+
+static void MamePlayGameAVI(void)
+{
+	int nGame, hr;
+	WCHAR filename_avi[MAX_PATH];
+	WCHAR filename_wav[MAX_PATH];
+
+	nGame = Picker_GetSelectedItem(hWndList);
+
+	SetupAviStatus(nGame);
+	
+	hr = DialogBox(GetModuleHandle(NULL), MAKEINTRESOURCE(IDD_AVI_STATUS),
+				   hMain, AviDialogProc);
+
+	if (hr != 1) return;
+
+	AviStatus = (*(GetAviStatus()));
+
+	get_autofilename(nGame, last_directory_avi, filename_avi, (WCHAR *)TEXT("avi") );
+
+	wcscpy(filename_wav, TEXT(""));
+	if (AviStatus.avi_audio_record_type)
+	{
+		extern struct WAV_WAVEFORMAT mame_mixer_dstwfm;
+
+		AviStatus.wav_filename = filename_wav;
+
+		if (AviStatus.avi_audio_record_type == 1)
+		{
+			WCHAR drive[_MAX_DRIVE];
+			WCHAR dir  [_MAX_DIR];
+			WCHAR fname[_MAX_FNAME];
+			WCHAR ext  [_MAX_EXT];
+
+			_wsplitpath(filename_avi, drive, dir, fname, ext);
+			_wmakepath(filename_wav, drive, dir, fname, TEXT("wav"));
+
+			if (wav_start_log_wave(filename_wav, &mame_mixer_dstwfm) == 0)
+			{
+				wav_stop_log_wave();
+			} 
+			else
+			{
+				WCHAR buf[1024];
+
+				wsprintf(buf, TEXT("Could not open '%s' as a valid wave file."), filename_wav);
+				MessageBox(hMain, buf, TEXT("EKMAME"), MB_OK | MB_ICONERROR);
+
+				//MameMessageBox(TEXT("Could not open '%s' as a valid wave file."), filename_wav);
+				hr = 0;
+				AviStatus.avi_audio_record_type = 0;
+			}
+		}
+	}
+
+	if ( hr == 1 )
+	{
+		int width, height, depth;
+		tRect rect;
+		int avi_depth;
+		int fcmp;
+
+		extern int			nAviFrameSkip;
+		extern unsigned int	nAviFrameCount;
+		extern unsigned int	nAviFrameCountStart;
+		extern int			nAviAudioRecord;
+
+		width  = AviStatus.width;
+		height = AviStatus.height;
+		depth  = AviStatus.depth;
+
+		rect = AviStatus.rect;
+
+		avi_depth = depth;
+		if (AviStatus.bmp_16to8_cnv == TRUE) avi_depth = 8;
+
+		fcmp=0;
+		if (AviStatus.frame_cmp == TRUE)
+		{
+			fcmp=3;
+			if (AviStatus.frame_cmp_pre15 == TRUE)	fcmp=1;
+			if (AviStatus.frame_cmp_few == TRUE)	fcmp=2;
+		}
+		if (AviStatus.fps == AviStatus.def_fps)		fcmp=0;
+
+		nAviFrameSkip = AviStatus.frame_skip;
+
+		nAviFrameCount = 0;
+		nAviFrameCountStart = (unsigned int)(((AviStatus.hour*60 + AviStatus.minute)*60 + AviStatus.second) * AviStatus.def_fps);
+
+		nAviAudioRecord = AviStatus.avi_audio_record_type;
+
+		//if (AviStartCapture(hMain, filename_avi, &AviStatus))
+		{
+			play_options playopts;
+			WCHAR buf[1024];
+			wsprintf(buf, TEXT("Use 'Record AVI' key to toggle start/stop AVI recording."));
+			MessageBox(hMain, buf, TEXT("EKMAME"), MB_OK | MB_ICONEXCLAMATION );
+
+			memset(&playopts, 0, sizeof(playopts));
+			playopts.aviwrite2 = (char*)filename_avi;
+			MamePlayGameWithOptions(nGame, &playopts);
+			//AviEndCapture();
+		}
+		//else 
+		{
+			
+			//if( _nAviNo ) _nAviNo--;
+		}
+	}
+}
+
+static void MamePlayBackGameAVI()
+{
+	int nGame;
+	char filename[MAX_PATH];
+	char filename_avi[MAX_PATH];
+	char filename_wav[MAX_PATH];
+	int	hr;
+	play_options playopts;
+
+	memset(&playopts, 0, sizeof(playopts));
+
+	*filename = 0;
+
+	nGame = Picker_GetSelectedItem(hWndList);
+	if (nGame != -1)
+		strcpy(filename, GetDriverGameName(nGame));
+
+
+	if (CommonFileDialog(GetOpenFileName, (char *)filename, FILETYPE_INPUT_FILES,false))
+	{
+		osd_file::error filerr;
+		// char drive[_MAX_DRIVE];
+		// char dir[_MAX_DIR];
+		// char bare_fname[_MAX_FNAME];
+		// char ext[_MAX_EXT];
+
+		// char path[MAX_PATH];
+		// char fname[MAX_PATH];
+#ifdef KAILLERA
+		char fname2[MAX_PATH];
+#endif /* KAILEERA */
+		// char *stemp;
+
+		// _splitpath(filename, drive, dir, bare_fname, ext);
+
+		// sprintf(path,"%s%s",drive,dir);
+		// sprintf(fname,"%s%s",bare_fname,ext);
+		// if (path[strlen(path)-1] == '\\')
+		// 	path[strlen(path)-1] = 0; // take off trailing back slash
+
+		// stemp = win_wstring_from_utf8(fname);
+		
+		//emu_file pPlayBack = emu_file(*(MameUIGlobal()), SEARCHPATH_INPUTLOG, OPEN_FLAG_READ);
+
+		wchar_t *t_filename = win_wstring_from_utf8(filename);
+		wchar_t *tempname = PathFindFileName(t_filename);
+		char *fname = win_utf8_from_wstring(tempname);
+		std::string const name = fname;
+		free(t_filename);
+
+
+		emu_file check(GetInpDir(), OPEN_FLAG_READ);
+		filerr = check.open(name);
+
+		//fileerr = pPlayBack.open(stemp);
+		
+		// free(stemp);
+
+		// check for game name embedded in .inp header
+		if (filerr != osd_file::error::NONE)
+		{
+			ErrorMessageBox("'%s' 를 열수 없습니다.", name);
+			return;
+		}
+
+		inp_header header;
+
+		// read the header and verify that it is a modern version; if not, print an error
+		if (!header.read(check))
+		{
+			ErrorMessageBox("손상된 파일 입니다.");
+			return;
+		}
+
+		// find game and play it
+		std::string const sysname = header.get_sysname();
+
+		for (int i = 0; i < driver_list::total(); i++)
+		{
+			if (sysname == GetDriverGameName(i))
+			{
+				nGame = i;
+				break;
+			}
+		}
+
+		playopts.playback = name.c_str();
+		MamePlayGameWithOptions(nGame, &playopts);
+
+		SetupAviStatus(nGame);
+		
+		hr = DialogBox(GetModuleHandle(NULL), MAKEINTRESOURCE(IDD_AVI_STATUS),  hMain, AviDialogProc);
+
+		if (hr == 1)
+		{
+			AviStatus = (*(GetAviStatus()));
+
+			// if (1)
+			// {
+			// 	//char fname[_MAX_FNAME];
+
+			// 	_wsplitpath(filename, NULL, NULL, bare_fname, NULL);
+			// 	wcscpy(filename_avi, bare_fname);
+			// } else
+			// 	wcscpy(filename_avi, driversw[nGame]->name);
+
+			char fname[_MAX_FNAME];
+
+			_splitpath(filename, NULL, NULL, fname, NULL);
+			strcpy(filename_avi, fname);
+
+			if (!CommonFileDialog(GetSaveFileName, filename_avi, FILETYPE_AVI_FILES,true))
+				hr = 0;
+		}
+
+		if (hr == 1) 
+		{
+			strcpy(filename_wav, "");
+			if (AviStatus.avi_audio_record_type)
+			{
+				extern struct WAV_WAVEFORMAT mame_mixer_dstwfm;
+
+				AviStatus.wav_filename = filename_wav;
+
+				if (AviStatus.avi_audio_record_type == 1)
+				{
+					char drive[_MAX_DRIVE];
+					char dir[_MAX_DIR];
+					char fname[_MAX_FNAME];
+					char ext[_MAX_EXT];
+
+					_splitpath(filename_avi, drive, dir, fname, ext);
+					_makepath(filename_wav, drive, dir, fname, "wav");
+
+					if (wav_start_log_wave(filename_wav, &mame_mixer_dstwfm) == 0)
+					{
+						wav_stop_log_wave();
+					} 
+					else
+					{
+						ErrorMessageBox("Wav 파일 '%s' 를 열수 없습니다.", filename_wav);
+						// MameMessageBox(_UIW(TEXT("Could not open '%s' as a valid wave file.")), filename_wav);
+						hr = 0;
+						AviStatus.avi_audio_record_type = 0;
+					}
+				}
+			}
+		}
+
+		if ( hr == 1 )
+		{
+			int width, height, depth;
+			tRect rect;
+			int avi_depth;
+			int fcmp;
+			extern int	nAviFrameSkip;
+			extern unsigned int				nAviFrameCount;
+			extern unsigned int				nAviFrameCountStart;
+			extern int						nAviAudioRecord;
+
+
+			width  = AviStatus.width;
+			height = AviStatus.height;
+			depth  = AviStatus.depth;
+
+			rect = AviStatus.rect;
+
+			avi_depth = depth;
+			if (AviStatus.bmp_16to8_cnv == TRUE) avi_depth = 8;
+
+			fcmp=0;
+			if (AviStatus.frame_cmp == TRUE)
+			{
+				fcmp=3;
+				if (AviStatus.frame_cmp_pre15 == TRUE)	fcmp=1;
+				if (AviStatus.frame_cmp_few == TRUE)	fcmp=2;
+			}
+			if (AviStatus.fps == AviStatus.def_fps)		fcmp=0;
+
+			nAviFrameSkip = AviStatus.frame_skip;
+
+			nAviFrameCount = 0;
+			nAviFrameCountStart = (unsigned int)(((AviStatus.hour*60 + AviStatus.minute)*60 + AviStatus.second) * AviStatus.def_fps);
+
+			nAviAudioRecord = AviStatus.avi_audio_record_type;
+
+			//if (AviStartCapture(hMain, filename_avi, &AviStatus))
+			{
+				
+				WCHAR buf[1024];
+				wsprintf(buf, TEXT(" 'Record AVI' 키를 이용하여 AVI 녹화를 시작/중지"));
+				MessageBox(hMain, buf, TEXT(MAMEUINAME), MB_OK | MB_ICONEXCLAMATION );
+
+				playopts.playback = fname;
+				playopts.aviwrite2 = filename_avi;
+				MamePlayGameWithOptions(nGame, &playopts);
+				//AviEndCapture();
+			}
+		}
+
+#ifdef KAILLERA
+		if (playopts.playbacksub != NULL)
+			DeleteTrctempStateSaveFile(playopts.playbacksub);
+#endif /* KAILLERA */
+		free(fname);
+	}
+
+}
+ #endif /* MAME_AVI */

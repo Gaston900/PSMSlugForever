@@ -195,6 +195,9 @@ static bool LoadDIB(const char *filename, HGLOBAL *phDIB, HPALETTE *pPal, int pi
 	void *buffer = NULL;
 	std::string fname;
 
+	// FILE *p;	
+	// p=fopen("log.txt","wt");
+
 	if (pPal != NULL ) 
 		DeletePalette(pPal);
 
@@ -382,12 +385,18 @@ static bool LoadDIB(const char *filename, HGLOBAL *phDIB, HPALETTE *pPal, int pi
 
 		free(dir_name1);
 
+		// fprintf(p,"fileopen\n");
+
 		if (filerr == osd_file::error::NONE) 
 		{
 			if (extnum)
 				success = jpeg_read_bitmap_gui(*file, phDIB, pPal);
 			else
+			{
+				// fprintf(p,"png read start\n");
+				
 				success = png_read_bitmap_gui(*file, phDIB, pPal);
+			}
 			file.reset();
 		}
 		if (success)
@@ -400,6 +409,9 @@ static bool LoadDIB(const char *filename, HGLOBAL *phDIB, HPALETTE *pPal, int pi
 
 	free(system_name);
 	free(file_name);
+
+	// fprintf(p,"png read success");
+	// fclose(p);
 
 	return success;
 }
@@ -540,20 +552,37 @@ static bool png_read_bitmap_gui(util::core_file &mfile, HGLOBAL *phDIB, HPALETTE
 	png_info p;
 	UINT i = 0;
 
+	// FILE *p1;
+	// p1=fopen("pngread.txt","wt");
+
 	if (p.read_file(mfile) != PNGERR_NONE)
+	{
+
 		return false;
+	}
 
 	if (p.color_type != 3 && p.color_type != 2)
-		return false;
-	
-	if (p.interlace_method != 0)
-		return false;
+	{
+		// fprintf(p1,"PNG Unsupported color type %i (has to be 2 or 3)\n", p.color_type);
+		// fclose(p1);
 
+		//return false;
+	}
+	if (p.interlace_method != 0)
+	{
+		// fprintf(p1,"PNG Interlace unsupported\n");
+		// fclose(p1);
+		return false;
+	}
 	/* Convert < 8 bit to 8 bit */
 	p.expand_buffer_8bit();
 
 	if (!AllocatePNG(&p, phDIB, pPAL))
+	{
+		// fprintf(p1,"PNG Unable to allocate memory to display screenshot\n");
+		// fclose(p1);
 		return false;
+	}
 
 	int bytespp = (p.color_type == 2) ? 3 : 1;
 
@@ -575,9 +604,11 @@ static bool png_read_bitmap_gui(util::core_file &mfile, HGLOBAL *phDIB, HPALETTE
 		store_pixels(&p.image[i * (p.width * bytespp)], p.width * bytespp);
 	}
 
+	// fprintf(p1,"success\n");
+	// fclose(p1);
+
 	return true;
 }
-
 
 /***************************************************************************
     JPEG graphics handling functions

@@ -21,9 +21,9 @@
 #include "modules/monitor/monitor_common.h"
 
 // standard C headers
-#include <ctype.h>
-#include <stdarg.h>
-#include <stdio.h>
+#include <cctype>
+#include <cstdarg>
+#include <cstdio>
 
 // standard windows headers
 #include <windows.h>
@@ -268,8 +268,15 @@ const options_entry windows_options::s_option_entries[] =
 
 	// input options
 	{ nullptr,                                        nullptr,    OPTION_HEADER,     "INPUT DEVICE OPTIONS" },
-	{ WINOPTION_GLOBAL_INPUTS,                        "0",        OPTION_BOOLEAN,    "enable global inputs" },
-	{ WINOPTION_DUAL_LIGHTGUN ";dual",                "0",        OPTION_BOOLEAN,    "enable dual lightgun input" },
+	{ WINOPTION_GLOBAL_INPUTS,                        "0",        OPTION_BOOLEAN,    "enables global inputs" },
+	{ WINOPTION_DUAL_LIGHTGUN ";dual",                "0",        OPTION_BOOLEAN,    "enables dual lightgun input" },
+
+	// DirectDraw-specific options  DDRAW
+	{ NULL,                                           NULL,       OPTION_HEADER,     "DIRECTDRAW-SPECIFIC OPTIONS" },
+	{ WINOPTION_HWSTRETCH ";hws",                     "0",        OPTION_BOOLEAN,    "enables hardware stretching" },
+
+
+	
 
 	{ nullptr }
 };
@@ -283,7 +290,7 @@ const options_entry windows_options::s_option_entries[] =
 //============================================================
 //  main
 //============================================================
-//HBMAME start
+//MESSUI start
 int main_(int argc, char *argv[])
 {
 	std::vector<std::string> args = osd_get_command_line(argc, argv);
@@ -326,7 +333,8 @@ int main_(int argc, char *argv[])
 
 	return result;
 }
-//HBMAME end
+//MESSUI end
+
 int main(int argc, char *argv[])
 {
 	std::vector<std::string> args = osd_get_command_line(argc, argv);
@@ -548,6 +556,7 @@ windows_osd_interface::~windows_osd_interface()
 void windows_osd_interface::video_register()
 {
 	video_options_add("gdi", nullptr);
+	video_options_add("ddraw", nullptr);	//DDRAW
 	video_options_add("d3d", nullptr);
 #if USE_OPENGL
 	video_options_add("opengl", nullptr);
@@ -566,7 +575,7 @@ void windows_osd_interface::init(running_machine &machine)
 	osd_common_t::init(machine);
 
 	const char *stemp;
-	windows_options &options = downcast<windows_options &>(machine.options());
+	auto &options = downcast<windows_options &>(machine.options());
 
 	// determine if we are benchmarking, and adjust options appropriately
 	int bench = options.bench();
@@ -609,7 +618,7 @@ void windows_osd_interface::init(running_machine &machine)
 	osd_common_t::init_subsystems();
 
 	// notify listeners of screen configuration
-	for (auto info : osd_common_t::s_window_list)
+	for (const auto &info : osd_common_t::s_window_list)
 	{
 		machine.output().set_value(string_format("Orientation(%s)", info->monitor()->devicename()).c_str(), std::static_pointer_cast<win_window_info>(info)->m_targetorient);
 	}

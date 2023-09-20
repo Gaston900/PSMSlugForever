@@ -26,6 +26,21 @@ typedef struct
 	bool        m_bExpectedResult;					   	// Expected query result
 } FOLDERDATA, *LPFOLDERDATA;
 
+
+typedef struct
+{
+	const wchar_t *m_lpTitle; 									// Folder Title
+	const char *short_name;  								// for saving in the .ini
+	UINT        m_nFolderId; 								// ID
+	UINT        m_nIconId; 									// if >= 0, resource id of icon (IDI_xxx), otherwise index in image list
+	DWORD       m_dwUnset; 									// Excluded filters
+	DWORD       m_dwSet;   									// Implied filters
+	BOOL        m_process;      // (not used yet)
+	void        (*m_pfnCreateFolders)(int parent_index); 	// Constructor for special folders
+	bool        (*m_pfnQuery)(int nDriver);			  	// Query function
+	bool        m_bExpectedResult;					   	// Expected query result
+} FOLDERDATAW, *LPFOLDERDATAW;
+
 typedef const FOLDERDATA *LPCFOLDERDATA;
 
 typedef struct
@@ -44,32 +59,47 @@ enum
 	FOLDER_NONE = 0,
 	FOLDER_ALLGAMES,
 	FOLDER_AVAILABLE,
-//	FOLDER_UNAVAILABLE,
-//	FOLDER_MANUFACTURER,
-//	FOLDER_YEAR,
-//	FOLDER_CPU,
-//	FOLDER_SOUND,
-	FOLDER_BIOS, //Do not disable
-//	FOLDER_HARDDISK,
-//	FOLDER_SAMPLES,
-//	FOLDER_MECHANICAL,
-//	FOLDER_LIGHTGUN,
-//	FOLDER_TRACKBALL,
-//	FOLDER_WORKING,
-//	FOLDER_DEFICIENCY,
+	FOLDER_UNAVAILABLE,
+	FOLDER_MANUFACTURER,
+	FOLDER_YEAR,
+	FOLDER_CPU,
+	FOLDER_SOUND,
+	FOLDER_BIOS,
+	FOLDER_HARDDISK,
+	FOLDER_SAMPLES,
+	FOLDER_MECHANICAL,
+	FOLDER_LIGHTGUN,
+	FOLDER_TRACKBALL,
+	FOLDER_WORKING,
+	FOLDER_DEFICIENCY,
 	FOLDER_NONWORKING,
-//	FOLDER_ORIGINAL,
-//	FOLDER_CLONES,
-	FOLDER_HORIZONTAL, //Do not disable
-	FOLDER_VERTICAL, //Do not disable
-	FOLDER_RASTER, //Do not disable
-	FOLDER_VECTOR, //Do not disable
-//	FOLDER_SCREENS,
-//	FOLDER_RESOLUTION,
-//	FOLDER_FPS,
-	FOLDER_SOURCE,  //Do not disable
-	FOLDER_SAVESTATE,  //Do not disable
-//	FOLDER_DUMPING,
+	FOLDER_ORIGINAL,
+	FOLDER_CLONES,
+	FOLDER_HORIZONTAL,
+	FOLDER_VERTICAL,
+	FOLDER_RASTER,
+	FOLDER_VECTOR,
+	FOLDER_SCREENS,
+	FOLDER_RESOLUTION,
+	FOLDER_FPS,
+	FOLDER_SOURCE,
+	FOLDER_SAVESTATE,
+	FOLDER_DUMPING,
+//#ifdef USE_GAMEFOLDERS
+	FOLDER_KOREAN,
+	FOLDER_NEOGEO,
+	FOLDER_NEOHACK,
+	FOLDER_NAMCO,			
+	FOLDER_TAITO,				
+	FOLDER_KONAMI,				
+	FOLDER_SEGA,			
+	FOLDER_CAVE,				
+	FOLDER_CPS,
+	FOLDER_CPSHACK,
+	FOLDER_PGMHACK,
+	FOLDER_PGM,
+//	FOLDER_PSXGAME,		
+//#endif	
 	MAX_FOLDERS
 };
 
@@ -146,5 +176,20 @@ HIMAGELIST GetTreeViewIconList(void);
 int GetTreeViewIconIndex(int icon_id);
 void ResetTreeViewFolders(void);
 void SelectTreeViewFolder(int folder_id);
+//#ifdef USE_GAMEFOLDERS
+void CreateKOREANFolders(int parent_index);
+void CreateNEOGEOFolders(int parent_index);
+void CreateNEOHACKFolders(int parent_index);
+void CreateCPSFolders(int parent_index);
+void CreateCPSHACKFolders(int parent_index);
+void CreatePGMFolders(int parent_index);
+void CreatePGMHACKFolders(int parent_index);
+
+void CreateNAMCOFolders(int parent_index);
+void CreateTAITOFolders(int parent_index);
+void CreateKONAMIFolders(int parent_index);
+void CreateSEGAFolders(int parent_index);
+void CreateTOAFolders(int parent_index);
+//#endif
 
 #endif

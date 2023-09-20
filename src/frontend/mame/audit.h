@@ -7,13 +7,10 @@
     ROM, disk, and sample auditing functions.
 
 ***************************************************************************/
-
-#pragma once
-
 #ifndef MAME_FRONTEND_AUDIT_H
 #define MAME_FRONTEND_AUDIT_H
 
-#include "hash.h"
+#pragma once
 
 #include <iosfwd>
 #include <list>
@@ -38,6 +35,7 @@
 
 // forward declarations
 class driver_enumerator;
+class software_list_device;
 
 
 
@@ -84,7 +82,8 @@ public:
 		NONE_NEEDED,
 		BEST_AVAILABLE,
 		INCORRECT,
-		NOTFOUND
+		NOTFOUND,
+		CHD
 	};
 
 	// holds the result of auditing a single item
@@ -141,8 +140,8 @@ public:
 		audit_status        m_status;               // status of audit on this item
 		audit_substatus     m_substatus;            // finer-detail status
 		const char *        m_name;                 // name of item
-		uint64_t              m_explength;            // expected length of item
-		uint64_t              m_length;               // actual length of item
+		uint64_t            m_explength;            // expected length of item
+		uint64_t            m_length;               // actual length of item
 		util::hash_collection     m_exphashes;            // expected hash data
 		util::hash_collection     m_hashes;               // actual hash information
 		device_t *          m_shared_device;        // device that shares the rom
@@ -158,16 +157,16 @@ public:
 	// audit operations
 	summary audit_media(const char *validation = AUDIT_VALIDATE_FULL);
 	summary audit_device(device_t &device, const char *validation = AUDIT_VALIDATE_FULL);
-	summary audit_software(const std::string &list_name, const software_info *swinfo, const char *validation = AUDIT_VALIDATE_FULL);
+	summary audit_software(software_list_device &swlist, const software_info &swinfo, const char *validation = AUDIT_VALIDATE_FULL);
 	summary audit_samples();
 	summary summarize(const char *name, std::ostream *output = nullptr) const;
 	summary winui_summarize(const char *name, std::ostream *output = nullptr) const;
 
 private:
 	// internal helpers
-	void audit_regions(const rom_entry *region, const char *locationtag, std::size_t &found, std::size_t &required);
-	audit_record &audit_one_rom(const rom_entry *rom);
-	audit_record &audit_one_disk(const rom_entry *rom, const char *locationtag);
+	template <typename T> void audit_regions(T do_audit, const rom_entry *region, std::size_t &found, std::size_t &required);
+	audit_record &audit_one_rom(const std::vector<std::string> &searchpath, const rom_entry *rom);
+	template <typename... T> audit_record &audit_one_disk(const rom_entry *rom, T &&... args);
 	void compute_status(audit_record &record, const rom_entry *rom, bool found);
 	device_t *find_shared_device(device_t &device, const char *name, const util::hash_collection &romhashes, uint64_t romlength);
 
@@ -175,7 +174,6 @@ private:
 	record_list                 m_record_list;
 	const driver_enumerator &   m_enumerator;
 	const char *                m_validation;
-	const char *                m_searchpath;
 };
 
 

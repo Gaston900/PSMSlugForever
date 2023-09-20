@@ -2,7 +2,7 @@
 // copyright-holders:Aaron Giles
 /***************************************************************************
 
-    render.c
+    render.cpp
 
     Core rendering system.
 
@@ -697,7 +697,7 @@ const rgb_t *render_container::bcg_lookup_table(int texformat, u32 &out_length, 
 		case TEXFORMAT_RGB32:
 		case TEXFORMAT_ARGB32:
 		case TEXFORMAT_YUY16:
-			out_length = 256;
+			out_length = ARRAY_LENGTH(m_bcglookup256);
 			return m_bcglookup256;
 
 		default:
@@ -906,6 +906,7 @@ template <typename T> render_target::render_target(render_manager &manager, T &&
 	, m_maxtexwidth(65536)
 	, m_maxtexheight(65536)
 	, m_transform_container(true)
+	, m_external_artwork(false)
 {
 	// determine the base layer configuration based on options
 	m_base_layerconfig.set_zoom_to_screen(manager.machine().options().artwork_crop());
@@ -1062,17 +1063,18 @@ int render_target::configured_view(const char *viewname, int targetindex, int nu
 		{
 			int ourindex = index() % scrcount;
 			screen_device *screen = iter.byindex(ourindex);
+			assert(screen != nullptr);
 
 			// find the first view with this screen and this screen only
 			for (view = view_by_index(viewindex = 0); view != nullptr; view = view_by_index(++viewindex))
 			{
-				const render_screen_list &viewscreens = view->screens();
-				if (viewscreens.count() == 0)
+				auto const &viewscreens = view->screens();
+				if (viewscreens.empty())
 				{
 					view = nullptr;
 					break;
 				}
-				else if (viewscreens.count() == viewscreens.contains(*screen))
+				else if (std::find_if(viewscreens.begin(), viewscreens.end(), [&screen](auto const &scr) { return &scr.get() != screen; }) == viewscreens.end())
 					break;
 			}
 		}
@@ -1082,13 +1084,12 @@ int render_target::configured_view(const char *viewname, int targetindex, int nu
 		{
 			for (view = view_by_index(viewindex = 0); view != nullptr; view = view_by_index(++viewindex))
 			{
-				render_screen_list const &viewscreens(view->screens());
-				if (viewscreens.count() >= scrcount)
+				if (view->screen_count() >= scrcount)
 				{
 					bool screen_missing(false);
 					for (screen_device &screen : iter)
 					{
-						if (!viewscreens.contains(screen))
+						if (!view->has_screen(screen))
 						{
 							screen_missing = true;
 							break;
@@ -1118,19 +1119,6 @@ const char *render_target::view_name(int viewindex)
 
 
 //-------------------------------------------------
-//  render_target_get_view_screens - return a
-//  bitmask of which screens are visible on a
-//  given view
-//-------------------------------------------------
-
-const render_screen_list &render_target::view_screens(int viewindex)
-{
-	layout_view *view = view_by_index(viewindex);
-	return (view != nullptr) ? view->screens() : s_empty_screen_list;
-}
-
-
-//-------------------------------------------------
 //  compute_visible_area - compute the visible
 //  area for the given target with the current
 //  layout and proposed new parameters
@@ -1138,32 +1126,6 @@ const render_screen_list &render_target::view_screens(int viewindex)
 
 void render_target::compute_visible_area(s32 target_width, s32 target_height, float target_pixel_aspect, int target_orientation, s32 &visible_width, s32 &visible_height)
 {
-	if (m_manager.machine().options().widestretch())
-	{
-		float width, height;
-		float scale;
-
-		// start with the aspect ratio of the square pixel layout
-		width = m_curview->effective_aspect(m_layerconfig);
-		height = 1.0f;
-
-		// first apply target orientation
-		if (target_orientation & ORIENTATION_SWAP_XY)
-			width *= 4.0f/3.0f;
-		else
-			height *= 3.0f/4.0f;
-
-		// based on the height/width ratio of the source and target, compute the scale factor
-		if (width / height > (float)target_width / (float)target_height)
-			scale = (float)target_width / width;
-		else
-			scale = (float)target_height / height;
-
- 		visible_width = render_round_nearest(width * scale);
-		visible_height = render_round_nearest(height * scale);
-	}
-	else
-	{
 	switch (m_scale_mode)
 	{
 	case SCALE_FRACTIONAL:
@@ -1256,7 +1218,6 @@ void render_target::compute_visible_area(s32 target_width, s32 target_height, fl
 			visible_height = render_round_nearest(src_height * yscale);
 			break;
 		}
-	}
 	}
 }
 
@@ -1400,7 +1361,7 @@ render_primitive_list &render_target::get_primitives()
 		render_primitive *prim = list.alloc(render_primitive::QUAD);
 		set_render_bounds_xy(prim->bounds, 0.0f, 0.0f, (float)m_width, (float)m_height);
 		prim->full_bounds = prim->bounds;
-		set_render_color(&prim->color, 1.0f, 1.0f, 1.0f, 1.0f);
+		set_render_color(&prim->color, 1.0f, 0.1f, 0.1f, 0.1f);
 		prim->texture.base = nullptr;
 		prim->flags = PRIMFLAG_BLENDMODE(BLENDMODE_ALPHA);
 		list.append(*prim);
@@ -1480,7 +1441,7 @@ bool render_target::map_point_container(s32 target_x, s32 target_y, render_conta
 
 bool render_target::map_point_input(s32 target_x, s32 target_y, ioport_port *&input_port, ioport_value &input_mask, float &input_x, float &input_y)
 {
-	return map_point_internal(target_x, target_y, nullptr, input_x, input_y, input_port, input_mask);;
+	return map_point_internal(target_x, target_y, nullptr, input_x, input_y, input_port, input_mask);
 }
 
 
@@ -1570,59 +1531,59 @@ void render_target::update_layer_config()
 
 void render_target::load_layout_files(const internal_layout *layoutfile, bool singlefile)
 {
-	bool have_artwork  = false;
+	bool have_artwork = false;
 
 	// if there's an explicit file, load that first
-	const char *basename = m_manager.machine().basename();
+	const std::string &basename = m_manager.machine().basename();
 	if (layoutfile)
-		have_artwork |= load_layout_file(basename, *layoutfile);
+		have_artwork |= load_layout_file(basename.c_str(), *layoutfile);
 
 	// if we're only loading this file, we know our final result
 	if (!singlefile)
-		load_additional_layout_files(basename, have_artwork);
+		load_additional_layout_files(basename.c_str(), have_artwork);
 }
 
 void render_target::load_layout_files(util::xml::data_node const &rootnode, bool singlefile)
 {
-	bool have_artwork  = false;
+	bool have_artwork = false;
 
 	// if there's an explicit file, load that first
-	const char *basename = m_manager.machine().basename();
-	have_artwork |= load_layout_file(m_manager.machine().root_device(), basename, rootnode);
+	const std::string &basename = m_manager.machine().basename();
+	have_artwork |= load_layout_file(m_manager.machine().root_device(), basename.c_str(), rootnode);
 
 	// if we're only loading this file, we know our final result
 	if (!singlefile)
-		load_additional_layout_files(basename, have_artwork);
+		load_additional_layout_files(basename.c_str(), have_artwork);
 }
 
 void render_target::load_additional_layout_files(const char *basename, bool have_artwork)
 {
-	bool have_default  = false;
-	bool have_override = false;
+	m_external_artwork = false;
 
 	// if override_artwork defined, load that and skip artwork other than default
-	if (m_manager.machine().options().override_artwork())
+	const char *const override_art = m_manager.machine().options().override_artwork();
+	if (override_art && *override_art)
 	{
-		if (load_layout_file(m_manager.machine().options().override_artwork(), m_manager.machine().options().override_artwork()))
-			have_override = true;
-		else if (load_layout_file(m_manager.machine().options().override_artwork(), "default"))
-			have_override = true;
+		if (load_layout_file(override_art, override_art))
+			m_external_artwork = true;
+		else if (load_layout_file(override_art, "default"))
+			m_external_artwork = true;
 	}
 
 	const game_driver &system = m_manager.machine().system();
 
 	// Skip if override_artwork has found artwork
-	if (!have_override)
+	if (!m_external_artwork)
 	{
-
 		// try to load a file based on the driver name
 		if (!load_layout_file(basename, system.name))
-			have_artwork |= load_layout_file(basename, "default");
+			m_external_artwork |= load_layout_file(basename, "default");
 		else
-			have_artwork = true;
+			m_external_artwork = true;
 
 		// if a default view has been specified, use that as a fallback
-		if (system.default_layout != nullptr)
+		bool have_default = false;
+		if (system.default_layout)
 			have_default |= load_layout_file(nullptr, *system.default_layout);
 		m_manager.machine().config().apply_default_layouts(
 				[this, &have_default] (device_t &dev, internal_layout const &layout)
@@ -1630,36 +1591,35 @@ void render_target::load_additional_layout_files(const char *basename, bool have
 
 		// try to load another file based on the parent driver name
 		int cloneof = driver_list::clone(system);
-		if (cloneof != -1)
+		while (0 <= cloneof)
 		{
-			if (!load_layout_file(driver_list::driver(cloneof).name, driver_list::driver(cloneof).name))
-				have_artwork |= load_layout_file(driver_list::driver(cloneof).name, "default");
-			else
-				have_artwork = true;
+			if (!m_external_artwork || driver_list::driver(cloneof).flags & MACHINE_IS_BIOS_ROOT)
+			{
+				if (!load_layout_file(driver_list::driver(cloneof).name, driver_list::driver(cloneof).name))
+					m_external_artwork |= load_layout_file(driver_list::driver(cloneof).name, "default");
+				else
+					m_external_artwork = true;
+			}
+
+			// Check the parent of the parent to cover bios based artwork
+			const game_driver &parent(driver_list::driver(cloneof));
+			cloneof = driver_list::clone(parent);
 		}
 
-		// Check the parent of the parent to cover bios based artwork
-		if (cloneof != -1) {
-			const game_driver &clone(driver_list::driver(cloneof));
-			int cloneofclone = driver_list::clone(clone);
-			if (cloneofclone != -1 && cloneofclone != cloneof)
+		have_artwork |= m_external_artwork;
+
+		// Use fallback artwork if defined and no artwork has been found yet
+		if (!have_artwork)
+		{
+			const char *const fallback_art = m_manager.machine().options().fallback_artwork();
+			if (fallback_art && *fallback_art)
 			{
-				if (!load_layout_file(driver_list::driver(cloneofclone).name, driver_list::driver(cloneofclone).name))
-					have_artwork |= load_layout_file(driver_list::driver(cloneofclone).name, "default");
+				if (!load_layout_file(fallback_art, fallback_art))
+					have_artwork |= load_layout_file(fallback_art, "default");
 				else
 					have_artwork = true;
 			}
 		}
-
-		// Use fallback artwork if defined and no artwork has been found yet
-		if (!have_artwork && m_manager.machine().options().fallback_artwork())
-		{
-			if (!load_layout_file(m_manager.machine().options().fallback_artwork(), m_manager.machine().options().fallback_artwork()))
-				have_artwork |= load_layout_file(m_manager.machine().options().fallback_artwork(), "default");
-			else
-				have_artwork = true;
-		}
-
 	}
 
 	// local screen info to avoid repeated code
@@ -1824,13 +1784,12 @@ void render_target::load_additional_layout_files(const char *basename, bool have
 			int viewindex(0);
 			for (layout_view *view = view_by_index(viewindex); need_tiles && view; view = view_by_index(++viewindex))
 			{
-				render_screen_list const &viewscreens(view->screens());
-				if (viewscreens.count() >= screens.size())
+				if (view->screen_count() >= screens.size())
 				{
 					bool screen_missing(false);
 					for (screen_device &screen : iter)
 					{
-						if (!viewscreens.contains(screen))
+						if (!view->has_screen(screen))
 						{
 							screen_missing = true;
 							break;
@@ -2022,11 +1981,10 @@ bool render_target::load_layout_file(const char *dirname, const internal_layout 
 	z_stream stream;
 	int zerr;
 
-	/* initialize the stream */
+	// initialize the stream
 	memset(&stream, 0, sizeof(stream));
 	stream.next_out = tempout.get();
 	stream.avail_out = layout_data.decompressed_size;
-
 
 	zerr = inflateInit(&stream);
 	if (zerr != Z_OK)
@@ -2035,12 +1993,12 @@ bool render_target::load_layout_file(const char *dirname, const internal_layout 
 		return false;
 	}
 
-	/* decompress this chunk */
+	// decompress this chunk
 	stream.next_in = (unsigned char *)layout_data.data;
 	stream.avail_in = layout_data.compressed_size;
 	zerr = inflate(&stream, Z_NO_FLUSH);
 
-	/* stop at the end of the stream */
+	// stop at the end of the stream
 	if (zerr == Z_STREAM_END)
 	{
 		// OK
@@ -2051,7 +2009,7 @@ bool render_target::load_layout_file(const char *dirname, const internal_layout 
 		return false;
 	}
 
-	/* clean up */
+	// clean up
 	zerr = inflateEnd(&stream);
 	if (zerr != Z_OK)
 	{
@@ -2083,7 +2041,8 @@ bool render_target::load_layout_file(const char *dirname, const char *filename)
 
 	// attempt to open the file; bail if we can't
 	emu_file layoutfile(m_manager.machine().options().art_path(), OPEN_FLAG_READ);
-	osd_file::error const filerr(layoutfile.open(fname.c_str()));
+	layoutfile.set_restrict_to_mediapath(1);
+	osd_file::error const filerr(layoutfile.open(fname));
 	if (filerr != osd_file::error::NONE)
 		return false;
 
@@ -3005,9 +2964,15 @@ render_manager::~render_manager()
 bool render_manager::is_live(screen_device &screen) const
 {
 	// iterate over all live targets and or together their screen masks
-	for (render_target &target : m_targetlist)
-		if (!target.hidden() && target.view_screens(target.view()).contains(screen))
-			return true;
+	for (render_target const &target : m_targetlist)
+	{
+		if (!target.hidden())
+		{
+			layout_view const *view = target.current_view();
+			if (view != nullptr && view->has_screen(screen))
+				return true;
+		}
+	}
 	return false;
 }
 

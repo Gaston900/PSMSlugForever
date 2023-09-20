@@ -11,8 +11,11 @@
 #include "emu.h"
 #include "ui/mainmenu.h"
 
+#include "ui/about.h"
+#include "ui/analogipt.h"
 #include "ui/barcode.h"
 #include "ui/cheatopt.h"
+#include "ui/confswitch.h"
 #include "ui/datmenu.h"
 #include "ui/filemngr.h"
 #include "ui/info.h"
@@ -27,6 +30,7 @@
 #include "ui/slotopt.h"
 #include "ui/tapectrl.h"
 #include "ui/videoopt.h"
+#include "ui/datfile.h"// EKMAME
 
 #include "mame.h"
 #include "luaengine.h"
@@ -39,6 +43,7 @@
 #include "emuopts.h"
 #include "natkeyboard.h"
 
+#define CMD_LIST// EKMAME
 
 namespace ui {
 
@@ -61,16 +66,29 @@ void menu_main::populate(float &customtop, float &custombottom)
 
 	item_append(_("Input (this Machine)"), "", 0, (void *)INPUT_SPECIFIC);
 
+	// USE_AUTOFIRE// EKMAME
+	item_append(_("Autofire Settings"), "", 0, (void *)AUTOFIRE);
+
+#ifdef USE_CUSTOM_BUTTON// EKMAME
+	item_append(_("Custom Buttons"), "", 0, (void *)CUSTOM_BUTTON);
+#endif /* USE_CUSTOM_BUTTON */
+#ifdef CMD_LIST// EKMAME
+	item_append(_("Command info"), "", 0, (void *)COMMAND_INFO);
+#endif
+	/* add optional input-related menus */
 	if (ui().machine_info().has_analog())
 		item_append(_("Analog Controls"), "", 0, (void *)ANALOG);
 	if (ui().machine_info().has_dips())
-		item_append(_("Dip Switches"), "", 0, (void *)SETTINGS_DIP_SWITCHES);
+		item_append(_("DIP Switches"), "", 0, (void *)SETTINGS_DIP_SWITCHES);
 	if (ui().machine_info().has_configs())
 		item_append(_("Machine Configuration"), "", 0, (void *)SETTINGS_DRIVER_CONFIG);
 
 	item_append(_("Bookkeeping Info"), "", 0, (void *)BOOKKEEPING);
 
 	item_append(_("Machine Information"), "", 0, (void *)GAME_INFO);
+
+	if (ui().found_machine_warnings())
+		item_append(_("Warning Information"), "", 0, (void *)WARN_INFO);
 
 	for (device_image_interface &image : image_interface_iterator(machine().root_device()))
 	{
@@ -109,6 +127,12 @@ void menu_main::populate(float &customtop, float &custombottom)
 
 	item_append(_("Video Options"), "", 0, (machine().render().target_by_index(1) != nullptr) ? (void *)VIDEO_TARGETS : (void *)VIDEO_OPTIONS);
 
+//#ifdef USE_SCALE_EFFECTS
+		/* add image enhancement menu */
+	item_append(_("Image Enhancement"), "", 0, (void *)SCALE_EFFECT);
+//#endif /* USE_SCALE_EFFECTS */
+
+
 	if (machine().crosshair().get_usage())
 		item_append(_("Crosshair Options"), "", 0, (void *)CROSSHAIR);
 
@@ -122,17 +146,22 @@ void menu_main::populate(float &customtop, float &custombottom)
 		item_append(_("External DAT View"), "", 0, (void *)EXTERNAL_DATS);
 
 // MAMEFX items commented out
-	item_append(menu_item_type::SEPARATOR);
+//	item_append(menu_item_type::SEPARATOR);
 
 	/* add favorite menu */
-	if (!mame_machine_manager::instance()->favorite().is_favorite(machine()))
-		item_append(_("Add To Favorites"), "", 0, (void *)ADD_FAVORITE);
-	else
-		item_append(_("Remove From Favorites"), "", 0, (void *)REMOVE_FAVORITE);
+//	if (!mame_machine_manager::instance()->favorite().isgame_favorite())
+//		item_append(_("Add To Favorites"), "", 0, (void *)ADD_FAVORITE);
+//	else
+//		item_append(_("Remove From Favorites"), "", 0, (void *)REMOVE_FAVORITE);
 
 	item_append(menu_item_type::SEPARATOR);
 
 	item_append(_("Quit from Machine"), "", 0, (void *)QUIT_GAME);
+	item_append(string_format(_("About %s"), emulator_info::get_appname()), "", 0, (void *)ABOUT);
+
+//	item_append(menu_item_type::SEPARATOR);
+
+//  item_append(_("Quit from Machine"), nullptr, 0, (void *)QUIT_GAME);
 
 	/* add reset and exit menus */
 	item_append(_("Select New Machine"), "", 0, (void *)SELECT_GAME);
@@ -165,7 +194,7 @@ void menu_main::handle()
 			break;
 
 		case SETTINGS_DRIVER_CONFIG:
-			menu::stack_push<menu_settings_driver_config>(ui(), container());
+			menu::stack_push<menu_settings_machine_config>(ui(), container());
 			break;
 
 		case ANALOG:
@@ -178,6 +207,10 @@ void menu_main::handle()
 
 		case GAME_INFO:
 			menu::stack_push<menu_game_info>(ui(), container());
+			break;
+
+		case WARN_INFO:
+			menu::stack_push<menu_warn_info>(ui(), container());
 			break;
 
 		case IMAGE_MENU_IMAGE_INFO:
@@ -220,6 +253,13 @@ void menu_main::handle()
 			menu::stack_push<menu_video_options>(ui(), container(), machine().render().first_target());
 			break;
 
+//#ifdef USE_SCALE_EFFECTS
+		case SCALE_EFFECT:
+			menu::stack_push<menu_scale_effect>(ui(), container());
+			break;
+		
+//#endif /* USE_SCALE_EFFECTS */
+
 		case CROSSHAIR:
 			menu::stack_push<menu_crosshair>(ui(), container());
 			break;
@@ -227,7 +267,25 @@ void menu_main::handle()
 		case CHEAT:
 			menu::stack_push<menu_cheat>(ui(), container());
 			break;
+// EKMAME
+		case CHEAT_CONFIG:
+			menu::stack_push<menu_cht_Config>(ui(), container(),false);
+		break;	
+// EKMAME
+		case AUTOFIRE:
+			menu::stack_push<menu_autofire>(ui(), container());
+			break;
 
+#ifdef USE_CUSTOM_BUTTON// EKMAME
+		case CUSTOM_BUTTON:
+			menu::stack_push<menu_custom_button>(ui(), container());
+		break;		
+#endif /* USE_CUSTOM_BUTTON */
+#ifdef CMD_LIST// EKMAME
+		case COMMAND_INFO:
+			menu::stack_push<menu_command>(ui(), container(),false);
+		break;		
+#endif
 		case PLUGINS:
 			menu::stack_push<menu_plugin>(ui(), container());
 			break;
@@ -237,6 +295,10 @@ void menu_main::handle()
 				menu::stack_push<simple_menu_select_game>(ui(), container(), nullptr);
 			else
 				menu::stack_push<menu_select_game>(ui(), container(), nullptr);
+			break;
+
+		case ABOUT:
+			menu::stack_push<menu_about>(ui(), container());
 			break;
 
 		case BIOS_SELECTION:

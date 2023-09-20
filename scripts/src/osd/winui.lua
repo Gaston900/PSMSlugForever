@@ -30,10 +30,10 @@ function maintargetosdoptions(_target,_subtarget)
 		}
 
 	configuration { "x64", "Release" }
-		targetname "PSMSlugForever64X"
+		targetname "PSMSlugForever"
 
 	configuration { "x32", "Release" }
-		targetname "PSMSlugForever32X"
+		targetname "PSMSlugForever32"
 
 	configuration { }
 
@@ -182,10 +182,13 @@ project ("osd_" .. _OPTIONS["osd"])
 		MAME_DIR .. "src/osd/modules/render/d3d/d3dhlsl.h",
 		MAME_DIR .. "src/osd/modules/render/drawd3d.cpp",
 		MAME_DIR .. "src/osd/modules/render/drawd3d.h",
+		MAME_DIR .. "src/osd/modules/render/drawdd.cpp",
 		MAME_DIR .. "src/osd/modules/render/drawgdi.cpp",
 		MAME_DIR .. "src/osd/modules/render/drawgdi.h",
 		MAME_DIR .. "src/osd/modules/render/drawnone.cpp",
 		MAME_DIR .. "src/osd/modules/render/drawnone.h",
+		--MAME_DIR .. "src/osd/windows/avi.cpp",
+		--MAME_DIR .. "src/osd/windows/avi.h",
 		MAME_DIR .. "src/osd/windows/video.cpp",
 		MAME_DIR .. "src/osd/windows/video.h",
 		MAME_DIR .. "src/osd/windows/window.cpp",
@@ -263,6 +266,21 @@ project ("osd_" .. _OPTIONS["osd"])
 		MAME_DIR .. "src/osd/winui/winui_util.cpp",
 		MAME_DIR .. "src/osd/winui/winui_util.h",
 		MAME_DIR .. "src/osd/winui/winui_main.cpp",
+		MAME_DIR .. "src/osd/scale/scale.cpp",
+		MAME_DIR .. "src/osd/scale/2xpm.cpp",
+		MAME_DIR .. "src/osd/scale/2xsai.cpp",
+		MAME_DIR .. "src/osd/scale/hq2x.cpp",
+		MAME_DIR .. "src/osd/scale/hq3x.cpp",
+		MAME_DIR .. "src/osd/scale/scale2x.cpp",
+		MAME_DIR .. "src/osd/scale/scale3x.cpp",
+		MAME_DIR .. "src/osd/scale/scanline.cpp",
+		MAME_DIR .. "src/osd/scale/snes9x_render.cpp",
+		MAME_DIR .. "src/osd/scale/vba_hq2x.cpp",
+		MAME_DIR .. "src/osd/scale/xbrz.cpp",	
+		MAME_DIR .. "src/osd/winui/hash_ek.cpp",
+		MAME_DIR .. "src/osd/winui/unzip_ek.cpp",
+		MAME_DIR .. "src/osd/winui/fileio_ek.cpp",
+		MAME_DIR .. "src/osd/winui/winui_faudit.cpp",
 	}
 
 
@@ -290,7 +308,6 @@ project ("ocore_" .. _OPTIONS["osd"])
 
 	includedirs {
 		MAME_DIR .. "src/osd/windows",
-		MAME_DIR .. "src/lib/winpcap",
 	}
 
 	files {

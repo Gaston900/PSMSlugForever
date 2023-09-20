@@ -36,16 +36,16 @@ const options_entry emu_options::s_option_entries[] =
 	{ nullptr,                                           nullptr,     OPTION_HEADER,     "CORE SEARCH PATH OPTIONS" },
 	{ OPTION_HOMEPATH,                                   ".",         OPTION_STRING,     "path to base folder for plugin data (read/write)" },
 	{ OPTION_MEDIAPATH ";rp;biospath;bp",                "support/roms",      OPTION_STRING,     "path to ROM sets and hard disk images" },
-	{ OPTION_HASHPATH ";hash_directory;hash",            "config/hash",       OPTION_STRING,     "path to software definition files" },
-	{ OPTION_SAMPLEPATH ";sp",                           "support/samples",   OPTION_STRING,     "path to audio sample sets" },
+	{ OPTION_HASHPATH ";hash_directory;hash",            "config/hash",       OPTION_STRING,     "path to hash files" },
+	{ OPTION_SAMPLEPATH ";sp",                           "support/samples",   OPTION_STRING,     "path to samplesets" },
 	{ OPTION_ARTPATH,                                    "support/artwork",   OPTION_STRING,     "path to artwork files" },
 	{ OPTION_CTRLRPATH,                                  "support/ctrlr",     OPTION_STRING,     "path to controller definitions" },
 	{ OPTION_INIPATH,                                    ".;ini;ini/presets",     OPTION_STRING,     "path to ini files" },
 	{ OPTION_FONTPATH,                                   ".",         OPTION_STRING,     "path to font files" },
-	{ OPTION_CHEATPATH,                                  "support/cheat",     OPTION_STRING,     "path to cheat files" },
+	{ OPTION_CHEATPATH,                                  "support/cheat",    OPTION_STRING,     "path to cheat files" },
 	{ OPTION_CROSSHAIRPATH,                              "config/crosshair", OPTION_STRING,     "path to crosshair files" },
 	{ OPTION_PLUGINSPATH,                                "config/plugins",   OPTION_STRING,     "path to plugin files" },
-	{ OPTION_LANGUAGEPATH,                               "config/language",  OPTION_STRING,     "path to UI translation files" },
+	{ OPTION_LANGUAGEPATH,                               "config/language",  OPTION_STRING,     "path to language files" },
 	{ OPTION_SWPATH,                                     "support/software", OPTION_STRING,     "path to loose software" },
 
 	// output directory options
@@ -90,6 +90,7 @@ const options_entry emu_options::s_option_entries[] =
 	{ OPTION_SLEEP,                                      "1",         OPTION_BOOLEAN,    "enable sleeping, which gives time back to other applications when idle" },
 	{ OPTION_SPEED "(0.01-100)",                         "1.0",       OPTION_FLOAT,      "controls the speed of gameplay, relative to realtime; smaller numbers are slower" },
 	{ OPTION_REFRESHSPEED ";rs",                         "0",         OPTION_BOOLEAN,    "automatically adjust emulation speed to keep the emulated refresh rate slower than the host screen" },
+	{ OPTION_LOWLATENCY ";lolat",                        "0",         OPTION_BOOLEAN,    "draws new frame before throttling to reduce input latency" },
 
 	// render options
 	{ nullptr,                                           nullptr,     OPTION_HEADER,     "CORE RENDER OPTIONS" },
@@ -126,11 +127,15 @@ const options_entry emu_options::s_option_entries[] =
 	{ OPTION_PAUSE_BRIGHTNESS "(0.0-1.0)",               "0.65",      OPTION_FLOAT,      "amount to scale the screen brightness when paused" },
 	{ OPTION_EFFECT,                                     "none",      OPTION_STRING,     "name of a PNG file to use for visual effects, or 'none'" },
 	{ OPTION_WIDESTRETCH,					     		 "0",         OPTION_BOOLEAN,    "enable D3D wide floating point stretching" },
+//#ifdef USE_SCALE_EFFECTS
+	{ OPTION_SCALE_EFFECT,								 "none",	  OPTION_STRING,	 "image enhancement effect" },
+//#endif /* USE_SCALE_EFFECTS */
 
 	// vector options
 	{ nullptr,                                           nullptr,     OPTION_HEADER,     "CORE VECTOR OPTIONS" },
 	{ OPTION_BEAM_WIDTH_MIN,                             "1.0",       OPTION_FLOAT,      "set vector beam width minimum" },
 	{ OPTION_BEAM_WIDTH_MAX,                             "1.0",       OPTION_FLOAT,      "set vector beam width maximum" },
+	{ OPTION_BEAM_DOT_SIZE,                              "1.0",       OPTION_FLOAT,      "set vector beam size for dots" },
 	{ OPTION_BEAM_INTENSITY_WEIGHT,                      "0",         OPTION_FLOAT,      "set vector beam intensity weight " },
 	{ OPTION_FLICKER,                                    "0",         OPTION_FLOAT,      "set vector flicker effect" },
 
@@ -139,6 +144,7 @@ const options_entry emu_options::s_option_entries[] =
 	{ OPTION_SAMPLERATE ";sr(1000-1000000)",             "48000",     OPTION_INTEGER,    "set sound output sample rate" },
 	{ OPTION_SAMPLES,                                    "1",         OPTION_BOOLEAN,    "enable the use of external samples if available" },
 	{ OPTION_VOLUME ";vol",                              "0",         OPTION_INTEGER,    "sound volume in decibels (-32 min, 0 max)" },
+	{ OPTION_SPEAKER_REPORT,                             "0",         OPTION_INTEGER,    "print report of speaker ouput maxima (0=none, or 1-4 for more detail)" },
 
 	// input options
 	{ nullptr,                                           nullptr,     OPTION_HEADER,     "CORE INPUT OPTIONS" },
@@ -178,6 +184,7 @@ const options_entry emu_options::s_option_entries[] =
 	{ OPTION_DEBUG ";d",                                 "0",         OPTION_BOOLEAN,    "enable/disable debugger" },
 	{ OPTION_UPDATEINPAUSE,                              "0",         OPTION_BOOLEAN,    "keep calling video updates while in pause" },
 	{ OPTION_DEBUGSCRIPT,                                nullptr,     OPTION_STRING,     "script for debugger" },
+	{ OPTION_DEBUGLOG,                                   "0",         OPTION_BOOLEAN,    "write debug console output to debug.log" },
 
 	// comm options
 	{ nullptr,                                           nullptr,     OPTION_HEADER,     "CORE COMM OPTIONS" },
@@ -218,7 +225,59 @@ const options_entry emu_options::s_option_entries[] =
 	{ OPTION_HTTP_PORT,                                  "8080",      OPTION_INTEGER,    "HTTP server port" },
 	{ OPTION_HTTP_ROOT,                                  "web",       OPTION_STRING,     "HTTP server document root" },
 
-	{ nullptr }
+//#ifdef USE_FIX60FPS	
+	{ nullptr, 											nullptr,		  OPTION_HEADER,	 "ADD OPTIONS" },
+	{ OPTION_60FPS, 									 "0",		  OPTION_BOOLEAN,	  "Fix to GAME Frame 60 Fps" },
+//#endif
+
+#ifdef MAME_AVI
+	// avi options
+	{ nullptr,                             				nullptr,   	 OPTION_HEADER,  "AVI RECORD OPTIONS" },
+	{ OPTION_AVI_DIRECTORY,				    			"avi",       OPTION_STRING,   "directory to save avi video file" },
+	{ OPTION_AVI_FILENAME,      			  				nullptr,   	 OPTION_STRING,  "avi options(avi_filename)" },
+	{ OPTION_AVI_DEF_FPS,              	  				"60.0", 	 OPTION_FLOAT,   "avi options(def_fps)" },
+	{ OPTION_AVI_FPS,              		  				"60.0", 	 OPTION_FLOAT,   "avi options(fps)" },
+	{ OPTION_AVI_FRAME_SKIP,                				"0",    	 OPTION_INTEGER, "avi options(frame_skip)" },
+	{ OPTION_AVI_FRAME_CMP,                				"0",    	 OPTION_BOOLEAN, "avi options(frame_cmp)" },
+	{ OPTION_AVI_FRAME_CPM_PRE15,           				"0",    	 OPTION_BOOLEAN, "avi options(frame_cmp_pre15)" },
+	{ OPTION_AVI_FRAME_COM_FEW,             				"0",    	 OPTION_BOOLEAN, "avi options(frame_cmp_few)" },
+	{ OPTION_AVI_WIDTH,              		  			"0",    	 OPTION_INTEGER, "avi options(width)" },
+	{ OPTION_AVI_HEIGHT,              		  			"0",    	 OPTION_INTEGER, "avi options(height)" },
+	{ OPTION_AVI_DEPTH,              		  			"16",   	 OPTION_INTEGER, "avi options(depth)" },
+	{ OPTION_AVI_ORIENTATION,               				"0",    	 OPTION_INTEGER, "avi options(orientation)" },
+	{ OPTION_AVI_RECT_TOP,              	  				"0",    	 OPTION_INTEGER, "avi options(rect_top)" },
+	{ OPTION_AVI_RECT_LEFT,                				"0",    	 OPTION_INTEGER, "avi options(rect_left)" },
+	{ OPTION_AVI_RECT_WIDTH,                				"0",    	 OPTION_INTEGER, "avi options(rect_width)" },
+	{ OPTION_AVI_RECT_HEIGHT,               				"0",    	 OPTION_INTEGER, "avi options(rect_height)" },
+	{ OPTION_AVI_INTERLACE,                				"0",    	 OPTION_BOOLEAN, "avi options(interlace)" },
+	{ OPTION_AVI_INTERLACE_ODD_FIELD,       				"0",    	 OPTION_BOOLEAN, "avi options(interlace_odd_field)" },
+	{ OPTION_AVI_AVI_FILESIZE,              				"0",    	 OPTION_INTEGER, "avi options(avi_filesize)" },
+	{ OPTION_AVI_AVI_SAVEFILE_PAUSE,        				"0",    	 OPTION_BOOLEAN, "avi options(avi_savefile_pause)" },
+	{ OPTION_AVI_AVI_WIDTH,                				"0",    	 OPTION_INTEGER, "avi options(avi_width)" },
+	{ OPTION_AVI_AVI_HEIGHT,                				"0",    	 OPTION_INTEGER, "avi options(avi_height)" },
+	{ OPTION_AVI_AVI_DEPTH,                				"16",   	 OPTION_INTEGER, "avi options(avi_depth)" },
+	{ OPTION_AVI_RECT_TOP,              	  				"0",    	 OPTION_INTEGER, "avi options(avi_rect_top)" },
+	{ OPTION_AVI_RECT_LEFT,                				"0",    	 OPTION_INTEGER, "avi options(avi_rect_left)" },
+	{ OPTION_AVI_RECT_WIDTH,                				"0",    	 OPTION_INTEGER, "avi options(avi_rect_width)" },
+	{ OPTION_AVI_RECT_HEIGHT,               				"0",    	 OPTION_INTEGER, "avi options(avi_rect_height)" },
+	{ OPTION_AVI_AVI_SMOOTH_RESIZE_X,       				"0",    	 OPTION_BOOLEAN, "avi options(avi_smooth_resize_x)" },
+	{ OPTION_AVI_AVI_SMOOTH_RESIZE_Y,       				"0",    	 OPTION_BOOLEAN, "avi options(avi_smooth_resize_y)" },
+	{ OPTION_AVI_WAV_FILENAME,              				nullptr,   	 OPTION_STRING,  "avi options(wav_filename)" },
+	{ OPTION_AVI_AUDIO_TYPE,                				"0",    	 OPTION_INTEGER, "avi options(audio_type)" },
+	{ OPTION_AVI_AUDIO_CHANNEL,             				"0",    	 OPTION_INTEGER, "avi options(audio_channel)" },
+	{ OPTION_AVI_AUDIO_SAMPLE_PER_SEC,      				"0",    	 OPTION_INTEGER, "avi options(audio_samples_per_sec)" },
+	{ OPTION_AVI_AUDIO_BITRATE,             				"0",    	 OPTION_INTEGER, "avi options(audio_bitrate)" },
+	{ OPTION_AVI_AUDIO_RECORD_TYPE,         				"0",    	 OPTION_INTEGER, "avi options(audio_record_type)" },
+	{ OPTION_AVI_AVI_AUDIO_CHANNEL,         				"0",    	 OPTION_INTEGER, "avi options(avi_audio_channel)" },
+	{ OPTION_AVI_AVI_AUDIO_SAMPLE_PER_SEC,  				"0",    	 OPTION_INTEGER, "avi options(avi_audio_samples_per_sec)" },
+	{ OPTION_AVI_AVI_AUDIO_BITRATE,         				"0",    	 OPTION_INTEGER, "avi options(avi_audio_bitrate)" },
+	{ OPTION_AVI_AVI_AUDIO_CMP,             				"0",    	 OPTION_BOOLEAN, "avi options(audio_cmp)" },
+	{ OPTION_AVI_HOUR,	                     				"0",    	 OPTION_INTEGER, "avi options(hour)" },
+	{ OPTION_AVI_MINUTE,                     				"0",    	 OPTION_INTEGER, "avi options(minute)" },
+	{ OPTION_AVI_SECOND,                     				"0",    	 OPTION_INTEGER, "avi options(second)" },
+ #endif /* MAME_AVI */  				
+
+	{  nullptr }
 };
 
 
@@ -239,7 +298,7 @@ namespace
 		{
 		}
 
-		virtual const char *value() const override
+		virtual const char *value() const noexcept override
 		{
 			// This is returning an empty string instead of nullptr to signify that
 			// specifying the value is a meaningful operation.  The option types that
@@ -289,7 +348,7 @@ namespace
 		{
 		}
 
-		virtual const char *value() const override
+		virtual const char *value() const noexcept override
 		{
 			const char *result = nullptr;
 			if (m_host.specified())
@@ -300,6 +359,7 @@ namespace
 				// happen in practice
 				//
 				// In reality, I want to really return std::optional<std::string> here
+				// FIXME: the std::string assignment can throw exceptions, and returning std::optional<std::string> also isn't safe in noexcept
 				m_temp = m_host.specified_value();
 				result = m_temp.c_str();
 			}
@@ -327,7 +387,7 @@ namespace
 		{
 		}
 
-		virtual const char *value() const override
+		virtual const char *value() const noexcept override
 		{
 			return m_host.value().c_str();
 		}
@@ -1057,7 +1117,7 @@ void emu_options::command_argument_processed()
 {
 	// some command line arguments require that the system name be set, so we can get slot options
 	if (command_arguments().size() == 1 && !core_iswildstr(command_arguments()[0].c_str()) &&
-		(command() == "listdevices" || (command() == "listslots") || (command() == "listmedia")))
+		(command() == "listdevices" || (command() == "listslots") || (command() == "listmedia") || (command() == "listsoftware")))
 	{
 		set_system_name(command_arguments()[0]);
 	}

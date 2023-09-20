@@ -1,10 +1,14 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, René Single, Mamesick
+// copyright-holders:Chris Kirmse, Mike Haaland, RenÃ© Single, Mamesick
 
 #include "winui.h"
 #include <fstream>      // for *_opts.h (below)
 #include "game_opts.h"
 
+#ifdef MAME_AVI
+#include "video.h"	//"Display.h"
+#include "Avi.h"
+#endif
 /***************************************************************************
     Internal function prototypes
  ***************************************************************************/
@@ -50,16 +54,16 @@ const options_entry winui_options::s_option_entries[] =
 	{ nullptr,								nullptr,    	OPTION_HEADER, "APPLICATION VERSION" },
 
 	{ nullptr,								nullptr,    	OPTION_HEADER, "DISPLAY STATE OPTIONS" },
-	{ MUIOPTION_DEFAULT_GAME,				"mslug",        OPTION_STRING, nullptr },
+	{ MUIOPTION_DEFAULT_GAME,				"mslug",  	    OPTION_STRING, nullptr },
 	{ MUIOPTION_DEFAULT_FOLDER_ID,			"0",        	OPTION_INTEGER, nullptr },
 	{ MUIOPTION_SHOW_IMAGE_SECTION,			"1",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_CURRENT_TAB,				"0",        	OPTION_STRING, nullptr },
 	{ MUIOPTION_SHOW_TOOLBAR,				"1",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_SHOW_STATUS_BAR,			"1",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_HIDE_FOLDERS,				"source",       OPTION_STRING, nullptr },
+	{ MUIOPTION_HIDE_FOLDERS,				"korean, neogeo, neohack, cps, cpshack, pgm, pgmhack, namco, taito, konami, sega, cave, manufacturer, year, cpu, sound, bios, harddisk, samples, mechanical, lightgun, trackball, working, imperfect, nonworking, originals, clones, horizontal, vertical, raster, vector, screens, resolution, refresh, source, savestate, dumping",        OPTION_STRING, nullptr },
 	{ MUIOPTION_SHOW_FOLDER_SECTION,		"1",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_SHOW_TABS,					"1",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_HIDE_TABS,					"",             OPTION_STRING, nullptr },
+	{ MUIOPTION_HIDE_TABS,					"",         	OPTION_STRING, nullptr },
 	{ MUIOPTION_HISTORY_TAB,				"0",        	OPTION_INTEGER, nullptr },
 	{ MUIOPTION_SORT_COLUMN,				"1",        	OPTION_INTEGER, nullptr },
 	{ MUIOPTION_SORT_REVERSED,				"0",        	OPTION_BOOLEAN, nullptr },
@@ -75,7 +79,7 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_LISTBG_COLOR,				"0,0,0", 	    OPTION_INTEGER, nullptr },
 	{ MUIOPTION_HISTORYBG_COLOR,			"0,0,0", 	    OPTION_INTEGER, nullptr },
 	{ MUIOPTION_CUSTOM_COLOR,				"0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0", OPTION_STRING, nullptr },
-	{ MUIOPTION_LIST_MODE,					"1",        	OPTION_INTEGER, nullptr },
+	{ MUIOPTION_LIST_MODE,					"3",        	OPTION_INTEGER, nullptr },
 	{ MUIOPTION_SPLITTERS,					"150,609",  	OPTION_STRING, nullptr },
 	{ MUIOPTION_GUI_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", OPTION_STRING, nullptr },
 	{ MUIOPTION_LIST_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", OPTION_STRING, nullptr },
@@ -98,18 +102,18 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_STRETCH_SCREENSHOT_LARGER,	"0",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_CYCLE_SCREENSHOT,			"0",        	OPTION_INTEGER, nullptr },
 	{ MUIOPTION_SCREENSHOT_BORDER_SIZE,		"1",        	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_SCREENSHOT_BORDER_COLOR,	"187,0,0",    	OPTION_INTEGER, nullptr },
+	{ MUIOPTION_SCREENSHOT_BORDER_COLOR,	"187,0,0",     	OPTION_INTEGER, nullptr },
 
 	{ nullptr,								nullptr,       	OPTION_HEADER, "SEARCH PATH OPTIONS" },
 	{ MUIOPTION_ARTWORK_DIRECTORY,			"support/artpreview", 	OPTION_STRING, nullptr },
-	{ MUIOPTION_AUDIO_DIRECTORY,			"config/audio",         OPTION_STRING, nullptr },
+	{ MUIOPTION_AUDIO_DIRECTORY,			"config/audio",    	    OPTION_STRING, nullptr },
 	{ MUIOPTION_BOSSES_DIRECTORY,			"support/bosses",   	OPTION_STRING, nullptr },
 	{ MUIOPTION_CABINET_DIRECTORY,			"support/cabinets", 	OPTION_STRING, nullptr },
 	{ MUIOPTION_CPANEL_DIRECTORY,			"support/cpanel",   	OPTION_STRING, nullptr },
 	{ MUIOPTION_DATS_DIRECTORY,				"support/dats",    	 	OPTION_STRING, nullptr },
 	{ MUIOPTION_ENDS_DIRECTORY,				"support/ends",     	OPTION_STRING, nullptr },
 	{ MUIOPTION_FLYER_DIRECTORY,			"support/flyers",   	OPTION_STRING, nullptr },
-	{ MUIOPTION_FOLDER_DIRECTORY,			"config/folders",       OPTION_STRING, nullptr },
+	{ MUIOPTION_FOLDER_DIRECTORY,			"config/folders",  	    OPTION_STRING, nullptr },
 	{ MUIOPTION_GAMEOVER_DIRECTORY,			"support/gameover", 	OPTION_STRING, nullptr },
 	{ MUIOPTION_GUI_DIRECTORY,				"config/gui",           OPTION_STRING, nullptr },
 	{ MUIOPTION_HOWTO_DIRECTORY,			"support/howto",    	OPTION_STRING, nullptr },
@@ -136,6 +140,9 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_UI_JOY_SS_CHANGE,			"2,0,3,0",  	OPTION_STRING, nullptr },
 	{ MUIOPTION_UI_JOY_HISTORY_UP,			"2,0,4,0",  	OPTION_STRING, nullptr },
 	{ MUIOPTION_UI_JOY_HISTORY_DOWN,		"2,0,1,0",  	OPTION_STRING, nullptr },
+
+	{ nullptr,								nullptr,		OPTION_HEADER, "Korean GAME List" },
+	{ MUIOPTION_USEKOREAN_GAMELIST,			"0",			OPTION_BOOLEAN, nullptr },
 	{ nullptr }
 };
 
@@ -450,6 +457,18 @@ bool GetShowFolderList(void)
 {
 	return winui_opts.bool_value(MUIOPTION_SHOW_FOLDER_SECTION);
 }
+
+// USE_KLIST
+void SetUsekoreanList(bool val)
+{
+	winui_opts.set_value(MUIOPTION_USEKOREAN_GAMELIST, val, OPTION_PRIORITY_CMDLINE);
+}
+
+bool GetUsekoreanList(void)
+{
+	return winui_opts.bool_value(MUIOPTION_USEKOREAN_GAMELIST);
+}
+
 
 static void GetsShowFolderFlags(LPBITS bits)
 {
@@ -1132,6 +1151,17 @@ void SetVideoDir(const char *path)
 {
 	core_opts.set_value(OPTION_VIDEO_DIRECTORY, path, OPTION_PRIORITY_CMDLINE);
 }
+#ifdef MAME_AVI
+const char * GetAVIDir(void)
+{
+	return core_opts.value("Avi Directory");
+}
+
+void SetAVIDir(const char *path)
+{
+	core_opts.set_value("Avi Directory", path, OPTION_PRIORITY_CMDLINE);
+}
+#endif
 
 const char * GetManualsDir(void)
 {
@@ -2384,3 +2414,121 @@ bool AreOptionsEqual(windows_options &opts1, windows_options &opts2)
 	
 	return true;
 }
+
+
+#ifdef MAME_AVI
+#include <io.h>
+#include <fcntl.h>
+#include <sys/types.h>
+static struct MAME_AVI_STATUS AviStatus;
+
+void SetAviStatus(struct MAME_AVI_STATUS *status)
+{
+    AviStatus = (*status);
+}
+
+struct MAME_AVI_STATUS* GetAviStatus(void)
+{
+	return (&AviStatus);
+}
+
+struct MAME_AVI_STATUS_SAVEDIR *avifile_dir_search(char *str, struct MAME_AVI_STATUS_SAVEDIR *savedir)
+{
+	char *ch;
+	ch = strchr(str,'#');
+	if (ch != NULL)
+	{
+		ch++;
+		if (savedir == NULL)
+		{
+			if (!memcmp(ch, "FILE ", 5) && savedir == NULL)
+			{
+				int count;
+				char *ch2;
+				ch+=5;
+				ch2 = strchr(ch,0x0d);
+				*ch2 = 0;
+				sscanf(ch,"%u", &count);
+				if (count <= 0) goto exit;
+
+				savedir = (struct MAME_AVI_STATUS_SAVEDIR *)malloc(sizeof(struct MAME_AVI_STATUS_SAVEDIR) * count);
+				if (savedir == NULL) return NULL;
+				memset(savedir,0,sizeof(struct MAME_AVI_STATUS_SAVEDIR) * count);
+
+			}
+		} else
+		{
+			if (!memcmp(ch, "AVI", 3))
+			{
+				int i,filenmb;
+				char nmb[5];
+				char *ch2;
+				ch+=3;
+				memcpy(nmb,ch,4);
+				nmb[4] = '0';
+				sscanf(nmb,"%u", &filenmb);
+
+				ch+=4;
+
+				ch = strchr(ch,'\"');
+				if (ch == NULL) goto exit;
+				ch++;
+
+				ch2 = strchr(ch,'\"');
+				if (ch2 == NULL) goto exit;
+
+				memcpy(savedir[filenmb].filename, ch, (ch2-ch));
+				savedir[filenmb].filename[(int)(ch2-ch)] = 0;
+
+				ch = strchr(ch2,',');
+				if (ch == NULL) goto exit;
+				ch++;
+
+				sscanf(ch,"%u,%u,%d", &savedir[filenmb].filesize, &savedir[filenmb].filesizecheck_frame, &i);
+				if (i) savedir[filenmb].pause = TRUE;	else	savedir[filenmb].pause = FALSE;
+
+			}
+		}
+
+	}
+
+exit:
+	return savedir;
+}
+
+struct MAME_AVI_STATUS_SAVEDIR *load_avifile_dir(void *filename)
+{
+	int file = -1;
+	char str[1024];
+	struct MAME_AVI_STATUS_SAVEDIR *savedir = NULL;
+	int i,m;
+	int filesize;
+
+	file = _open((const char *)filename, _O_RDONLY | _O_BINARY);
+	if (file == -1) return NULL;
+
+	filesize = _filelength(file);
+	if (filesize<=0) return NULL;
+
+	while(filesize>0)
+	{
+	m=0;
+	for (i=0; i<filesize; i++)
+	{
+		read(file, &str[m], 1);
+		if ( str[m] == 0x0d) break;
+		if ( str[m] == 0x0a) break;
+		m++;
+	}
+	filesize -= i;
+
+	if (m>1024) m=1024;
+	str[m] = 0;
+
+	savedir = avifile_dir_search(str, savedir);
+	}
+	close(file);
+
+	return savedir;
+}
+#endif	/* MAME_AVI */

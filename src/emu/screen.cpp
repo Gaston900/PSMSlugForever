@@ -2,21 +2,38 @@
 // copyright-holders:Aaron Giles
 /***************************************************************************
 
-    screen.c
+    screen.cpp
 
     Core MAME screen device.
 
 ***************************************************************************/
+#include <windows.h>
+#include <mmsystem.h>
+#undef interface
 
 #include "emu.h"
 #include "emuopts.h"
 #include "png.h"
 #include "rendutil.h"
 
+//#ifdef USE_SCALE_EFFECTS
+#include "scale/osdscale.h"
+//#endif /* USE_SCALE_EFFECTS */
+
+
 #include <nanosvg/src/nanosvg.h>
 #include <nanosvg/src/nanosvgrast.h>
+
+#include <clocale>
 #include <set>
 
+//EKMAME
+#if !defined(MAX)
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+#endif
+
+extern void ErrorMessageBox(const char *fmt, ...);
 //**************************************************************************
 //  DEBUGGING
 //**************************************************************************
@@ -69,7 +86,7 @@ private:
 	NSVGimage *m_image;
 	NSVGrasterizer *m_rasterizer;
 	std::vector<bool> m_key_state;
-	std::vector<std::list<NSVGshape *>> m_keyed_shapes;
+	std::vector<std::vector<NSVGshape *>> m_keyed_shapes;
 	std::unordered_map<std::string, int> m_key_ids;
 	int m_key_count;
 
@@ -91,23 +108,30 @@ private:
 
 screen_device::svg_renderer::svg_renderer(memory_region *region)
 {
-	char *s = new char[region->bytes()+1];
-	memcpy(s, region->base(), region->bytes());
-	s[region->bytes()] = 0;
-	m_image = nsvgParse(s, "px", 72);
-	delete[] s;
+	// nanosvg makes assumptions about the global locale
+	{
+		const std::unique_ptr<char []> s(new char[region->bytes() + 1]);
+		memcpy(s.get(), region->base(), region->bytes());
+		s[region->bytes()] = 0;
+		const std::string lcctype(std::setlocale(LC_CTYPE, nullptr));
+		const std::string lcnumeric(std::setlocale(LC_NUMERIC, nullptr));
+		std::setlocale(LC_CTYPE, "C");
+		std::setlocale(LC_NUMERIC, "C");
+		m_image = nsvgParse(s.get(), "px", 72);
+		std::setlocale(LC_CTYPE, lcctype.c_str());
+		std::setlocale(LC_NUMERIC, lcnumeric.c_str());
+	}
 	m_rasterizer = nsvgCreateRasterizer();
 
 	m_key_count = 0;
 
-	for (NSVGshape *shape = m_image->shapes; shape != nullptr; shape = shape->next)
+	for (NSVGshape *shape = m_image->shapes; shape; shape = shape->next)
 		if(shape->title[0]) {
-			auto it = m_key_ids.find(shape->title);
+			const auto it = m_key_ids.find(shape->title);
 			if(it != m_key_ids.end())
 				m_keyed_shapes[it->second].push_back(shape);
 			else {
-				int id = m_key_count;
-				m_key_count++;
+				const int id = m_key_count++;
 				m_keyed_shapes.resize(m_key_count);
 				m_keyed_shapes[id].push_back(shape);
 				m_key_ids[shape->title] = id;
@@ -525,6 +549,224 @@ void screen_device::svg_renderer::rebuild_cache()
 //**************************************************************************
 //  SCREEN DEVICE
 //**************************************************************************
+//#ifdef USE_SCALE_EFFECTS
+//**************************************************************************
+//  scaler dimensions
+//**************************************************************************
+int     use_work_bitmap;
+int     scale_depth;
+int     scale_xsize;
+int     scale_ysize;
+int     scale_bank_offset;
+//#endif /* USE_SCALE_EFFECTS */
+
+//#ifdef USE_SCALE_EFFECTS
+void screen_device::video_init_scale_effect()
+{
+	use_work_bitmap = (m_texformat != TEXFORMAT_RGB32);
+	scale_depth = 32;
+
+	if (scale_init())
+	{
+		logerror("WARNING: scale effect is disabled\n");
+		scale_effect.effect = 0;
+		return;
+	}
+
+	if (scale_check(scale_depth))
+	{
+		int old_depth = scale_depth;
+
+		use_work_bitmap = 1;
+		scale_depth = (scale_depth == 15) ? 32 : 15;
+		if (scale_check(scale_depth))
+		{
+			ErrorMessageBox("scale_effect \"%s\" does not support both depth 15 and 32. scale effect is disabled.",
+				scale_desc(scale_effect.effect));
+
+			scale_exit();
+			scale_effect.effect = 0;
+			scale_init();
+			return;
+		}
+		else
+			logerror("WARNING: scale_effect \"%s\" does not support depth %d, use depth %d\n", scale_desc(scale_effect.effect), old_depth, scale_depth);
+	}
+
+	logerror("scale effect: %s (depth:%d)\n", scale_effect.name, scale_depth);
+
+	realloc_scale_bitmaps();
+}
+
+
+void screen_device::video_exit_scale_effect()
+{
+	free_scale_bitmap();
+	scale_exit();
+}
+
+
+void screen_device::free_scale_bitmap()
+{
+	int bank;
+	m_changed &= ~UPDATE_HAS_NOT_CHANGED;
+
+	for (bank = 0; bank < 2; bank++)
+	{
+		// restore mame screen
+		if ((m_texture[bank]) && (m_bitmap[bank].valid()))
+			m_texture[bank]->set_bitmap(m_bitmap[bank], m_visarea, m_bitmap[bank].texformat());
+
+		if (m_scale_bitmap[bank] != NULL)
+		{
+			auto_free(machine(), m_scale_bitmap[bank]);
+			m_scale_bitmap[bank] = NULL;
+		}
+
+		if (m_work_bitmap[0][bank] != NULL)
+		{
+			auto_free(machine(), m_work_bitmap[0][bank]);
+			m_work_bitmap[0][bank] = NULL;
+		}
+
+		if (m_work_bitmap[1][bank] != NULL)
+		{
+			auto_free(machine(), m_work_bitmap[1][bank]);
+			m_work_bitmap[1][bank] = NULL;
+		}
+	}
+
+	scale_xsize = 0;
+	scale_ysize = 0;
+}
+
+
+void screen_device::convert_palette_to_32(const bitmap_t &src, bitmap_t &dst, const rectangle &visarea, UINT32 palettebase)
+{
+	const rgb_t *palette =  m_palette->palette()->entry_list_adjusted() + palettebase;
+	int x, y;
+
+	for (y = visarea.min_y; y < visarea.max_y; y++)
+	{
+		UINT32 *dst32 = &dst.pixt<UINT32>(y, visarea.min_x);
+		UINT16 *src16 = &src.pixt<UINT16>(y, visarea.min_x);
+
+		for (x = visarea.min_x; x < visarea.max_x; x++)
+			*dst32++ = palette[*src16++];
+	}
+}
+
+void screen_device::convert_palette_to_15(const bitmap_t &src, bitmap_t &dst, const rectangle &visarea, UINT32 palettebase)
+{
+	const rgb_t *palette =  m_palette->palette()->entry_list_adjusted() + palettebase;
+	int x, y;
+
+	for (y = visarea.min_y; y < visarea.max_y; y++)
+	{
+		UINT16 *dst16 = &dst.pixt<UINT16>(y, visarea.min_x);
+		UINT16 *src16 = &src.pixt<UINT16>(y, visarea.min_x);
+
+		for (x = visarea.min_x; x < visarea.max_x; x++)
+			*dst16++ = (palette[*src16++]).as_rgb15();
+	}
+}
+
+
+static void convert_15_to_32(const bitmap_t &src, bitmap_t &dst, const rectangle &visarea)
+{
+	int x, y;
+
+	for (y = visarea.min_y; y < visarea.max_y; y++)
+	{
+		UINT32 *dst32 = &dst.pixt<UINT32>(y, visarea.min_x);
+		UINT16 *src16 = &src.pixt<UINT16>(y, visarea.min_x);
+
+		for (x = visarea.min_x; x < visarea.max_x; x++)
+		{
+			UINT16 pix = *src16++;
+			UINT32 color = ((pix & 0x7c00) << 9) | ((pix & 0x03e0) << 6) | ((pix & 0x001f) << 3);
+			*dst32++ = color | ((color >> 5) & 0x070707);
+		}
+	}
+}
+
+
+static void convert_32_to_15(bitmap_t &src, bitmap_t &dst, const rectangle &visarea)
+{
+	int x, y;
+
+	for (y = visarea.min_y; y < visarea.max_y; y++)
+	{
+		UINT16 *dst16 = &dst.pixt<UINT16>(y, visarea.min_x);
+		UINT32 *src32 = &src.pixt<UINT32>(y, visarea.min_x);
+
+		for (x = visarea.min_x; x < visarea.max_x; x++)
+			*dst16++ = rgb_t(*src32++).as_rgb15();
+	}
+}
+
+void screen_device::texture_set_scale_bitmap(const rectangle &visarea, UINT32 palettebase)
+{
+	int curbank = m_curbitmap;
+	int scalebank = /* scale_bank_offset + */curbank;
+	bitmap_t *target = &(bitmap_t &)m_bitmap[curbank];
+	bitmap_t *dst;
+	rectangle fixedvis;
+	int width, height;
+
+	width = visarea.max_x - visarea.min_x;
+	height = visarea.max_y - visarea.min_y;
+
+	fixedvis.min_x = 0;
+	fixedvis.min_y = 0;
+	fixedvis.max_x = width * scale_xsize;
+	fixedvis.max_y = height * scale_ysize;
+
+	// convert texture to 15 or 32 bit which scaler is capable of rendering
+	switch (target->format())
+	{
+	case BITMAP_FORMAT_IND16:
+		target = m_work_bitmap[0][curbank];
+
+		if (scale_depth == 32)
+			convert_palette_to_32((bitmap_t &)m_bitmap[curbank], *target, visarea, palettebase);
+		else
+			convert_palette_to_15((bitmap_t &)m_bitmap[curbank], *target, visarea, palettebase);
+
+		break;
+
+	case BITMAP_FORMAT_RGB32:
+		if (scale_depth == 32)
+			break;
+
+		target = m_work_bitmap[0][curbank];
+		convert_32_to_15((bitmap_t &)m_bitmap[curbank], *target, visarea);
+		break;
+
+	default:
+		logerror("unknown texture format\n");
+		return;
+	}
+
+	dst = m_scale_bitmap[curbank];
+	if (scale_depth == 32)
+	{
+		UINT32 *src32 = &target->pixt<UINT32>(visarea.min_y, visarea.min_x);
+		UINT32 *dst32 = &dst->pixt<UINT32>(0, 0);
+		scale_perform_scale((UINT8 *)src32, (UINT8 *)dst32, target->rowpixels() * 4, dst->rowpixels() * 4, width, height, 32, m_scale_dirty[curbank], scalebank);
+	}
+	else
+	{
+		UINT16 *src16 = &target->pixt<UINT16>(visarea.min_y, visarea.min_x);
+		UINT16 *dst16 = &m_work_bitmap[1][curbank]->pixt<UINT16>(0, 0);
+		scale_perform_scale((UINT8 *)src16, (UINT8 *)dst16, target->rowpixels() * 2, dst->rowpixels() * 2, width, height, 15, m_scale_dirty[curbank], scalebank);
+		convert_15_to_32(*m_work_bitmap[1][curbank], *dst, dst->cliprect());
+	}
+	m_scale_dirty[curbank] = 0;
+
+	m_texture[curbank]->set_bitmap(*dst, fixedvis, TEXFORMAT_RGB32);
+}
+//#endif /* USE_SCALE_EFFECTS */
 
 //-------------------------------------------------
 //  screen_device - constructor
@@ -542,6 +784,8 @@ screen_device::screen_device(const machine_config &mconfig, const char *tag, dev
 	, m_yoffset(0.0f)
 	, m_xscale(1.0f)
 	, m_yscale(1.0f)
+	, m_screen_update_ind16(*this)
+	, m_screen_update_rgb32(*this)
 	, m_screen_vblank(*this)
 	, m_scanline_cb(*this)
 	, m_palette(*this, finder_base::DUMMY_TAG)
@@ -557,7 +801,7 @@ screen_device::screen_device(const machine_config &mconfig, const char *tag, dev
 	, m_curtexture(0)
 	, m_changed(true)
 	, m_last_partial_scan(0)
-	, m_partial_scan_hpos(0)
+	, m_partial_scan_hpos(-1)
 	, m_color(rgb_t(0xff, 0xff, 0xff, 0xff))
 	, m_brightness(0xff)
 	, m_frame_period(DEFAULT_FRAME_PERIOD.as_attoseconds())
@@ -576,6 +820,13 @@ screen_device::screen_device(const machine_config &mconfig, const char *tag, dev
 	m_unique_id = m_id_counter;
 	m_id_counter++;
 	memset(m_texture, 0, sizeof(m_texture));
+
+
+//#ifdef USE_SCALE_EFFECTS
+	memset(m_scale_bitmap, 0, sizeof(m_scale_bitmap));
+	memset(m_work_bitmap, 0, sizeof(m_work_bitmap));
+	memset(m_scale_dirty, 0, sizeof(m_scale_dirty));
+//#endif /* USE_SCALE_EFFECTS */	
 }
 
 
@@ -585,8 +836,79 @@ screen_device::screen_device(const machine_config &mconfig, const char *tag, dev
 
 screen_device::~screen_device()
 {
+	destroy_scan_bitmaps();
 }
 
+
+//-------------------------------------------------
+//  destroy_scan_bitmaps - destroy per-scanline
+//  bitmaps if applicable
+//-------------------------------------------------
+
+void screen_device::destroy_scan_bitmaps()
+{
+	if (m_video_attributes & VIDEO_VARIABLE_WIDTH)
+	{
+		const bool screen16 = !m_screen_update_ind16.isnull();
+		for (int j = 0; j < 2; j++)
+		{
+			for (bitmap_t* bitmap : m_scan_bitmaps[j])
+			{
+				if (screen16)
+					delete (bitmap_ind16*)bitmap;
+				else
+					delete (bitmap_rgb32*)bitmap;
+			}
+			m_scan_bitmaps[j].clear();
+		}
+	}
+}
+
+
+//-------------------------------------------------
+//  allocate_scan_bitmaps - allocate per-scanline
+//  bitmaps if applicable
+//-------------------------------------------------
+
+void screen_device::allocate_scan_bitmaps()
+{
+	if (m_video_attributes & VIDEO_VARIABLE_WIDTH)
+	{
+		const bool screen16 = !m_screen_update_ind16.isnull();
+		s32 effwidth = std::max(m_max_width, m_visarea.right() + 1);
+		const s32 old_height = (s32)m_scan_widths.size();
+		s32 effheight = std::max(m_height, m_visarea.bottom() + 1);
+		if (old_height < effheight)
+		{
+			for (int i = old_height; i < effheight; i++)
+			{
+				for (int j = 0; j < 2; j++)
+				{
+					if (screen16)
+						m_scan_bitmaps[j].push_back(new bitmap_ind16(effwidth, 1));
+					else
+						m_scan_bitmaps[j].push_back(new bitmap_rgb32(effwidth, 1));
+				}
+				m_scan_widths.push_back(m_width);
+			}
+		}
+		else
+		{
+			for (int i = effheight; i < old_height; i++)
+			{
+				for (int j = 0; j < 2; j++)
+				{
+					if (screen16)
+						delete (bitmap_ind16 *)m_scan_bitmaps[j][i];
+					else
+						delete (bitmap_rgb32 *)m_scan_bitmaps[j][i];
+					m_scan_bitmaps[j].erase(m_scan_bitmaps[j].begin() + i);
+				}
+				m_scan_widths.erase(m_scan_widths.begin() + i);
+			}
+		}
+	}
+}
 
 //-------------------------------------------------
 //  device_validity_check - verify device
@@ -647,6 +969,26 @@ void screen_device::device_config_complete()
 }
 
 
+
+#ifdef MAME_AVI
+void screen_device::avi_record_frame()
+{
+	extern int avi_write_handler(running_machine *machine, emu_file *dummy, bitmap_t *bitmap);
+	bitmap_t *bitmap = m_bitmap[1 - m_curbitmap];
+
+	g_profiler.start(PROFILER_MOVIE_REC);
+	avi_write_handler(machine, NULL, bitmap);
+	g_profiler.stop();
+}
+
+
+void toggle_record_mame_avi(void)
+{
+	extern int OnAVIRecord(void);	// Implemented In window.c
+	OnAVIRecord();
+}
+#endif /* MAME_AVI */
+
 //-------------------------------------------------
 //  physical_aspect - determine the physical
 //  aspect ratio to be used for rendering
@@ -700,8 +1042,8 @@ std::pair<unsigned, unsigned> screen_device::physical_aspect() const
 void screen_device::device_resolve_objects()
 {
 	// bind our handlers
-	m_screen_update_ind16.bind_relative_to(*owner());
-	m_screen_update_rgb32.bind_relative_to(*owner());
+	m_screen_update_ind16.resolve();
+	m_screen_update_rgb32.resolve();
 	m_screen_vblank.resolve_safe();
 	m_scanline_cb.resolve();
 
@@ -757,25 +1099,6 @@ void screen_device::device_start()
 	m_texture[1] = machine().render().texture_alloc();
 	m_texture[1]->set_id((u64(m_unique_id) << 57) | 1);
 
-	if (m_video_attributes & VIDEO_VARIABLE_WIDTH)
-	{
-		for (int i = 0; i < m_height; i++)
-		{
-			for (int j = 0; j < 2; j++)
-			{
-				if (screen16)
-				{
-					m_scan_bitmaps[j].push_back(new bitmap_ind16(m_width, 1));
-				}
-				else
-				{
-					m_scan_bitmaps[j].push_back(new bitmap_rgb32(m_width, 1));
-				}
-			}
-			m_scan_widths.push_back(m_width);
-		}
-	}
-
 	// configure the default cliparea
 	render_container::user_settings settings;
 	m_container->get_user_settings(settings);
@@ -797,8 +1120,18 @@ void screen_device::device_start()
 		m_scanline_timer = timer_alloc(TID_SCANLINE);
 
 	// configure the screen with the default parameters
-	configure(m_width, m_height, m_visarea, m_refresh);
-
+//#ifdef USE_FIX60FPS	
+		if(machine().options().Frame_60fps())
+		{
+			configure(m_width, m_height, m_visarea, HZ_TO_ATTOSECONDS(60));
+		}
+		else
+		{
+			configure(m_width, m_height, m_visarea, m_refresh);
+		}
+//#else
+//	configure(m_width, m_height, m_visarea, m_refresh);
+//#endif
 	// reset VBLANK timing
 	m_vblank_start_time = attotime::zero;
 	m_vblank_end_time = attotime(0, m_vblank_period);
@@ -878,6 +1211,9 @@ void screen_device::device_stop()
 void screen_device::device_post_load()
 {
 	realloc_screen_bitmaps();
+//#ifdef USE_SCALE_EFFECTS
+	video_init_scale_effect();
+//#endif /* USE_SCALE_EFFECTS */	
 }
 
 
@@ -956,15 +1292,13 @@ void screen_device::configure(int width, int height, const rectangle &visarea, a
 	m_height = height;
 	m_visarea = visarea;
 
-	// reallocate bitmap if necessary
-	if (m_video_attributes & VIDEO_VARIABLE_WIDTH)
-	{
-		update_scan_bitmap_size(vpos());
-	}
-	else
-	{
-		realloc_screen_bitmaps();
-	}
+	// reallocate bitmap(s) if necessary
+	realloc_screen_bitmaps();
+	
+//#ifdef USE_SCALE_EFFECTS
+		// init scale
+		video_init_scale_effect();
+//#endif /* USE_SCALE_EFFECTS */
 
 	// compute timing parameters
 	m_frame_period = frame_period;
@@ -1036,13 +1370,12 @@ void screen_device::reset_origin(int beamy, int beamx)
 
 void screen_device::update_scan_bitmap_size(int y)
 {
+	// don't update this line if it exceeds the allocated size, which can happen on initial configuration
+	if (y >= m_scan_widths.size())
+		return;
+
 	// determine effective size to allocate
 	s32 effwidth = std::max(m_max_width, m_visarea.right() + 1);
-
-	if (machine().input().code_pressed(KEYCODE_Q))
-	{
-		printf("Updating scan bitmap %d to %d (%d vs. %d)\n", y, effwidth, m_max_width, m_visarea.right() + 1);
-	}
 
 	if (m_scan_widths[y] == effwidth)
 		return;
@@ -1080,6 +1413,8 @@ void screen_device::realloc_screen_bitmaps()
 	}
 	m_texture[0]->set_bitmap(m_bitmap[0], m_visarea, m_bitmap[0].texformat());
 	m_texture[1]->set_bitmap(m_bitmap[1], m_visarea, m_bitmap[1].texformat());
+
+	allocate_scan_bitmaps();
 }
 
 
@@ -1202,6 +1537,7 @@ bool screen_device::update_partial(int scanline)
 
 	// remember where we left off
 	m_last_partial_scan = scanline + 1;
+	m_partial_scan_hpos = -1;
 	return true;
 }
 
@@ -1235,16 +1571,30 @@ void screen_device::update_now()
 	int current_hpos = hpos();
 	rectangle clip = m_visarea;
 
+	// skip if we already rendered this line
+	if (current_vpos < m_last_partial_scan)
+	{
+		LOG_PARTIAL_UPDATES(("skipped because line was already rendered\n"));
+		return;
+	}
+
+	// if beam position is the same, there's nothing to update
+	if (current_vpos == m_last_partial_scan && current_hpos == m_partial_scan_hpos)
+	{
+		LOG_PARTIAL_UPDATES(("skipped because beam position is unchanged\n"));
+		return;
+	}
+
 	LOG_PARTIAL_UPDATES(("update_now(): Y=%d, X=%d, last partial %d, partial hpos %d  (vis %d %d)\n", current_vpos, current_hpos, m_last_partial_scan, m_partial_scan_hpos, m_visarea.right(), m_visarea.bottom()));
 
 	// start off by doing a partial update up to the line before us, in case that was necessary
 	if (current_vpos > m_last_partial_scan)
 	{
 		// if the line before us was incomplete, we must do it in two pieces
-		if (m_partial_scan_hpos > 0)
+		if (m_partial_scan_hpos >= 0)
 		{
 			// now finish the previous partial scanline
-			clip.set((std::max)(clip.left(), m_partial_scan_hpos),
+			clip.set((std::max)(clip.left(), m_partial_scan_hpos + 1),
 					 clip.right(),
 					 (std::max)(clip.top(), m_last_partial_scan),
 					 (std::min)(clip.bottom(), m_last_partial_scan));
@@ -1254,6 +1604,7 @@ void screen_device::update_now()
 			{
 				g_profiler.start(PROFILER_VIDEO);
 
+				u32 flags = 0;
 				screen_bitmap &curbitmap = m_bitmap[m_curbitmap];
 				if (m_video_attributes & VIDEO_VARIABLE_WIDTH)
 				{
@@ -1261,8 +1612,8 @@ void screen_device::update_now()
 					switch (curbitmap.format())
 					{
 						default:
-						case BITMAP_FORMAT_IND16: m_screen_update_ind16(*this, *(bitmap_ind16 *)m_scan_bitmaps[m_curbitmap][m_last_partial_scan], clip);   break;
-						case BITMAP_FORMAT_RGB32: m_screen_update_rgb32(*this, *(bitmap_rgb32 *)m_scan_bitmaps[m_curbitmap][m_last_partial_scan], clip);   break;
+						case BITMAP_FORMAT_IND16:   flags = m_screen_update_ind16(*this, *(bitmap_ind16 *)m_scan_bitmaps[m_curbitmap][m_last_partial_scan], clip);   break;
+						case BITMAP_FORMAT_RGB32:   flags = m_screen_update_rgb32(*this, *(bitmap_rgb32 *)m_scan_bitmaps[m_curbitmap][m_last_partial_scan], clip);   break;
 					}
 				}
 				else
@@ -1270,16 +1621,20 @@ void screen_device::update_now()
 					switch (curbitmap.format())
 					{
 						default:
-						case BITMAP_FORMAT_IND16: m_screen_update_ind16(*this, curbitmap.as_ind16(), clip);   break;
-						case BITMAP_FORMAT_RGB32: m_screen_update_rgb32(*this, curbitmap.as_rgb32(), clip);   break;
+						case BITMAP_FORMAT_IND16:   flags = m_screen_update_ind16(*this, curbitmap.as_ind16(), clip);   break;
+						case BITMAP_FORMAT_RGB32:   flags = m_screen_update_rgb32(*this, curbitmap.as_rgb32(), clip);   break;
 					}
 				}
 
-				m_partial_updates_this_frame++;
 				g_profiler.stop();
-				m_partial_scan_hpos = 0;
-				m_last_partial_scan++;
+				m_partial_updates_this_frame++;
+
+				// if we modified the bitmap, we have to commit
+				m_changed |= ~flags & UPDATE_HAS_NOT_CHANGED;
 			}
+
+			m_partial_scan_hpos = -1;
+			m_last_partial_scan++;
 		}
 		if (current_vpos > m_last_partial_scan)
 		{
@@ -1290,7 +1645,7 @@ void screen_device::update_now()
 	// now draw this partial scanline
 	clip = m_visarea;
 
-	clip.set((std::max)(clip.left(), m_partial_scan_hpos),
+	clip.set((std::max)(clip.left(), m_partial_scan_hpos + 1),
 			 (std::min)(clip.right(), current_hpos),
 			 (std::max)(clip.top(), current_vpos),
 			 (std::min)(clip.bottom(), current_vpos));
@@ -1329,18 +1684,11 @@ void screen_device::update_now()
 
 		// if we modified the bitmap, we have to commit
 		m_changed |= ~flags & UPDATE_HAS_NOT_CHANGED;
-
-		// remember where we left off
-		m_partial_scan_hpos = current_hpos;
-		m_last_partial_scan = current_vpos;
-
-		// if we completed the line, mark it so
-		if (current_hpos >= m_visarea.right())
-		{
-			m_partial_scan_hpos = 0;
-			m_last_partial_scan = current_vpos + 1;
-		}
 	}
+
+	// remember where we left off
+	m_partial_scan_hpos = current_hpos;
+	m_last_partial_scan = current_vpos;
 }
 
 
@@ -1352,7 +1700,7 @@ void screen_device::update_now()
 void screen_device::reset_partial_updates()
 {
 	m_last_partial_scan = 0;
-	m_partial_scan_hpos = 0;
+	m_partial_scan_hpos = -1;
 	m_partial_updates_this_frame = 0;
 	m_scanline0_timer->adjust(time_until_pos(0));
 }
@@ -1585,6 +1933,88 @@ void screen_device::register_screen_bitmap(bitmap_t &bitmap)
 		bitmap.set_palette(m_palette->palette());
 }
 
+//#ifdef USE_SCALE_EFFECTS
+//-------------------------------------------------
+//  realloc_scale_bitmaps - reallocate scale
+//  bitmaps as necessary
+//-------------------------------------------------
+
+void screen_device::realloc_scale_bitmaps()
+{
+	osd_printf_verbose("realloc_scale_bitmaps()\n");
+
+	if (m_type == SCREEN_TYPE_VECTOR)
+		return;
+
+	int curwidth = 0, curheight = 0;
+	int cur_scalewidth = 0, cur_scaleheight = 0, cur_xsize = 0, cur_ysize = 0;
+
+	// bitmap has been alloc'd
+	curwidth = m_bitmap[0].width();
+	curheight = m_bitmap[0].height();
+
+	// extract the current width/height from the scale_bitmap
+	if (m_scale_bitmap[0] != NULL)
+	{
+		cur_scalewidth = m_scale_bitmap[0]->width();
+		cur_scaleheight = m_scale_bitmap[0]->height();
+	}
+
+	// assign new x/y size
+	scale_xsize = scale_effect.xsize;
+	scale_ysize = scale_effect.ysize;
+
+	scale_bank_offset = 0;
+
+	// reallocate our bitmaps and textures
+	if (cur_scalewidth != curwidth * scale_xsize || cur_scaleheight != curheight * scale_ysize)
+	{
+		int bank;
+
+		for (bank = 0; bank < 2; bank++)
+		{
+			// free what we have currently
+			if (m_scale_bitmap[bank] != NULL)
+			{
+				auto_free(machine(), m_scale_bitmap[bank]);
+				m_scale_bitmap[bank] = NULL;
+			}
+			if (m_work_bitmap[0][bank] != NULL)
+			{
+				auto_free(machine(), m_work_bitmap[0][bank]);
+				m_work_bitmap[0][bank] = NULL;
+			}
+			if (m_work_bitmap[1][bank] != NULL)
+			{
+				auto_free(machine(), m_work_bitmap[1][bank]);
+				m_work_bitmap[1][bank] = NULL;
+			}
+
+			m_scale_dirty[bank] = 1;
+
+			// compute new width/height
+			cur_xsize = MAX(scale_xsize, cur_xsize);
+			cur_ysize = MAX(scale_ysize, cur_ysize);
+
+			// allocate scale_bitmaps
+			m_scale_bitmap[bank] = auto_bitmap_rgb32_alloc(machine(), curwidth * scale_xsize, curheight * scale_ysize);
+			if (use_work_bitmap)
+			{
+				m_work_bitmap[0][bank] = auto_bitmap_rgb32_alloc(machine(), curwidth, curheight);
+				m_work_bitmap[1][bank] = auto_bitmap_rgb32_alloc(machine(), curwidth * scale_xsize, curheight * scale_ysize);
+			}
+
+			osd_printf_verbose("realloc_scale_bitmaps: %dx%d@%dbpp, workerbmp: %d \n", 
+								curwidth * scale_xsize, 
+								curheight * scale_ysize,
+								scale_depth,
+								use_work_bitmap
+								);
+		}
+	}
+	scale_bank_offset = 1;
+}
+//#endif /* USE_SCALE_EFFECTS */
 
 //-------------------------------------------------
 //  vblank_begin - call any external callbacks to
@@ -1668,6 +2098,7 @@ void screen_device::create_composited_bitmap()
 					*dst++ = src[x >> 15];
 				}
 			}
+			break;
 		}
 
 		case BITMAP_FORMAT_RGB32:
@@ -1709,7 +2140,13 @@ bool screen_device::update_quads()
 				{
 					create_composited_bitmap();
 				}
-				m_texture[m_curbitmap]->set_bitmap(m_bitmap[m_curbitmap], m_visarea, m_bitmap[m_curbitmap].texformat());
+				
+//#ifdef USE_SCALE_EFFECTS
+				if (scale_effect.effect > 0)
+					texture_set_scale_bitmap(m_visarea, 0);
+				else
+//#endif /* USE_SCALE_EFFECTS */			
+					m_texture[m_curbitmap]->set_bitmap(m_bitmap[m_curbitmap], m_visarea, m_bitmap[m_curbitmap].texformat());
 				m_curtexture = m_curbitmap;
 				m_curbitmap = 1 - m_curbitmap;
 			}
@@ -1736,7 +2173,8 @@ bool screen_device::update_quads()
 
 void screen_device::update_burnin()
 {
-// TODO: other than being unnecessary (we should use our rand function first off), this is a simplification of how analog signals really works!
+// TODO: other than being unnecessary, this is a simplification of how analog signals really works!
+// It's important not to use machine().rand() here, it can cause machine().rand() used in emulation to desync.
 #undef rand
 	if (!m_burnin.valid())
 		return;
@@ -1854,17 +2292,14 @@ void screen_device::finalize_burnin()
 
 	// compute the name and create the file
 	emu_file file(machine().options().snapshot_directory(), OPEN_FLAG_WRITE | OPEN_FLAG_CREATE | OPEN_FLAG_CREATE_PATHS);
-	osd_file::error filerr = file.open(machine().basename(), PATH_SEPARATOR "burnin-", this->tag()+1, ".png") ;
+	osd_file::error filerr = file.open(util::string_format("%s" PATH_SEPARATOR "burnin-%s.png", machine().basename(), tag() + 1));
 	if (filerr == osd_file::error::NONE)
 	{
 		png_info pnginfo;
-		char text[256];
 
 		// add two text entries describing the image
-		sprintf(text,"%s %s", emulator_info::get_appname(), emulator_info::get_build_version());
-		pnginfo.add_text("Software", text);
-		sprintf(text, "%s %s", machine().system().manufacturer, machine().system().type.fullname());
-		pnginfo.add_text("System", text);
+		pnginfo.add_text("Software", util::string_format("%s %s", emulator_info::get_appname(), emulator_info::get_build_version()).c_str());
+		pnginfo.add_text("System", util::string_format("%s %s", machine().system().manufacturer, machine().system().type.fullname()).c_str());
 
 		// now do the actual work
 		png_write_bitmap(file, &pnginfo, finalmap, 0, nullptr);

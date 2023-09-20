@@ -21,6 +21,9 @@
 #include "strconv.h"
 
 #include "modules/osdwindow.h"
+//#ifdef USE_SCALE_EFFECTS
+#include "scale/osdscale.h"
+//#endif /* USE_SCALE_EFFECTS */
 
 //============================================================
 //  CONSTANTS
@@ -33,6 +36,14 @@
 
 osd_video_config video_config;
 
+//============================================================
+//  LOCAL VARIABLES
+//============================================================
+
+//#ifdef USE_SCALE_EFFECTS
+static int cur_scale_xsize;
+static int cur_scale_ysize;
+//#endif /* USE_SCALE_EFFECTS */
 
 //============================================================
 //  PROTOTYPES
@@ -57,7 +68,7 @@ bool windows_osd_interface::video_init()
 	window_init();
 
 	// create the windows
-	windows_options &options = downcast<windows_options &>(machine().options());
+	auto &options = downcast<windows_options &>(machine().options());
 	for (int index = 0; index < video_config.numscreens; index++)
 	{
 		win_window_info::create(machine(), index, m_monitor_module->pick_monitor(options, index), &windows[index]);
@@ -89,21 +100,40 @@ void windows_osd_interface::update(bool skip_redraw)
 	// if we're not skipping this redraw, update all windows
 	if (!skip_redraw)
 	{
+//#ifdef USE_SCALE_EFFECTS
+		extern int win_scale_res_changed;
+		win_scale_res_changed = 0;
+
+		if (scale_effect.xsize != cur_scale_xsize || scale_effect.ysize != cur_scale_ysize)
+		{
+			win_scale_res_changed = 1;
+			cur_scale_xsize = scale_effect.xsize;
+			cur_scale_ysize = scale_effect.ysize;
+		}
+//#endif /* USE_SCALE_EFFECTS */	
 //      profiler_mark(PROFILER_BLIT);
-		for (auto window : osd_common_t::s_window_list)
+		for (const auto &window : osd_common_t::s_window_list)
 			window->update();
 //      profiler_mark(PROFILER_END);
 	}
 
-	// poll the joystick values here
-	winwindow_process_events(machine(), true, false);
-	poll_input(machine());
-	check_osd_inputs();
 	// if we're running, disable some parts of the debugger
 	if ((machine().debug_flags & DEBUG_FLAG_OSD_ENABLED) != 0)
 		debugger_update();
 }
 
+
+//============================================================
+//  input_update
+//============================================================
+
+void windows_osd_interface::input_update()
+{
+	// poll the joystick values here
+	winwindow_process_events(machine(), true, false);
+	poll_input(machine());
+	check_osd_inputs();
+}
 
 //============================================================
 //  check_osd_inputs
@@ -137,6 +167,17 @@ void windows_osd_interface::check_osd_inputs()
 void windows_osd_interface::extract_video_config()
 {
 	const char *stemp;
+//#ifdef USE_SCALE_EFFECTS
+	stemp = options().value(OPTION_SCALE_EFFECT);
+
+	if (stemp)
+	{
+		scale_decode(stemp);
+
+		if (scale_effect.effect)
+			osd_printf_verbose("Using %s scale effect\n", scale_name(scale_effect.effect));
+	}
+//#endif /* USE_SCALE_EFFECTS */
 
 	// global options: extract the data
 	video_config.windowed      = options().window();
@@ -162,6 +203,8 @@ void windows_osd_interface::extract_video_config()
 		video_config.mode = VIDEO_MODE_D3D;
 	else if (strcmp(stemp, "auto") == 0)
 		video_config.mode = VIDEO_MODE_D3D;
+	else if (strcmp(stemp, "ddraw") == 0)			// DDRAW
+		video_config.mode = VIDEO_MODE_DDRAW;	
 	else if (strcmp(stemp, "gdi") == 0)
 		video_config.mode = VIDEO_MODE_GDI;
 	else if (strcmp(stemp, "bgfx") == 0)
@@ -186,7 +229,10 @@ void windows_osd_interface::extract_video_config()
 	video_config.triplebuf     = options().triple_buffer();
 	video_config.switchres     = options().switch_res();
 
-	if (video_config.prescale < 1 || video_config.prescale > 3)
+	// ddraw options: extract the data
+	video_config.hwstretch     = options().hwstretch();// DDRAW
+
+	if (video_config.prescale < 1 || video_config.prescale > 8)
 	{
 		osd_printf_warning("Invalid prescale option, reverting to '1'\n");
 		video_config.prescale = 1;

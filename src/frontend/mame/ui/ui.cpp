@@ -27,6 +27,8 @@
 #include "ui/mainmenu.h"
 #include "ui/filemngr.h"
 #include "ui/sliders.h"
+#include "ui/cheatopt.h"// EKMAME 
+#include "ui/miscmenu.h"// EKMAME 
 #include "ui/state.h"
 #include "ui/viewgfx.h"
 #include "imagedev/cassette.h"
@@ -34,7 +36,9 @@
 #include "../osd/modules/lib/osdobj_common.h"
 #include "config.h"
 
-
+#ifdef MAME_AVI
+extern int	bAviRun;
+#endif /* MAME_AVI */
 /***************************************************************************
     CONSTANTS
 ***************************************************************************/
@@ -95,6 +99,59 @@ static input_item_id const non_char_keys[] =
 	ITEM_ID_CANCEL
 };
 
+// EKMAME 
+static char const *const s_color_list[] = {
+	OPTION_UI_BORDER_COLOR,
+	OPTION_UI_BACKGROUND_COLOR,
+	OPTION_UI_GFXVIEWER_BG_COLOR,
+	OPTION_UI_UNAVAILABLE_COLOR,
+	OPTION_UI_TEXT_COLOR,
+	OPTION_UI_TEXT_BG_COLOR,
+	OPTION_UI_SUBITEM_COLOR,
+	OPTION_UI_CLONE_COLOR,
+	OPTION_UI_SELECTED_COLOR,
+	OPTION_UI_SELECTED_BG_COLOR,
+	OPTION_UI_MOUSEOVER_COLOR,
+	OPTION_UI_MOUSEOVER_BG_COLOR,
+	OPTION_UI_MOUSEDOWN_COLOR,
+	OPTION_UI_MOUSEDOWN_BG_COLOR,
+	OPTION_UI_DIPSW_COLOR,
+	OPTION_UI_SLIDER_COLOR
+};
+// EKMAME 
+// CMD_LIST
+/* justification options for ui_draw_text_full */
+enum
+{
+	JUSTIFY_LEFT = 0,
+	JUSTIFY_CENTER,
+	JUSTIFY_RIGHT
+};
+// EKMAME 
+/* word wrapping options for ui_draw_text_full */
+enum
+{
+	WRAP_NEVER,
+	WRAP_TRUNCATE,
+	WRAP_WORD
+};
+// EKMAME 
+/* drawing options for ui_draw_text_full */
+enum
+{
+	DRAW_NONE,
+	DRAW_NORMAL,
+	DRAW_OPAQUE
+};
+// EKMAME 	
+//mamep: to render as fixed-width font
+enum
+{
+	CHAR_WIDTH_HALFWIDTH = 0,
+	CHAR_WIDTH_FULLWIDTH,
+	CHAR_WIDTH_UNKNOWN
+};
+
 /***************************************************************************
     GLOBAL VARIABLES
 ***************************************************************************/
@@ -108,6 +165,13 @@ rgb_t mame_ui_manager::messagebox_backcolor;
 std::vector<ui::menu_item> mame_ui_manager::slider_list;
 slider_state *mame_ui_manager::slider_current;
 
+// CMD_LIST
+static int multiline_text_box_target_lines;
+static int multiline_text_box_visible_lines;
+static int draw_text_scroll_offset;
+static int draw_text_fixed_mode;
+static int message_window_scroll;
+static int scroll_reset;
 
 /***************************************************************************
     CORE IMPLEMENTATION
@@ -169,7 +233,9 @@ mame_ui_manager::mame_ui_manager(running_machine &machine)
 	, m_mouse_arrow_texture(nullptr)
 	, m_mouse_show(false)
 	, m_show_time(false)	// MAMEFX
-	, m_target_font_height(0) {}
+	, m_target_font_height(0)
+	, m_has_warnings(false)
+{ }
 
 mame_ui_manager::~mame_ui_manager()
 {
@@ -335,20 +401,24 @@ void mame_ui_manager::display_startup_screens(bool first_time)
 		switch (state)
 		{
 		case 0:
-			if (show_warnings)
-				messagebox_text = machine_info().warnings_string();
+			if (show_gameinfo)
+				messagebox_text = machine_info().game_info_string();
 			if (!messagebox_text.empty())
 			{
+				//messagebox_text.append("\n\nPress any key to continue");
 				set_handler(ui_callback_type::MODAL, std::bind(&mame_ui_manager::handler_messagebox_anykey, this, _1));
-				messagebox_backcolor = machine_info().warnings_color();
 			}
 			break;
 
 		case 1:
-			if (show_gameinfo)
-				messagebox_text = machine_info().game_info_string();
-			if (!messagebox_text.empty())
-				set_handler(ui_callback_type::MODAL, std::bind(&mame_ui_manager::handler_messagebox_anykey, this, _1));
+			//messagebox_text = machine_info().warnings_string();
+			//m_has_warnings = !messagebox_text.empty();
+			//if (m_has_warnings && show_warnings)
+			//{
+			//	messagebox_text.append("\n\nPress any key to continue");
+			//	set_handler(ui_callback_type::MODAL, std::bind(&mame_ui_manager::handler_messagebox_anykey, this, _1));
+			//	messagebox_backcolor = machine_info().warnings_color();
+			//}
 			break;
 
 		case 2:
@@ -418,6 +488,10 @@ void mame_ui_manager::set_startup_text(const char *text, bool force)
 
 void mame_ui_manager::update_and_render(render_container &container)
 {
+#ifdef MAME_AVI
+	extern void avi_info_view(running_machine &machine);
+#endif /* MAME_AVI */
+
 	// always start clean
 	container.empty();
 
@@ -470,6 +544,10 @@ void mame_ui_manager::update_and_render(render_container &container)
 		using namespace std::placeholders;
 		set_handler(ui_callback_type::GENERAL, std::bind(&mame_ui_manager::handler_ingame, this, _1));
 	}
+
+#ifdef MAME_AVI
+    if (bAviRun) avi_info_view(machine());
+#endif /* MAME_AVI */
 }
 
 
@@ -590,7 +668,12 @@ void mame_ui_manager::draw_text(render_container &container, const char *buf, fl
 	draw_text_full(container, buf, x, y, 1.0f - x, ui::text_layout::LEFT, ui::text_layout::WORD, mame_ui_manager::NORMAL, colors().text_color(), colors().text_bg_color(), nullptr, nullptr);
 }
 
-
+#if defined(MAME_AVI) || defined(KAILLERA)
+void mame_ui_manager::ui_draw_text2(render_container &container, const char *buf, float x, float y, int color)
+{
+	draw_text_full(container, buf, x, y, 1.0f - x, ui::text_layout::LEFT, ui::text_layout::WORD, mame_ui_manager::OPAQUE_, UI_TEXT_BG_CMD_COLOR, color, nullptr, nullptr);
+}
+#endif
 //-------------------------------------------------
 //  draw_text_full - full featured text
 //  renderer with word wrapping, justification,
@@ -625,6 +708,664 @@ void mame_ui_manager::draw_text_full(render_container &container, const char *or
 //  draw_text_box - draw a multiline text
 //  message with a box around it
 //-------------------------------------------------
+//#if defined(CMD_LIST) || defined(USE_SHOW_TIME)
+//-------------------------------------------------
+//  get_line_height - return the current height
+//  of a line
+//-------------------------------------------------
+//-------------------------------------------------
+//  ui_draw_box - add primitives to draw
+//  a box with the given background color
+//-------------------------------------------------
+
+void mame_ui_manager::draw_box(render_container *container, float x0, float y0, float x1, float y1, rgb_t backcolor)
+{
+	container->add_rect(x0, y0, x1, y1, backcolor, PRIMFLAG_BLENDMODE(BLENDMODE_ALPHA));
+}
+
+void mame_ui_manager::draw_outlined_box_ex(render_container *container, float x0, float y0, float x1, float y1, rgb_t backcolor)
+{
+	draw_outlined_box_ex(container, x0, y0, x1, y1, colors().border_color(), backcolor);
+}
+
+void mame_ui_manager::draw_outlined_box_ex(render_container *container, float x0, float y0, float x1, float y1, rgb_t fgcolor, rgb_t bgcolor)
+{
+	draw_box(container, x0, y0, x1, y1, bgcolor);
+	container->add_line(x0, y0, x1, y0, UI_LINE_WIDTH, fgcolor, PRIMFLAG_BLENDMODE(BLENDMODE_ALPHA));
+	container->add_line(x1, y0, x1, y1, UI_LINE_WIDTH, fgcolor, PRIMFLAG_BLENDMODE(BLENDMODE_ALPHA));
+	container->add_line(x1, y1, x0, y1, UI_LINE_WIDTH, fgcolor, PRIMFLAG_BLENDMODE(BLENDMODE_ALPHA));
+	container->add_line(x0, y1, x0, y0, UI_LINE_WIDTH, fgcolor, PRIMFLAG_BLENDMODE(BLENDMODE_ALPHA));
+}
+
+
+float mame_ui_manager::get_char_width_no_margin(u32 ch)
+{
+	return get_font()->char_width_no_margin(get_line_height(), machine().render().ui_aspect(), ch);
+}
+
+//-------------------------------------------------
+//  is_breakable_char - is a given unicode
+//  character a possible line break?
+//-------------------------------------------------
+
+inline int is_breakable_char(char32_t ch)
+{
+	// regular spaces and hyphens are breakable
+	if (ch == ' ' || ch == '-')
+		return 1;
+
+	// In the following character sets, any character is breakable:
+	//  Hiragana (3040-309F)
+	//  Katakana (30A0-30FF)
+	//  Bopomofo (3100-312F)
+	//  Hangul Compatibility Jamo (3130-318F)
+	//  Kanbun (3190-319F)
+	//  Bopomofo Extended (31A0-31BF)
+	//  CJK Strokes (31C0-31EF)
+	//  Katakana Phonetic Extensions (31F0-31FF)
+	//  Enclosed CJK Letters and Months (3200-32FF)
+	//  CJK Compatibility (3300-33FF)
+	//  CJK Unified Ideographs Extension A (3400-4DBF)
+	//  Yijing Hexagram Symbols (4DC0-4DFF)
+	//  CJK Unified Ideographs (4E00-9FFF)
+	if (ch >= 0x3040 && ch <= 0x9fff)
+		return 1;
+
+	// Hangul Syllables (AC00-D7AF) are breakable
+	if (ch >= 0xac00 && ch <= 0xd7af)
+		return 1;
+
+	// CJK Compatibility Ideographs (F900-FAFF) are breakable
+	if (ch >= 0xf900 && ch <= 0xfaff)
+		return 1;
+
+	return 0;
+}
+
+//mamep: check fullwidth character.
+//mame core does not support surrogate pairs U+10000-U+10FFFF
+inline int is_fullwidth_char(char32_t uchar)
+{
+	switch (uchar)
+	{
+	// Chars in Latin-1 Supplement
+	// font width depends on your font
+	case 0x00a7:
+	case 0x00a8:
+	case 0x00b0:
+	case 0x00b1:
+	case 0x00b4:
+	case 0x00b6:
+	case 0x00d7:
+	case 0x00f7:
+		return CHAR_WIDTH_UNKNOWN;
+	}
+
+	// Greek and Coptic
+	// font width depends on your font
+	if (uchar >= 0x0370 && uchar <= 0x03ff)
+		return CHAR_WIDTH_UNKNOWN;
+
+	// Cyrillic
+	// font width depends on your font
+	if (uchar >= 0x0400 && uchar <= 0x04ff)
+		return CHAR_WIDTH_UNKNOWN;
+
+	if (uchar < 0x1000)
+		return CHAR_WIDTH_HALFWIDTH;
+
+	// Halfwidth CJK Chars
+	if (uchar >= 0xff61 && uchar <= 0xffdc)
+		return CHAR_WIDTH_HALFWIDTH;
+
+	// Halfwidth Symbols Variants
+	if (uchar >= 0xffe8 && uchar <= 0xffee)
+		return CHAR_WIDTH_HALFWIDTH;
+
+	return CHAR_WIDTH_FULLWIDTH;
+}
+
+int mame_ui_manager::window_scroll_keys()
+{
+	static int counter = 0;
+	static int fast = 6;
+	int pan_lines;
+	int max_scroll;
+	int do_scroll = 0;
+
+	max_scroll = multiline_text_box_target_lines - multiline_text_box_visible_lines;
+	pan_lines = multiline_text_box_visible_lines - 2;
+
+	if (scroll_reset)
+	{
+		message_window_scroll = 0;
+		scroll_reset = 0;
+	}
+
+	/* up backs up by one item */
+	if (machine().ui_input().pressed_repeat(IPT_UI_UP,fast))
+	{
+		message_window_scroll--;
+		do_scroll = 1;
+	}
+
+	/* down advances by one item */
+	if (machine().ui_input().pressed_repeat(IPT_UI_DOWN,fast))
+	{
+		message_window_scroll++;
+		do_scroll = 1;
+	}
+
+	/* pan-up goes to previous page */
+	if (machine().ui_input().pressed_repeat(IPT_UI_PAGE_UP,8))	
+	{
+		message_window_scroll -= pan_lines;
+		do_scroll = 1;
+	}
+
+	/* pan-down goes to next page */
+	if (machine().ui_input().pressed_repeat(IPT_UI_PAGE_DOWN,8))
+	{
+		message_window_scroll += pan_lines;
+		do_scroll = 1;
+	}
+
+	/* home goes to the start */
+	if (machine().ui_input().pressed(IPT_UI_HOME))
+	{
+		message_window_scroll = 0;
+		do_scroll = 1;
+	}
+
+	/* end goes to the last */
+	if (machine().ui_input().pressed(IPT_UI_END))
+	{
+		message_window_scroll = max_scroll;
+		do_scroll = 1;
+	}
+
+	if (message_window_scroll < 0)
+		message_window_scroll = 0;
+	if (message_window_scroll > max_scroll)
+		message_window_scroll = max_scroll;
+
+	if (machine().ioport().type_pressed(IPT_UI_UP,0) || machine().ioport().type_pressed(IPT_UI_DOWN,0))
+	{
+		if (++counter == 25)
+		{
+			fast--;
+			if (fast < 1)
+				fast = 0;
+
+			counter = 0;
+		}
+	}
+	else
+	{
+		fast = 6;
+		counter = 0;
+	}
+
+	if (do_scroll)
+		return -1;
+
+	if (machine().ui_input().pressed(IPT_UI_SELECT))
+	{
+		message_window_scroll = 0;
+		return 1;
+	}
+	if (machine().ui_input().pressed(IPT_UI_CANCEL))
+	{
+		message_window_scroll = 0;
+		return 2;
+	}
+
+	return 0;
+}
+
+float mame_ui_manager::get_char_fixed_width(char32_t uchar, double halfwidth, double fullwidth)
+{
+	float chwidth;
+
+	switch (is_fullwidth_char(uchar))
+	{
+	case CHAR_WIDTH_HALFWIDTH:
+		return halfwidth;
+
+	case CHAR_WIDTH_UNKNOWN:
+		chwidth = get_char_width_no_margin(uchar);
+		if (chwidth <= halfwidth)
+			return halfwidth;
+	}
+
+	return fullwidth;
+}
+
+//-------------------------------------------------
+//  draw_text_full - full featured text
+//  renderer with word wrapping, justification,
+//  and full size computation
+//-------------------------------------------------
+
+void mame_ui_manager::draw_text_full_ex(render_container *container, const char *origs, float x, float y, float origwrapwidth, int justify, int wrap, int draw, rgb_t fgcolor, rgb_t bgcolor, float *totalwidth, float *totalheight)
+{
+	float lineheight = get_line_height();
+	const char *ends = origs + strlen(origs);
+	float wrapwidth = origwrapwidth;
+	const char *s = origs;
+	const char *linestart;
+	float cury = y;
+	float maxwidth = 0;
+	float aspect = machine().render().ui_aspect();
+	const char *s_temp;
+	const char *up_arrow = NULL;
+	const char *down_arrow = _("▼");
+
+	//mamep: control scrolling text
+	int curline = 0;
+
+	//mamep: render as fixed-width font
+	float fontwidth_halfwidth = 0.0f;
+	float fontwidth_fullwidth = 0.0f;
+
+	// FILE *fp;
+	// fp=fopen("test.txt","a+t");
+
+	if (draw_text_fixed_mode)
+	{
+		int scharcount;
+		int len = strlen(origs);
+		int n;
+
+		for (n = 0; len > 0; n += scharcount, len -= scharcount)
+		{
+			char32_t schar;
+			float scharwidth;
+
+			scharcount = uchar_from_utf8(&schar, &origs[n], len);
+			if (scharcount == -1)
+				break;
+
+			scharwidth = get_char_width_no_margin(schar);
+			if (is_fullwidth_char(schar))
+			{//한글 및 공략 문자
+				if (fontwidth_fullwidth < scharwidth)
+					fontwidth_fullwidth = scharwidth;
+			}
+			else
+			{// 공백문자
+				if (fontwidth_halfwidth < scharwidth)
+					fontwidth_halfwidth = scharwidth;
+			}
+		}
+
+		if (fontwidth_fullwidth < fontwidth_halfwidth * 2.0f)
+			fontwidth_fullwidth = fontwidth_halfwidth * 2.0f;
+		if (fontwidth_halfwidth < fontwidth_fullwidth / 2.0f)
+			fontwidth_halfwidth = fontwidth_fullwidth / 2.0f;
+	}
+
+	// fprintf(fp,"------fontsize-----------\n");
+	// fprintf(fp,"------fontwidth_fullwidth : %f \n",fontwidth_fullwidth);
+	// fprintf(fp,"------fontwidth_halfwidth : %f \n",fontwidth_halfwidth);
+	// fprintf(fp,"------wrapwidth : %f \n",wrapwidth);
+
+	// fclose(fp);
+
+	//mamep: check if we are scrolling
+	if (draw_text_scroll_offset)
+		up_arrow = _("▲");
+	if (draw_text_scroll_offset == multiline_text_box_target_lines - multiline_text_box_visible_lines)
+		down_arrow = NULL;
+
+	// if we don't want wrapping, guarantee a huge wrapwidth
+	if (wrap == WRAP_NEVER)
+		wrapwidth = 1000000.0f;
+	if (wrapwidth <= 0)
+		return;
+
+	// loop over lines
+	while (*s != 0)
+	{
+		const char *lastbreak = NULL;
+		int line_justify = justify;
+		char32_t schar;
+		int scharcount;
+		float lastbreak_width = 0;
+		float curwidth = 0;
+		float curx = x;
+
+		// get the current character
+		scharcount = uchar_from_utf8(&schar, s, ends - s);
+		if (scharcount == -1)
+			break;
+
+		// if the line starts with a tab character, center it regardless
+		if (schar == '\t')
+		{
+			s += scharcount;
+			line_justify = JUSTIFY_CENTER;
+		}
+
+		// remember the starting position of the line
+		linestart = s;
+
+		// loop while we have characters and are less than the wrapwidth
+		while (*s != 0 && curwidth <= wrapwidth)
+		{
+			float chwidth;
+
+			// get the current chcaracter
+			scharcount = uchar_from_utf8(&schar, s, ends - s);
+			if (scharcount == -1)
+				break;
+
+			// if we hit a newline, stop immediately
+			if (schar == '\n')
+				break;
+
+			//mamep: render as fixed-width font
+			if (draw_text_fixed_mode)
+			{
+				chwidth = get_char_fixed_width(schar, fontwidth_halfwidth, fontwidth_fullwidth);
+			}
+			else
+			{
+				// get the width of this character
+				chwidth = get_font()->char_width(lineheight, aspect, schar);
+				// if (schar == ' ')
+				// {
+				// 	fprintf(fp,"------------space char chwidth : %f char wdith : %d\n",chwidth,is_fullwidth_char(schar));
+				// }
+				// else if (schar == '\t')
+				// {
+				// 	fprintf(fp,"------tab char chwidth : %f char wdith : %d\n",chwidth,is_fullwidth_char(schar));
+				// }
+				// else
+				// {
+				// 	fprintf(fp,"------other char chwidth : %f char wdith : %d\n",chwidth,is_fullwidth_char(schar));
+				// }
+
+				// fprintf(fp,"-------------------------------------------\n");
+				// fprintf(fp,"\n");
+			}
+
+			// if we hit a space, remember the location and width *without* the space
+			if (schar == ' ')
+			{
+				lastbreak = s;
+				lastbreak_width = curwidth;
+			}
+
+			// add the width of this character and advance
+			curwidth += chwidth;
+			s += scharcount;
+
+			// if we hit any non-space breakable character, remember the location and width
+			// *with* the breakable character
+			if (schar != ' ' && is_breakable_char(schar) && curwidth <= wrapwidth)
+			{
+				lastbreak = s;
+				lastbreak_width = curwidth;
+			}
+		}
+
+		// if we accumulated too much for the current width, we need to back off
+		if (curwidth > wrapwidth)
+		{
+			// fprintf(fp,"------if (curwidth > wrapwidth)\n");
+
+			// if we're word wrapping, back up to the last break if we can
+			if (wrap == WRAP_WORD)
+			{
+				// if we hit a break, back up to there with the appropriate width
+				if (lastbreak != NULL)
+				{
+					s = lastbreak;
+					curwidth = lastbreak_width;
+				}
+
+				// if we didn't hit a break, back up one character
+				else if (s > linestart)
+				{
+					// get the previous character
+					s = (const char *)utf8_previous_char(s);
+					scharcount = uchar_from_utf8(&schar, s, ends - s);
+					if (scharcount == -1)
+						break;
+
+					//mamep: render as fixed-width font
+					if (draw_text_fixed_mode)
+					{
+			    		curwidth -= get_char_fixed_width(schar, fontwidth_halfwidth, fontwidth_fullwidth);
+					}
+					else
+					{
+						curwidth -= get_font()->char_width(lineheight, aspect, schar);							
+					}
+				}
+			}
+
+			// if we're truncating, make sure we have enough space for the ...
+			else if (wrap == WRAP_TRUNCATE)
+			{
+				// add in the width of the ...
+				curwidth += 3.0f * get_font()->char_width(lineheight, aspect, '.');
+
+				// while we are above the wrap width, back up one character
+				while (curwidth > wrapwidth && s > linestart)
+				{
+					// get the previous character
+					s = (const char *)utf8_previous_char(s);
+					scharcount = uchar_from_utf8(&schar, s, ends - s);
+					if (scharcount == -1)
+						break;
+
+					curwidth -= get_font()->char_width(lineheight, aspect, schar);
+				}
+			}
+		}
+
+		//mamep: add scrolling arrow
+		if (  draw != DRAW_NONE && 
+			  ((curline == 0 && up_arrow) || (curline == multiline_text_box_visible_lines - 1 && down_arrow)) )
+		{
+			if (curline == 0)
+				linestart = up_arrow;
+			else
+				linestart = down_arrow;
+
+			curwidth = get_string_width(linestart);
+			ends = linestart + strlen(linestart);
+			s_temp = ends;
+			line_justify = JUSTIFY_CENTER;
+		}
+		else
+			s_temp = s;
+
+		// align according to the justfication
+		if (line_justify == JUSTIFY_CENTER)
+			curx += (origwrapwidth - curwidth) * 0.5f;
+		else if (line_justify == JUSTIFY_RIGHT)
+			curx += origwrapwidth - curwidth;
+
+		// track the maximum width of any given line
+		if (curwidth > maxwidth)
+			maxwidth = curwidth;
+
+		// if opaque, add a black box
+		if (draw == DRAW_OPAQUE)
+			draw_box(container, curx, cury, curx + curwidth, cury + lineheight, bgcolor);
+
+		// loop from the line start and add the characters
+		while (linestart < s_temp)
+		{
+			// get the current character
+			char32_t linechar;
+			int linecharcount = uchar_from_utf8(&linechar, linestart, ends - linestart);
+			if (linecharcount == -1)
+				break;
+
+			//mamep: consume the offset lines
+			if (draw_text_scroll_offset == 0 && draw != DRAW_NONE)
+			{
+				//mamep: render as fixed-width font
+				if (draw_text_fixed_mode)
+				{
+				 	float width = get_char_fixed_width(linechar, fontwidth_halfwidth, fontwidth_fullwidth);
+					float xmargin = (width - get_char_width(linechar)) / 2.0f;
+
+					container->add_char(curx + xmargin, cury, lineheight, machine().render().ui_aspect(), fgcolor, *get_font(), linechar);
+					curx += width;
+				}
+				else
+				{
+					container->add_char(curx, cury, lineheight, aspect, fgcolor, *get_font(), linechar);						
+					curx += get_font()->char_width(lineheight, aspect, linechar);
+				}
+			}
+			linestart += linecharcount;
+		}
+
+
+		// append ellipses if needed
+		if (wrap == WRAP_TRUNCATE && *s != 0 && draw != DRAW_NONE)
+		{
+			container->add_char(curx, cury, lineheight, aspect, fgcolor, *get_font(), '.');
+			curx += get_font()->char_width(lineheight, aspect, '.');
+			container->add_char(curx, cury, lineheight, aspect, fgcolor, *get_font(), '.');
+			curx += get_font()->char_width(lineheight, aspect, '.');
+			container->add_char(curx, cury, lineheight, aspect, fgcolor, *get_font(), '.');
+			curx += get_font()->char_width(lineheight, aspect, '.');
+		}
+
+		// if we're not word-wrapping, we're done
+		if (wrap != WRAP_WORD)
+			break;
+
+		//mamep: text scrolling
+		if (draw_text_scroll_offset > 0)
+			draw_text_scroll_offset--;
+		else
+		// advance by a row
+		{
+			cury += lineheight;
+
+			//mamep: skip overflow text
+			//there's a bug when viewing the game information and bookkeeping,so we have to commet it
+ 			if (draw != DRAW_NONE && curline == multiline_text_box_visible_lines - 1 && down_arrow)
+				break;
+
+			//mamep: controll scrolling text
+			if (draw_text_scroll_offset == 0)
+				curline++;
+		}
+
+		// skip past any spaces at the beginning of the next line
+		scharcount = uchar_from_utf8(&schar, s, ends - s);
+		if (scharcount == -1)
+			break;
+
+		if (schar == '\n')
+			s += scharcount;
+		else
+			while (*s && (schar < 0x80) && isspace(schar))
+			{
+				s += scharcount;
+				scharcount = uchar_from_utf8(&schar, s, ends - s);
+				if (scharcount == -1)
+					break;
+			}
+	}
+
+	// report the width and height of the resulting space
+	if (totalwidth)
+		*totalwidth = maxwidth;
+	if (totalheight)
+		*totalheight = cury - y;
+
+	// fclose(fp);
+}
+
+void mame_ui_manager::draw_text_full_scroll(render_container *container, const char *origs, float x, float y, float wrapwidth, int offset, int justify, int wrap, int draw, rgb_t fgcolor, rgb_t bgcolor, float *totalwidth, float *totalheight)
+{
+	int offset_save = draw_text_scroll_offset;
+
+	draw_text_scroll_offset = offset;
+	draw_text_full_ex(container, origs, x, y, wrapwidth, justify, wrap, draw, fgcolor, bgcolor, totalwidth, totalheight);
+	
+	draw_text_scroll_offset = offset_save;
+}
+
+//-------------------------------------------------
+//  draw_text_box - draw a multiline text
+//  message with a box around it
+//-------------------------------------------------
+void mame_ui_manager::draw_text_box_scroll(render_container *container, const char *text, int offset, int justify, float xpos, float ypos, rgb_t backcolor)
+{
+	float line_height = get_line_height();
+	float max_width = 2.0f * ((xpos <= 0.5f) ? xpos : 1.0f - xpos) - 2.0f * box_lr_border();
+	float target_width = max_width;
+	float target_height = line_height;
+	float target_x = 0, target_y = 0;
+	float last_target_height = 0;
+
+	// limit this iteration to a finite number of passes
+	for (int pass = 0; pass < 5; pass++)
+	{
+		// determine the target location
+		target_x = xpos - 0.5f * target_width;
+		target_y = ypos - 0.5f * target_height;
+
+		// make sure we stay on-screen
+		if (target_x < box_lr_border())
+			target_x = box_lr_border();
+		if (target_x + target_width + box_lr_border() > 1.0f)
+			target_x = 1.0f - box_lr_border() - target_width;
+		if (target_y < box_tb_border())
+			target_y = box_tb_border();
+		if (target_y + target_height + box_tb_border() > 1.0f)
+			target_y = 1.0f - box_tb_border() - target_height;
+
+		// compute the multi-line target width/height
+		// 공략 문자 높이와 폭 계산, 여기서 글자를 그리는것이 아님.
+		draw_text_full_ex(container, text, target_x, target_y, target_width + 0.00001f,
+					justify, WRAP_WORD, DRAW_NONE, UI_TEXT_CMD_COLOR, UI_TEXT_BG_CMD_COLOR, &target_width, &target_height);
+
+		multiline_text_box_target_lines = (int)(target_height / line_height + 0.5f);
+		if (target_height > 1.0f - 2.0f * box_tb_border())
+			target_height = floor((1.0f - 2.0f * box_tb_border()) / line_height) * line_height;
+		multiline_text_box_visible_lines = (int)(target_height / line_height + 0.5f);
+
+		// if we match our last value, we're done
+		if (target_height == last_target_height)
+			break;
+		last_target_height = target_height;
+	}
+
+	// add a box around that
+	// 공략 문자를 새겨 넣을 프레임 크기를 그림.
+	draw_outlined_box_ex(container,
+						target_x - box_lr_border(),
+						target_y - box_tb_border(),
+						target_x + target_width + box_lr_border(),
+						target_y + target_height + box_tb_border(), backcolor);
+	
+	// 실제 공략 문자를 그리는 곳.
+	draw_text_full_scroll(container, text, target_x, target_y, target_width + 0.00001f, offset,
+				justify, WRAP_WORD, DRAW_NORMAL, UI_TEXT_CMD_COLOR, UI_TEXT_BG_CMD_COLOR, NULL, NULL);
+}
+
+void mame_ui_manager::draw_text_box_fixed_width(render_container *container, const char *text, int justify, float xpos, float ypos, rgb_t backcolor)
+{
+	int mode_save = draw_text_fixed_mode;
+
+	draw_text_fixed_mode = 1;
+	draw_text_box_scroll(container, text, message_window_scroll, justify, xpos, ypos, backcolor);
+
+	draw_text_fixed_mode = mode_save;
+}
+//#endif /* CMD_LIST */
 
 void mame_ui_manager::draw_text_box(render_container &container, const char *text, ui::text_layout::text_justify justify, float xpos, float ypos, rgb_t backcolor)
 {
@@ -849,7 +1590,7 @@ void mame_ui_manager::process_natural_keyboard()
 	{
 		// if this was a UI_EVENT_CHAR event, post it
 		if (event.event_type == ui_event::IME_CHAR)
-			machine().ioport().natkeyboard().post(event.ch);
+			machine().ioport().natkeyboard().post_char(event.ch);
 	}
 
 	// process natural keyboard keys that don't get UI_EVENT_CHARs
@@ -872,7 +1613,7 @@ void mame_ui_manager::process_natural_keyboard()
 			*key_down_ptr |= key_down_mask;
 
 			// post the key
-			machine().ioport().natkeyboard().post(UCHAR_MAMEKEY_BEGIN + code.item_id());
+			machine().ioport().natkeyboard().post_char(UCHAR_MAMEKEY_BEGIN + code.item_id());
 		}
 		else if (!pressed && (*key_down_ptr & key_down_mask))
 		{
@@ -1144,6 +1885,9 @@ uint32_t mame_ui_manager::handler_ingame(render_container &container)
 	// turn on menus if requested
 	if (machine().ui_input().pressed(IPT_UI_CONFIGURE))
 	{
+		if (!is_paused)
+			machine().pause();
+
 		show_menu();
 		return 0;
 	}
@@ -1227,14 +1971,43 @@ uint32_t mame_ui_manager::handler_ingame(render_container &container)
 	// handle a toggle cheats request
 	if (machine().ui_input().pressed(IPT_UI_TOGGLE_CHEAT))
 		mame_machine_manager::instance()->cheat().set_enable(!mame_machine_manager::instance()->cheat().enabled());
+	// EKMAME
+	if (machine().ui_input().pressed(IPT_UI_TOGGLE_CHEAT_CONFIG))
+	{
+		// has submenu
+		if (!is_paused)
+			machine().pause();
+
+		ui::menu::stack_reset(machine());
+		show_menu();
+		ui::menu::stack_push<ui::menu_cht_Config>(*this, machine().render().ui_container(),false);
+
+		return 0;
+	}
+	//EKMAME
+	if (machine().ui_input().pressed(IPT_UI_SHOW_COMMAND))
+	{
+		// has not submenu
+		if (!is_paused)
+			machine().pause();
+
+		using namespace std::placeholders;
+		set_handler(ui_callback_type::MENU, std::bind(&ui::menu_command::ui_handler, _1, std::ref(*this)));
+		return 0;
+	}
 
 	// toggle MNG recording
 	if (machine().ui_input().pressed(IPT_UI_RECORD_MNG))
-		machine().video().toggle_record_mng();
+		machine().video().toggle_record_movie(movie_recording::format::MNG);
 
 	// toggle MNG recording
 	if (machine().ui_input().pressed(IPT_UI_RECORD_AVI))
-		machine().video().toggle_record_avi();
+		machine().video().toggle_record_movie(movie_recording::format::AVI);
+
+#ifdef MAME_AVI
+	if (machine().ui_input().pressed(IPT_UI_RECORD_MAME_AVI))
+		toggle_record_mame_avi();
+#endif /* MAME_AVI */
 
 	// toggle profiler display
 	if (machine().ui_input().pressed(IPT_UI_SHOW_PROFILER))
@@ -1259,16 +2032,17 @@ uint32_t mame_ui_manager::handler_ingame(render_container &container)
 	// toggle autofire
 	if (machine().ui_input().pressed(IPT_UI_TOGGLE_AUTOFIRE))
 	{
-//		if (!machine().options().cheat())
+// delete EKMAME	
+//		if (!machine().options().cheat()) // USE_AUTOFIRE
 //		{
 //			machine().popmessage(_("Autofire can't be enabled"));
 //		}
 //		else
-		{
+//		{
 			bool autofire_toggle = machine().ioport().get_autofire_toggle();
 			machine().ioport().set_autofire_toggle(!autofire_toggle);
 			machine().popmessage("Autofire %s", autofire_toggle ? _("Enabled") : _("Disabled"));
-		}
+//		}
 	}
 
 	// MAMEFX start
@@ -1287,7 +2061,6 @@ uint32_t mame_ui_manager::handler_ingame(render_container &container)
 
 	return 0;
 }
-
 
 //-------------------------------------------------
 //  request_quit
@@ -1434,7 +2207,7 @@ std::vector<ui::menu_item> mame_ui_manager::slider_init(running_machine &machine
 			{
 				void *param = (void *)&snd.device();
 				std::string str = string_format(_("Overclock %1$s sound"), snd.device().tag());
-				m_sliders.push_back(slider_alloc(SLIDER_ID_OVERCLOCK + slider_index++, str.c_str(), 10, 1000, 2000, 1, param));
+				m_sliders.push_back(slider_alloc(SLIDER_ID_OVERCLOCK + slider_index++, str.c_str(), 100, 1000, 4000, 10, param));
 			}
 		}
 	}
@@ -1513,6 +2286,7 @@ std::vector<ui::menu_item> mame_ui_manager::slider_init(running_machine &machine
 			m_sliders.push_back(slider_alloc(SLIDER_ID_FLICKER + slider_index, _("Vector Flicker"), 0, 0, 1000, 10, nullptr));
 			m_sliders.push_back(slider_alloc(SLIDER_ID_BEAM_WIDTH_MIN + slider_index, _("Beam Width Minimum"), 100, 100, 1000, 1, nullptr));
 			m_sliders.push_back(slider_alloc(SLIDER_ID_BEAM_WIDTH_MAX + slider_index, _("Beam Width Maximum"), 100, 100, 1000, 1, nullptr));
+			m_sliders.push_back(slider_alloc(SLIDER_ID_BEAM_DOT_SIZE + slider_index, _("Beam Dot Size"), 100, 100, 1000, 1, nullptr));
 			m_sliders.push_back(slider_alloc(SLIDER_ID_BEAM_INTENSITY + slider_index, _("Beam Intensity Weight"), -1000, 0, 1000, 10, nullptr));
 			slider_index++;
 			break;
@@ -1598,6 +2372,8 @@ int32_t mame_ui_manager::slider_changed(running_machine &machine, void *arg, int
 			return slider_beam_width_min(machine, arg, id, str, newval);
 	else if (id >= SLIDER_ID_BEAM_WIDTH_MAX && id <= SLIDER_ID_BEAM_WIDTH_MAX_LAST)
 			return slider_beam_width_max(machine, arg, id, str, newval);
+	else if (id >= SLIDER_ID_BEAM_DOT_SIZE && id <= SLIDER_ID_BEAM_DOT_SIZE_LAST)
+			return slider_beam_dot_size(machine, arg, id, str, newval);
 	else if (id >= SLIDER_ID_BEAM_INTENSITY && id <= SLIDER_ID_BEAM_INTENSITY_LAST)
 			return slider_beam_intensity_weight(machine, arg, id, str, newval);
 #ifdef MAME_DEBUG
@@ -1704,7 +2480,7 @@ int32_t mame_ui_manager::slider_refresh(running_machine &machine, void *arg, int
 	}
 
 	if (str)
-		*str = string_format(_("%1$.3ffps"), screen->frame_period().as_hz());
+		*str = string_format(_("%1$.3f" UTF8_NBSP "Hz"), screen->frame_period().as_hz());
 	refresh = screen->frame_period().as_hz();
 	return floor((refresh - defrefresh) * 1000.0 + 0.5);
 }
@@ -1997,6 +2773,21 @@ int32_t mame_ui_manager::slider_beam_width_max(running_machine &machine, void *a
 
 
 //-------------------------------------------------
+//  slider_beam_dot_size - beam dot size slider
+//  callback
+//-------------------------------------------------
+
+int32_t mame_ui_manager::slider_beam_dot_size(running_machine &machine, void *arg, int id, std::string *str, int32_t newval)
+{
+	if (newval != SLIDER_NOCHANGE)
+		vector_options::s_beam_dot_size = std::max((float)newval * 0.01f, 0.1f);
+	if (str != nullptr)
+		*str = string_format(_("%1$1.2f"), vector_options::s_beam_dot_size);
+	return floor(vector_options::s_beam_dot_size * 100.0f + 0.5f);
+}
+
+
+//-------------------------------------------------
 //  slider_beam_intensity_weight - vector beam intensity weight slider
 //  callback
 //-------------------------------------------------
@@ -2173,7 +2964,7 @@ void mame_ui_manager::save_main_option()
 	// attempt to open the main ini file
 	{
 		emu_file file(machine().options().ini_path(), OPEN_FLAG_READ);
-		if (file.open(emulator_info::get_configname(), ".ini") == osd_file::error::NONE)
+		if (file.open(std::string(emulator_info::get_configname()) + ".ini") == osd_file::error::NONE)
 		{
 			try
 			{
@@ -2203,7 +2994,7 @@ void mame_ui_manager::save_main_option()
 	// attempt to open the output file
 	{
 		emu_file file(machine().options().ini_path(), OPEN_FLAG_WRITE | OPEN_FLAG_CREATE | OPEN_FLAG_CREATE_PATHS);
-		if (file.open(emulator_info::get_configname(), ".ini") == osd_file::error::NONE)
+		if (file.open(std::string(emulator_info::get_configname()) + ".ini") == osd_file::error::NONE)
 		{
 			// generate the updated INI
 			std::string initext = options.output_ini();
@@ -2325,3 +3116,32 @@ void mame_ui_manager::config_save(config_type cfg_type, util::xml::data_node *pa
 	}
 }
 
+
+#ifdef MAME_AVI
+//int get_single_step(void) { return single_step(); }
+
+int mame_ui_manager::usrintrf_message_ok_cancel(render_container &container, const char *str)
+{
+	int ret = false;
+	machine().phase();
+	while (1)
+	{
+		draw_message_window(container, str);
+
+		//update_video_and_audio();
+
+		if (machine().ui_input().pressed(IPT_UI_CANCEL))
+			break;
+
+		if (machine().ui_input().pressed(IPT_UI_CANCEL))
+		{
+			ret = true;
+			break;
+		}
+	}
+
+	machine().resume();
+
+	return ret;
+}
+#endif /* MAME_AVI */

@@ -242,19 +242,47 @@ static int DIJoystick_is_joy_pressed(int joycode)
 	int axis = GET_JOYCODE_AXIS(joycode);
 	int dir  = GET_JOYCODE_DIR(joycode);
 
+	// FILE *pFile;
+	// pFile = fopen("DIJoystick_is_joy_pressed.txt", "a");
+	// fprintf(pFile, "Get joycode : %d \n", joycode);
+	// fprintf(pFile, "Get num_pov : %d \n", num_pov);
+	// fprintf(pFile, "Get code : %d \n", code);
+	// fprintf(pFile, "Get joy_num : %d \n", joy_num);
+	// fprintf(pFile, "Get stick : %d \n", stick);
+	// fprintf(pFile, "Get axis : %d \n", axis);
+	// fprintf(pFile, "Get dir : %d \n", dir);
+
 	/* do we have as many sticks? */
 	if (joy_num == 0 || This.num_joysticks < joy_num)
+	{
+	// 	fprintf(pFile, "Error : (joy_num == 0 || This.num_joysticks < joy_num)\r\n");
+	// fclose(pFile);
 		return 0;
+	}
 
 	joy_num--;
 
 	if (This.joysticks[joy_num].use_joystick == false)
+	{
+	// 	fprintf(pFile, "Error : This.joysticks[joy_num].use_joystick == false\r\n");
+	// fclose(pFile);
 		return 0;
-
+	}
 	dijs = This.joysticks[joy_num].dijs;
+	
+	// fprintf(pFile, "dijs : %d\n",*(int *)(((byte *)&dijs)));
+	// fprintf(pFile, "dijs lRx: %ld\n",dijs.lRx);
+	// fprintf(pFile, "dijs lRy: %ld\n",dijs.lRy);
+	// fprintf(pFile, "dijs lRz: %ld\n",dijs.lRz);
+	// fprintf(pFile, "dijs lX: %ld\n",dijs.lX);
+	// fprintf(pFile, "dijs lY: %ld\n",dijs.lY);
+	// fprintf(pFile, "dijs lZ: %ld\n",dijs.lZ);
 
 	if (stick == JOYCODE_STICK_BTN)
 	{
+	// 	fprintf(pFile, "Error : stick == JOYCODE_STICK_BTN\r\n");
+	// fclose(pFile);
+
 		int button = GET_JOYCODE_BUTTON(joycode);
 		button--;
 
@@ -266,17 +294,25 @@ static int DIJoystick_is_joy_pressed(int joycode)
 
 	if (stick == JOYCODE_STICK_POV)
 	{
+		// fprintf(pFile, "Error : stick == JOYCODE_STICK_POV\r\n");
+
 		axis = code / 2;
 		dir  = code % 2;
 
 		if (num_pov >= This.joysticks[joy_num].num_pov)
+		{
+	// 		fprintf(pFile, "Error : num_pov >= This.joysticks[joy_num].num_pov\r\n");
+	// fclose(pFile);
 			return 0;
-
+		}
 		int pov_value = dijs.rgdwPOV[num_pov];
 
 		if (LOWORD(pov_value) == 0xffff)
+		{
+	// 		fprintf(pFile, "Error : LOWORD(pov_value) == 0xffff\r\n");
+	// fclose(pFile);
 			return 0;
-
+		}
 		int angle = (pov_value + 27000) % 36000;
 		angle = (36000 - angle) % 36000;
 		angle /= 100;
@@ -284,27 +320,56 @@ static int DIJoystick_is_joy_pressed(int joycode)
 
 		/* angle is now in degrees counterclockwise from x axis*/
 		if (axis == 1)
+		{
 			axis_value = 128 + (int)(127 * cos(2 * M_PI * angle / 360.0)); /* x */
+			// fprintf(pFile, "axis x : %d \r\n", axis_value);
+		}
 		else
+		{
 			axis_value = 128 + (int)(127 * sin(2 * M_PI * angle / 360.0)); /* y */
+			// fprintf(pFile, "axis y : %d \r\n", axis_value);
+		}
 
 		if (dir == 1)
+		{
+	// 		fprintf(pFile, "dir == 1 : %d \r\n", axis_value);
+	// fclose(pFile);
 			return axis_value <= (128 - 128 * 60 / 100);
+		}
 		else
+	 	{
+	// 		fprintf(pFile, "dir != 1 : %d \r\n", axis_value);
+	// fclose(pFile);
 			return axis_value >= (128 + 128 * 60 / 100);
+		}
 	}
 
 	/* sticks */
 	if (axis == 0 || This.joysticks[joy_num].num_axes < axis)
+	{
+		// fprintf(pFile, "Error : axis == 0 || This.joysticks[joy_num].num_axes < axis \r\n");
+		// fclose(pFile);
 		return 0;
+	}
+	// fprintf(pFile, "axis/offset : %d %d \n",axis,This.joysticks[joy_num].axes[axis].offset);
 
 	axis--;
-	int value = *(int *)(((byte *)&dijs) + This.joysticks[joy_num].axes[axis].offset);
+	// int value = *(int *)(((byte *)&dijs) + This.joysticks[joy_num].axes[axis].offset); bug
+	int value = ((int)dijs.lY + This.joysticks[joy_num].axes[axis].offset); // bug fix
+	// fprintf(pFile, "axis/offset : %d %d \n",axis,This.joysticks[joy_num].axes[axis].offset);
 
 	if (dir == JOYCODE_DIR_NEG)
+	{
+		// fprintf(pFile, "dir == JOYCODE_DIR_NEG : %d \r\n", value);
+		// fclose(pFile);
 		return value <= (128 - 128 * 60 / 100);
+	}
 	else
+	{
+		// fprintf(pFile, "dir != JOYCODE_DIR_NEG : %d \r\n", value);
+		// fclose(pFile);
 		return value >= (128 + 128 * 60 / 100);
+	}
 }
 
 static bool DIJoystick_Available(void)

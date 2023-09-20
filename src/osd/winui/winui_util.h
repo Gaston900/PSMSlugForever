@@ -42,5 +42,7 @@ HANDLE winui_find_first_file_utf8(const char* filename, WIN32_FIND_DATA *findfil
 bool winui_move_file_utf8(const char* existingfilename, const char* newfilename);
 void CenterWindow(HWND hWnd);
 bool IsWindowsSevenOrHigher(void);
+//const char * GetDriverCloneName(int nIndex);
+int GetDriverIsClone(int nIndex);
 
 #endif

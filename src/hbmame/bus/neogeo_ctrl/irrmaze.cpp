@@ -18,10 +18,10 @@ DEFINE_DEVICE_TYPE(NEOGEO_IRRMAZE, neogeo_irrmaze_device, "neogeo_irrmaze", "SNK
 static INPUT_PORTS_START( neogeo_irrmaze )
 	PORT_START("BUTTONS")
 	PORT_BIT( 0x0f, IP_ACTIVE_LOW, IPT_UNUSED )
-//	PORT_BIT( 0x10, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(1)
-//	PORT_BIT( 0x20, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_PLAYER(1)
-//	PORT_BIT( 0x40, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(2)
-//	PORT_BIT( 0x80, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_PLAYER(2)
+	PORT_BIT( 0x10, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(1)
+	PORT_BIT( 0x20, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_PLAYER(1)
+	PORT_BIT( 0x40, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(2)
+	PORT_BIT( 0x80, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_PLAYER(2)
 
 	PORT_START("TRACK_X")
 	PORT_BIT( 0xff, 0x00, IPT_TRACKBALL_X ) PORT_SENSITIVITY(10) PORT_KEYDELTA(20) PORT_REVERSE
@@ -83,7 +83,7 @@ void neogeo_irrmaze_device::device_reset()
 //  in0_r
 //-------------------------------------------------
 
-READ8_MEMBER(neogeo_irrmaze_device::in0_r)
+u8 neogeo_irrmaze_device::in0_r()
 {
 	uint8_t res = 0;
 	if (m_ctrl_sel & 0x01)
@@ -98,7 +98,7 @@ READ8_MEMBER(neogeo_irrmaze_device::in0_r)
 //  in1_r
 //-------------------------------------------------
 
-READ8_MEMBER(neogeo_irrmaze_device::in1_r)
+u8 neogeo_irrmaze_device::in1_r()
 {
 	return m_buttons->read();
 }

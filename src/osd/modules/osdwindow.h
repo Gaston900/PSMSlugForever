@@ -36,6 +36,7 @@ enum
 {
 	VIDEO_MODE_NONE = 0,
 	VIDEO_MODE_GDI,
+	VIDEO_MODE_DDRAW,		//DDRWA
 	VIDEO_MODE_BGFX,
 #if defined(USE_OPENGL) && USE_OPENGL
 	VIDEO_MODE_OPENGL,
@@ -127,6 +128,8 @@ public:
 #if defined(OSD_WINDOWS) || defined(OSD_UWP)
 	virtual bool win_has_menu() = 0;
 #endif
+
+	virtual std::shared_ptr<osd_monitor_info> monitor_from_rect(const osd_rect* proposed) =0;
 
 #ifdef OSD_WINDOWS
 	HDC                     m_dc;       // only used by GDI renderer!
@@ -282,6 +285,9 @@ struct osd_video_config
 
 	// dd, d3d
 	int                 triplebuf;                  // triple buffer
+
+	// ddraw options
+	int                 hwstretch;                  // stretch using the hardware
 
 	//============================================================
 	// SDL - options

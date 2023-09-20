@@ -33,7 +33,8 @@
 # SDL2_MULTIAPI = 1
 # NO_USE_MIDI = 1
 # NO_USE_PORTAUDIO = 1
-# DONT_USE_NETWORK = 1
+# USE_TAPTUN = 1
+# USE_PCAP = 1
 # USE_QTDEBUG = 1
 # NO_X11 = 1
 # NO_USE_XINPUT = 1
@@ -94,7 +95,6 @@
 # LTO = 1
 # SSE2 = 1
 # OPENMP = 1
-# FASTDEBUG = 1
 
 # SEPARATE_BIN = 1
 # PYTHON_EXECUTABLE = python3
@@ -293,6 +293,21 @@ else
 UNAME    := $(shell uname -mps)
 TARGETOS := $(OS)
 
+#-------------------------------------------------
+# determine the whether -m32, -m64 or nothing
+# should be passed to gcc when building genie
+#-------------------------------------------------
+
+ifeq ($(ARCHITECTURE),_x86)
+MPARAM := -m32
+else
+ifeq ($(ARCHITECTURE),_x64)
+MPARAM := -m64
+else
+MPARAM :=
+endif
+endif
+
 ARCHITECTURE := _x86
 
 ifeq ($(firstword $(filter x86_64,$(UNAME))),x86_64)
@@ -377,6 +392,13 @@ ifndef NOASM
 endif
 endif
 
+# ppc has inline assembly support but no DRC
+ifeq ($(findstring ppc,$(UNAME)),ppc)
+ifndef FORCE_DRC_C_BACKEND
+	FORCE_DRC_C_BACKEND := 1
+endif
+endif
+
 # Autodetect BIGENDIAN
 # MacOSX
 ifndef BIGENDIAN
@@ -404,21 +426,6 @@ endif
 CC := $(SILENT)gcc
 LD := $(SILENT)g++
 CXX:= $(SILENT)g++
-
-#-------------------------------------------------
-# determine the whether -m32, -m64 or nothing
-# should be passed to gcc when building genie
-#-------------------------------------------------
-
-ifeq ($(ARCHITECTURE),_x86)
-MPARAM := -m32
-else
-ifeq ($(ARCHITECTURE),_x64)
-MPARAM := -m64
-else
-MPARAM :=
-endif
-endif
 
 #-------------------------------------------------
 # specify OSD layer: windows, sdl, etc.
@@ -710,8 +717,12 @@ ifdef TARGETOS
 TARGET_PARAMS += --targetos='$(TARGETOS)'
 endif
 
-ifdef DONT_USE_NETWORK
-PARAMS += --DONT_USE_NETWORK='$(DONT_USE_NETWORK)'
+ifdef USE_TAPTUN
+PARAMS += --USE_TAPTUN='$(USE_TAPTUN)'
+endif
+
+ifdef USE_PCAP
+PARAMS += --USE_PCAP='$(USE_PCAP)'
 endif
 
 ifdef NO_OPENGL
@@ -808,10 +819,6 @@ endif
 
 ifdef OPENMP
 PARAMS += --OPENMP='$(OPENMP)'
-endif
-
-ifdef FASTDEBUG
-PARAMS += --FASTDEBUG='$(FASTDEBUG)'
 endif
 
 ifdef SEPARATE_BIN
@@ -1267,7 +1274,7 @@ $(PROJECTDIR_SDL)/$(MAKETYPE)-android-arm/Makefile: makefile $(SCRIPTS) $(GENIE)
 ifndef ANDROID_NDK_ARM
 	$(error ANDROID_NDK_ARM is not set)
 endif
-	$(SILENT) $(GENIE) $(PARAMS) --gcc=android-arm --gcc_version=3.8.0 --osd=sdl --targetos=android --PLATFORM=arm --NO_USE_MIDI=1 --NO_OPENGL=1 --USE_QTDEBUG=0 --NO_X11=1 --DONT_USE_NETWORK=1 --NOASM=1 $(MAKETYPE)
+	$(SILENT) $(GENIE) $(PARAMS) --gcc=android-arm --gcc_version=3.8.0 --osd=sdl --targetos=android --PLATFORM=arm --NO_USE_MIDI=1 --NO_OPENGL=1 --USE_QTDEBUG=0 --NO_X11=1 --USE_TAPTUN=0 --USE_PCAP=0 --NOASM=1 $(MAKETYPE)
 
 .PHONY: android-arm
 android-arm: android-ndk generate $(PROJECTDIR_SDL)/$(MAKETYPE)-android-arm/Makefile
@@ -1282,7 +1289,7 @@ $(PROJECTDIR_SDL)/$(MAKETYPE)-android-arm64/Makefile: makefile $(SCRIPTS) $(GENI
 ifndef ANDROID_NDK_ARM64
 	$(error ANDROID_NDK_ARM64 is not set)
 endif
-	$(SILENT) $(GENIE) $(PARAMS) --gcc=android-arm64 --gcc_version=3.8.0 --osd=sdl --targetos=android --PLATFORM=arm64 --NO_USE_MIDI=1 --NO_OPENGL=1 --USE_QTDEBUG=0 --NO_X11=1 --DONT_USE_NETWORK=1 --NOASM=1 $(MAKETYPE)
+	$(SILENT) $(GENIE) $(PARAMS) --gcc=android-arm64 --gcc_version=3.8.0 --osd=sdl --targetos=android --PLATFORM=arm64 --NO_USE_MIDI=1 --NO_OPENGL=1 --USE_QTDEBUG=0 --NO_X11=1 --USE_TAPTUN=0 --USE_PCAP=0 --NOASM=1 $(MAKETYPE)
 
 .PHONY: android-arm64
 android-arm64: android-ndk generate $(PROJECTDIR_SDL)/$(MAKETYPE)-android-arm64/Makefile
@@ -1297,7 +1304,7 @@ $(PROJECTDIR_SDL)/$(MAKETYPE)-android-x86/Makefile: makefile $(SCRIPTS) $(GENIE)
 ifndef ANDROID_NDK_X86
 	$(error ANDROID_NDK_X86 is not set)
 endif
-	$(SILENT) $(GENIE) $(PARAMS) --gcc=android-x86 --gcc_version=3.8.0 --osd=sdl --targetos=android --PLATFORM=x86 --NO_USE_MIDI=1 --NO_OPENGL=1 --USE_QTDEBUG=0 --NO_X11=1 --DONT_USE_NETWORK=1 $(MAKETYPE)
+	$(SILENT) $(GENIE) $(PARAMS) --gcc=android-x86 --gcc_version=3.8.0 --osd=sdl --targetos=android --PLATFORM=x86 --NO_USE_MIDI=1 --NO_OPENGL=1 --USE_QTDEBUG=0 --NO_X11=1 --USE_TAPTUN=0 --USE_PCAP=0 $(MAKETYPE)
 
 .PHONY: android-x86
 android-x86: android-ndk generate $(PROJECTDIR_SDL)/$(MAKETYPE)-android-x86/Makefile
@@ -1312,7 +1319,7 @@ $(PROJECTDIR_SDL)/$(MAKETYPE)-android-x64/Makefile: makefile $(SCRIPTS) $(GENIE)
 ifndef ANDROID_NDK_X64
 	$(error ANDROID_NDK_X64 is not set)
 endif
-	$(SILENT) $(GENIE) $(PARAMS) --gcc=android-x64 --gcc_version=3.8.0 --osd=sdl --targetos=android --PLATFORM=x64 --NO_USE_MIDI=1 --NO_OPENGL=1 --USE_QTDEBUG=0 --NO_X11=1 --DONT_USE_NETWORK=1 $(MAKETYPE)
+	$(SILENT) $(GENIE) $(PARAMS) --gcc=android-x64 --gcc_version=3.8.0 --osd=sdl --targetos=android --PLATFORM=x64 --NO_USE_MIDI=1 --NO_OPENGL=1 --USE_QTDEBUG=0 --NO_X11=1 --USE_TAPTUN=0 --USE_PCAP=0 $(MAKETYPE)
 
 .PHONY: android-x64
 android-x64: android-ndk generate $(PROJECTDIR_SDL)/$(MAKETYPE)-android-x64/Makefile
@@ -1704,14 +1711,14 @@ endif
 
 ifeq (posix,$(SHELLTYPE))
 $(GENDIR)/version.cpp: makefile $(GENDIR)/git_desc | $(GEN_FOLDERS)
-	@echo '#define BARE_BUILD_VERSION "4.6"' > $@
+	@echo '#define BARE_BUILD_VERSION "4.7"' > $@
 	@echo 'extern const char bare_build_version[];' >> $@
 	@echo 'extern const char build_version[];' >> $@
 	@echo 'const char bare_build_version[] = BARE_BUILD_VERSION;' >> $@
 	@echo 'const char build_version[] = BARE_BUILD_VERSION " ($(NEW_GIT_VERSION))";' >> $@
 else
 $(GENDIR)/version.cpp: makefile $(GENDIR)/git_desc | $(GEN_FOLDERS)
-	@echo #define BARE_BUILD_VERSION "4.6" > $@
+	@echo #define BARE_BUILD_VERSION "4.7" > $@
 	@echo extern const char bare_build_version[]; >> $@
 	@echo extern const char build_version[]; >> $@
 	@echo const char bare_build_version[] = BARE_BUILD_VERSION; >> $@
@@ -1753,22 +1760,7 @@ tests: $(REGTESTS)
 # FIXME: make this work with SEPARATE_BIN
 cleansrc:
 	@echo Cleaning up tabs/spaces/end of lines....
-ifeq ($(OS),windows)
-	$(shell for /r src %%i in (*.c) do srcclean %%i >&2 )
-	$(shell for /r src %%i in (*.cpp) do srcclean %%i >&2 )
-	$(shell for /r src %%i in (*.h) do srcclean %%i >&2 )
-	$(shell for /r src %%i in (*.hpp) do srcclean %%i >&2 )
-	$(shell for /r src %%i in (*.hxx) do srcclean %%i >&2 )
-	$(shell for /r src %%i in (*.ipp) do srcclean %%i >&2 )
-	$(shell for /r src %%i in (*.lay) do srcclean %%i >&2 )
-	$(shell for /r src %%i in (*.lst) do srcclean %%i >&2 )
-	$(shell for /r src %%i in (*.mak) do srcclean %%i >&2 )
-	$(shell for /r src %%i in (*.mm) do srcclean %%i >&2 )
-	$(shell for /r hash %%i in (*.hsi) do srcclean %%i >&2 )
-	$(shell for /r hash %%i in (*.xml) do srcclean %%i >&2 )
-	$(shell for /r plugins %%i in (*.lua) do srcclean %%i >&2 )
-	$(shell for /r scripts %%i in (*.lua) do srcclean %%i >&2 )
-else
+ifeq (posix,$(SHELLTYPE))
 	$(SILENT) find src -name \*.c -exec ./srcclean {} \; >&2
 	$(SILENT) find src -name \*.cpp -exec ./srcclean {} \; >&2
 	$(SILENT) find src -name \*.h -exec ./srcclean {} \; >&2
@@ -1783,6 +1775,21 @@ else
 	$(SILENT) find hash -name \*.xml -exec ./srcclean {} \; >&2
 	$(SILENT) find plugins -name \*.lua -exec ./srcclean {} \; >&2
 	$(SILENT) find scripts -name \*.lua -exec ./srcclean {} \; >&2
+else
+	$(shell for /r src %%i in (*.c) do srcclean %%i >&2 )
+	$(shell for /r src %%i in (*.cpp) do srcclean %%i >&2 )
+	$(shell for /r src %%i in (*.h) do srcclean %%i >&2 )
+	$(shell for /r src %%i in (*.hpp) do srcclean %%i >&2 )
+	$(shell for /r src %%i in (*.hxx) do srcclean %%i >&2 )
+	$(shell for /r src %%i in (*.ipp) do srcclean %%i >&2 )
+	$(shell for /r src %%i in (*.lay) do srcclean %%i >&2 )
+	$(shell for /r src %%i in (*.lst) do srcclean %%i >&2 )
+	$(shell for /r src %%i in (*.mak) do srcclean %%i >&2 )
+	$(shell for /r src %%i in (*.mm) do srcclean %%i >&2 )
+	$(shell for /r hash %%i in (*.hsi) do srcclean %%i >&2 )
+	$(shell for /r hash %%i in (*.xml) do srcclean %%i >&2 )
+	$(shell for /r plugins %%i in (*.lua) do srcclean %%i >&2 )
+	$(shell for /r scripts %%i in (*.lua) do srcclean %%i >&2 )
 endif
 
 #-------------------------------------------------

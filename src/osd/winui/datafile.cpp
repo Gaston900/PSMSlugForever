@@ -32,6 +32,9 @@
 
 // MAME/MAMEUI headers
 #include "winui.h"
+#include "emu.h"
+#include "../frontend/mame/ui/ui.h"
+
 #define WINUI_ARRAY_LENGTH(x) (sizeof(x) / sizeof(x[0]))
 
 
@@ -162,7 +165,17 @@ static std::string load_datafile_text(std::ifstream &fp, std::string keycode, in
 		{
 			//printf("%s\n",file_line.c_str());
 			if (file_line.find("$end")==0)
-				break;
+			{// EKMAME FIX
+				std::getline(fp, file_line);
+				if(file_line.find("$cmd")==0)
+				{
+					continue;	
+				}
+				else
+				{
+					break;
+				}
+			}
 
 			if (file_line.find(tag)==0)
 				continue;
@@ -206,6 +219,7 @@ std::string load_swinfo(const game_driver *drv, const char* datsdir, std::string
 
 std::string load_gameinfo(const game_driver *drv, const char* datsdir, int filenum)
 {
+	bool findcmddata=0; //EKMAMEFIX
 	std::string buffer;
 	// if it's a NULL record exit now
 	if (!m_gameInfo[filenum].filename)
@@ -214,6 +228,16 @@ std::string load_gameinfo(const game_driver *drv, const char* datsdir, int filen
 	// datafile name
 	std::string buf, filename = datsdir + std::string("\\") + m_gameInfo[filenum].filename;
 	std::ifstream fp (filename);
+	////EKMAMEFIX
+	char *ptr=NULL;
+	std::string first_en;
+	////EKMAMEFIX
+	ptr = strstr(m_gameInfo[filenum].filename,"command.dat");	
+	if(ptr)
+	{
+		findcmddata=1;		
+		first_en = std::string("$info=")+drv->name;
+	}
 
 	/* try to open datafile */
 	if (create_index(fp, filenum))
@@ -235,9 +259,54 @@ std::string load_gameinfo(const game_driver *drv, const char* datsdir, int filen
 		}
 
 		if (!buf.empty())
+		{
 			buffer.append(m_gameInfo[filenum].header).append(buf).append("\n\n\n");
-
+		}
 		fp.close();
+	}
+	//EKMAMEFIX
+	if(findcmddata)
+	{
+//		FILE *fpp;
+//		fpp=fopen("datafile.txt","a+t");
+	
+		if(buffer == "")
+		{
+			std::string cmd_filename = datsdir + std::string("\\") + "command_en.dat";
+			std::ifstream fp (cmd_filename);
+			buffer.clear();
+			buf.clear();
+
+			/* try to open datafile */
+			if (create_index(fp, filenum))
+			{
+							
+				// get info on game
+				buf = load_datafile_text(fp, first_en, filenum, m_gameInfo[filenum].descriptor);
+
+
+				// if nothing, and it's a clone, and it's allowed, try the parent
+				if (buf.empty() && m_gameInfo[filenum].bClone)
+				{
+					int g = driver_list::clone(*drv);
+					if (g != -1)
+					{
+						drv = &driver_list::driver(g);
+						first_en = std::string("$info=")+drv->name;
+						
+						buf = load_datafile_text(fp, first_en, filenum, m_gameInfo[filenum].descriptor);
+					}
+				}
+
+				if (!buf.empty())
+				{
+					buffer.append(m_gameInfo[filenum].header).append(buf).append("\n\n\n");
+				}
+				fp.close();
+			}			
+		}
+
+//		fclose(fpp);
 	}
 
 	return buffer;

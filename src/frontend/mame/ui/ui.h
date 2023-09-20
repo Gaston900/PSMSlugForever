@@ -42,6 +42,11 @@ class machine_info;
 #define UI_GREEN_COLOR          rgb_t(239,34,177,76)
 #define UI_YELLOW_COLOR         rgb_t(239,198,188,0)
 #define UI_RED_COLOR            rgb_t(239,237,28,36)
+#define UI_BACKGROUND_COLOR_W   rgb_t(239,239,239,239)
+
+#define UI_BACKGROUND_CMD_COLOR rgb_t(239,16,16,48)
+#define UI_TEXT_CMD_COLOR       rgb_t(255,255,255,255)
+#define UI_TEXT_BG_CMD_COLOR    rgb_t(239,0,0,0)
 
 /* cancel return value for a UI handler */
 #define UI_HANDLER_CANCEL       ((uint32_t)~0)
@@ -91,6 +96,8 @@ enum
 	SLIDER_ID_BEAM_WIDTH_MAX_LAST   = SLIDER_ID_BEAM_WIDTH_MAX + SLIDER_SCREEN_SPACING,
 	SLIDER_ID_BEAM_INTENSITY,
 	SLIDER_ID_BEAM_INTENSITY_LAST   = SLIDER_ID_BEAM_INTENSITY + SLIDER_SCREEN_SPACING,
+	SLIDER_ID_BEAM_DOT_SIZE,
+	SLIDER_ID_BEAM_DOT_SIZE_LAST    = SLIDER_ID_BEAM_DOT_SIZE + SLIDER_SCREEN_SPACING,
 	SLIDER_ID_CROSSHAIR_SCALE,
 	SLIDER_ID_CROSSHAIR_SCALE_LAST  = SLIDER_ID_CROSSHAIR_SCALE + SLIDER_INPUT_SPACING,
 	SLIDER_ID_CROSSHAIR_OFFSET,
@@ -206,7 +213,23 @@ public:
 	void draw_text_box(render_container &container, const char *text, ui::text_layout::text_justify justify, float xpos, float ypos, rgb_t backcolor);
 	void draw_text_box(render_container &container, ui::text_layout &layout, float xpos, float ypos, rgb_t backcolor);
 	void draw_message_window(render_container &container, const char *text);
-
+//#ifdef CMD_LIST
+	int window_scroll_keys();
+	void draw_box(render_container *container, float x0, float y0, float x1, float y1, rgb_t backcolor);
+	void draw_outlined_box_ex(render_container *container, float x0, float y0, float x1, float y1, rgb_t backcolor);
+	void draw_outlined_box_ex(render_container *container, float x0, float y0, float x1, float y1, rgb_t fgcolor, rgb_t bgcolor);
+	float get_char_fixed_width(char32_t uchar, double halfwidth, double fullwidth);
+	float get_char_width_no_margin(u32 ch);
+//	float get_line_height();
+	void draw_text_full_ex(render_container *container, const char *origs, float x, float y, float origwrapwidth, int justify, int wrap, int draw, rgb_t fgcolor, rgb_t bgcolor, float *totalwidth, float *totalheight);
+	void draw_text_full_scroll(render_container *container, const char *origs, float x, float y, float wrapwidth, int offset, int justify, int wrap, int draw, rgb_t fgcolor, rgb_t bgcolor, float *totalwidth, float *totalheight);
+	void draw_text_box_scroll(render_container *container, const char *text, int offset, int justify, float xpos, float ypos, rgb_t backcolor);
+	void draw_text_box_fixed_width(render_container *container, const char *text, int justify, float xpos, float ypos, rgb_t backcolor);
+//#endif /* CMD_LIST */
+#if defined(MAME_AVI) || defined(KAILLERA)
+	void ui_draw_text2(render_container &container, const char *buf, float x, float y, int col);
+	int usrintrf_message_ok_cancel(render_container *container, const char *str);
+#endif
 	// load/save options to file
 	void load_ui_options();
 	void save_ui_options();
@@ -225,6 +248,7 @@ public:
 	void show_mouse(bool status);
 	virtual bool is_menu_active() override;
 	bool can_paste();
+	bool found_machine_warnings() const { return m_has_warnings; }
 	void image_handler_ingame();
 	void increase_frameskip();
 	void decrease_frameskip();
@@ -268,7 +292,7 @@ private:
 	render_font *           m_font;
 	std::function<uint32_t (render_container &)> m_handler_callback;
 	ui_callback_type        m_handler_callback_type;
-	uint32_t                  m_handler_param;
+	uint32_t                m_handler_param;
 	bool                    m_single_step;
 	bool                    m_showfps;
 	osd_ticks_t             m_showfps_end;
@@ -282,6 +306,7 @@ private:
 	ui_options              m_ui_options;
 	ui_colors               m_ui_colors;
 	float                   m_target_font_height;
+	bool                    m_has_warnings;
 
 	std::unique_ptr<ui::machine_info> m_machine_info;
 
@@ -326,6 +351,7 @@ private:
 	int32_t slider_flicker(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
 	int32_t slider_beam_width_min(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
 	int32_t slider_beam_width_max(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_beam_dot_size(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
 	int32_t slider_beam_intensity_weight(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
 	std::string slider_get_screen_desc(screen_device &screen);
 	#ifdef MAME_DEBUG

@@ -1,0 +1,18 @@
+{
+    "files.associations": {
+        "*.ipp": "cpp",
+        "xstring": "cpp",
+        "array": "cpp",
+        "chrono": "cpp",
+        "functional": "cpp",
+        "future": "cpp",
+        "memory": "cpp",
+        "ratio": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp",
+        "xmemory0": "cpp",
+        "xtr1common": "cpp",
+        "xutility": "cpp"
+    }
+}

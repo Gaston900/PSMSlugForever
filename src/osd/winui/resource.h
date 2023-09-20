@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, René Single, Mamesick
+// copyright-holders:Chris Kirmse, Mike Haaland, Ren?Single, Mamesick
 
 #define ID_TOOLBAR_EDIT                 92
 #define IDD_MAIN                        101
@@ -39,7 +39,7 @@
 #define IDD_GAME_INFO                   152
 #define IDD_GAME_AUDIT                  153
 #define IDD_PROP_DISPLAY                154
-#define IDD_PROP_SOUND                  155
+//#define IDD_PROP_SOUND                  155
 #define IDD_PROP_ADVANCED               156
 #define IDD_PROP_INPUT                  157
 #define IDD_PROP_MISC                   158
@@ -63,7 +63,7 @@
 #define IDI_FOLDER_DUMP                 179
 #define IDI_BIOS                        180
 #define IDR_CONTEXT_SCREENSHOT          181
-#define IDD_PROP_CONTROLLER             185
+//#define IDD_PROP_CONTROLLER             185
 #define IDD_PROP_SHADER                 186
 #define IDD_PROP_SCREEN                 187
 #define IDD_PROP_MISC2                  188
@@ -150,18 +150,34 @@
 #define IDB_MANUAL                      270
 #define IDB_NOTEPAD                     271
 #define IDI_DISPLAYSHEET                272
-#define IDI_ADVANCEDSHEET               273
-#define IDI_SCREENSHEET                 274
-#define IDI_OPENGLSHEET                 275
-#define IDI_SHADERSHEET                 276
-#define IDI_VECTORSHEET                 277
-#define IDI_SOUNDSHEET                  278
-#define IDI_INPUTSHEET                  279
-#define IDI_CONTROLSHEET                280
-#define IDI_MISCSHEET                   281
+#define IDI_VECTORSHEET                 273
+#define IDI_SOUNDSHEET                  274
+#define IDI_CONTROLSHEET                275
+#define IDI_MISCSHEET                   276
+#define IDI_ADVANCEDSHEET               277
+#define IDI_SCREENSHEET                 278
+#define IDI_OPENGLSHEET                 279
+#define IDI_SHADERSHEET                 280
+#define IDI_INPUTSHEET                  281
 #define IDI_MISC2SHEET                  282
 #define IDI_SNAPSHEET                   283
 #define IDI_SHADER                      284
+#define IDB_KLIST						285	//USE_KLIST
+#define IDI_FOLDER_NEOGEO				286
+#define IDI_FOLDER_NAMCO				287	
+#define IDI_FOLDER_TAITO				288
+#define IDI_FOLDER_KONAMI				289
+#define IDI_FOLDER_SEGA 				290
+#define IDI_FOLDER_CAVE 				291
+#define IDI_FOLDER_CAPCOM				292
+#define IDI_FOLDER_NEOHACK				293
+#define IDI_FOLDER_KOREAN				294
+#define IDI_FOLDER_CPSHACK				295
+#define IDI_FOLDER_PGMHACK				296
+#define IDI_FOLDER_PGM					297
+#define IDI_HEADER_UP                   298
+#define IDI_HEADER_DOWN                 299
+
 #define IDC_LIST                        1000
 #define IDC_JOYSTICK                    1003
 #define IDC_SIZES                       1005
@@ -368,6 +384,7 @@
 #define IDC_FILTER_MECHANICAL           1254
 #define IDC_AUDIT_ICON                  1255
 #define IDC_SSBORDER                    1256
+#define IDC_LOWLATENCY                  1257
 #define IDC_BORDER                      1259
 #define IDC_ROM_DETAILS                 1261
 #define IDC_SICKFX                      1262
@@ -465,16 +482,101 @@
 #define IDC_NVRAM_SAVE                  1401
 #define IDC_REWIND                      1402
 #define IDC_DRC_CORE                    1403
+#define IDC_60FPS						1404
+#define IDC_HWSTRETCH                   1405
+#define IDC_SCALEEFFECT                 1406 // USE_SCALE_EFFECTS
+
+
+#define IDD_AVI_STATUS                  1800 // MAME_AVI
+#define IDC_INIT                        1802 // MAME_AVI
+#define IDC_FRAME_CMP                   1803 // MAME_AVI
+#define IDC_EDIT2                       1804 // MAME_AVI
+#define IDC_SPIN1                       1805 // MAME_AVI
+#define IDC_WAVE_RECORD                 1806 // MAME_AVI
+#define IDC_LEFT                        1807 // MAME_AVI
+#define IDC_TOP                         1808 // MAME_AVI
+#define IDC_WIDTH                       1809 // MAME_AVI
+#define IDC_HEIGHT                      1810 // MAME_AVI
+#define IDC_LEFT_SPIN                   1811 // MAME_AVI
+#define IDC_WIDTH_SPIN                  1812 // MAME_AVI
+#define IDC_TOP_SPIN                    1813 // MAME_AVI
+#define IDC_HEIGHT_SPIN                 1814 // MAME_AVI
+#define IDC_AVIFRAMESKIP                1815 // MAME_AVI
+#define IDC_BITMAP_SIZE                 1816 // MAME_AVI
+#define IDC_HOUR                        1817 // MAME_AVI
+#define IDC_MINUTE                      1818 // MAME_AVI
+#define IDC_SECOND                      1819 // MAME_AVI
+#define IDC_FRAME_CMP_PRE               1820 // MAME_AVI
+#define IDC_FRAME_CMP_FEW               1821 // MAME_AVI
+#define IDC_COLOR_CNV_16TO8             1822 // MAME_AVI
+#define IDC_COLOR_CNV_16TO24            1823 // MAME_AVI
+#define IDC_CHECK2                      1824 // MAME_AVI
+#define IDC_INTERLACE                   1825 // MAME_AVI
+#define IDC_INTERLACE_ODD               1826 // MAME_AVI
+#define IDC_SET_TV_DISPLAY_SETTING      1827 // MAME_AVI
+#define IDC_AVI_LEFT                    1828 // MAME_AVI
+#define IDC_AVI_WIDTH                   1829 // MAME_AVI
+#define IDC_AVI_TOP                     1830 // MAME_AVI
+#define IDC_AVI_HEIGHT                  1831 // MAME_AVI
+#define IDC_AVISIZE_WIDTH               1832 // MAME_AVI
+#define IDC_AVISIZE_HEIGHT              1833 // MAME_AVI
+#define IDC_AVI_FILESIZE                1834 // MAME_AVI
+#define IDC_AVI_FILESIZE_CHECK_FRAME    1835 // MAME_AVI
+#define IDC_CHECK_FORCEFLIPY            1836 // MAME_AVI
+#define IDC_SMOOTH_RESIZE_X             1839 // MAME_AVI
+#define IDC_SMOOTH_RESIZE_Y             1840 // MAME_AVI
+#define IDC_AUDIO_RECORD_TYPE           1843 // MAME_AVI
+#define IDC_AUDIO_16BIT                 1844 // MAME_AVI
+#define IDC_AUDIO_STEREO                1845 // MAME_AVI
+#define IDC_AUDIO_SAMPLE_PER_SEC        1846 // MAME_AVI
+#define IDC_AUDIO_CMP                   1847 // MAME_AVI
+#define IDC_AUDIO_SRC_FORMAT            1848 // MAME_AVI
+#define IDC_AUDIO_DEST_FORMAT           1849 // MAME_AVI
+#define IDC_TEXT_AVI_HEIGHT_MUL2        1850 // MAME_AVI
+#define IDC_TEXT_AVI_TOP_MUL2           1851 // MAME_AVI
+#define IDC_TEXT_FPS_DIV2               1852 // MAME_AVI
+#define IDC_AVI_SAVEFILE_PAUSE          1853 // MAME_AVI
+#define IDC_AVI_POS_CENTER              1854 // MAME_AVI
+#define IDC_FPS                         1855 // MAME_AVI
+
+
+
+
+
 #define ID_CONTEXT_SHOW_FOLDER_START    39000
 #define ID_CONTEXT_SHOW_FOLDER_END      39499
-#define ID_SHOW_FOLDER_START            39500
-#define ID_SHOW_FOLDER_END              39999
+#define ID_SHOW_FOLDER_START1           39500
+#define ID_SHOW_FOLDER_START2           39501
+#define ID_SHOW_FOLDER_START3           39502
+#define ID_SHOW_FOLDER_START4           39503
+#define ID_SHOW_FOLDER_START5           39504
+#define ID_SHOW_FOLDER_START6           39505
+#define ID_SHOW_FOLDER_START7           39506
+#define ID_SHOW_FOLDER_START8           39507
+#define ID_SHOW_FOLDER_START9           39508
+#define ID_SHOW_FOLDER_START10          39509
+#define ID_SHOW_FOLDER_START11          39510
+#define ID_SHOW_FOLDER_START12          39511
+#define ID_SHOW_FOLDER_START13          39512
+#define ID_SHOW_FOLDER_START14          39513
+#define ID_SHOW_FOLDER_START15          39514
+#define ID_SHOW_FOLDER_START16          39515
+#define ID_SHOW_FOLDER_START17          39516
+#define ID_SHOW_FOLDER_START18          39517
+#define ID_SHOW_FOLDER_START19          39518
+#define ID_SHOW_FOLDER_START20          39519
+#define ID_SHOW_FOLDER_START21          39520
+#define ID_SHOW_FOLDER_START22          39521
+#define ID_SHOW_FOLDER_START23          39522
+#define ID_SHOW_FOLDER_START24          39523
+#define ID_SHOW_FOLDER_START25          39524
+#define ID_SHOW_FOLDER_START26          39525
+#define ID_SHOW_FOLDER_START27          39526
+#define ID_SHOW_FOLDER_START28          39527
 #define ID_FILE_EXIT                    40001
 #define ID_ABOUT                        40003
 #define ID_FILE_PLAY                    40004
 #define ID_HELP_ABOUT                   40006
-#define ID_VIEW_ICONS_LARGE             40009
-#define ID_VIEW_ICONS_SMALL             40010
 #define ID_OPTIONS_FONT                 40012
 #define ID_OPTIONS_FOLDERS_COLOR        40013
 #define ID_OPTIONS_DIR                  40014
@@ -547,7 +649,6 @@
 #define ID_OPTIONS_HISTORY_FONT         40114
 #define ID_OPTIONS_TREE_FONT            40115
 #define ID_VIEW_FULLSCREEN              40116
-#define ID_ENABLE_INDENT                40117
 #define ID_NOTEPAD                      40118
 #define ID_VIEW_TAB_SCREENSHOT          40120
 #define ID_VIEW_TAB_TITLE               40121
@@ -583,4 +684,13 @@
 #define ID_TOGGLE_TAB_CONTROL_PANEL     40154
 #define ID_TOGGLE_TAB_PCB               40155
 #define ID_TOGGLE_TAB_HISTORY           40156
+#define ID_KOREAN_GAMELIST              40157 //USE_KLIST
+#define ID_VIEW_ICONS_LARGE             40158
+#define ID_VIEW_ICONS_SMALL             40159
+#define ID_VIEW_LIST_MENU				40160
+#define ID_VIEW_DETAIL					40161
+#define ID_ENABLE_INDENT                40162
+#define ID_VIEW_GROUPED					40163
+#define ID_FILE_PLAY_WITH_AVI           40164 //MAME_AVI
+#define ID_FILE_PLAY_BACK_AVI           40165 //MAME_AVI
 #define IDC_STATIC                      1

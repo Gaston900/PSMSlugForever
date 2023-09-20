@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, René Single, Mamesick
+// copyright-holders:Chris Kirmse, Mike Haaland, Renï¿½ Single, Mamesick
 
 #ifndef WINUI_H
 #define WINUI_H
@@ -84,7 +84,7 @@
 #endif
 #define MAMENAME			"PSMSlugForever"
 
-#define MAME_VERSION		"4.6"
+#define MAME_VERSION		"4.7"
 #define MAMEUIFX_VERSION	MAME_VERSION " (" __DATE__")"
 
 #define SEARCH_PROMPT		"<search here>"
@@ -138,7 +138,7 @@
 #define MIN_VIEW_WIDTH		10
 
 #define NUM_TOOLBUTTONS     WINUI_ARRAY_LENGTH(tbb)
-#define NUM_TOOLTIPS 		(13)
+#define NUM_TOOLTIPS 		(16)
 
 enum
 {
@@ -195,13 +195,18 @@ void UpdateListView(void);
 int GetMinimumScreenShotWindowWidth(void);
 // we maintain an array of drivers sorted by name, useful all around
 int GetParentIndex(const game_driver *driver);
+const char *funcGetParentName(const char *name);
 int GetParentRomSetIndex(const game_driver *driver);
 int GetSrcDriverIndex(const char *name);
 // sets text in part of the status bar on the main window
 void SetStatusBarText(int part_index, const char *message);
 void SetStatusBarTextF(int part_index, const char *fmt, ...);
 const char * GetSearchText(void);
+char *GetGameNameByIndex(int nIndex, bool bUse);// USE_KLIST
+char *GetDescriptionByIndex(int nIndex, bool bUse);// USE_KLIST
+char *GetGameManufactureByIndex(int nIndex, bool bUse);
 
+int GetNumGames(void);
 
 char *core_strdup(const char *str)
 {
@@ -215,5 +220,6 @@ char *core_strdup(const char *str)
 	return cpy;
 }
 
+void logmsg(const char*lpszFmt,...);
 
 #endif

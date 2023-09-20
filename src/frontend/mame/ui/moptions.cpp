@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Gaston e Maurizio Petrarota
+// copyright-holders:Maurizio Petrarota
 /***************************************************************************
 
     ui/moptions.cpp
@@ -79,7 +79,25 @@ const options_entry ui_options::s_option_entries[] =
 	{ OPTION_UI_UNAVAILABLE_COLOR,          "ff7f7f7f",     OPTION_STRING,      "UI unavailable color (ARGB)" },
 	{ nullptr }
 };
+#if 0
+	{ OPTION_UI_BORDER_COLOR,               "ffffffff",     OPTION_STRING,      "UI border color (ARGB)" },
+	{ OPTION_UI_BACKGROUND_COLOR,           "ef101030",     OPTION_STRING,      "UI background color (ARGB)" },
+	{ OPTION_UI_CLONE_COLOR,                "ff808080",     OPTION_STRING,      "UI clone color (ARGB)" },
+	{ OPTION_UI_DIPSW_COLOR,                "ffffff00",     OPTION_STRING,      "UI dipswitch color (ARGB)" },
+	{ OPTION_UI_GFXVIEWER_BG_COLOR,         "ef101030",     OPTION_STRING,      "UI gfx viewer color (ARGB)" },
+	{ OPTION_UI_MOUSEDOWN_BG_COLOR,         "b0606000",     OPTION_STRING,      "UI mouse down bg color (ARGB)" },
+	{ OPTION_UI_MOUSEDOWN_COLOR,            "ffffff80",     OPTION_STRING,      "UI mouse down color (ARGB)" },
+	{ OPTION_UI_MOUSEOVER_BG_COLOR,         "70404000",     OPTION_STRING,      "UI mouse over bg color (ARGB)" },
+	{ OPTION_UI_MOUSEOVER_COLOR,            "ffffff80",     OPTION_STRING,      "UI mouse over color (ARGB)" },
+	{ OPTION_UI_SELECTED_BG_COLOR,          "ef808000",     OPTION_STRING,      "UI selected bg color (ARGB)" },
+	{ OPTION_UI_SELECTED_COLOR,             "ffffff00",     OPTION_STRING,      "UI selected color (ARGB)" },
+	{ OPTION_UI_SLIDER_COLOR,               "ff22b14c",     OPTION_STRING,      "UI slider color (ARGB)" },
+	{ OPTION_UI_SUBITEM_COLOR,              "ffFF9900",     OPTION_STRING,      "UI subitem color (ARGB)" },
+	{ OPTION_UI_TEXT_BG_COLOR,              "ef000000",     OPTION_STRING,      "UI text bg color (ARGB)" },
+	{ OPTION_UI_TEXT_COLOR,                 "ffffffff",     OPTION_STRING,      "UI text color (ARGB)" },
+	{ OPTION_UI_UNAVAILABLE_COLOR,          "ff404040",     OPTION_STRING,      "UI unavailable color (ARGB)" },
 
+#endif
 //-------------------------------------------------
 //  ui_options - constructor
 //-------------------------------------------------
@@ -96,7 +114,7 @@ ui_options::ui_options() : core_options()
 rgb_t ui_options::rgb_value(const char *option) const
 {
 	// find the entry
-	core_options::entry::shared_ptr entry = get_entry(option);
+	core_options::entry::shared_const_ptr entry = get_entry(option);
 
 	// look up the value, and sanity check the result
 	const char *value = entry->value();

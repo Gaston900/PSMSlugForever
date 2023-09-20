@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, René Single, Mamesick
+// copyright-holders:Chris Kirmse, Mike Haaland, RenÃ© Single, Mamesick
 
 /***************************************************************************
 
@@ -89,6 +89,9 @@ b) Exit the dialog.
 ***************************************************************************/
 
 #include "winui.h"
+//#ifdef USE_SCALE_EFFECTS
+#include "../scale/osdscale.h"
+//#endif /* USE_SCALE_EFFECTS */
 
 /**************************************************************
  * Local function prototypes
@@ -113,6 +116,10 @@ static void InitializeControllerMappingUI(HWND hWnd);
 static void InitializeLanguageUI(HWND hWnd);
 static void InitializePluginsUI(HWND hWnd);
 static void InitializeGLSLFilterUI(HWND hWnd);
+//#ifdef USE_SCALE_EFFECTS
+static void InitializeScaleEffectUI(HWND hwnd);
+//#endif /* USE_SCALE_EFFECTS */
+
 static void UpdateOptions(HWND hDlg, datamap *map, windows_options &opts);
 static void UpdateProperties(HWND hDlg, datamap *map, windows_options &opts);
 static void PropToOptions(HWND hWnd, windows_options &opts);
@@ -145,6 +152,7 @@ static void MovePropertySheetChildWindows(HWND hWnd, int nDx, int nDy);
 static HTREEITEM GetSheetPageTreeItem(int nPage);
 static int GetSheetPageTreeCurSelText(LPWSTR lpszText, int iBufSize);
 static void ModifyPropertySheetForTreeSheet(HWND hPageDlg);
+static void SetPropVideoModeControls(HWND hWnd);
 
 /**************************************************************
  * Local private variables
@@ -183,6 +191,11 @@ static windows_options pOptsVertical;
 static windows_options pOptsRaster;
 static windows_options pOptsVector;
 static windows_options pOptsSource;
+//#ifdef USE_LOADPREVIEW
+static RECT rcSheetSnap;
+static HBITMAP hSheetBitmap = NULL;
+static BOOL bUseScreenShot = FALSE;
+//#endif
 
 static struct PropSheets
 {
@@ -190,18 +203,11 @@ static struct PropSheets
 	DLGPROC pfnDlgProc;
 } g_PropSheets[] = 
 {
-	{ IDD_PROP_DISPLAY,		GameOptionsDialogProc },
-	{ IDD_PROP_ADVANCED,	GameOptionsDialogProc },
-	{ IDD_PROP_SCREEN,		GameOptionsDialogProc },
+	{ IDD_PROP_DISPLAY,		GameOptionsDialogProc },	
 	{ IDD_PROP_OPENGL,		GameOptionsDialogProc },
-	{ IDD_PROP_SHADER,		GameOptionsDialogProc },
 	{ IDD_PROP_VECTOR,		GameOptionsDialogProc },
-	{ IDD_PROP_SOUND,		GameOptionsDialogProc },
 	{ IDD_PROP_INPUT,		GameOptionsDialogProc },
-	{ IDD_PROP_CONTROLLER,	GameOptionsDialogProc },
-	{ IDD_PROP_MISC,		GameOptionsDialogProc },
-	{ IDD_PROP_MISC2,		GameOptionsDialogProc },
-	{ IDD_PROP_SNAP,		GameOptionsDialogProc }
+	{ IDD_PROP_MISC,		GameOptionsDialogProc }
 };
 
 typedef struct
@@ -222,6 +228,7 @@ const DUALCOMBOSTR g_ComboBoxVideo[] =
 {
 	{ TEXT("Auto"),         "auto"   },
 	{ TEXT("GDI"),          "gdi"    },
+	{ TEXT("DirectDraw"),   "ddraw"  },		//DDRAW
 	{ TEXT("Direct3D"),     "d3d"    },
 	{ TEXT("OpenGL"),       "opengl" },
 	{ TEXT("BGFX"),         "bgfx"   }
@@ -409,7 +416,11 @@ void InitPropertyPage(HINSTANCE hInst, HWND hWnd, OPTIONS_TYPE opt_type, int fol
 	switch(opt_type)
 	{
 		case OPTIONS_GAME:
-			snprintf(tmp, WINUI_ARRAY_LENGTH(tmp), "Properties for %s", GetDriverGameTitle(g_nGame));
+//#ifdef USE_KLIST
+			snprintf(tmp, WINUI_ARRAY_LENGTH(tmp), "Properties for %s", GetDescriptionByIndex(g_nGame,GetUsekoreanList()));
+//else			
+//			snprintf(tmp, WINUI_ARRAY_LENGTH(tmp), "Properties for %s", GetDriverGameTitle(g_nGame));
+//#endif
 			break;
 
 		case OPTIONS_RASTER:
@@ -726,8 +737,11 @@ static char *GameInfoTitle(OPTIONS_TYPE opt_type, int nIndex)
 	else if (OPTIONS_SOURCE == opt_type)
 		strcpy(buffer, "Driver options\r\nDefault options used by all games in the driver");
 	else
+//#ifdef USE_KLIST
+//		snprintf(buffer, WINUI_ARRAY_LENGTH(buffer), "%s - \"%s\"", GetDescriptionByIndex(nIndex,GetUsekoreanList()), GetGameNameByIndex(nIndex,GetUsekoreanList()));
+//#else
 		snprintf(buffer, WINUI_ARRAY_LENGTH(buffer), "%s - \"%s\"", GetDriverGameTitle(nIndex), GetDriverGameName(nIndex));
-
+//#endif
 	return buffer;
 }
 
@@ -741,7 +755,11 @@ static char *GameInfoCloneOf(int nIndex)
 	if (DriverIsClone(nIndex))
 	{
 		int nParentIndex = GetParentIndex(&driver_list::driver(nIndex));
+//#ifdef USE_KLIST
+//		snprintf(buffer, WINUI_ARRAY_LENGTH(buffer), "%s - \"%s\"", GetDescriptionByIndex(nParentIndex,GetUsekoreanList()), GetGameNameByIndex(nParentIndex,GetUsekoreanList()));
+//#else
 		snprintf(buffer, WINUI_ARRAY_LENGTH(buffer), "%s - \"%s\"", GetDriverGameTitle(nParentIndex), GetDriverGameName(nParentIndex));
+//#endif
 	}
 
 	return buffer;
@@ -754,9 +772,9 @@ static char *GameInfoSaveState(int driver_index)
 	memset(&buffer, 0, sizeof(buffer));
 
 	if (DriverSupportsSaveState(driver_index))
-		strcpy(buffer, "Supported");
-	else
-		strcpy(buffer, "Unsupported");
+			strcpy(buffer, "Supported");
+		else
+			strcpy(buffer, "Unsupported");
 
 	return buffer;
 }
@@ -768,16 +786,58 @@ static void UpdateSheetCaption(HWND hWnd)
 	HRGN hRgn;
 	RECT rect, rc;
 	wchar_t szText[256];
+	BYTE        bR, bG, bB, bSR, bSG, bSB, bER, bEG, bEB;
+	//DWORD       dwLColor, dwRColor;
+	int 		i, iWidth;
+
+	// Gradation color
+	//dwLColor = GetSysColor(COLOR_ACTIVECAPTION);
+	//dwRColor = GetSysColor(COLOR_GRADIENTACTIVECAPTION);
+	//bSR = GetRValue(dwLColor); bSG = GetGValue(dwLColor); bSB = GetBValue(dwLColor);
+	//bER = GetRValue(dwRColor); bEG = GetGValue(dwRColor); bEB = GetBValue(dwRColor);
+	bSR = 0;   bSG = 0; bSB = 128;
+	bER = 128; bEG =0;  bEB = 128;
 
 	memcpy(&rect, &rcTabCaption, sizeof(RECT));
+//	BeginPaint (hWnd, &ps);
+//	hDC = ps.hdc;
+//	hRgn = CreateRectRgn(rect.left, rect.top, rect.right - 2, rect.bottom);
+//	SelectClipRgn(hDC, hRgn);
+//	hBrush = CreateSolidBrush(RGB(127, 127, 127));
+//	FillRect(hDC, &rect, hBrush);
+//	DeleteObject(hBrush);
+
+	iWidth = rect.right - rect.left;
+	if (iWidth == 0)
+		return;
+
 	BeginPaint (hWnd, &ps);
 	hDC = ps.hdc;
-	hRgn = CreateRectRgn(rect.left, rect.top, rect.right - 2, rect.bottom);
+
+	hRgn = CreateRectRgn(rect.left, rect.top, rect.right, rect.bottom);
 	SelectClipRgn(hDC, hRgn);
-	hBrush = CreateSolidBrush(RGB(127, 127, 127));
-	FillRect(hDC, &rect, hBrush);
-	DeleteObject(hBrush);
-	int i = GetSheetPageTreeCurSelText(szText, WINUI_ARRAY_LENGTH(szText));
+
+	rc.left = rect.left;
+	rc.top = rect.top;
+	rc.right = rect.left + 1;
+	rc.bottom = rect.bottom;
+
+	for (i = 0; i < iWidth; i++)
+	{
+		bR = bSR + ((bER - bSR) * i) / iWidth;
+		bG = bSG + ((bEG - bSG) * i) / iWidth;
+		bB = bSB + ((bEB - bSB) * i) / iWidth;
+
+		hBrush = CreateSolidBrush(RGB(bR,bG,bB));
+
+		FillRect(hDC, &rc, hBrush);
+		DeleteObject(hBrush);
+
+		rc.left++;
+		rc.right++;
+	}
+
+	i = GetSheetPageTreeCurSelText(szText, WINUI_ARRAY_LENGTH(szText));
 
 	if (i > 0)
 	{
@@ -805,15 +865,82 @@ static void UpdateSheetCaption(HWND hWnd)
 
 	SelectClipRgn(hDC, NULL);
 	DeleteObject(hRgn);
-	rect.left = SHEET_TREE_WIDTH + 15;
-	rect.top = 8;
-	rect.right = rcTabCaption.right - 1;
-	rect.bottom = rcTabCtrl.bottom + 4;
+//	rect.left = SHEET_TREE_WIDTH + 15;
+//	rect.top = 8;
+//	rect.right = rcTabCaption.right - 1;
+//	rect.bottom = rcTabCtrl.bottom + 4;
+
+	memcpy(&rect, &rcSheetSnap, sizeof(RECT));
 	hRgn = CreateRectRgn(rect.left, rect.top, rect.right, rect.bottom);
 	SelectClipRgn(hDC, hRgn);
-	hBrush = CreateSolidBrush(RGB(127, 127, 127));
-	FrameRect(hDC, &rect, hBrush);
-	DeleteObject(hBrush);
+
+	if (hSheetBitmap != NULL) 
+		{
+			HDC hMemDC;
+			HBITMAP hOldBitmap;
+			int iWidth, iHeight, iSnapWidth, iSnapHeight, iDrawWidth, iDrawHeight;
+	
+			if (bUseScreenShot == TRUE)
+			{
+				iSnapWidth = GetScreenShotWidth();
+				iSnapHeight = GetScreenShotHeight();
+			}
+			else
+			{
+				BITMAP bmpInfo;
+	
+				GetObject(hSheetBitmap, sizeof(BITMAP), &bmpInfo);
+				iSnapWidth = bmpInfo.bmWidth;
+				iSnapHeight = bmpInfo.bmHeight;
+			}
+	
+			iWidth = rect.right - rect.left;
+			iHeight = rect.bottom - rect.top;
+	
+			if (iWidth && iHeight)
+			{
+				int iXOffs, iYOffs;
+				double dXRatio, dYRatio;
+	
+				dXRatio = (double)iWidth  / (double)iSnapWidth;
+				dYRatio = (double)iHeight / (double)iSnapHeight;
+	
+				if (dXRatio > dYRatio)
+				{
+					iDrawWidth = (int)((iSnapWidth * dYRatio) + 0.5);
+					iDrawHeight = (int)((iSnapHeight * dYRatio) + 0.5);
+				}
+				else
+				{
+					iDrawWidth = (int)((iSnapWidth * dXRatio) + 0.5);
+					iDrawHeight = (int)((iSnapHeight * dXRatio) + 0.5);
+				}
+	
+				iXOffs = (iWidth - iDrawWidth)	/ 2;
+				iYOffs = (iHeight - iDrawHeight) / 2;
+	
+				hMemDC = CreateCompatibleDC(hDC);
+	
+				hOldBitmap = (HBITMAP)SelectObject(hMemDC, hSheetBitmap);
+		
+				SetStretchBltMode(hDC, STRETCH_HALFTONE);
+				StretchBlt(hDC,
+						rect.left+iXOffs, rect.top+iYOffs,
+						iDrawWidth, iDrawHeight,
+						hMemDC, 0, 0,
+						iSnapWidth, iSnapHeight, SRCCOPY);
+	
+				SelectObject(hMemDC, hOldBitmap);
+				DeleteDC(hMemDC);
+			}
+		}
+		else
+		{
+			hBrush = CreateSolidBrush(RGB(127, 127, 127));
+			FrameRect(hDC, &rect, hBrush);
+			DeleteObject(hBrush);
+		}
+
 	SelectClipRgn(hDC, NULL);
 	DeleteObject(hRgn);
 	EndPaint (hWnd, &ps);
@@ -978,7 +1105,8 @@ static void ModifyPropertySheetForTreeSheet(HWND hPageDlg)
 	TCITEM item;
 	HTREEITEM hItem;
 	int nPage = 0;
-
+	int i;
+	
 	if (g_nFirstInitPropertySheet == 0)
 	{
 		AdjustPropertySheetChildWindows(hPageDlg);
@@ -1029,17 +1157,50 @@ static void ModifyPropertySheetForTreeSheet(HWND hPageDlg)
 	(void)TabCtrl_InsertItem(hTempTab, 0, &item);
 	(void)TabCtrl_GetItemRect(hTempTab, 0, &rcTabCaption);
 	nCaptionHeight = (rcTabCaption.bottom - rcTabCaption.top);
-	rcTabCaption.left = rcTabCtrl.left + SHEET_TREE_WIDTH + 16;
-	rcTabCaption.top = 8;
-	rcTabCaption.right = rcTabCaption.left + (rcTabCtrl.right - rcTabCtrl.left - 6);
+	rcTabCaption.left = rcTabCtrl.left + SHEET_TREE_WIDTH + 16; //rog value 16
+	rcTabCaption.top = 8;//8
+	rcTabCaption.right = rcTabCaption.left + (rcTabCtrl.right - rcTabCtrl.left-6); //-6
 	rcTabCaption.bottom = rcTabCaption.top + nCaptionHeight;
 	DestroyWindow(hTempTab);
-	rectTree.left = rcTabCtrl.left + 8;
-	rectTree.top = rcTabCtrl.top  + 8;
-	rectTree.right = rcTabCtrl.left + SHEET_TREE_WIDTH + 2;
-	rectTree.bottom = rcTabCtrl.bottom + 4;
+//#ifdef USE_LOADPREVIEW
+	i = (int)((SHEET_TREE_WIDTH * 3) / 4 + 0.5);
+
+	rcSheetSnap.left   = rcTabCtrl.left + 4;
+	rcSheetSnap.top    = (rcTabCtrl.bottom - i);
+	rcSheetSnap.right  = rcTabCtrl.left + SHEET_TREE_WIDTH;
+	rcSheetSnap.bottom = rcTabCtrl.bottom;
+
+	if ((g_nGame == GLOBAL_OPTIONS) || (g_nGame == FOLDER_OPTIONS))
+	{
+		hSheetBitmap = LoadBitmap(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_SNAPSHOT));
+		bUseScreenShot = FALSE;
+	}
+	else
+	{
+		if (!ScreenShotLoaded())
+			LoadScreenShot(g_nGame, TAB_SCREENSHOT);
+
+		if (ScreenShotLoaded())
+		{
+			hSheetBitmap =(HBITMAP)GetScreenShotHandle();
+			bUseScreenShot = TRUE;
+			//ErrorMessageBox("ScreenShotLoaded success");
+		}
+		else
+		{
+			hSheetBitmap = LoadBitmap(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_SNAPSHOT));
+			bUseScreenShot = FALSE;
+			//ErrorMessageBox("ScreenShotLoaded fail");
+		}
+	}
+//#endif
+
+	rectTree.left = rcTabCtrl.left + 4;
+	rectTree.top = rcTabCtrl.top  + 5;
+	rectTree.right = rcTabCtrl.left + SHEET_TREE_WIDTH;
+	rectTree.bottom = (rcTabCtrl.bottom -i) - 5;
 	hSheetTreeCtrl = CreateWindowEx(WS_EX_CLIENTEDGE | WS_EX_NOPARENTNOTIFY, WC_TREEVIEW, NULL,
-		WS_TABSTOP | WS_CHILD | WS_VISIBLE | TVS_SHOWSELALWAYS | TVS_FULLROWSELECT | TVS_TRACKSELECT,
+		WS_TABSTOP | WS_CHILD | WS_VISIBLE | TVS_SHOWSELALWAYS | TVS_FULLROWSELECT | TVS_TRACKSELECT |TVS_NOHSCROLL,
 		rectTree.left, rectTree.top, rectTree.right - rectTree.left, rectTree.bottom - rectTree.top,
 		hWnd, (HMENU)0x7EEE, hSheetInstance, NULL);
 
@@ -1055,7 +1216,7 @@ static void ModifyPropertySheetForTreeSheet(HWND hPageDlg)
 		ErrorMessageBox("PropertySheet TreeCtrl creation error %d %X", (int)dwError, (int)dwError);
 	}
 
-	HFONT hTreeSheetFont = CreateFont(-11, 0, 0, 0, 400, 0, 0, 0, 0, 3, 2, 1, 34, TEXT("Verdana"));
+	HFONT hTreeSheetFont = CreateFont(-11, 0, 0, 0, 400, 0, 0, 0, 0, 3, 2, 1, 18, TEXT("Verdana"));
 	SetWindowFont(hSheetTreeCtrl, hTreeSheetFont, true);
 	(void)TreeView_DeleteAllItems(hSheetTreeCtrl);
 	int nPageCount = TabCtrl_GetItemCount(hTabWnd);
@@ -1142,9 +1303,17 @@ intptr_t CALLBACK GamePropertiesDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, 
 			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI_ICON));
 			SendMessage(hDlg, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
 			hBrushDlg = CreateSolidBrush(RGB(240, 240, 240));
-			snprintf(tmp, WINUI_ARRAY_LENGTH(tmp), "Information for \"%s\"", GetDriverGameName(index));
+//#ifdef USE_KLIST
+			snprintf(tmp, WINUI_ARRAY_LENGTH(tmp), "Information for \"%s\"", (char *)GetGameNameByIndex(index,GetUsekoreanList()));
+//#else
+//			snprintf(tmp, WINUI_ARRAY_LENGTH(tmp), "Information for \"%s\"", GetDriverGameName(index));
+//#endif
 			winui_set_window_text_utf8(hDlg, tmp);
-			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_TITLE), GetDriverGameTitle(index));
+//#ifdef USE_KLIST
+			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_TITLE), GetDescriptionByIndex(index,GetUsekoreanList()));
+//#else
+//			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_TITLE), GetDriverGameTitle(index));
+//#endif
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_MANUFACTURED), GameInfoManufactured(index));
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_STATUS), GameInfoStatus(index));
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_CPU), GameInfoCPU(index));
@@ -1227,6 +1396,7 @@ static intptr_t CALLBACK GameOptionsDialogProc(HWND hDlg, UINT uMsg, WPARAM wPar
 			UpdateProperties(hDlg, properties_datamap, pCurrentOpts);
 			g_bUseDefaults = AreOptionsEqual(pCurrentOpts, pDefaultOpts);
 			g_bReset = AreOptionsEqual(pCurrentOpts, pOrigOpts) ? false : true;
+			SetPropVideoModeControls(hDlg);
 
 			if (g_nGame == GLOBAL_OPTIONS)
 				ShowWindow(GetDlgItem(hDlg, IDC_USE_DEFAULT), SW_HIDE);
@@ -1463,6 +1633,7 @@ static intptr_t CALLBACK GameOptionsDialogProc(HWND hDlg, UINT uMsg, WPARAM wPar
 				g_bUseDefaults = AreOptionsEqual(pCurrentOpts, pDefaultOpts);
 				g_bReset = AreOptionsEqual(pCurrentOpts, pOrigOpts) ? false : true;
 				EnableWindow(GetDlgItem(hDlg, IDC_USE_DEFAULT), (g_bUseDefaults) ? false : true);
+				SetPropVideoModeControls(hDlg);
 			}
 
 			break;
@@ -1929,13 +2100,90 @@ static void OptionsToProp(HWND hWnd, windows_options &opts)
 }
 
 /* Adjust controls - tune them to the currently selected game */
+static void SetPropVideoModeControls(HWND hWnd)
+{
+#if 1
+		bool d3d=false;
+		bool opengl=false;
+		bool bgfx=false;
+		bool ddraw=false;
+	
+		HWND hCtrl = GetDlgItem(hWnd, IDC_VIDEO_MODE);
+	
+		if (hCtrl)
+		{
+			const char *charTemp = (const char*)ComboBox_GetItemData(hCtrl, ComboBox_GetCurSel(hCtrl));
+			d3d = (!core_stricmp(charTemp, "d3d") || !core_stricmp(charTemp, "auto"));
+			opengl = !core_stricmp(charTemp, "opengl");
+			bgfx = !core_stricmp(charTemp, "bgfx");
+			ddraw = !core_stricmp(charTemp, "ddraw");	//DDRAW
+		}
+#endif
+
+#if 1
+		EnableWindow(GetDlgItem(hWnd, IDC_HWSTRETCH),		ddraw); 		//DDRAW
+		//EnableWindow(GetDlgItem(hWnd, IDC_SCALEEFFECT),		ddraw); 		//DDRAW
+		EnableWindow(GetDlgItem(hWnd, IDC_HLSL_ON), 		d3d);
+		EnableWindow(GetDlgItem(hWnd, IDC_GLSL),			opengl);	
+		EnableWindow(GetDlgItem(hWnd, IDC_GLSLFILTER),		opengl);	
+		EnableWindow(GetDlgItem(hWnd, IDC_GLSLPOW), 		opengl);	
+		EnableWindow(GetDlgItem(hWnd, IDC_GLSLTEXTURE), 	opengl);	
+		EnableWindow(GetDlgItem(hWnd, IDC_GLSLVBO), 		opengl);	
+		EnableWindow(GetDlgItem(hWnd, IDC_GLSLPBO), 		opengl);
+		EnableWindow(GetDlgItem(hWnd, IDC_GLSLSYNC),		opengl);	
+		EnableWindow(GetDlgItem(hWnd, IDC_SELECT_SHADER0),	opengl);
+		EnableWindow(GetDlgItem(hWnd, IDC_SELECT_SHADER1),	opengl);
+		EnableWindow(GetDlgItem(hWnd, IDC_SELECT_SHADER2),	opengl);
+		EnableWindow(GetDlgItem(hWnd, IDC_SELECT_SHADER3),	opengl);
+		EnableWindow(GetDlgItem(hWnd, IDC_SELECT_SHADER4),	opengl);
+		EnableWindow(GetDlgItem(hWnd, IDC_SELECT_SCR_SHADER0),	opengl);
+		EnableWindow(GetDlgItem(hWnd, IDC_SELECT_SCR_SHADER1),	opengl);
+		EnableWindow(GetDlgItem(hWnd, IDC_SELECT_SCR_SHADER2),	opengl);
+		EnableWindow(GetDlgItem(hWnd, IDC_SELECT_SCR_SHADER3),	opengl);
+		EnableWindow(GetDlgItem(hWnd, IDC_SELECT_SCR_SHADER4),	opengl);
+		EnableWindow(GetDlgItem(hWnd, IDC_RESET_SHADER0),	opengl);
+		EnableWindow(GetDlgItem(hWnd, IDC_RESET_SHADER1),	opengl);
+		EnableWindow(GetDlgItem(hWnd, IDC_RESET_SHADER2),	opengl);
+		EnableWindow(GetDlgItem(hWnd, IDC_RESET_SHADER3),	opengl);
+		EnableWindow(GetDlgItem(hWnd, IDC_RESET_SHADER4),	opengl);
+		EnableWindow(GetDlgItem(hWnd, IDC_RESET_SCR_SHADER0),	opengl);
+		EnableWindow(GetDlgItem(hWnd, IDC_RESET_SCR_SHADER1),	opengl);
+		EnableWindow(GetDlgItem(hWnd, IDC_RESET_SCR_SHADER2),	opengl);
+		EnableWindow(GetDlgItem(hWnd, IDC_RESET_SCR_SHADER3),	opengl);	
+		EnableWindow(GetDlgItem(hWnd, IDC_RESET_SCR_SHADER4),	opengl);	
+		EnableWindow(GetDlgItem(hWnd, IDC_SELECT_BGFX), 	bgfx);	
+		EnableWindow(GetDlgItem(hWnd, IDC_RESET_BGFX),		bgfx);	
+#endif
+
+}
+
 static void SetPropEnabledControls(HWND hWnd)
 {
 	int nIndex = g_nGame;
-	bool d3d = (!core_stricmp(pCurrentOpts.value(OSDOPTION_VIDEO), "d3d") || !core_stricmp(pCurrentOpts.value(OSDOPTION_VIDEO), "auto"));
-	bool opengl = !core_stricmp(pCurrentOpts.value(OSDOPTION_VIDEO), "opengl");
-	bool bgfx = !core_stricmp(pCurrentOpts.value(OSDOPTION_VIDEO), "bgfx");
+//	bool d3d = (!core_stricmp(pCurrentOpts.value(OSDOPTION_VIDEO), "d3d") || !core_stricmp(pCurrentOpts.value(OSDOPTION_VIDEO), "auto"));
+//	bool opengl = !core_stricmp(pCurrentOpts.value(OSDOPTION_VIDEO), "opengl");
+//	bool bgfx = !core_stricmp(pCurrentOpts.value(OSDOPTION_VIDEO), "bgfx");
+//	bool in_window = pCurrentOpts.bool_value(OSDOPTION_WINDOW);
+//	bool ddraw = !core_stricmp(pCurrentOpts.value(OSDOPTION_VIDEO), "ddraw");	//DDRAW
+
 	bool in_window = pCurrentOpts.bool_value(OSDOPTION_WINDOW);
+#if 0
+	bool d3d=false;
+	bool opengl=false;
+	bool bgfx=false;
+	bool ddraw=false;
+
+	HWND hCtrl = GetDlgItem(hWnd, IDC_VIDEO_MODE);
+
+	if (hCtrl)
+	{
+		const char *charTemp = (const char*)ComboBox_GetItemData(hCtrl, ComboBox_GetCurSel(hCtrl));
+		d3d = (!core_stricmp(charTemp, "d3d") || !core_stricmp(charTemp, "auto"));
+		opengl = !core_stricmp(charTemp, "opengl");
+		bgfx = !core_stricmp(charTemp, "bgfx");
+		ddraw = !core_stricmp(charTemp, "ddraw");	//DDRAW
+	}
+#endif
 
 	/* Video options */
 	EnableWindow(GetDlgItem(hWnd, IDC_REFRESH),         !in_window);
@@ -1953,6 +2201,9 @@ static void SetPropEnabledControls(HWND hWnd)
 	EnableWindow(GetDlgItem(hWnd, IDC_ASPECTRATION), 	!g_bAutoAspect[GetSelectedScreen(hWnd)]);
 	EnableWindow(GetDlgItem(hWnd, IDC_ASPECTRATIOD), 	!g_bAutoAspect[GetSelectedScreen(hWnd)]);
 	EnableWindow(GetDlgItem(hWnd, IDC_ASPECTRATIOP), 	!g_bAutoAspect[GetSelectedScreen(hWnd)]);
+
+#if 0
+	EnableWindow(GetDlgItem(hWnd, IDC_HWSTRETCH),       ddraw);			//DDRAW
 	EnableWindow(GetDlgItem(hWnd, IDC_HLSL_ON), 		d3d);
 	EnableWindow(GetDlgItem(hWnd, IDC_GLSL), 			opengl);	
 	EnableWindow(GetDlgItem(hWnd, IDC_GLSLFILTER), 		opengl);	
@@ -1983,6 +2234,7 @@ static void SetPropEnabledControls(HWND hWnd)
 	EnableWindow(GetDlgItem(hWnd, IDC_RESET_SCR_SHADER4), 	opengl);	
 	EnableWindow(GetDlgItem(hWnd, IDC_SELECT_BGFX), 	bgfx);	
 	EnableWindow(GetDlgItem(hWnd, IDC_RESET_BGFX), 		bgfx);	
+#endif
 	/* Snapshot options */
 	EnableWindow(GetDlgItem(hWnd, IDC_SNAPSIZETEXT), 	!g_bAutoSnapSize);
 	EnableWindow(GetDlgItem(hWnd, IDC_SNAPSIZEHEIGHT), 	!g_bAutoSnapSize);
@@ -2370,7 +2622,8 @@ static void BuildDataMap(void)
 	datamap_add(properties_datamap, IDC_SLEEP,					DM_BOOL,	OPTION_SLEEP);
 	datamap_add(properties_datamap, IDC_SPEED,					DM_FLOAT,	OPTION_SPEED);
 	datamap_add(properties_datamap, IDC_SPEEDDISP,				DM_FLOAT,	OPTION_SPEED);
-	datamap_add(properties_datamap, IDC_REFRESHSPEED,			DM_BOOL,	OPTION_REFRESHSPEED);
+	datamap_add(properties_datamap, IDC_REFRESHSPEED,			DM_BOOL,	OPTION_REFRESHSPEED);	
+	datamap_add(properties_datamap, IDC_LOWLATENCY,				DM_BOOL,	OPTION_LOWLATENCY);
 	// core rotation options
 	datamap_add(properties_datamap, IDC_ROTATE,					DM_INT,		NULL);
 	// ror, rol, autoror, autorol handled by callback
@@ -2398,6 +2651,13 @@ static void BuildDataMap(void)
 	datamap_add(properties_datamap, IDC_INTSCALEX_TXT,			DM_INT,		OPTION_INTSCALEX);
 	datamap_add(properties_datamap, IDC_INTSCALEY,				DM_INT,		OPTION_INTSCALEY);
 	datamap_add(properties_datamap, IDC_INTSCALEY_TXT,			DM_INT,		OPTION_INTSCALEY);
+//#ifdef USE_SCALE_EFFECTS
+	datamap_add(properties_datamap, IDC_SCALEEFFECT,			DM_STRING,	OPTION_SCALE_EFFECT);
+//#endif /* USE_SCALE_EFFECTS */
+
+//#ifdef USE_FIX60FPS	
+	datamap_add(properties_datamap, IDC_60FPS,					DM_BOOL,	OPTION_60FPS);//60fps
+//#endif		
 	// core opengl - bgfx options
 	datamap_add(properties_datamap, IDC_GLSLPOW,				DM_BOOL,	OSDOPTION_GL_FORCEPOW2TEXTURE);
 	datamap_add(properties_datamap, IDC_GLSLTEXTURE,			DM_BOOL,	OSDOPTION_GL_NOTEXTURERECT);
@@ -2512,7 +2772,10 @@ static void BuildDataMap(void)
 	// input device options
 	datamap_add(properties_datamap, IDC_DUAL_LIGHTGUN,			DM_BOOL,	WINOPTION_DUAL_LIGHTGUN);
 	// hlsl
-	datamap_add(properties_datamap, IDC_HLSL_ON,				DM_BOOL,	WINOPTION_HLSL_ENABLE);
+	datamap_add(properties_datamap, IDC_HLSL_ON,				DM_BOOL,	WINOPTION_HLSL_ENABLE);	
+	// directdraw specific options	
+	datamap_add(properties_datamap, IDC_HWSTRETCH,				DM_BOOL,	WINOPTION_HWSTRETCH);	//DDRAW
+	
 	// set up callbacks
 	datamap_set_callback(properties_datamap, IDC_ROTATE,		DCT_READ_CONTROL,		RotateReadControl);
 	datamap_set_callback(properties_datamap, IDC_ROTATE,		DCT_POPULATE_CONTROL,	RotatePopulateControl);
@@ -2570,6 +2833,10 @@ static void BuildDataMap(void)
 	datamap_set_trackbar_range(properties_datamap, IDC_BOOTDELAY, 		0, 5, 1);
 	datamap_set_trackbar_range(properties_datamap, IDC_INTSCALEX, 		0, 4, 1);
 	datamap_set_trackbar_range(properties_datamap, IDC_INTSCALEY, 		0, 4, 1);
+
+#ifdef USE_PSXPLUGIN
+	datamap_add(properties_datamap, IDC_PSXPLUGIN,				DM_BOOL,	WINOPTION_PSXPLUGIN);
+#endif
 }
 
 //mamefx: for coloring of changed elements
@@ -2608,6 +2875,9 @@ static void InitializeOptions(HWND hDlg)
 	InitializeLanguageUI(hDlg);
 	InitializePluginsUI(hDlg);
 	InitializeGLSLFilterUI(hDlg);
+//#ifdef USE_SCALE_EFFECTS
+	InitializeScaleEffectUI(hDlg);
+//#endif /* USE_SCALE_EFFECTS */
 }
 
 static void OptOnHScroll(HWND hWnd, HWND hWndCtl, UINT code, int pos)
@@ -2885,9 +3155,9 @@ static void InitializeBIOSUI(HWND hWnd)
 			}
 			
 			(void)ComboBox_InsertString(hCtrl, i, TEXT("Default"));
-			(void)ComboBox_SetItemData(hCtrl, i++, "");
+			(void)ComboBox_SetItemData(hCtrl, i++, "default");
 
-			if (gamedrv->rom != NULL)
+			if (gamedrv->rom)
 			{
 				auto rom_entries = rom_build_entries(gamedrv->rom);
 				
@@ -2905,6 +3175,9 @@ static void InitializeBIOSUI(HWND hWnd)
 						(void)ComboBox_InsertString(hCtrl, i, t_s);
 						(void)ComboBox_SetItemData(hCtrl, i++, biosname);
 						free(t_s);
+
+						if (ROMENTRY_ISDEFAULT_BIOS(rom))
+							(void)ComboBox_SetItemData( hCtrl, 0, biosname);
 					}
 				}
 			}
@@ -3032,6 +3305,34 @@ static void InitializeGLSLFilterUI(HWND hWnd)
 		}
 	}
 }
+
+//#ifdef USE_SCALE_EFFECTS
+const wchar_t *GetWC(const char *c)
+{
+    const size_t cSize = strlen(c)+1;
+    wchar_t* wc = new wchar_t[cSize];
+    mbstowcs (wc, c, cSize);
+
+    return wc;
+}
+/* Populate the scale effect drop down */
+ static void InitializeScaleEffectUI(HWND hwnd)
+{
+	HWND hCtrl = GetDlgItem(hwnd, IDC_SCALEEFFECT);
+
+	if (hCtrl)
+	{
+		for (int i = 0; i <NUMSCALEEFFECTS; i++)
+		{
+			const char *value = scale_name(i);
+//			(void)ComboBox_AddString(hCtrl,scale_desc(i));
+//			(void)ComboBox_InsertString(hCtrl, i, scale_desc(i));
+			(void)ComboBox_InsertString(hCtrl, i, GetWC(scale_desc(i)));
+			(void)ComboBox_SetItemData(hCtrl, i, value);
+		}
+	}
+}
+//#endif /* USE_SCALE_EFFECTS */
 
 static bool SelectEffect(HWND hWnd)
 {
@@ -3486,6 +3787,9 @@ static void DisableVisualStyles(HWND hDlg)
 	SetWindowTheme(GetDlgItem(hDlg, IDC_UNEVENSTRETCHY), L" ", L" ");
 	SetWindowTheme(GetDlgItem(hDlg, IDC_AUTOSTRETCHXY), L" ", L" ");
 	SetWindowTheme(GetDlgItem(hDlg, IDC_INTOVERSCAN), L" ", L" ");
+	SetWindowTheme(GetDlgItem(hDlg, IDC_HWSTRETCH), L" ", L" ");		//DDRAW
+	SetWindowTheme(GetDlgItem(hDlg, IDC_SCALEEFFECT), L" ", L" ");		//DDRAW
+
 	/* Advanced */
 	SetWindowTheme(GetDlgItem(hDlg, IDC_TRIPLE_BUFFER), L" ", L" ");
 	SetWindowTheme(GetDlgItem(hDlg, IDC_SYNCREFRESH), L" ", L" ");
@@ -3495,6 +3799,7 @@ static void DisableVisualStyles(HWND hDlg)
 	SetWindowTheme(GetDlgItem(hDlg, IDC_AUTOFRAMESKIP), L" ", L" ");
 	SetWindowTheme(GetDlgItem(hDlg, IDC_FRAMESKIP), L" ", L" ");
 	SetWindowTheme(GetDlgItem(hDlg, IDC_EFFECT), L" ", L" ");
+	SetWindowTheme(GetDlgItem(hDlg, IDC_60FPS), L" ", L" ");
 	/* Screen */
 	SetWindowTheme(GetDlgItem(hDlg, IDC_VIEW), L" ", L" ");
 	SetWindowTheme(GetDlgItem(hDlg, IDC_SIZES), L" ", L" ");

@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, René Single, Mamesick
+// copyright-holders:Chris Kirmse, Mike Haaland, RenÃ© Single, Mamesick
 
 #ifndef PICKER_H
 #define PICKER_H
@@ -44,6 +44,9 @@ enum
 {
 	VIEW_ICONS_LARGE = 0,
 	VIEW_ICONS_SMALL,
+	VIEW_INLIST,
+	VIEW_REPORT,
+	VIEW_GROUPED,
 	VIEW_MAX
 };
 
@@ -63,6 +66,8 @@ void Picker_ResetIdle(HWND hWndPicker);
 bool Picker_IsIdling(HWND hWndPicker);
 int Picker_InsertItemSorted(HWND hWndPicker, int nParam);
 bool Picker_SaveColumnWidths(HWND hWndPicker);
+void Picker_SetHeaderImageList(HWND hwndPicker, HIMAGELIST hHeaderImages);
+
 // These are used to handle events received by the parent regarding
 // picker controls
 bool Picker_HandleNotify(LPNMHDR lpNmHdr);

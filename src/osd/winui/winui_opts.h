@@ -99,6 +99,7 @@
 #define INTERNAL_UI_INI_FILENAME 				"ui"
 #define PLUGINS_INI_FILENAME 					"plugin"
 
+#define MUIOPTION_USEKOREAN_GAMELIST			"Korean GAME List"
 // Because we have added the Options after MAX_TAB_TYPES, we have to subtract 2 here
 // (that's how many options we have after MAX_TAB_TYPES)
 #define TAB_SUBTRACT 2
@@ -365,6 +366,10 @@ const char* GetPcbDir(void);
 void SetPcbDir(const char *path);
 const char* GetVideoDir(void);
 void SetVideoDir(const char *path);
+#ifdef MAME_AVI
+const char* GetAVIDir(void);
+void SetAVIDir(const char *path);
+#endif
 const char* GetAudioDir(void);
 void SetAudioDir(const char *path);
 const char* GetGuiDir(void);
@@ -450,5 +455,8 @@ uint32_t GetDriverCacheLower(int driver_index);
 uint32_t GetDriverCacheUpper(int driver_index);
 void SetDriverCache(int driver_index, uint32_t val);
 BOOL RequiredDriverCache(void);
+// USE_KLIST
+bool GetUsekoreanList(void);
+void SetUsekoreanList(bool val);
 
 #endif

@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, René Single, Mamesick
+// copyright-holders:Chris Kirmse, Mike Haaland, RenÃ© Single, Mamesick
 
 #include "winui.h"
 
@@ -41,64 +41,96 @@ static void FreeExtraFolders(void);
 static void SetExtraIcons(char *name, int *id);
 static bool TryAddExtraFolderAndChildren(int parent_index);
 static bool TrySaveExtraFolder(LPTREEFOLDER lpFolder);
-//static void LoadExternalFolders(int parent_index, const char *fname, int id);
-//static void SaveExternalFolders(int parent_index, const char *fname);
+static void LoadExternalFolders(int parent_index, const char *fname, int id);
+static void SaveExternalFolders(int parent_index, const char *fname);
 static bool FilterAvailable(int driver_index);
 
 /***************************************************************************
     Functions to build builtin folder lists
  ***************************************************************************/
 
-//static void CreateManufacturerFolders(int parent_index);
-//static void CreateYearFolders(int parent_index);
+static void CreateManufacturerFolders(int parent_index);
+static void CreateYearFolders(int parent_index);
 static void CreateSourceFolders(int parent_index);
-//static void CreateDeficiencyFolders(int parent_index);
-//static void CreateBIOSFolders(int parent_index);
-//static void CreateCPUFolders(int parent_index);
-//static void CreateSoundFolders(int parent_index);
-//static void CreateScreenFolders(int parent_index);
-//static void CreateFPSFolders(int parent_index);
-//static void CreateResolutionFolders(int parent_index);
-//static void CreateSaveStateFolders(int parent_index);
-//static void CreateDumpingFolders(int parent_index);
+static void CreateDeficiencyFolders(int parent_index);
+static void CreateBIOSFolders(int parent_index);
+static void CreateCPUFolders(int parent_index);
+static void CreateSoundFolders(int parent_index);
+static void CreateScreenFolders(int parent_index);
+static void CreateFPSFolders(int parent_index);
+static void CreateResolutionFolders(int parent_index);
+static void CreateSaveStateFolders(int parent_index);
+static void CreateDumpingFolders(int parent_index);
 
 /***************************************************************************
     public structures
  ***************************************************************************/
+char * ConvertWCtoC(wchar_t* str)
+{
+
+    char* pStr ; 
+
+
+    int strSize = WideCharToMultiByte(CP_ACP, 0,str,-1, NULL, 0,NULL, NULL);
+
+
+    pStr = new char[strSize];
+
+
+    WideCharToMultiByte(CP_ACP, 0, str, -1, pStr, strSize, 0,0);
+
+    return pStr;
+}
 
 extern const FOLDERDATA g_folderData[] =
 {
 	// commented-out lines have parts not defined elsewhere
-	{"All Games",       "allgames",          FOLDER_ALLGAMES,     IDI_FOLDER_ALLGAMES,      0,             0,            0, NULL,                       NULL,                    true },
-	{"Available",       "available",         FOLDER_AVAILABLE,    IDI_FOLDER_AVAILABLE,     F_AVAILABLE,   0,            0, NULL,                       FilterAvailable,         true },
-//	{"BIOS",            "bios",              FOLDER_BIOS,         IDI_FOLDER_BIOS,          0,             0,            1, CreateBIOSFolders,          DriverIsBios,            true },
-//	{"CHD",             "harddisk",          FOLDER_HARDDISK,     IDI_HARDDISK,             0,             0,            0, NULL,                       DriverIsHarddisk,        true },
-//	{"Clones",          "clones",            FOLDER_CLONES,       IDI_FOLDER_CLONES,        F_CLONES,      F_ORIGINALS,  0, NULL,                       DriverIsClone,           true },
-//	{"CPU",             "cpu",               FOLDER_CPU,          IDI_FOLDER_CPU,           0,             0,            1, CreateCPUFolders },
-//	{"Dumping Status",  "dumping",           FOLDER_DUMPING,      IDI_FOLDER_DUMP,          0,             0,            1, CreateDumpingFolders },
-//	{"Horizontal",      "horizontal",        FOLDER_HORIZONTAL,   IDI_FOLDER_HORIZONTAL,    F_HORIZONTAL,  F_VERTICAL,   0, NULL,                       DriverIsVertical,        false },
-//	{"Imperfect",       "imperfect",         FOLDER_DEFICIENCY,   IDI_FOLDER_IMPERFECT,     0,             0,            0, CreateDeficiencyFolders },
-//	{"Lightgun",        "lightgun",          FOLDER_LIGHTGUN,     IDI_FOLDER_LIGHTGUN,      0,             0,            0, NULL,                       DriverUsesLightGun,      true },
-//	{"Manufacturer",    "manufacturer",      FOLDER_MANUFACTURER, IDI_FOLDER_MANUFACTURER,  0,             0,            0, CreateManufacturerFolders },
-//	{"Mechanical",      "mechanical",        FOLDER_MECHANICAL,   IDI_MECHANICAL,           0,             0,            0, NULL,                       DriverIsMechanical,      true },
+	{"All Games",    "allgames",          FOLDER_ALLGAMES,     IDI_FOLDER_ALLGAMES,      0,             0,            0, NULL,                       NULL,                    true },
+	{"Available",    "available",         FOLDER_AVAILABLE,    IDI_FOLDER_AVAILABLE,     F_AVAILABLE,   0,            0, NULL,                       FilterAvailable,         true },
+	{"Unavailable",  "unavailable",       FOLDER_UNAVAILABLE,  IDI_FOLDER_UNAVAILABLE,   0,             F_AVAILABLE,  0, NULL,                       FilterAvailable,         false },
+//#ifdef USE_GAMEFOLDERS
+	{"korean",	     "korean",		 	  FOLDER_KOREAN,		IDI_FOLDER_KOREAN,		  0,			 0, 		   0, CreateKOREANFolders },
+	{"Neo-Geo All",	  "neogeo", 		  FOLDER_NEOGEO,		IDI_FOLDER_NEOGEO,		  0,			 0, 		   0, CreateNEOGEOFolders },
+	{"Neo-Geo Hack",  "neohack", 		  FOLDER_NEOHACK,		IDI_FOLDER_NEOHACK,		  0,			 0, 		   0, CreateNEOHACKFolders },
+	{"CPS All",	  	  "cps",			  FOLDER_CPS,			IDI_FOLDER_CAPCOM,		  0,			 0, 		   0, CreateCPSFolders },
+	{"CPS Hack",	  "cpshack",		  FOLDER_CPSHACK,		IDI_FOLDER_CPSHACK,		  0,			 0, 		   0, CreateCPSHACKFolders },
+	{"PGM All", 	  "pgm",			  FOLDER_PGM,			IDI_FOLDER_PGM,		  0,			 0, 		   0, CreatePGMFolders },
+	{"PGM Hack", 	  "pgmhack",		  FOLDER_PGMHACK,		IDI_FOLDER_PGMHACK,		  0,			 0, 		   0, CreatePGMHACKFolders },
+	{"Namco", 		  "namco",			  FOLDER_NAMCO,		IDI_FOLDER_NAMCO,		  0,			 0, 		   0, CreateNAMCOFolders },
+	{"Taito", 		  "taito",			  FOLDER_TAITO,		IDI_FOLDER_TAITO,		  0,			 0, 		   0, CreateTAITOFolders },
+	{"Konami",		  "konami", 		  FOLDER_KONAMI,		IDI_FOLDER_KONAMI,		  0,			 0, 		   0, CreateKONAMIFolders },
+	{"Sega",		  "sega",			  FOLDER_SEGA, 		IDI_FOLDER_SEGA,		  0,			 0, 		   0, CreateSEGAFolders },
+	{"Toa/Cave/BP",	  "cave",			  FOLDER_CAVE, 		IDI_FOLDER_CAVE,		  0,			 0, 		   0, CreateTOAFolders },
+//	{TEXT("PSXGame"),		  "psxgame",		   FOLDER_PSXGAME,		IDI_FOLDER_PSXGAME, 	  0,			 F_AVAILABLE,  NULL,					   DriverUsesPSXCpu,  TRUE },
+//#endif 
+	{"Parents",       "originals",        FOLDER_ORIGINAL,     IDI_FOLDER_ORIGINALS,     F_ORIGINALS,   F_CLONES,     0, NULL,                       DriverIsClone,           false },
+	{"Clones",        "clones",           FOLDER_CLONES,       IDI_FOLDER_CLONES,        F_CLONES,      F_ORIGINALS,  0, NULL,                       DriverIsClone,           true },
+	{"Source",        "source",           FOLDER_SOURCE,       IDI_FOLDER_SOURCE,        0,             0,            0, CreateSourceFolders },
+
+	{"Vertical",      "vertical",         FOLDER_VERTICAL,     IDI_FOLDER_VERTICAL,      F_VERTICAL,    F_HORIZONTAL, 0, NULL,                       DriverIsVertical,        true },
+	{"Horizontal",    "horizontal",       FOLDER_HORIZONTAL,   IDI_FOLDER_HORIZONTAL,    F_HORIZONTAL,  F_VERTICAL,   0, NULL,                       DriverIsVertical,        false },
+	{"Working",       "working",          FOLDER_WORKING,      IDI_WORKING,              F_WORKING,     F_NONWORKING, 0, NULL,                       DriverIsBroken,          false },
+	{"Not Working",   "nonworking",       FOLDER_NONWORKING,   IDI_NONWORKING,           F_NONWORKING,  F_WORKING,    0, NULL,                       DriverIsBroken,          true },
+	{"Imperfect",     "imperfect",        FOLDER_DEFICIENCY,   IDI_FOLDER_IMPERFECT,     0,             0,            0, CreateDeficiencyFolders },
+	{"Year",          "year",             FOLDER_YEAR,         IDI_FOLDER_YEAR,          0,             0,            0, CreateYearFolders },
+	{"Manufacturer",  "manufacturer",     FOLDER_MANUFACTURER, IDI_FOLDER_MANUFACTURER,  0,             0,            0, CreateManufacturerFolders },
+	{"BIOS",          "bios",             FOLDER_BIOS,         IDI_FOLDER_BIOS,          0,             0,            1, CreateBIOSFolders,          DriverIsBios,            true },
+	{"CHD",           "harddisk",         FOLDER_HARDDISK,     IDI_HARDDISK,             0,             0,            0, NULL,                       DriverIsHarddisk,        true },
+	{"CPU",           "cpu",              FOLDER_CPU,          IDI_FOLDER_CPU,           0,             0,            1, CreateCPUFolders },
+	{"Lightgun",      "lightgun",         FOLDER_LIGHTGUN,     IDI_FOLDER_LIGHTGUN,      0,             0,            0, NULL,                       DriverUsesLightGun,      true },
+	{"Trackball",     "trackball",        FOLDER_TRACKBALL,    IDI_FOLDER_TRACKBALL,     0,             0,            0, NULL,                       DriverUsesTrackball,     true },
+	{"Raster",        "raster",           FOLDER_RASTER,       IDI_FOLDER_RASTER,        F_RASTER,      F_VECTOR,     0, NULL,                       DriverIsVector,          false },
+	{"Vector",        "vector",           FOLDER_VECTOR,       IDI_FOLDER_VECTOR,        F_VECTOR,      F_RASTER,     0, NULL,                       DriverIsVector,          true },
+	{"Savestate",     "savestate",        FOLDER_SAVESTATE,    IDI_FOLDER_SAVESTATE,     0,             0,            0, CreateSaveStateFolders },
+	{"Dumping Status","dumping",          FOLDER_DUMPING,      IDI_FOLDER_DUMP,          0,             0,            1, CreateDumpingFolders },
+	{"Mechanical",    "mechanical",       FOLDER_MECHANICAL,   IDI_MECHANICAL,           0,             0,            0, NULL,                       DriverIsMechanical,      true },
 	//{"Non Mechanical",  "nonmechanical",     FOLDER_NONMECHANICAL,IDI_FOLDER,               0,             0,            0, NULL,                       DriverIsMechanical,      FALSE },
-	{"Not Working",     "nonworking",        FOLDER_NONWORKING,   IDI_NONWORKING,           F_NONWORKING,  F_WORKING,    0, NULL,                       DriverIsBroken,          true },
-//	{"Parents",         "originals",         FOLDER_ORIGINAL,     IDI_FOLDER_ORIGINALS,     F_ORIGINALS,   F_CLONES,     0, NULL,                       DriverIsClone,           false },
-//	{"Raster",          "raster",            FOLDER_RASTER,       IDI_FOLDER_RASTER,        F_RASTER,      F_VECTOR,     0, NULL,                       DriverIsVector,          false },
-//	{"Refresh",         "refresh",           FOLDER_FPS,          IDI_FOLDER_FPS,           0,             0,            1, CreateFPSFolders },
-//	{"Resolution",      "resolution",        FOLDER_RESOLUTION,   IDI_FOLDER_RESOL,         0,             0,            1, CreateResolutionFolders },
-//	{"Samples",         "samples",           FOLDER_SAMPLES,      IDI_FOLDER_SAMPLES,       0,             0,            0, NULL,                       DriverUsesSamples,       true },
-//	{"Savestate",       "savestate",         FOLDER_SAVESTATE,    IDI_FOLDER_SAVESTATE,     0,             0,            0, CreateSaveStateFolders },
-//	{"Screens",         "screens",           FOLDER_SCREENS,      IDI_FOLDER_MONITOR,       0,             0,            0, CreateScreenFolders },
-//	{"Sound",           "sound",             FOLDER_SOUND,        IDI_FOLDER_SOUND,         0,             0,            1, CreateSoundFolders },
-	{"Source",          "source",            FOLDER_SOURCE,       IDI_FOLDER_SOURCE,        0,             0,            0, CreateSourceFolders },
-	//{"Stereo",          "stereo",            FOLDER_STEREO,       IDI_FOLDER,               0,             0,            0, NULL,                       DriverIsStereo,          TRUE },
-//	{"Trackball",       "trackball",         FOLDER_TRACKBALL,    IDI_FOLDER_TRACKBALL,     0,             0,            0, NULL,                       DriverUsesTrackball,     true },
-//	{"Unavailable",     "unavailable",       FOLDER_UNAVAILABLE,  IDI_FOLDER_UNAVAILABLE,   0,             F_AVAILABLE,  0, NULL,                       FilterAvailable,         false },
-//	{"Vector",          "vector",            FOLDER_VECTOR,       IDI_FOLDER_VECTOR,        F_VECTOR,      F_RASTER,     0, NULL,                       DriverIsVector,          true },
-//	{"Vertical",        "vertical",          FOLDER_VERTICAL,     IDI_FOLDER_VERTICAL,      F_VERTICAL,    F_HORIZONTAL, 0, NULL,                       DriverIsVertical,        true },
-//	{"Working",         "working",           FOLDER_WORKING,      IDI_WORKING,              F_WORKING,     F_NONWORKING, 0, NULL,                       DriverIsBroken,          false },
-//	{"Year",            "year",              FOLDER_YEAR,         IDI_FOLDER_YEAR,          0,             0,            0, CreateYearFolders },
+	{"Refresh",       "refresh",          FOLDER_FPS,          IDI_FOLDER_FPS,           0,             0,            1, CreateFPSFolders },
+	{"Resolution",    "resolution",       FOLDER_RESOLUTION,   IDI_FOLDER_RESOL,         0,             0,            1, CreateResolutionFolders },
+	{"Sound",         "sound",            FOLDER_SOUND,        IDI_FOLDER_SOUND,         0,             0,            1, CreateSoundFolders },
+	{"Samples",       "samples",          FOLDER_SAMPLES,      IDI_FOLDER_SAMPLES,       0,             0,            0, NULL,                       DriverUsesSamples,       true },
+	{"Screens",       "screens",          FOLDER_SCREENS,      IDI_FOLDER_MONITOR,       0,             0,            0, CreateScreenFolders },
+	//{"Stereo",        "stereo",       FOLDER_STEREO,       IDI_FOLDER,               0,             0,            0, NULL,                       DriverIsStereo,          TRUE },
 	{ NULL }
 };
 
@@ -123,39 +155,55 @@ static const TREEICON treeIconNames[] =
 	{ IDI_FOLDER_OPEN,         	"foldopen" },
 	{ IDI_FOLDER,              	"folder" },
 	{ IDI_FOLDER_AVAILABLE,    	"foldavail" },
-	{ IDI_FOLDER_MANUFACTURER, 	"foldmanu" },
 	{ IDI_FOLDER_UNAVAILABLE,  	"foldunav" },
-	{ IDI_FOLDER_YEAR,         	"foldyear" },
-	{ IDI_FOLDER_SOURCE,       	"foldsrc" },
-	{ IDI_FOLDER_HORIZONTAL,   	"horz" },
-	{ IDI_FOLDER_VERTICAL,     	"vert" },
 	{ IDI_MANUFACTURER,        	"manufact" },
-	{ IDI_WORKING,             	"working" },
-	{ IDI_NONWORKING,          	"nonwork" },
 	{ IDI_YEAR,                	"year" },
 	{ IDI_CHIP,                	"chip" },
 	{ IDI_BIOS,                	"bios" },
-	{ IDI_HARDDISK,            	"harddisk" },
-	{ IDI_MECHANICAL,           "mechanical" },
 	{ IDI_SOURCE,              	"source" },
 	{ IDI_MONITOR,             	"monitor" },
-	{ IDI_FOLDER_IMPERFECT,    	"foldimp" },
-	{ IDI_FOLDER_CPU,          	"foldcsb" },
-	{ IDI_FOLDER_SOUND,        	"foldcsb" },
-	{ IDI_FOLDER_BIOS,         	"foldcsb" },
 	{ IDI_FOLDER_ALLGAMES,     	"allgames" },
 	{ IDI_FOLDER_CLONES,       	"foldclone" },
 	{ IDI_FOLDER_ORIGINALS,    	"foldorig" },
-	{ IDI_FOLDER_RASTER,       	"foldrast" },
-	{ IDI_FOLDER_VECTOR,       	"foldvect" },
-	{ IDI_FOLDER_MONITOR,      	"multimon" },
-	{ IDI_FOLDER_FPS,      	   	"foldfps" },
-	{ IDI_FOLDER_RESOL,        	"foldres" },
-	{ IDI_FOLDER_LIGHTGUN,      "foldgun" },
-	{ IDI_FOLDER_TRACKBALL,     "foldball" },
-	{ IDI_FOLDER_SAVESTATE,     "savestate" },
-	{ IDI_FOLDER_DUMP,     		"foldcsb" },
-	{ IDI_FOLDER_SAMPLES,      	"foldsamp" }
+	{ IDI_FOLDER_SOURCE,		"foldsrc" },	
+//#ifdef USE_GAMEFOLDERS
+	{ IDI_FOLDER_KOREAN,	   "fold_korean" },
+	{ IDI_FOLDER_NEOGEO,       "fold_neogeo" },
+	{ IDI_FOLDER_NEOHACK,      "fold_neohack" },
+ 	{ IDI_FOLDER_NAMCO,		   "fold_namco"},			
+ 	{ IDI_FOLDER_TAITO,		   "fold_taito"},	
+ 	{ IDI_FOLDER_KONAMI,	   "fold_konami"},			
+ 	{ IDI_FOLDER_SEGA,		   "fold_sega"},		
+ 	{ IDI_FOLDER_CAVE,		   "fold_cave"},		
+    { IDI_FOLDER_CAPCOM,	   "fold_cps" },
+    { IDI_FOLDER_CPSHACK,	   "fold_cpshack" },
+    { IDI_FOLDER_PGMHACK,	   "fold_pgmhack" },
+    { IDI_FOLDER_PGM,	   	   "fold_pgm" },
+ //	{ IDI_FOLDER_PSXGAME,	   "fold_psx"}
+//#endif	
+	{ IDI_FOLDER_MANUFACTURER,	"foldmanu" },
+	{ IDI_FOLDER_YEAR,			"foldyear" },
+	{ IDI_FOLDER_HORIZONTAL,	"horz" },
+	{ IDI_FOLDER_VERTICAL,		"vert" },
+	{ IDI_WORKING,				"working" },
+	{ IDI_NONWORKING,			"nonwork" },
+	{ IDI_HARDDISK, 			"harddisk" },
+	{ IDI_MECHANICAL,			"mechanical" },
+	{ IDI_FOLDER_IMPERFECT, 	"foldimp" },
+	{ IDI_FOLDER_CPU,			"foldcsb" },
+	{ IDI_FOLDER_SOUND, 		"foldcsb" },
+	{ IDI_FOLDER_BIOS,			"foldcsb" },
+	{ IDI_FOLDER_RASTER,		"foldrast" },
+	{ IDI_FOLDER_VECTOR,		"foldvect" },
+	{ IDI_FOLDER_MONITOR,		"multimon" },
+	{ IDI_FOLDER_FPS,			"foldfps" },
+	{ IDI_FOLDER_RESOL, 		"foldres" },
+	{ IDI_FOLDER_LIGHTGUN,		"foldgun" },
+	{ IDI_FOLDER_TRACKBALL, 	"foldball" },
+	{ IDI_FOLDER_SAVESTATE, 	"savestate" },
+	{ IDI_FOLDER_DUMP,			"foldcsb" },
+	{ IDI_FOLDER_SAMPLES,		"foldsamp" }
+
 };
 
 /***************************************************************************
@@ -329,16 +377,28 @@ bool GameFiltered(int nGame, DWORD dwMask)
 
 	if (strlen(GetSearchText()) && _stricmp(GetSearchText(), SEARCH_PROMPT))
 	{
-		if (MyStrStrI(GetDriverGameTitle(nGame), GetSearchText()) == NULL &&
-			MyStrStrI(GetDriverGameName(nGame), GetSearchText()) == NULL)
+		
+		if (MyStrStrI(GetDescriptionByIndex(nGame, GetUsekoreanList()), GetSearchText()) == NULL &&
+			MyStrStrI(GetGameNameByIndex(nGame,GetUsekoreanList()), GetSearchText()) == NULL )
 			return true;
+		
+//		if (MyStrStrI(GetDriverGameTitle(nGame), GetSearchText()) == NULL &&
+//			MyStrStrI(GetDriverGameName(nGame), GetSearchText()) == NULL)
+//			return true;
 	}
 	
 	/*Filter Text is already global*/
-	if (MyStrStrI(GetDriverGameTitle(nGame), GetFilterText()) == NULL &&
-		MyStrStrI(GetDriverGameName(nGame), GetFilterText()) == NULL &&
+//	if (MyStrStrI(GetDriverGameTitle(nGame), GetFilterText()) == NULL &&
+//		MyStrStrI(GetDriverGameName(nGame), GetFilterText()) == NULL &&
+//		MyStrStrI(GetDriverFileName(nGame), GetFilterText()) == NULL &&
+//		MyStrStrI(GetDriverGameManufacturer(nGame), GetFilterText()) == NULL)
+//		return true;
+
+
+	if (MyStrStrI(GetDescriptionByIndex(nGame, GetUsekoreanList()), GetFilterText()) == NULL &&
+		MyStrStrI(GetGameNameByIndex(nGame,GetUsekoreanList()), GetFilterText()) == NULL &&
 		MyStrStrI(GetDriverFileName(nGame), GetFilterText()) == NULL &&
-		MyStrStrI(GetDriverGameManufacturer(nGame), GetFilterText()) == NULL)
+		MyStrStrI(GetGameManufactureByIndex(nGame,GetUsekoreanList()), GetFilterText()) == NULL)
 		return true;
 
 	// Are there filters set on this folder?
@@ -393,7 +453,6 @@ LPCFILTER_ITEM GetFilterList(void)
     private functions
  ***************************************************************************/
 
-
 static void CreateSourceFolders(int parent_index)
 {
 	int i = 0; 
@@ -431,8 +490,6 @@ static void CreateSourceFolders(int parent_index)
 	SetNumOptionFolders(-1);
 }
 
-
-/*
 static void CreateManufacturerFolders(int parent_index)
 {
 	int i = 0; 
@@ -467,9 +524,7 @@ static void CreateManufacturerFolders(int parent_index)
 		}
 	}
 }
-*/
 
-/*
 static void CreateDeficiencyFolders(int parent_index)
 {
 	LPTREEFOLDER lpFolder = treeFolders[parent_index];
@@ -518,9 +573,7 @@ static void CreateDeficiencyFolders(int parent_index)
 			AddGame(lpNoSndHw, jj);
 	}
 }
-*/
 
-/*
 static void CreateYearFolders(int parent_index)
 {
 	int i = 0; 
@@ -555,9 +608,7 @@ static void CreateYearFolders(int parent_index)
 		}
 	}
 }
-*/
 
-/*
 static void CreateBIOSFolders(int parent_index)
 {
 	int i = 0; 
@@ -606,9 +657,7 @@ static void CreateBIOSFolders(int parent_index)
 		}
 	}
 }
-*/
 
-/*
 static void CreateScreenFoldersIni(int parent_index)
 {
 	int i = 0; 
@@ -644,9 +693,7 @@ static void CreateScreenFoldersIni(int parent_index)
 		}
 	}
 }
-*/
 
-/*
 static void CreateCPUFoldersIni(int parent_index)
 {
 	int i = 0; 
@@ -688,9 +735,7 @@ static void CreateCPUFoldersIni(int parent_index)
 		}
 	}
 }
-*/
 
-/*
 static void CreateSoundFoldersIni(int parent_index)
 {
 	int i = 0; 
@@ -732,9 +777,7 @@ static void CreateSoundFoldersIni(int parent_index)
 		}
 	}
 }
-*/
 
-/*
 static void CreateSaveStateFolders(int parent_index)
 {
 	LPTREEFOLDER lpFolder = treeFolders[parent_index];
@@ -756,9 +799,7 @@ static void CreateSaveStateFolders(int parent_index)
 			AddGame(lpUnsupported, jj);
 	}
 }
-*/
 
-/*
 static void CreateResolutionFoldersIni(int parent_index)
 {
 	int i = 0; 
@@ -830,9 +871,7 @@ static void CreateResolutionFoldersIni(int parent_index)
 		}
 	}
 }
-*/
 
-/*
 static void CreateFPSFoldersIni(int parent_index)
 {
 	int i = 0; 
@@ -889,7 +928,6 @@ static void CreateFPSFoldersIni(int parent_index)
 		}
 	}
 }
-*/
 
 void CreateDumpingFoldersIni(int parent_index)
 {
@@ -951,7 +989,6 @@ void CreateDumpingFoldersIni(int parent_index)
 	}
 }
 
-/*
 static void CreateCPUFolders(int parent_index)
 {
 	const char *fname = "cpu.ini";
@@ -966,9 +1003,7 @@ static void CreateCPUFolders(int parent_index)
 
 	SendMessage(GetProgressBar(), PBM_SETPOS, 20, 0);
 }
-*/
 
-/*
 static void CreateSoundFolders(int parent_index)
 {
 	const char *fname = "sound.ini";
@@ -983,10 +1018,7 @@ static void CreateSoundFolders(int parent_index)
 
 	SendMessage(GetProgressBar(), PBM_SETPOS, 95, 0);
 }
-*/
 
-
-/*
 static void CreateScreenFolders(int parent_index)
 {
 	const char *fname = "screen.ini";
@@ -1001,9 +1033,7 @@ static void CreateScreenFolders(int parent_index)
 
 	SendMessage(GetProgressBar(), PBM_SETPOS, 80, 0);
 }
-*/
 
-/*
 static void CreateResolutionFolders(int parent_index)
 {
 	const char *fname = "resolution.ini";
@@ -1018,9 +1048,7 @@ static void CreateResolutionFolders(int parent_index)
 
 	SendMessage(GetProgressBar(), PBM_SETPOS, 65, 0);
 }
-*/
 
-/*
 static void CreateFPSFolders(int parent_index)
 {
 	const char *fname = "refresh.ini";
@@ -1035,9 +1063,7 @@ static void CreateFPSFolders(int parent_index)
 
 	SendMessage(GetProgressBar(), PBM_SETPOS, 50, 0);
 }
-*/
 
-/*
 static void CreateDumpingFolders(int parent_index)
 {
 	const char *fname = "dumping.ini";
@@ -1052,9 +1078,7 @@ static void CreateDumpingFolders(int parent_index)
 
 	SendMessage(GetProgressBar(), PBM_SETPOS, 35, 0);
 }
-*/
 
-/*
 static void LoadExternalFolders(int parent_index, const char *fname, int id)
 {
 	char readbuf[256];
@@ -1072,7 +1096,7 @@ static void LoadExternalFolders(int parent_index, const char *fname, int id)
 
 	while (fgets(readbuf, 256, f))
 	{
-		//do we have [...] ?
+		/* do we have [...] ? */
 		if (readbuf[0] == '[')
 		{
 			char *p = strchr(readbuf, ']');
@@ -1083,7 +1107,7 @@ static void LoadExternalFolders(int parent_index, const char *fname, int id)
 			*p = '\0';
 			name = &readbuf[1];
 
-			//is it [FOLDER_SETTINGS]?
+			/* is it [FOLDER_SETTINGS]? */
 			if (strcmp(name, "FOLDER_SETTINGS") == 0)
 			{
 				current_id = -1;
@@ -1091,7 +1115,7 @@ static void LoadExternalFolders(int parent_index, const char *fname, int id)
 			}
 			else
 			{
-				//is it [ROOT_FOLDER]?
+				/* is it [ROOT_FOLDER]? */
 				if (!strcmp(name, "ROOT_FOLDER"))
 				{
 					current_id = lpFolder->m_nFolderId;
@@ -1107,7 +1131,7 @@ static void LoadExternalFolders(int parent_index, const char *fname, int id)
 		}
 		else if (current_id != -1)
 		{
-			//string on a line by itself -- game name
+			/* string on a line by itself -- game name */
 			name = strtok(readbuf, " \t\r\n");
 
 			if (name == NULL)
@@ -1122,9 +1146,7 @@ static void LoadExternalFolders(int parent_index, const char *fname, int id)
 
 	fclose(f);
 }
-*/
 
-/*
 static void SaveExternalFolders(int parent_index, const char *fname)
 {
 	int i = 0;
@@ -1145,8 +1167,8 @@ static void SaveExternalFolders(int parent_index, const char *fname)
 	fprintf(f, "RootFolderIcon custom\n");
 	fprintf(f, "SubFolderIcon custom\n");
 
-	//need to loop over all our TREEFOLDERs--first the root one, then each child.
-	//start with the root
+	/* need to loop over all our TREEFOLDERs--first the root one, then each child.
+	start with the root */
 	folder_data = lpFolder;
 	fprintf(f, "\n[ROOT_FOLDER]\n");
 
@@ -1156,7 +1178,7 @@ static void SaveExternalFolders(int parent_index, const char *fname)
 			fprintf(f, "%s\n", GetDriverGameName(i));
 	}
 
-	//look through the custom folders for ones with our root as parent
+	/* look through the custom folders for ones with our root as parent */
 	for (int jj = 0; jj < numFolders; jj++)
 	{
 		folder_data = treeFolders[jj];
@@ -1175,7 +1197,7 @@ static void SaveExternalFolders(int parent_index, const char *fname)
 
 	fclose(f);
 }
-*/
+
 
 // creates child folders of all the top level folders, including custom ones
 void CreateAllChildFolders(void)
@@ -1365,7 +1387,6 @@ static bool FolderHasIni(LPTREEFOLDER lpFolder)
 
 	return false;
 }
-
 
 /* Add a folder to the list.  Does not allocate */
 static bool AddFolder(LPTREEFOLDER lpFolder)
@@ -1828,7 +1849,7 @@ bool TryAddExtraFolderAndChildren(int parent_index)
 
 			if (lpTemp == NULL)
 			{
-				ErrorMessageBox("Error parsing %s: missing [folder name] or [ROOT_FOLDER]", fname);
+				//ErrorMessageBox("Error parsing %s: missing [folder name] or [ROOT_FOLDER]", fname);
 				current_id = lpFolder->m_nFolderId;
 				lpTemp = lpFolder;
 			}
@@ -2080,3 +2101,484 @@ static bool FilterAvailable(int driver_index)
 
 	return IsAuditResultYes(GetRomAuditResults(driver_index));
 }
+
+//#ifdef USE_GAMEFOLDERS
+void CreateKOREANFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+
+	
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverFileName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (  (!strcmp("neo_korean.cpp", s)) ||
+			  (!strcmp("kr_blktiger.cpp", s)) ||
+			  (!strcmp("kr_cave.cpp", s)) ||
+			  (!strcmp("kr_pcktgal.cpp", s)) ||
+			  (!strcmp("kr_st0016.cpp", s)) ||
+			  (!strcmp("kr_system1.cpp", s)) ||
+			  (!strcmp("kr_tecmo.cpp", s)) ||
+			  (!strcmp("kr_ginganin.cpp", s)) 
+			)
+		{
+			AddGame(lpFolder, jj);
+		}
+	}
+}
+
+void CreateNEOGEOFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+
+	
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverFileName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (  (!strcmp("neogeo.cpp", s)) || 
+				(!strcmp("neopcb.cpp", s)) || 
+				(!strcmp("neoprint.cpp", s)) || 
+			  	(!strcmp("neohack.cpp", s)) ||
+				(!strcmp("neo_kof94.cpp", s)) ||
+				(!strcmp("neo_kof95.cpp", s)) ||
+				(!strcmp("neo_kof96.cpp", s)) ||
+				(!strcmp("neo_kof97.cpp", s)) ||
+				(!strcmp("neo_kof98.cpp", s)) ||
+				(!strcmp("neo_kof99.cpp", s)) ||
+				(!strcmp("neo_kof2k.cpp", s)) ||
+				(!strcmp("neo_kof2k1.cpp", s)) ||
+				(!strcmp("neo_kof2k2.cpp", s)) ||
+				(!strcmp("neo_kof2k3.cpp", s)) ||
+				(!strcmp("neo_samsho5.cpp", s)) ||
+				(!strcmp("neo_svc.cpp", s)) ||
+				(!strcmp("neo_lastblade.cpp", s))||
+				(!strcmp("neo_sengoku.cpp",s)) ||
+				(!strcmp("neo_kof10th.cpp",s)) ||
+				(!strcmp("neo_samsho.cpp",s)) ||
+				(!strcmp("neo_samsho4.cpp",s)) ||
+				(!strcmp("neo_rotd.cpp",s)) ||
+				(!strcmp("neo_rbff.cpp",s)) ||
+				(!strcmp("neo_pim.cpp",s)) ||
+				(!strcmp("neo_garou.cpp",s)) ||
+   			    (!strcmp("neo_korean.cpp", s)) ||
+   			    (!strcmp("neo_mslug.cpp", s)) ||
+   			    (!strcmp("neo_mslug2.cpp", s)) ||
+				(!strcmp("neo_mslug3.cpp", s)) ||
+				(!strcmp("neo_mslug4.cpp", s)) ||
+   			    (!strcmp("neo_mslug5.cpp", s)) ||
+   			    (!strcmp("neo_mslugx.cpp", s)) ||
+   			    (!strcmp("neo_wh.cpp", s)) )
+		{
+			AddGame(lpFolder, jj);
+		}
+	}
+}
+
+void CreateNEOHACKFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+
+	
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverFileName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if ( (!strcmp("neohack.cpp", s))||
+			(!strcmp("neo_kof94.cpp", s)) ||
+			(!strcmp("neo_kof95.cpp", s)) ||
+			(!strcmp("neo_kof96.cpp", s)) ||
+			(!strcmp("neo_kof97.cpp", s)) ||
+			(!strcmp("neo_kof98.cpp", s)) ||
+			(!strcmp("neo_kof99.cpp", s)) ||
+			(!strcmp("neo_kof2k.cpp", s)) ||
+			(!strcmp("neo_kof2k1.cpp", s)) ||
+			(!strcmp("neo_kof2k2.cpp", s)) ||
+			(!strcmp("neo_kof2k3.cpp", s)) ||
+			(!strcmp("neo_samsho5.cpp", s)) ||
+			(!strcmp("neo_svc.cpp", s)) ||
+			(!strcmp("neo_lastblade.cpp", s)) ||
+			(!strcmp("neo_sengoku.cpp",s)) ||
+			(!strcmp("neo_kof10th.cpp",s)) ||
+			(!strcmp("neo_samsho.cpp",s)) ||
+			(!strcmp("neo_samsho4.cpp",s))||
+			(!strcmp("neo_rotd.cpp",s)) ||
+			(!strcmp("neo_rbff.cpp",s)) ||
+			(!strcmp("neo_pim.cpp",s)) ||
+			(!strcmp("neo_garou.cpp",s)) ||
+			(!strcmp("neo_korean.cpp", s)) ||
+			(!strcmp("neo_mslug.cpp", s)) ||
+			(!strcmp("neo_mslug2.cpp", s)) ||
+			(!strcmp("neo_mslug3.cpp", s)) ||
+			(!strcmp("neo_mslug4.cpp", s)) ||
+			(!strcmp("neo_mslug5.cpp", s)) ||
+		    (!strcmp("neo_mslugx.cpp", s)) ||
+		    (!strcmp("neo_dbd.cpp", s)) ||
+		    (!strcmp("neo_wh.cpp", s)))
+		{
+			AddGame(lpFolder, jj);
+		}
+	}
+}
+
+void CreateCPSFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverFileName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("cps1.cpp", s) ||
+			!strcmp("cps2.cpp", s) ||
+			!strcmp("cps3.cpp", s) ||
+			!strcmp("cps1_hack.cpp", s) ||
+			!strcmp("cps1_dino.cpp", s) ||
+			!strcmp("cps1_wof.cpp", s) ||
+			!strcmp("cps1_capt.cpp", s) ||
+			!strcmp("cps2_hack.cpp", s) ||
+			!strcmp("cps3_hack.cpp", s) )
+			AddGame(lpFolder, jj);
+	}
+}
+
+void CreateCPSHACKFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverFileName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("cps1_hack.cpp", s) ||
+			!strcmp("cps1_dino.cpp", s) ||
+			!strcmp("cps1_wof.cpp", s) ||
+			!strcmp("cps1_capt.cpp", s) ||
+			!strcmp("cps2_hack.cpp", s) ||
+			!strcmp("cps3_hack.cpp", s)  )
+			
+			AddGame(lpFolder, jj);
+	}
+}
+
+void CreatePGMFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+
+	
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverFileName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (  (!strcmp("pgm.cpp", s)) ||
+			  (!strcmp("pgm2.cpp", s))||
+			  (!strcmp("pgm3.cpp", s))||
+			  (!strcmp("pgm_hack.cpp", s))
+			)
+		{
+			AddGame(lpFolder, jj);
+		}
+	}
+}
+
+void CreatePGMHACKFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+
+	
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverFileName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (  (!strcmp("pgm_hack.cpp", s))
+			)
+		{
+			AddGame(lpFolder, jj);
+		}
+	}
+}
+
+void CreateNAMCOFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverFileName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("namcos1.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("namcos2.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("namcos86.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("baraduke.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("galaga.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("digdug.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("gaplus.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mappy.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("xevious.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("toypop.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("skykid.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("pacland.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("phozon.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("grobda.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("namcona1.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("namconb1.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("namcond1.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("tceptor.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("bosco.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("polepos.cpp", s))		AddGame(lpFolder, jj);
+	}
+}
+
+void CreateTAITOFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverFileName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("arkanoid.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("taito_f2.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("taito_f3.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("taito_z.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("taito_b.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("taito_l.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("taito_h.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("warriorb.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ninjaw.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("darius.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("bublbobl.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("rainbow.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("tnzs.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("asuka.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("rastan.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("flstory.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("chaknpop.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("lkage.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("halleys.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ashnojoe.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("slapshot.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("topspeed.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("opwolf.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("othunder.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mexico86.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("volfied.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("lsasquad.cpp", s))			AddGame(lpFolder, jj);
+	}
+}
+
+void CreateKONAMIFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverFileName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("konamigx.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mystwarr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("xexex.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("tmnt.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("twin16.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("nemesis.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("gradius3.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("thunderx.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ajax.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("flkatck.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("contra.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("parodius.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("hcastle.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("battlnts.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("combatsc.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("labyrunr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("moo.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("vendetta.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("yiear.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("gbusters.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("xmen.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("chqflag.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("blockhl.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("gberet.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("gijoe.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("scotrsht.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("simpsons.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ironhors.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("rockrage.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mainevt.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("aliens.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("wecleman.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("jackal.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("hornet.cpp", s))			AddGame(lpFolder, jj);
+	}
+}
+
+void CreateSEGAFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverFileName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("system1.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("system16.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("segas16a.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("segas16b.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("segaorun.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("segahang.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("segas18.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("system24.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("segas32.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("segaxbd.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("segaybd.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("segac2.cpp", s))				AddGame(lpFolder, jj);
+	}
+}
+
+void CreateTOAFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverFileName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("toaplan1.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("toaplan2.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("twincobr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("slapfght.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("snowbros.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("cave.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("hack_cave.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("kr_cave.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("macrossp.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("psikyo.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("psikyo4.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("seta.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("seta2.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("ssv.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("srmp2.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("raiden.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("suprnova.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("kaneko16.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("taito_x.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("inufuku.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("dcon.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("mjsister.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ms32.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("fuukifg3.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("aerofgt.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("rabbit.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("powerins.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("psikyosh.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("tetrisp2.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("deco_mlc.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("deco32.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("seibuspi.cpp", s))			AddGame(lpFolder, jj);
+	}
+}
+
+
+//#endif
+

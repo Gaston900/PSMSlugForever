@@ -77,6 +77,7 @@
 #define OPTION_SLEEP                "sleep"
 #define OPTION_SPEED                "speed"
 #define OPTION_REFRESHSPEED         "refreshspeed"
+#define OPTION_LOWLATENCY           "lowlatency"
 
 // core render options
 #define OPTION_KEEPASPECT           "keepaspect"
@@ -109,10 +110,14 @@
 #define OPTION_PAUSE_BRIGHTNESS     "pause_brightness"
 #define OPTION_EFFECT               "effect"
 #define OPTION_WIDESTRETCH			"widestretch"
+//#ifdef USE_SCALE_EFFECTS
+#define OPTION_SCALE_EFFECT         "scale_effect"
+//#endif /* USE_SCALE_EFFECTS */
 
 // core vector options
 #define OPTION_BEAM_WIDTH_MIN       "beam_width_min"
 #define OPTION_BEAM_WIDTH_MAX       "beam_width_max"
+#define OPTION_BEAM_DOT_SIZE        "beam_dot_size"
 #define OPTION_BEAM_INTENSITY_WEIGHT   "beam_intensity_weight"
 #define OPTION_FLICKER              "flicker"
 
@@ -120,6 +125,7 @@
 #define OPTION_SAMPLERATE           "samplerate"
 #define OPTION_SAMPLES              "samples"
 #define OPTION_VOLUME               "volume"
+#define OPTION_SPEAKER_REPORT       "speaker_report"
 
 // core input options
 #define OPTION_COIN_LOCKOUT         "coin_lockout"
@@ -156,6 +162,7 @@
 #define OPTION_OSLOG                "oslog"
 #define OPTION_UPDATEINPAUSE        "update_in_pause"
 #define OPTION_DEBUGSCRIPT          "debugscript"
+#define OPTION_DEBUGLOG             "debuglog"
 
 // core misc options
 #define OPTION_DRC                  "drc"
@@ -194,6 +201,56 @@
 #define OPTION_HTTP                 "http"
 #define OPTION_HTTP_PORT            "http_port"
 #define OPTION_HTTP_ROOT            "http_root"
+
+//#ifdef USE_FIX60FPS
+#define OPTION_60FPS        		"Frame_60fps"
+//#endif
+
+#ifdef MAME_AVI
+#define OPTION_AVI_DIRECTORY				"avi_directory"
+#define OPTION_AVI_FILENAME      			"avi_avi_filename"            
+#define OPTION_AVI_DEF_FPS              	"avi_def_fps"                 
+#define OPTION_AVI_FPS              		"avi_fps"                     
+#define OPTION_AVI_FRAME_SKIP              	"avi_frame_skip"              
+#define OPTION_AVI_FRAME_CMP              	"avi_frame_cmp"               
+#define OPTION_AVI_FRAME_CPM_PRE15           "avi_frame_cmp_pre15"         
+#define OPTION_AVI_FRAME_COM_FEW              "avi_frame_cmp_few"           
+#define OPTION_AVI_WIDTH              		"avi_width"                   
+#define OPTION_AVI_HEIGHT              		"avi_height"                  
+#define OPTION_AVI_DEPTH              		"avi_depth"                   
+#define OPTION_AVI_ORIENTATION              "avi_orientation"            
+#define OPTION_AVI_RECT_TOP              	"avi_rect_top"                
+#define OPTION_AVI_RECT_LEFT              	"avi_rect_left"               
+#define OPTION_AVI_RECT_WIDTH              	"avi_rect_width"              
+#define OPTION_AVI_RECT_HEIGHT              "avi_rect_height"             
+#define OPTION_AVI_INTERLACE              	"avi_interlace"               
+#define OPTION_AVI_INTERLACE_ODD_FIELD      "avi_interlace_odd_field"     
+#define OPTION_AVI_AVI_FILESIZE             "avi_avi_filesize"            
+#define OPTION_AVI_AVI_SAVEFILE_PAUSE       "avi_avi_savefile_pause"      
+#define OPTION_AVI_AVI_WIDTH              	"avi_avi_width"               
+#define OPTION_AVI_AVI_HEIGHT              	"avi_avi_height"              
+#define OPTION_AVI_AVI_DEPTH              	"avi_avi_depth"               
+#define OPTION_AVI_AVI_RECT_TOP              	"avi_avi_rect_top"            
+#define OPTION_AVI_AVI_RECT_LEFT              	"avi_avi_rect_left"           
+#define OPTION_AVI_AVI_RECT_WIDTH              	"avi_avi_rect_width"          
+#define OPTION_AVI_AVI_RECT_HEIGHT              "avi_avi_rect_height"         
+#define OPTION_AVI_AVI_SMOOTH_RESIZE_X              "avi_avi_smooth_resize_x"     
+#define OPTION_AVI_AVI_SMOOTH_RESIZE_Y              "avi_avi_smooth_resize_y"     
+#define OPTION_AVI_WAV_FILENAME             "avi_wav_filename"            
+#define OPTION_AVI_AUDIO_TYPE              	"avi_audio_type"              
+#define OPTION_AVI_AUDIO_CHANNEL              "avi_audio_channel"           
+#define OPTION_AVI_AUDIO_SAMPLE_PER_SEC              "avi_audio_samples_per_sec"   
+#define OPTION_AVI_AUDIO_BITRATE              "avi_audio_bitrate"           
+#define OPTION_AVI_AUDIO_RECORD_TYPE              "avi_audio_record_type"       
+#define OPTION_AVI_AVI_AUDIO_CHANNEL              "avi_avi_audio_channel"       
+#define OPTION_AVI_AVI_AUDIO_SAMPLE_PER_SEC              "avi_avi_audio_samples_per_sec"
+#define OPTION_AVI_AVI_AUDIO_BITRATE              "avi_avi_audio_bitrate"       
+#define OPTION_AVI_AVI_AUDIO_CMP              "avi_audio_cmp"               
+#define OPTION_AVI_HOUR							"avi_hour"  
+#define OPTION_AVI_MINUTE							"avi_minute"
+#define OPTION_AVI_SECOND							"avi_second"
+
+#endif /* MAME_AVI */
 
 //**************************************************************************
 //  TYPE DEFINITIONS
@@ -357,6 +414,7 @@ public:
 	bool sleep() const { return m_sleep; }
 	float speed() const { return float_value(OPTION_SPEED); }
 	bool refresh_speed() const { return m_refresh_speed; }
+	bool low_latency() const { return bool_value(OPTION_LOWLATENCY); }
 
 	// core render options
 	bool keep_aspect() const { return bool_value(OPTION_KEEPASPECT); }
@@ -393,6 +451,7 @@ public:
 	// core vector options
 	float beam_width_min() const { return float_value(OPTION_BEAM_WIDTH_MIN); }
 	float beam_width_max() const { return float_value(OPTION_BEAM_WIDTH_MAX); }
+	float beam_dot_size() const { return float_value(OPTION_BEAM_DOT_SIZE); }
 	float beam_intensity_weight() const { return float_value(OPTION_BEAM_INTENSITY_WEIGHT); }
 	float flicker() const { return float_value(OPTION_FLICKER); }
 
@@ -400,6 +459,7 @@ public:
 	int sample_rate() const { return int_value(OPTION_SAMPLERATE); }
 	bool samples() const { return bool_value(OPTION_SAMPLES); }
 	int volume() const { return int_value(OPTION_VOLUME); }
+	int speaker_report() const { return int_value(OPTION_SPEAKER_REPORT); }
 
 	// core input options
 	bool coin_lockout() const { return bool_value(OPTION_COIN_LOCKOUT); }
@@ -434,6 +494,7 @@ public:
 	bool oslog() const { return bool_value(OPTION_OSLOG); }
 	const char *debug_script() const { return value(OPTION_DEBUGSCRIPT); }
 	bool update_in_pause() const { return bool_value(OPTION_UPDATEINPAUSE); }
+	bool debuglog() const { return bool_value(OPTION_DEBUGLOG); }
 
 	// core misc options
 	bool drc() const { return bool_value(OPTION_DRC); }
@@ -487,6 +548,10 @@ public:
 	const ::image_option &image_option(const std::string &device_name) const;
 	::image_option &image_option(const std::string &device_name);
 	bool has_image_option(const std::string &device_name) const { return m_image_options.find(device_name) != m_image_options.end(); }
+//#ifdef USE_FIX60FPS
+	bool Frame_60fps() const { return bool_value(OPTION_60FPS); }
+	//bool Frame_60fps();
+//#endif
 
 protected:
 	virtual void command_argument_processed() override;
