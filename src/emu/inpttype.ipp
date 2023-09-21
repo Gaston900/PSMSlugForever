@@ -43,16 +43,48 @@ namespace {
 		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, SELECT,              "@P2 Select @Select",       input_seq(KEYCODE_6, input_seq::or_code, JOYCODE_SELECT_INDEXED(1)) ) \
 		CORE_INPUT_TYPES_END()
 
+#define CORE_INPUT_TYPES_P3 \
+		CORE_INPUT_TYPES_BEGIN(p3) \
+		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, JOYSTICK_UP,         "@P3 Up @Up",               input_seq(JOYCODE_Y_UP_SWITCH_INDEXED(2)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, JOYSTICK_DOWN,       "@P3 Down @Down",           input_seq(JOYCODE_Y_DOWN_SWITCH_INDEXED(2)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, JOYSTICK_LEFT,       "@P3 Left @Left",           input_seq(JOYCODE_X_LEFT_SWITCH_INDEXED(2)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, JOYSTICK_RIGHT,      "@P3 Right @Right",         input_seq(JOYCODE_X_RIGHT_SWITCH_INDEXED(2)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, BUTTON1,             "@P3 Button 1 @Button1",    input_seq(JOYCODE_BUTTON1_INDEXED(2)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, BUTTON2,             "@P3 Button 2 @Button2",    input_seq(JOYCODE_BUTTON2_INDEXED(2)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, BUTTON3,             "@P3 Button 3 @Button3",    input_seq(JOYCODE_BUTTON3_INDEXED(2)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, BUTTON4,             "@P3 Button 4 @Button4",    input_seq(JOYCODE_BUTTON4_INDEXED(2)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, START,               "@P3 Start @Start",         input_seq(JOYCODE_START_INDEXED(2)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, SELECT,              "@P3 Select @Select",       input_seq(JOYCODE_SELECT_INDEXED(2)) ) \
+		CORE_INPUT_TYPES_END()
+
+#define CORE_INPUT_TYPES_P4 \
+		CORE_INPUT_TYPES_BEGIN(p4) \
+		INPUT_PORT_DIGITAL_TYPE( 4, PLAYER4, JOYSTICK_UP,         "@P4 Up @Up",               input_seq(JOYCODE_Y_UP_SWITCH_INDEXED(3)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 4, PLAYER4, JOYSTICK_DOWN,       "@P4 Down @Down",           input_seq(JOYCODE_Y_DOWN_SWITCH_INDEXED(3)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 4, PLAYER4, JOYSTICK_LEFT,       "@P4 Left @Left",           input_seq(JOYCODE_X_LEFT_SWITCH_INDEXED(3)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 4, PLAYER4, JOYSTICK_RIGHT,      "@P4 Right @Right",         input_seq(JOYCODE_X_RIGHT_SWITCH_INDEXED(3)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 4, PLAYER4, BUTTON1,             "@P4 Button 1 @Button1",    input_seq(JOYCODE_BUTTON1_INDEXED(3)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 4, PLAYER4, BUTTON2,             "@P4 Button 2 @Button2",    input_seq(JOYCODE_BUTTON2_INDEXED(3)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 4, PLAYER4, BUTTON3,             "@P4 Button 3 @Button3",    input_seq(JOYCODE_BUTTON3_INDEXED(3)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 4, PLAYER4, BUTTON4,             "@P4 Button 4 @Button4",    input_seq(JOYCODE_BUTTON4_INDEXED(3)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 4, PLAYER4, START,               "@P4 Start @Start",         input_seq(JOYCODE_START_INDEXED(3)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 4, PLAYER4, SELECT,              "@P4 Select @Select",       input_seq(JOYCODE_SELECT_INDEXED(3)) ) \
+		CORE_INPUT_TYPES_END()
+
 #define CORE_INPUT_TYPES_START \
 		CORE_INPUT_TYPES_BEGIN(start) \
 		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   START1,              "@P1 1 Player Start @Start",    input_seq(KEYCODE_1, input_seq::or_code, JOYCODE_START_INDEXED(0)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   START2,              "@P2 2 Players Start @Start",   input_seq(KEYCODE_2, input_seq::or_code, JOYCODE_START_INDEXED(1)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   START3,              "@P3 3 Players Start @Start",   input_seq(JOYCODE_START_INDEXED(2)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   START4,              "@P4 4 Players Start @Start",   input_seq(JOYCODE_START_INDEXED(3)) ) \
 		CORE_INPUT_TYPES_END()
 
 #define CORE_INPUT_TYPES_COIN \
 		CORE_INPUT_TYPES_BEGIN(coin) \
 		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN1,               "@P1 Coin 1",             input_seq(KEYCODE_5, input_seq::or_code, JOYCODE_SELECT_INDEXED(0)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN2,               "@P2 Coin 2",             input_seq(KEYCODE_6, input_seq::or_code, JOYCODE_SELECT_INDEXED(1)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN3,               "@P3 Coin 3",             input_seq(JOYCODE_SELECT_INDEXED(2)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN4,               "@P4 Coin 4",             input_seq(JOYCODE_SELECT_INDEXED(3)) ) \
 		CORE_INPUT_TYPES_END()
 
 #define CORE_INPUT_TYPES_SERVICE \
@@ -86,7 +118,7 @@ namespace {
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_RECORD_MNG,       "Record MNG",             input_seq(KEYCODE_F12, KEYCODE_LSHIFT, input_seq::not_code, KEYCODE_LCONTROL) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_RECORD_AVI,       "Record AVI",             input_seq(KEYCODE_F12, KEYCODE_LSHIFT, KEYCODE_LCONTROL) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_TOGGLE_CHEAT,     "Toggle Cheat",           input_seq(KEYCODE_F6, KEYCODE_LSHIFT) )\
-		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_TOGGLE_CHEAT_CONFIG,"Toggle Cheat Config",  input_seq(KEYCODE_F6, input_seq::not_code, KEYCODE_LSHIFT) )\
+		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_TOGGLE_CHEAT_CONFIG,"Toggle Cheat Config",  input_seq(KEYCODE_RALT) )\
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_TOGGLE_AUTOFIRE,  "Toggle Autofire",        input_seq() )\
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_UP,               "UI Up",                  input_seq(KEYCODE_UP, input_seq::or_code, JOYCODE_Y_UP_SWITCH_INDEXED(1), input_seq::or_code, JOYCODE_Y_UP_SWITCH_INDEXED(2)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_DOWN,             "UI Down",                input_seq(KEYCODE_DOWN, input_seq::or_code, JOYCODE_Y_DOWN_SWITCH_INDEXED(1), input_seq::or_code, JOYCODE_Y_UP_SWITCH_INDEXED(2)) ) \
@@ -172,6 +204,8 @@ ATTR_COLD void emplace_core_digital_type(std::vector<input_type_entry> &typelist
 		}
 CORE_INPUT_TYPES_P1
 CORE_INPUT_TYPES_P2
+CORE_INPUT_TYPES_P3
+CORE_INPUT_TYPES_P4
 CORE_INPUT_TYPES_START
 CORE_INPUT_TYPES_COIN
 CORE_INPUT_TYPES_SERVICE
@@ -193,6 +227,8 @@ constexpr size_t core_input_types_count()
 	return 0
 			CORE_INPUT_TYPES_P1
 			CORE_INPUT_TYPES_P2
+			CORE_INPUT_TYPES_P3
+			CORE_INPUT_TYPES_P4
 			CORE_INPUT_TYPES_START
 			CORE_INPUT_TYPES_COIN
 			CORE_INPUT_TYPES_SERVICE
@@ -213,6 +249,8 @@ ATTR_COLD inline void emplace_core_types(std::vector<input_type_entry> &typelist
 
 	emplace_core_types_p1(typelist);
 	emplace_core_types_p2(typelist);
+	emplace_core_types_p3(typelist);
+	emplace_core_types_p4(typelist);
 	emplace_core_types_start(typelist);
 	emplace_core_types_coin(typelist);
 	emplace_core_types_service(typelist);

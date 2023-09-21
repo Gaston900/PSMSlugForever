@@ -104,17 +104,17 @@ BEGIN
         MENUITEM SEPARATOR
         POPUP "Show pictures"
         BEGIN
-            MENUITEM "In Game",                              ID_TOGGLE_TAB_SCREENSHOT
+            MENUITEM "In Game",                           ID_TOGGLE_TAB_SCREENSHOT
             MENUITEM "Title",                             ID_TOGGLE_TAB_TITLE
             MENUITEM "Scores",                            ID_TOGGLE_TAB_SCORES
             MENUITEM "How To",                            ID_TOGGLE_TAB_HOWTO
             MENUITEM "Select",                            ID_TOGGLE_TAB_SELECT
             MENUITEM "Versus",                            ID_TOGGLE_TAB_VERSUS
-            MENUITEM "Boss",                            ID_TOGGLE_TAB_BOSSES
-            MENUITEM "End",                                ID_TOGGLE_TAB_ENDS
-            MENUITEM "Game Over",                        ID_TOGGLE_TAB_GAMEOVER
-            MENUITEM "Logo",                             ID_TOGGLE_TAB_LOGO
-            MENUITEM "Artwork",                         ID_TOGGLE_TAB_ARTWORK
+            MENUITEM "Controls",                          ID_TOGGLE_TAB_BOSSES
+            MENUITEM "End",                               ID_TOGGLE_TAB_ENDS
+            MENUITEM "Game Over",                         ID_TOGGLE_TAB_GAMEOVER
+            MENUITEM "Logo",                              ID_TOGGLE_TAB_LOGO
+            MENUITEM "Artwork",                           ID_TOGGLE_TAB_ARTWORK
             MENUITEM "Flyer",                             ID_TOGGLE_TAB_FLYER
             MENUITEM "Cabinet",                           ID_TOGGLE_TAB_CABINET
             MENUITEM "Marquee",                           ID_TOGGLE_TAB_MARQUEE
@@ -595,8 +595,8 @@ BEGIN
     COMBOBOX        IDC_SCREEN,328,82,60,62,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP,0
 
     GROUPBOX        "",IDC_STATIC,325,106,70,28
-    CONTROL         "Auto select aspect ratio",IDC_ASPECT,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,325,106,70,10,0
-    LTEXT           "Aspect ratio",IDC_ASPECTRATIOTEXT,328,116,30,11,SS_CENTERIMAGE | NOT WS_GROUP
+    CONTROL         "Aspect ratio",IDC_ASPECT,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,325,106,70,10,0
+    LTEXT           "Ratio",IDC_ASPECTRATIOTEXT,328,116,30,11,SS_CENTERIMAGE | NOT WS_GROUP
     EDITTEXT        IDC_ASPECTRATION,360,115,14,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,0
     LTEXT           ":",IDC_ASPECTRATIOP,375,116,8,10,SS_CENTERIMAGE | NOT WS_GROUP
     EDITTEXT        IDC_ASPECTRATIOD,380,115,14,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,0
@@ -643,7 +643,7 @@ BEGIN
     CONTROL         "Don't use GL_ARB_texture_rectangle",IDC_GLSLTEXTURE,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,148,150,10,0
     CONTROL         "Enable VBO",IDC_GLSLVBO,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,160,144,10,0
     CONTROL         "Enable PBO",IDC_GLSLPBO,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,172,144,10,0
-    CONTROL         "Force synchrony between CPU and GPU (at your own risk)",IDC_GLSLSYNC,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,184,150,10,0
+    CONTROL         "Force synchrony between CPU and GPU",IDC_GLSLSYNC,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,184,150,10,0
 
 // DDRAW
     GROUPBOX        "Direct draw",IDC_STATIC,4,205,160,30

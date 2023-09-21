@@ -157,7 +157,7 @@ void menu_main::populate(float &customtop, float &custombottom)
 	item_append(menu_item_type::SEPARATOR);
 
 	item_append(_("Quit from Machine"), "", 0, (void *)QUIT_GAME);
-	item_append(string_format(_("About %s"), emulator_info::get_appname()), "", 0, (void *)ABOUT);
+//	item_append(string_format(_("About %s"), emulator_info::get_appname()), "", 0, (void *)ABOUT);
 
 //	item_append(menu_item_type::SEPARATOR);
 

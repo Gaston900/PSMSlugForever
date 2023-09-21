@@ -1416,7 +1416,7 @@ static int find_command (const game_driver *drv)
 			
 			if (i & FILE_MERGED)
 			{// 한글로된 공략 단일 파일 로드
-				strcpy(base, "dats/command.dat");
+				strcpy(base, "support/dats/command.dat");
 
 //				fprintf(fp2, "--------------- command \n");
 //				fprintf(fp2, "%s\n", base);	
@@ -1451,7 +1451,7 @@ static int find_command (const game_driver *drv)
 
 				if(cantfind)
 				{// 한글 공략 파일에 공략 데이터가 없을시 영문 공략 파일내에서 검색
-					strcpy(base_en, "dats/command_en.dat");
+					strcpy(base_en, "support/dats/command_en.dat");
 					
 //					fprintf(fp2, "--------------- command_en \n");
 //					fprintf(fp2, "%s\n", base_en);	
