@@ -2923,8 +2923,8 @@ static void SetView(int menu_id)
 	CheckMenuRadioItem(GetMenu(hMain), ID_VIEW_ICONS_LARGE, ID_ENABLE_INDENT, menu_id, MF_CHECKED);
 	ToolBar_CheckButton(hToolBar, menu_id, MF_CHECKED);
 
-	if (menu_id == ID_VIEW_DETAIL)
-		(void)ListView_SetImageList(hWndList, hLarge, LVSIL_SMALL);
+//	if (menu_id == ID_VIEW_DETAIL)
+//		(void)ListView_SetImageList(hWndList, hLarge, LVSIL_SMALL);
 
 	// Associate the image lists with the list view control.
 //	if (menu_id == ID_VIEW_ICONS_LARGE)
@@ -4282,8 +4282,8 @@ static DWORD GetShellLargeIconSize(void)
 	if (dwSize < 32)
 		dwSize = 32;
 
-	if (dwSize > 16)
-		dwSize = 16;
+	if (dwSize > 48)
+		dwSize = 48;
 
 	/* Clean up */
 	RegCloseKey(hKey);
