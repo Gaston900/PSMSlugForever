@@ -60,7 +60,7 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_CURRENT_TAB,				"0",        	OPTION_STRING, nullptr },
 	{ MUIOPTION_SHOW_TOOLBAR,				"1",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_SHOW_STATUS_BAR,			"1",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_HIDE_FOLDERS,				"korean, neogeo, neohack, cps, cpshack, pgm, pgmhack, namco, taito, konami, sega, cave, manufacturer, year, cpu, sound, bios, harddisk, samples, mechanical, lightgun, trackball, working, imperfect, nonworking, originals, clones, horizontal, vertical, raster, vector, screens, resolution, refresh, source, savestate, dumping",        OPTION_STRING, nullptr },
+	{ MUIOPTION_HIDE_FOLDERS,				"source",       OPTION_STRING, nullptr },
 	{ MUIOPTION_SHOW_FOLDER_SECTION,		"1",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_SHOW_TABS,					"1",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_HIDE_TABS,					"",         	OPTION_STRING, nullptr },
