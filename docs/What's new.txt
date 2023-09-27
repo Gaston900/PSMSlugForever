@@ -16,6 +16,12 @@ Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use O
 
 ===============================================================================================================================
 
+2023-09-27
+
+- Fixed some versions of Metal Slug 3 in longer fights.
+
+
+
 2023-09-05
 
 - Now all hack roms Metal Slug 2 became the turbo version.
