@@ -14780,8 +14780,8 @@ ROM_END
  /* Bug Unibios Game Credit*/
 ROM_START( mslug3hc28 ) //mslug3sc, mslug3cq
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_hc28.p1", 0x000000, 0x100000, CRC(64990111) SHA1(b1e8787da76dd2582d01eb8557b212507dac1f1d) )
-	ROM_LOAD16_WORD_SWAP( "256_hc28.p2", 0x100000, 0x400000, CRC(de3f5d00) SHA1(a93c730ff13b054732179324b064c84f67b8a504) )
+	ROM_LOAD16_WORD_SWAP( "256_hc28.p1", 0x000000, 0x100000, CRC(cf36e544) SHA1(5b7c26cf8c1d4aad62b3439ceaf24f764a9d681f) )
+	ROM_LOAD16_WORD_SWAP( "256_hc28.p2", 0x100000, 0x400000, CRC(8976055b) SHA1(1267701ee3fa8995be1c75bdc5aa0796199fa345) )
     MSLUG3HB_ESSENTIALPATCH_MODS_FILL
 	MSLUG3H_MVS_FILL
 	MSLUG3HD_SFIX_128K
@@ -15997,8 +15997,8 @@ ROM_END
 
 ROM_START( mslugxhc12 ) //mslugxsc
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250_hc12.p1", 0x000000, 0x100000, CRC(787cc478) SHA1(8624bf322039a99a456dbf221b33b09e52bddee6) )
-	ROM_LOAD16_WORD_SWAP( "250_hc12.p2", 0x100000, 0x400000, CRC(57807c9a) SHA1(24a5707abe43a2d9a699616794c3355de491836a) )
+	ROM_LOAD16_WORD_SWAP( "250_hc12.p1", 0x000000, 0x100000, CRC(fa4754d5) SHA1(d7dee6c94900ef7014acae81b90d307b24bc640a) )
+	ROM_LOAD16_WORD_SWAP( "250_hc12.p2", 0x100000, 0x400000, CRC(f7a739eb) SHA1(4c67fe05e12ae708dfb0de1494de2d6c5150fb3c) )
     MSLUGXSC_ESSENTIALPATCH_MODS_FILL
     MSLUGX_1V2GENERATION_MODS_FILL
 //    MSLUGXSC_FIX_FILL
@@ -23784,7 +23784,7 @@ GAME( 2021, mslug3hc24,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,  
 GAME( 2023, mslug3hc25,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Edition 2023-03-01)(Earlier)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3hc26,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Early Summer Starry Sky 2022-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3hc27,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Komorebi 2022-05-11)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug3hc28,       mslug3,   neogeo_noslot, mslug_cq, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Edition 2023-11-06)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug3hc28,       mslug3,   neogeo_noslot, mslug_cq, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Edition 2023-11-19)", MACHINE_SUPPORTS_SAVE )
 GAME( 2012, mslug3hc29,       mslug3,   neogeo_noslot, mslug_wp, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Change Weapons 2012-05-22)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslug3hc30,       mslug3,   neogeo_noslot, mslug_cb, neogeo_state,    init_mslug3hb,   ROT0, "DDJ",             "Metal Slug 3 (Change Body 2016-03-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2012, mslug3hc31,       mslug3,   neogeo_noslot, mslug3v,  neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Violence Edition 2012-03-01)", MACHINE_SUPPORTS_SAVE )
@@ -23880,7 +23880,7 @@ GAME( 2018, mslugxhc08,       mslugx,   neogeo_noslot, mslugxwc, neogeo_state,  
 GAME( 2020, mslugxhc09,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (SV Generation 2020-11-04)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslugxhc10,       mslugx,   neogeo_noslot, mslug_st, neogeo_state,    init_mslugx,     ROT0, "DDJ",             "Metal Slug X (War Chariot 2016-03-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxhc11,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "PlayerX China And Gaston90",   "Metal Slug X (Enemy Soldiers Remake Version 3.1 2023-05-19)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxhc12,       mslugx,   neogeo_noslot, mslug_cq, neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Legendary Edition 2023-11-06)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslugxhc12,       mslugx,   neogeo_noslot, mslug_cq, neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Legendary Edition 2023-11-19)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslugxhc13,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxhc14,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "I love Nimes",    "Metal Slug X (Burst Enhanced Edition 2022-11-03)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslugxhc15,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Enemy Soldiers Reset Version 2.7 2021-04-03)", MACHINE_SUPPORTS_SAVE )
