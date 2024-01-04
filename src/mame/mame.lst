@@ -23,17 +23,22 @@ mslug5b           // Neogeo
 mslugx            // SNK
 
 @source:neogeo.cpp
-ms4plusp          // Bootleg (Predecrypted)
-ms5plusp          // Bootleg (Predecrypted)
-mslug3b6p         // bootleg (Predecrypted)
-mslug4p           // Mega / Playmore (Predecrypted)
-mslug4hp          // Mega / Playmore (Predecrypted)
-mslug4ndp         // Mega / Playmore (Predecrypted)
-mslug5p           // SNK Playmore (Predecrypted)
-mslug5hp          // SNK Playmore (Predecrypted)
-mslug5np          // SNK Playmore (Predecrypted
-mslug5ndp         // SNK Playmore (Predecrypted)
-mslugxp           // SNK (Predecrypted)
+ms4plusp          // Bootleg (Prototype Emulation)
+ms5plusp1         // Bootleg (Prototype Emulation)
+ms5plusp2         // Bootleg (Prototype Emulation)
+mslug3b6p         // bootleg (Prototype Emulation)
+mslug4p           // Mega / Playmore (Prototype Emulation)
+mslug4hp          // Mega / Playmore (Prototype Emulation)
+mslug4ndp         // Mega / Playmore (Prototype Emulation)
+mslug5p           // SNK Playmore (Prototype Emulation)
+mslug5hp1         // SNK Playmore (Prototype Emulation)
+mslug5hp2         // SNK Playmore (Prototype Emulation)
+mslug5hp3         // SNK Playmore (Prototype Emulation)
+mslug5np          // SNK Playmore (Prototype Emulation
+mslug5ndp1        // SNK Playmore (Prototype Emulation)
+mslug5ndp2        // SNK Playmore (Prototype Emulation)
+mslug5ndp3        // SNK Playmore (Prototype Emulation)
+mslugxp           // SNK (Prototype Emulation)
 
 @source:neogeo.cpp
 msboot            // Bootleg
@@ -405,6 +410,7 @@ mslughc10         // Hack
 mslughc11         // Hack
 mslughc12         // Hack
 mslughc13         // Hack
+mslughc14         // Hack
 mslug2hc01        // Hack
 mslug2hc02        // Hack
 mslug2hc03        // Hack

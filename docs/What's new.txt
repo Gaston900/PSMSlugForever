@@ -7,7 +7,7 @@ It is called Project Shadow Metal Slug Forever, this project was part of the HBM
 Afterwards, it has been decided to make the project independent in 2021, providing all kinds of support, repairing all bugs 
 and glitches, correcting incompatibility with the NeoGeo system, etc.
 
-Version 0.215 [HBMAME] is being used as the base system.
+Version 0.224 [HBMAME] is being used as the base system.
 
 I am only giving support for the Windows XP, Windows 7, Windows 8, Windows 10 and Windows 11 operating systems, 
 for the 86/64 bit cpu of the compatible microprocessors.
@@ -18,14 +18,15 @@ Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use O
 
 2024-01-01
 
-- Updated Roms Metal Slug 3 (Legendary Edition 2023-12-04)
-- Updated Roms Metal Slug X (Legendary Fire Showdown 2023-12-02)
+- Updated Roms Metal Slug 3 (Legendary Edition 2023-12-26)
+- Updated Roms Metal Slug X (Legendary Edition 2023-12-04)
 
 New Games
 ---------------------------------
-- [mslughc14]               Metal Slug (Unity Item Random, Powerful Enemy Defense 2023-12-04)
-- [mslug3hc38]              Metal Slug 3 (Legendary Fire Showdown 2023-12-02)
-- [mslugxhc36]              Metal Slug X (Legendary Fire Showdown 2023-12-02)
+- [mslughc14]               Metal Slug (Unity Item Random 2023-11-29)(Earlier)
+- [mslughc15]               Metal Slug (Unity Item Random, Powerful Enemy Defense 2023-12-15)
+- [mslug3hc38]              Metal Slug 3 (Legendary Fire Showdown 2023-12-26)
+- [mslugxhc36]              Metal Slug X (Legendary Fire Showdown 2023-12-18)
 
 
 
@@ -99,9 +100,6 @@ New Games
 - Updated Roms Metal Slug 5 (Stone Tortoise Edition 2023-05-17)
 - Updated Roms Metal Slug 5 (Boss Edition 2023-05-17)
 - Updated Roms Metal Slug X (Multi-Function Version 2023-05-17)
-
-New Games
----------------------------------
 
 
 
