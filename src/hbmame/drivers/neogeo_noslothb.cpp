@@ -9220,6 +9220,32 @@ INPUT_PORTS_END
 	ROM_FILL(0xF47BE,1,0x00)\
 	ROM_FILL(0xF47BF,1,0x08)
 
+#define MSLUG5RED_THELONGESTFIGHT_MODS_FILL \
+	ROM_FILL(0xF7F0C,1,0x00)\
+	ROM_FILL(0xF7F0D,1,0x08)\
+	ROM_FILL(0xF7238,1,0x00)\
+	ROM_FILL(0xF7239,1,0x05)\
+    ROM_FILL(0xF73BE,1,0x00)\
+	ROM_FILL(0xF73BF,1,0x00)\
+    ROM_FILL(0xF73C0,1,0x00)\
+	ROM_FILL(0xF73C1,1,0x00)\
+	ROM_FILL(0xF73C2,1,0x00)\
+	ROM_FILL(0xF73C3,1,0x00)\
+	ROM_FILL(0xF73C4,1,0x00)\
+	ROM_FILL(0xF73C5,1,0x00)\
+	ROM_FILL(0xF7C12,1,0x00)\
+	ROM_FILL(0xF7C13,1,0x0A)\
+	ROM_FILL(0xF82D4,1,0x00)\
+	ROM_FILL(0xF82D5,1,0x06)\
+	ROM_FILL(0xF2B22,1,0x00)\
+	ROM_FILL(0xF2B23,1,0x03)\
+	ROM_FILL(0xF2ED0,1,0x00)\
+	ROM_FILL(0xF2ED1,1,0x05)\
+	ROM_FILL(0xF47BE,1,0x00)\
+	ROM_FILL(0xF47BF,1,0x08)\
+	ROM_FILL(0xF488A,1,0x00)\
+	ROM_FILL(0xF488B,1,0x04)
+
 #define MSLUG5MG_THELONGESTFIGHT_MODS_FILL \
 	ROM_FILL(0xF7F0C,1,0x00)\
 	ROM_FILL(0xF7F0D,1,0x08)\
@@ -15858,10 +15884,9 @@ ROM_END
 
 ROM_START( mslug5hc20 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_hc20.p1", 0x000000, 0x200000, CRC(257e6ed0) SHA1(a4c68014f19c3a0bf46a0ed7f6c928aa630dd6e0) )
-	ROM_LOAD16_WORD_SWAP( "268n.p2",     0x200000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
+	ROM_LOAD16_WORD_SWAP( "268_hc20.p1", 0x000000, 0x600000, CRC(58ffc81c) SHA1(50c8bd9db25b935e2ea32ee9aeb4932af9e831f5) )
     MSLUG5HB_ESSENTIALPATCH_MODS_FILL
-    MSLUG5HD_THELONGESTFIGHT_MODS_FILL
+    MSLUG5RED_THELONGESTFIGHT_MODS_FILL
     MSLUG5HD_MVS_FILL
     MSLUG5HD_AES_FILL
     MSLUG5D_SFIX_128K
@@ -24002,7 +24027,7 @@ GAME( 2018, mslug5hc16,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,  
 GAME( 2017, mslug5hc17,       mslug5,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Multi-Function Version 2017-05-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug5hc18,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "KofKill, Wang Hua, Czk", "Metal Slug 5 (Unity Time! 2021-04-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug5hc19,       mslug5,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug5hb,   ROT0, "FBN4DROID",       "Metal Slug 5 (Crazy Fire Edition 2020-09-02)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug5hc20,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Red Tank Expansion 2023-03-14)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug5hc20,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Red Tank Expansion 2023-12-30)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc21,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Early Summer Starry Sky 2022-08-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc22,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Komorebi 2022-08-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug5hc23,       mslug5,   neogeo_noslot, mslug5zh, neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (War Chariot 2015-05-20)", MACHINE_SUPPORTS_SAVE )
