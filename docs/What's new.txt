@@ -16,6 +16,19 @@ Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use O
 
 ===============================================================================================================================
 
+2024-07-XX
+
+- Updated Roms Metal Slug (Origin 2024-01-27)
+- Updated Roms Metal Slug 3 (Legendary Edition 2024-01-31)
+- Updated Roms Metal Slug 5 (Red Tank Expansion 2023-12-29)
+- Updated Roms Metal Slug X (Legendary Edition 2024-01-31)
+
+New Games
+---------------------------------
+
+
+
+
 2024-01-01
 
 - The old set Metal Slug Prototype Emulation was implemented.
