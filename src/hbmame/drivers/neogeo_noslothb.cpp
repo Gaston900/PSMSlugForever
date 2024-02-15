@@ -123,8 +123,14 @@
 	ROM_LOAD( "sfix.sfix",  0, 0x20000, CRC(c2ea0cfd) SHA1(fd4a618cdcdbf849374f0a50dd8efe9dbab706c3) ) \
 	ROM_REGION( size, "fixed", ROMREGION_ERASE00 )
 
+#define NEO_SFIX_MT_64K \
+	NEO_SFIX_MT( 0x10000 )
+
 #define NEO_SFIX_MT_128K \
 	NEO_SFIX_MT( 0x20000 )
+
+#define NEO_SFIX_MT_256K \
+	NEO_SFIX_MT( 0x40000 )
 
 #define NEO_SFIX_MT_512K \
 	NEO_SFIX_MT( 0x80000 )
