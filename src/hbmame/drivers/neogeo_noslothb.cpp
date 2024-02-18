@@ -5032,6 +5032,21 @@ INPUT_PORTS_END
 	ROM_FILL(0xD302,1,0x4E)\
 	ROM_FILL(0xD303,1,0x71)
 
+#define MSLUG3EBD_ESSENTIALPATCH_MODS_FILL \
+    ROM_FILL(0x5B8D34,1,0xA8)\
+	ROM_FILL(0x5B8D35,1,0x04)\
+	ROM_FILL(0x5B8D54,1,0x08)\
+	ROM_FILL(0x5B8D55,1,0x04)\
+    ROM_FILL(0x96922,1,0x5E)\
+    ROM_FILL(0x8E4DE,1,0x4E)\
+	ROM_FILL(0x8E4DF,1,0x71)\
+	ROM_FILL(0x8E4E0,1,0x4E)\
+	ROM_FILL(0x8E4E1,1,0x71)\
+    ROM_FILL(0xD300,1,0x4E)\
+	ROM_FILL(0xD301,1,0x71)\
+	ROM_FILL(0xD302,1,0x4E)\
+	ROM_FILL(0xD303,1,0x71)
+
 #define MSLUG3DDHB_ESSENTIALPATCH_MODS_FILL \
     ROM_FILL(0x5B8D34,1,0xA8)\
 	ROM_FILL(0x5B8D35,1,0x04)\
@@ -15016,7 +15031,7 @@ ROM_END
 ROM_START( mslug3hc06 ) //mslug3eb
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc06.p1", 0x000000, 0x900000, CRC(e15e9f6e) SHA1(cd0068ecbace9c375378eae7a9459984d1e1a148) )
-    MSLUG3DD_ESSENTIALPATCH_MODS_FILL
+    MSLUG3EBD_ESSENTIALPATCH_MODS_FILL
     MSLUG3DD_THELONGESTFIGHT_MODS_FILL
     MSLUG3H_MVS_FILL
     MSLUG3H_AES_FILL
@@ -24002,7 +24017,7 @@ GAME( 2003, mslug5hneosd,     mslug5,   neogeo_noslot, neogeohb, neogeo_state,  
 GAME( 1999, mslugxneosd,      mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "SNK",             "Metal Slug X (Neo SD)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR       NAME         PARENT       MACHINE     INPUT                       INIT         MONITOR COMPANY            FULLNAME FLAGS */
-// Metal Slug (Hack)
+// Metal Slug
 GAME( 2016, mslughc01,        mslug,    neogeo_noslot, mslug_wp, neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug (Change Weapon 2016-03-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslughc02,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "FBN4DROID",       "Metal Slug (Random Items Explosives 2021-06-08)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslughc03,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Origin 2024-01-27)", MACHINE_SUPPORTS_SAVE )
@@ -24024,7 +24039,7 @@ GAME( 2014, mslug2hc01,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,  
 GAME( 2019, mslug2hc02,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 2 (1V2 Generation 2019-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2hc03,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "KofKill, Wang Hua, Czk", "Metal Slug 2 (Unity Time! 2021-01-22)", MACHINE_SUPPORTS_SAVE )
 GAME( 2008, mslug2hc04,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (Hybrid bullets Version 2023-02-15)", MACHINE_SUPPORTS_SAVE ) // This version 2023 has been fix
-GAME( 2021, mslug2hc05,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "FBN4DROID",       "Metal Slug 2 (Extraction Green Turbo 2021-09-16)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug2hc05,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "Phengzheng",      "Metal Slug 2 (Extraction Green Turbo 2021-09-16)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2hc06,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 2 (Friendly Fire Edition 2021-04-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug2hc07,       mslug2,   neogeo_noslot, mslug2wp, neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug 2 (Change Weapon And Mummy 2018-08-25)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2hc08,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "I love Nimes",    "Metal Slug 2 (Burst Enhanced Edition 2022-11-03)", MACHINE_SUPPORTS_SAVE )
@@ -24036,7 +24051,7 @@ GAME( 2018, mslug2hc13,       mslug2,   neogeo_noslot, mslug_st, neogeo_state,  
 GAME( 2022, mslug2hc14,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 2 (Early Summer Starry Sky 2022-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslug2hc15,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug 2 (Stage Select 2016-10-19)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug2hc16,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug 2 (Jump In Mid Air 2015-08-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2006, mslug2hc17,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (Translator French)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslug2hc17,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "Shyma.X",         "Metal Slug 2 (Translator French)", MACHINE_SUPPORTS_SAVE )
 GAME( 2011, mslug2hc18,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (A Full Screen Attack 2011-01-16)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug2hc19,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
 
@@ -24047,7 +24062,7 @@ GAME( 2022, mslug3hc02,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,  
 GAME( 2019, mslug3hc03,       mslug3,   neogeo_noslot, mslug3g,  neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Multi-Function Version 2019-03-05)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug3hc04,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (SE Special Edition 2019-07-27)(Earlier)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3hc05,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (SE Special Edition 2022-03-31)", MACHINE_SUPPORTS_SAVE ) 
-GAME( 2014, mslug3hc06,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3de,   ROT0, "hack",            "Metal Slug 3 (Green Edition 2014-10-15)", MACHINE_SUPPORTS_SAVE )
+GAME( 2014, mslug3hc06,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3de,   ROT0, "PlayerX China",   "Metal Slug 3 (Green Edition 2014-10-15)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug3hc07,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Shop Version 2017-12-16)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug3hc08,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "DDJ",             "Metal Slug 3 (Jump In Mid Air 2015-08-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug3hc09,       mslug3,   neogeo_noslot, mslug_vh, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Summon Mount Edition 2017-04-04)" , MACHINE_SUPPORTS_SAVE )
@@ -24070,17 +24085,17 @@ GAME( 2019, mslug3hc25,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,  
 GAME( 2022, mslug3hc26,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Early Summer Starry Sky 2022-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3hc27,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Komorebi 2022-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3hc28,       mslug3,   neogeo_noslot, mslug_vh, neogeo_state,    init_mslug3hb,   ROT0, "DDJ",             "Metal Slug 3 (War Chariot 2023-08-18)", MACHINE_SUPPORTS_SAVE ) //Fix Gaston90
-GAME( 2012, mslug3hc29,       mslug3,   neogeo_noslot, mslug_wp, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Change Weapons 2012-05-22)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2012, mslug3hc29,       mslug3,   neogeo_noslot, mslug_wp, neogeo_state,    init_mslug3hb,   ROT0, "DDJ",             "Metal Slug 3 (Change Weapons 2012-05-22)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslug3hc30,       mslug3,   neogeo_noslot, mslug_cb, neogeo_state,    init_mslug3hb,   ROT0, "DDJ",             "Metal Slug 3 (Change Body 2016-03-10)", MACHINE_SUPPORTS_SAVE )
-GAME( 2012, mslug3hc31,       mslug3,   neogeo_noslot, mslug3v,  neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Violence Edition 2012-03-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2004, mslug3hc32,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (French Translator)", MACHINE_SUPPORTS_SAVE )
+GAME( 2012, mslug3hc31,       mslug3,   neogeo_noslot, mslug3v,  neogeo_state,    init_mslug3hb,   ROT0, "LB70 (Eezezy)",   "Metal Slug 3 (Violence Edition 2012-03-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 2004, mslug3hc32,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "Shyma.X",         "Metal Slug 3 (French Translator)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug3hc33,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Easy Mode 2018-11-16)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3hc34,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3hc35,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (The Longest Fight 2023-03-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3hc36,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Edition 2023-03-01)(Earlier)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3hc37,       mslug3,   neogeo_noslot, mslug_cq, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Edition 2024-01-31)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3hc38,       mslug3,   neogeo_noslot, mslug_cq, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Fire Showdown 2024-01-31)", MACHINE_SUPPORTS_SAVE )
-GAME( 2012, mslug3hc39,       mslug3,   neogeo_noslot, mslug_ce, neogeo_state,    init_mslug3de,   ROT0, "hack",            "Metal Slug 3 (Crazy Fire Edition 2012-01-16)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2012, mslug3hc39,       mslug3,   neogeo_noslot, mslug_ce, neogeo_state,    init_mslug3de,   ROT0, "LB70 (Eezezy)",   "Metal Slug 3 (Crazy Fire Edition 2012-01-16)" , MACHINE_SUPPORTS_SAVE )
 
 // Metal Slug 6" is a hack/bootleg of Metal Slug 3
 GAME( 2019, mslug3b6hc01,     mslug3,   neogeo_noslot, mslug3b6, neogeo_state,    init_mslug3b6hb, ROT0, "hack",            "Metal Slug 6 (Enemies Resetting Version 2019-01-02)(Earlier)", MACHINE_SUPPORTS_SAVE )
@@ -24116,11 +24131,11 @@ GAME( 2012, mslug4hc16,       mslug4,   neogeo_noslot, mslug_cb, neogeo_state,  
 GAME( 2021, mslug4hc17,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Children's Version 2021-06-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug4hc18,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "DDJ",             "Metal Slug 4 (Jump In Mid Air 2015-08-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2013, mslug4hc19,       mslug4,   neogeo_noslot, mslug_vh, neogeo_state,    init_mslug4hb,   ROT0, "DDJ",             "Metal Slug 4 (War Chariot 2013-02-21)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, mslug4hc20,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Translator French)", MACHINE_SUPPORTS_SAVE )
-GAME( 2007, mslug4hc21,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Translator Italian)", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, mslug4hc20,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "Shyma.X",         "Metal Slug 4 (Translator French)", MACHINE_SUPPORTS_SAVE )
+GAME( 2007, mslug4hc21,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "Evoboy",          "Metal Slug 4 (Translator Italian)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug4hc22,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Easy Mode 2018-11-16)", MACHINE_SUPPORTS_SAVE ) // Fix 2023
 GAME( 2023, mslug4hc23,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
-GAME( 2012, mslug4hc24,       mslug4,   neogeo_noslot, mslug_ce, neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Crazy Fire Edition 2012-01-16)", MACHINE_SUPPORTS_SAVE )
+GAME( 2012, mslug4hc24,       mslug4,   neogeo_noslot, mslug_ce, neogeo_state,    init_mslug4hb,   ROT0, "LB70 (Eezezy)",   "Metal Slug 4 (Crazy Fire Edition 2012-01-16)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR       NAME         PARENT       MACHINE      INPUT                       INIT        MONITOR COMPANY            FULLNAME FLAGS */
 // Metal Slug 5
@@ -24147,7 +24162,7 @@ GAME( 2023, mslug5hc20,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,  
 GAME( 2022, mslug5hc21,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Early Summer Starry Sky 2022-08-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc22,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Komorebi 2022-08-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug5hc23,       mslug5,   neogeo_noslot, mslug5zh, neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (War Chariot 2015-05-20)", MACHINE_SUPPORTS_SAVE )
-GAME( 2006, mslug5hc24,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Translator French)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslug5hc24,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "Shyma.X",         "Metal Slug 5 (Translator French)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug5hc25,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Easy Mode 2018-11-16)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug5hc26,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 Plus (Hide Oh Big Mode 2023-01-27)", MACHINE_SUPPORTS_SAVE )
 
@@ -24179,9 +24194,9 @@ GAME( 2020, mslugxhc23,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,  
 GAME( 2022, mslugxhc24,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Early Summer Starry Sky 2022-08-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxhc25,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Plus v0.3 2020-07-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslugxhc26,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "DDJ",             "Metal Slug X (Jump In Mid Air 2015-08-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2012, mslugxhc27,       mslugx,   neogeo_noslot, mslugxv,  neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Violence Version 2012-01-08)", MACHINE_SUPPORTS_SAVE )
-GAME( 2006, mslugxhc28,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Translator French)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, mslugxhc29,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Translator Italian - Beta)", MACHINE_SUPPORTS_SAVE )
+GAME( 2012, mslugxhc27,       mslugx,   neogeo_noslot, mslugxv,  neogeo_state,    init_mslugx,     ROT0, "lb70 (Eezezy)",   "Metal Slug X (Violence Version 2012-01-08)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslugxhc28,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "Shyma.X",         "Metal Slug X (Translator French)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, mslugxhc29,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "Clomax & Ombra",  "Metal Slug X (Translator Italian - Beta)", MACHINE_SUPPORTS_SAVE )
 //mslugxhc30 (Disable Game)
 GAME( 2018, mslugxhc31,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxhc32,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
