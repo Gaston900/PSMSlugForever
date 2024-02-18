@@ -3133,6 +3133,18 @@ GAME( 1990, neogeo,     0,        mvs,      neogeo_6slot,   neogeo_state, init_n
 	ROM_FILL(0x331E12,1,0x98)\
 	ROM_FILL(0x331E13,1,0x74)
 
+#define MSLUG3_SLIPPERYFLOORS_MVS_FILL \ "By SOLDIER REBEL"
+    ROM_FILL(0x318D34,1,0xA8)\
+	ROM_FILL(0x318D35,1,0x04)\
+	ROM_FILL(0x318D54,1,0x08)\
+	ROM_FILL(0x318D55,1,0x04)
+
+#define MSLUG3DD_SLIPPERYFLOORS_MVS_FILL \ "By SOLDIER REBEL"
+    ROM_FILL(0x5B8D34,1,0xA8)\
+	ROM_FILL(0x5B8D35,1,0x04)\
+	ROM_FILL(0x5B8D54,1,0x08)\
+	ROM_FILL(0x5B8D55,1,0x04)\
+
 #define MSLUG3_SHOOTINGTHUNDERCLOUDWEAPONUNDERWATER_MVS_FILL \
 	ROM_FILL(0x333661,1,0x02)\
 	ROM_FILL(0x333662,1,0x84)\
@@ -5021,6 +5033,10 @@ INPUT_PORTS_END
 	ROM_FILL(0xD303,1,0x71)
 
 #define MSLUG3DDHB_ESSENTIALPATCH_MODS_FILL \
+    ROM_FILL(0x5B8D34,1,0xA8)\
+	ROM_FILL(0x5B8D35,1,0x04)\
+	ROM_FILL(0x5B8D54,1,0x08)\
+	ROM_FILL(0x5B8D55,1,0x04)\
     ROM_FILL(0x433A6,1,0x52)\
     ROM_FILL(0x21C47,1,0x3C)\
 	ROM_FILL(0x21C51,1,0x3C)\
@@ -5074,6 +5090,10 @@ INPUT_PORTS_END
 	ROM_FILL(0x331E11,1,0x03)\
 	ROM_FILL(0x331E12,1,0x98)\
 	ROM_FILL(0x331E13,1,0x74)\
+    ROM_FILL(0x318D34,1,0xA8)\
+	ROM_FILL(0x318D35,1,0x04)\
+	ROM_FILL(0x318D54,1,0x08)\
+	ROM_FILL(0x318D55,1,0x04)\
     ROM_FILL(0x433A6,1,0x52)\
     ROM_FILL(0x21C47,1,0x3C)\
 	ROM_FILL(0x21C51,1,0x3C)\
@@ -5127,6 +5147,10 @@ INPUT_PORTS_END
 	ROM_FILL(0x331E11,1,0x03)\
 	ROM_FILL(0x331E12,1,0x98)\
 	ROM_FILL(0x331E13,1,0x74)\
+    ROM_FILL(0x318D34,1,0xA8)\
+	ROM_FILL(0x318D35,1,0x04)\
+	ROM_FILL(0x318D54,1,0x08)\
+	ROM_FILL(0x318D55,1,0x04)\
     ROM_FILL(0x433A6,1,0x52)\
     ROM_FILL(0x21C47,1,0x3C)\
 	ROM_FILL(0x21C51,1,0x3C)\
@@ -5173,6 +5197,10 @@ INPUT_PORTS_END
 	ROM_FILL(0x331E11,1,0x03)\
 	ROM_FILL(0x331E12,1,0x98)\
 	ROM_FILL(0x331E13,1,0x74)\
+    ROM_FILL(0x318D34,1,0xA8)\
+	ROM_FILL(0x318D35,1,0x04)\
+	ROM_FILL(0x318D54,1,0x08)\
+	ROM_FILL(0x318D55,1,0x04)\
     ROM_FILL(0x433A6,1,0x52)\
     ROM_FILL(0x21C47,1,0x3C)\
 	ROM_FILL(0x21C51,1,0x3C)\
@@ -5225,6 +5253,10 @@ INPUT_PORTS_END
 	ROM_FILL(0x331E11,1,0x03)\
 	ROM_FILL(0x331E12,1,0x98)\
 	ROM_FILL(0x331E13,1,0x74)\
+    ROM_FILL(0x318D34,1,0xA8)\
+	ROM_FILL(0x318D35,1,0x04)\
+	ROM_FILL(0x318D54,1,0x08)\
+	ROM_FILL(0x318D55,1,0x04)\
     ROM_FILL(0x433A6,1,0x52)\
     ROM_FILL(0x22829,1,0x03)\
     ROM_FILL(0x22839,1,0x04)\
@@ -24126,7 +24158,7 @@ GAME( 2015, mslugxhc02,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,  
 GAME( 2023, mslugxhc03,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "PlayerX China",   "Metal Slug X (Enemy Soldiers Remake Version 3.1 2023-05-19)", MACHINE_SUPPORTS_SAVE ) //Fix Gaston90
 GAME( 2021, mslugxhc04,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "KofKill, Wang Hua, Czk", "Metal Slug X (Unity Time! 2021-01-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2013, mslugxhc05,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Green Edition 2013-02-27)", MACHINE_SUPPORTS_SAVE )
-GAME( 2014, mslugxhc06,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Green Edition 2014-10-15)", MACHINE_SUPPORTS_SAVE )
+GAME( 2014, mslugxhc06,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "PlayerX China",   "Metal Slug X (Green Edition 2014-10-15)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxhc07,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "PlayerX China",   "Metal Slug X (Enemy Heavy Plate 2023-05-19)", MACHINE_SUPPORTS_SAVE ) //Fix Gaston90
 GAME( 2018, mslugxhc08,       mslugx,   neogeo_noslot, mslugxwc, neogeo_state,    init_mslugx,     ROT0, "DDJ",             "Metal Slug X (Change Weapon And Mummy 2018-09-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslugxhc09,       mslugx,   neogeo_noslot, mslug_st, neogeo_state,    init_mslugx,     ROT0, "DDJ",             "Metal Slug X (War Chariot 2016-03-13)", MACHINE_SUPPORTS_SAVE )
