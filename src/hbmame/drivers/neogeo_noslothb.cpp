@@ -17066,7 +17066,7 @@ ROM_END
 
 ROM_START( mslugctma02 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_cma02.p1", 0x100000, 0x100000, CRC(a05e3367) SHA1(66433ad01427161d1589932619106dd3ddde5783) )
+	ROM_LOAD16_WORD_SWAP( "256_cma02.p1", 0x100000, 0x100000, CRC(448217d7) SHA1(19d6dbabf9188ff6c8a122b7d4b91660a5e24b61) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
     MSLUG_ESSENTIALPATCH_MODS_FILL
     MSLUG_1V2GENERATION_MODS_FILL
@@ -17080,7 +17080,7 @@ ROM_END
 
 ROM_START( mslugctma03 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_cma03.p1", 0x100000, 0x100000, CRC(96873513) SHA1(af55ef852525095058f38afd9498cb055d82ea74) )
+	ROM_LOAD16_WORD_SWAP( "256_cma03.p1", 0x100000, 0x100000, CRC(bc78bb2f) SHA1(c49fddd3fcb10c653890f85913f363890e6f6f2b) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
     MSLUG_ESSENTIALPATCH_MODS_FILL
     MSLUG_1V2GENERATION_MODS_FILL
@@ -17094,7 +17094,7 @@ ROM_END
 
 ROM_START( mslugctma04 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_cma04.p1", 0x100000, 0x100000, CRC(d4118fc6) SHA1(69923ef06af6145b116eb8d90b805aad884a98e7) )
+	ROM_LOAD16_WORD_SWAP( "256_cma04.p1", 0x100000, 0x100000, CRC(a05e3367) SHA1(66433ad01427161d1589932619106dd3ddde5783) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
     MSLUG_ESSENTIALPATCH_MODS_FILL
     MSLUG_1V2GENERATION_MODS_FILL
@@ -17108,7 +17108,7 @@ ROM_END
 
 ROM_START( mslugctma05 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_cma05.p1", 0x100000, 0x100000, CRC(f6a4427e) SHA1(ee70655657c8b13394cd9d756937c1e172d37841) )
+	ROM_LOAD16_WORD_SWAP( "256_cma05.p1", 0x100000, 0x100000, CRC(96873513) SHA1(af55ef852525095058f38afd9498cb055d82ea74) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
     MSLUG_ESSENTIALPATCH_MODS_FILL
     MSLUG_1V2GENERATION_MODS_FILL
@@ -17122,7 +17122,35 @@ ROM_END
 
 ROM_START( mslugctma06 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_cma06.p1", 0x100000, 0x100000, CRC(0bda9327) SHA1(66ece8f95ee833173d937de5389a8883b9f45308) )
+	ROM_LOAD16_WORD_SWAP( "256_cma06.p1", 0x100000, 0x100000, CRC(d4118fc6) SHA1(69923ef06af6145b116eb8d90b805aad884a98e7) )
+	ROM_CONTINUE( 0x000000, 0x100000 )
+    MSLUG_ESSENTIALPATCH_MODS_FILL
+    MSLUG_1V2GENERATION_MODS_FILL
+    MSLUG_MVS_FILL
+    MSLUG_AES_FILL
+	MSLUG_SFIX_128K
+	MSLUG_AUDIO_128K
+    MSLUG_YMSND
+    MSLUG_SPRITES
+ROM_END
+
+ROM_START( mslugctma07 )
+	ROM_REGION( 0x200000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256_cma07.p1", 0x100000, 0x100000, CRC(f6a4427e) SHA1(ee70655657c8b13394cd9d756937c1e172d37841) )
+	ROM_CONTINUE( 0x000000, 0x100000 )
+    MSLUG_ESSENTIALPATCH_MODS_FILL
+    MSLUG_1V2GENERATION_MODS_FILL
+    MSLUG_MVS_FILL
+    MSLUG_AES_FILL
+	MSLUG_SFIX_128K
+	MSLUG_AUDIO_128K
+    MSLUG_YMSND
+    MSLUG_SPRITES
+ROM_END
+
+ROM_START( mslugctma08 )
+	ROM_REGION( 0x200000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256_cma08.p1", 0x100000, 0x100000, CRC(0bda9327) SHA1(66ece8f95ee833173d937de5389a8883b9f45308) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
     MSLUG_ESSENTIALPATCH_MODS_FILL
     MSLUG_1V2GENERATION_MODS_FILL
@@ -22018,6 +22046,18 @@ ROM_START( mslugla01 )
     MSLUG_SPRITES
 ROM_END
 
+ROM_START( msluglb01 )
+	ROM_REGION( 0x200000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "201_lb01.p1", 0x100000, 0x100000, CRC(772c6116) SHA1(d9a2b60ae22303e92074bcc9aec41adb3523336e) )
+	ROM_CONTINUE( 0x000000, 0x100000 )
+    MSLUG_CUSTOMPATCH_MODS_FILL
+    MSLUG_AES_FILL
+	MSLUG_SFIX_128K
+	MSLUG_AUDIO_128K
+    MSLUG_YMSND
+    MSLUG_SPRITES
+ROM_END
+
 ROM_START( mslug2la01 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_la01.p1", 0x000000, 0x100000, CRC(2efbb752) SHA1(009928a09a1ab39a45e37ddc6ba5f20f5a073774) )
@@ -23615,6 +23655,18 @@ ROM_START( mslugrma01 )
     MSLUG_SPRITES
 ROM_END
 
+ROM_START( mslugrmb01 )
+	ROM_REGION( 0x200000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "201_rmb01.p1", 0x100000, 0x100000, CRC(5d6bc7da) SHA1(b7981b4175f5cdff4b23eaf57c1d2ecd3c14211a) )
+	ROM_CONTINUE( 0x000000, 0x100000 )
+    MSLUG_CUSTOMPATCH_MODS_FILL
+    MSLUG_AES_FILL
+	MSLUG_SFIX_128K
+	MSLUG_AUDIO_128K
+    MSLUG_YMSND
+    MSLUG_SPRITES
+ROM_END
+
 ROM_START( mslug2rma01 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_rma01.p1", 0x000000, 0x100000, CRC(0bf338c7) SHA1(cf686bf4ac52cc67d60e95e472b7ffe2c7abf858) )
@@ -24352,11 +24404,13 @@ GAME( 2010, neopang,          mslug3x,  neogeo_noslot, neogeohb, neogeo_state,  
 /*    YEAR   NAME             PARENT       MACHINE       INPUT                       INIT        MONITOR COMPANY             FULLNAME FLAGS */
 // Metal Slug (Version Custom)
 GAME( 2024, mslugctma01,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin 1v2 Generation 2023-06-26)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslugctma02,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslugctma03,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslugctma04,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Random Items Explosives 2021-06-08)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslugctma05,        mslug,    neogeo_noslot, mslug_st, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin War Chariot 2016-03-26)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslugctma06,        mslug,    neogeo_noslot, mslug_st, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Unity Item Random, Powerful Enemy Defense 2023-12-15)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugctma02,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Burst Enhanced Edition 2021-09-19)", MACHINE_SUPPORTS_SAVE )
+//GAME( 2024, mslugctma03,        mslug,    neogeo_noslot, mslug_wp, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Change Weapon 2016-03-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugctma04,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugctma05,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugctma06,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Random Items Explosives 2021-06-08)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugctma07,        mslug,    neogeo_noslot, mslug_st, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin War Chariot 2016-03-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugctma08,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Unity Item Random, Powerful Enemy Defense 2023-12-15)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug2ctma01,       mslug2,   neogeo_noslot, mslug2sc, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (Enemies Resetting Survival Version 2018-07-31)", MACHINE_SUPPORTS_SAVE ) // To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
 GAME( 2020, mslug2ctma02,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (Enemies Resetting Multi-Function Version 2017-05-09)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug2ctma03,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (Enemies Resetting 1V2 Generation 2019-05-11)", MACHINE_SUPPORTS_SAVE )
@@ -24707,6 +24761,7 @@ GAME( 2023, mslugxat10,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,  
 /*    YEAR   NAME             PARENT       MACHINE       INPUT                       INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Remix Edition)
 GAME( 2023, mslugla01,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Multi-Function Remix Edition 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, msluglb01,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Remix Edition 2024-02-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug2la01,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (XR Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug2la02,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (XR Fat Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug2la03,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (XR Multi-Function Remix Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
@@ -24829,6 +24884,7 @@ GAME( 2023, mslugxlh03,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,  
 /*    YEAR   NAME             PARENT       MACHINE       INPUT                       INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Remix Extreme Edition)
 GAME( 2023, mslugrma01,       mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Multi-Function Heavy Machine Gun Extreme Edition 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugrmb01,       mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Heavy Machine Gun Extreme Edition 2024-02-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug2rma01,      mslug2,   neogeo_noslot, mslug2ha, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (XR Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug2rma02,      mslug2,   neogeo_noslot, mslug2hb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (XR Survival Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
 GAME( 2023, mslug2rmb01,      mslug2,   neogeo_noslot, mslug2ha, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (Enemies Resetting XR Heavy Machine Gun Extreme Edition 2023-03-21)", MACHINE_SUPPORTS_SAVE )

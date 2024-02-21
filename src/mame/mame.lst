@@ -102,10 +102,12 @@ neopang           //HomeBrew
 @source:neogeo.cpp
 mslugctma01       // Hack
 mslugctma02       // Hack
-mslugctma03       // Hack
+//mslugctma03       // Hack
 mslugctma04       // Hack
 mslugctma05       // Hack
 mslugctma06       // Hack
+mslugctma07       // Hack
+mslugctma08       // Hack
 mslug2ctma01      // Hack
 mslug2ctma02      // Hack
 mslug2ctma03      // Hack
@@ -624,6 +626,7 @@ mslugxat10        // Hack
 
 @source:neogeo.cpp
 mslugla01         // Hack
+msluglb01         // Hack
 mslug2la01        // Hack
 mslug2la02        // Hack
 mslug2la02        // Hack
@@ -746,6 +749,7 @@ mslugxlh03        // Hack
 
 @source:neogeo.cpp
 mslugrma01        // Hack
+mslugrmb01        // Hack
 mslug2rma01       // Hack
 mslug2rma02       // Hack
 mslug2rmb01       // Hack
