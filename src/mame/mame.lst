@@ -37,7 +37,6 @@ mslug5hp3         // SNK Playmore (Predecrypted)
 mslug5np          // SNK Playmore (Predecrypted
 mslug5ndp1        // SNK Playmore (Predecrypted)
 mslug5ndp2        // SNK Playmore (Predecrypted)
-mslug5ndp3        // SNK Playmore (Predecrypted)
 mslugxp           // SNK (Predecrypted)
 
 @source:neogeo.cpp

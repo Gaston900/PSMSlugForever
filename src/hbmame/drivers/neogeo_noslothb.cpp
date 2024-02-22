@@ -13884,19 +13884,7 @@ ROM_END
 
 ROM_START( mslug5ndp2 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
-    ROM_LOAD16_WORD_SWAP( "268ndp2.p1", 0x000000, 0x600000, CRC(ae341364) SHA1(171b4ca3c711299bfc5cc5bb3ee384d02d455944) )
-    MSLUG5HD_ESSENTIALPATCH_MODS_FILL
-    MSLUG5HD_MVS_FILL
-    MSLUG5HD_AES_FILL
-	MSLUG5_SFIX_MT_128K
-    MSLUG5ND_AUDIO_128K
-	MSLUG5_YMSND
-	MSLUG5HD_SPRITES
-ROM_END
-
-ROM_START( mslug5ndp3 )
-	ROM_REGION( 0x600000, "maincpu", 0 )
-    ROM_LOAD16_WORD_SWAP( "268ndp3.p1", 0x000000, 0x600000, CRC(b9136fce) SHA1(669c0b189cf22a82fbbfb77471612c726e7c674b) )
+    ROM_LOAD16_WORD_SWAP( "268ndp2.p1", 0x000000, 0x600000, CRC(b9136fce) SHA1(669c0b189cf22a82fbbfb77471612c726e7c674b) )
     MSLUG5HD_ESSENTIALPATCH_MODS_FILL
     MSLUG5HD_MVS_FILL
     MSLUG5HD_AES_FILL
@@ -24154,8 +24142,7 @@ GAME( 2003, mslug5hp2,        mslug5,   neogeo_noslot, neogeohb, neogeo_state,  
 GAME( 2003, mslug5hp3,        mslug5,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug5b1,   ROT0, "SNK Playmore",    "Metal Slug 5 (NGH-2680 / Set 3)(Predecrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5np,         mslug5,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug5b1,   ROT0, "SNK Playmore",    "Metal Slug 5 (Not-Encrypted)(Predecrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5ndp1,       mslug5,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug5hb,   ROT0, "SNK Playmore",    "Metal Slug 5 (Fully Decrypted / Set 1)(Predecrypted)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, mslug5ndp2,       mslug5,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug5hb,   ROT0, "SNK Playmore",    "Metal Slug 5 (Fully Decrypted / Set 2)(Predecrypted)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, mslug5ndp3,       mslug5,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug5b1,   ROT0, "SNK Playmore",    "Metal Slug 5 (Fully Decrypted / Set 3)(Predecrypted)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, mslug5ndp2,       mslug5,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug5b1,   ROT0, "SNK Playmore",    "Metal Slug 5 (Fully Decrypted / Set 2)(Predecrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 1999, mslugxp,          mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "SNK",             "Metal Slug X (Predecrypted)", MACHINE_SUPPORTS_SAVE ) 
 
 /*    YEAR       NAME        PARENT       MACHINE       INPUT                       INIT        MONITOR COMPANY           FULLNAME FLAGS */
