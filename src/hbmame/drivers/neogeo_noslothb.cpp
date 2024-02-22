@@ -14781,6 +14781,20 @@ ROM_START( mslughc15 ) //mslugfc2
     MSLUG_SPRITES
 ROM_END
 
+ROM_START( mslughc16 )
+	ROM_REGION( 0x200000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "201_hc16.p1", 0x100000, 0x100000, CRC(f0561050) SHA1(b9d5973cd49b935922d29612f5e8f7681c5a1f29) )
+	ROM_CONTINUE( 0x000000, 0x100000 )
+    MSLUG_ESSENTIALPATCH_MODS_FILL
+    MSLUG_1V2GENERATION_MODS_FILL
+    MSLUG_MVS_FILL
+    MSLUG_AES_FILL
+	MSLUG_SFIX_128K
+	MSLUG_AUDIO_128K
+    MSLUG_YMSND
+    MSLUG_SPRITES
+ROM_END
+
 /*************
  Metal Slug 2
 ***************/
@@ -17155,6 +17169,20 @@ ROM_START( mslugctma08 )
     MSLUG_ESSENTIALPATCH_MODS_FILL
     MSLUG_1V2GENERATION_MODS_FILL
     MSLUG_ENABLE_HP_DAMAGE_FIX_FILL
+    MSLUG_MVS_FILL
+    MSLUG_AES_FILL
+	MSLUG_SFIX_128K
+	MSLUG_AUDIO_128K
+    MSLUG_YMSND
+    MSLUG_SPRITES
+ROM_END
+
+ROM_START( mslugctma09 )
+	ROM_REGION( 0x200000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256_cma09.p1", 0x100000, 0x100000, CRC(2dcf1111) SHA1(11b83ef00199dc22c2bb43639f63a03e2aec472a) )
+	ROM_CONTINUE( 0x000000, 0x100000 )
+    MSLUG_ESSENTIALPATCH_MODS_FILL
+    MSLUG_1V2GENERATION_MODS_FILL
     MSLUG_MVS_FILL
     MSLUG_AES_FILL
 	MSLUG_SFIX_128K
@@ -24206,6 +24234,7 @@ GAME( 2023, mslughc12,        mslug,    neogeo_noslot, neogeohb, neogeo_state,  
 GAME( 2023, mslughc13,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Item Random 2023-11-29)(Earlier)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslughc14,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Item Random 2023-12-15)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslughc15,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Item Random, Powerful Enemy Defense 2023-12-15)", MACHINE_SUPPORTS_SAVE )
+GAME( 2013, mslughc16,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Unlimited Firepower 2013-06-13)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR       NAME         PARENT       MACHINE     INPUT                       INIT         MONITOR COMPANY            FULLNAME FLAGS */
 // Metal Slug 2
@@ -24411,6 +24440,7 @@ GAME( 2024, mslugctma05,        mslug,    neogeo_noslot, neogeohb, neogeo_state,
 GAME( 2024, mslugctma06,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Random Items Explosives 2021-06-08)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugctma07,        mslug,    neogeo_noslot, mslug_st, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin War Chariot 2016-03-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugctma08,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Unity Item Random, Powerful Enemy Defense 2023-12-15)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugctma09,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Unlimited Firepower 2013-06-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug2ctma01,       mslug2,   neogeo_noslot, mslug2sc, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (Enemies Resetting Survival Version 2018-07-31)", MACHINE_SUPPORTS_SAVE ) // To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
 GAME( 2020, mslug2ctma02,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (Enemies Resetting Multi-Function Version 2017-05-09)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug2ctma03,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (Enemies Resetting 1V2 Generation 2019-05-11)", MACHINE_SUPPORTS_SAVE )
