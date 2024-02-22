@@ -24191,7 +24191,7 @@ GAME( 1999, mslugxneosd,      mslugx,   neogeo_noslot, neogeohb, neogeo_state,  
 
 /*    YEAR       NAME         PARENT       MACHINE     INPUT                       INIT         MONITOR COMPANY            FULLNAME FLAGS */
 // Metal Slug
-GAME( 2016, mslughc01,        mslug,    neogeo_noslot, mslug_wp, neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug (Change Weapon 2016-03-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, mslughc01,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug (Change Weapon 2016-03-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslughc02,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "FBN4DROID",       "Metal Slug (Random Items Explosives 2021-06-08)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslughc03,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Origin 2024-01-27)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslughc04,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Multi-Function Version 2018-04-30)", MACHINE_SUPPORTS_SAVE )
@@ -24259,7 +24259,7 @@ GAME( 2019, mslug3hc25,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,  
 GAME( 2022, mslug3hc26,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Early Summer Starry Sky 2022-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3hc27,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Komorebi 2022-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3hc28,       mslug3,   neogeo_noslot, mslug_vh, neogeo_state,    init_mslug3hb,   ROT0, "DDJ",             "Metal Slug 3 (War Chariot 2023-08-18)", MACHINE_SUPPORTS_SAVE ) //Fix Gaston90
-GAME( 2012, mslug3hc29,       mslug3,   neogeo_noslot, mslug_wp, neogeo_state,    init_mslug3hb,   ROT0, "DDJ",             "Metal Slug 3 (Change Weapons 2012-05-22)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2012, mslug3hc29,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "DDJ",             "Metal Slug 3 (Change Weapons 2012-05-22)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslug3hc30,       mslug3,   neogeo_noslot, mslug_cb, neogeo_state,    init_mslug3hb,   ROT0, "DDJ",             "Metal Slug 3 (Change Body 2016-03-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2012, mslug3hc31,       mslug3,   neogeo_noslot, mslug3v,  neogeo_state,    init_mslug3hb,   ROT0, "LB70 (Eezezy)",   "Metal Slug 3 (Violence Edition 2012-03-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2004, mslug3hc32,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "Shyma.X",         "Metal Slug 3 (French Translator)", MACHINE_SUPPORTS_SAVE )
@@ -24300,7 +24300,7 @@ GAME( 2021, mslug4hc11,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,  
 GAME( 2017, mslug4hc12,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "GOTVG",           "Metal Slug 4 (Multi-Function Version 2017-12-25)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4hc13,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "GOTVG",           "Metal Slug 4 (Early Summer Starry Sky 2022-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4hc14,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "GOTVG",           "Metal Slug 4 (Komorebi 2022-05-11)", MACHINE_SUPPORTS_SAVE )
-GAME( 2010, mslug4hc15,       mslug4,   neogeo_noslot, mslug_wp, neogeo_state,    init_mslug4hb,   ROT0, "DDJ",             "Metal Slug 4 (Change Weapon 2010-03-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2010, mslug4hc15,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "DDJ",             "Metal Slug 4 (Change Weapon 2010-03-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2012, mslug4hc16,       mslug4,   neogeo_noslot, mslug_cb, neogeo_state,    init_mslug4hb,   ROT0, "DDJ",             "Metal Slug 4 (Change Body 2012-05-25)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug4hc17,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Children's Version 2021-06-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug4hc18,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "DDJ",             "Metal Slug 4 (Jump In Mid Air 2015-08-23)", MACHINE_SUPPORTS_SAVE )
@@ -24405,7 +24405,7 @@ GAME( 2010, neopang,          mslug3x,  neogeo_noslot, neogeohb, neogeo_state,  
 // Metal Slug (Version Custom)
 GAME( 2024, mslugctma01,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin 1v2 Generation 2023-06-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugctma02,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Burst Enhanced Edition 2021-09-19)", MACHINE_SUPPORTS_SAVE )
-//GAME( 2024, mslugctma03,        mslug,    neogeo_noslot, mslug_wp, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Change Weapon 2016-03-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugctma03,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Change Weapon 2016-03-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugctma04,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugctma05,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugctma06,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Random Items Explosives 2021-06-08)", MACHINE_SUPPORTS_SAVE )
