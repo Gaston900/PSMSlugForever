@@ -96,11 +96,13 @@ public:
 	void init_darksoft();
 	void init_neogeo();	
 	void init_ms5pcbhb();
+	void init_ms5plusdd();
 	void init_ms5plushb();
 	void init_mslug3a();
 	void init_mslug3hb();
 	void init_mslug3de();
 	void init_mslug3dd();
+    void init_mslug3b6dd();
     void init_mslug3b6hb();
     void init_mslug4dd();
 	void init_mslug4hb();
