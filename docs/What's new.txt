@@ -16,7 +16,7 @@ Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use O
 
 ===============================================================================================================================
 
-2024-07-XX
+2024-07-25
 
 - Metal Slug (Darksoft Neo Geo Converted MVS To MVS Decrypter)
 - Metal Slug (MATT GREER "CITY41" Neo Geo Converted .NEO SD To MVS)
