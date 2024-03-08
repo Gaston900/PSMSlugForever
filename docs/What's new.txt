@@ -15,8 +15,19 @@ for the 86/64 bit cpu of the compatible microprocessors.
 Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use Or Using The Project For A Fundraising Fundraiser.
 
 ===============================================================================================================================
+2024-07-XX
 
-2024-07-25
+- Updated Roms Metal Slug 3 (Legendary Edition 2024-03-06) (NOT WORKING)
+- Updated Roms Metal Slug 3 (Legendary Fire Showdown 2024-03-06) (NOT WORKING)
+- Updated Roms Metal Slug X (Legendary Edition 2024-03-06)
+- Updated Roms Metal Slug X (Legendary Fire Showdown 2024-03-06)
+
+New Games
+---------------------------------
+
+
+
+2024-02-25
 
 - Metal Slug (Darksoft Neo Geo Converted MVS To MVS Decrypter)
 - Metal Slug (MATT GREER "CITY41" Neo Geo Converted .NEO SD To MVS)
