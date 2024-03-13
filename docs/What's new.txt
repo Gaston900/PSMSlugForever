@@ -19,6 +19,7 @@ Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use O
 
 - Updated Roms Metal Slug 3 (Legendary Edition 2024-03-06) (NOT WORKING)
 - Updated Roms Metal Slug 3 (Legendary Fire Showdown 2024-03-06) (NOT WORKING)
+- Updated Roms Metal Slug 5 (Legendary Edition 2024-03-10)
 - Updated Roms Metal Slug X (Legendary Edition 2024-03-06)
 - Updated Roms Metal Slug X (Legendary Fire Showdown 2024-03-06)
 
