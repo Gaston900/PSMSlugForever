@@ -15,7 +15,7 @@ for the 86/64 bit cpu of the compatible microprocessors.
 Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use Or Using The Project For A Fundraising Fundraiser.
 
 ===============================================================================================================================
-2024-07-XX
+2024-03-18
 
 - Overclock CPU = 180 Default, With a maximum capacity of reaching 600 CPU Speed. 
 - Updated Roms Metal Slug 3 (Legendary Edition 4.5 2024-03-14) (NOT WORKING)
@@ -24,9 +24,6 @@ Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use O
 - Updated Roms Metal Slug 5 (Boss Edition 2024-03-10)
 - Updated Roms Metal Slug X (Legendary Edition 4.5 2024-03-08)
 - Updated Roms Metal Slug X (Legendary Fire Showdown 3.5 2024-03-08)
-
-New Games
----------------------------------
 
 
 
