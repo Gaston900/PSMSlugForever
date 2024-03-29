@@ -107,8 +107,22 @@ mslug5ndnsd       // Fully Decrypted (Neo SD)
 mslugxnsd         // SNK (Neo SD)
 
 @source:neogeo.cpp
-mslug3x           //HomeBrew 
-neopang           //HomeBrew
+mslug3x           // HomeBrew 
+neopang           // HomeBrew
+
+@source:neogeo.cpp
+ms5plusddd        // Hack Encrypted GFX (Documentation)
+ms4plusddd        // Hack Encrypted GFX (Documentation)
+mslug3b6ddd       // Hack Encrypted GFX (Documentation)
+mslug3g           // Hack Encrypted GFX (Documentation)
+mslug3ddd         // Hack Encrypted GFX (Documentation)
+mslug3fr          // Hack Encrypted GFX (Documentation)
+mslug3lw          // Hack Encrypted GFX (Documentation)
+mslug4fr          // Hack Encrypted GFX (Documentation)
+mslug4lw          // Hack Encrypted GFX (Documentation)
+mslug4ddd         // Hack Encrypted GFX (Documentation)
+mslug5f           // Hack Encrypted GFX (Documentation)
+mslug5w           // Hack Encrypted GFX (Documentation)
 
 @source:neogeo.cpp
 mslugctma01       // Hack
@@ -600,6 +614,7 @@ mslugxhc33        // Hack
 mslugxhc34        // Hack
 mslugxhc35        // Hack
 mslugxhc36        // Hack
+
 
 /*****************
   Only exclusive

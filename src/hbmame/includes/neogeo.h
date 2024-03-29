@@ -108,6 +108,7 @@ public:
     void init_mslug4dc();
     void init_mslug4dd();
 	void init_mslug4hb();
+    void init_mslug4lw();
 	void init_mslug4p();
 	void init_mslug5b();
 	void init_mslug5dc();

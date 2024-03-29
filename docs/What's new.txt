@@ -15,6 +15,15 @@ for the 86/64 bit cpu of the compatible microprocessors.
 Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use Or Using The Project For A Fundraising Fundraiser.
 
 ===============================================================================================================================
+2024-XX-XX
+
+- Metal Slug (Documentation Roms Hack Decrypter To Encrypte)
+- Updated Roms Metal Slug 5 (Stone Tortoise Edition 2024-03-28)
+- Updated Roms Metal Slug 5 (Boss Edition 2024-03-28)
+- Updated Roms Metal Slug 5 (Legendary Edition 2024-03-27)
+
+
+
 2024-03-18
 
 - Overclock CPU = 180 Default, With a maximum capacity of reaching 600 CPU Speed. 
