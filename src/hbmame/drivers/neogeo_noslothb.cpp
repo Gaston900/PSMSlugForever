@@ -8985,6 +8985,18 @@ INPUT_PORTS_END
 	ROM_FILL(0x22855,1,0x05)\
 	ROM_FILL(0x235B8,1,0x05)
 
+#define MS4PLUS_MVS_FILL \
+    ROM_FILL(0x1741,1,0x78)\
+	ROM_FILL(0x1748,1,0x12)\
+	ROM_FILL(0x1745,1,0x34)\
+	ROM_FILL(0x1742,1,0x34)\
+	ROM_FILL(0x1747,1,0x23)
+//	ROM_FILL(0x1749,1,0x12)
+//	ROM_FILL(0x1744,1,0x02)
+//	ROM_FILL(0x1743,1,0x02)
+//	ROM_FILL(0x1740,1,0x02)
+//	ROM_FILL(0x173E,1,0x04)
+
 #define MSLUG4_MVS_FILL \
     ROM_FILL(0x1741,1,0x78)\
 	ROM_FILL(0x1748,1,0x12)\
@@ -13009,7 +13021,7 @@ INPUT_PORTS_END
 #define MSLUG4HD_SFIX_128K \
 	NEO_SFIX_128K( "263hd.s1", CRC(a9446774) SHA1(c5a309fd8ee6d6750a15c82e710218a3755e38b2) )
 
-#define MSLUG4FR_SFIX_128K \
+#define MSLUG4DFR_SFIX_128K \
 	NEO_SFIX_128K( "263_hc20.s1", CRC(1c2e768f) SHA1(ae816bc2f7ab27b43c146f5a5f67efe79c309b74) )
 
 #define MSLUG4IT_SFIX_128K \
@@ -15065,7 +15077,7 @@ ROM_START( mslugxnsd )
 ROM_END
 
 /****************************
- Decrypter To Not-Encrypted
+ Decrypter To Encrypted GFX
 *******************************/
 
 ROM_START( ms5plusddd )
@@ -15086,9 +15098,9 @@ ROM_START( ms4plusddd )
 	ROM_LOAD16_WORD_SWAP( "ms4p.p1", 0x000000, 0x100000, CRC(806a6e04) SHA1(df503772d607271ea51285154c9fd68e18b143ce) )
 	ROM_LOAD16_WORD_SWAP( "263.p2",  0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
     MSLUG4_ESSENTIALPATCH_MODS_FILL
-    MSLUG4_MVS_FILL
+    MS4PLUS_MVS_FILL
     MSLUG4_AES_FILL
-	MSPLUS4_SFIX_128K
+	MSLUG4_SFIX_MT_512K
 	MSLUG4_AUDIO_ENCRYPTED_128K
 	MSLUG4_YMSND
 	MS4PLUS_SPRITES
@@ -15173,7 +15185,7 @@ ROM_START( mslug4fr )
 //    MSLUG4_1V2GENERATION_MODS_FILL
     MSLUG4_MVS_FILL
     MSLUG4_AES_FILL
-    MSLUG4FR_SFIX_128K
+    MSLUG4DFR_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
     MSLUG4_YMSND
 	MSLUG4FR_SPRITES
@@ -16746,7 +16758,7 @@ ROM_START( mslug4hc20 ) //mslug4fr
 //    MSLUG4_1V2GENERATION_MODS_FILL
     MSLUG4_MVS_FILL
     MSLUG4_AES_FILL
-    MSLUG4FR_SFIX_128K
+    MSLUG4DFR_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
     MSLUG4_YMSND
 	MSLUG4DFR_SPRITES
@@ -23894,7 +23906,7 @@ ROM_START( mslug4lc01 )
     MSLUG4_CUSTOMPATCH_MODS_FILL
 //    MSLUG4_THELONGESTFIGHT_MODS_FILL
     MSLUG4_AES_FILL
-    MSLUG4FR_SFIX_128K
+    MSLUG4DFR_SFIX_128K
     MSLUG4LWD_AUDIO_128K
 	MSLUG4LWD_YMSND
 	MSLUG4DFR_SPRITES
@@ -23908,7 +23920,7 @@ ROM_START( mslug4lc02 )
     MSLUG4_FATPLAYERS_MODS_FILL
 //    MSLUG4_THELONGESTFIGHT_MODS_FILL
     MSLUG4_AES_FILL
-    MSLUG4FR_SFIX_128K
+    MSLUG4DFR_SFIX_128K
     MSLUG4LWD_AUDIO_128K
 	MSLUG4LWD_YMSND
 	MSLUG4DFR_SPRITES
@@ -23921,7 +23933,7 @@ ROM_START( mslug4lc03 )
     MSLUG4_CUSTOMPATCH_MODS_FILL
 //    MSLUG4_THELONGESTFIGHT_MODS_FILL
     MSLUG4_AES_FILL
-    MSLUG4FR_SFIX_128K
+    MSLUG4DFR_SFIX_128K
     MSLUG4LWD_AUDIO_128K
 	MSLUG4LWD_YMSND
 	MSLUG4DFR_SPRITES
@@ -23934,7 +23946,7 @@ ROM_START( mslug4lc04 )
     MSLUG4_CUSTOMPATCH_MODS_FILL
 //    MSLUG4_THELONGESTFIGHT_MODS_FILL
     MSLUG4_AES_FILL
-    MSLUG4FR_SFIX_128K
+    MSLUG4DFR_SFIX_128K
     MSLUG4LWD_AUDIO_128K
 	MSLUG4LWD_YMSND
 	MSLUG4DFR_SPRITES
@@ -23947,7 +23959,7 @@ ROM_START( mslug4lc05 )
     MSLUG4_CUSTOMPATCH_MODS_FILL
 //    MSLUG4_THELONGESTFIGHT_MODS_FILL
     MSLUG4_AES_FILL
-    MSLUG4FR_SFIX_128K
+    MSLUG4DFR_SFIX_128K
     MSLUG4LWD_AUDIO_128K
 	MSLUG4LWD_YMSND
 	MSLUG4DFR_SPRITES
@@ -23960,7 +23972,7 @@ ROM_START( mslug4ld01 )
     MSLUG4_CUSTOMPATCH_MODS_FILL
 //    MSLUG4_THELONGESTFIGHT_MODS_FILL
     MSLUG4_AES_FILL
-    MSLUG4FR_SFIX_128K
+    MSLUG4DFR_SFIX_128K
     MSLUG4LWD_AUDIO_128K
 	MSLUG4LWD_YMSND
 	MSLUG4DFR_SPRITES
@@ -23974,7 +23986,7 @@ ROM_START( mslug4ld02 )
     MSLUG4_FATPLAYERS_MODS_FILL
 //    MSLUG4_THELONGESTFIGHT_MODS_FILL
     MSLUG4_AES_FILL
-    MSLUG4FR_SFIX_128K
+    MSLUG4DFR_SFIX_128K
     MSLUG4LWD_AUDIO_128K
 	MSLUG4LWD_YMSND
 	MSLUG4DFR_SPRITES
@@ -23987,7 +23999,7 @@ ROM_START( mslug4ld03 )
     MSLUG4_CUSTOMPATCH_MODS_FILL
 //    MSLUG4_THELONGESTFIGHT_MODS_FILL
     MSLUG4_AES_FILL
-    MSLUG4FR_SFIX_128K
+    MSLUG4DFR_SFIX_128K
     MSLUG4LWD_AUDIO_128K
 	MSLUG4LWD_YMSND
 	MSLUG4DFR_SPRITES
@@ -24000,7 +24012,7 @@ ROM_START( mslug4ld04 )
     MSLUG4_CUSTOMPATCH_MODS_FILL
 //    MSLUG4_THELONGESTFIGHT_MODS_FILL
     MSLUG4_AES_FILL
-    MSLUG4FR_SFIX_128K
+    MSLUG4DFR_SFIX_128K
     MSLUG4LWD_AUDIO_128K
 	MSLUG4LWD_YMSND
 	MSLUG4DFR_SPRITES
@@ -24013,7 +24025,7 @@ ROM_START( mslug4ld05 )
     MSLUG4_CUSTOMPATCH_MODS_FILL
 //    MSLUG4_THELONGESTFIGHT_MODS_FILL
     MSLUG4_AES_FILL
-    MSLUG4FR_SFIX_128K
+    MSLUG4DFR_SFIX_128K
     MSLUG4LWD_AUDIO_128K
 	MSLUG4LWD_YMSND
 	MSLUG4DFR_SPRITES
@@ -24588,7 +24600,7 @@ ROM_START( mslug4rmc01 )
     MSLUG4_CUSTOMPATCH_MODS_FILL
     MSLUG4_THELONGESTFIGHT_MODS_FILL
     MSLUG4_AES_FILL
-    MSLUG4FR_SFIX_128K
+    MSLUG4DFR_SFIX_128K
     MSLUG4LW_AUDIOBIOS_FIX_COIN_128K
 	MSLUG4LWD_YMSND
 	MSLUG4DFR_SPRITES
@@ -24601,7 +24613,7 @@ ROM_START( mslug4rmd01 )
     MSLUG4_CUSTOMPATCH_MODS_FILL
     MSLUG4_THELONGESTFIGHT_MODS_FILL
     MSLUG4_AES_FILL
-    MSLUG4FR_SFIX_128K
+    MSLUG4DFR_SFIX_128K
     MSLUG4LW_AUDIOBIOS_FIX_COIN_128K
 	MSLUG4LWD_YMSND
 	MSLUG4DFR_SPRITES
@@ -24907,7 +24919,7 @@ GAME( 2003, mslug5ndnsd,      mslug5,   neogeo_noslot, neogeohb, neogeo_state,  
 GAME( 1999, mslugxnsd,        mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "SNK",             "Metal Slug X (Neo SD)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR       NAME        PARENT       MACHINE       INPUT                       INIT        MONITOR COMPANY            FULLNAME FLAGS */
-// Metal Slug (Documentation Decrypter To Encrypte)
+// Metal Slug (Documentation Decrypter To Encrypte GFX)
 GAME( 2003, ms5plusddd,       mslug5,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug5hb,   ROT0, "Bootleg",         "Metal Slug 5 Plus (Bootleg)(Encrypted GFX)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2002, ms4plusddd,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "Bootleg",         "Metal Slug 4 Plus (Bootleg)(Encrypted GFX)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2000, mslug3b6ddd,      mslug3,   neogeo_noslot, mslug3b6, neogeo_state,    init_mslug3hb,   ROT0, "Bootleg",         "Metal Slug 6 (Metal Slug 3 Bootleg)(Encrypted GFX)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
@@ -25040,7 +25052,7 @@ GAME( 2015, mslug4hc18,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,  
 GAME( 2013, mslug4hc19,       mslug4,   neogeo_noslot, mslug_vh, neogeo_state,    init_mslug4hb,   ROT0, "DDJ",             "Metal Slug 4 (War Chariot 2013-02-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, mslug4hc20,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "Shyma.X",         "Metal Slug 4 (Translator French)", MACHINE_SUPPORTS_SAVE )
 GAME( 2007, mslug4hc21,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "Evoboy",          "Metal Slug 4 (Translator Italian)", MACHINE_SUPPORTS_SAVE )
-GAME( 2018, mslug4hc22,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Easy Mode 2018-11-16)", MACHINE_SUPPORTS_SAVE ) // Fix 2023
+GAME( 2018, mslug4hc22,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Easy Mode 2018-11-16)", MACHINE_SUPPORTS_SAVE ) // Fix Gaston90 2023
 GAME( 2023, mslug4hc23,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2012, mslug4hc24,       mslug4,   neogeo_noslot, mslug_ce, neogeo_state,    init_mslug4hb,   ROT0, "LB70 (Eezezy)",   "Metal Slug 4 (Crazy Fire Edition 2012-01-16)", MACHINE_SUPPORTS_SAVE )
 
