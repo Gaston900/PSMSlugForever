@@ -94,10 +94,10 @@ public:
 
 	// fixed software configurations
 	void init_darksoft();
-	void init_neogeo();	
-	void init_ms5pcbhb();
+	void init_neogeo();
 	void init_ms5plusdd();
 	void init_ms5plushb();
+	void init_ms5pcbhb();
 	void init_mslug3a();
 	void init_mslug3hb();
 	void init_mslug3dc();
