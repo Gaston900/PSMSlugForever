@@ -45,14 +45,18 @@ ms4boot           // Bootleg
 ms5boot           // Bootleg
 ms5pcbd           // SNK Playmore
 ms4plusd          // Bootleg
-ms5plusd          // Bootleg
+ms4pluse          // Bootleg
 ms5plusc          // Bootleg
+ms5plusd          // Bootleg
+ms5pluse          // Bootleg
 msluge            // Nazca
 mslug2t           // Bootleg
 mslug3d           // SNK
+mslug3dh          // SNK
 mslug3hd          // SNK
 mslug3nd          // SNK
 mslug3b6d         // Bootleg
+mslug3b6e         // Bootleg
 mslug4d           // Mega / Playmore
 mslug4hd          // Mega / Playmore
 mslug4nd          // Mega / Playmore
@@ -134,16 +138,14 @@ mslug5nde         // Fully Decrypted GFX (Documentation)
 mslugxde          // SNK Encrypted GFX (Documentation)
 
 @source:neogeo.cpp
-ms4plusddd        // Bootleg Encrypted GFX (Documentation)
-ms5plusddd        // Bootleg Encrypted GFX (Documentation)
-mslug3b6ddd       // Bootleg Encrypted GFX (Documentation)
+mslug3cq          // Hack Encrypted GFX (Documentation)
 mslug3g           // Hack Encrypted GFX (Documentation)
-mslug3ddd         // Hack Encrypted GFX (Documentation)
+mslug3ki          // Hack Encrypted GFX (Documentation)
 mslug3fr          // Hack Encrypted GFX (Documentation)
 mslug3lw          // Hack Encrypted GFX (Documentation)
 mslug4fr          // Hack Encrypted GFX (Documentation)
 mslug4lw          // Hack Encrypted GFX (Documentation)
-mslug4ddd         // Hack Encrypted GFX (Documentation)
+mslug4ki          // Hack Encrypted GFX (Documentation)
 mslug5f           // Hack Encrypted GFX (Documentation)
 mslug5w           // Hack Encrypted GFX (Documentation)
 
