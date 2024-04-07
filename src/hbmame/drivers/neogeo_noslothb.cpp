@@ -17486,7 +17486,7 @@ ROM_END
 
 ROM_START( mslughc14 ) //mslugfc1
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "201_hc14.p1", 0x100000, 0x100000, CRC(2a95ea0a) SHA1(98f556ee7a02b89339b3255ca967ac96c0afe5c9) )
+	ROM_LOAD16_WORD_SWAP( "201_hc14.p1", 0x100000, 0x100000, CRC(98e45436) SHA1(2e78a2953abe1d4618b5de61ef931c5cfb2e9b18) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
     MSLUG_ESSENTIALPATCH_MODS_FILL
     MSLUG_SOLDIER_CHANGING_UNIFORM_MODS_FILL
@@ -17502,7 +17502,7 @@ ROM_END
 
 ROM_START( mslughc15 ) //mslugfc2
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "201_hc15.p1", 0x100000, 0x100000, CRC(87bd758d) SHA1(fcd73d2079d016496a6b9d99765441e8710e2f17) )
+	ROM_LOAD16_WORD_SWAP( "201_hc15.p1", 0x100000, 0x100000, CRC(35cccbb1) SHA1(8e640a02a523e5b8fe20a0984b6e1200238c07b1) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
     MSLUG_ESSENTIALPATCH_MODS_FILL
     MSLUG_SOLDIER_CHANGING_UNIFORM_MODS_FILL
@@ -28402,8 +28402,8 @@ GAME( 2017, mslughc10,        mslug,    neogeo_noslot, neogeohb, neogeo_state,  
 GAME( 2018, mslughc11,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslughc12,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslughc13,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Item Random 2023-11-29)(Earlier)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslughc14,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Item Random 2023-12-15)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslughc15,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Item Random, Powerful Enemy Defense 2023-12-15)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslughc14,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Item Random 2024-02-27)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslughc15,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Item Random, Powerful Enemy Defense 2024-02-27)", MACHINE_SUPPORTS_SAVE )
 GAME( 2013, mslughc16,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Unlimited Firepower 2013-06-13)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR       NAME         PARENT       MACHINE     INPUT                       INIT         MONITOR COMPANY            FULLNAME FLAGS */
@@ -28615,7 +28615,7 @@ GAME( 2024, mslugctma04,        mslug,    neogeo_noslot, neogeohb, neogeo_state,
 GAME( 2024, mslugctma05,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugctma06,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Random Items Explosives 2021-06-08)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugctma07,        mslug,    neogeo_noslot, mslug_st, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin War Chariot 2016-03-26)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslugctma08,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Unity Item Random, Powerful Enemy Defense 2023-12-15)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugctma08,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Unity Item Random, Powerful Enemy Defense 2023-12-15)", MACHINE_SUPPORTS_SAVE ) //2024-02-22
 GAME( 2024, mslugctma09,        mslug,    neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origin Unlimited Firepower 2013-06-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug2ctma01,       mslug2,   neogeo_noslot, mslug2sc, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (Enemies Resetting Survival Version 2018-07-31)", MACHINE_SUPPORTS_SAVE ) // To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
 GAME( 2020, mslug2ctma02,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (Enemies Resetting Multi-Function Version 2017-05-09)", MACHINE_SUPPORTS_SAVE )
