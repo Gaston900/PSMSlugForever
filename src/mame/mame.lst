@@ -66,6 +66,7 @@ mslug5n           // SNK Playmore
 mslug5nd          // SNK Playmore
 mslug5b1          // Bootleg
 mslug5b2          // Bootleg
+mslug5b3          // Bootleg
 
 @source:neogeo.cpp
 ms4bootdd         // Bootleg (Decrypter / Darksoft)
@@ -113,6 +114,7 @@ mslugxnsd         // SNK (Neo SD)
 @source:neogeo.cpp
 mslug3x           // HomeBrew 
 neopang           // HomeBrew
+cyborgfc          // HomeBrew
 
 @source:neogeo.cpp
 ms4bootde         // Bootleg (Decrypter GFX)
