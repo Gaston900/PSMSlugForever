@@ -26,7 +26,6 @@ mslugx            // SNK
 ms4plusp          // Bootleg (Predecrypted)
 ms5plusp1         // Bootleg (Predecrypted)
 ms5plusp2         // Bootleg (Predecrypted)
-mslug3b6p         // bootleg (Predecrypted)
 mslug4p           // Mega / Playmore (Predecrypted)
 mslug4hp          // Mega / Playmore (Predecrypted)
 mslug4ndp         // Mega / Playmore (Predecrypted)
@@ -37,10 +36,12 @@ mslug5hp3         // SNK Playmore (Predecrypted)
 mslug5np          // SNK Playmore (Predecrypted
 mslug5ndp1        // SNK Playmore (Predecrypted)
 mslug5ndp2        // SNK Playmore (Predecrypted)
+mslug5ndp3        // SNK Playmore (Predecrypted)
 mslugxp           // SNK (Predecrypted)
 
 @source:neogeo.cpp
 msboot            // Bootleg
+ms3b6boot         // Bootleg
 ms4boot           // Bootleg
 ms5boot           // Bootleg
 ms5pcbd           // SNK Playmore
@@ -112,7 +113,11 @@ mslug5ndnsd       // Fully Decrypted (Neo SD)
 mslugxnsd         // SNK (Neo SD)
 
 @source:neogeo.cpp
-mslug3x           // HomeBrew 
+mslug3x           // HomeBrew
+mslug3xa          // HomeBrew
+mslug3xb          // HomeBrew
+mslug3xc          // HomeBrew
+mslug3xd          // HomeBrew
 neopang           // HomeBrew
 cyborgfc          // HomeBrew
 
@@ -605,6 +610,7 @@ mslug5hc25        // Hack
 mslug5hc26        // Hack
 mslug5hc27        // Hack
 mslug5hc28        // Hack
+mslug5hc29        // Hack
 mslugxhc01        // Hack
 mslugxhc02        // Hack
 mslugxhc03        // Hack
