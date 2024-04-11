@@ -15558,8 +15558,8 @@ INPUT_PORTS_END
 	ROM_LOAD16_BYTE( "268hd.c4", 0x1000001, 0x800000, CRC(9c00160d) SHA1(C612102F9CD288BBA4C245B5855D795E4362B217) )\
 	ROM_LOAD16_BYTE( "268hd.c5", 0x2000000, 0x800000, CRC(38754256) SHA1(744D91D041998CA27EE2781188746797C65377BD) )\
 	ROM_LOAD16_BYTE( "268hd.c6", 0x2000001, 0x800000, CRC(59d33e9c) SHA1(ED7F5C7DB4C35EC5A7DB0AD5436110B3FE80B89A) )\
-	ROM_LOAD16_BYTE( "268cq.c7", 0x3000000, 0x800000, CRC(0b287889) SHA1(fecb165440534bdf7d70e6f18435acb4a5842642) )\
-	ROM_LOAD16_BYTE( "268cq.c8", 0x3000001, 0x800000, CRC(db89d860) SHA1(4010eb07d91abb4d96bb1c9937b57c3489c03b0a) )
+	ROM_LOAD16_BYTE( "268cq.c7", 0x3000000, 0x800000, CRC(e5ebe937) SHA1(7e5b5b321b50e9ab2156b393e2aefc9d40925760) )\
+	ROM_LOAD16_BYTE( "268cq.c8", 0x3000001, 0x800000, CRC(43995e2b) SHA1(144cc5f3f62cc65160880fd75f8e169520781397) )
 
 #define MSLUG5HD_SPRITES \
 	ROM_REGION( 0x4000000, "sprites", 0 ) \
@@ -28718,7 +28718,7 @@ GAME( 2021, mslug5hc09,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,  
 GAME( 2023, mslug5hc10,       mslug5,   neogeo_noslot, mslughb,  neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (The Longest Battle 2023-02-08)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc11,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "I love Nimes",    "Metal Slug 5 (Burst Enhanced Edition 2022-11-03)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug5hc12,       mslug5,   neogeo_noslot, mslughb,  neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Legendary Edition 2023-06-12)(Earlier)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug5hc13,       mslug5,   neogeo_noslot, mslug_cq, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Legendary Edition 0.3 2024-03-30)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5hc13,       mslug5,   neogeo_noslot, mslug_cq, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Legendary Edition 2.0 2024-03-30)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug5hc14,       mslug5,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Enemy Soldiers Magic Version 2019-12-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug5hc15,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (1v2 Generation 2019-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug5hc16,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Summon Slug Edition 2018-09-18)", MACHINE_SUPPORTS_SAVE )
