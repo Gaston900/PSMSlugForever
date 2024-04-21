@@ -19,7 +19,7 @@ mslug4            // Mega / Playmore
 mslug4h           // Mega / Playmore
 mslug5            // SNK Playmore
 mslug5h           // SNK Playmore
-mslug5b           // Neogeo
+mslug5b1          // Neogeo
 mslugx            // SNK
 
 @source:neogeo.cpp
@@ -61,12 +61,12 @@ mslug5d           // SNK Playmore
 mslug5hd          // SNK Playmore
 mslug5n           // SNK Playmore
 mslug5nd          // SNK Playmore
-mslug5b1          // Bootleg
 mslug5b2          // Bootleg
 mslug5b3          // Bootleg
 mslug5b4          // Bootleg
 mslug5b5          // Bootleg
 mslug5b6          // Bootleg
+mslug5b7          // Bootleg
 
 @source:neogeo.cpp
 ms4bootdd         // Bootleg (Decrypter / Darksoft)
@@ -106,7 +106,6 @@ mslug4nsd         // Mega / Playmore (Neo SD)
 mslug4hnsd        // Mega / Playmore (Neo SD)
 mslug4ndnsd       // Fully Decrypted (Neo SD)
 mslug5nsd         // SNK Playmore (Neo SD)
-mslug5bnsd        // Bootleg (Neo SD)
 mslug5hnsd        // SNK Playmore (Neo SD)
 mslug5ndnsd       // Fully Decrypted (Neo SD)
 mslugxnsd         // SNK (Neo SD)
@@ -138,7 +137,6 @@ mslug4de          // Mega / Playmore Encrypted GFX (Documentation)
 mslug4hde         // Mega / Playmore Decrypter GFX (Documentation)
 mslug4nde         // Fully Decrypted Decrypter GFX (Documentation)
 mslug5de          // SNK Playmore Encrypted GFX (Documentation)
-mslug5bde         // Bootleg Decrypter GFX (Documentation)
 mslug5hde         // SNK Playmore Decrypter GFX (Documentation)
 mslug5nde         // Fully Decrypted GFX (Documentation)
 mslugxde          // SNK Encrypted GFX (Documentation)
@@ -369,6 +367,7 @@ mslug5ctma13      // Hack
 mslug5ctma14      // Hack
 mslug5ctma15      // Hack
 mslug5ctma16      // Hack
+mslug5ctma17      // Hack
 mslug5ctmb01      // Hack
 mslug5ctmb02      // Hack
 mslug5ctmb03      // Hack
@@ -400,6 +399,7 @@ mslug5ctmc12      // Hack
 mslug5ctmc13      // Hack
 mslug5ctmc14      // Hack
 mslug5ctmc15      // Hack
+mslug5ctmc16      // Hack
 mslugxctma01      // Hack
 mslugxctma02      // Hack
 mslugxctma03      // Hack
