@@ -23,29 +23,19 @@ mslug5b1          // Neogeo
 mslugx            // SNK
 
 @source:neogeo.cpp
-ms4plusp          // Bootleg (Predecrypted)
-ms5plusp1         // Bootleg (Predecrypted)
-ms5plusp2         // Bootleg (Predecrypted)
-mslug4p           // Mega / Playmore (Predecrypted)
-mslug4hp          // Mega / Playmore (Predecrypted)
-mslug4ndp         // Mega / Playmore (Predecrypted)
-mslug5p           // SNK Playmore (Predecrypted)
-mslug5np          // SNK Playmore (Predecrypted
-mslug5ndp1        // SNK Playmore (Predecrypted)
-mslug5ndp2        // SNK Playmore (Predecrypted)
-mslugxp           // SNK (Predecrypted)
-
-@source:neogeo.cpp
 msboot            // Bootleg
 ms3b6boot         // Bootleg
 ms4boot           // Bootleg
 ms5boot           // Bootleg
 ms5pcbd           // SNK Playmore
+ms4plusa          // Bootleg
 ms4plusd          // Bootleg
 ms4pluse          // Bootleg
+ms5plusa          // Bootleg
 ms5plusc          // Bootleg
 ms5plusd          // Bootleg
 ms5pluse          // Bootleg
+ms5pluse1         // Bootleg
 msluge            // Nazca
 mslug2t           // Bootleg
 mslug3d           // SNK
@@ -56,17 +46,24 @@ mslug3b6d         // Bootleg
 mslug3b6e         // Bootleg
 mslug4d           // Mega / Playmore
 mslug4hd          // Mega / Playmore
+mslug4e           // Mega / Playmore
 mslug4nd          // Mega / Playmore
+mslug4nde         // Mega / Playmore
 mslug5d           // SNK Playmore
 mslug5hd          // SNK Playmore
+mslug5e           // SNK Playmore
 mslug5n           // SNK Playmore
 mslug5nd          // SNK Playmore
+mslug5nde         // SNK Playmore
+mslug5nde1        // SNK Playmore
+mslug5nde2        // SNK Playmore
 mslug5b2          // Bootleg
 mslug5b3          // Bootleg
 mslug5b4          // Bootleg
 mslug5b5          // Bootleg
 mslug5b6          // Bootleg
 mslug5b7          // Bootleg
+mslugxb           // Bootleg
 
 @source:neogeo.cpp
 ms4bootdd         // Bootleg (Decrypter / Darksoft)
@@ -111,17 +108,8 @@ mslug5ndnsd       // Fully Decrypted (Neo SD)
 mslugxnsd         // SNK (Neo SD)
 
 @source:neogeo.cpp
-mslug3x           // HomeBrew
-mslug3xa          // HomeBrew
-mslug3xb          // HomeBrew
-mslug3xc          // HomeBrew
-mslug3xd          // HomeBrew
-neopang           // HomeBrew
-cyborgfc          // HomeBrew
-
-@source:neogeo.cpp
+ms5bootde         // Bootleg (Decrypter GFX)
 ms4bootde         // Bootleg (Decrypter GFX)
-ms5bootde         // Bootleg (Earlier)(Decrypter GFX)
 ms5pcbde          // SNK Playmore (JAMMA PCB)(Decrypter GFX)
 ms4plusde         // Bootleg (Decrypter GFX)
 ms5plusde         // Bootleg (Decrypter GFX)
@@ -129,17 +117,25 @@ mslugde           // Nazca Encrypted GFX (Documentation)
 mslug2de          // SNK Encrypted GFX (Documentation)
 mslug2tde         // SNK Encrypted GFX (Documentation)
 mslug3de          // SNK Encrypted GFX (Documentation)
-mslug3ade         // SNK Earlier Decrypter GFX (Documentation)
 mslug3hde         // SNK Decrypter GFX (Documentation)
 mslug3nde         // Fully Decrypted Decrypter GFX (Documentation)
 mslug3b6de        // Bootleg Decrypter GFX (Documentation)
 mslug4de          // Mega / Playmore Encrypted GFX (Documentation)
 mslug4hde         // Mega / Playmore Decrypter GFX (Documentation)
-mslug4nde         // Fully Decrypted Decrypter GFX (Documentation)
+mslug4ndde        // Fully Decrypted Decrypter GFX (Documentation)
 mslug5de          // SNK Playmore Encrypted GFX (Documentation)
 mslug5hde         // SNK Playmore Decrypter GFX (Documentation)
-mslug5nde         // Fully Decrypted GFX (Documentation)
+mslug5ndde        // Fully Decrypted GFX (Documentation)
 mslugxde          // SNK Encrypted GFX (Documentation)
+
+@source:neogeo.cpp
+mslug3x           // HomeBrew
+mslug3xa          // HomeBrew
+mslug3xb          // HomeBrew
+mslug3xc          // HomeBrew
+mslug3xd          // HomeBrew
+neopang           // HomeBrew
+cyborgfc          // HomeBrew
 
 @source:neogeo.cpp
 mslug3cq          // Hack Encrypted GFX (Documentation)
