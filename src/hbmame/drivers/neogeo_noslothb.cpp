@@ -14873,14 +14873,14 @@ INPUT_PORTS_END
 
 #define MSLUG3FR_SPRITES \
     ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD16_BYTE( "256fr.c1", 0x0000000, 0x800000, CRC(d93a9a86) SHA1(4ff06026449c80ef8effc14f241590fef83006c9) )\
-	ROM_LOAD16_BYTE( "256fr.c2", 0x0000001, 0x800000, CRC(5773183c) SHA1(a09783bcaa2c071d4358e00148551e5c60e48753) )\
-	ROM_LOAD16_BYTE( "256fr.c3", 0x1000000, 0x800000, CRC(9bbc4d38) SHA1(65f34c09e58cfb59c45df2d14e74408d7d571b3d) )\
-	ROM_LOAD16_BYTE( "256fr.c4", 0x1000001, 0x800000, CRC(871eb92f) SHA1(5146975de14eb31f4df959c71659ab4cf2dbd193) )\
-	ROM_LOAD16_BYTE( "256fr.c5", 0x2000000, 0x800000, CRC(35f9d8d6) SHA1(da046812d9b4047e0ce84bda5e77c19cde5fce56) )\
-	ROM_LOAD16_BYTE( "256fr.c6", 0x2000001, 0x800000, CRC(7deeb565) SHA1(79c83d2b1887ec776fc0c24527405d386607342d) )\
-	ROM_LOAD16_BYTE( "256fr.c7", 0x3000000, 0x800000, CRC(a6785325) SHA1(e3377727c057dfd3e3bf91ad7a02217244335bb5) )\
-	ROM_LOAD16_BYTE( "256fr.c8", 0x3000001, 0x800000, CRC(b1a3a35d) SHA1(d7c41734e745445efcb33465eb7b26a88ce5a341) )
+	ROM_LOAD16_BYTE( "256fr.c1", 0x0000000, 0x800000, CRC(eb5dd281) SHA1(6edccdd480d6a74a0721bc5b0bcfaca5a3d2f8db) )\
+	ROM_LOAD16_BYTE( "256fr.c2", 0x0000001, 0x800000, CRC(77a20e93) SHA1(19c8c0557f2af0683e0beccf4ebd92ee4f6c0820) )\
+	ROM_LOAD16_BYTE( "256fr.c3", 0x1000000, 0x800000, CRC(0681ca3b) SHA1(c888cacd4c5703286abf3ffe4e8ea449b02c6fdd) )\
+	ROM_LOAD16_BYTE( "256fr.c4", 0x1000001, 0x800000, CRC(342243cf) SHA1(5c0c9f7eb5d2c905085d557830dc6cb037e25b9b) )\
+	ROM_LOAD16_BYTE( "256fr.c5", 0x2000000, 0x800000, CRC(701c3be1) SHA1(8a15cff0e629b50cddffb8a7c4c0a32043285e82) )\
+	ROM_LOAD16_BYTE( "256fr.c6", 0x2000001, 0x800000, CRC(5dde26fc) SHA1(a1b7b6c12340000b3d051e3577050218e630d8e5) )\
+	ROM_LOAD16_BYTE( "256fr.c7", 0x3000000, 0x800000, CRC(4ded1586) SHA1(d1de241e4f8de41d39f81b4d4432988a0355f7b2) )\
+	ROM_LOAD16_BYTE( "256fr.c8", 0x3000001, 0x800000, CRC(0560de0d) SHA1(1a460e403cfc8f4ddd19dbb96f50c7ce143d337a) )
 
 #define MSLUG3DFR_SPRITES \
     ROM_REGION( 0x4000000, "sprites", 0 ) \
@@ -14906,25 +14906,25 @@ INPUT_PORTS_END
 
 #define MSLUG3GG_SPRITES \
 	ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD16_BYTE( "256g.c1", 0x0000000, 0x800000, CRC(8e3403e6) SHA1(43b76720f9132ef64475db0d8c1cbb18572c63da) )\
-	ROM_LOAD16_BYTE( "256g.c2", 0x0000001, 0x800000, CRC(9e6fbd01) SHA1(0e0aa9d7d48c2ae59e181ead131994494f85ffa7) )\
-	ROM_LOAD16_BYTE( "256g.c3", 0x1000000, 0x800000, CRC(5b6acd7a) SHA1(5e1818baeaaa75c127675fc35976fda8ec5caded) )\
-	ROM_LOAD16_BYTE( "256g.c4", 0x1000001, 0x800000, CRC(2e8625a0) SHA1(49fd8bec2e50ae9361c86bdab3d47a555125c7b9) )\
-	ROM_LOAD16_BYTE( "256g.c5", 0x2000000, 0x800000, CRC(fd37eee3) SHA1(ff985cb826832e99489f45b1467fc05a5e5d909f) )\
-	ROM_LOAD16_BYTE( "256g.c6", 0x2000001, 0x800000, CRC(d667b5a0) SHA1(b653d192cf008006dc856f67c132154ffb1f8c5e) )\
-	ROM_LOAD16_BYTE( "256g.c7", 0x3000000, 0x800000, CRC(43996413) SHA1(c6919d2d8a1a40d681bceee40b9df0e737a5a1eb) )\
-	ROM_LOAD16_BYTE( "256g.c8", 0x3000001, 0x800000, CRC(8c343596) SHA1(e92a761169207e4092c17f4ad07d945a534d07be) )
+	ROM_LOAD16_BYTE( "256g.c1", 0x0000000, 0x800000, CRC(20466753) SHA1(99cace413a86764a31a7f0e0ab5e58ec5dbdac7f) )\
+	ROM_LOAD16_BYTE( "256g.c2", 0x0000001, 0x800000, CRC(1c98bcba) SHA1(5f32625bf99f615588b3f3f4ca00460d6e5dace3) )\
+	ROM_LOAD16_BYTE( "256g.c3", 0x1000000, 0x800000, CRC(1684c3e4) SHA1(4a9c4848cb8fe8dc53b6d32b896c785d8c5628a5) )\
+	ROM_LOAD16_BYTE( "256g.c4", 0x1000001, 0x800000, CRC(e86f05a4) SHA1(b17f0d5029b13c7f7f255eb74c1584d0d0346966) )\
+	ROM_LOAD16_BYTE( "256g.c5", 0x2000000, 0x800000, CRC(3a3eb72b) SHA1(d124b5f57ce29d9497a8388e352de45c11014a6d) )\
+	ROM_LOAD16_BYTE( "256g.c6", 0x2000001, 0x800000, CRC(369aed68) SHA1(91edcea96525fa6d07374def2d2089f2af935132) )\
+	ROM_LOAD16_BYTE( "256g.c7", 0x3000000, 0x800000, CRC(1ae902d9) SHA1(775fd29c0a4587e6e8c2de5e40b183f7512a6de2) )\
+	ROM_LOAD16_BYTE( "256g.c8", 0x3000001, 0x800000, CRC(0af7207e) SHA1(76222fd576a1450874e8d5939383de1fe73793d6) )
 
-#define MSLUG3DDD_SPRITES \
+#define MSLUG3KI_SPRITES \
 	ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD16_BYTE( "256ddd.c1", 0x0000000, 0x800000, CRC(3ce9cf6c) SHA1(b1adb5081aa5efbb33b4228407dea4fbcada7bbb) )\
-	ROM_LOAD16_BYTE( "256ddd.c2", 0x0000001, 0x800000, CRC(fdcf4d37) SHA1(7399f7a9c89bf04fde3feddaea3a3909a25e4ff0) )\
-	ROM_LOAD16_BYTE( "256ddd.c3", 0x1000000, 0x800000, CRC(07311d46) SHA1(80983e4b0e1c09d52a71cef4dd14daa7b22a02c0) )\
-	ROM_LOAD16_BYTE( "256ddd.c4", 0x1000001, 0x800000, CRC(724e82a5) SHA1(61163109a7b54795459755fc513c1f259f70abbd) )\
-	ROM_LOAD16_BYTE( "256ddd.c5", 0x2000000, 0x800000, CRC(fa8c50a4) SHA1(e7067006c343b47868ffb7a0cc04b05a26995ee2) )\
-	ROM_LOAD16_BYTE( "256ddd.c6", 0x2000001, 0x800000, CRC(c2a808c7) SHA1(93ba2ba3ff7af08594fca2caafda1c4000d654b0) )\
-	ROM_LOAD16_BYTE( "256ddd.c7", 0x3000000, 0x800000, CRC(183c55cd) SHA1(68ce684c4dd0dfd1e326eb9a3553ee8861725d01) )\
-	ROM_LOAD16_BYTE( "256ddd.c8", 0x3000001, 0x800000, CRC(60c2ce35) SHA1(3594eacfde40ceb720d65d39f7b925bf49c85f5b) )
+	ROM_LOAD16_BYTE( "256ki.c1", 0x0000000, 0x800000, CRC(3ce9cf6c) SHA1(b1adb5081aa5efbb33b4228407dea4fbcada7bbb) )\
+	ROM_LOAD16_BYTE( "256ki.c2", 0x0000001, 0x800000, CRC(fdcf4d37) SHA1(7399f7a9c89bf04fde3feddaea3a3909a25e4ff0) )\
+	ROM_LOAD16_BYTE( "256ki.c3", 0x1000000, 0x800000, CRC(07311d46) SHA1(80983e4b0e1c09d52a71cef4dd14daa7b22a02c0) )\
+	ROM_LOAD16_BYTE( "256ki.c4", 0x1000001, 0x800000, CRC(724e82a5) SHA1(61163109a7b54795459755fc513c1f259f70abbd) )\
+	ROM_LOAD16_BYTE( "256ki.c5", 0x2000000, 0x800000, CRC(fa8c50a4) SHA1(e7067006c343b47868ffb7a0cc04b05a26995ee2) )\
+	ROM_LOAD16_BYTE( "256ki.c6", 0x2000001, 0x800000, CRC(c2a808c7) SHA1(93ba2ba3ff7af08594fca2caafda1c4000d654b0) )\
+	ROM_LOAD16_BYTE( "256ki.c7", 0x3000000, 0x800000, CRC(183c55cd) SHA1(68ce684c4dd0dfd1e326eb9a3553ee8861725d01) )\
+	ROM_LOAD16_BYTE( "256ki.c8", 0x3000001, 0x800000, CRC(60c2ce35) SHA1(3594eacfde40ceb720d65d39f7b925bf49c85f5b) )
 
 #define MSLUG3DDZ_SPRITES \
 	ROM_REGION( 0x4000000, "sprites", 0 ) \
@@ -15292,14 +15292,14 @@ INPUT_PORTS_END
 	ROM_LOAD16_BYTE( "263nd.c5", 0x2000000, 0x400000, CRC(3348dc5d) SHA1(a119e80aa2b36a7d8c7e8debd0eb13441a19adff) )\
 	ROM_LOAD16_BYTE( "263nd.c6", 0x2000001, 0x400000, CRC(d90fc1a0) SHA1(0eaf5f658212c19a4cdbcdbff3b04389a2be76bb) )
 
-#define MSLUG4DDD_SPRITES \
+#define MSLUG4KI_SPRITES \
 	ROM_REGION( 0x3000000, "sprites", 0 ) \
- 	ROM_LOAD16_BYTE( "263.c1",    0x0000000, 0x800000, CRC(84865f8a) SHA1(34467ada896eb7c7ca58658bf2a932936d8b632c) )\
-	ROM_LOAD16_BYTE( "263.c2",    0x0000001, 0x800000, CRC(81df97f2) SHA1(2b74493b8ec8fd49216a627aeb3db493f76124e3) )\
-	ROM_LOAD16_BYTE( "263.c3",    0x1000000, 0x800000, CRC(1a343323) SHA1(bbbb5232bba538c277ce2ee02e2956ca2243b787) )\
-	ROM_LOAD16_BYTE( "263.c4",    0x1000001, 0x800000, CRC(942cfb44) SHA1(d9b46c71726383c4581fb042e63897e5a3c92d1b) )\
-	ROM_LOAD16_BYTE( "263ddd.c5", 0x2000000, 0x800000, CRC(aaf06240) SHA1(22d7a0000efae951a353ce9d83f3f5e87ee9a45b) )\
-	ROM_LOAD16_BYTE( "263ddd.c6", 0x2000001, 0x800000, CRC(2cb53b09) SHA1(5975cca19318fa4b6e4e561736a15d2461b05485) )
+ 	ROM_LOAD16_BYTE( "263.c1",   0x0000000, 0x800000, CRC(84865f8a) SHA1(34467ada896eb7c7ca58658bf2a932936d8b632c) )\
+	ROM_LOAD16_BYTE( "263.c2",   0x0000001, 0x800000, CRC(81df97f2) SHA1(2b74493b8ec8fd49216a627aeb3db493f76124e3) )\
+	ROM_LOAD16_BYTE( "263.c3",   0x1000000, 0x800000, CRC(1a343323) SHA1(bbbb5232bba538c277ce2ee02e2956ca2243b787) )\
+	ROM_LOAD16_BYTE( "263.c4",   0x1000001, 0x800000, CRC(942cfb44) SHA1(d9b46c71726383c4581fb042e63897e5a3c92d1b) )\
+	ROM_LOAD16_BYTE( "263ki.c5", 0x2000000, 0x800000, CRC(aaf06240) SHA1(22d7a0000efae951a353ce9d83f3f5e87ee9a45b) )\
+	ROM_LOAD16_BYTE( "263ki.c6", 0x2000001, 0x800000, CRC(2cb53b09) SHA1(5975cca19318fa4b6e4e561736a15d2461b05485) )
 
 #define MSLUG4DDZ_SPRITES \
 	ROM_REGION( 0x3000000, "sprites", 0 ) \
@@ -17558,72 +17558,103 @@ ROM_END
  Decrypter To Encrypted GFX
 *******************************/
 
-ROM_START( mslug3g )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_hc03.p1", 0x000000, 0x100000, CRC(b23bd9b7) SHA1(4a5e877bc0d4853dc9c5a2c179049fbdd5285239) )
-	ROM_LOAD16_WORD_SWAP( "256_hc03.p2", 0x100000, 0x400000, CRC(8053a3fb) SHA1(baf40ca915d30f3dbf6cc440131e824e889940e7) )
-    MSLUG3G_ESSENTIALPATCH_MODS_FILL
-//    MSLUG3H_CUSTOMPATCH_MODS_FILL
-    MSLUG3H_LOGOVERSION_MODS_FILL
-    MSLUG3SD_THELONGESTFIGHT_MODS_FILL
-    MSLUG3H_MVS_FILL
-    MSLUG3H_AES_FILL
-    MSLUG3G_SFIX_128K
-	MSLUG3_AUDIOBIOS_512K
-    MSLUG3_YMSND
-	MSLUG3GG_SPRITES
-ROM_END
-
-ROM_START( mslug3ki )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_hc27.p1", 0x000000, 0x100000, CRC(16a83b0a) SHA1(a898890bcd13d194333271c0d445913ba8d2cda7) )
-	ROM_LOAD16_WORD_SWAP( "256_hc27.p2", 0x100000, 0x400000, CRC(57f01937) SHA1(da9e106619c2fb264a2ba492b78828468a7265d6) )
-    MSLUG3HB_ESSENTIALPATCH_MODS_FILL
-    MSLUG3H_CUSTOMPATCH_MODS_FILL
-    MSLUG3H_LOGOVERSION_MODS_FILL
-    MSLUG3H_SOLDIER_CHANGING_UNIFORM_MODS_FILL
-    MSLUG3H_THELONGESTFIGHT_MODS_FILL
-	MSLUG3H_MVS_FILL
-    MSLUG3H_AES_FILL
-	MSLUG3HD_SFIX_128K
+ROM_START( mslug31v2 )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "neo1v2-sma", 0x0c0000, 0x040000, CRC(1c090500) SHA1(d4ca78c9848418ff89a3d756051051a6c1125b52) )
+	ROM_LOAD16_WORD_SWAP( "2561v2.p1",  0x100000, 0x400000, CRC(b07edfd5) SHA1(dcbd9e500bfae98d754e55cdbbbbf9401013f8ee) )
+	ROM_LOAD16_WORD_SWAP( "2561v2.p2",  0x500000, 0x400000, CRC(45db3f1d) SHA1(3d07c5f0eb3914acb443e151048318e498be2186) )
+	MSLUG3_SFIX_MT_512K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
-	MSLUG3DDD_SPRITES
+	MSLUG3_SPRITES
+ROM_END
+
+ROM_START( mslug3eb )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "neoeb-sma", 0x0c0000, 0x040000, CRC(c2dc0b28) SHA1(3aff37ec62def5a8f23523cb7c1988934e27ea30) )
+	ROM_LOAD16_WORD_SWAP( "256eb.p1",  0x100000, 0x400000, CRC(6ec2e58d) SHA1(d83dd522a5c8a8b4bd32722967e3d934d2e73e08) )
+	ROM_LOAD16_WORD_SWAP( "256eb.p2",  0x500000, 0x400000, CRC(faaf8cd8) SHA1(264018877eab84582ba553cb42d75f15c0c08f65) )
+	MSLUG3_SFIX_MT_512K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+	MSLUG3_SPRITES
+ROM_END
+
+ROM_START( mslug3cq )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "neocq-sma", 0x0c0000, 0x040000, CRC(34675268) SHA1(d3fb4a4c829e25484fe6ac00ea8874e0c854f0e2) )
+	ROM_LOAD16_WORD_SWAP( "256cq.p1",  0x100000, 0x400000, CRC(a0d9d72a) SHA1(e0e8c57f34f24fc50c43164185fc6d612f75ff0f) )
+	ROM_LOAD16_WORD_SWAP( "256cq.p2",  0x500000, 0x400000, CRC(7f8aab31) SHA1(075ca4426ad0276143e61e8b3817d7e20144017e) )
+	MSLUG3HD_SFIX_128K
+	MSLUG3_AUDIOBIOS_512K
+    MSLUG3_YMSND
+	MSLUG3CQ_SPRITES
 ROM_END
 
 ROM_START( mslug3fr )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256fr.p1", 0x000000, 0x100000, CRC(5716aac8) SHA1(749cec11d0e8cb8406afc386f97af101947b7389) )
-	ROM_LOAD16_WORD_SWAP( "256h.p2",  0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    MSLUG3HB_ESSENTIALPATCH_MODS_FILL
-    MSLUG3H_CUSTOMPATCH_MODS_FILL
-    MSLUG3H_LOGOVERSION_MODS_FILL
-    MSLUG3H_SOLDIER_CHANGING_UNIFORM_MODS_FILL
-    MSLUG3H_THELONGESTFIGHT_MODS_FILL
-    MSLUG3H_MVS_FILL
-    MSLUG3H_AES_FILL
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "neofr-sma", 0x0c0000, 0x040000, CRC(55b2136f) SHA1(429a19490f1dae8bb815fb224eb0d581b8c86496) )
+	ROM_LOAD16_WORD_SWAP( "256.p1",    0x100000, 0x400000, CRC(b07edfd5) SHA1(dcbd9e500bfae98d754e55cdbbbbf9401013f8ee) )
+	ROM_LOAD16_WORD_SWAP( "256fr.p2",  0x500000, 0x400000, CRC(25892778) SHA1(4628256700eb3bf75181e775bf084bad56bd3b39) )
 	MSLUG3_SFIX_MT_512K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
     MSLUG3FR_SPRITES
 ROM_END
 
+ROM_START( mslug3g )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "neog-sma", 0x0c0000, 0x040000, CRC(171b4af1) SHA1(d1559c2f79d9900e67ab70612049281621b67db6) )
+	ROM_LOAD16_WORD_SWAP( "256g.p1",  0x100000, 0x400000, CRC(f85c8f36) SHA1(9a1e9d1ccdfc81e23c276cdefc51120a06f088fc) )
+	ROM_LOAD16_WORD_SWAP( "256g.p2",  0x500000, 0x400000, CRC(36385222) SHA1(95733d997968328bec148f307838c4a08d75722b) )
+    MSLUG3G_SFIX_128K
+	MSLUG3_AUDIOBIOS_512K
+    MSLUG3_YMSND
+	MSLUG3GG_SPRITES
+ROM_END
+
+ROM_START( mslug3i )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "neoi-sma", 0x0c0000, 0x040000, CRC(3a631f79) SHA1(47dff1a509f15a1115547453992e6d10f86851a1) )
+	ROM_LOAD16_WORD_SWAP( "256.p1",   0x100000, 0x400000, CRC(b07edfd5) SHA1(dcbd9e500bfae98d754e55cdbbbbf9401013f8ee) )
+	ROM_LOAD16_WORD_SWAP( "256i.p2",  0x500000, 0x400000, CRC(3a040bcc) SHA1(509f7308ab5ecff1b3d925798667e9c59981310a) )
+	MSLUG3_SFIX_MT_512K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+	MSLUG3_SPRITES
+ROM_END
+
+ROM_START( mslug3ki )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "neoki-sma", 0x0c0000, 0x040000, CRC(c1dece24) SHA1(4b420fb2b76b043dc0631a26a494b81efbbd82b0) )
+	ROM_LOAD16_WORD_SWAP( "256ki.p1",  0x100000, 0x400000, CRC(2a7989f7) SHA1(908f6d9be605d8a91a9d6671bba9f29663aae517) )
+	ROM_LOAD16_WORD_SWAP( "256ki.p2",  0x500000, 0x400000, CRC(736975c3) SHA1(bf81f87956eaaa498239541f48b5e25bbb3e4a99) )
+	MSLUG3HD_SFIX_128K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+	MSLUG3KI_SPRITES
+ROM_END
+
 ROM_START( mslug3lw )
-	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_hc20.p1", 0x000000, 0x100000, CRC(b8f607a1) SHA1(c6601759666f3096012ddf1f4c24986af1bfbec5) )
-	ROM_LOAD16_WORD_SWAP( "256_hc20.p2", 0x100000, 0x400000, CRC(ffa09788) SHA1(5be3d4ebe2396d2c291976e512999b97b94393ec) )
-	MSLUG3LW_FIX_FILL
-    MSLUG3HB_ESSENTIALPATCH_MODS_FILL
-    MSLUG3H_CUSTOMPATCH_MODS_FILL
-    MSLUG3H_LOGOVERSION_MODS_FILL
-    MSLUG3H_SOLDIER_CHANGING_UNIFORM_MODS_FILL
-    MSLUG3ND_LW_THELONGESTFIGHT_MODS_FILL
-	MSLUG3H_MVS_FILL
-    MSLUG3H_AES_FILL
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "neolw-sma", 0x0c0000, 0x040000, CRC(88adb595) SHA1(e814b580cc293c1f86d5438b51bbe0eedf8c655d) )
+	ROM_LOAD16_WORD_SWAP( "256lw.p1",  0x100000, 0x400000, CRC(3dd217f7) SHA1(c8c9bd637125aff3160429df2adc07283285f8cd) )
+	ROM_LOAD16_WORD_SWAP( "256lw.p2",  0x500000, 0x400000, CRC(d592d410) SHA1(8a030b893a2e658b5d0b3376db821d33300226b0) )
 	MSLUG3HD_SFIX_128K
     MSLUG3LW_AUDIO_512K
     MSLUG3LW_YMSND
     MSLUG3LW_SPRITES
+ROM_END
+
+ROM_START( mslug3unity )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "neouni-sma", 0x0c0000, 0x040000, CRC(3c6c536b) SHA1(e841b56e5151cf3118b7ac7f5e1495ed51378031) )
+	ROM_LOAD16_WORD_SWAP( "256.p1",     0x100000, 0x400000, CRC(b07edfd5) SHA1(dcbd9e500bfae98d754e55cdbbbbf9401013f8ee) )
+	ROM_LOAD16_WORD_SWAP( "256uni.p2",  0x500000, 0x400000, CRC(ea0c22b6) SHA1(564bd4609eb273a5eb7e6269ca3650fc0e1f1446) )
+	MSLUG3_SFIX_MT_512K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+	MSLUG3_SPRITES
 ROM_END
 
 ROM_START( mslug4fr )
@@ -17674,7 +17705,7 @@ ROM_START( mslug4ki )
     MSLUG4HD_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
     MSLUG4_YMSND
-	MSLUG4DDD_SPRITES
+	MSLUG4KI_SPRITES
 ROM_END
 
 ROM_START( mslug5f )
@@ -17707,6 +17738,19 @@ ROM_START( mslug5w )
     MSLUG5W_AUDIO_ENCRYPTED_512K
 	MSLUG5W_YMSND
 	MSLUG5W_SPRITES
+ROM_END
+
+ROM_START( mslug5unity )
+	ROM_REGION( 0x800000, "maincpu", 0 )
+	ROM_LOAD32_WORD_SWAP( "268uni.p1", 0x000000, 0x400000, CRC(ced9f5a8) SHA1(c1e6c8c9a7d2220b956486f2154540fcda38e650) )
+	ROM_LOAD32_WORD_SWAP( "268uni.p2", 0x000002, 0x400000, CRC(1c08dbb6) SHA1(8796efebcfabb9bb5444ed0264d327abf7c32b98) )
+    MSLUG5_ESSENTIALPATCH_MVS_FILL
+    MSLUG5_MVS_FILL
+    MSLUG5_AES_FILL
+    MSLUG5_SFIX_MT_128K
+	MSLUG5_AUDIO_ENCRYPTED_512K
+	MSLUG5_YMSND
+	MSLUG5HD_SPRITES
 ROM_END
 
  /*****
@@ -18277,20 +18321,6 @@ ROM_START( mslug3hc02 )
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
     MSLUG3D_SPRITES
-ROM_END
-
-ROM_START( mslug3cq )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_hc37.p1", 0x000000, 0x100000, CRC(745d11d3) SHA1(48091abacf77faf02725cbce5e458bc45d71fb2f) )
-	ROM_LOAD16_WORD_SWAP( "256_hc37.p2", 0x100000, 0x400000, CRC(c44fc9ca) SHA1(fd9b4527e512b5e7b006871872347b6a295a69a6) )
-    MSLUG3CSQ_ESSENTIALPATCH_MODS_FILL
-    MSLUG3H_CUSTOMPATCH_MODS_FILL
-    MSLUG3H_LOGOVERSION_MODS_FILL
-	MSLUG3H_MVS_FILL
-	MSLUG3HD_SFIX_128K
-	MSLUG3_AUDIOBIOS_512K
-    MSLUG3_YMSND
-	MSLUG3CQ_SPRITES
 ROM_END
 
 ROM_START( mslug3hc03 ) //mslug3g
@@ -19649,20 +19679,19 @@ ROM_START( mslug5hc22 ) //mslug5ki
 	MS5BOOT_SPRITES
 ROM_END
 
-ROM_START( mslug5hc23 )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_hc23.p1", 0x000000, 0x100000, CRC(ce788ab1) SHA1(89061d49e40e8774ff337ae4601f5c7676eac583) )
-	ROM_LOAD16_WORD_SWAP( "268n.p2",     0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
+ROM_START( mslug5hc23 ) //mslug5c
+	ROM_REGION( 0x600000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "268_hc23.p1", 0x000000, 0x600000, CRC(e876d1e7) SHA1(01508fc02789603e85ac13e0d5fcddda6fadc346) )
     MSLUG5ND_ESSENTIALPATCH_MODS_FILL
     MSLUG5ND_CUSTOMPATCH_MODS_FILL
-    MSLUG5N_LOGOVERSION_MODS_FILL
+    MSLUG5ND_LOGOVERSION_MODS_FILL
     MSLUG5ND_THELONGESTFIGHT_MODS_FILL
     MSLUG5ND_MVS_FILL
     MSLUG5ND_AES_FILL
-    MSLUG5_SFIX_MT_128K
-	MSLUG5_AUDIO_ENCRYPTED_512K
-	MSLUG5_YMSND
-	MSLUG5HD_SPRITES
+    MSLUG5D_SFIX_128K
+    MSLUG5ND_AUDIO_128K
+	MS5BOOT_YMSND
+	MS5BOOT_SPRITES
 ROM_END
 
 ROM_START( mslug5hc24 )
@@ -19757,19 +19786,20 @@ ROM_START( mslug5hc29 ) //ms5plush
 	MSLUG5HD_SPRITES
 ROM_END
 
-ROM_START( mslug5hc30 ) //mslug5c
-	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_hc30.p1", 0x000000, 0x600000, CRC(e876d1e7) SHA1(01508fc02789603e85ac13e0d5fcddda6fadc346) )
+ROM_START( mslug5hc30 )
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "268_hc30.p1", 0x000000, 0x100000, CRC(ce788ab1) SHA1(89061d49e40e8774ff337ae4601f5c7676eac583) )
+	ROM_LOAD16_WORD_SWAP( "268n.p2",     0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
     MSLUG5ND_ESSENTIALPATCH_MODS_FILL
     MSLUG5ND_CUSTOMPATCH_MODS_FILL
-    MSLUG5ND_LOGOVERSION_MODS_FILL
+    MSLUG5N_LOGOVERSION_MODS_FILL
     MSLUG5ND_THELONGESTFIGHT_MODS_FILL
     MSLUG5ND_MVS_FILL
     MSLUG5ND_AES_FILL
-    MSLUG5D_SFIX_128K
-    MSLUG5ND_AUDIO_128K
-	MS5BOOT_YMSND
-	MS5BOOT_SPRITES
+    MSLUG5_SFIX_MT_128K
+	MSLUG5_AUDIO_ENCRYPTED_512K
+	MSLUG5_YMSND
+	MSLUG5HD_SPRITES
 ROM_END
 
 /*************
@@ -29598,16 +29628,21 @@ GAME( 1999, mslugxde,         mslugx,   neogeo_noslot, neogeohb, neogeo_state,  
 
 /*    YEAR       NAME        PARENT       MACHINE       INPUT                       INIT        MONITOR COMPANY            FULLNAME FLAGS */
 // Metal Slug (Documentation Decrypter C To Encrypte C)
-GAME( 2024, mslug3cq,         mslug3,   neogeo_noslot, mslug_cq, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Legendary Edition 4.5 2024-03-14)(Encrypted C)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-GAME( 2019, mslug3g,          mslug3,   neogeo_noslot, mslug3g,  neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Multi-Function Version 2019-03-05)(Encrypted C)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-GAME( 2022, mslug3ki,         mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Komorebi 2022-05-11)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-GAME( 2004, mslug3fr,         mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Translated to French)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-GAME( 2023, mslug3lw,         mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Last Bullet Remix 2023-03-28)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-GAME( 2002, mslug4fr,         mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Translated to French)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
+GAME( 2019, mslug31v2,        mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (1V2 Generation 2019-05-11)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2014, mslug3eb,         mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Green Edition 2014-10-15)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2024, mslug3cq,         mslug3,   neogeo_noslot, mslug_cq, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Legendary Edition 4.5 2024-03-14)(Encrypted C)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2004, mslug3fr,         mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Translated to French 2003-07-29)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2019, mslug3g,          mslug3,   neogeo_noslot, mslug3g,  neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Multi-Function Version 2019-03-05)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2021, mslug3i,          mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Infinite Firepower 2021-03-17)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2022, mslug3ki,         mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Komorebi 2022-05-11)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2023, mslug3lw,         mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Pigeon Slug 2023-05-07)(Encrypted C)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2021, mslug3unity,      mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Unity Time! 2021-02-21)(Encrypted C)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2002, mslug4fr,         mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Translated to French 2006-12-23)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2023, mslug4lw,         mslug4,   neogeo_noslot, mslug4lw, neogeo_state,    init_mslug4lw,   ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix 2023-02-25)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2022, mslug4ki,         mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Komorebi 2022-05-11)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2016, mslug5f,          mslug5,   neogeo_noslot, mslug5f,  neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Fierce Battle 2015-03-25)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2015, mslug5w,          mslug5,   neogeo_noslot, mslug5f,  neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (The New Campaign 2015-03-27)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
+GAME( 2003, mslug5unity,      mslug5,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Unity Time! 2021-04-23)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 
 /*    YEAR       NAME         PARENT       MACHINE     INPUT                       INIT         MONITOR COMPANY            FULLNAME FLAGS */
 // Metal Slug
@@ -29646,7 +29681,7 @@ GAME( 2018, mslug2hc13,       mslug2,   neogeo_noslot, mslug_st, neogeo_state,  
 GAME( 2022, mslug2hc14,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 2 (Early Summer Starry Sky 2022-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslug2hc15,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug 2 (Stage Select 2016-10-19)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug2hc16,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug 2 (Jump In Mid Air 2015-08-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2006, mslug2hc17,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "Shyma.X",         "Metal Slug 2 (Translated to French)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslug2hc17,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "Shyma.X",         "Metal Slug 2 (Translated to French 2006-09-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2011, mslug2hc18,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (A Full Screen Attack 2011-01-16)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug2hc19,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
 
@@ -29670,7 +29705,7 @@ GAME( 2017, mslug3hc15,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,  
 GAME( 2020, mslug3hc16,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "FBN4DROID",       "Metal Slug 3 (The Last Warhead 2020-09-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug3hc17,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "FBN4DROID",       "Metal Slug 3 (Enemies Resetting Version 2019-01-02)(Earlier)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug3hc18,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Enemies Resetting Version 2019-07-20)" , MACHINE_SUPPORTS_SAVE )
-GAME( 2017, mslug3hc19,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "FBN4DROID",       "Metal Slug 3 (Random Enemies Resetting Version 2017-12-08)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, mslug3hc19,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "FBN4DROID",       "Metal Slug 3 (Random Enemies Resetting Version 2017-12-08)(Earlier)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3hc20,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Pigeon Slug 2023-03-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, mslug3hc21,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "Wanghua123",      "Metal Slug 3 (Slug #1 Version 2017-10-09)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug3hc22,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Slug #2 Version 2019-02-01)", MACHINE_SUPPORTS_SAVE )
@@ -29683,7 +29718,7 @@ GAME( 2023, mslug3hc28,       mslug3,   neogeo_noslot, mslug_vh, neogeo_state,  
 GAME( 2012, mslug3hc29,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "DDJ",             "Metal Slug 3 (Change Weapons 2012-05-22)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslug3hc30,       mslug3,   neogeo_noslot, mslug_cb, neogeo_state,    init_mslug3hb,   ROT0, "DDJ",             "Metal Slug 3 (Change Body 2016-03-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2012, mslug3hc31,       mslug3,   neogeo_noslot, mslug3v,  neogeo_state,    init_mslug3hb,   ROT0, "LB70 (Eezezy)",   "Metal Slug 3 (Violence Edition 2012-03-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2004, mslug3hc32,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "Shyma.X",         "Metal Slug 3 (Translated to French)", MACHINE_SUPPORTS_SAVE )
+GAME( 2004, mslug3hc32,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "Shyma.X",         "Metal Slug 3 (Translated to French 2006-12-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug3hc33,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Easy Mode 2018-11-16)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3hc34,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3hc35,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (The Longest Fight 2023-03-14)", MACHINE_SUPPORTS_SAVE )
@@ -29713,8 +29748,8 @@ GAME( 2012, mslug4hc16,       mslug4,   neogeo_noslot, mslug_cb, neogeo_state,  
 GAME( 2021, mslug4hc17,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Children's Version 2021-06-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug4hc18,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "DDJ",             "Metal Slug 4 (Jump In Mid Air 2015-08-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2013, mslug4hc19,       mslug4,   neogeo_noslot, mslug_vh, neogeo_state,    init_mslug4hb,   ROT0, "DDJ",             "Metal Slug 4 (War Chariot 2013-02-21)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, mslug4hc20,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "Shyma.X",         "Metal Slug 4 (Translated to French)", MACHINE_SUPPORTS_SAVE )
-GAME( 2007, mslug4hc21,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "Evoboy",          "Metal Slug 4 (Translator Italian)", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, mslug4hc20,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "Shyma.X",         "Metal Slug 4 (Translated to French 2006-12-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2007, mslug4hc21,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "Evoboy",          "Metal Slug 4 (Translated to Italian 2005-12-12)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug4hc22,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Easy Mode 2018-11-16)", MACHINE_SUPPORTS_SAVE ) // Fix Gaston90 2023
 GAME( 2023, mslug4hc23,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2012, mslug4hc24,       mslug4,   neogeo_noslot, mslug_ce, neogeo_state,    init_mslug4hb,   ROT0, "LB70 (Eezezy)",   "Metal Slug 4 (Crazy Fire Edition 2012-01-16)", MACHINE_SUPPORTS_SAVE )
@@ -29743,14 +29778,14 @@ GAME( 2020, mslug5hc19,       mslug5,   neogeo_noslot, neogeohb, neogeo_state,  
 GAME( 2023, mslug5hc20,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Double Enemy 2023-12-29)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc21,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Early Summer Starry Sky 2022-08-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc22,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Komorebi 2022-08-10)", MACHINE_SUPPORTS_SAVE )
-GAME( 2015, mslug5hc23,       mslug5,   neogeo_noslot, mslug5zh, neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (War Chariot 2015-05-20)", MACHINE_SUPPORTS_SAVE )
-GAME( 2006, mslug5hc24,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "Shyma.X",         "Metal Slug 5 (Translated to French)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, mslug5hc23,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Enemies Resetting Version 2019-07-28)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslug5hc24,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "Shyma.X",         "Metal Slug 5 (Translated to French 2006-09-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug5hc25,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Easy Mode 2018-11-16)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug5hc26,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Enemy Soldiers Enhanced Version 2020-04-06)(Earlier)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc27,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Enemy Soldiers Enhanced X Final Version 2022-06-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug5hc28,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 Plus (Hide Oh Big Mode 2022-11-03)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug5hc29,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 5 Plus (2019-07-26)", MACHINE_SUPPORTS_SAVE )
-GAME( 2019, mslug5hc30,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Enemies Resetting Version 2019-07-28)", MACHINE_SUPPORTS_SAVE )
+GAME( 2015, mslug5hc30,       mslug5,   neogeo_noslot, mslug5zh, neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (War Chariot 2015-05-20)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR       NAME         PARENT       MACHINE      INPUT                       INIT        MONITOR COMPANY            FULLNAME FLAGS */
 // Metal Slug X
@@ -29781,8 +29816,8 @@ GAME( 2022, mslugxhc24,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,  
 GAME( 2023, mslugxhc25,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Plus v0.3 2020-07-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslugxhc26,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "DDJ",             "Metal Slug X (Jump In Mid Air 2015-08-24)", MACHINE_SUPPORTS_SAVE )
 GAME( 2012, mslugxhc27,       mslugx,   neogeo_noslot, mslugxv,  neogeo_state,    init_mslugx,     ROT0, "lb70 (Eezezy)",   "Metal Slug X (Violence Version 2012-01-08)", MACHINE_SUPPORTS_SAVE )
-GAME( 2006, mslugxhc28,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "Shyma.X",         "Metal Slug X (Translated to French)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, mslugxhc29,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "Clomax & Ombra",  "Metal Slug X (Translator Italian - Beta)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslugxhc28,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "Shyma.X",         "Metal Slug X (Translated to French 2006-09-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, mslugxhc29,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "Clomax & Ombra",  "Metal Slug X (Translator to Italian 2005-01-22)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslugxhc30,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (AzStar Soda Remix 2021-02-12)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslugxhc31,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxhc32,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
