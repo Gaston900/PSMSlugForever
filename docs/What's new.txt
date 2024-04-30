@@ -15,20 +15,22 @@ for the 86/64 bit cpu of the compatible microprocessors.
 Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use Or Using The Project For A Fundraising Fundraiser.
 
 ===============================================================================================================================
-2024-04-22
+2024-04-22 / 05-01
 
 - New Metal Slug Home Brews game included.
-- 8 new versions of Metal Slug 3 Custom roms included.
+- 8 new versions of Metal Slug X Custom roms included.
+- 20 new versions of Metal Slug 3 Custom roms included.
 - 49 new versions of Metal Slug 5 Custom roms included.
 - Several roms will be renamed with their respective names.
 - All versions of The Longest Battle Metal Slug 5 have been fixed.
 - The colors of the logo Mslug remix and extreme are fixed.
+- Fix the black background of "Title" Metal Slug 4.
 - Updated Roms Metal Slug (Origin 2024-04-09)
 - Updated Roms Metal Slug (Unity Item Random 2024-04-15)
 - Updated Roms Metal Slug (Unity Item Random, Powerful Enemy Defense 2024-04-15)
 - Updated Roms Metal Slug 5 (Stone Tortoise Edition 2024-04-19)
 - Updated Roms Metal Slug 5 (Boss Edition 2024-04-11)
-
+- Updated Roms Metal Slug 5 (Legendary Edition 2.0 2024-04-27)
 
 
 2024-03-31

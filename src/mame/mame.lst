@@ -170,7 +170,6 @@ mslughc12         // Hack
 mslughc13         // Hack
 mslughc14         // Hack
 mslughc15         // Hack
-mslughc16         // Hack
 mslug2hc01        // Hack
 mslug2hc02        // Hack
 mslug2hc03        // Hack
@@ -367,6 +366,7 @@ mslug3ctma16      // Hack
 mslug3ctma17      // Hack
 mslug3ctma18      // Hack
 mslug3ctma19      // Hack
+mslug3ctma20      // Hack
 mslug3ctmb01      // Hack
 mslug3ctmb02      // Hack
 mslug3ctmb03      // Hack
@@ -386,6 +386,7 @@ mslug3ctmb16      // Hack
 mslug3ctmb17      // Hack
 mslug3ctmb18      // Hack
 mslug3ctmb19      // Hack
+mslug3ctmb20      // Hack
 mslug3ctmc01      // Hack
 mslug3ctmc02      // Hack
 mslug3ctmc03      // Hack
@@ -405,6 +406,7 @@ mslug3ctmc16      // Hack
 mslug3ctmc17      // Hack
 mslug3ctmc18      // Hack
 mslug3ctmc19      // Hack
+mslug3ctmc20      // Hack
 mslug3ctmd01      // Hack
 mslug3ctmd02      // Hack
 mslug3ctmd03      // Hack
@@ -424,6 +426,7 @@ mslug3ctmd16      // Hack
 mslug3ctmd17      // Hack
 mslug3ctmd18      // Hack
 mslug3ctmd19      // Hack
+mslug3ctmd20      // Hack
 mslug3ctme01      // Hack
 mslug3ctme02      // Hack
 mslug3ctme03      // Hack
@@ -438,6 +441,7 @@ mslug3ctme11      // Hack
 mslug3ctme12      // Hack
 mslug3ctme13      // Hack
 mslug3ctme14      // Hack
+mslug3ctme15      // Hack
 mslug3ctmf01      // Hack
 mslug3ctmf02      // Hack
 mslug3ctmf03      // Hack
@@ -452,6 +456,7 @@ mslug3ctmf11      // Hack
 mslug3ctmf12      // Hack
 mslug3ctmf13      // Hack
 mslug3ctmf14      // Hack
+mslug3ctmf15      // Hack
 mslug3ctmg01      // Hack
 mslug3ctmg02      // Hack
 mslug3ctmg03      // Hack
@@ -466,6 +471,7 @@ mslug3ctmg11      // Hack
 mslug3ctmg12      // Hack
 mslug3ctmg13      // Hack
 mslug3ctmg14      // Hack
+mslug3ctmg15      // Hack
 mslug3ctmh01      // Hack
 mslug3ctmh02      // Hack
 mslug3ctmh03      // Hack
@@ -480,17 +486,7 @@ mslug3ctmh11      // Hack
 mslug3ctmh12      // Hack
 mslug3ctmh13      // Hack
 mslug3ctmh14      // Hack
-mslug3b6ctma01    // Hack
-mslug3b6ctma02    // Hack
-mslug3b6ctma03    // Hack
-mslug3b6ctma04    // Hack
-mslug3b6ctma05    // Hack
-mslug3b6ctma06    // Hack
-mslug3b6ctma07    // Hack
-mslug3b6ctma08    // Hack
-mslug3b6ctma09    // Hack
-mslug3b6ctma10    // Hack
-mslug3b6ctma11    // Hack
+mslug3ctmh15      // Hack
 mslug4ctma01      // Hack
 mslug4ctma02      // Hack
 mslug4ctma03      // Hack
