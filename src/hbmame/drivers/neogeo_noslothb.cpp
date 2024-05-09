@@ -21029,6 +21029,23 @@ ROM_START( mslug2ctma13 )
     MSLUG2EG_SPRITES
 ROM_END
 
+ROM_START( mslug2ctma14 )
+	ROM_REGION( 0x300000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256_cmb14.p1", 0x000000, 0x100000, CRC(b06d2bd8) SHA1(d1dd028b15f1086d3723c3d11ed3a7fc01209d8d) )
+	ROM_LOAD16_WORD_SWAP( "241.p2",       0x100000, 0x200000, CRC(38883f44) SHA1(fcf34b8c6e37774741542393b963635412484a27) )
+    MSLUG2R_ESSENTIALPATCH_MODS_FILL
+    MSLUG2_CUSTOMPATCH_MODS_FILL
+    MSLUG2_XRLOGOVERSION_MODS_FILL
+    MSLUG2_SOLDIER_CHANGING_UNIFORM_MODS_FILL
+    MSLUG2_1V2GENERATION_MODS_FILL
+    MSLUG2_MVS_FILL
+    MSLUG2_AES_FILL
+	MSLUG2_SFIX_128K
+    MSLUG2_AUDIO_128K
+    MSLUG2_YMSND
+    MSLUG2_SPRITES
+ROM_END
+
 ROM_START( mslug3ctma01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc03.p1",  0x000000, 0x100000, CRC(b23bd9b7) SHA1(4a5e877bc0d4853dc9c5a2c179049fbdd5285239) )
@@ -23574,7 +23591,7 @@ ROM_END
 ROM_START( mslug4ctma10 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_cma10.p1", 0x000000, 0x100000, CRC(daf7813d) SHA1(039f476e2e22797659c8b0b91603fb64b3ba406f) )
-	ROM_LOAD16_WORD_SWAP( "263_hc01.p2",  0x100000, 0x400000, CRC(2b863b30) SHA1(b5edc43d87faf6540e3154fcbab42efb148cbd04) )
+	ROM_LOAD16_WORD_SWAP( "263.p2",       0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
     MSLUG4HB_ESSENTIALPATCH_MODS_FILL
     MSLUG4_CUSTOMPATCH_MODS_FILL
     MSLUG4_CSLOGOVERSION_MODS_FILL
@@ -24824,7 +24841,7 @@ ROM_END
 
 ROM_START( mslug5ctme09 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_cme09.p1", 0x000000, 0x600000, CRC(d54c9fca) SHA1(a0e4b853c5110b3180b4b5633a854e8a5f09bc8a) )
+	ROM_LOAD16_WORD_SWAP( "268_cme09.p1", 0x000000, 0x600000, CRC(0b86dcfa) SHA1(70678280f4771889c4a11eafa09c298313201a2a) )
     MSLUG5CQ_ESSENTIALPATCH_MODS_FILL
     MSLUG5ND_CUSTOMPATCH_MODS_FILL
     MSLUG5ND_LOGOVERSION_MODS_FILL
@@ -24873,7 +24890,7 @@ ROM_END
 
 ROM_START( mslug5ctme12 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_cme12.p1", 0x000000, 0x600000, CRC(9c9c7e99) SHA1(1f85baff6096775c612d69467cbd5898df328d2e) )
+	ROM_LOAD16_WORD_SWAP( "268_cme12.p1", 0x000000, 0x600000, CRC(ee6fc5db) SHA1(88d1c4ea0d62fe63c7157c35e9b59053c87b38f4) )
     MSLUG5ND_ESSENTIALPATCH_MODS_FILL
     MSLUG5ND_CUSTOMPATCH_MODS_FILL
     MSLUG5ND_LOGOVERSION_MODS_FILL
@@ -25218,7 +25235,7 @@ ROM_END
 
 ROM_START( mslug5ctmf17 ) 
 	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_cmf17.p1", 0x000000, 0x600000, CRC(c3cda962) SHA1(6f5ea80bfa764b5eb9b19750c91866d6739edf7b) )
+	ROM_LOAD16_WORD_SWAP( "268_cmf17.p1", 0x000000, 0x600000, CRC(9bc98a00) SHA1(dca7b115883551ae8a6dc98a6af95c089b37c990) )
     MSLUG5ND_ESSENTIALPATCH_MODS_FILL
     MSLUG5ND_CUSTOMPATCH_MODS_FILL
 	MSLUG5ND_MVS_FILL
@@ -25407,7 +25424,7 @@ ROM_END
 
 ROM_START( mslug5ctmg12 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_cmg12.p1", 0x000000, 0x600000, CRC(51d73509) SHA1(ad8174345367b6dfd2e411523f14f7258a858f9e) )
+	ROM_LOAD16_WORD_SWAP( "268_cmg12.p1", 0x000000, 0x600000, CRC(1f38bc9a) SHA1(17d619309fc860697cfc1d91a945eb16eab1dbfc) )
     MSLUG5ND_ESSENTIALPATCH_MODS_FILL
     MSLUG5ND_CUSTOMPATCH_MODS_FILL
     MSLUG5ND_LOGOVERSION_MODS_FILL
@@ -30345,6 +30362,7 @@ GAME( 2020, mslug2ctma10,       mslug2,   neogeo_noslot, mslug_st, neogeo_state,
 GAME( 2020, mslug2ctma11,       mslug2,   neogeo_noslot, mslug2wp, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (Enemies Resetting Change Weapon And Mummy Custom Version 2018-01-25)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug2ctma12,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (Enemies Resetting Early Summer Starry Sky Custom Version 2022-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2ctma13,       mslug2,   neogeo_noslot, mslug2eg, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (Enemies Resetting Extraction Green Turbo Custom Version 2021-09-16)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug2ctma14,       mslug2,   neogeo_noslot, neogeohb, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (Enemies Resetting Custom Version 2014-09-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctma01,       mslug3,   neogeo_noslot, mslug3g,  neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Multi-Function Custom Version 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctma02,       mslug3,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Onimusha Samanosuke Custom Version 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctma03,       mslug3,   neogeo_noslot, mslug_vh, neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Summon Mount Custom Edition 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
@@ -30514,7 +30532,7 @@ GAME( 2024, mslug5ctma13,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,
 GAME( 2024, mslug5ctma14,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemies Resetting Unity Time! Custom Version 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctma15,       mslug5,   neogeo_noslot, mslug5zh, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemies Resetting War Chariot Custom Version 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctma16,       mslug5,   neogeo_noslot, neogeohb, neogeo_state,    init_ms5plushb,  ROT0, "PSMSlugForever",  "Metal Slug 5 Plus (Enemies Resetting Custom Version 2024-04-19)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslug5ctma17,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemies Resetting X Final Custom Version 2024-04-17)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5ctma17,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemies Resetting X Final Custom Version 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmb01,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Enhanced X Final 1v2 Generation Custom Version 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmb02,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Enhanced X Final Burst Enhanced Custom Edition 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmb03,       mslug5,   neogeo_noslot, mslug5wp, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Enhanced X Final Change Weapons Custom Version 2024-04-17)", MACHINE_SUPPORTS_SAVE )
@@ -30546,7 +30564,7 @@ GAME( 2024, mslug5ctmc12,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,
 GAME( 2024, mslug5ctmc13,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (The Longest Battle Unity Time! Custom Version 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmc14,       mslug5,   neogeo_noslot, mslug5zh, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (The Longest Battle War Chariot Custom Version 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmc15,       mslug5,   neogeo_noslot, mslug5zh, neogeo_state,    init_ms5plushb,  ROT0, "PSMSlugForever",  "Metal Slug 5 Plus (The Longest Battle Custom Version 2024-04-17)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslug5ctmc16,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (The Longest Battle X Final Custom Version 2024-04-17)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5ctmc16,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (The Longest Battle X Final Custom Version 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmd01,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (The New Campaign 1v2 Generation Custom Version 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmd02,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (The New Campaign Burst Enhanced Custom Edition 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmd03,       mslug5,   neogeo_noslot, mslug5wp, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (The New Campaign Change Weapons Custom Version 2024-04-17)", MACHINE_SUPPORTS_SAVE )
@@ -30563,7 +30581,7 @@ GAME( 2024, mslug5ctmd13,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,
 GAME( 2024, mslug5ctmd14,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (The New Campaign Unity Time! Custom Version 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmd15,       mslug5,   neogeo_noslot, mslug5zh, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (The New Campaign War Chariot Custom Version 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmd16,       mslug5,   neogeo_noslot, neogeohb, neogeo_state,    init_ms5plushb,  ROT0, "PSMSlugForever",  "Metal Slug 5 Plus (The New Campaign Custom Version 2024-04-19)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslug5ctmd17,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (The New Campaign X Final Custom Version 2024-04-17)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5ctmd17,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (The New Campaign X Final Custom Version 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctme01,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #1 1v2 Generation Custom Version 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctme02,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #1 Burst Enhanced Custom Edition 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctme03,       mslug5,   neogeo_noslot, mslug5wp, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #1 Change Weapons Custom Version 2024-05-06)", MACHINE_SUPPORTS_SAVE )
@@ -30580,7 +30598,7 @@ GAME( 2024, mslug5ctme13,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,
 GAME( 2024, mslug5ctme14,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #1 Unity Time! Custom Version 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctme15,       mslug5,   neogeo_noslot, mslug5zh, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #1 War Chariot Custom Version 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctme16,       mslug5,   neogeo_noslot, neogeohb, neogeo_state,    init_ms5plushb,  ROT0, "PSMSlugForever",  "Metal Slug 5 Plus (Enemy Soldiers Magic #1 Custom Version 2024-05-06)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslug5ctme17,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #1 X Final Custom Version 2024-05-06)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5ctme17,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #1 X Final Custom Version 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmf01,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #2 1v2 Generation Custom Version 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmf02,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #2 Burst Enhanced Custom Edition 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmf03,       mslug5,   neogeo_noslot, mslug5wp, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #2 Change Weapons Custom Version 2024-05-06)", MACHINE_SUPPORTS_SAVE )
@@ -30597,7 +30615,7 @@ GAME( 2024, mslug5ctmf13,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,
 GAME( 2024, mslug5ctmf14,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #2 Unity Time! Custom Version 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmf15,       mslug5,   neogeo_noslot, mslug5zh, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #2 War Chariot Custom Version 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmf16,       mslug5,   neogeo_noslot, neogeohb, neogeo_state,    init_ms5plushb,  ROT0, "PSMSlugForever",  "Metal Slug 5 Plus (Enemy Soldiers Magic #2 Custom Version 2024-05-06)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslug5ctmf17,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #2 X Final Custom Version 2024-05-06)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5ctmf17,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #2 X Final Custom Version 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmg01,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #3 1v2 Generation Custom Version 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmg02,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #3 Burst Enhanced Custom Edition 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmg03,       mslug5,   neogeo_noslot, mslug5wp, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #3 Change Weapons Custom Version 2024-05-06)", MACHINE_SUPPORTS_SAVE )
@@ -30614,7 +30632,7 @@ GAME( 2024, mslug5ctmg13,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,
 GAME( 2024, mslug5ctmg14,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #3 Unity Time! Custom Version 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmg15,       mslug5,   neogeo_noslot, mslug5zh, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #3 War Chariot Custom Version 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmg16,       mslug5,   neogeo_noslot, neogeohb, neogeo_state,    init_ms5plushb,  ROT0, "PSMSlugForever",  "Metal Slug 5 Plus (Enemy Soldiers Magic #3 Custom Version 2024-05-06)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslug5ctmg17,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #3 X Final Custom Version 2024-05-06)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5ctmg17,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #3 X Final Custom Version 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctma01,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower Infinite Firepower Custom Version 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctma02,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower Easy Mode Custom Version 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctma03,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower Burst Enhanced Custom Edition 2023-07-07)", MACHINE_SUPPORTS_SAVE )
