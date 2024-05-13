@@ -16,3 +16,15 @@ files {
 	MAME_DIR .. "src/devices/video/vector.cpp",
 	MAME_DIR .. "src/devices/video/vector.h",
 }
+
+--------------------------------------------------
+--
+--@src/devices/video/bufsprite.h,VIDEOS["BUFSPRITE"] = true
+--------------------------------------------------
+
+if (VIDEOS["BUFSPRITE"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/video/bufsprite.cpp",
+		MAME_DIR .. "src/devices/video/bufsprite.h",
+	}
+end

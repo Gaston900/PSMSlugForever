@@ -129,11 +129,12 @@ mslug5ndde        // Fully Decrypted GFX (Documentation)
 mslugxde          // SNK Encrypted GFX (Documentation)
 
 @source:neogeo.cpp
-mslug3x           // HomeBrew
-mslug3xa          // HomeBrew
-mslug3xb          // HomeBrew
-mslug3xc          // HomeBrew
-mslug3xd          // HomeBrew
+mslug3x           // Metal Slug 3X HomeBrew (Complete Collection)
+mslug3xb          // Metal Slug 3X HomeBrew (Complete Collection)
+mslug3x0          // Metal Slug 3X HomeBrew (Complete Collection)
+mslug3x1          // Metal Slug 3X HomeBrew (Complete Collection)
+mslug3x2          // Metal Slug 3X HomeBrew (Complete Collection)
+mslug3x3          // Metal Slug 3X HomeBrew (Complete Collection)
 neopang           // HomeBrew
 cyborgfc          // HomeBrew
 
@@ -921,3 +922,28 @@ mslugxrme01       // Hack
 mslugxrmf01       // Hack
 mslugxrmg01       // Hack
 mslugxrmh01       // Hack
+
+/*******************************************************************
+    List of all enabled drivers additional features in the system.
+**********************************************************************/
+
+@source:neogeo.cpp
+shocktr2          // 0246 (c) 1998 Saurus
+lans2004          // bootleg of shocktr2
+lans2004p         // bootleg of shocktr2 (Predecrypted)
+lans2k4d          // Full Decrypted
+shocktr2hc01      // Hack
+shocktr2hc02      // Hack
+
+@source:m92.cpp
+inthunt           // (c) 1993 Irem (World)
+inthuntu          // (c) 1993 Irem (US)
+kaiteids          // (c) 1993 Irem (Japan)
+geostorm          // (c) 1994 Irem (Japan)
+gunforc2          // (c) 1994 Irem
+
+@source:pgm.cpp
+pgm               // Bios
+dmnfrnt           // (c) 2002 Demon Front
+dmnfrnt103        //
+dmnfrnt102        //

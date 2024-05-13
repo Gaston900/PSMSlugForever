@@ -1,15 +1,17 @@
 -- license:BSD-3-Clause
 -- copyright-holders:Gaston90
----------------------------------------------------------------------------
+---------------------------------------------------
 --   PSMSLUGFOREVER target makefile
----------------------------------------------------------------------------
+---------------------------------------------------
 
---------------------------------------------------
+---------------------------------------------------
 -- specify available CPU cores
 ---------------------------------------------------
 
 CPUS["Z80"] = true 
 CPUS["M680X0"] = true
+CPUS["NEC"] = true -- m92
+CPUS["ARM7"] = true -- pgm
 
 --------------------------------------------------
 -- specify available sound cores
@@ -17,6 +19,10 @@ CPUS["M680X0"] = true
 
 SOUNDS["SPEAKER"] = true
 SOUNDS["YM2610"] = true
+SOUNDS["IREMGA20"] = true -- m92
+SOUNDS["OKIM6295"] = true -- m92
+SOUNDS["YM2151"] = true -- m92
+SOUNDS["ICS2115"] = true -- pgm
 
 --------------------------------------------------
 -- specify available machine cores
@@ -26,10 +32,20 @@ MACHINES["GEN_LATCH"] = true
 MACHINES["UPD1990A"] = true
 MACHINES["WATCHDOG"] = true
 MACHINES["Z80DAISY"] = true
+MACHINES["PIC8259"] = true -- m92
+MACHINES["V3021"] = true -- pgm
+
+--------------------------------------------------
+-- specify available video cores
+--------------------------------------------------
+
+VIDEOS["BUFSPRITE"] = true -- m92
 
 function linkProjects_mame_arcade(_target, _subtarget)
 	links {
 		"neogeo",
+		"irem",
+		"igs",
 	}
 end
 
@@ -86,5 +102,28 @@ files {
 	MAME_DIR .. "src/hbmame/bus/neogeo_ctrl/kizuna4p.cpp",
 }
 
-end
+createMAMEProjects(_target, _subtarget, "irem")
+files {
+	MAME_DIR .. "src/mame/drivers/m92.cpp",
+	MAME_DIR .. "src/mame/machine/irem_cpu.cpp",
+	MAME_DIR .. "src/mame/video/m92.cpp",
+}
 
+createMAMEProjects(_target, _subtarget, "igs")
+files {
+	MAME_DIR .. "src/mame/drivers/pgm.cpp",
+	MAME_DIR .. "src/mame/machine/igs025.cpp",
+	MAME_DIR .. "src/mame/machine/igs022.cpp",
+	MAME_DIR .. "src/mame/machine/igs028.cpp",
+	MAME_DIR .. "src/mame/machine/pgmcrypt.cpp",
+	MAME_DIR .. "src/mame/machine/pgmprot_igs025_igs012.cpp",
+	MAME_DIR .. "src/mame/machine/pgmprot_igs025_igs022.cpp",
+	MAME_DIR .. "src/mame/machine/pgmprot_igs025_igs028.cpp",
+	MAME_DIR .. "src/mame/machine/pgmprot_igs027a_type1.cpp",
+	MAME_DIR .. "src/mame/machine/pgmprot_igs027a_type2.cpp",
+	MAME_DIR .. "src/mame/machine/pgmprot_igs027a_type3.cpp",
+    MAME_DIR .. "src/mame/machine/pgmprot_orlegend.cpp",
+	MAME_DIR .. "src/mame/video/pgm.cpp",
+}
+
+end

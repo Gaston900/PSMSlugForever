@@ -117,6 +117,7 @@ public:
 	void init_mslug5hb();
 	void init_mslugx();
 	void init_mslugxdd();
+	void init_lans2004();
 
 	DECLARE_CUSTOM_INPUT_MEMBER(get_memcard_status);
 	DECLARE_CUSTOM_INPUT_MEMBER(get_audio_result);
