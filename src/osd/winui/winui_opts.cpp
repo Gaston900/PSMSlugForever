@@ -106,7 +106,7 @@ const options_entry winui_options::s_option_entries[] =
 
 	{ nullptr,								nullptr,       	OPTION_HEADER, "SEARCH PATH OPTIONS" },
 	{ MUIOPTION_ARTWORK_DIRECTORY,			"support/artpreview", 	OPTION_STRING, nullptr },
-	{ MUIOPTION_AUDIO_DIRECTORY,			"config/audio",    	    OPTION_STRING, nullptr },
+	{ MUIOPTION_AUDIO_DIRECTORY,			"audio",    	        OPTION_STRING, nullptr },
 	{ MUIOPTION_BOSSES_DIRECTORY,			"support/bosses",   	OPTION_STRING, nullptr },
 	{ MUIOPTION_CABINET_DIRECTORY,			"support/cabinets", 	OPTION_STRING, nullptr },
 	{ MUIOPTION_CPANEL_DIRECTORY,			"support/cpanel",   	OPTION_STRING, nullptr },

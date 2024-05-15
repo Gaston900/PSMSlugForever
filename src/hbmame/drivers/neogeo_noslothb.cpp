@@ -2053,15 +2053,6 @@ void neogeo_state::init_mslugxdd()
 	m_mslugx_prot->mslugx_install_protection(m_maincpu);
 }
 
-void neogeo_state::init_lans2004()
-{
-	init_neogeo();
-	m_bootleg_prot->lans2004_decrypt_68k(cpuregion, cpuregion_size);
-	m_bootleg_prot->lans2004_vx_decrypt(ym_region, ym_region_size);
-	m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size,1);
-	m_bootleg_prot->neogeo_bootleg_cx_decrypt(spr_region, spr_region_size);
-}
-
 /*********************************************** non-carts */
 
 void neogeo_state::install_banked_bios()
@@ -14855,6 +14846,16 @@ INPUT_PORTS_END
 	ROM_FILL(0x7BBD4,1,0x00)\
     ROM_FILL(0x7BBD5,1,0x02)\
 
+#define SHOCKTR2_MVS_FILL \
+    ROM_FILL(0x5BB,1,0x78) \
+	ROM_FILL(0x5BD,1,0x34) \
+	ROM_FILL(0x5BE,1,0x12) \
+	ROM_FILL(0x5BF,1,0x23)
+//	ROM_FILL(0x5B8,1,0x12)
+//	ROM_FILL(0x5B9,1,0x12)
+//	ROM_FILL(0x5BA,1,0x12)
+//	ROM_FILL(0x5BC,1,0x25)
+
 /*************************************
     Game specific Roms definitions
  *************************************/
@@ -16243,28 +16244,10 @@ INPUT_PORTS_END
 	ROM_LOAD16_BYTE( "246.c5", 0x2000000, 0x800000, CRC(055b3701) SHA1(97f5e92538d1f2e437dcb3f80e56e1230287e8d1) ) \
 	ROM_LOAD16_BYTE( "246.c6", 0x2000001, 0x800000, CRC(7e2caae1) SHA1(d9de14e3e323664a8c5b7f1df1ba9ec7dd0e6a46) )
 
-#define LANS2004_SFIX_128K \
-	NEO_SFIX_128K( "lnsq.s1", CRC(39e82897) SHA1(24a8c94dd7e70ecde8f90ea17f75b6b5d065704f) )
-
-#define LANS2004_YMSND \
-	ROM_REGION( 0x1000000, "ymsnd", 0 ) \
-	ROM_LOAD( "lnsq.v1", 0x000000, 0x400000, CRC(4408ebc3) SHA1(e3f4d8a7e243a8cf48e97d91bbfec7829c0d9404) ) \
-	ROM_LOAD( "lnsq.v2", 0x400000, 0x400000, CRC(3d953975) SHA1(6a4ab02ab3d4416a65343cf16815007cb273f19b) ) \
-	ROM_LOAD( "lnsq.v3", 0x800000, 0x200000, CRC(437d1d8e) SHA1(95e015c21707b53ed7223eaa19f6cdcfb4d94f0c) )
-
-#define LANS2004_SPRITES \
-	ROM_REGION( 0x3000000, "sprites", 0 ) \
-	ROM_LOAD16_BYTE( "lnsq.c1", 0x0000000, 0x800000, CRC(b83de59f) SHA1(8cc060f9a57ab7d4238543b0bce5f5cd1d271d4f) ) \
-	ROM_LOAD16_BYTE( "lnsq.c2", 0x0000001, 0x800000, CRC(e08969fd) SHA1(c192639d023cdad64a8f53dbcda02aa8cfb4168e) ) \
-	ROM_LOAD16_BYTE( "lnsq.c3", 0x1000000, 0x800000, CRC(013f2cda) SHA1(6261111ce69dc23fbf97241131e5a6a49355d18c) ) \
-	ROM_LOAD16_BYTE( "lnsq.c4", 0x1000001, 0x800000, CRC(d8c3a758) SHA1(d19ca3be06f9fb0cb1933b1eb3da318524c3145d) ) \
-	ROM_LOAD16_BYTE( "lnsq.c5", 0x2000000, 0x800000, CRC(75500b82) SHA1(06d2afe94ea3eb3c4e523f593b8e709dd7c284a3) ) \
-	ROM_LOAD16_BYTE( "lnsq.c6", 0x2000001, 0x800000, CRC(670ac13b) SHA1(f448a144caae51b69ea19e1f43940db135d1164a) )
-
-#define SHOCKTR2K4D_SFIX_128K \
+#define LANS2004K4D_SFIX_128K \
 	NEO_SFIX_128K( "lnsq2k4d.s1", CRC(8699c63a) SHA1(d1a0345bcb4e3f6044c93abd52ff6fe6280dc5ee) )
 
-#define SHOCKTR2K4D_SPRITES \
+#define LANS2004K4D_SPRITES \
 	ROM_REGION( 0x3000000, "sprites", 0 ) \
 	ROM_LOAD16_BYTE( "246.c1",      0x0000000, 0x800000, CRC(47ac9ec5) SHA1(2d9eea11ba87baa23b18a1a3f607dc137846e807) ) \
 	ROM_LOAD16_BYTE( "246.c2",      0x0000001, 0x800000, CRC(7bcab64f) SHA1(08d0edddd14b53d606e9a7a46aa4fb4e7398e0d0) ) \
@@ -30062,6 +30045,7 @@ ROM_START( shocktr2 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "246.p1", 0x000000, 0x100000, CRC(6d4b7781) SHA1(3c9d53d5da9842bfd45037c919064dda3fb2e089) )
 	ROM_LOAD16_WORD_SWAP( "246.p2", 0x100000, 0x400000, CRC(72ea04c3) SHA1(4fb1d22c30f5f3db4637dd92a4d2705c88de399d) )
+    SHOCKTR2_MVS_FILL
     SHOCKTR2_SFIX_128K
 	SHOCKTR2_AUDIO_128K
 	SHOCKTR2_YMSND
@@ -30070,40 +30054,30 @@ ROM_END
 
 ROM_START( lans2004 ) /* Shock Troopers - 2nd Squad bootleg */
 	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "lnsq.p1", 0x000000, 0x200000, CRC(b40a879a) SHA1(379f3d44b0bae430b32157fd5f4018d77b243c58) )
-	ROM_LOAD16_WORD_SWAP( "lnsq.p2", 0x200000, 0x200000, CRC(ecdb2d42) SHA1(0d930cd369dfbcab7778b144355e5f70874aa324) )
-	ROM_LOAD16_WORD_SWAP( "lnsq.p3", 0x400000, 0x200000, CRC(fac5e2e7) SHA1(5cce7226c137da80c969df00e1cda41ef9c5082c) )
-    LANS2004_SFIX_128K
-    SHOCKTR2_AUDIO_128K
-    LANS2004_YMSND
-    LANS2004_SPRITES
-ROM_END
-
-ROM_START( lans2004p )
-	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "246p.p1", 0x000000, 0x200000, CRC(ec7b7805) SHA1(4d1245ae452f80a9a533f4eedc431d922406fc59) )
-	ROM_LOAD16_WORD_SWAP( "246p.p2", 0x200000, 0x200000, CRC(9ee6c85e) SHA1(eda1786695715b8db0edf1fe181606604fcbfdd0) )
-	ROM_LOAD16_WORD_SWAP( "246p.p3", 0x400000, 0x200000, CRC(b10e6637) SHA1(f2e6ba37d13bdfccc652cf5f61ebc613f90cfd6d) )
-    SHOCKTR2K4D_SFIX_128K
+	ROM_LOAD16_WORD_SWAP( "lnsq.p1", 0x000000, 0x200000, CRC(ec7b7805) SHA1(4d1245ae452f80a9a533f4eedc431d922406fc59) )
+	ROM_LOAD16_WORD_SWAP( "lnsq.p2", 0x200000, 0x200000, CRC(9ee6c85e) SHA1(eda1786695715b8db0edf1fe181606604fcbfdd0) )
+	ROM_LOAD16_WORD_SWAP( "lnsq.p3", 0x400000, 0x200000, CRC(b10e6637) SHA1(f2e6ba37d13bdfccc652cf5f61ebc613f90cfd6d) )
+    LANS2004K4D_SFIX_128K
     SHOCKTR2_AUDIO_128K
     SHOCKTR2_YMSND
-    SHOCKTR2K4D_SPRITES
+    LANS2004K4D_SPRITES
 ROM_END
 
 ROM_START( lans2k4d )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "246lnsq.p1", 0x000000, 0x100000, CRC(724576EA) SHA1(075f5d8ccb7303c8b6bebf630c4fa9c204554044) )
 	ROM_LOAD16_WORD_SWAP( "246.p2",     0x100000, 0x400000, CRC(72ea04c3) SHA1(4fb1d22c30f5f3db4637dd92a4d2705c88de399d) )
-    SHOCKTR2K4D_SFIX_128K
+    LANS2004K4D_SFIX_128K
     SHOCKTR2_AUDIO_128K
     SHOCKTR2_YMSND
-    SHOCKTR2K4D_SPRITES
+    LANS2004K4D_SPRITES
 ROM_END
 
 ROM_START( shocktr2hc01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "246_hc01.p1", 0x000000, 0x100000, CRC(c7349458) SHA1(99024439c2730fbc9b783345cf768f8ebb9d9155) )
 	ROM_LOAD16_WORD_SWAP( "246.p2",      0x100000, 0x400000, CRC(72ea04c3) SHA1(4fb1d22c30f5f3db4637dd92a4d2705c88de399d) )
+	SHOCKTR2_MVS_FILL
     SHOCKTR2_SFIX_128K
 	SHOCKTR2_AUDIO_128K
 	SHOCKTR2_YMSND
@@ -30114,6 +30088,7 @@ ROM_START( shocktr2hc02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "246_hc02.p1", 0x000000, 0x100000, CRC(6d4b7781) SHA1(c76daae4bfadee0e98cb828327639f83185b1943) )
 	ROM_LOAD16_WORD_SWAP( "246.p2",      0x100000, 0x400000, CRC(72ea04c3) SHA1(4fb1d22c30f5f3db4637dd92a4d2705c88de399d) )
+	SHOCKTR2_MVS_FILL
     SHOCKTR2_SFIX_128K
 	SHOCKTR2_AUDIO_128K
 	SHOCKTR2_YMSND
@@ -31084,8 +31059,7 @@ GAME( 2023, mslugxrmh01,      mslugx,   neogeo_noslot, mslug_vh, neogeo_state,  
 /*    YEAR   NAME             PARENT       MACHINE       INPUT                       INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Shock Troopers - 2nd Squad
 GAME( 1998, shocktr2,         neogeo,   neogeo_noslot, neogeo,   neogeo_state,    init_neogeo,     ROT0, "Saurus",          "Shock Troopers - 2nd Squad", MACHINE_SUPPORTS_SAVE )
-GAME( 1998, lans2004,         shocktr2, neogeo_noslot, neogeo,   neogeo_state,    init_lans2004,   ROT0, "bootleg",         "Lansquenet 2004 (Shock Troopers - 2nd Squad bootleg)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, lans2004p,        shocktr2, neogeo_noslot, neogeo,   neogeo_state,    init_neogeo,     ROT0, "bootleg",         "Lansquenet 2004 (Shock Troopers - 2nd Squad bootleg)(Predecrypted)", MACHINE_SUPPORTS_SAVE )
+GAME( 1998, lans2004,         shocktr2, neogeo_noslot, neogeo,   neogeo_state,    init_neogeo,     ROT0, "bootleg",         "Lansquenet 2004 (Shock Troopers - 2nd Squad bootleg)", MACHINE_SUPPORTS_SAVE )
 GAME( 2004, lans2k4d,         shocktr2, neogeo_noslot, neogeo,   neogeo_state,    init_neogeo,     ROT0, "bootleg",         "Lansquenet 2004 (Shock Troopers - 2nd Squad bootleg)(Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2014, shocktr2hc01,     shocktr2, neogeo_noslot, neogeo,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Shock Troopers - 2nd Squad (Ex Super Version 2014-01-27)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, shocktr2hc02,     shocktr2, neogeo_noslot, neogeo,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Shock Troopers - 2nd Squad (Strongest Firepower 2022-12-17)", MACHINE_SUPPORTS_SAVE )
