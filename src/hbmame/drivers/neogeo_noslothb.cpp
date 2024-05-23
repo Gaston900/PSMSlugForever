@@ -3886,6 +3886,20 @@ GAME( 1990, neogeo,     0,        mvs,      neogeo_6slot,   neogeo_state, init_n
 	ROM_FILL(0xF3600,1,0x00)\
 	ROM_FILL(0xF3601,1,0x07)
 
+#define MSLUG5ND_FATPLAYERS_MODS_FILL \
+	ROM_FILL(0x1C250,1,0x00)\
+	ROM_FILL(0x1C251,1,0x03)\
+	ROM_FILL(0x1C254,1,0x01)\
+	ROM_FILL(0x1C255,1,0x03)\
+	ROM_FILL(0x1C258,1,0x02)\
+	ROM_FILL(0x1C259,1,0x04)\
+	ROM_FILL(0x1C274,1,0x03)\
+	ROM_FILL(0x1C275,1,0x03)\
+	ROM_FILL(0x1C278,1,0x03)\
+	ROM_FILL(0x1C279,1,0x03)\
+	ROM_FILL(0x1C27C,1,0x04)\
+	ROM_FILL(0x1C27D,1,0x04)
+
 #define MSLUG5H_AMMUNITION2X_MVS_FILL \
     ROM_FILL(0x1C2B1,1,0x3C)\
 	ROM_FILL(0x1C2BB,1,0x3C)\
@@ -3925,14 +3939,6 @@ GAME( 1990, neogeo,     0,        mvs,      neogeo_6slot,   neogeo_state, init_n
 	ROM_FILL(0xB7A2F,1,0x71)\
 	ROM_FILL(0xB7A48,1,0x4E)\
 	ROM_FILL(0xB7A49,1,0x71)
-
-#define MSLUG5H_FAT_MVS_FILL \
-    ROM_FILL(0x1C251,1,0x03)\
-	ROM_FILL(0x1C255,1,0x03)\
-	ROM_FILL(0x1C259,1,0x04)\
-	ROM_FILL(0x1C274,1,0x03)\
-	ROM_FILL(0x1C278,1,0x03)\
-	ROM_FILL(0x1C27C,1,0x04)
 
 #define MSLUG5H_BFIRE_MVS_FILL \
 	ROM_FILL(0x1BD67,1,0x02)
@@ -4680,7 +4686,7 @@ INPUT_PORTS_START( mslug_ce )
 	PORT_BIT( 0x8400, IP_ACTIVE_LOW, IPT_BUTTON9 ) PORT_NAME("@P1 Weapon Big Flame Shot @Button9") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8400) PORT_CODE(KEYCODE_T)
     PORT_BIT( 0x8100, IP_ACTIVE_LOW, IPT_BUTTON10 ) PORT_NAME("@P1 Weapon Super Grenade @Button10") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8100) PORT_CODE(KEYCODE_F)
     PORT_BIT( 0x8200, IP_ACTIVE_LOW, IPT_BUTTON11 ) PORT_NAME("@P1 Weapon Enemy Chaser @Button11") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8200) PORT_CODE(KEYCODE_G)
-    PORT_BIT( 0x8800, IP_ACTIVE_LOW, IPT_BUTTON12 ) PORT_NAME("@P1 Weapon @Button12") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8800) PORT_CODE(KEYCODE_H)
+    PORT_BIT( 0x8800, IP_ACTIVE_LOW, IPT_BUTTON12 ) PORT_NAME("@P1 Weapon Big Heavy Machine Gun @Button12") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8800) PORT_CODE(KEYCODE_H)
 	PORT_BIT( 0x1000+0x2000+0x4000, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_NAME("@P1 Body Change Player Zombie @Button6") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x7000) PORT_CODE(KEYCODE_W)
     PORT_BIT( 0x2000+0x4000+0x8000, IP_ACTIVE_LOW, IPT_BUTTON7 ) PORT_NAME("@P1 Body Change Player Mummy @Button7") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0xE000) PORT_CODE(KEYCODE_E)
     PORT_BIT( 0x1000+0x2000+0x4000+0x8000, IP_ACTIVE_LOW, IPT_BUTTON8 ) PORT_NAME("@P1 Button Body Change Player Human @Button8") PORT_CONDITION("DSW", 0xF000, EQUALS, 0xF000) PORT_CODE(KEYCODE_R)
@@ -4693,7 +4699,7 @@ INPUT_PORTS_START( mslug3v )
 	PORT_BIT( 0x8400, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_NAME("@P1 Weapon Big Flame Shot @Button6") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8400) PORT_CODE(KEYCODE_W)
     PORT_BIT( 0x8100, IP_ACTIVE_LOW, IPT_BUTTON7 ) PORT_NAME("@P1 Weapon Super Grenade @Button7") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8100) PORT_CODE(KEYCODE_E)
     PORT_BIT( 0x8200, IP_ACTIVE_LOW, IPT_BUTTON8 ) PORT_NAME("@P1 Weapon Enemy Chaser @Button8") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8200) PORT_CODE(KEYCODE_R)
-    PORT_BIT( 0x8800, IP_ACTIVE_LOW, IPT_BUTTON9 ) PORT_NAME("@P1 Weapon @Button9") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8800) PORT_CODE(KEYCODE_T)
+    PORT_BIT( 0x8800, IP_ACTIVE_LOW, IPT_BUTTON9 ) PORT_NAME("@P1 Weapon Big Heavy Machine Gun @Button9") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8800) PORT_CODE(KEYCODE_T)
     PORT_BIT( 0x4800, IP_ACTIVE_LOW, IPT_BUTTON10 ) PORT_NAME("@P1 Bomb Fire @Button10") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x4800) PORT_CODE(KEYCODE_F)
     PORT_BIT( 0x4400, IP_ACTIVE_LOW, IPT_BUTTON11 ) PORT_NAME("@P1 Bomb Normal @Button11") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x4400) PORT_CODE(KEYCODE_G)
     PORT_BIT( 0x4200, IP_ACTIVE_LOW, IPT_BUTTON12 ) PORT_NAME("@P1 Stone @Button12") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x4200) PORT_CODE(KEYCODE_H)
@@ -4828,7 +4834,7 @@ INPUT_PORTS_START( mslugxv )
 	PORT_BIT( 0x8400, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_NAME("@P1 Weapon Big Flame Shot @Button6") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8400) PORT_CODE(KEYCODE_W)
     PORT_BIT( 0x8100, IP_ACTIVE_LOW, IPT_BUTTON7 ) PORT_NAME("@P1 Weapon Super Grenade @Button7") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8100) PORT_CODE(KEYCODE_E)
     PORT_BIT( 0x8200, IP_ACTIVE_LOW, IPT_BUTTON8 ) PORT_NAME("@P1 Weapon Enemy Chaser @Button8") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8200) PORT_CODE(KEYCODE_R)
-    PORT_BIT( 0x8800, IP_ACTIVE_LOW, IPT_BUTTON9 ) PORT_NAME("@P1 Weapon @Button9") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8800) PORT_CODE(KEYCODE_T)
+    PORT_BIT( 0x8800, IP_ACTIVE_LOW, IPT_BUTTON9 ) PORT_NAME("@P1 Weapon Big Heavy Machine Gun @Button9") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8800) PORT_CODE(KEYCODE_T)
     PORT_BIT( 0x4100, IP_ACTIVE_LOW, IPT_BUTTON10 ) PORT_NAME("@P1 Bomb Fire @Button10") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x4100) PORT_CODE(KEYCODE_F)
 INPUT_PORTS_END
 
@@ -10952,7 +10958,7 @@ INPUT_PORTS_END
 	ROM_FILL(0xC4C00,1,0x02)\
 	ROM_FILL(0xC4607,1,0x02)
 
-#define FIX_FATPLAYERS_FILL \
+#define MSLUG4_FATPLAYERS_FIX_FILL \
     ROM_FILL(0xC4609,1,0x93)
 
 #define FIX_SKIPLEVEL6_FILL \
@@ -11126,6 +11132,23 @@ INPUT_PORTS_END
 	ROM_FILL(0xF2ED1,1,0x05)\
 	ROM_FILL(0xF47BE,1,0x00)\
 	ROM_FILL(0xF47BF,1,0x08)
+
+#define MSLUG5ND_FATPLAYERS_MODS_FILL \
+	ROM_FILL(0x1C250,1,0x00)\
+	ROM_FILL(0x1C251,1,0x03)\
+	ROM_FILL(0x1C254,1,0x01)\
+	ROM_FILL(0x1C255,1,0x03)\
+	ROM_FILL(0x1C258,1,0x02)\
+	ROM_FILL(0x1C259,1,0x04)\
+	ROM_FILL(0x1C274,1,0x03)\
+	ROM_FILL(0x1C275,1,0x03)\
+	ROM_FILL(0x1C278,1,0x03)\
+	ROM_FILL(0x1C279,1,0x03)\
+	ROM_FILL(0x1C27C,1,0x04)\
+	ROM_FILL(0x1C27D,1,0x04)\
+	ROM_FILL(0x1BD67,1,0x02)\
+	ROM_FILL(0x1BD73,1,0x12)\
+	ROM_FILL(0x1C298,1,0x12)
 
 #define MSLUG5SG_THELONGESTFIGHT_MODS_FILL \
 	ROM_FILL(0xF7238,1,0x00)\
@@ -29012,7 +29035,7 @@ ROM_START( mslug4la02 )
 	ROM_LOAD16_WORD_SWAP( "263_la01.p2", 0x100000, 0x400000, CRC(c2e06b8e) SHA1(f578a0ddb078619ddbaa7528731e1748076f8fcb) )
     MSLUG4_RXCUSTOMPATCH_MODS_FILL
     MSLUG4_FATPLAYERS_MODS_FILL
-    FIX_FATPLAYERS_FILL
+    MSLUG4_FATPLAYERS_FIX_FILL
     MSLUG4_THELONGESTFIGHT_MODS_FILL
     MSLUG4_AES_FILL
     MSLUG4lZW_SFIX_128K
@@ -29079,7 +29102,7 @@ ROM_START( mslug4lb02 )
 	ROM_LOAD16_WORD_SWAP( "263_la01.p2", 0x100000, 0x400000, CRC(c2e06b8e) SHA1(f578a0ddb078619ddbaa7528731e1748076f8fcb) )
     MSLUG4_RXCUSTOMPATCH_MODS_FILL
     MSLUG4_FATPLAYERS_MODS_FILL
-    FIX_FATPLAYERS_FILL
+    MSLUG4_FATPLAYERS_FIX_FILL
     MSLUG4_THELONGESTFIGHT_MODS_FILL
     MSLUG4_AES_FILL
     MSLUG4lZW_SFIX_128K
@@ -29272,7 +29295,19 @@ ROM_END
 
 ROM_START( mslug5la02 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_la02.p1", 0x000000, 0x600000, CRC(cde792f4) SHA1(dbcec8eb731ebe5b8bd092119e60387ccb5657b8) )
+	ROM_LOAD16_WORD_SWAP( "268_la01.p1", 0x000000, 0x600000, CRC(53af1d85) SHA1(bafa3b49e75c945ffe0787edb62a3a12428b0630) )
+    MSLUG5HD_RXCUSTOMPATCH_MODS_FILL
+    MSLUG5ND_FATPLAYERS_MODS_FILL
+    MSLUG5ND_AES_FILL
+    MSLUG5D_SFIX_128K
+    MSLUG5WD_AUDIO_512K
+	MSLUG5LA_YMSND
+	MSLUG5FD_SPRITES
+ROM_END
+
+ROM_START( mslug5la03 )
+	ROM_REGION( 0x600000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "268_la03.p1", 0x000000, 0x600000, CRC(cde792f4) SHA1(dbcec8eb731ebe5b8bd092119e60387ccb5657b8) )
     MSLUG5HD_RXCUSTOMPATCH_MODS_FILL
     MSLUG5ND_AES_FILL
     MSLUG5D_SFIX_128K
@@ -29294,7 +29329,19 @@ ROM_END
 
 ROM_START( mslug5lb02 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_lb02.p1", 0x000000, 0x600000, CRC(b4f3e700) SHA1(653469964d8eb19cf5106adddcb3acc9b2c7e6ff) )
+	ROM_LOAD16_WORD_SWAP( "268_lb01.p1", 0x000000, 0x600000, CRC(2abb6871) SHA1(84ae2c8248fcf50681308992d6b7601ca9a101d1) )
+    MSLUG5HD_RXCUSTOMPATCH_MODS_FILL
+    MSLUG5ND_FATPLAYERS_MODS_FILL
+    MSLUG5ND_AES_FILL
+    MSLUG5D_SFIX_128K
+    MSLUG5WD_AUDIO_512K
+	MSLUG5LA_YMSND
+	MSLUG5FD_SPRITES
+ROM_END
+
+ROM_START( mslug5lb03 )
+	ROM_REGION( 0x600000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "268_lb03.p1", 0x000000, 0x600000, CRC(b4f3e700) SHA1(653469964d8eb19cf5106adddcb3acc9b2c7e6ff) )
     MSLUG5HD_RXCUSTOMPATCH_MODS_FILL
     MSLUG5ND_AES_FILL
     MSLUG5D_SFIX_128K
@@ -29316,7 +29363,19 @@ ROM_END
 
 ROM_START( mslug5lc02 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
-    ROM_LOAD16_WORD_SWAP( "268_lc02.p1", 0x000000, 0x600000, CRC(8e7de514) SHA1(a84fbb588fa373e518b73ef56e44fc0fc5e34f8b) )
+    ROM_LOAD16_WORD_SWAP( "268_lc01.p1", 0x000000, 0x600000, CRC(10356a65) SHA1(4589112aa8300ba630735b8c829f09151bd0b161) )
+    MSLUG5HD_RXCUSTOMPATCH_MODS_FILL
+    MSLUG5ND_FATPLAYERS_MODS_FILL
+    MSLUG5ND_AES_FILL
+    MSLUG5D_SFIX_128K
+    MSLUG5WD_AUDIO_512K
+	MSLUG5LA_YMSND
+	MSLUG5FD_SPRITES
+ROM_END
+
+ROM_START( mslug5lc03 )
+	ROM_REGION( 0x600000, "maincpu", 0 )
+    ROM_LOAD16_WORD_SWAP( "268_lc03.p1", 0x000000, 0x600000, CRC(8e7de514) SHA1(a84fbb588fa373e518b73ef56e44fc0fc5e34f8b) )
     MSLUG5HD_RXCUSTOMPATCH_MODS_FILL
     MSLUG5ND_AES_FILL
     MSLUG5D_SFIX_128K
@@ -29338,7 +29397,19 @@ ROM_END
 
 ROM_START( mslug5ld02 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
-    ROM_LOAD16_WORD_SWAP( "268_ld02.p1", 0x000000, 0x600000, CRC(0ebe6c8b) SHA1(74d894a6706f766e288ffe7a7f01ba6619e17b42) )
+    ROM_LOAD16_WORD_SWAP( "268_ld01.p1", 0x000000, 0x600000, CRC(90f6e3fa) SHA1(8084154f78b4e0ea4977cc614b28d003fd48e788) )
+    MSLUG5HD_RXCUSTOMPATCH_MODS_FILL
+    MSLUG5ND_FATPLAYERS_MODS_FILL
+	MSLUG5ND_AES_FILL
+    MSLUG5D_SFIX_128K
+    MSLUG5WD_AUDIO_512K
+	MSLUG5LA_YMSND
+	MSLUG5FD_SPRITES
+ROM_END
+
+ROM_START( mslug5ld03 )
+	ROM_REGION( 0x600000, "maincpu", 0 )
+    ROM_LOAD16_WORD_SWAP( "268_ld03.p1", 0x000000, 0x600000, CRC(0ebe6c8b) SHA1(74d894a6706f766e288ffe7a7f01ba6619e17b42) )
     MSLUG5HD_RXCUSTOMPATCH_MODS_FILL
     MSLUG5ND_AES_FILL
     MSLUG5D_SFIX_128K
@@ -29360,7 +29431,19 @@ ROM_END
 
 ROM_START( mslug5le02 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
-    ROM_LOAD16_WORD_SWAP( "268_le02.p1", 0x000000, 0x600000, CRC(316c28f0) SHA1(bb26b779467ed8647fe0700461194b49958d4171) )
+    ROM_LOAD16_WORD_SWAP( "268_le01.p1", 0x000000, 0x600000, CRC(af24a781) SHA1(15c96e1a7aca356cc87cc3f666d3b0fe69d0cbb6) )
+    MSLUG5HD_RXCUSTOMPATCH_MODS_FILL
+    MSLUG5ND_FATPLAYERS_MODS_FILL
+	MSLUG5ND_AES_FILL
+    MSLUG5D_SFIX_128K
+    MSLUG5WD_AUDIO_512K
+	MSLUG5LA_YMSND
+	MSLUG5FD_SPRITES
+ROM_END
+
+ROM_START( mslug5le03 )
+	ROM_REGION( 0x600000, "maincpu", 0 )
+    ROM_LOAD16_WORD_SWAP( "268_le03.p1", 0x000000, 0x600000, CRC(316c28f0) SHA1(bb26b779467ed8647fe0700461194b49958d4171) )
     MSLUG5HD_RXCUSTOMPATCH_MODS_FILL
     MSLUG5ND_AES_FILL
     MSLUG5D_SFIX_128K
@@ -29382,7 +29465,19 @@ ROM_END
 
 ROM_START( mslug5lf02 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
-    ROM_LOAD16_WORD_SWAP( "268_lf02.p1", 0x000000, 0x600000, CRC(aa50c1ea) SHA1(92aa8b17e56c19bdecff461c8b14a1a072bce5aa) )
+    ROM_LOAD16_WORD_SWAP( "268_lf01.p1", 0x000000, 0x600000, CRC(34184e9b) SHA1(3a0a16352464cddde44ba4524a3334741fc7ad38) )
+    MSLUG5HD_RXCUSTOMPATCH_MODS_FILL
+    MSLUG5ND_FATPLAYERS_MODS_FILL
+	MSLUG5ND_AES_FILL
+    MSLUG5D_SFIX_128K
+    MSLUG5WD_AUDIO_512K
+	MSLUG5LA_YMSND
+	MSLUG5FD_SPRITES
+ROM_END
+
+ROM_START( mslug5lf03 )
+	ROM_REGION( 0x600000, "maincpu", 0 )
+    ROM_LOAD16_WORD_SWAP( "268_lf03.p1", 0x000000, 0x600000, CRC(aa50c1ea) SHA1(92aa8b17e56c19bdecff461c8b14a1a072bce5aa) )
     MSLUG5HD_RXCUSTOMPATCH_MODS_FILL
     MSLUG5ND_AES_FILL
     MSLUG5D_SFIX_128K
@@ -29404,7 +29499,19 @@ ROM_END
 
 ROM_START( mslug5lg02 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
-    ROM_LOAD16_WORD_SWAP( "268_lg02.p1", 0x000000, 0x600000, CRC(6b970890) SHA1(bdfef48b12efa9419d2d6fa167d04b5fc746bc78) )
+    ROM_LOAD16_WORD_SWAP( "268_lg01.p1", 0x000000, 0x600000, CRC(f5df87e1) SHA1(a0c08f155eacbe4e328bd1d37333c803ce81ac1d) )
+    MSLUG5HD_RXCUSTOMPATCH_MODS_FILL
+    MSLUG5ND_FATPLAYERS_MODS_FILL
+	MSLUG5ND_AES_FILL
+    MSLUG5D_SFIX_128K
+    MSLUG5WD_AUDIO_512K
+	MSLUG5LA_YMSND
+	MSLUG5FD_SPRITES
+ROM_END
+
+ROM_START( mslug5lg03 )
+	ROM_REGION( 0x600000, "maincpu", 0 )
+    ROM_LOAD16_WORD_SWAP( "268_lg03.p1", 0x000000, 0x600000, CRC(6b970890) SHA1(bdfef48b12efa9419d2d6fa167d04b5fc746bc78) )
     MSLUG5HD_RXCUSTOMPATCH_MODS_FILL
     MSLUG5ND_AES_FILL
     MSLUG5D_SFIX_128K
@@ -29426,7 +29533,19 @@ ROM_END
 
 ROM_START( mslug5lh02 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
-    ROM_LOAD16_WORD_SWAP( "268_lh02.p1", 0x000000, 0x600000, CRC(4ba6d7d8) SHA1(cc974363b7fd3f586aac1fec5669f9d7a4ca8d5b) )
+    ROM_LOAD16_WORD_SWAP( "268_lh01.p1", 0x000000, 0x600000, CRC(d5ee58a9) SHA1(de4d563c7f6b439a6cac19cb1cbbfbeb2e0f84dc) )
+    MSLUG5HD_RXCUSTOMPATCH_MODS_FILL
+    MSLUG5ND_FATPLAYERS_MODS_FILL
+	MSLUG5ND_AES_FILL
+    MSLUG5D_SFIX_128K
+    MSLUG5WD_AUDIO_512K
+	MSLUG5LA_YMSND
+	MSLUG5FD_SPRITES
+ROM_END
+
+ROM_START( mslug5lh03 )
+	ROM_REGION( 0x600000, "maincpu", 0 )
+    ROM_LOAD16_WORD_SWAP( "268_lh03.p1", 0x000000, 0x600000, CRC(4ba6d7d8) SHA1(cc974363b7fd3f586aac1fec5669f9d7a4ca8d5b) )
     MSLUG5HD_RXCUSTOMPATCH_MODS_FILL
     MSLUG5ND_AES_FILL
     MSLUG5D_SFIX_128K
@@ -31135,21 +31254,29 @@ GAME( 2023, mslug4ld03,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,  
 GAME( 2023, mslug4ld04,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Multi-Function Mummy Players Mode Remix Edition 2023-07-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug4ld05,       mslug4,   neogeo_noslot, neogeohb, neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Multi-Function Monkeys Players Mode Remix Edition 2023-07-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5la01,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug5la02,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Hybrid Bullets Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5la02,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Fat Players Mode Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5la03,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Hybrid Bullets Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5lb01,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemies Resetting Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug5lb02,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemies Resetting Hybrid Bullets Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5lb02,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemies Resetting Fat Players Mode Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5lb03,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemies Resetting Hybrid Bullets Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5lc01,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Enhanced X Final Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug5lc02,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Enhanced X Final Hybrid Bullets Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5lc02,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Enhanced X Final Fat Players Mode Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5lc03,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Enhanced X Final Hybrid Bullets Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ld01,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (The Longest Battle Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug5ld02,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (The Longest Battle Hybrid Bullets Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5ld02,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (The Longest Battle Fat Players Mode Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5ld03,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (The Longest Battle Hybrid Bullets Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5le01,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (The New Campaign Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug5le02,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (The New Campaign Hybrid Bullets Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5le02,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (The New Campaign Remix Fat Players Mode Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5le03,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (The New Campaign Hybrid Bullets Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5lf01,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #1 Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug5lf02,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #1 Hybrid Bullets Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5lf02,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #1 Fat Players Mode Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5lf03,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #1 Hybrid Bullets Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5lg01,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #2 Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug5lg02,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #2 Hybrid Bullets Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5lg02,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #2 Fat Players Mode Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5lg03,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #2 Hybrid Bullets Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5lh01,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #3 Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug5lh02,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #3 Hybrid Bullets Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5lh02,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #3 Fat Players Mode Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5lh03,       mslug5,   neogeo_noslot, mslug5hb, neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemy Soldiers Magic #3 Hybrid Bullets Remix Edition 2024-05-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxla01,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower 2R Extreme Space Remix Edition 2023-07-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxla02,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower 2R Extreme Space Flame Remix Edition 2023-07-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxla03,       mslugx,   neogeo_noslot, neogeohb, neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower 2R Extreme Space Hybrid Bullets Remix Edition 2023-07-23)", MACHINE_SUPPORTS_SAVE )
