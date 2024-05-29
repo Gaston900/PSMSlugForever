@@ -227,3 +227,160 @@ if (CPUS["I386"]~=null) then
 		MAME_DIR .. "src/devices/cpu/i386/cpuidmsrs.hxx",
 	}
 end
+
+--------------------------------------------------
+-- Hitachi SuperH series (SH1/SH2/SH3/SH4)
+--@src/devices/cpu/sh/sh2.h,CPUS["SH"] = true
+--@src/devices/cpu/sh/sh4.h,CPUS["SH"] = true
+--------------------------------------------------
+
+if (CPUS["SH"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/cpu/sh/sh.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh.h",
+		MAME_DIR .. "src/devices/cpu/sh/sh2.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh2.h",
+		MAME_DIR .. "src/devices/cpu/sh/sh2comn.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh2comn.h",
+		MAME_DIR .. "src/devices/cpu/sh/sh_fe.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh2fe.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh4fe.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh7604_bus.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh7604_bus.h",
+		MAME_DIR .. "src/devices/cpu/sh/sh7604_sci.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh7604_sci.h",
+		MAME_DIR .. "src/devices/cpu/sh/sh7604_wdt.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh7604_wdt.h",
+		MAME_DIR .. "src/devices/cpu/sh/sh4.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh4.h",
+		MAME_DIR .. "src/devices/cpu/sh/sh4comn.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh4comn.h",
+		MAME_DIR .. "src/devices/cpu/sh/sh3comn.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh3comn.h",
+		MAME_DIR .. "src/devices/cpu/sh/sh4tmu.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh4tmu.h",
+		MAME_DIR .. "src/devices/cpu/sh/sh4dmac.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh4dmac.h",
+		MAME_DIR .. "src/devices/cpu/sh/sh4regs.h",
+	}
+end
+
+if (CPUS["SH"]~=null or _OPTIONS["with-tools"]) then
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/sh/sh_dasm.cpp")
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/sh/sh_dasm.h")
+end
+
+--------------------------------------------------
+-- SSP1601
+--@src/devices/cpu/ssp1601/ssp1601.h,CPUS["SSP1601"] = true
+--------------------------------------------------
+
+if (CPUS["SSP1601"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/cpu/ssp1601/ssp1601.cpp",
+		MAME_DIR .. "src/devices/cpu/ssp1601/ssp1601.h",
+	}
+end
+
+if (CPUS["SSP1601"]~=null or _OPTIONS["with-tools"]) then
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/ssp1601/ssp1601d.cpp")
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/ssp1601/ssp1601d.h")
+end
+
+--------------------------------------------------
+-- G65816
+--@src/devices/cpu/g65816/g65816.h,CPUS["G65816"] = true
+--------------------------------------------------
+
+if (CPUS["G65816"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/cpu/g65816/g65816.cpp",
+		MAME_DIR .. "src/devices/cpu/g65816/g65816.h",
+		MAME_DIR .. "src/devices/cpu/g65816/g65816o0.cpp",
+		MAME_DIR .. "src/devices/cpu/g65816/g65816o1.cpp",
+		MAME_DIR .. "src/devices/cpu/g65816/g65816o2.cpp",
+		MAME_DIR .. "src/devices/cpu/g65816/g65816o3.cpp",
+		MAME_DIR .. "src/devices/cpu/g65816/g65816o4.cpp",
+		MAME_DIR .. "src/devices/cpu/g65816/g65816cm.h",
+		MAME_DIR .. "src/devices/cpu/g65816/g65816ds.h",
+		MAME_DIR .. "src/devices/cpu/g65816/g65816op.h",
+	}
+end
+
+if (CPUS["G65816"]~=null or _OPTIONS["with-tools"]) then
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/g65816/g65816ds.cpp")
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/g65816/g65816ds.h")
+end
+
+--------------------------------------------------
+-- Sharp LR35902 (Game Boy CPU)
+--@src/devices/cpu/lr35902/lr35902.h,CPUS["LR35902"] = true
+--------------------------------------------------
+
+if (CPUS["LR35902"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/cpu/lr35902/lr35902.cpp",
+		MAME_DIR .. "src/devices/cpu/lr35902/lr35902.h",
+		MAME_DIR .. "src/devices/cpu/lr35902/opc_cb.hxx",
+		MAME_DIR .. "src/devices/cpu/lr35902/opc_main.hxx",
+	}
+end
+
+if (CPUS["LR35902"]~=null or _OPTIONS["with-tools"]) then
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/lr35902/lr35902d.cpp")
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/lr35902/lr35902d.h")
+end
+
+--------------------------------------------------
+-- Sony/Nintendo SPC700
+--@src/devices/cpu/spc700/spc700.h,CPUS["SPC700"] = true
+--------------------------------------------------
+
+if (CPUS["SPC700"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/cpu/spc700/spc700.cpp",
+		MAME_DIR .. "src/devices/cpu/spc700/spc700.h",
+		MAME_DIR .. "src/devices/cpu/spc700/spc700ds.h",
+	}
+end
+
+if (CPUS["SPC700"]~=null or _OPTIONS["with-tools"]) then
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/spc700/spc700ds.cpp")
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/spc700/spc700ds.h")
+end
+
+
+--------------------------------------------------
+-- Argonaut SuperFX
+--@src/devices/cpu/superfx/superfx.h,CPUS["SUPERFX"] = true
+--------------------------------------------------
+
+if (CPUS["SUPERFX"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/cpu/superfx/superfx.cpp",
+		MAME_DIR .. "src/devices/cpu/superfx/superfx.h",
+	}
+end
+
+if (CPUS["SUPERFX"]~=null or _OPTIONS["with-tools"]) then
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/superfx/sfx_dasm.cpp")
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/superfx/sfx_dasm.h")
+end
+
+
+--------------------------------------------------
+-- NEC uPD7725
+--@src/devices/cpu/upd7725/upd7725.h,CPUS["UPD7725"] = true
+--------------------------------------------------
+
+if (CPUS["UPD7725"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/cpu/upd7725/upd7725.cpp",
+		MAME_DIR .. "src/devices/cpu/upd7725/upd7725.h",
+	}
+end
+
+if (CPUS["UPD7725"]~=null or _OPTIONS["with-tools"]) then
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/upd7725/dasm7725.cpp")
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/upd7725/dasm7725.h")
+end

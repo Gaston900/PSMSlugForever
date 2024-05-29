@@ -278,3 +278,92 @@ if (SOUNDS["ICS2115"]~=null) then
 		MAME_DIR .. "src/devices/sound/ics2115.h",
 	}
 end
+
+---------------------------------------------------
+-- CD audio
+--@src/devices/sound/cdda.h,SOUNDS["CDDA"] = true
+---------------------------------------------------
+
+if (SOUNDS["CDDA"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/sound/cdda.cpp",
+		MAME_DIR .. "src/devices/sound/cdda.h",
+	}
+end
+
+---------------------------------------------------
+-- DAC-76 COMDAC
+--@src/devices/sound/dac76.h,SOUNDS["DAC76"] = true
+---------------------------------------------------
+if (SOUNDS["DAC76"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/sound/dac76.cpp",
+		MAME_DIR .. "src/devices/sound/dac76.h",
+	}
+end
+---------------------------------------------------
+-- Ricoh sample players
+--@src/devices/sound/rf5c68.h,SOUNDS["RF5C68"] = true
+--@src/devices/sound/rf5c400.h,SOUNDS["RF5C400"] = true
+---------------------------------------------------
+
+if (SOUNDS["RF5C68"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/sound/rf5c68.cpp",
+		MAME_DIR .. "src/devices/sound/rf5c68.h",
+	}
+end
+
+if (SOUNDS["RF5C400"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/sound/rf5c400.cpp",
+		MAME_DIR .. "src/devices/sound/rf5c400.h",
+	}
+end
+
+---------------------------------------------------
+-- Texas Instruments SN76496
+--@src/devices/sound/sn76496.h,SOUNDS["SN76496"] = true
+---------------------------------------------------
+
+if (SOUNDS["SN76496"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/sound/sn76496.cpp",
+		MAME_DIR .. "src/devices/sound/sn76496.h",
+	}
+end
+
+---------------------------------------------------
+-- Voltage Regulator
+--@src/devices/sound/volt_reg.h,SOUNDS["VOLT_REG"] = true
+---------------------------------------------------
+if (SOUNDS["VOLT_REG"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/sound/volt_reg.cpp",
+		MAME_DIR .. "src/devices/sound/volt_reg.h",
+	}
+end
+
+---------------------------------------------------
+-- GB_SOUND
+--@src/devices/sound/gb.h,SOUNDS["GB_SOUND"] = true
+---------------------------------------------------
+
+if (SOUNDS["GB_SOUND"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/sound/gb.cpp",
+		MAME_DIR .. "src/devices/sound/gb.h",
+	}
+end
+
+---------------------------------------------------
+--
+--@src/devices/sound/s_dsp.h,SOUNDS["S_DSP"] = true
+---------------------------------------------------
+
+if (SOUNDS["S_DSP"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/sound/s_dsp.cpp",
+		MAME_DIR .. "src/devices/sound/s_dsp.h",
+	}
+end
