@@ -969,19 +969,3 @@ pgm               // Bios
 dmnfrnt           // (c) 2002 Demon Front
 dmnfrnt103        //
 dmnfrnt102        //
-
-/*******************************************************************************
-    List of all additional features of controllers disabled on console systems.
-**********************************************************************************/
-
-@source:megadriv.cpp
-//megadriv          // 1990 Sega Mega Drive (Europe)
-
-@source:snes.cpp
-//snes              // Nintendo Super Nintendo NTSC
-
-@source:gb.cpp
-//gbcolor           // Nintendo Game Boy Color
-
-@source:gba.cpp
-//gba               // Nintendo Game Boy Advance Handheld

@@ -12,13 +12,6 @@ CPUS["Z80"] = true
 CPUS["M680X0"] = true
 CPUS["NEC"] = true -- m92
 CPUS["ARM7"] = true -- pgm
-CPUS["SH"] = true -- megadriv
-CPUS["SSP1601"] = true -- megadriv
-CPUS["G65816"] = true --snes
-CPUS["LR35902"] = true --snes
-CPUS["SPC700"] = true --snes
-CPUS["SUPERFX"] = true --snes
-CPUS["UPD7725"] = true --snes
 
 --------------------------------------------------
 -- specify available sound cores
@@ -30,18 +23,6 @@ SOUNDS["IREMGA20"] = true -- m92
 SOUNDS["OKIM6295"] = true -- m92
 SOUNDS["YM2151"] = true -- m92
 SOUNDS["ICS2115"] = true -- pgm
-SOUNDS["YM2203"] = true -- megadriv
-SOUNDS["YM2608"] = true -- megadriv
-SOUNDS["YM2610"] = true -- megadriv
-SOUNDS["YM2612"] = true -- megadriv
-SOUNDS["AY8910"] = true -- megadriv
-SOUNDS["CDDA"] = true -- megadriv
-SOUNDS["DAC"] = true -- megadriv
-SOUNDS["RF5C68"] = true -- megadriv
-SOUNDS["SN76496"] = true -- megadriv
-SOUNDS["VOLT_REG"] = true -- megadriv
-SOUNDS["GB_SOUND"] = true --snes
-SOUNDS["S_DSP"] = true --snes
 
 --------------------------------------------------
 -- specify available machine cores
@@ -53,39 +34,18 @@ MACHINES["WATCHDOG"] = true
 MACHINES["Z80DAISY"] = true
 MACHINES["PIC8259"] = true -- m92
 MACHINES["V3021"] = true -- pgm
-MACHINES["I2CMEM"] = true -- megadriv
-MACHINES["LC89510"] = true -- megadriv
-MACHINES["S_SMP"] = true --snes
-MACHINES["INTELFLASH"] = true --gba
-
---------------------------------------------------
--- specify available bus cores
---------------------------------------------------
-BUSES["GENERIC"] = true -- megadriv
-BUSES["MEGADRIVE"] = true -- megadriv
-BUSES["GAMEBOY"] = true --snes
-BUSES["MIDI"] = true --snes
-BUSES["SNES"] = true --snes
-BUSES["SNES_CTRL"] = true --snes
-BUSES["GBA"] = true --gba
 
 --------------------------------------------------
 -- specify available video cores
 --------------------------------------------------
+
 VIDEOS["BUFSPRITE"] = true -- m92
-VIDEOS["SEGA315_5124"] = true -- megadriv
-VIDEOS["SEGA315_5313"] = true -- megadriv
-VIDEOS["GB_LCD"] = true --snes
-VIDEOS["GBA_LCD"] = true --gba
-VIDEOS["SNES_PPU"] = true --snes
 
 function linkProjects_mame_arcade(_target, _subtarget)
 	links {
 		"neogeo",
 		"irem",
 		"igs",
-		"nintendo",
-		"sega",
 	}
 end
 
@@ -164,25 +124,6 @@ files {
 	MAME_DIR .. "src/mame/machine/pgmprot_igs027a_type3.cpp",
     MAME_DIR .. "src/mame/machine/pgmprot_orlegend.cpp",
 	MAME_DIR .. "src/mame/video/pgm.cpp",
-}
-
-createMAMEProjects(_target, _subtarget, "nintendo")
-files {
-    MAME_DIR .. "src/mame/drivers/gb.cpp",
-	MAME_DIR .. "src/mame/machine/gb.cpp",
-    MAME_DIR .. "src/mame/drivers/gba.cpp",
-	MAME_DIR .. "src/mame/drivers/snes.cpp",
-    MAME_DIR .. "src/mame/machine/snes.cpp",
-	MAME_DIR .. "src/mame/machine/snescx4.cpp",
-}
-
-createMAMEProjects(_target, _subtarget, "sega")
-files {
-	MAME_DIR .. "src/mame/drivers/megadriv.cpp",
-	MAME_DIR .. "src/mame/machine/megadriv.cpp",
-	MAME_DIR .. "src/mame/machine/mega32x.cpp",
-	MAME_DIR .. "src/mame/machine/megacd.cpp",
-    MAME_DIR .. "src/mame/machine/megacdcd.cpp",
 }
 
 end

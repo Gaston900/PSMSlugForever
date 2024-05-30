@@ -39,8 +39,8 @@ files {
 --	MAME_DIR .. "src/devices/imagedev/bitbngr.h",
 	MAME_DIR .. "src/devices/imagedev/cassette.cpp",
 	MAME_DIR .. "src/devices/imagedev/cassette.h",
-	MAME_DIR .. "src/devices/imagedev/chd_cd.cpp",
-	MAME_DIR .. "src/devices/imagedev/chd_cd.h",
+--	MAME_DIR .. "src/devices/imagedev/chd_cd.cpp",
+--	MAME_DIR .. "src/devices/imagedev/chd_cd.h",
 --	MAME_DIR .. "src/devices/imagedev/diablo.cpp",
 --	MAME_DIR .. "src/devices/imagedev/diablo.h",
 --	MAME_DIR .. "src/devices/imagedev/flopdrv.cpp",
@@ -53,10 +53,10 @@ files {
 --	MAME_DIR .. "src/devices/imagedev/mfmhd.h",
 --	MAME_DIR .. "src/devices/imagedev/microdrv.cpp",
 --	MAME_DIR .. "src/devices/imagedev/microdrv.h",
-	MAME_DIR .. "src/devices/imagedev/midiin.cpp",
-	MAME_DIR .. "src/devices/imagedev/midiin.h",
-	MAME_DIR .. "src/devices/imagedev/midiout.cpp",
-	MAME_DIR .. "src/devices/imagedev/midiout.h",
+--	MAME_DIR .. "src/devices/imagedev/midiin.cpp",
+--	MAME_DIR .. "src/devices/imagedev/midiin.h",
+--	MAME_DIR .. "src/devices/imagedev/midiout.cpp",
+--	MAME_DIR .. "src/devices/imagedev/midiout.h",
 --	MAME_DIR .. "src/devices/imagedev/picture.cpp",
 --	MAME_DIR .. "src/devices/imagedev/picture.h",
 --	MAME_DIR .. "src/devices/imagedev/printer.cpp",
@@ -140,54 +140,5 @@ if (MACHINES["V3021"]~=null) then
 	files {
 		MAME_DIR .. "src/devices/machine/v3021.cpp",
 		MAME_DIR .. "src/devices/machine/v3021.h",
-	}
-end
-
----------------------------------------------------
---
---@src/devices/machine/i2cmem.h,MACHINES["I2CMEM"] = true
----------------------------------------------------
-
-if (MACHINES["I2CMEM"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/machine/i2cmem.cpp",
-		MAME_DIR .. "src/devices/machine/i2cmem.h",
-	}
-end
-
----------------------------------------------------
---
---@src/devices/machine/lc89510.h,MACHINES["LC89510"] = true
----------------------------------------------------
-
-if (MACHINES["LC89510"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/machine/lc89510.cpp",
-		MAME_DIR .. "src/devices/machine/lc89510.h",
-	}
-end
-
----------------------------------------------------
---
---@src/devices/machine/s_smp.h,MACHINES["S_SMP"] = true
----------------------------------------------------
-
-if (MACHINES["S_SMP"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/machine/s_smp.cpp",
-		MAME_DIR .. "src/devices/machine/s_smp.h",
-	}
-end
-
-
----------------------------------------------------
---
---@src/devices/machine/intelfsh.h,MACHINES["INTELFLASH"] = true
----------------------------------------------------
-
-if (MACHINES["INTELFLASH"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/machine/intelfsh.cpp",
-		MAME_DIR .. "src/devices/machine/intelfsh.h",
 	}
 end
