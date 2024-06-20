@@ -141,19 +141,27 @@ cyborgfc          // HomeBrew
 @source:neogeo.cpp
 mslug31v2         // Hack Encrypted GFX (Documentation)
 mslug3eb          // Hack Encrypted GFX (Documentation)
+mslug3sc          // Hack Encrypted GFX (Documentation)
 mslug3cq          // Hack Encrypted GFX (Documentation)
+mslug3chuanqi     // Hack Encrypted GFX (Documentation)
 mslug3fr          // Hack Encrypted GFX (Documentation)
 mslug3g           // Hack Encrypted GFX (Documentation)
 mslug3i           // Hack Encrypted GFX (Documentation)
+mslug3dde         // Hack Encrypted GFX (Documentation)
 mslug3ki          // Hack Encrypted GFX (Documentation)
 mslug3lw          // Hack Encrypted GFX (Documentation)
 mslug3unity       // Hack Encrypted GFX (Documentation)
 mslug4fr          // Hack Encrypted GFX (Documentation)
 mslug4lw          // Hack Encrypted GFX (Documentation)
+mslug4ammor       // Hack Encrypted GFX (Documentation)
+mslug4lwq         // Hack Encrypted GFX (Documentation)
+mslug4dde         // Hack Encrypted GFX (Documentation)
 mslug4ki          // Hack Encrypted GFX (Documentation)
 mslug5f           // Hack Encrypted GFX (Documentation)
 mslug5w           // Hack Encrypted GFX (Documentation)
 mslug5unity       // Hack Encrypted GFX (Documentation)
+mslug5sc          // Hack Encrypted GFX (Documentation)
+mslug5cq          // Hack Encrypted GFX (Documentation)
 
 @source:neogeo.cpp
 mslughc01         // Hack
