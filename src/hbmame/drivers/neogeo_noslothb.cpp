@@ -30684,7 +30684,7 @@ GAME( 2003, mslug5ndde,       mslug5,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 1999, mslugxde,         mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "SNK",             "Metal Slug X (Encrypted C1 & C2)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
-// Metal Slug (Documentation Decrypter C To Encrypte C)
+// Metal Slug (Documentation GFX Decrypter C To Encrypte C)
 GAME( 2019, mslug31v2,        mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (1v2 Mode 2019-05-11)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2014, mslug3eb,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Green Blue 2014-10-15)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2023, mslug3sc,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Survival 2023-03-01)(Encrypted C)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
@@ -30767,9 +30767,9 @@ GAME( 2013, mslug3hc13,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2020, mslug3hc14,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "FBN4DROID",       "Metal Slug 3 (The Future 2020-09-12)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, mslug3hc15,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "FBN4DROID",       "Metal Slug 3 (Enemy Remake 2017-09-27)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3hc16,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "FBN4DROID",       "Metal Slug 3 (The Last Warhead 2020-09-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2019, mslug3hc17,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "FBN4DROID",       "Metal Slug 3 (Enemies Resetting 2019-01-02)(Earlier)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2019, mslug3hc17,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "FBN4DROID",       "Metal Slug 3 (Enemy Soldiers Reset 2019-01-02)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug3hc18,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Enemies Resetting 2019-07-20)" , MACHINE_SUPPORTS_SAVE )
-GAME( 2017, mslug3hc19,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "FBN4DROID",       "Metal Slug 3 (Ramdon Enemies Reset 2017-12-08)(Earlier)" , MACHINE_SUPPORTS_SAVE ) //Fix Gaston90
+GAME( 2017, mslug3hc19,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "FBN4DROID",       "Metal Slug 3 (Random Enemies Resetting 2017-12-08)" , MACHINE_SUPPORTS_SAVE ) //Fix Gaston90
 GAME( 2023, mslug3hc20,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Pigeon Slug 2023-05-07)", MACHINE_SUPPORTS_SAVE ) //Fix Gaston90
 GAME( 2017, mslug3hc21,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "Wanghua123",      "Metal Slug 3 (Slug #1 2017-10-09)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug3hc22,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Slug #2 2019-02-01)", MACHINE_SUPPORTS_SAVE )
