@@ -108,27 +108,6 @@ mslug5ndnsd       // Fully Decrypted (Neo SD)
 mslugxnsd         // SNK (Neo SD)
 
 @source:neogeo.cpp
-ms5bootde         // Bootleg (Decrypter GFX)
-ms4bootde         // Bootleg (Decrypter GFX)
-ms5pcbde          // SNK Playmore (JAMMA PCB)(Decrypter GFX)
-ms4plusde         // Bootleg (Decrypter GFX)
-ms5plusde         // Bootleg (Decrypter GFX)
-mslugde           // Nazca Encrypted GFX (Documentation)
-mslug2de          // SNK Encrypted GFX (Documentation)
-mslug2tde         // SNK Encrypted GFX (Documentation)
-mslug3de          // SNK Encrypted GFX (Documentation)
-mslug3hde         // SNK Decrypter GFX (Documentation)
-mslug3nde         // Fully Decrypted Decrypter GFX (Documentation)
-mslug3b6de        // Bootleg Decrypter GFX (Documentation)
-mslug4de          // Mega / Playmore Encrypted GFX (Documentation)
-mslug4hde         // Mega / Playmore Decrypter GFX (Documentation)
-mslug4ndde        // Fully Decrypted Decrypter GFX (Documentation)
-mslug5de          // SNK Playmore Encrypted GFX (Documentation)
-mslug5hde         // SNK Playmore Decrypter GFX (Documentation)
-mslug5ndde        // Fully Decrypted GFX (Documentation)
-mslugxde          // SNK Encrypted GFX (Documentation)
-
-@source:neogeo.cpp
 mslug3x           // Metal Slug 3X HomeBrew (Complete Collection)
 mslug3xb          // Metal Slug 3X HomeBrew (Complete Collection)
 mslug3x0          // Metal Slug 3X HomeBrew (Complete Collection)
@@ -953,27 +932,3 @@ mslugxrme01       // Hack
 mslugxrmf01       // Hack
 mslugxrmg01       // Hack
 mslugxrmh01       // Hack
-
-/*******************************************************************
-    List of all enabled drivers additional features in the system.
-**********************************************************************/
-
-@source:neogeo.cpp
-shocktr2          // 0246 (c) 1998 Saurus
-lans2004          // bootleg of shocktr2
-lans2k4d          // Full Decrypted
-shocktr2hc01      // Hack
-shocktr2hc02      // Hack
-
-@source:m92.cpp
-inthunt           // (c) 1993 Irem (World)
-inthuntu          // (c) 1993 Irem (US)
-kaiteids          // (c) 1993 Irem (Japan)
-geostorm          // (c) 1994 Irem (Japan)
-gunforc2          // (c) 1994 Irem
-
-@source:pgm.cpp
-pgm               // Bios
-dmnfrnt           // (c) 2002 Demon Front
-dmnfrnt103        //
-dmnfrnt102        //

@@ -118,27 +118,3 @@ if (MACHINES["Z80DAISY"]~=null) then
 		MAME_DIR .. "src/devices/machine/z80daisy_generic.h",
 	}
 end
-
----------------------------------------------------
---
---@src/devices/machine/pic8259.h,MACHINES["PIC8259"] = true
----------------------------------------------------
-
-if (MACHINES["PIC8259"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/machine/pic8259.cpp",
-		MAME_DIR .. "src/devices/machine/pic8259.h",
-	}
-end
-
----------------------------------------------------
---
---@src/devices/machine/v3021.h,MACHINES["V3021"] = true
----------------------------------------------------
-
-if (MACHINES["V3021"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/machine/v3021.cpp",
-		MAME_DIR .. "src/devices/machine/v3021.h",
-	}
-end
