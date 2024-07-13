@@ -6036,27 +6036,6 @@ INPUT_PORTS_END
 	ROM_FILL(0x5B8D54,1,0x08)\
 	ROM_FILL(0x5B8D55,1,0x04)\
     ROM_FILL(0x433A6,1,0x52)\
-    ROM_FILL(0x21C47,1,0x3C)\
-	ROM_FILL(0x21C51,1,0x3C)\
-	ROM_FILL(0x21C5B,1,0x3C)\
-	ROM_FILL(0x21C64,1,0x01)\
-	ROM_FILL(0x21C65,1,0x90)\
-	ROM_FILL(0x21C6E,1,0x01)\
-	ROM_FILL(0x21C6F,1,0x90)\
-	ROM_FILL(0x21C79,1,0x1E)\
-	ROM_FILL(0x21C83,1,0x3C)\
-    ROM_FILL(0x21C8D,1,0x3C)\
-    ROM_FILL(0x21C96,1,0x01)\
-    ROM_FILL(0x21C97,1,0x90)\
-	ROM_FILL(0x21CA0,1,0x01)\
-	ROM_FILL(0x21CA1,1,0x90)\
-	ROM_FILL(0x21CAB,1,0x50)\
-	ROM_FILL(0x21CB5,1,0x3C)\
-	ROM_FILL(0x21CBF,1,0x3C)\
-	ROM_FILL(0x21CC9,1,0x28)\
-	ROM_FILL(0x21CD2,1,0x01)\
-	ROM_FILL(0x21CD3,1,0x90)\
-    ROM_FILL(0x21CDD,1,0x3C)\
     ROM_FILL(0x22829,1,0x03)\
     ROM_FILL(0x22839,1,0x04)\
     ROM_FILL(0x223D4,1,0x02)\
@@ -6091,27 +6070,6 @@ INPUT_PORTS_END
 	ROM_FILL(0x318D54,1,0x08)\
 	ROM_FILL(0x318D55,1,0x04)\
     ROM_FILL(0x433A6,1,0x52)\
-    ROM_FILL(0x21C47,1,0x3C)\
-	ROM_FILL(0x21C51,1,0x3C)\
-	ROM_FILL(0x21C5B,1,0x3C)\
-	ROM_FILL(0x21C64,1,0x01)\
-	ROM_FILL(0x21C65,1,0x90)\
-	ROM_FILL(0x21C6E,1,0x01)\
-	ROM_FILL(0x21C6F,1,0x90)\
-	ROM_FILL(0x21C79,1,0x1E)\
-	ROM_FILL(0x21C83,1,0x3C)\
-    ROM_FILL(0x21C8D,1,0x3C)\
-    ROM_FILL(0x21C96,1,0x01)\
-    ROM_FILL(0x21C97,1,0x90)\
-	ROM_FILL(0x21CA0,1,0x01)\
-	ROM_FILL(0x21CA1,1,0x90)\
-	ROM_FILL(0x21CAB,1,0x50)\
-	ROM_FILL(0x21CB5,1,0x3C)\
-	ROM_FILL(0x21CBF,1,0x3C)\
-	ROM_FILL(0x21CC9,1,0x28)\
-	ROM_FILL(0x21CD2,1,0x01)\
-	ROM_FILL(0x21CD3,1,0x90)\
-    ROM_FILL(0x21CDD,1,0x3C)\
     ROM_FILL(0x22829,1,0x03)\
     ROM_FILL(0x22839,1,0x04)\
     ROM_FILL(0x223D4,1,0x02)\
@@ -6146,27 +6104,6 @@ INPUT_PORTS_END
 	ROM_FILL(0x318D54,1,0x08)\
 	ROM_FILL(0x318D55,1,0x04)\
     ROM_FILL(0x433A6,1,0x52)\
-    ROM_FILL(0x21C47,1,0x3C)\
-	ROM_FILL(0x21C51,1,0x3C)\
-	ROM_FILL(0x21C5B,1,0x3C)\
-	ROM_FILL(0x21C64,1,0x01)\
-	ROM_FILL(0x21C65,1,0x90)\
-	ROM_FILL(0x21C6E,1,0x01)\
-	ROM_FILL(0x21C6F,1,0x90)\
-	ROM_FILL(0x21C79,1,0x1E)\
-	ROM_FILL(0x21C83,1,0x3C)\
-    ROM_FILL(0x21C8D,1,0x3C)\
-    ROM_FILL(0x21C96,1,0x01)\
-    ROM_FILL(0x21C97,1,0x90)\
-	ROM_FILL(0x21CA0,1,0x01)\
-	ROM_FILL(0x21CA1,1,0x90)\
-	ROM_FILL(0x21CAB,1,0x50)\
-	ROM_FILL(0x21CB5,1,0x3C)\
-	ROM_FILL(0x21CBF,1,0x3C)\
-	ROM_FILL(0x21CC9,1,0x28)\
-	ROM_FILL(0x21CD2,1,0x01)\
-	ROM_FILL(0x21CD3,1,0x90)\
-    ROM_FILL(0x21CDD,1,0x3C)\
     ROM_FILL(0x96902,1,0x5E)\
     ROM_FILL(0x8E4BE,1,0x4E)\
 	ROM_FILL(0x8E4BF,1,0x71)\
@@ -6203,27 +6140,6 @@ INPUT_PORTS_END
 	ROM_FILL(0x318D54,1,0x08)\
 	ROM_FILL(0x318D55,1,0x04)\
     ROM_FILL(0x433A6,1,0x52)\
-    ROM_FILL(0x21C47,1,0x3C)\
-	ROM_FILL(0x21C51,1,0x3C)\
-	ROM_FILL(0x21C5B,1,0x3C)\
-	ROM_FILL(0x21C64,1,0x01)\
-	ROM_FILL(0x21C65,1,0x90)\
-	ROM_FILL(0x21C6E,1,0x01)\
-	ROM_FILL(0x21C6F,1,0x90)\
-	ROM_FILL(0x21C79,1,0x1E)\
-	ROM_FILL(0x21C83,1,0x3C)\
-    ROM_FILL(0x21C8D,1,0x3C)\
-    ROM_FILL(0x21C96,1,0x01)\
-    ROM_FILL(0x21C97,1,0x90)\
-	ROM_FILL(0x21CA0,1,0x01)\
-	ROM_FILL(0x21CA1,1,0x90)\
-	ROM_FILL(0x21CAB,1,0x50)\
-	ROM_FILL(0x21CB5,1,0x3C)\
-	ROM_FILL(0x21CBF,1,0x3C)\
-	ROM_FILL(0x21CC9,1,0x28)\
-	ROM_FILL(0x21CD2,1,0x01)\
-	ROM_FILL(0x21CD3,1,0x90)\
-    ROM_FILL(0x21CDD,1,0x3C)\
     ROM_FILL(0x22829,1,0x03)\
     ROM_FILL(0x22839,1,0x04)\
     ROM_FILL(0x223D4,1,0x02)\
@@ -10241,29 +10157,6 @@ INPUT_PORTS_END
 	ROM_FILL(0x118C9E,1,0x15)\
 	ROM_FILL(0x118C9F,1,0x42)\
     ROM_FILL(0x81B00,1,0x52)\
-    ROM_FILL(0xC4C95,1,0x3C)\
-	ROM_FILL(0xC4C9F,1,0x3C)\
-	ROM_FILL(0xC4CA9,1,0x3C)\
-	ROM_FILL(0xC4CB2,1,0x01)\
-	ROM_FILL(0xC4CB3,1,0x90)\
-	ROM_FILL(0xC4CBC,1,0x01)\
-	ROM_FILL(0xC4CBD,1,0x90)\
-	ROM_FILL(0xC4CC7,1,0x1E)\
-	ROM_FILL(0xC4CD1,1,0x3C)\
-    ROM_FILL(0xC4CDB,1,0x3C)\
-    ROM_FILL(0xC4CE4,1,0x01)\
-    ROM_FILL(0xC4CE5,1,0x90)\
-	ROM_FILL(0xC4CEE,1,0x01)\
-	ROM_FILL(0xC4CEF,1,0x90)\
-	ROM_FILL(0xC4CF9,1,0x50)\
-	ROM_FILL(0xC4D03,1,0x3C)\
-	ROM_FILL(0xC4D0D,1,0x3C)\
-	ROM_FILL(0xC4D17,1,0x28)\
-	ROM_FILL(0xC4D20,1,0x01)\
-	ROM_FILL(0xC4D21,1,0x90)\
-    ROM_FILL(0xC4D2B,1,0x3C)\
-    ROM_FILL(0xC4D34,1,0x01)\
-    ROM_FILL(0xC4D35,1,0x90)\
 	ROM_FILL(0xC5A95,1,0x03)\
 	ROM_FILL(0xC5AA5,1,0x06)\
 	ROM_FILL(0xC5572,1,0x02)\
@@ -10343,29 +10236,6 @@ INPUT_PORTS_END
 	ROM_FILL(0x118C9E,1,0x15)\
 	ROM_FILL(0x118C9F,1,0x42)\
     ROM_FILL(0x81B00,1,0x52)\
-    ROM_FILL(0xC4C95,1,0x3C)\
-	ROM_FILL(0xC4C9F,1,0x3C)\
-	ROM_FILL(0xC4CA9,1,0x3C)\
-	ROM_FILL(0xC4CB2,1,0x01)\
-	ROM_FILL(0xC4CB3,1,0x90)\
-	ROM_FILL(0xC4CBC,1,0x01)\
-	ROM_FILL(0xC4CBD,1,0x90)\
-	ROM_FILL(0xC4CC7,1,0x1E)\
-	ROM_FILL(0xC4CD1,1,0x3C)\
-    ROM_FILL(0xC4CDB,1,0x3C)\
-    ROM_FILL(0xC4CE4,1,0x01)\
-    ROM_FILL(0xC4CE5,1,0x90)\
-	ROM_FILL(0xC4CEE,1,0x01)\
-	ROM_FILL(0xC4CEF,1,0x90)\
-	ROM_FILL(0xC4CF9,1,0x50)\
-	ROM_FILL(0xC4D03,1,0x3C)\
-	ROM_FILL(0xC4D0D,1,0x3C)\
-	ROM_FILL(0xC4D17,1,0x28)\
-	ROM_FILL(0xC4D20,1,0x01)\
-	ROM_FILL(0xC4D21,1,0x90)\
-    ROM_FILL(0xC4D2B,1,0x3C)\
-    ROM_FILL(0xC4D34,1,0x01)\
-    ROM_FILL(0xC4D35,1,0x90)\
     ROM_FILL(0x15456,1,0x5E)\
 	ROM_FILL(0x1A764,1,0x5E)\
 	ROM_FILL(0x56134,1,0x5E)\
@@ -11658,29 +11528,6 @@ INPUT_PORTS_END
 
 #define MSLUG5ND_ESSENTIALPATCH_MODS_FILL \
     ROM_FILL(0x4E90E,1,0x52)\
-    ROM_FILL(0x1C2B1,1,0x3C)\
-	ROM_FILL(0x1C2BB,1,0x3C)\
-	ROM_FILL(0x1C2C5,1,0x3C)\
-	ROM_FILL(0x1C2CE,1,0x01)\
-	ROM_FILL(0x1C2CF,1,0x90)\
-	ROM_FILL(0x1C2D8,1,0x01)\
-	ROM_FILL(0x1C2D9,1,0x90)\
-	ROM_FILL(0x1C2E3,1,0x1E)\
-	ROM_FILL(0x1C2ED,1,0x3C)\
-    ROM_FILL(0x1C2F7,1,0x3C)\
-    ROM_FILL(0x1C300,1,0x01)\
-    ROM_FILL(0x1C301,1,0x90)\
-	ROM_FILL(0x1C30A,1,0x01)\
-	ROM_FILL(0x1C30B,1,0x90)\
-	ROM_FILL(0x1C315,1,0x50)\
-	ROM_FILL(0x1C31F,1,0x3C)\
-	ROM_FILL(0x1C329,1,0x3C)\
-	ROM_FILL(0x1C333,1,0x28)\
-	ROM_FILL(0x1C33C,1,0x01)\
-	ROM_FILL(0x1C33D,1,0x90)\
-    ROM_FILL(0x1C347,1,0x3C)\
-    ROM_FILL(0x1C350,1,0x02)\
-    ROM_FILL(0x1C351,1,0x58)\
     ROM_FILL(0xCDD58,1,0x5E)\
     ROM_FILL(0xB7A2E,1,0x4E)\
 	ROM_FILL(0xB7A2F,1,0x71)\
@@ -14904,16 +14751,6 @@ INPUT_PORTS_END
 	ROM_FILL(0x7BBD4,1,0x00)\
     ROM_FILL(0x7BBD5,1,0x02)\
 
-#define SHOCKTR2_MVS_FILL \
-    ROM_FILL(0x5BB,1,0x78) \
-	ROM_FILL(0x5BD,1,0x34) \
-	ROM_FILL(0x5BE,1,0x12) \
-	ROM_FILL(0x5BF,1,0x23)
-//	ROM_FILL(0x5B8,1,0x12)
-//	ROM_FILL(0x5B9,1,0x12)
-//	ROM_FILL(0x5BA,1,0x12)
-//	ROM_FILL(0x5BC,1,0x25)
-
 /*************************************
     Game specific Roms definitions
  *************************************/
@@ -16223,55 +16060,6 @@ INPUT_PORTS_END
 	ROM_REGION( 0x200000, "sprites", 0 ) \
 	ROM_LOAD16_BYTE( "neop.c1", 0x000000, 0x100000, CRC(62f5405c) SHA1(f9eb8d1838da9953aecf40c3314c608ab655cb8f) )\
 	ROM_LOAD16_BYTE( "neop.c2", 0x000001, 0x100000, CRC(e1183030) SHA1(60262d53ab12314db5e5c00a94463500abe3e8b0) )
-
-#define CYBORGFC_SFIX_128K \
-    NEO_SFIX_128K( "cyborg.s1", CRC(5bd29810) SHA1(cfa054dfa027e3617ba1a1f25a043f03a25676fd) )
-
-#define CYBORGFC_AUDIO_64K \
-    NEO_BIOS_AUDIO_64K( "cyborg.m1", CRC(06da3cec) SHA1(034c250229920891edc70fecb5844e12a7c1c1bd) )
-
-#define CYBORGFC_YMSND \
-    ROM_REGION( 0x1000000, "ymsnd", 0 )\
-	ROM_LOAD( "cyborg.v1", 0x000000, 0x800000, CRC(dc50718c) SHA1(e4150bc3625a60be197d629444906a8663a4aebe) )\
-	ROM_LOAD( "cyborg.v2", 0x800000, 0x800000, CRC(8135d5a8) SHA1(186a516ed0fbc1d39f96385513de2ad662511559) )\
-
-#define CYBORGFC_SPRITES \
-	ROM_REGION( 0x2000000, "sprites", 0 ) \
-	ROM_LOAD16_BYTE( "cyborg.c1", 0x000000, 0x1000000, CRC(77078687) SHA1(9485bcc2af6f59ebce57a6b19f215db712f93278) )\
-	ROM_LOAD16_BYTE( "cyborg.c2", 0x000001, 0x1000000, CRC(a5abdb83) SHA1(cfc54c46ae6a593a9d2f4fdd1ee0d27877f55c20) )\
-
-#define SHOCKTR2_SFIX_128K \
-    NEO_SFIX_128K( "246.s1", CRC(2a360637) SHA1(431b43da5377dd189e51bd93d88d8a24d1b5090a) )
-
-#define SHOCKTR2_AUDIO_128K \
-    NEO_BIOS_AUDIO_128K( "246.m1", CRC(d0604ad1) SHA1(fae3cd52a177eadd5f5775ace957cc0f8301e65d) )
-
-#define SHOCKTR2_YMSND \
-	ROM_REGION( 0x1000000, "ymsnd", 0 ) \
-	ROM_LOAD( "246.v1", 0x000000, 0x400000, CRC(16986fc6) SHA1(cff3103dadf2f4390460456a5bd3fb5f28e21f6a) ) \
-	ROM_LOAD( "246.v2", 0x400000, 0x400000, CRC(ada41e83) SHA1(78e37ffaaa5679c8775a3a71f6df7a0d15082bdc) ) \
-	ROM_LOAD( "246.v3", 0x800000, 0x200000, CRC(a05ba5db) SHA1(09d739cad323d918f4196f91b654627fcafd8f4d) )
-
-#define SHOCKTR2_SPRITES \
-	ROM_REGION( 0x3000000, "sprites", 0 ) \
-	ROM_LOAD16_BYTE( "246.c1", 0x0000000, 0x800000, CRC(47ac9ec5) SHA1(2d9eea11ba87baa23b18a1a3f607dc137846e807) ) \
-	ROM_LOAD16_BYTE( "246.c2", 0x0000001, 0x800000, CRC(7bcab64f) SHA1(08d0edddd14b53d606e9a7a46aa4fb4e7398e0d0) ) \
-	ROM_LOAD16_BYTE( "246.c3", 0x1000000, 0x800000, CRC(db2f73e8) SHA1(8d0c3473a8b2a4e28fed1b74beb2e025b7e61867) ) \
-	ROM_LOAD16_BYTE( "246.c4", 0x1000001, 0x800000, CRC(5503854e) SHA1(a0f2e7c609cbb2aa43493a39d7dcaeca3d511d26) ) \
-	ROM_LOAD16_BYTE( "246.c5", 0x2000000, 0x800000, CRC(055b3701) SHA1(97f5e92538d1f2e437dcb3f80e56e1230287e8d1) ) \
-	ROM_LOAD16_BYTE( "246.c6", 0x2000001, 0x800000, CRC(7e2caae1) SHA1(d9de14e3e323664a8c5b7f1df1ba9ec7dd0e6a46) )
-
-#define LANS2004K4D_SFIX_128K \
-	NEO_SFIX_128K( "lnsq2k4d.s1", CRC(8699c63a) SHA1(d1a0345bcb4e3f6044c93abd52ff6fe6280dc5ee) )
-
-#define LANS2004K4D_SPRITES \
-	ROM_REGION( 0x3000000, "sprites", 0 ) \
-	ROM_LOAD16_BYTE( "246.c1",      0x0000000, 0x800000, CRC(47ac9ec5) SHA1(2d9eea11ba87baa23b18a1a3f607dc137846e807) ) \
-	ROM_LOAD16_BYTE( "246.c2",      0x0000001, 0x800000, CRC(7bcab64f) SHA1(08d0edddd14b53d606e9a7a46aa4fb4e7398e0d0) ) \
-	ROM_LOAD16_BYTE( "lnsq2k4d.c3", 0x1000000, 0x800000, CRC(b28d702a) SHA1(21d70c94ecf9ca519b4e50e2d31620f6dfab9ad0) ) \
-	ROM_LOAD16_BYTE( "lnsq2k4d.c4", 0x1000001, 0x800000, CRC(da10dd64) SHA1(55bf0922a117325ef6479f654caf13b287a16f67) ) \
-	ROM_LOAD16_BYTE( "lnsq2k4d.c5", 0x2000000, 0x800000, CRC(bab3b417) SHA1(232f718fecf597434b7a93602387fabab2bda9c0) ) \
-	ROM_LOAD16_BYTE( "lnsq2k4d.c6", 0x2000001, 0x800000, CRC(4c089a28) SHA1(f854ce46b4723aa971de280007268d474d2a6361) )
 
 /*************************************************************************************************************************
     
@@ -19034,8 +18822,8 @@ ROM_END
 // Has An Anti-Cheat Code
 ROM_START( mslug3hc38 ) //mslug3chuanqi
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_hc38.p1", 0x000000, 0x100000, CRC(1874bf57) SHA1(928be201dbee9ccb66100bee40ec3ce65013f56c) )
-	ROM_LOAD16_WORD_SWAP( "256_hc38.p2", 0x100000, 0x400000, CRC(e62fc84c) SHA1(48a607a56f4e9253aaa3587d4e50d38f5c9861ef) )
+	ROM_LOAD16_WORD_SWAP( "256_hc38.p1", 0x000000, 0x100000, CRC(18b951c2) SHA1(085120ccfafe79d9f4770bf1a68446c97828f1c3) )
+	ROM_LOAD16_WORD_SWAP( "256_hc38.p2", 0x100000, 0x400000, CRC(d60f631d) SHA1(eaf8aa0cba425d5d6b493c734aba00213e0ce124) )
     MSLUG3CSQ_ESSENTIALPATCH_MODS_FILL
     MSLUG3H_CUSTOMPATCH_MODS_FILL
     MSLUG3H_LOGOVERSION_MODS_FILL
@@ -20503,8 +20291,8 @@ ROM_END
 
 ROM_START( mslugxhc36 ) //mslugxchuanqi
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250_hc36.p1", 0x000000, 0x100000, CRC(cb971d43) SHA1(e708386d04e026793c3f710ab10117aafbe3dde3) )
-	ROM_LOAD16_WORD_SWAP( "250_hc36.p2", 0x100000, 0x400000, CRC(756b4ddd) SHA1(3059ca91d2cf6aaded8f51a53babfbb55d00e16a) )
+	ROM_LOAD16_WORD_SWAP( "250_hc36.p1", 0x000000, 0x100000, CRC(f8f95ffa) SHA1(c665f67a69f832fa3a8bdf1a61397e7254132076) )
+	ROM_LOAD16_WORD_SWAP( "250_hc36.p2", 0x100000, 0x400000, CRC(2c36b1a5) SHA1(9d0a50d31152a08001ac531d5cb5add9d4b54f78) )
     MSLUGXSCA_ESSENTIALPATCH_MODS_FILL
     MSLUGX_CUSTOMPATCH_MODS_FILL
     MSLUGX_1V2GENERATION_MODS_FILL
@@ -20581,17 +20369,6 @@ ROM_START( neopang )
     NEOPANG_AUDIO_128K
     NEOPANG_YMSND
     NEOPANG_SPRITES
-ROM_END
-
-/* Curious is used as a Metal Slug based media in the IPS format */
-ROM_START( cyborgfc )
-	ROM_REGION( 0xa00000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "cyborg.p1", 0x000000, 0x100000, CRC(89e1c728) SHA1(4b996f42373d77969c490534858aa0906d110685) )
-	ROM_LOAD16_WORD_SWAP( "cyborg.p2", 0x100000, 0x300000, CRC(e4a8b27a) SHA1(cbdf21414a5be59664dfd363b4d62ba0c8b05847) )
-	CYBORGFC_SFIX_128K
-	CYBORGFC_AUDIO_64K
-	CYBORGFC_YMSND
-	CYBORGFC_SPRITES
 ROM_END
 
  /**************
@@ -30155,64 +29932,6 @@ ROM_START( mslugxrmh01 )
 	MSLUGXLB_SPRITES
 ROM_END
 
-/*************
- Roms Extras
-***************/
-
-ROM_START( shocktr2 )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "246.p1", 0x000000, 0x100000, CRC(6d4b7781) SHA1(3c9d53d5da9842bfd45037c919064dda3fb2e089) )
-	ROM_LOAD16_WORD_SWAP( "246.p2", 0x100000, 0x400000, CRC(72ea04c3) SHA1(4fb1d22c30f5f3db4637dd92a4d2705c88de399d) )
-    SHOCKTR2_MVS_FILL
-    SHOCKTR2_SFIX_128K
-	SHOCKTR2_AUDIO_128K
-	SHOCKTR2_YMSND
-	SHOCKTR2_SPRITES
-ROM_END
-
-ROM_START( lans2004 ) /* Shock Troopers - 2nd Squad bootleg */
-	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "lnsq.p1", 0x000000, 0x200000, CRC(ec7b7805) SHA1(4d1245ae452f80a9a533f4eedc431d922406fc59) )
-	ROM_LOAD16_WORD_SWAP( "lnsq.p2", 0x200000, 0x200000, CRC(9ee6c85e) SHA1(eda1786695715b8db0edf1fe181606604fcbfdd0) )
-	ROM_LOAD16_WORD_SWAP( "lnsq.p3", 0x400000, 0x200000, CRC(b10e6637) SHA1(f2e6ba37d13bdfccc652cf5f61ebc613f90cfd6d) )
-    LANS2004K4D_SFIX_128K
-    SHOCKTR2_AUDIO_128K
-    SHOCKTR2_YMSND
-    LANS2004K4D_SPRITES
-ROM_END
-
-ROM_START( lans2k4d )
-	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "246lnsq.p1", 0x000000, 0x100000, CRC(724576EA) SHA1(075f5d8ccb7303c8b6bebf630c4fa9c204554044) )
-	ROM_LOAD16_WORD_SWAP( "246.p2",     0x100000, 0x400000, CRC(72ea04c3) SHA1(4fb1d22c30f5f3db4637dd92a4d2705c88de399d) )
-    LANS2004K4D_SFIX_128K
-    SHOCKTR2_AUDIO_128K
-    SHOCKTR2_YMSND
-    LANS2004K4D_SPRITES
-ROM_END
-
-ROM_START( shocktr2hc01 )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "246_hc01.p1", 0x000000, 0x100000, CRC(c7349458) SHA1(99024439c2730fbc9b783345cf768f8ebb9d9155) )
-	ROM_LOAD16_WORD_SWAP( "246.p2",      0x100000, 0x400000, CRC(72ea04c3) SHA1(4fb1d22c30f5f3db4637dd92a4d2705c88de399d) )
-	SHOCKTR2_MVS_FILL
-    SHOCKTR2_SFIX_128K
-	SHOCKTR2_AUDIO_128K
-	SHOCKTR2_YMSND
-	SHOCKTR2_SPRITES
-ROM_END
-
-ROM_START( shocktr2hc02 )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "246_hc02.p1", 0x000000, 0x100000, CRC(6d4b7781) SHA1(c76daae4bfadee0e98cb828327639f83185b1943) )
-	ROM_LOAD16_WORD_SWAP( "246.p2",      0x100000, 0x400000, CRC(72ea04c3) SHA1(4fb1d22c30f5f3db4637dd92a4d2705c88de399d) )
-	SHOCKTR2_MVS_FILL
-    SHOCKTR2_SFIX_128K
-	SHOCKTR2_AUDIO_128K
-	SHOCKTR2_YMSND
-	SHOCKTR2_SPRITES
-ROM_END
-
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (MVS AND AES VERSION)
 GAME( 2003, ms5pcb,           mslug5,   neogeo_noslot, ms5pcb,     neogeo_state,    init_ms5pcbhb,   ROT0, "SNK Playmore",    "Metal Slug 5 (JAMMA PCB)", MACHINE_SUPPORTS_SAVE )
@@ -30430,7 +30149,7 @@ GAME( 2023, mslug3hc34,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2023, mslug3hc35,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (The Longest Fight 2023-03-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3hc36,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Survival 2023-03-01)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3hc37,       mslug3,   neogeo_noslot, mslugu_cq,  neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary 4.5 2024-06-12)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug3hc38,       mslug3,   neogeo_noslot, mslugu_cqi, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Firepower Showdown 4.0 2024-06-20)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug3hc38,       mslug3,   neogeo_noslot, mslugu_cqi, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Firepower Showdown 4.0 2024-07-11)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 GAME( 2012, mslug3hc39,       mslug3,   neogeo_noslot, mslugu_wp,  neogeo_state,    init_mslug3de,   ROT0, "LB70 (Eezezy)",   "Metal Slug 3 (Crazy Fire 2012-01-16)" , MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
@@ -30530,7 +30249,7 @@ GAME( 2023, mslugxhc32,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2023, mslugxhc33,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Survival Attack 2023-03-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxhc34,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Survival 2023-02-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugxhc35,       mslugx,   neogeo_noslot, mslugu_cq,  neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Legendary 4.5 2024-06-13)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslugxhc36,       mslugx,   neogeo_noslot, mslugu_cqi, neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Legendary Firepower Showdown 4.0 2024-06-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugxhc36,       mslugx,   neogeo_noslot, mslugu_cqi, neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Legendary Firepower Showdown 4.0 2024-07-11)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // HomeBrew
@@ -30541,7 +30260,6 @@ GAME( 2020, mslug3x1,         mslug3x,  neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2020, mslug3x2,         mslug3x,  neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "CB, Willnie",     "Metal Slug HomeBrew (Mothership Armageddon Easter Egg Demo 2 2020-04-16)", MACHINE_SUPPORTS_SAVE )// Metal Slug 3X (Complete Collection)
 GAME( 2021, mslug3x3,         mslug3x,  neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "CB, Willnie",     "Metal Slug HomeBrew (Mothership Armageddon Easter Egg Demo 3 2021-08-21)", MACHINE_SUPPORTS_SAVE )// Metal Slug 3X (Complete Collection)
 GAME( 2010, neopang,          mslug3x,  neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "CeL",             "Metal Slug HomeBrew (Neo Pang)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, cyborgfc,         mslug3x,  neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "NEO.BYTE.FORCE",  "Metal Slug Homebrew (Cyborg Force 2023-04-09)", MACHINE_SUPPORTS_SAVE )
 
 /***************
  Only exclusive
@@ -31182,11 +30900,3 @@ GAME( 2023, mslugxrme01,      mslugx,   neogeo_noslot, mslugu_vh,  neogeo_state,
 GAME( 2023, mslugxrmf01,      mslugx,   neogeo_noslot, mslugu_vh,  neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Multi Vehicle 2R Remix Extreme 2023-07-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxrmg01,      mslugx,   neogeo_noslot, mslugu_vh,  neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Extreme Space 2R Remix Extreme 2023-07-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxrmh01,      mslugx,   neogeo_noslot, mslugu_vh,  neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Soldiers Reset 2R Remix Extreme 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-
-/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
-// Shock Troopers - 2nd Squad
-GAME( 1998, shocktr2,         neogeo,   neogeo_noslot, neogeo,     neogeo_state,    init_neogeo,     ROT0, "Saurus",          "Shock Troopers - 2nd Squad", MACHINE_SUPPORTS_SAVE )
-GAME( 1998, lans2004,         shocktr2, neogeo_noslot, neogeo,     neogeo_state,    init_neogeo,     ROT0, "bootleg",         "Lansquenet 2004 (Shock Troopers - 2nd Squad bootleg)", MACHINE_SUPPORTS_SAVE )
-GAME( 2004, lans2k4d,         shocktr2, neogeo_noslot, neogeo,     neogeo_state,    init_neogeo,     ROT0, "bootleg",         "Lansquenet 2004 (Shock Troopers - 2nd Squad bootleg)(Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
-GAME( 2014, shocktr2hc01,     shocktr2, neogeo_noslot, neogeo,     neogeo_state,    init_neogeo,     ROT0, "hack",            "Shock Troopers - 2nd Squad (Ex Super 2014-01-27)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, shocktr2hc02,     shocktr2, neogeo_noslot, neogeo,     neogeo_state,    init_neogeo,     ROT0, "hack",            "Shock Troopers - 2nd Squad (Strongest Firepower 2022-12-17)", MACHINE_SUPPORTS_SAVE )
