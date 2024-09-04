@@ -5065,6 +5065,88 @@ INPUT_PORTS_END
     ROM_FILL(0x0FE0B4,1,0x4E)\
     ROM_FILL(0x0FE0B5,1,0x75)
 
+#define MSLUG_RESTORING_TITLE_FIX_FILL \
+	ROM_FILL(0x1785C4,1,0x49)\
+	ROM_FILL(0x1785C5,1,0x4E)\
+    ROM_FILL(0x1785C6,1,0x53)\
+    ROM_FILL(0x1785C7,1,0x45)\
+    ROM_FILL(0x1785C8,1,0x52)\
+    ROM_FILL(0x1785C9,1,0x54)\
+    ROM_FILL(0x1785CA,1,0x20)\
+	ROM_FILL(0x1785CB,1,0x43)\
+	ROM_FILL(0x1785CC,1,0x4F)\
+    ROM_FILL(0x1785CD,1,0x49)\
+	ROM_FILL(0x1785CE,1,0x4E)\
+    ROM_FILL(0x1785CF,1,0xFF)\
+    ROM_FILL(0x1785D0,1,0x50)\
+	ROM_FILL(0x1785D1,1,0x55)\
+	ROM_FILL(0x1785D2,1,0x53)\
+    ROM_FILL(0x1785D3,1,0x48)\
+    ROM_FILL(0x1785D4,1,0x20)\
+    ROM_FILL(0x1785D5,1,0x53)\
+    ROM_FILL(0x1785D6,1,0x54)\
+    ROM_FILL(0x1785D7,1,0x41)\
+	ROM_FILL(0x1785D8,1,0x52)\
+    ROM_FILL(0x1785D9,1,0x54)\
+    ROM_FILL(0x1785DA,1,0x20)\
+    ROM_FILL(0x1785DB,1,0xFF)\
+	ROM_FILL(0x1785F4,1,0x50)\
+    ROM_FILL(0x1785F5,1,0x4C)\
+	ROM_FILL(0x1785F6,1,0x45)\
+    ROM_FILL(0x1785F7,1,0x41)\
+	ROM_FILL(0x1785F8,1,0x53)\
+	ROM_FILL(0x1785F9,1,0x45)\
+    ROM_FILL(0x1785FA,1,0x20)\
+    ROM_FILL(0x1785FB,1,0x57)\
+    ROM_FILL(0x1785FC,1,0x41)\
+    ROM_FILL(0x1785FD,1,0x49)\
+    ROM_FILL(0x1785FE,1,0x54)\
+	ROM_FILL(0x1785FF,1,0xFF)\
+    ROM_FILL(0x1F4C9C,1,0x52)\
+	ROM_FILL(0x1F4C9D,1,0x41)\
+	ROM_FILL(0x1F4C9E,1,0x4E)\
+    ROM_FILL(0x1F4C9F,1,0x44)\
+    ROM_FILL(0x1F4CA0,1,0x4F)\
+    ROM_FILL(0x1F4CA1,1,0x4D)\
+    ROM_FILL(0x1F4CA2,1,0x00)\
+    ROM_FILL(0x1F4CA3,1,0x49)\
+	ROM_FILL(0x1F4CA4,1,0x54)\
+    ROM_FILL(0x1F4CA5,1,0x45)\
+    ROM_FILL(0x1F4CA6,1,0x4D)\
+    ROM_FILL(0x1F4CA7,1,0x00)\
+	ROM_FILL(0x1F4CA8,1,0x56)\
+    ROM_FILL(0x1F4CA9,1,0x32)\
+	ROM_FILL(0x1F4CAA,1,0x2E)\
+    ROM_FILL(0x1F4CAB,1,0x30)\
+	ROM_FILL(0x1F54A0,1,0x4E)\
+    ROM_FILL(0x1F54A1,1,0x41)\
+	ROM_FILL(0x1F54A2,1,0x5A)\
+    ROM_FILL(0x1F54A3,1,0x43)\
+	ROM_FILL(0x1F54A4,1,0x41)\
+	ROM_FILL(0x1F54A5,1,0x20)\
+    ROM_FILL(0x1F54A6,1,0x43)\
+    ROM_FILL(0x1F54A7,1,0x4F)\
+    ROM_FILL(0x1F54A8,1,0x52)\
+    ROM_FILL(0x1F54A9,1,0x50)\
+    ROM_FILL(0x1F54AA,1,0x4F)\
+	ROM_FILL(0x1F54AB,1,0x52)\
+	ROM_FILL(0x1F54AC,1,0x41)\
+    ROM_FILL(0x1F54AD,1,0x54)\
+    ROM_FILL(0x1F54AE,1,0x49)\
+    ROM_FILL(0x1F54AF,1,0x4F)\
+	ROM_FILL(0x1F54B0,1,0x4E)\
+	ROM_FILL(0x1F54B1,1,0xFE)\
+    ROM_FILL(0x1FA100,1,0x46)\
+    ROM_FILL(0x1FA101,1,0x49)\
+    ROM_FILL(0x1FA102,1,0x47)\
+    ROM_FILL(0x1FA103,1,0x48)\
+    ROM_FILL(0x1FA104,1,0x54)\
+	ROM_FILL(0x1FA105,1,0x43)\
+	ROM_FILL(0x1FA106,1,0x41)\
+    ROM_FILL(0x1FA107,1,0x44)\
+    ROM_FILL(0x1FA108,1,0x45)\
+    ROM_FILL(0x1FA109,1,0xFE)
+
 #define MSLUG_CUSTOMPATCH_MODS_FILL \
     ROM_FILL(0x1F4C99,1,0x47)\
 	ROM_FILL(0x1F4C9A,1,0x41)\
@@ -17919,11 +18001,12 @@ ROM_END
 
 ROM_START( mslughc14 ) //mslugfc2
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "201_hc14.p1", 0x100000, 0x100000, CRC(91b8b63d) SHA1(5f68d970b0984f1d412657f318cc9de56f6450cc) )
+	ROM_LOAD16_WORD_SWAP( "201_hc14.p1", 0x100000, 0x100000, CRC(273aea46) SHA1(470837a2012a49c6282689c8a654240e00bb15a4) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
     MSLUG_ESSENTIALPATCH_MODS_FILL
 	MSLUG_1V2GENERATION_MODS_FILL
-    MSLUG_ENABLE_HP_DAMAGE_FIX_FILL
+//    MSLUG_ENABLE_HP_DAMAGE_FIX_FILL
+    MSLUG_RESTORING_TITLE_FIX_FILL
     MSLUG_MVS_FILL
     MSLUG_AES_FILL
 	MSLUG_SFIX_128K
@@ -30130,7 +30213,7 @@ GAME( 2017, mslughc10,        mslug,    neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2018, mslughc11,        mslug,    neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslughc12,        mslug,    neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslughc13,        mslug,    neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Random Item 2024-04-15)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslughc14,        mslug,    neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Random Item, Powerful Enemy Defense 2024-04-15)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslughc14,        mslug,    neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Random Item, Powerful Enemy Defense 2024-08-31)", MACHINE_SUPPORTS_SAVE )
 GAME( 2013, mslughc15,        mslug,    neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Unlimited Firepower 2013-06-13)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
