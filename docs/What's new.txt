@@ -1,5 +1,5 @@
 ﻿What's new in PSMSlugForever
-============================
+=============================
 What is PSMSlugForever?
 
 It is called Project Shadow Metal Slug Forever, this project was part of the HBMAME emulator in the year 2018 – 2020.
