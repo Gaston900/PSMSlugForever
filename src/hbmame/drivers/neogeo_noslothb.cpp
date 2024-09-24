@@ -17800,7 +17800,7 @@ ROM_END
 
 ROM_START( mslug5cq )
 	ROM_REGION( 0xa00000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_hc13.p1", 0x000000, 0xa00000, CRC(07723765) SHA1(117a5f0cbb88c59c9907291eb53c9fd884cc9c83) )
+	ROM_LOAD16_WORD_SWAP( "268_hc13.p1", 0x000000, 0xa00000, CRC(6baa2e80) SHA1(026a17f66d78a0cbcc7cf0696da31ed3f5e8bada) )
     MSLUG5CQ_ESSENTIALPATCH_MODS_FILL
     MSLUG5ND_CUSTOMPATCH_MODS_FILL
     MSLUG5ND_LOGOVERSION_MODS_FILL
@@ -19591,7 +19591,7 @@ The number appears above, which is another hidden difficulty level.
 
 ROM_START( mslug5hc13 ) //mslug5cq
 	ROM_REGION( 0xa00000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_hc13.p1", 0x000000, 0xa00000, CRC(07723765) SHA1(117a5f0cbb88c59c9907291eb53c9fd884cc9c83) )
+	ROM_LOAD16_WORD_SWAP( "268_hc13.p1", 0x000000, 0xa00000, CRC(6baa2e80) SHA1(026a17f66d78a0cbcc7cf0696da31ed3f5e8bada) )
     MSLUG5CQ_ESSENTIALPATCH_MODS_FILL
     MSLUG5ND_CUSTOMPATCH_MODS_FILL
     MSLUG5ND_LOGOVERSION_MODS_FILL
@@ -30211,7 +30211,7 @@ GAME( 2016, mslug5f,          mslug5,   neogeo_noslot, mslug5_f,   neogeo_state,
 GAME( 2015, mslug5w,          mslug5,   neogeo_noslot, mslug5_f,   neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (New Battle 2015-03-27)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2021, mslug5unity,      mslug5,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Unity Time! 2021-04-23)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2023, mslug5sc,         mslug5,   neogeo_noslot, mslug5_sc,  neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Survival 2023-06-12)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-GAME( 2024, mslug5cq,         mslug5,   neogeo_noslot, mslug5_cq,  neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Legendary 2.0 2024-05-02)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
+GAME( 2024, mslug5cq,         mslug5,   neogeo_noslot, mslug5_cq,  neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Legendary 2.0 2024-09-17)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug
@@ -30337,7 +30337,7 @@ GAME( 2021, mslug5hc09,       mslug5,   neogeo_noslot, mslug5_vh,  neogeo_state,
 GAME( 2023, mslug5hc10,       mslug5,   neogeo_noslot, mslugu_sc,  neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (The Longest Battle 2023-02-08)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc11,       mslug5,   neogeo_noslot, mslug5_vh,  neogeo_state,    init_mslug5hb,   ROT0, "I love Nimes",    "Metal Slug 5 (Burst Enhanced 2022-11-03)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug5hc12,       mslug5,   neogeo_noslot, mslug5_sc,  neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Survival 2023-06-12)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug5hc13,       mslug5,   neogeo_noslot, mslug5_cq,  neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Legendary 2.0 2024-05-02)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5hc13,       mslug5,   neogeo_noslot, mslug5_cq,  neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Legendary 2.0 2024-09-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug5hc14,       mslug5,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Devil Enemy Remix 2019-12-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug5hc15,       mslug5,   neogeo_noslot, mslug5_vh,  neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (1v2 Mode 2019-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug5hc16,       mslug5,   neogeo_noslot, mslug5_vh,  neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Vehicle Slug 2018-09-18)", MACHINE_SUPPORTS_SAVE )
