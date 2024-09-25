@@ -15910,14 +15910,14 @@ INPUT_PORTS_END
 
 #define MSLUG5DCQ_SPRITES \
 	ROM_REGION( 0x4000000, "sprites", 0 ) \
-    ROM_LOAD16_BYTE( "268hd.c1", 0x0000000, 0x800000, CRC(e8239365) SHA1(E0A75902A783110049730B66AD3CBCCDD804BF62) )\
-	ROM_LOAD16_BYTE( "268hd.c2", 0x0000001, 0x800000, CRC(89b21d4c) SHA1(862AC31CE9570529B33E6F58ADA0AC867A442679) )\
-	ROM_LOAD16_BYTE( "268hd.c3", 0x1000000, 0x800000, CRC(3cda13a0) SHA1(5D029C92688384EAFD65AD711A2954D0B86A3163) )\
-	ROM_LOAD16_BYTE( "268hd.c4", 0x1000001, 0x800000, CRC(9c00160d) SHA1(C612102F9CD288BBA4C245B5855D795E4362B217) )\
-	ROM_LOAD16_BYTE( "268hd.c5", 0x2000000, 0x800000, CRC(38754256) SHA1(744d91d041998ca27ee2781188746797c65377bd) )\
-	ROM_LOAD16_BYTE( "268hd.c6", 0x2000001, 0x800000, CRC(59d33e9c) SHA1(ed7f5c7db4c35ec5a7db0ad5436110b3fe80b89a) )\
-	ROM_LOAD16_BYTE( "268dcq.c7", 0x3000000, 0x800000, CRC(e5ebe937) SHA1(7e5b5b321b50e9ab2156b393e2aefc9d40925760) )\
-	ROM_LOAD16_BYTE( "268dcq.c8", 0x3000001, 0x800000, CRC(43995e2b) SHA1(144cc5f3f62cc65160880fd75f8e169520781397) )
+    ROM_LOAD16_BYTE( "268hd.c1",  0x0000000, 0x800000, CRC(e8239365) SHA1(E0A75902A783110049730B66AD3CBCCDD804BF62) )\
+	ROM_LOAD16_BYTE( "268hd.c2",  0x0000001, 0x800000, CRC(89b21d4c) SHA1(862AC31CE9570529B33E6F58ADA0AC867A442679) )\
+	ROM_LOAD16_BYTE( "268hd.c3",  0x1000000, 0x800000, CRC(3cda13a0) SHA1(5D029C92688384EAFD65AD711A2954D0B86A3163) )\
+	ROM_LOAD16_BYTE( "268hd.c4",  0x1000001, 0x800000, CRC(9c00160d) SHA1(C612102F9CD288BBA4C245B5855D795E4362B217) )\
+	ROM_LOAD16_BYTE( "268hd.c5",  0x2000000, 0x800000, CRC(38754256) SHA1(744d91d041998ca27ee2781188746797c65377bd) )\
+	ROM_LOAD16_BYTE( "268hd.c6",  0x2000001, 0x800000, CRC(59d33e9c) SHA1(ed7f5c7db4c35ec5a7db0ad5436110b3fe80b89a) )\
+	ROM_LOAD16_BYTE( "268dcq.c7", 0x3000000, 0x800000, CRC(7638b13d) SHA1(3211a164e808f3eb4de62c1afed067db2631bb5b) )\
+	ROM_LOAD16_BYTE( "268dcq.c8", 0x3000001, 0x800000, CRC(5ee654e9) SHA1(5b7047612fb99ce21c361cd5c661783c6efd72b2) )
 
 #define MSLUG5HD_SPRITES \
 	ROM_REGION( 0x4000000, "sprites", 0 ) \
@@ -17800,7 +17800,7 @@ ROM_END
 
 ROM_START( mslug5cq )
 	ROM_REGION( 0xa00000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_hc13.p1", 0x000000, 0xa00000, CRC(6baa2e80) SHA1(026a17f66d78a0cbcc7cf0696da31ed3f5e8bada) )
+	ROM_LOAD16_WORD_SWAP( "268_hc13a.p1", 0x000000, 0xa00000, CRC(6baa2e80) SHA1(026a17f66d78a0cbcc7cf0696da31ed3f5e8bada) )
     MSLUG5CQ_ESSENTIALPATCH_MODS_FILL
     MSLUG5ND_CUSTOMPATCH_MODS_FILL
     MSLUG5ND_LOGOVERSION_MODS_FILL
@@ -19591,7 +19591,7 @@ The number appears above, which is another hidden difficulty level.
 
 ROM_START( mslug5hc13 ) //mslug5cq
 	ROM_REGION( 0xa00000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_hc13.p1", 0x000000, 0xa00000, CRC(6baa2e80) SHA1(026a17f66d78a0cbcc7cf0696da31ed3f5e8bada) )
+	ROM_LOAD16_WORD_SWAP( "268_hc13.p1", 0x000000, 0xa00000, CRC(e931d937) SHA1(fee5dff570849eff2295b59ce9d8482506307f1f) )
     MSLUG5CQ_ESSENTIALPATCH_MODS_FILL
     MSLUG5ND_CUSTOMPATCH_MODS_FILL
     MSLUG5ND_LOGOVERSION_MODS_FILL
@@ -30337,7 +30337,7 @@ GAME( 2021, mslug5hc09,       mslug5,   neogeo_noslot, mslug5_vh,  neogeo_state,
 GAME( 2023, mslug5hc10,       mslug5,   neogeo_noslot, mslugu_sc,  neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (The Longest Battle 2023-02-08)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc11,       mslug5,   neogeo_noslot, mslug5_vh,  neogeo_state,    init_mslug5hb,   ROT0, "I love Nimes",    "Metal Slug 5 (Burst Enhanced 2022-11-03)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug5hc12,       mslug5,   neogeo_noslot, mslug5_sc,  neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Survival 2023-06-12)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug5hc13,       mslug5,   neogeo_noslot, mslug5_cq,  neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Legendary 2.0 2024-09-17)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5hc13,       mslug5,   neogeo_noslot, mslug5_cq,  neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Legendary 3.5 2024-09-24)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug5hc14,       mslug5,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Devil Enemy Remix 2019-12-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug5hc15,       mslug5,   neogeo_noslot, mslug5_vh,  neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (1v2 Mode 2019-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug5hc16,       mslug5,   neogeo_noslot, mslug5_vh,  neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Vehicle Slug 2018-09-18)", MACHINE_SUPPORTS_SAVE )
