@@ -16384,7 +16384,7 @@ ROM_START( mslug4h ) /* Original Version - Encrypted GFX */ /* AES VERSION */
 ROM_END
 
 ROM_START( mslug5 ) /* Encrypted Set */ /* MVS VERSION */
-	ROM_REGION( 0x800000, "maincpu", 0 )
+	ROM_REGION( 0xa00000, "maincpu", 0 )
 	ROM_LOAD32_WORD_SWAP( "268.p1", 0x000000, 0x400000, CRC(d0466792) SHA1(880819933d997fab398f91061e9dbccb959ae8a1) )
 	ROM_LOAD32_WORD_SWAP( "268.p2", 0x000002, 0x400000, CRC(fbf6b61e) SHA1(9ec743d5988b5e3183f37f8edf45c72a8c0c893e) )
     MSLUG5_ESSENTIALPATCH_MVS_FILL
@@ -17533,6 +17533,17 @@ ROM_START( mslug3eb )
 	MSLUG3_SPRITES
 ROM_END
 
+ROM_START( mslug3sd )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "neosd-sma", 0x0c0000, 0x040000, CRC(6b627629) SHA1(9785290c781b6f71168b699b180ff9d6df25d9b3) )
+	ROM_LOAD16_WORD_SWAP( "256sd.p1",  0x100000, 0x400000, CRC(a7c7957d) SHA1(3ef9da5c0e71afc8157ec197c465c1aaf1befdd6) )
+	ROM_LOAD16_WORD_SWAP( "256sd.p2",  0x500000, 0x400000, CRC(767233ee) SHA1(77f2a8e9902b2977636cb5a5ddd8fe15bd525701) )
+	MSLUG3_SFIX_MT_512K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+	MSLUG3_SPRITES
+ROM_END
+
 ROM_START( mslug3sc )
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "neosc-sma", 0x0c0000, 0x040000, CRC(cc720b9f) SHA1(ae3a375d7b1a1a59f0c55d3d784ae49e0169eac8) )
@@ -17566,6 +17577,17 @@ ROM_START( mslug3chuanqi )
 	MSLUG3CQI_SPRITES
 ROM_END
 
+ROM_START( mslug3c )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "neoc-sma", 0x0c0000, 0x040000, CRC(c16301af) SHA1(7881029654240ca13796485a35773309f4218b77) )
+	ROM_LOAD16_WORD_SWAP( "256c.p1",  0x100000, 0x400000, CRC(9e92b055) SHA1(c1a08da4963360d4082770d4d9fb7918e2d6d272) )
+	ROM_LOAD16_WORD_SWAP( "256c.p2",  0x500000, 0x400000, CRC(5dae4928) SHA1(6b0a11014dde3cb9ce6683b9c52255cf06e36c08) )
+	MSLUG3_SFIX_MT_512K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+	MSLUG3_SPRITES
+ROM_END
+
 ROM_START( mslug3fr )
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "neofr-sma", 0x0c0000, 0x040000, CRC(55b2136f) SHA1(429a19490f1dae8bb815fb224eb0d581b8c86496) )
@@ -17586,6 +17608,17 @@ ROM_START( mslug3g )
 	MSLUG3_AUDIOBIOS_512K
     MSLUG3_YMSND
 	MSLUG3GG_SPRITES
+ROM_END
+
+ROM_START( mslug3gw )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "neogw-sma", 0x0c0000, 0x040000, CRC(2d19037d) SHA1(f03b1880310d960e4bdb4d1876888ec1d783095e) )
+	ROM_LOAD16_WORD_SWAP( "256dh.p1",  0x100000, 0x400000, CRC(3a5d0a4e) SHA1(64260e0c016538feee4420908f3d791ba941cd64) )
+	ROM_LOAD16_WORD_SWAP( "256gw.p2",  0x500000, 0x400000, CRC(517f20d0) SHA1(42d0d81fd5b33864b8177f41fc6f24da8ecb225a) )
+	MSLUG3_SFIX_MT_512K
+    MSLUG3GW_AUDIO_512K
+    MSLUG3GW_YMSND
+	MSLUG3_SPRITES
 ROM_END
 
 ROM_START( mslug3i )
@@ -17632,11 +17665,44 @@ ROM_START( mslug3lw )
     MSLUG3LW_SPRITES
 ROM_END
 
+ROM_START( mslug3se )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "neose-sma", 0x0c0000, 0x040000, CRC(8de9544c) SHA1(6d24dcabab571a7dcc9d8884fd1c2f91626937ae) )
+	ROM_LOAD16_WORD_SWAP( "256dh.p1",  0x100000, 0x400000, CRC(3a5d0a4e) SHA1(64260e0c016538feee4420908f3d791ba941cd64) )
+	ROM_LOAD16_WORD_SWAP( "256se.p2",  0x500000, 0x400000, CRC(1857286f) SHA1(3a1d6b28b0f3be8902ce68447a1b639afb8766a9) )
+	MSLUG3_SFIX_MT_512K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+	MSLUG3_SPRITES
+ROM_END
+
 ROM_START( mslug3unity )
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "neouni-sma", 0x0c0000, 0x040000, CRC(3c6c536b) SHA1(e841b56e5151cf3118b7ac7f5e1495ed51378031) )
 	ROM_LOAD16_WORD_SWAP( "256.p1",     0x100000, 0x400000, CRC(b07edfd5) SHA1(dcbd9e500bfae98d754e55cdbbbbf9401013f8ee) )
 	ROM_LOAD16_WORD_SWAP( "256uni.p2",  0x500000, 0x400000, CRC(ea0c22b6) SHA1(564bd4609eb273a5eb7e6269ca3650fc0e1f1446) )
+	MSLUG3_SFIX_MT_512K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+	MSLUG3_SPRITES
+ROM_END
+
+ROM_START( mslug3v )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "neov-sma", 0x0c0000, 0x040000, CRC(46c57e9a) SHA1(ddff041ccd12b15fae7d6b1f3d81d2471fcdbc96) )
+	ROM_LOAD16_WORD_SWAP( "256dh.p1", 0x100000, 0x400000, CRC(3a5d0a4e) SHA1(64260e0c016538feee4420908f3d791ba941cd64) )
+	ROM_LOAD16_WORD_SWAP( "256v.p2",  0x500000, 0x400000, CRC(19808a48) SHA1(497e57d9de892202c2aeddafbfa40604c8706f72) )
+	MSLUG3_SFIX_MT_512K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+	MSLUG3_SPRITES
+ROM_END
+
+ROM_START( mslug3zh )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "neozh-sma", 0x0c0000, 0x040000, CRC(1af3c765) SHA1(0c9ae8828b9415e6ae27edf8465e6d0baab4b96c) )
+	ROM_LOAD16_WORD_SWAP( "256zh.p1",  0x100000, 0x400000, CRC(24445512) SHA1(41ff406b470e1ae9609c756cd51bbef62aee6a0f) )
+	ROM_LOAD16_WORD_SWAP( "256zh.p2",  0x500000, 0x400000, CRC(545e2390) SHA1(63778752cd2a9d7e26ce51ea02e2521ce61d406b) )
 	MSLUG3_SFIX_MT_512K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -17811,6 +17877,108 @@ ROM_START( mslug5cq )
     MSLUG5ND_AUDIOBIOS_128K
 	MS5BOOT_YMSND
 	MSLUG5CQ_SPRITES
+ROM_END
+
+ROM_START( mslug5nw ) /* This roms works correctly in the FBNEO emulator, unfortunately it still doesn't work in this PSMSlug Forever emulator. */
+	ROM_REGION( 0x800000, "maincpu", 0 )
+/* Metal Slug 5 - 1v2 2019-05-11 */
+	ROM_LOAD_OPTIONAL( "2681v2.p1", 0x000000, 0x400000, CRC(c6dc8d74) SHA1(3d2bda6fdc0b66b0b0213da4b233fedc6f32d0eb) )
+	ROM_LOAD_OPTIONAL( "2681v2.p2", 0x000002, 0x400000, CRC(745e242d) SHA1(7f9cfeeb54b8ee03fa8d7921737854de6485fbd0) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 - Double Enemy 2023-12-29 */
+	ROM_LOAD_OPTIONAL( "268de.p1", 0x000000, 0x400000, CRC(a0e49d55) SHA1(1e65443b9a636b1d9c81ad99cac175a782be4234) )
+	ROM_LOAD_OPTIONAL( "268de.p2", 0x000002, 0x400000, CRC(bb1cb620) SHA1(980de018ef8ae9dc6f28eaf40d0c4dc4d45afde7) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 Plus */
+	ROM_LOAD_OPTIONAL( "268plus.p1", 0x000000, 0x400000, CRC(bdff5984) SHA1(9ccba4eaa70f741305644f72fc8154aeef80f930) )
+	ROM_LOAD_OPTIONAL( "268plus.p2", 0x000002, 0x400000, CRC(2cf2ab75) SHA1(5888d06d249dfca051ae74da11b533391f35e9ba) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 Plus - 2019-07-26 */
+	ROM_LOAD_OPTIONAL( "268plus+.p1", 0x000000, 0x400000, CRC(988017de) SHA1(5f43ca3f0ecd73788dfdf621db096a97d56286b0) )
+	ROM_LOAD_OPTIONAL( "268plus+.p2", 0x000002, 0x400000, CRC(957b8c3d) SHA1(a7fab36fa623fff5a59cb845ec0ea6c6f9f4dab1) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 - Remake 2021-10-03 */
+	ROM_LOAD_OPTIONAL( "268r.p1", 0x000000, 0x400000, CRC(59497856) SHA1(832b1dd5549971752f75f63bebf250774157aedb) )
+	ROM_LOAD_OPTIONAL( "268r.p2", 0x000002, 0x400000, CRC(c80ad85b) SHA1(a7c68364563ad3a60c5bbb1db4ba20e940655e5d) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 Bootleg 2 */
+	ROM_LOAD_OPTIONAL( "268b2a.p1", 0x000000, 0x400000, CRC(823bdf05) SHA1(42069b4ff0bb30575e65450e59ed1eb20d69ea10) )
+	ROM_LOAD_OPTIONAL( "268b2a.p2", 0x000002, 0x400000, CRC(a0ace0e6) SHA1(53954bb4c07269300978ab1764360d722cf2209a) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 - Boss Battles 2024-04-20 */
+	ROM_LOAD_OPTIONAL( "268bs.p1", 0x000000, 0x400000, CRC(fc807690) SHA1(d1d1555c99e5c97c4b410048c9925b5e8a8d6ab3) )
+	ROM_LOAD_OPTIONAL( "268bs.p2", 0x000002, 0x400000, CRC(bee4e10a) SHA1(9c14c427c6ebf2d77e4b4748384f791c32f84193) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 - Enemies Resetting 2019-07-28 */
+	ROM_LOAD_OPTIONAL( "268c.p1", 0x000000, 0x400000, CRC(aefbb54b) SHA1(da94c0de8a0733aa9aba68da8fb8b07af6128a7a) )
+	ROM_LOAD_OPTIONAL( "268c.p2", 0x000002, 0x400000, CRC(546f810b) SHA1(749ba56874d0f7d0d75d78ecf0f6284424cf21e4) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 - Legendary 2.0 2024-05-02 */
+	ROM_LOAD_OPTIONAL( "268cq.p1", 0x000000, 0x400000, CRC(9e1463de) SHA1(84ed48770bbd45290d005d907895867537f2a503) )
+	ROM_LOAD_OPTIONAL( "268cq.p2", 0x000002, 0x400000, CRC(04c7f831) SHA1(b45be82d1da053bdeceae2e2a654366b884c756c) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 - Soldiers Enhanced 2020-04-06 */
+	ROM_LOAD_OPTIONAL( "268se.p1", 0x000000, 0x400000, CRC(d60df4e2) SHA1(0d9ec54866ab5cad43e64b25014bb1a28549eb98) )
+	ROM_LOAD_OPTIONAL( "268se.p2", 0x000002, 0x400000, CRC(6bb29f79) SHA1(a7308082ffd95f26793449762ea3ffa0b8a36914) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 - Starlight 2022-08-10 */
+	ROM_LOAD_OPTIONAL( "268ddd.p1", 0x000000, 0x400000, CRC(46a10134) SHA1(2ec8073e04bfda563b1c9d8ab0d1863e95a371c3) )
+	ROM_LOAD_OPTIONAL( "268ddd.p2", 0x000002, 0x400000, CRC(38896cc2) SHA1(e4b65aad7ce9072813b0e538729692e3bbe346e4) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 - Multifunction 2017-05-23 */
+	ROM_LOAD_OPTIONAL( "268mf.p1", 0x000000, 0x400000, CRC(ecfc4a22) SHA1(d73a1352c1aba539310b14f97d408eb63fe95488) )
+	ROM_LOAD_OPTIONAL( "268mf.p2", 0x000002, 0x400000, CRC(8a4ccccc) SHA1(a72749c2c3d8096fa9fa3bce3cc7305e63cbddd6) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 - Enhanced 2022-10-13 */
+	ROM_LOAD_OPTIONAL( "268e.p1", 0x000000, 0x400000, CRC(33713a7a) SHA1(dcbb4c7fa086b39316c93e9f7b6ccdfcf55503a6) )
+	ROM_LOAD_OPTIONAL( "268e.p2", 0x000002, 0x400000, CRC(16d53920) SHA1(ea1c5c04ec9310606ec31a7af75d35b30f0b8822) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 - The Longest Battle 2023-02-08 */
+	ROM_LOAD_OPTIONAL( "268lb.p1", 0x000000, 0x400000, CRC(9f766af0) SHA1(3f1b3e37b0e517c565c5345f63ecaf93a886f9d4) )
+	ROM_LOAD_OPTIONAL( "268lb.p2", 0x000002, 0x400000, CRC(80724a7c) SHA1(47c13dd5b66f8f10444f3f8989a13a71f26a01de) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 - Fierce Battle 2015-04-10 */
+	ROM_LOAD_OPTIONAL( "268fb.p1", 0x000000, 0x400000, CRC(7a02b6a0) SHA1(60ec3347881e81271b4771ce133afbc0227c9737) )
+	ROM_LOAD_OPTIONAL( "268fb.p2", 0x000002, 0x400000, CRC(e248d188) SHA1(f0869b8b2f0961dbd6faf0b0e75c92a6b0123b96) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 - Extend 2022-10-02 */
+	ROM_LOAD_OPTIONAL( "268ex.p1", 0x000000, 0x400000, CRC(f5851c94) SHA1(c43bd358f2715513c4bbdbca51199da83211361d) )
+	ROM_LOAD_OPTIONAL( "268ex.p2", 0x000002, 0x400000, CRC(5b721a3f) SHA1(eb01b62f50dea0a492dcc7b36aa814fb6fd605b1) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 - Komorebi 2022-08-10 */
+	ROM_LOAD_OPTIONAL( "268k.p1", 0x000000, 0x400000, CRC(743b620c) SHA1(96c3969f3049ee9a680e4138ad617a68240fc610) )
+	ROM_LOAD_OPTIONAL( "268k.p2", 0x000002, 0x400000, CRC(51a85bec) SHA1(0c57d56d6689a88422d2ace6fc04dd7732225200) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 - Devil Enemy - 2019-12-07 */
+	ROM_LOAD_OPTIONAL( "268del.p1", 0x000000, 0x400000, CRC(458aa13e) SHA1(68dbffbb9b143a3def981b264057a71625e4b142) )
+	ROM_LOAD_OPTIONAL( "268del.p2", 0x000002, 0x400000, CRC(a058cc4d) SHA1(8626da71b539e485dc3293a0a7731aa2b5c4dd87) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 - Not Encrypted */
+	ROM_LOAD_OPTIONAL( "268nnd.p1", 0x000000, 0x400000, CRC(23c4f6a9) SHA1(6b942688dc021dfa24b2137c9a35ebf74cb440cd) )
+	ROM_LOAD_OPTIONAL( "268nnd.p2", 0x000002, 0x400000, CRC(04ed7883) SHA1(340c7ef17cfc6a896df7a3c787dced7bc2827226) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 - Survival 2023-06-12 */
+	ROM_LOAD_OPTIONAL( "268sc.p1", 0x000000, 0x400000, CRC(3419bdc2) SHA1(c87355ae4d4f4d1184483686cb7a3ef8efbc5a3a) )
+	ROM_LOAD_OPTIONAL( "268sc.p2", 0x000002, 0x400000, CRC(9cddf957) SHA1(97c3ec5b1c91f15dc4341c7f40558e3c60e14742) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 - Stone Turtle 2024-04-11 */
+	ROM_LOAD_OPTIONAL( "268st.p1", 0x000000, 0x400000, CRC(cf8637f3) SHA1(8ea5ead74e71ecde9de50c82525ca5ffeb4e94bd) )
+	ROM_LOAD_OPTIONAL( "268st.p2", 0x000002, 0x400000, CRC(b412a07b) SHA1(8e88a2f0833afe4f3ae6ab98abe02f4cf0b40958) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 - New Battle 2015-02-27 */
+	ROM_LOAD_OPTIONAL( "268nb.p1", 0x000000, 0x400000, CRC(3b0e3bf2) SHA1(100db6c20c46a8bf280aa73da2313303f15da0d7) )
+	ROM_LOAD_OPTIONAL( "268nb.p2", 0x000002, 0x400000, CRC(62bf794c) SHA1(b94b7f2ffc7ccb4a4b34745b38d65a1f602b4d93) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 - X 2022-06-06 */
+	ROM_LOAD_OPTIONAL( "268x.p1", 0x000000, 0x400000, CRC(4447a638) SHA1(a5f672578030aabbabac2b6d23e51003328eee53) )
+	ROM_LOAD_OPTIONAL( "268x.p2", 0x000002, 0x400000, CRC(cbca9909) SHA1(53762c38c817f3a718e3e8d7aae802852ab05f06) )
+/*******************************************************************************************************************/
+/* Metal Slug 5 - Vehicle Summon 2018-09-18 */
+	ROM_LOAD_OPTIONAL( "268vs.p1", 0x000000, 0x400000, CRC(5b1f0bd8) SHA1(179aa4e14240980fd361d57c1b9538eabf29677e) )
+	ROM_LOAD_OPTIONAL( "268vs.p2", 0x000002, 0x400000, CRC(3f957664) SHA1(78a56e75bb3a333ac4b869d88553898fb9d0e123) )
+/*******************************************************************************************************************/
+	ROM_LOAD32_WORD_SWAP( "268.p1", 0x000000, 0x400000, CRC(d0466792) SHA1(880819933d997fab398f91061e9dbccb959ae8a1) )
+	ROM_LOAD32_WORD_SWAP( "268.p2", 0x000002, 0x400000, CRC(fbf6b61e) SHA1(9ec743d5988b5e3183f37f8edf45c72a8c0c893e) )
 ROM_END
 
  /*********
@@ -18840,7 +19008,7 @@ ROM_START( mslug3hc30 )
     MSLUG3D_SPRITES
 ROM_END
 
-ROM_START( mslug3hc31 ) //mslug3_v
+ROM_START( mslug3hc31 ) //mslug3v
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc31.p1", 0x000000, 0x100000, CRC(47f9aeea) SHA1(db1c65681ac12b146e2fa21a8f28000f41a11fe2) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2",     0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
@@ -30119,7 +30287,7 @@ GAME( 2000, mslug3d,          mslug3,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2000, mslug3dh,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "SNK",             "Metal Slug 3 (NGM-2560 ~ NGH-2560)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2000, mslug3hd,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "SNK",             "Metal Slug 3 (NGH-2560)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2000, mslug3nd,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "SNK",             "Metal Slug 3 (Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, mslug3bd,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "SNK",             "Metal Slug 3 (Fully Decrypted ~ Bad Dump Sound)", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, mslug3bd,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "SNK",             "Metal Slug 3 (Fully Decrypted ~ Bad Dump Sound)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 2000, mslug3b6d,        mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3hb,   ROT0, "Bootleg",         "Metal Slug 6 (Metal Slug 3 Bootleg)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2000, mslug3b6e,        mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3hb,   ROT0, "Bootleg",         "Metal Slug 6 (Metal Slug 3 Bootleg)(Encrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, mslug4d,          mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "Mega / Playmore", "Metal Slug 4 (NGM-2630)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
@@ -30191,16 +30359,22 @@ GAME( 1999, mslugxnsd,        mslugx,   neogeo_noslot, neogeohb,   neogeo_state,
 // Metal Slug (Documentation GFX Decrypter C To Encrypte C)
 GAME( 2019, mslug31v2,        mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (1v2 Mode 2019-05-11)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2014, mslug3eb,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Green Blue 2014-10-15)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2018, mslug3sd,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Shop 2017-12-17)(Encrypted C)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2023, mslug3sc,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Survival 2023-03-01)(Encrypted C)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2024, mslug3cq,         mslug3,   neogeo_noslot, mslugu_cq,  neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Legendary 4.5 2024-06-12)(Encrypted C)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2024, mslug3chuanqi,    mslug3,   neogeo_noslot, mslugu_cqi, neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Legendary Firepower Showdown 4.0 2024-06-21)(Encrypted C)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2019, mslug3c,          mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Enemies Resetting 2019-07-20)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2004, mslug3fr,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (French Translation 2003-07-29)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2019, mslug3g,          mslug3,   neogeo_noslot, mslug3_g,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Multifunction 2019-03-05)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2018, mslug3gw,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Onimusha Samanosuke 2018-05-30)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2021, mslug3i,          mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Infinite Firepower 2021-03-17)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2022, mslug3dde,        mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Starlight 2022-05-11)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2022, mslug3ki,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Komorebi 2022-05-11)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2023, mslug3lw,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Pigeon Slug 2023-05-07)(Encrypted C)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2022, mslug3se,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Special 2022-03-31)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2021, mslug3unity,      mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Unity Time! 2021-02-13)(Encrypted C)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2012, mslug3v,          mslug3,   neogeo_noslot, mslug3_v,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Violence 2012-03-01)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2018, mslug3zh,         mslug3,   neogeo_noslot, mslugu_vh,  neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Vehicle Summon 2017-04-04)(Encrypted C)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2002, mslug4fr,         mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (French Translation 2006-12-23)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2023, mslug4lw,         mslug4,   neogeo_noslot, mslug4_lw,  neogeo_state,    init_mslug4lw,   ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix 2023-02-25)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2023, mslug4ammor,      mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4lw,   ROT0, "hack",            "Metal Slug 4 (Random Ammunition 2023-02-25)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
@@ -30212,6 +30386,9 @@ GAME( 2015, mslug5w,          mslug5,   neogeo_noslot, mslug5_f,   neogeo_state,
 GAME( 2021, mslug5unity,      mslug5,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Unity Time! 2021-04-23)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2023, mslug5sc,         mslug5,   neogeo_noslot, mslug5_sc,  neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Survival 2023-06-12)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2024, mslug5cq,         mslug5,   neogeo_noslot, mslug5_cq,  neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Legendary 2.0 2024-09-17)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
+//Roms that I still can't get to work
+GAME( 2003, mslug5nw,         neogeo,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Not working)(Encrypted C)", MACHINE_UNEMULATED_PROTECTION | MACHINE_NOT_WORKING |MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
+
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug

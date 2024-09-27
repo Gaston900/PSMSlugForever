@@ -18,8 +18,8 @@ Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use O
 2024-12-XX
 
 - Updated Roms Metal Slug (Unity Item Random, Powerful Enemy Defense 2024-09-26)
-- Updated Roms Metal Slug 3 (Legendary 4.5 2024-06-12) (NOT WORKING)
-- Updated Roms Metal Slug 3 (Legendary Firepower Showdown 4.8 2024-09-23) (NOT WORKING)
+- Updated Roms Metal Slug 3 (Legendary 4.5 2024-06-12) (Not working)
+- Updated Roms Metal Slug 3 (Legendary Firepower Showdown 4.8 2024-09-23) (Not working)
 - Updated Roms Metal Slug X (Legendary 4.5 2024-06-13)
 - Updated Roms Metal Slug X (Legendary Firepower Showdown 4.5 2024-09-23)
 - Updated Roms Metal Slug 5 (Legendary Edition 3.5 2024-09-24)
@@ -67,8 +67,8 @@ Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use O
 2024-03-18
 
 - Overclock CPU = 180 Default, With a maximum capacity of reaching 600 CPU Speed. 
-- Updated Roms Metal Slug 3 (Legendary Edition 4.5 2024-03-14) (NOT WORKING)
-- Updated Roms Metal Slug 3 (Legendary Fire Showdown 4.0 2024-03-09) (NOT WORKING)
+- Updated Roms Metal Slug 3 (Legendary Edition 4.5 2024-03-14) (Not working)
+- Updated Roms Metal Slug 3 (Legendary Fire Showdown 4.0 2024-03-09) (Not working)
 - Updated Roms Metal Slug 5 (Legendary Edition 2024-03-10)
 - Updated Roms Metal Slug 5 (Boss Edition 2024-03-10)
 - Updated Roms Metal Slug X (Legendary Edition 4.5 2024-03-08)
@@ -235,8 +235,8 @@ New Games
 - Updated Roms Metal Slug 5 (The Longest Battle 2023-02-08)
 - Updated Roms Metal Slug X (Legendary Last Edition 2023-03-07)
 - the games that do not work have been added to keep it:
-  * Metal Slug 2 (Weapon Storage 2015-11-11) [NOT WORKING]
-  * Metal Slug 3 (Last Bullet Remix 2023-03-09 [NOT WORKING]
+  * Metal Slug 2 (Weapon Storage 2015-11-11) [Not working]
+  * Metal Slug 3 (Last Bullet Remix 2023-03-09 [Not working]
 
 New Games
 ---------------------------------
