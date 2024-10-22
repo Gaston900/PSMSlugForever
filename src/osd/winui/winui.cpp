@@ -105,7 +105,7 @@ struct _play_options
 };
 
 //#ifdef USE_KLIST
-#define TSVNAME "Game List.txt"
+#define TSVNAME "Arcade_List.lst"
 #define LINEBUF_SIZE  1024
 #define NUM_COLUMNS   3
 
