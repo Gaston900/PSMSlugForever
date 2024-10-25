@@ -25,7 +25,7 @@ Two new folder sections called “config” and “support” were added that in
 
 In the Config folders it is incorporated by:
 
-Audio, Bgfx, Cfg, Comments, Crosshair, Diff, Docs, Folders, Glsl, Gui, Hash, Hlsl, Ini, Inp, Language, Nvram, Plugins, Share, Sta.
+Bgfx, Cfg, Comments, Crosshair, Diff, Docs, Folders, Glsl, Gui, Hash, Hlsl, Ini, Inp, Language, Nvram, Plugins, Share, Sta.
 
 In the support folders it is incorporated by:
 
@@ -35,9 +35,7 @@ Logo, Manuals, Marquees, Pcb, Roms, Samples, Scores, Select, Snap, Titles, Versu
 How to compile
 --------------
 
-To be able to compile this version we will need the source codes, for this we will place it in the folder docs/Source Code [HBMame Old]/hbmame-tag224.7z.001, once located we will start to decompress the files it will take a few minutes, once decompressed we will have a folder with the name hbmame-tag224.7z, we will rename it to “src”, now we will paste the remains of the files that we have left “Scripts, Src and Makefile” in the src folder, the system will ask to replace it we will say yes .
-
-Now we will locate the folder where the compiler that we want to use is located, being msys32 or msys64 [This depends on the support that your operating system has, being Windows 32bit or Windows 64Bit]. Now we will paste the “src” folder.
+In order to compile this version we will need the source code, for this we will locate it in the folder docs / Source Code [HBMame] / hbmame-tag224.7z. 001, once located we will begin to unzip the files, it will take a few minutes, once unzipped we will have a folder with the name hbmame-tag224.7z, we will rename it to “src”, Now we will get the latest source code of this Github container once downloaded we will begin to unzip and once finished unzipping we will select the files that we had left in the folder “scripts, src and makefile” we will copy them into the src folder, the system will ask us to replace it we will say yes.
 
 And we will apply this command to start the compilation, this command is for Windows 64Bit system:
 ```
