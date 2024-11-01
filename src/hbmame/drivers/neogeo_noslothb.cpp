@@ -18188,10 +18188,9 @@ ROM_START( mslughc14 ) //mslugfc2
     MSLUG_SPRITES
 ROM_END
 
-//The most current version mslugfc2 (2024-10-27), the file could not be installed because the .zip file has a "trojan:Script/Sabsik.FL.A!ml"
 ROM_START( mslughc15 ) //mslugfc2 (By Alice)
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "201_hc15.p1", 0x100000, 0x100000, CRC(ed8f32b7) SHA1(d5f299ec79d694d6a3e428699a387fac9946313f) )
+	ROM_LOAD16_WORD_SWAP( "201_hc15.p1", 0x100000, 0x100000, CRC(9b991ed7) SHA1(a45010bc10a3cfb9b9700dd39032847b8a711aeb) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
     MSLUG_ESSENTIALPATCH_MODS_FILL
 	MSLUG_1V2GENERATION_MODS_FILL
@@ -30440,7 +30439,7 @@ GAME( 2018, mslughc11,        mslug,    neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2023, mslughc12,        mslug,    neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslughc13,        mslug,    neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Random Item 2024-04-15)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslughc14,        mslug,    neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Random Item, Powerful Enemy Defense 2024-04-15)(Earlier)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslughc15,        mslug,    neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Random Item, Powerful Enemy Defense 2024-10-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslughc15,        mslug,    neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Random Item, Powerful Enemy Defense 2024-10-27)", MACHINE_SUPPORTS_SAVE )
 GAME( 2013, mslughc16,        mslug,    neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Unlimited Firepower 2013-06-13)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
