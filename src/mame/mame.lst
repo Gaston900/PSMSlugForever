@@ -147,7 +147,6 @@ mslug5w           // Hack Encrypted GFX (Documentation)
 mslug5unity       // Hack Encrypted GFX (Documentation)
 mslug5sc          // Hack Encrypted GFX (Documentation)
 mslug5cq          // Hack Encrypted GFX (Documentation)
-//mslug5nw          // Hack Encrypted GFX (Documentation)(Not working)
 
 @source:neogeo.cpp
 mslughc01         // Hack
@@ -248,6 +247,7 @@ mslug4hc21        // Hack
 mslug4hc22        // Hack
 mslug4hc23        // Hack
 mslug4hc24        // Hack
+mslug4hc25        // Hack
 mslug5hc01        // Hack
 mslug5hc02        // Hack
 mslug5hc03        // Hack
