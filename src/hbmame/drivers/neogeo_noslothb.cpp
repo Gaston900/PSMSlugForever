@@ -3185,6 +3185,12 @@ INPUT_PORTS_END
 	MSLUG2_MVS_FILL \
     MSLUG2_AES_FILL
 
+#define MSLUG2EG_CUZTOMESSENTIALPATCH_MODS_FILL \
+    MSLUG2_SOLDIER_CHANGING_UNIFORM_MODS_FILL \
+    MSLUG2_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
+	MSLUG2_MVS_FILL \
+	MSLUG2_AES_FILL
+
 #define MSLUG2AT_CUZTOMESSENTIALPATCH_MODS_FILL \
     MSLUG2_REMIXCUZTOMPATCH_MODS_FILL \
     MSLUG2_THEYTEARYOUAPARTWHENITDIES_MODS_FILL \
@@ -3207,6 +3213,22 @@ INPUT_PORTS_END
 	MSLUG2_BOMBFIRE_MODS_FILL \
 	MSLUG2_FATPLAYERS_MODS_FILL \
     MSLUG2_BOSS_MODS_FILL \
+	MSLUG2_AES_FILL
+
+#define MSLUG2CT_REMIXCUZTOMPATCH_MODS_FILL \
+    MSLUG2_REMIXCUZTOMPATCH_MODS_FILL \
+	MSLUG2_WEAPONANIMATION_MODS_FILL \
+	MSLUG2_BOSS_MODS_FILL \
+	MSLUG2_LIFEMORE_MODS_FILL \
+	MSLUG2_AES_FILL
+
+#define MSLUG2CT_REMIXFATCUZTOMPATCH_MODS_FILL \
+    MSLUG2_REMIXCUZTOMPATCH_MODS_FILL \
+	MSLUG2_WEAPONANIMATION_MODS_FILL \
+	MSLUG2_BOMBFIRE_MODS_FILL \
+	MSLUG2_FATPLAYERS_MODS_FILL \
+    MSLUG2_BOSS_MODS_FILL \
+	MSLUG2_LIFEMORE_MODS_FILL \
 	MSLUG2_AES_FILL
 
 #define MSLUG3H_ESSENTIALPATCH_MODS_FILL \
@@ -20713,7 +20735,7 @@ ROM_START( mslug2ctma13 )
 	ROM_REGION( 0x400000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_cmb13.p1", 0x000000, 0x100000, CRC(aab0c2a7) SHA1(8501f543ec2a26a870195ead3dd531133390f203) )
 	ROM_LOAD16_WORD_SWAP( "241_hc05.p2",  0x100000, 0x300000, CRC(abf37360) SHA1(09347f0502fba4965dc14fd6db89bb3cabdeea1f) )
-    MSLUG2EG_ESSENTIALPATCH_MODS_FILL
+    MSLUG2EG_CUZTOMESSENTIALPATCH_MODS_FILL
 	MSLUG2EG_SFIX_128K
     MSLUG2_AUDIOBIOS_128K
     MSLUG2_YMSND
@@ -25303,7 +25325,7 @@ ROM_START( mslug2la05 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_la05.p1", 0x000000, 0x100000, CRC(780b24cc) SHA1(9e7f05a325723adf28e6941ce138b41ede35d388) )
 	ROM_LOAD16_WORD_SWAP( "241_la05.p2", 0x100000, 0x200000, CRC(fceb2790) SHA1(6ed39a7b521ee32df92ac7ec580734128b8ad5ee) )
-    MSLUG2HB_REMIXCUZTOMPATCH_MODS_FILL
+    MSLUG2CT_REMIXCUZTOMPATCH_MODS_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -25314,7 +25336,7 @@ ROM_START( mslug2la06 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_la05.p1", 0x000000, 0x100000, CRC(780b24cc) SHA1(9e7f05a325723adf28e6941ce138b41ede35d388) )
 	ROM_LOAD16_WORD_SWAP( "241_la05.p2", 0x100000, 0x200000, CRC(fceb2790) SHA1(6ed39a7b521ee32df92ac7ec580734128b8ad5ee) )
-    MSLUG2HB_REMIXFATCUZTOMPATCH_MODS_FILL
+    MSLUG2CT_REMIXFATCUZTOMPATCH_MODS_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -25325,7 +25347,7 @@ ROM_START( mslug2la07 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_la04.p1", 0x000000, 0x100000, CRC(b29a8226) SHA1(34a2997fa085afc00c1fe3ebc8d01fe45b44f9f6) )
 	ROM_LOAD16_WORD_SWAP( "241_la05.p2", 0x100000, 0x200000, CRC(fceb2790) SHA1(6ed39a7b521ee32df92ac7ec580734128b8ad5ee) )
-    MSLUG2HB_REMIXCUZTOMPATCH_MODS_FILL
+    MSLUG2CT_REMIXCUZTOMPATCH_MODS_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -25391,7 +25413,7 @@ ROM_START( mslug2lb05 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_lb05.p1", 0x000000, 0x100000, CRC(5ca15d62) SHA1(241a14edec2d8749396d3e7be54e23a5a72b28d2) )
 	ROM_LOAD16_WORD_SWAP( "241_la05.p2", 0x100000, 0x200000, CRC(fceb2790) SHA1(6ed39a7b521ee32df92ac7ec580734128b8ad5ee) )
-    MSLUG2HB_REMIXCUZTOMPATCH_MODS_FILL
+    MSLUG2CT_REMIXCUZTOMPATCH_MODS_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -25402,7 +25424,7 @@ ROM_START( mslug2lb06 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_lb05.p1", 0x000000, 0x100000, CRC(5ca15d62) SHA1(241a14edec2d8749396d3e7be54e23a5a72b28d2) )
 	ROM_LOAD16_WORD_SWAP( "241_la05.p2", 0x100000, 0x200000, CRC(fceb2790) SHA1(6ed39a7b521ee32df92ac7ec580734128b8ad5ee) )
-    MSLUG2HB_REMIXFATCUZTOMPATCH_MODS_FILL
+    MSLUG2CT_REMIXFATCUZTOMPATCH_MODS_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -25413,7 +25435,7 @@ ROM_START( mslug2lb07 )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_lb04.p1", 0x000000, 0x100000, CRC(f209dd30) SHA1(afb1bf21c9f01d665d5b5ccb8a4eacc0731203ae) )
 	ROM_LOAD16_WORD_SWAP( "241_la05.p2", 0x100000, 0x200000, CRC(fceb2790) SHA1(6ed39a7b521ee32df92ac7ec580734128b8ad5ee) )
-    MSLUG2HB_REMIXCUZTOMPATCH_MODS_FILL
+    MSLUG2CT_REMIXCUZTOMPATCH_MODS_FILL
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2_YMSND
@@ -27335,7 +27357,7 @@ GAME( 2014, mslug2hc01,       mslug2,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2019, mslug2hc02,       mslug2,   neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 2 (1v2 Mode 2019-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2hc03,       mslug2,   neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (Unity Time! 2021-01-22)", MACHINE_SUPPORTS_SAVE )
 GAME( 2008, mslug2hc04,       mslug2,   neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (Hybrid bullets 2023-02-15)", MACHINE_SUPPORTS_SAVE ) // This 2023 has been fix
-GAME( 2021, mslug2hc05,       mslug2,   neogeo_noslot, mslug2_eg,  neogeo_state,    init_neogeo,     ROT0, "Phengzheng",      "Metal Slug 2 (Extraction Green Turbo 2021-09-16)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug2hc05,       mslug2,   neogeo_noslot, mslug2_eg,  neogeo_state,    init_neogeo,     ROT0, "Phengzheng",      "Metal Slug 2 (Extraction Green Turbo 2021-09-16)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2hc06,       mslug2,   neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 2 (Friendly Fire 2021-04-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug2hc07,       mslug2,   neogeo_noslot, mslug2_wp,  neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug 2 (Change Weapon And Mummy 2018-08-25)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug2hc08,       mslug2,   neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "I love Nimes",    "Metal Slug 2 (Burst Enhanced 2022-11-03)", MACHINE_SUPPORTS_SAVE )
@@ -27541,7 +27563,7 @@ GAME( 2021, mslug2ctma09,     mslug2,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2020, mslug2ctma10,     mslug2,   neogeo_noslot, mslugu_svh, neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (Enemies Resetting War Chariot Cuztom 2018-01-25)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug2ctma11,     mslug2,   neogeo_noslot, mslug2_wp,  neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (Enemies Resetting Change Weapon And Mummy Cuztom 2018-01-25)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug2ctma12,     mslug2,   neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (Enemies Resetting Starlight Cuztom 2022-05-11)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug2ctma13,     mslug2,   neogeo_noslot, mslug2_eg,  neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (Enemies Resetting Extraction Green Turbo Cuztom 2021-09-16)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug2ctma13,     mslug2,   neogeo_noslot, mslug2_eg,  neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (Enemies Resetting Extraction Green Turbo Cuztom 2021-09-16)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug2ctma14,     mslug2,   neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 Turbo (Enemies Resetting Cuztom 2014-09-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctma01,     mslug3,   neogeo_noslot, mslug3_g,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Multifunction Cuztom 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctma02,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Onimusha Samanosuke Cuztom 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
