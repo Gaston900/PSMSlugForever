@@ -2815,7 +2815,7 @@ INPUT_PORTS_START( mslugu_cb )
 	PORT_BIT( 0x0110, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_NAME("@P1 Change Body @Button4") PORT_CONDITION("SYSTEM", 0x0110, EQUALS, 0x0110) PORT_CODE(KEYCODE_Z)
 INPUT_PORTS_END
 
-INPUT_PORTS_START( mslugu_wp )
+INPUT_PORTS_START( mslug3wp )
 	PORT_INCLUDE( neogeohb )
 
 	PORT_MODIFY("DSW")
@@ -2989,11 +2989,11 @@ INPUT_PORTS_START( mslug4lwrmx )
 	PORT_MODIFY("AUDIO/COIN")
 	PORT_BIT( 0x00000001, IP_ACTIVE_LOW, IPT_COIN1 ) PORT_CONDITION("AUDIO/COIN", 0x00010001, NOTEQUALS, 0x00000001)
 	PORT_BIT( 0x00010000, IP_ACTIVE_LOW, IPT_CUSTOM ) PORT_CONDITION("AUDIO/COIN", 0x00010001, NOTEQUALS, 0x00010000)
-	PORT_BIT( 0x00010001, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_NAME("@P1 Spawner Tank @Button6") PORT_CONDITION("AUDIO/COIN", 0x00010001, EQUALS, 0x00010001) PORT_CODE(KEYCODE_W)
+	PORT_BIT( 0x00010001, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_NAME("@P1 Spawner Tank @Button4") PORT_CONDITION("AUDIO/COIN", 0x00010001, EQUALS, 0x00010001) PORT_CODE(KEYCODE_W)
 
 	PORT_BIT( 0x00000002, IP_ACTIVE_LOW, IPT_COIN2 ) PORT_CONDITION("AUDIO/COIN", 0x00020002, NOTEQUALS, 0x00000002)
 	PORT_BIT( 0x00020000, IP_ACTIVE_LOW, IPT_CUSTOM ) PORT_PLAYER(2) PORT_CONDITION("AUDIO/COIN", 0x00020002, NOTEQUALS, 0x00020000)
-	PORT_BIT( 0x00020002, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_PLAYER(2)PORT_NAME("@P2 Spawner Tank @Button6") PORT_CONDITION("AUDIO/COIN", 0x00020002, EQUALS, 0x00020002) PORT_CODE(KEYCODE_E)
+	PORT_BIT( 0x00020002, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_PLAYER(2)PORT_NAME("@P2 Spawner Tank @Button4") PORT_CONDITION("AUDIO/COIN", 0x00020002, EQUALS, 0x00020002) PORT_CODE(KEYCODE_E)
 INPUT_PORTS_END
 
 INPUT_PORTS_START( mslug5w )
@@ -4475,6 +4475,21 @@ INPUT_PORTS_END
     MSLUG4ND_MVS_FILL \
     MSLUG4_AES_FILL
 
+#define MSLUG4SD_ESSENTIALPATCH_MODS_FILL \
+    MSLUG4_FIX_BLACK_BLOCK_ON_THE_SELECTION_SCREEN_MODS_FILL \
+    MSLUG4_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
+    MSLUG4_FLASHOFF_MODS_FILL \
+    MSLUG4_POWNEVERLOSE_MODS_FILL \
+	MSLUG4_LIFEMORE_MODS_FILL \
+    MSLUG4_CHANGEMOVINGPLAYERS_MODS_FILL \
+    MSLUG4_STARTTWOLIFE_MODS_FILL \
+    MSLUG4_CUZTOMPATCH_MODS_FILL \
+    MSLUG4_CUZTOMLOGOONE_MODS_FILL \
+    MSLUG4_THELONGESTFIGHT_MODS_FILL \
+    MSLUG4_SKIPLEVEL6_FIX_FILL \
+	MSLUG4ND_MVS_FILL \
+    MSLUG4_AES_FILL
+
 #define MSLUG4LW_ESSENTIALPATCH_MODS_FILL \
     MSLUG4_FIX_BLACK_BLOCK_ON_THE_SELECTION_SCREEN_MODS_FILL \
     MSLUG4_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
@@ -4549,6 +4564,7 @@ INPUT_PORTS_END
     MSLUG4_CUZTOMLOGOTWO_MODS_FILL \
     MSLUG4_SOLDIER_CHANGING_UNIFORM_MODS_FILL \
     MSLUG4_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
+	MSLUG4_AMMUNITION2X_MODS_FILL \
 	MSLUG4ND_MVS_FILL \
     MSLUG4_AES_FILL
 
@@ -4566,6 +4582,24 @@ INPUT_PORTS_END
     MSLUG4_THELONGESTFIGHT_MODS_FILL \
 	MSLUG4_AMMUNITION2X_MODS_FILL \
 	MSLUG4_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
+	MSLUG4ND_MVS_FILL \
+    MSLUG4_AES_FILL
+
+#define MSLUG4SD_CUZTOMESSENTIALPATCH_MODS_FILL \
+    MSLUG4_FIX_BLACK_BLOCK_ON_THE_SELECTION_SCREEN_MODS_FILL \
+    MSLUG4_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
+    MSLUG4_FLASHOFF_MODS_FILL \
+    MSLUG4_POWNEVERLOSE_MODS_FILL \
+	MSLUG4_LIFEMORE_MODS_FILL \
+    MSLUG4_CHANGEMOVINGPLAYERS_MODS_FILL \
+    MSLUG4_STARTTWOLIFE_MODS_FILL \
+    MSLUG4_CUZTOMPATCH_MODS_FILL \
+    MSLUG4_CUZTOMLOGOTWO_MODS_FILL \
+    MSLUG4_SOLDIER_CHANGING_UNIFORM_MODS_FILL \
+    MSLUG4_THELONGESTFIGHT_MODS_FILL \
+	MSLUG4_AMMUNITION2X_MODS_FILL \
+	MSLUG4_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
+	MSLUG4_SKIPLEVEL6_FIX_FILL \
 	MSLUG4ND_MVS_FILL \
     MSLUG4_AES_FILL
 
@@ -19920,7 +19954,7 @@ ROM_START( mslug4hc01 ) //mslug4sd
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc01.p1", 0x000000, 0x100000, CRC(af69d959) SHA1(2bc9796003c8742d681e11ad842978d918fbae40) )
 	ROM_LOAD16_WORD_SWAP( "263.p2",      0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-    MSLUG4HB_ESSENTIALPATCH_MODS_FILL
+    MSLUG4SD_ESSENTIALPATCH_MODS_FILL
     MSLUG4NDE_SFIX_128K
     MSLUG4D_AUDIO_64K
 	MS4BOOT_YMSND
@@ -22882,7 +22916,7 @@ ROM_START( mslug4ctma10 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_cma10.p1", 0x000000, 0x100000, CRC(daf7813d) SHA1(039f476e2e22797659c8b0b91603fb64b3ba406f) )
 	ROM_LOAD16_WORD_SWAP( "263.p2",       0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-    MSLUG4HB_CUZTOMESSENTIALPATCH_MODS_FILL
+    MSLUG4SD_CUZTOMESSENTIALPATCH_MODS_FILL
     MSLUG4HD_SFIX_128K
     MSLUG4LWQ_AUDIO_128K
 	MSLUG4LWQ_YMSND
@@ -27911,7 +27945,7 @@ GAME( 2023, mslug3hc35,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2023, mslug3hc36,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Survival 2023-03-01)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3hc37,       mslug3,   neogeo_noslot, mslugu_cq,  neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary 4.5 2024-06-12)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3hc38,       mslug3,   neogeo_noslot, mslugu_cqi, neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Firepower Showdown 5.0 2024-11-15)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2012, mslug3hc39,       mslug3,   neogeo_noslot, mslugu_wp,  neogeo_state,    init_mslug3de,   ROT0, "LB70 (Eezezy)",   "Metal Slug 3 (Crazy Fire 2012-01-16)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2012, mslug3hc39,       mslug3,   neogeo_noslot, mslug3wp,   neogeo_state,    init_mslug3de,   ROT0, "LB70 (Eezezy)",   "Metal Slug 3 (Crazy Fire 2012-01-16)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3hc40,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Double Enemy 2024-11-20)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3hc41,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Tower Defense 3.0 2024-11-22)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3hc42,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Journey 2024-11-13)" , MACHINE_SUPPORTS_SAVE )
@@ -28207,7 +28241,7 @@ GAME( 2024, mslug3ctmh13,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2023, mslug3ctmh14,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Hybrid Bullets Cuztom 2023-03-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ctmh15,     mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3b6hb, ROT0, "PSMSlugForever",  "Metal Slug 6 (Metal Slug 3 Bootleg) (Pigeon Slug #4 Cuztom 2023-05-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4ctma01,     mslug4,   neogeo_noslot, mslug4sc,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting The Longest Fight 2022-10-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslug4ctma02,     mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Multifunction Cuztom 2022-10-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslug4ctma02,     mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Multifunction Cuztom 2022-10-24)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4ctma03,     mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting 1v2 Mode Cuztom 2022-10-24)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4ctma04,     mslug4,   neogeo_noslot, mslug4wp,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Change Weapon Cuztom 2022-10-24)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4ctma05,     mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Children's Cuztom 2022-10-24)", MACHINE_SUPPORTS_SAVE )
