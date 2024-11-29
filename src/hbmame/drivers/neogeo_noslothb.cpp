@@ -2948,12 +2948,15 @@ INPUT_PORTS_START( mslug4cf )
 INPUT_PORTS_END
 
 INPUT_PORTS_START( mslug4cq )
-	PORT_INCLUDE( mslug4sc )
+	PORT_INCLUDE( neogeohb )
 
 	PORT_MODIFY("DSW")
 	PORT_DIPNAME( 0x40, 0x40, DEF_STR( Free_Play ) ) PORT_DIPLOCATION("SW:7")
 	PORT_DIPSETTING(    0x40, DEF_STR( Off ) )
 	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x02, 0x02, DEF_STR( Cabinet ) ) PORT_DIPLOCATION("SW:2")
+	PORT_DIPSETTING(    0x02, DEF_STR( Normal ) )
+	PORT_DIPSETTING(    0x00, "VS Mode" )
 	PORT_BIT( 0x2000+0x0100, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_NAME("@P1 Increase Star Difficulty Level @Button6") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x2100) PORT_CODE(KEYCODE_W)
     PORT_BIT( 0x2000+0x0200, IP_ACTIVE_LOW, IPT_BUTTON7 ) PORT_NAME("@P1 Lower Star Difficulty Level @Button7") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x2200) PORT_CODE(KEYCODE_E)
 INPUT_PORTS_END
@@ -2978,7 +2981,7 @@ INPUT_PORTS_START( mslug4rmx )
 INPUT_PORTS_END
 
 INPUT_PORTS_START( mslug4lwrmx )
-	PORT_INCLUDE( neogeohb )
+	PORT_INCLUDE( neogeo )
 
 	PORT_MODIFY("DSW")
 	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_NAME("@P1 Weapon Change / Vehicle Self-Destruct! @Button4") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8000) PORT_CODE(KEYCODE_Z)
@@ -4563,7 +4566,8 @@ INPUT_PORTS_END
     MSLUG4_POWNEVERLOSE_MODS_FILL \
     MSLUG4_CUZTOMPATCH_MODS_FILL \
     MSLUG4_CUZTOMLOGOONE_MODS_FILL \
-    MSLUG4ND_MVS_FILL \
+    MSLUG4_LIFEMORE_MODS_FILL \
+	MSLUG4ND_MVS_FILL \
     MSLUG4_AES_FILL
 
 #define MSLUG4_QCUZTOMESSENTIALPATCH_MODS_FILL \
@@ -4641,6 +4645,7 @@ INPUT_PORTS_END
     MSLUG4_DISABLEFASTBOMB_MODS_FILL \
     MSLUG4_CHANGEMOVINGSLUG_MODS_FILL \
 	MSLUG4_DISABLE1V2GENERATION_MODS_FILL \
+	MSLUG4_DISABLEMAXIMIZEWEAPONS_MODS_FILL \
 	MSLUG4_AES_FILL
 
 #define MSLUG4HB_REMIXFATCUZTOMPATCH_MODS_FILL \
@@ -4655,6 +4660,7 @@ INPUT_PORTS_END
     MSLUG4_FATPLAYERS_FIX_FILL \
     MSLUG4_THELONGESTFIGHT_MODS_FILL \
 	MSLUG4_DISABLE1V2GENERATION_MODS_FILL \
+	MSLUG4_DISABLEMAXIMIZEWEAPONS_MODS_FILL \
 	MSLUG4_AES_FILL
 
 #define MSLUG4HB_DGREMIXCUZTOMPATCH_MODS_FILL \
@@ -4664,6 +4670,7 @@ INPUT_PORTS_END
     MSLUG4_DISABLEFASTBOMB_MODS_FILL \
     MSLUG4_CHANGEMOVINGSLUG_MODS_FILL \
 	MSLUG4DG_DISABLE1V2GENERATION_MODS_FILL \
+	MSLUG4_DISABLEMAXIMIZEWEAPONS_MODS_FILL \
 	MSLUG4_AES_FILL
 
 #define MSLUG4HB_DGREMIXFATCUZTOMPATCH_MODS_FILL \
@@ -4676,6 +4683,7 @@ INPUT_PORTS_END
 	MSLUG4_BOMBFIRE_MODS_FILL \
 	MSLUG4_FATPLAYERS_MODS_FILL \
 	MSLUG4DG_DISABLE1V2GENERATION_MODS_FILL \
+	MSLUG4_DISABLEMAXIMIZEWEAPONS_MODS_FILL \
 	MSLUG4_AES_FILL
 
 #define MSLUG4HB_LWREMIXCUZTOMPATCH_MODS_FILL \
@@ -4684,6 +4692,7 @@ INPUT_PORTS_END
 	MSLUG4_CHANGEMOVINGPLAYERS_MODS_FILL \
 	MSLUG4_DISABLEFASTBOMB_MODS_FILL \
 	MSLUG4_CHANGEMOVINGSLUG_MODS_FILL \
+	MSLUG4_DISABLEMAXIMIZEWEAPONS_MODS_FILL \
 	MSLUG4_AES_FILL
 
 #define MSLUG5_ESSENTIALPATCH_MODS_FILL \
@@ -12880,7 +12889,7 @@ INPUT_PORTS_END
 
 #define MSLUG4_CHANGEMOVINGPLAYERS_MODS_FILL \
 	ROM_FILL(0xC5A95,1,0x03)\
-	ROM_FILL(0xC5AA5,1,0x06)\
+	ROM_FILL(0xC5AA5,1,0x04)\
 	ROM_FILL(0xC5572,1,0x02)\
 	ROM_FILL(0xC5AB1,1,0x03)\
 	ROM_FILL(0xC5ABD,1,0x0A)\
@@ -13337,6 +13346,20 @@ INPUT_PORTS_END
 	ROM_FILL(0xFC0F,1,0x30)\
     ROM_FILL(0xFC10,1,0x00)\
     ROM_FILL(0xFC11,1,0x00)
+
+#define MSLUG4_DISABLEMAXIMIZEWEAPONS_MODS_FILL \
+	ROM_FILL(0xC7E5A,1,0x42)\
+	ROM_FILL(0xC7E5B,1,0x2E)\
+	ROM_FILL(0xC7E5C,1,0x00)\
+    ROM_FILL(0xC7E5D,1,0x72)\
+    ROM_FILL(0xCA1C6,1,0x42)\
+    ROM_FILL(0xCA1C7,1,0x2E)\
+    ROM_FILL(0xCA1C8,1,0x00)\
+    ROM_FILL(0xCA1C9,1,0x72)\
+	ROM_FILL(0xCA2F0,1,0x42)\
+    ROM_FILL(0xCA2F1,1,0x2E)\
+    ROM_FILL(0xCA2F2,1,0x00)\
+    ROM_FILL(0xCA2F3,1,0x72)
 
 #define MSLUG4_CUZTOMPATCH_MODS_FILL \
     ROM_FILL(0x71E0,1,0x20)\
@@ -18986,7 +19009,7 @@ ROM_START( mslug4ki )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc14.p1", 0x000000, 0x100000, CRC(4e2363d3) SHA1(f574745c5c385d7bb753539d8dbeff657c268ea2) )
 	ROM_LOAD16_WORD_SWAP( "263_hc14.p2", 0x100000, 0x400000, CRC(e95f6bd8) SHA1(4aa293f984b5767bf2a640a08cc36a7cb13a9cfb) )
-    MSLUG4HB_ESSENTIALPATCH_MODS_FILL
+    MSLUG4KI_ESSENTIALPATCH_MODS_FILL
     MSLUG4HD_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
     MSLUG4_YMSND
@@ -28585,26 +28608,26 @@ GAME( 2023, mslug3li04,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2023, mslug3li05,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Hybrid Bullets Remix 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3li06,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Vehicle Summon Remix 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3lj01,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Random Enemies Resetting Remix 2023-07-07)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4la01,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Plus Style Model Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4la02,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Plus Style Model Fat Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4la03,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Plus Style Model Zombie Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4la04,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Plus Style Model Mummy Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4la05,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Plus Style Model Monkeys Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4lb01,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Plus Style Model Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4lb02,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Plus Style Model Fat Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4lb03,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Plus Style Model Zombie Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4lb04,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Plus Style Model Mummy Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4lb05,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Plus Style Model Monkeys Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4lc01,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Multifunction Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4lc02,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Multifunction Fat Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4lc03,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Multifunction Zombie Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4lc04,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Multifunction Mummy Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4lc05,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Multifunction Monkeys Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4ld01,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Multifunction Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4ld02,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Multifunction Fat Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4ld03,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Multifunction Zombie Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE ) 
-GAME( 2023, mslug4ld04,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Multifunction Mummy Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4ld05,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Multifunction Monkeys Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4la01,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Plus Style Model Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4la02,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Plus Style Model Fat Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4la03,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Plus Style Model Zombie Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4la04,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Plus Style Model Mummy Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4la05,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Plus Style Model Monkeys Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4lb01,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Plus Style Model Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4lb02,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Plus Style Model Fat Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4lb03,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Plus Style Model Zombie Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4lb04,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Plus Style Model Mummy Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4lb05,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Plus Style Model Monkeys Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4lc01,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Multifunction Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4lc02,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Multifunction Fat Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4lc03,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Multifunction Zombie Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4lc04,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Multifunction Mummy Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4lc05,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Multifunction Monkeys Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4ld01,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Multifunction Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4ld02,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Multifunction Fat Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4ld03,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Multifunction Zombie Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE ) 
+GAME( 2023, mslug4ld04,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Multifunction Mummy Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4ld05,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Multifunction Monkeys Players Mode Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5la01,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Remix 2024-05-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5la02,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Fat Players Mode Remix 2024-05-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5la03,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Hybrid Bullets Remix 2024-05-21)", MACHINE_SUPPORTS_SAVE )
