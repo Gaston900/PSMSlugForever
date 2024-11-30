@@ -2962,13 +2962,32 @@ INPUT_PORTS_START( mslug4cq )
 INPUT_PORTS_END
 
 INPUT_PORTS_START( mslug4rmx )
-	PORT_INCLUDE( mslug4vh )
+	PORT_INCLUDE( neogeo )
 
 	PORT_MODIFY("DSW")
 	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_NAME("@P1 Weapon Change / Vehicle Self-Destruct! @Button4") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8000) PORT_CODE(KEYCODE_Z)
 
 	PORT_MODIFY("P2")
 	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_PLAYER(2) PORT_NAME("@P2 Weapon Change / Vehicle Self-Destruct! @Button4") PORT_CONDITION("P2", 0xF000, NOTEQUALS, 0x8000) PORT_CODE(KEYCODE_Z)
+
+	PORT_MODIFY("AUDIO/COIN")
+	PORT_BIT( 0x00000001, IP_ACTIVE_LOW, IPT_COIN1 ) PORT_CONDITION("AUDIO/COIN", 0x00010001, NOTEQUALS, 0x00000001)
+	PORT_BIT( 0x00010000, IP_ACTIVE_LOW, IPT_CUSTOM ) PORT_CONDITION("AUDIO/COIN", 0x00010001, NOTEQUALS, 0x00010000)
+	PORT_BIT( 0x00010001, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_NAME("@P1 Spawner Tank @Button6") PORT_CONDITION("AUDIO/COIN", 0x00010001, EQUALS, 0x00010001) PORT_CODE(KEYCODE_W)
+
+	PORT_BIT( 0x00000002, IP_ACTIVE_LOW, IPT_COIN2 ) PORT_CONDITION("AUDIO/COIN", 0x00020002, NOTEQUALS, 0x00000002)
+	PORT_BIT( 0x00020000, IP_ACTIVE_LOW, IPT_CUSTOM ) PORT_PLAYER(2) PORT_CONDITION("AUDIO/COIN", 0x00020002, NOTEQUALS, 0x00020000)
+	PORT_BIT( 0x00020002, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_PLAYER(2)PORT_NAME("@P2 Spawner Tank @Button6") PORT_CONDITION("AUDIO/COIN", 0x00020002, EQUALS, 0x00020002) PORT_CODE(KEYCODE_E)
+INPUT_PORTS_END
+
+INPUT_PORTS_START( mslug4dgrmx )
+	PORT_INCLUDE( neogeohb )
+
+	PORT_MODIFY("DSW")
+	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_NAME("@P1 Weapon Change @Button4") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8000) PORT_CODE(KEYCODE_Z)
+
+	PORT_MODIFY("P2")
+	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_PLAYER(2) PORT_NAME("@P2 Weapon Change @Button4") PORT_CONDITION("P2", 0xF000, NOTEQUALS, 0x8000) PORT_CODE(KEYCODE_Z)
 
 	PORT_MODIFY("AUDIO/COIN")
 	PORT_BIT( 0x00000001, IP_ACTIVE_LOW, IPT_COIN1 ) PORT_CONDITION("AUDIO/COIN", 0x00010001, NOTEQUALS, 0x00000001)
@@ -4583,6 +4602,23 @@ INPUT_PORTS_END
     MSLUG4_SOLDIER_CHANGING_UNIFORM_MODS_FILL \
     MSLUG4_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
 	MSLUG4_AMMUNITION2X_MODS_FILL \
+	MSLUG4ND_MVS_FILL \
+    MSLUG4_AES_FILL
+
+#define MSLUG4_DGCUZTOMESSENTIALPATCH_MODS_FILL \
+    MSLUG4_FIX_BLACK_BLOCK_ON_THE_SELECTION_SCREEN_MODS_FILL \
+    MSLUG4_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
+    MSLUG4_FLASHOFF_MODS_FILL \
+    MSLUG4_POWNEVERLOSE_MODS_FILL \
+	MSLUG4_LIFEMORE_MODS_FILL \
+    MSLUG4_CHANGEMOVINGPLAYERS_MODS_FILL \
+    MSLUG4_STARTTWOLIFE_MODS_FILL \
+    MSLUG4_CUZTOMPATCH_MODS_FILL \
+    MSLUG4_CUZTOMLOGOTWO_MODS_FILL \
+    MSLUG4_SOLDIER_CHANGING_UNIFORM_MODS_FILL \
+    MSLUG4_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
+	MSLUG4_AMMUNITION2X_MODS_FILL \
+	MSLUG4DG_THELONGESTFIGHT_MODS_FILL \
 	MSLUG4ND_MVS_FILL \
     MSLUG4_AES_FILL
 
@@ -22975,7 +23011,7 @@ ROM_START( mslug4ctma02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_cma02.p1", 0x000000, 0x100000, CRC(ff836d7e) SHA1(d4e340615ea5c0fd85512165bc6c53a315ecae81) )
 	ROM_LOAD16_WORD_SWAP( "263_hc12.p2",  0x100000, 0x400000, CRC(cf6feb75) SHA1(133e1d97a3ae14835dcb7b6a642c3968cd174547) )
-    MSLUG4_QCUZTOMESSENTIALPATCH_MODS_FILL
+    MSLUG4_DGCUZTOMESSENTIALPATCH_MODS_FILL
     MSLUG4HD_SFIX_128K
     MSLUG4LWQ_AUDIO_128K
 	MSLUG4LWQ_YMSND
@@ -28827,8 +28863,8 @@ GAME( 2023, mslug3rmi01,      mslug3,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2023, mslug3rmj01,      mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Random Enemies Resetting Remix Extreme 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug4rma01,      mslug4,   neogeo_noslot, mslug4rmx,  neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Plus Style Model Remix Extreme 2023-07-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug4rmb01,      mslug4,   neogeo_noslot, mslug4rmx,  neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Plus Style Model Remix Extreme 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4rmc01,      mslug4,   neogeo_noslot, mslug4rmx,  neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Multifunction Remix Extreme 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4rmd01,      mslug4,   neogeo_noslot, mslug4rmx,  neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Multifunction Remix Extreme 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4rmc01,      mslug4,   neogeo_noslot, mslug4dgrmx,neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Multifunction Remix Extreme 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4rmd01,      mslug4,   neogeo_noslot, mslug4dgrmx,neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Enemies Resetting Multifunction Remix Extreme 2023-07-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug4rme01,      mslug4,   neogeo_noslot, mslug4lwrmx,neogeo_state,    init_mslug4hb,   ROT0, "PSMSlugForever",  "Metal Slug 4 (Last Bullet Remix Extreme 2023-02-25)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5rma01,      mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Remix Extreme 2024-05-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5rmb01,      mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemies Resetting Remix Extreme 2024-05-21)", MACHINE_SUPPORTS_SAVE )
