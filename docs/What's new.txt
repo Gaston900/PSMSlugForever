@@ -18,18 +18,18 @@ Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use O
 2025-XX-XX
 
 - Updated Roms Metal Slug (Unity Item Random, Powerful Enemy Defense 2024-11-08)
-- Updated Roms Metal Slug 3 (Legendary 4.5 2024-06-12) (Not working)
-- Updated Roms Metal Slug 3 (Legendary Firepower Showdown 5.0 2024-11-15)
-- Updated Roms Metal Slug X (Legendary 4.5 2024-06-13)
-- Updated Roms Metal Slug X (Legendary Firepower Showdown 5.0 2024-10-30)
-- Updated Roms Metal Slug 5 (Legendary 4.0 2024-11-07)
+- Updated Roms Metal Slug 3 (Legendary 4.5 2024-12-03) (Not working)
+- Updated Roms Metal Slug 3 (Legendary Firepower Showdown 5.0 2024-12-03)
+- Updated Roms Metal Slug X (Legendary 4.5 2024-12-02)
+- Updated Roms Metal Slug X (Legendary Firepower Showdown 5.0 2024-12-02)
+- Updated Roms Metal Slug 5 (Legendary 4.0 2024-12-03)
 
 New Games
 ---------------------------------
 - [mslug3hc40]              Metal Slug 3 (Double Enemy 2024-11-20)
-- [mslug3hc41]              Metal Slug 3 (Legendary Tower Defense 3.0 2024-11-22)
+- [mslug3hc41]              Metal Slug 3 (Legendary Tower Defense 3.0 2024-12-03)
 - [mslug3hc42]              Metal Slug 3 (Legendary Journey 2024-11-13)
-- [mslug4hc25]              Metal Slug 4 (Legendary Firepower Showdown 3.0 2024-11-21)
+- [mslug4hc25]              Metal Slug 4 (Legendary Firepower Showdown 3.5 2024-12-02)
 
 
 
