@@ -126,9 +126,9 @@ namespace {
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_SHOW_GFX,         "Show Gfx",               input_seq(KEYCODE_F4) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_FRAMESKIP_DEC,    "Frameskip Dec",          input_seq(KEYCODE_F8) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_FRAMESKIP_INC,    "Frameskip Inc",          input_seq(KEYCODE_F9) ) \
-		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_THROTTLE,         "Throttle",               input_seq(KEYCODE_I) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_THROTTLE,         "Throttle",               input_seq(KEYCODE_LALT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_FAST_FORWARD,     "Fast Forward",           input_seq(KEYCODE_BACKSPACE) ) \
-		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_SHOW_FPS,         "Show FPS",               input_seq(KEYCODE_F11, input_seq::not_code, KEYCODE_LSHIFT) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_SHOW_FPS,         "Show FPS",               input_seq(KEYCODE_LALT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_SNAPSHOT,         "Save Snapshot",          input_seq(KEYCODE_F12, input_seq::not_code, KEYCODE_LSHIFT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_TIMECODE,         "Write current timecode", input_seq(KEYCODE_F12, input_seq::not_code, KEYCODE_LSHIFT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_RECORD_MNG,       "Record MNG",             input_seq(KEYCODE_F12, KEYCODE_LSHIFT, input_seq::not_code, KEYCODE_LCONTROL) ) \
@@ -168,7 +168,7 @@ namespace {
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_EXPORT,           "UI Export list",         input_seq(KEYCODE_LALT, KEYCODE_E) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_AUDIT_FAST,       "UI Audit Unavailable",   input_seq(KEYCODE_F1, input_seq::not_code, KEYCODE_LSHIFT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_AUDIT_ALL,        "UI Audit All",           input_seq(KEYCODE_F1, KEYCODE_LSHIFT) ) \
-		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_SHOW_TIME,        "Show Current Time",      input_seq(KEYCODE_O) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_SHOW_TIME,        "Show Current Time",      input_seq(KEYCODE_LALT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_SHOW_COMMAND,  	  "Show Current Command",   input_seq(KEYCODE_F5, input_seq::not_code, KEYCODE_LSHIFT) )\
 		CORE_INPUT_TYPES_END()
 		// Show Current Time - MAMEFX
