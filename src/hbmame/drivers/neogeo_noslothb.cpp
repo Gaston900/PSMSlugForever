@@ -6876,6 +6876,30 @@ INPUT_PORTS_END
 	MSLUGX_MVS_FILL \
     MSLUGX_AES_FILL
 
+#define MSLUGXSCI_SCCUZTOMESSENTIALPATCH_MODS_FILL \
+    MSLUGX_CUZTOMWEAPONANIMATION_MODS_FILL \
+    MSLUGX_STARTWALKINGALLLEVELS3_MODS_FILL \
+	MSLUGX_BOSS_MODS_FILL \
+    MSLUGX_CHANGETANKSLUGTEXT_MODS_FILL \
+    MSLUGX_SPEEDUPLEVELTEXTLEVEL_MODS_FILL \
+    MSLUGX_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
+    MSLUGX_POWNEVERLOSE_MODS_FILL \
+    MSLUGX_FLASHOFF_MODS_FILL \
+	MSLUGXSC_UNKNOWNDATA_FILL \
+    MSLUGX_CHANGEMOVINGPLAYERS_MODS_FILL \
+    MSLUGX_TANKTHATFIRESFASTER_MODS_FILL \
+    MSLUGX_CUZTOMPATCH_MODS_FILL \
+    MSLUGX_SOLDIER_CHANGING_UNIFORM_MODS_FILL \
+	MSLUGX_1V2GENERATION_MODS_FILL \
+    MSLUGX_ANTIAIRCRAFT_FIX_FILL \
+	MSLUGX_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
+	MSLUGX_CHANGETHESKYOF_MODS_FILL \
+	MSLUGX_PALETTEOFCOLORCARROT_MODS_FILL \
+	MSLUGX_2RCUZTOMLOGOONE_MODS_FILL \
+	MSLUGXSC_FIX_FILL \
+	MSLUGX_MVS_FILL \
+    MSLUGX_AES_FILL
+
 #define MSLUGXDG_SCCUZTOMESSENTIALPATCH_MODS_FILL \
     MSLUGX_CUZTOMWEAPONANIMATION_MODS_FILL \
     MSLUGX_STARTWALKINGALLLEVELS1_MODS_FILL \
@@ -7353,7 +7377,7 @@ INPUT_PORTS_END
     MSLUGXRMX_MVS_FILL \
 	MSLUGX_AES_FILL
 
-#define MSLUGXHB_ATREMIXCUZTOMPATCH_MODS_FILL \
+#define MSLUGXAT_REMIXCUZTOMPATCH_MODS_FILL \
     MSLUGX_REMIXCUZTOMPATCH_MODS_FILL \
     MSLUGX_WEAPONANIMATION_MODS_FILL \
     MSLUGX_DISABLE_COLORPALETTE_MODS_FILL \
@@ -26753,7 +26777,7 @@ ROM_START( mslugxctmi01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_cmi01.p1", 0x000000, 0x100000, CRC(5608605e) SHA1(326c8a47b08066f031bb765fa6d580e74ab9450a) )
 	ROM_LOAD16_WORD_SWAP( "250_cmi01.p2", 0x100000, 0x400000, CRC(a6d2fa64) SHA1(fa8b767559b1af7dc0f63e8f5e14f789fc86e4ee) )
-    MSLUGXSC_SCCUZTOMESSENTIALPATCH_MODS_FILL
+    MSLUGXSCI_SCCUZTOMESSENTIALPATCH_MODS_FILL
     MSLUGXSC_SFIX_128K
     MSLUGXSC_AUDIOBIOS_128K
 	MSLUGX_YMSND
@@ -28277,7 +28301,7 @@ ROM_START( mslugxld01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_ld01.p1", 0x000000, 0x100000, CRC(1ed7426b) SHA1(c4ab314c8c26072693ce9517d20e5c5fcbe9a880) )
 	ROM_LOAD16_WORD_SWAP( "250_ld01.p2", 0x100000, 0x400000, CRC(d30ef51a) SHA1(737c1aad94d17477206b1379080f3e3ec3fc345b) )
-    MSLUGXHB_ATREMIXCUZTOMPATCH_MODS_FILL
+    MSLUGXAT_REMIXCUZTOMPATCH_MODS_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIOBIOS_FIX_TIME_128K
 	MSLUGX_YMSND
@@ -28288,7 +28312,7 @@ ROM_START( mslugxld02 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_ld02.p1", 0x000000, 0x100000, CRC(ad3cdf4b) SHA1(0ad0b577cc0f750c608b9fae884dfd588c931c69) )
 	ROM_LOAD16_WORD_SWAP( "250_ld01.p2", 0x100000, 0x400000, CRC(d30ef51a) SHA1(737c1aad94d17477206b1379080f3e3ec3fc345b) )
-    MSLUGXHB_ATREMIXCUZTOMPATCH_MODS_FILL
+    MSLUGXAT_REMIXCUZTOMPATCH_MODS_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIOBIOS_FIX_TIME_128K
 	MSLUGX_YMSND
@@ -28299,7 +28323,7 @@ ROM_START( mslugxld03 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_ld03.p1", 0x000000, 0x100000, CRC(08d95b0e) SHA1(7481d93b6ce2e0d2618c1afe50655305c1db411b) )
 	ROM_LOAD16_WORD_SWAP( "250_ld01.p2", 0x100000, 0x400000, CRC(d30ef51a) SHA1(737c1aad94d17477206b1379080f3e3ec3fc345b) )
-    MSLUGXHB_ATREMIXCUZTOMPATCH_MODS_FILL
+    MSLUGXAT_REMIXCUZTOMPATCH_MODS_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIOBIOS_FIX_TIME_128K
 	MSLUGX_YMSND
@@ -28790,7 +28814,7 @@ ROM_START( mslugxrmd01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_rmd01.p1", 0x000000, 0x100000, CRC(50278584) SHA1(66f4c44b0c805f8c0a51efbe48c530fdc3926aa7) )
 	ROM_LOAD16_WORD_SWAP( "250_rmd01.p2", 0x100000, 0x400000, CRC(57f16bdb) SHA1(6b4f07d5d6a2668e25598f64a8a6eb29b5046ea3) )
-    MSLUGXHB_ATREMIXCUZTOMPATCH_MODS_FILL
+    MSLUGXAT_REMIXCUZTOMPATCH_MODS_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIOBIOS_FIX_TIME_128K
 	MSLUGX_YMSND
@@ -29109,7 +29133,7 @@ GAME( 2020, mslug5hc02,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,
 GAME( 2022, mslug5hc03,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Extender Ver. 2022 2022-10-02)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug5hc04,       mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (New Battle 2015-02-27)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug5hc05,       mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Fierce Battle 2015-04-10)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug5hc06,       mslug5,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Remake 2021-10-03)", MACHINE_SUPPORTS_SAVE )
+//GAME( 2021, mslug5hc06,       mslug5,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Remake 2021-10-03)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5hc07,       mslug5,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Stone Turtle 2024-04-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5hc08,       mslug5,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Boss Battles 2024-04-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug5hc09,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Ultimate Simplified 2021-01-13)", MACHINE_SUPPORTS_SAVE )
@@ -29129,7 +29153,7 @@ GAME( 2022, mslug5hc22,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,
 GAME( 2019, mslug5hc23,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Enemies Resetting 2019-07-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2006, mslug5hc24,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "Shyma.X",         "Metal Slug 5 (French Translation 2006-09-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug5hc25,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Easy Mode 2018-11-16)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug5hc26,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Enemy Soldiers Enhanced 2020-04-06)(Earlier)", MACHINE_SUPPORTS_SAVE )
+//GAME( 2020, mslug5hc26,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Enemy Soldiers Enhanced 2020-04-06)(Earlier)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc27,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (X 2022-06-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug5hc28,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 Plus (Hide Oh Big Mode 2022-11-03)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug5hc29,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 5 Plus (2019-07-26)", MACHINE_SUPPORTS_SAVE )
@@ -29161,12 +29185,12 @@ GAME( 2020, mslugxhc21,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2020, mslugxhc22,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (2R Blue 2020-04-19)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslugxhc23,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (2R 1V2 Mode 2020-05-19)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxhc24,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Starlight 2022-08-10)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxhc25,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Plus v0.3 2020-07-26)", MACHINE_SUPPORTS_SAVE )
+//GAME( 2023, mslugxhc25,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Plus v0.3 2020-07-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslugxhc26,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "DDJ",             "Metal Slug X (Jump In Mid Air 2015-08-24)", MACHINE_SUPPORTS_SAVE )
 GAME( 2012, mslugxhc27,       mslugx,   neogeo_noslot, mslugxv,    neogeo_state,    init_mslugx,     ROT0, "lb70 (Eezezy)",   "Metal Slug X (Violence 2012-01-08)", MACHINE_SUPPORTS_SAVE )
 GAME( 2006, mslugxhc28,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "Shyma.X",         "Metal Slug X (French Translation 2006-09-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslugxhc29,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "Clomax & Ombra",  "Metal Slug X (Italian Translation 2005-01-22)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslugxhc30,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (AzStar Soda Remix 2021-02-12)", MACHINE_SUPPORTS_SAVE )
+//GAME( 2021, mslugxhc30,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (AzStar Soda Remix 2021-02-12)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslugxhc31,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxhc32,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxhc33,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Survival Attack 2023-03-14)", MACHINE_SUPPORTS_SAVE )
