@@ -4021,17 +4021,39 @@ INPUT_PORTS_END
 	MSLUG3H_MVS_FILL \
     MSLUG3H_AES_FILL
 
+#define MSLUG3DD_CUZTOMESSENTIALPATCH_MODS_FILL \
+    MSLUG3H_SHOOTINGTHUNDERCLOUDWEAPONUNDERWATER_MODS_FILL \
+    MSLUG3H_SHOOTINGLASERWEAPONUNDERWATER_MODS_FILL \
+    MSLUG3H_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
+    MSLUG3H_POWNEVERLOSE_MODS_FILL \
+    MSLUG3H_FLASHOFF_MODS_FILL \
+    MSLUG3H_SLIPPERYFLOORS_MODS_FILL \
+    MSLUG3H_LIFEMORE_MODS_FILL \
+    MSLUG3H_CHANGEMOVINGPLAYERS_MODS_FILL \
+	MSLUG3H_STARTTWOLIFE_MODS_FILL \
+    MSLUG3H_CUZTOMPATCH_MODS_FILL \
+    MSLUG3H_CUZTOMLOGOTWO_MODS_FILL \
+    MSLUG3H_SOLDIER_CHANGING_UNIFORM_MODS_FILL \
+    MSLUG3H_THELONGESTFIGHT_MODS_FILL \
+    MSLUG3H_AMMUNITION2X_MODS_FILL \
+	MSLUG3H_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
+	MSLUG3H_SOLDIERSHIELD_CHANGING_UNIFORM_MODS_FILL \
+	MSLUG3H_DOOR_LOCKED_MODS_FILL \
+	MSLUG3H_MVS_FILL \
+    MSLUG3H_AES_FILL
+
 #define MSLUG3EB_CUZTOMESSENTIALPATCH_MODS_FILL \
     MSLUG3DD_SLIPPERYFLOORS_MODS_FILL \
     MSLUG3DD_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
     MSLUG3DD_POWNEVERLOSE_MODS_FILL \
     MSLUG3H_FLASHOFF_MODS_FILL \
     MSLUG3H_CUZTOMPATCH_MODS_FILL \
-    MSLUG3DD_CUZTOMLOGOTWO_MODS_FILL \
+    MSLUG3H_CHANGEMOVINGPLAYERS_MODS_FILL \
+	MSLUG3DD_CUZTOMLOGOTWO_MODS_FILL \
     MSLUG3DD_SOLDIER_CHANGING_UNIFORM_MODS_FILL \
 	MSLUG3DD_THELONGESTFIGHT_MODS_FILL \
-	MSLUG3EB_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
-	MSLUG3EB_SOLDIERSHIELD_CHANGING_UNIFORM_MODS_FILL \
+	MSLUG3DD_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
+	MSLUG3DD_SOLDIERSHIELD_CHANGING_UNIFORM_MODS_FILL \
 	MSLUG3H_MVS_FILL \
     MSLUG3H_AES_FILL
 
@@ -4048,8 +4070,8 @@ INPUT_PORTS_END
     MSLUG3DD_SOLDIER_CHANGING_UNIFORM_MODS_FILL \
 	MSLUG3DD_THELONGESTFIGHT_MODS_FILL \
     MSLUG3H_AMMUNITION2X_MODS_FILL \
-	MSLUG3EB_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
-	MSLUG3EB_SOLDIERSHIELD_CHANGING_UNIFORM_MODS_FILL \
+	MSLUG3DD_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
+	MSLUG3DD_SOLDIERSHIELD_CHANGING_UNIFORM_MODS_FILL \
 	MSLUG3H_MVS_FILL \
     MSLUG3H_AES_FILL
 
@@ -4269,8 +4291,8 @@ INPUT_PORTS_END
     MSLUG3DD_SOLDIER_CHANGING_UNIFORM_MODS_FILL \
 	MSLUG3DD_THELONGESTFIGHT_MODS_FILL \
     MSLUG3DD_ENEMY_LEVEL2_FIX_FILL \
-	MSLUG3EB_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
-	MSLUG3EB_SOLDIERSHIELD_CHANGING_UNIFORM_MODS_FILL \
+	MSLUG3DD_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
+	MSLUG3DD_SOLDIERSHIELD_CHANGING_UNIFORM_MODS_FILL \
 	MSLUG3H_MVS_FILL \
     MSLUG3H_AES_FILL
 
@@ -4288,8 +4310,8 @@ INPUT_PORTS_END
 	MSLUG3DD_THELONGESTFIGHT_MODS_FILL \
     MSLUG3DD_ENEMY_LEVEL2_FIX_FILL \
 	MSLUG3H_AMMUNITION2X_MODS_FILL \
-	MSLUG3EB_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
-	MSLUG3EB_SOLDIERSHIELD_CHANGING_UNIFORM_MODS_FILL \
+	MSLUG3DD_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
+	MSLUG3DD_SOLDIERSHIELD_CHANGING_UNIFORM_MODS_FILL \
 	MSLUG3H_MVS_FILL \
     MSLUG3H_AES_FILL
 
@@ -10450,7 +10472,7 @@ INPUT_PORTS_END
     ROM_FILL(0x4678EA,1,0x19)\
     ROM_FILL(0x4678EB,1,0x26)\
 
-#define MSLUG3EB_SOLDIERSHIELD_CHANGING_UNIFORM_MODS_FILL \
+#define MSLUG3DD_SOLDIERSHIELD_CHANGING_UNIFORM_MODS_FILL \
     ROM_FILL(0x102E24,1,0x73)\
 	ROM_FILL(0x102E25,1,0x9A)\
 	ROM_FILL(0x102E26,1,0x63)\
@@ -11499,7 +11521,7 @@ INPUT_PORTS_END
     ROM_FILL(0x460F5A,1,0x39)\
     ROM_FILL(0x460F5B,1,0xE5)
 
-#define MSLUG3EB_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
+#define MSLUG3DD_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
     ROM_FILL(0x106EC8,1,0x56)\
 	ROM_FILL(0x106EC9,1,0xCB)\
 	ROM_FILL(0x106ECA,1,0x39)\
@@ -26341,17 +26363,6 @@ ROM_END
 
 ROM_START( mslug3ctma13 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_hc23.p1", 0x000000, 0x100000, CRC(f77edb2a) SHA1(825ebda68220217d56ac2f4e1a21805066800b61) )
-	ROM_LOAD16_WORD_SWAP( "256_hc18.p2", 0x100000, 0x400000, CRC(b948a472) SHA1(e0135911f7d7e21285e6965cc6b4446277eea405) )
-    MSLUG3HB_CUZTOMESSENTIALPATCH_MODS_FILL
-	MSLUG3HD_SFIX_128K
-	MSLUG3_AUDIO_512K
-    MSLUG3_YMSND
-	MSLUG3D_SPRITES
-ROM_END
-
-ROM_START( mslug3ctma14 )
-	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc13.p1", 0x000000, 0x100000, CRC(ea7d570f) SHA1(d2419b96347f75fdd386880bc5eaa5766fe07b0c) )
 	ROM_LOAD16_WORD_SWAP( "256_hc18.p2", 0x100000, 0x400000, CRC(b948a472) SHA1(e0135911f7d7e21285e6965cc6b4446277eea405) )
     MSLUG3HBULLET_CUZTOMESSENTIALPATCH_MODS_FILL
@@ -26361,20 +26372,20 @@ ROM_START( mslug3ctma14 )
 	MSLUG3D_SPRITES
 ROM_END
 
-ROM_START( mslug3ctma15 )
+ROM_START( mslug3ctma14 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc26.p1",  0x000000, 0x100000, CRC(9a83cb7a) SHA1(07f2c4602d7c4cc011a5271d39af92a329fbcff0) )
-	ROM_LOAD16_WORD_SWAP( "256_cma15.p2", 0x100000, 0x400000, CRC(4e5ae8e0) SHA1(136f72c00cfe849786036e62409b3f53aa41b5ac) )
-    MSLUG3HB_CUZTOMESSENTIALPATCH_MODS_FILL
+	ROM_LOAD16_WORD_SWAP( "256_cma14.p2", 0x100000, 0x400000, CRC(4e5ae8e0) SHA1(136f72c00cfe849786036e62409b3f53aa41b5ac) )
+    MSLUG3DD_CUZTOMESSENTIALPATCH_MODS_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
 	MSLUG3DDZ_SPRITES
 ROM_END
 
-ROM_START( mslug3ctma16 )
+ROM_START( mslug3ctma15 )
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_cma16.p1", 0x000000, 0x900000, CRC(c54a16b1) SHA1(2a25dc0be74a1860f73fbb6bae0779e5f909c346) )
+	ROM_LOAD16_WORD_SWAP( "256_cma15.p1", 0x000000, 0x900000, CRC(c54a16b1) SHA1(2a25dc0be74a1860f73fbb6bae0779e5f909c346) )
     MSLUG3EB_CUZTOMESSENTIALPATCH_MODS_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3EB_AUDIOBIOS_FIX_COIN_512K
@@ -26382,30 +26393,20 @@ ROM_START( mslug3ctma16 )
 	MSLUG3_SPRITES
 ROM_END
 
+ROM_START( mslug3ctma16 )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256_cma16.p1", 0x000000, 0x900000, CRC(9dc65086) SHA1(43fedde7b4820a43377dbb91df5b08933e29677a) )
+    MSLUG3UNITY_CUZTOMESSENTIALPATCH_MODS_FILL
+	MSLUG3_SFIX_MT_512K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+	MSLUG3_SPRITES
+ROM_END
+
 ROM_START( mslug3ctma17 )
-	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_cma17.p1", 0x000000, 0x900000, CRC(9dc65086) SHA1(43fedde7b4820a43377dbb91df5b08933e29677a) )
-    MSLUG3UNITY_CUZTOMESSENTIALPATCH_MODS_FILL
-	MSLUG3_SFIX_MT_512K
-	MSLUG3_AUDIO_512K
-    MSLUG3_YMSND
-	MSLUG3_SPRITES
-ROM_END
-
-ROM_START( mslug3ctma18 )
-	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_cma18.p1", 0x000000, 0x900000, CRC(3934c3c0) SHA1(4f8ab6981c0f5a27d1086dfe13b503d29847e03e) )
-    MSLUG3UNITY_CUZTOMESSENTIALPATCH_MODS_FILL
-	MSLUG3_SFIX_MT_512K
-	MSLUG3_AUDIO_512K
-    MSLUG3_YMSND
-	MSLUG3_SPRITES
-ROM_END
-
-ROM_START( mslug3ctma19 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc36.p1",  0x000000, 0x100000, CRC(dc0b9622) SHA1(1d80f2349564e6b09fdaffa1306ef03a4e7f1899) )
-	ROM_LOAD16_WORD_SWAP( "256_cma19.p2", 0x100000, 0x400000, CRC(d8e0dfbf) SHA1(6ca00d7fadc31c3149391eb7517aaef8f16f201b) )
+	ROM_LOAD16_WORD_SWAP( "256_cma17.p2", 0x100000, 0x400000, CRC(d8e0dfbf) SHA1(6ca00d7fadc31c3149391eb7517aaef8f16f201b) )
     MSLUG3CQ_CUZTOMESSENTIALPATCH_MODS_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
@@ -26413,10 +26414,10 @@ ROM_START( mslug3ctma19 )
 	MSLUG3SCB_SPRITES
 ROM_END
 
-ROM_START( mslug3ctma20 )
+ROM_START( mslug3ctma18 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "299.p1",       0x000000, 0x200000, CRC(5f2fe228) SHA1(747775a2dfc0da87ad2ddd4f57ce5b2522f23fa5) )
-	ROM_LOAD16_WORD_SWAP( "256_cma20.p2", 0x100000, 0x400000, CRC(bf4a80af) SHA1(514f97892375a636b84fb8388261eea645a8da1a) )
+	ROM_LOAD16_WORD_SWAP( "256_cma18.p2", 0x100000, 0x400000, CRC(bf4a80af) SHA1(514f97892375a636b84fb8388261eea645a8da1a) )
     MSLUG3B6_CUZTOMESSENTIALPATCH_MODS_FILL
     MSLUG3B6_SFIX_128K
 	MSLUG3_AUDIO_512K
@@ -26558,17 +26559,6 @@ ROM_END
 
 ROM_START( mslug3ctmb13 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_hc23.p1", 0x000000, 0x100000, CRC(f77edb2a) SHA1(825ebda68220217d56ac2f4e1a21805066800b61) )
-	ROM_LOAD16_WORD_SWAP( "256_hc14.p2", 0x100000, 0x400000, CRC(d53d178c) SHA1(98f0cd74b18d0d63b74fd6d3830548f4c2ce401b) )
-    MSLUG3HB_CUZTOMESSENTIALPATCH_MODS_FILL
-	MSLUG3HD_SFIX_128K
-	MSLUG3_AUDIO_512K
-    MSLUG3_YMSND
-	MSLUG3D_SPRITES
-ROM_END
-
-ROM_START( mslug3ctmb14 )
-	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc13.p1", 0x000000, 0x100000, CRC(ea7d570f) SHA1(d2419b96347f75fdd386880bc5eaa5766fe07b0c) )
 	ROM_LOAD16_WORD_SWAP( "256_hc14.p2", 0x100000, 0x400000, CRC(d53d178c) SHA1(98f0cd74b18d0d63b74fd6d3830548f4c2ce401b) )
     MSLUG3HBULLET_CUZTOMESSENTIALPATCH_MODS_FILL
@@ -26578,10 +26568,10 @@ ROM_START( mslug3ctmb14 )
 	MSLUG3D_SPRITES
 ROM_END
 
-ROM_START( mslug3ctmb15 )
+ROM_START( mslug3ctmb14 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc26.p1",  0x000000, 0x100000, CRC(9a83cb7a) SHA1(07f2c4602d7c4cc011a5271d39af92a329fbcff0) )
-	ROM_LOAD16_WORD_SWAP( "256_cmb15.p2", 0x100000, 0x400000, CRC(222f5b1e) SHA1(a8513d3e3f0de3af4fe05d66bd92872c90008abe) )
+	ROM_LOAD16_WORD_SWAP( "256_cmb14.p2", 0x100000, 0x400000, CRC(222f5b1e) SHA1(a8513d3e3f0de3af4fe05d66bd92872c90008abe) )
     MSLUG3HB_CUZTOMESSENTIALPATCH_MODS_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
@@ -26589,9 +26579,9 @@ ROM_START( mslug3ctmb15 )
 	MSLUG3DDZ_SPRITES
 ROM_END
 
-ROM_START( mslug3ctmb16 )
+ROM_START( mslug3ctmb15 )
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_cmb16.p1", 0x000000, 0x900000, CRC(945b96db) SHA1(861d9924e896e672ec11e56f05088cd3dea760d7) )
+	ROM_LOAD16_WORD_SWAP( "256_cmb15.p1", 0x000000, 0x900000, CRC(945b96db) SHA1(861d9924e896e672ec11e56f05088cd3dea760d7) )
     MSLUG3EB_CUZTOMESSENTIALPATCH_MODS_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3EB_AUDIOBIOS_FIX_COIN_512K
@@ -26599,30 +26589,20 @@ ROM_START( mslug3ctmb16 )
 	MSLUG3_SPRITES
 ROM_END
 
+ROM_START( mslug3ctmb16 )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256_cmb16.p1", 0x000000, 0x900000, CRC(ccd7d0ec) SHA1(cfc57a27c95626b0517136949222a378873e0aab) )
+    MSLUG3UNITY_CUZTOMESSENTIALPATCH_MODS_FILL
+	MSLUG3_SFIX_MT_512K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+	MSLUG3_SPRITES
+ROM_END
+
 ROM_START( mslug3ctmb17 )
-	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_cmb17.p1", 0x000000, 0x900000, CRC(ccd7d0ec) SHA1(cfc57a27c95626b0517136949222a378873e0aab) )
-    MSLUG3UNITY_CUZTOMESSENTIALPATCH_MODS_FILL
-	MSLUG3_SFIX_MT_512K
-	MSLUG3_AUDIO_512K
-    MSLUG3_YMSND
-	MSLUG3_SPRITES
-ROM_END
-
-ROM_START( mslug3ctmb18 )
-	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_cmb18.p1", 0x000000, 0x900000, CRC(682543aa) SHA1(cc176acdf9d45bdca5545409807a10956e592e4a) )
-    MSLUG3UNITY_CUZTOMESSENTIALPATCH_MODS_FILL
-	MSLUG3_SFIX_MT_512K
-	MSLUG3_AUDIO_512K
-    MSLUG3_YMSND
-	MSLUG3_SPRITES
-ROM_END
-
-ROM_START( mslug3ctmb19 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc36.p1",  0x000000, 0x100000, CRC(dc0b9622) SHA1(1d80f2349564e6b09fdaffa1306ef03a4e7f1899) )
-	ROM_LOAD16_WORD_SWAP( "256_cmb19.p2", 0x100000, 0x400000, CRC(0726010a) SHA1(2cb3211b7bd89b58d239ac20caf06cdb54662235) )
+	ROM_LOAD16_WORD_SWAP( "256_cmb17.p2", 0x100000, 0x400000, CRC(0726010a) SHA1(2cb3211b7bd89b58d239ac20caf06cdb54662235) )
     MSLUG3CQ_CUZTOMESSENTIALPATCH_MODS_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
@@ -26630,17 +26610,16 @@ ROM_START( mslug3ctmb19 )
 	MSLUG3SCB_SPRITES
 ROM_END
 
-ROM_START( mslug3ctmb20 )
+ROM_START( mslug3ctmb18 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "299.p1",       0x000000, 0x200000, CRC(5f2fe228) SHA1(747775a2dfc0da87ad2ddd4f57ce5b2522f23fa5) )
-	ROM_LOAD16_WORD_SWAP( "256_cmb20.p2", 0x100000, 0x400000, CRC(d33f3351) SHA1(e76fa46dcbade4c86f1c7e89b86e75e9c0d6b3b2) )
+	ROM_LOAD16_WORD_SWAP( "256_cmb18.p2", 0x100000, 0x400000, CRC(d33f3351) SHA1(e76fa46dcbade4c86f1c7e89b86e75e9c0d6b3b2) )
     MSLUG3B6_CUZTOMESSENTIALPATCH_MODS_FILL
 	MSLUG3B6_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
 	MSLUG3D_SPRITES
 ROM_END
-
 
 ROM_START( mslug3ctmc01 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
@@ -26776,17 +26755,6 @@ ROM_END
 
 ROM_START( mslug3ctmc13 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_hc23.p1", 0x000000, 0x100000, CRC(f77edb2a) SHA1(825ebda68220217d56ac2f4e1a21805066800b61) )
-	ROM_LOAD16_WORD_SWAP( "256_hc15.p2", 0x100000, 0x400000, CRC(f55ccb93) SHA1(c52e83c848ba63ca0323aa99f85e8278b6fe4cda) )
-    MSLUG3HB_ERCUZTOMESSENTIALPATCH_MODS_FILL
-	MSLUG3HD_SFIX_128K
-	MSLUG3_AUDIO_512K
-    MSLUG3_YMSND
-	MSLUG3D_SPRITES
-ROM_END
-
-ROM_START( mslug3ctmc14 )
-	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc13.p1", 0x000000, 0x100000, CRC(ea7d570f) SHA1(d2419b96347f75fdd386880bc5eaa5766fe07b0c) )
 	ROM_LOAD16_WORD_SWAP( "256_hc15.p2", 0x100000, 0x400000, CRC(f55ccb93) SHA1(c52e83c848ba63ca0323aa99f85e8278b6fe4cda) )
     MSLUG3HBULLET_ERCUZTOMESSENTIALPATCH_MODS_FILL
@@ -26796,10 +26764,10 @@ ROM_START( mslug3ctmc14 )
 	MSLUG3D_SPRITES
 ROM_END
 
-ROM_START( mslug3ctmc15 )
+ROM_START( mslug3ctmc14 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc26.p1",  0x000000, 0x100000, CRC(9a83cb7a) SHA1(07f2c4602d7c4cc011a5271d39af92a329fbcff0) )
-	ROM_LOAD16_WORD_SWAP( "256_cmc15.p2", 0x100000, 0x400000, CRC(024e8701) SHA1(eb99f4670305d29ce31e60febf788b6db96736b9) )
+	ROM_LOAD16_WORD_SWAP( "256_cmc14.p2", 0x100000, 0x400000, CRC(024e8701) SHA1(eb99f4670305d29ce31e60febf788b6db96736b9) )
     MSLUG3HB_ERCUZTOMESSENTIALPATCH_MODS_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
@@ -26807,9 +26775,9 @@ ROM_START( mslug3ctmc15 )
 	MSLUG3DDZ_SPRITES
 ROM_END
 
-ROM_START( mslug3ctmc16 )
+ROM_START( mslug3ctmc15 )
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_cmc16.p1", 0x000000, 0x900000, CRC(8433dffb) SHA1(5f845a5ec22b468ddc9a7e2d858bdccc7498d865) )
+	ROM_LOAD16_WORD_SWAP( "256_cmc15.p1", 0x000000, 0x900000, CRC(8433dffb) SHA1(5f845a5ec22b468ddc9a7e2d858bdccc7498d865) )
     MSLUG3EB_ERCUZTOMESSENTIALPATCH_MODS_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3EB_AUDIOBIOS_FIX_COIN_512K
@@ -26817,30 +26785,20 @@ ROM_START( mslug3ctmc16 )
 	MSLUG3_SPRITES
 ROM_END
 
+ROM_START( mslug3ctmc16 )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256_cmc16.p1", 0x000000, 0x900000, CRC(dcbf99cc) SHA1(7c7e1ab6dca44e3875b3e4054a960d67f53b32b3) )
+    MSLUG3UNITY_ERCUZTOMESSENTIALPATCH_MODS_FILL
+	MSLUG3_SFIX_MT_512K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+	MSLUG3_SPRITES
+ROM_END
+
 ROM_START( mslug3ctmc17 )
-	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_cmc17.p1", 0x000000, 0x900000, CRC(dcbf99cc) SHA1(7c7e1ab6dca44e3875b3e4054a960d67f53b32b3) )
-    MSLUG3UNITY_ERCUZTOMESSENTIALPATCH_MODS_FILL
-	MSLUG3_SFIX_MT_512K
-	MSLUG3_AUDIO_512K
-    MSLUG3_YMSND
-	MSLUG3_SPRITES
-ROM_END
-
-ROM_START( mslug3ctmc18 )
-	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_cmc18.p1", 0x000000, 0x900000, CRC(784d0a8a) SHA1(0ceb2248f611b4e0457798fe1ad90d95306def6a) )
-    MSLUG3UNITY_ERCUZTOMESSENTIALPATCH_MODS_FILL
-	MSLUG3_SFIX_MT_512K
-	MSLUG3_AUDIO_512K
-    MSLUG3_YMSND
-	MSLUG3_SPRITES
-ROM_END
-
-ROM_START( mslug3ctmc19 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc36.p1",  0x000000, 0x100000, CRC(dc0b9622) SHA1(1d80f2349564e6b09fdaffa1306ef03a4e7f1899) )
-	ROM_LOAD16_WORD_SWAP( "256_cmc19.p2", 0x100000, 0x400000, CRC(94f4b05e) SHA1(3b4ead4a3dc55fe36313300b779d12e9075b4d62) )
+	ROM_LOAD16_WORD_SWAP( "256_cmc17.p2", 0x100000, 0x400000, CRC(94f4b05e) SHA1(3b4ead4a3dc55fe36313300b779d12e9075b4d62) )
     MSLUG3CQ_ERCUZTOMESSENTIALPATCH_MODS_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
@@ -26848,10 +26806,10 @@ ROM_START( mslug3ctmc19 )
 	MSLUG3SCB_SPRITES
 ROM_END
 
-ROM_START( mslug3ctmc20 )
+ROM_START( mslug3ctmc18 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "299.p1",       0x000000, 0x200000, CRC(5f2fe228) SHA1(747775a2dfc0da87ad2ddd4f57ce5b2522f23fa5) )
-	ROM_LOAD16_WORD_SWAP( "256_cmc20.p2", 0x100000, 0x400000, CRC(f35eef4e) SHA1(569867c16142bbcb4153bf437407d9d266a3bffc) )
+	ROM_LOAD16_WORD_SWAP( "256_cmc18.p2", 0x100000, 0x400000, CRC(f35eef4e) SHA1(569867c16142bbcb4153bf437407d9d266a3bffc) )
     MSLUG3B6_ERCUZTOMESSENTIALPATCH_MODS_FILL
     MSLUG3B6_SFIX_128K
 	MSLUG3_AUDIO_512K
@@ -32558,7 +32516,7 @@ GAME( 2017, mslug3hc19,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2023, mslug3hc20,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Pigeon Slug 2023-05-07)", MACHINE_SUPPORTS_SAVE ) //Fix Gaston90
 GAME( 2017, mslug3hc21,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "Wanghua123",      "Metal Slug 3 (Slug #1 2017-10-09)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug3hc22,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Slug #2 2019-02-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug3hc23,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Automatic Storage 2022-10-16)", MACHINE_SUPPORTS_SAVE )
+//GAME( 2023, mslug3hc23,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Automatic Storage 2022-10-16)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug3hc24,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3de,   ROT0, "hack",            "Metal Slug 3 (Unity Time! 2021-02-13)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug3hc25,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3de,   ROT0, "GOTVG",           "Metal Slug 3 (1v2 Mode 2019-05-11)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3hc26,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Starlight 2022-05-11)", MACHINE_SUPPORTS_SAVE )
@@ -32741,14 +32699,12 @@ GAME( 2020, mslug3ctma09,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2020, mslug3ctma10,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Infinite Firepower Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctma11,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Easy Mode Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctma12,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Enemy Speed Up Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug3ctma13,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Automatic Storage Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug3ctma14,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Hybrid Bullets Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug3ctma15,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Starlight Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug3ctma16,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Green Blue Cuztom 2024-04-22)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug3ctma17,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Unity Time! Cuztom 2024-04-22)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug3ctma18,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting 1v2 Mode Cuztom 2024-04-22)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug3ctma19,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Survival Cuztom 2024-04-29)", MACHINE_SUPPORTS_SAVE )
-GAME( 2019, mslug3ctma20,     mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3b6hb, ROT0, "PSMSlugForever",  "Metal Slug 6 (Metal Slug 3 Bootleg) (Enemies Resetting Cuztom 2019-07-20)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug3ctma13,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Hybrid Bullets Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug3ctma14,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Starlight Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug3ctma15,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Green Blue Cuztom 2024-04-22)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug3ctma16,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Unity Time! Cuztom 2024-04-22)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug3ctma17,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Survival Cuztom 2024-04-29)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, mslug3ctma18,     mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3b6hb, ROT0, "PSMSlugForever",  "Metal Slug 6 (Metal Slug 3 Bootleg) (Enemies Resetting Cuztom 2019-07-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmb01,     mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Multifunction Cuztom 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmb02,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Onimusha Samanosuke Cuztom 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmb03,     mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Vehicle Summon Cuztom 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
@@ -32761,14 +32717,12 @@ GAME( 2020, mslug3ctmb09,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2020, mslug3ctmb10,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Infinite Firepower Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmb11,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Easy Mode Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmb12,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Enemy Speed Up Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug3ctmb13,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Automatic Storage Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug3ctmb14,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Hybrid Bullets Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug3ctmb15,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Starlight Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug3ctmb16,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Green Blue Cuztom 2024-04-22)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug3ctmb17,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Unity Time! Cuztom 2024-04-22)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug3ctmb18,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future 1v2 Mode Cuztom 2024-04-22)" , MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug3ctmb19,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Survival Cuztom 2024-04-29)" , MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug3ctmb20,     mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3b6hb, ROT0, "PSMSlugForever",  "Metal Slug 6 (Metal Slug 3 Bootleg) (The Future Cuztom 2020-09-29)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug3ctmb13,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Hybrid Bullets Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug3ctmb14,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Starlight Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug3ctmb15,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Green Blue Cuztom 2024-04-22)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug3ctmb16,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Unity Time! Cuztom 2024-04-22)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug3ctmb17,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Survival Cuztom 2024-04-29)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug3ctmb18,     mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3b6hb, ROT0, "PSMSlugForever",  "Metal Slug 6 (Metal Slug 3 Bootleg) (The Future Cuztom 2020-09-29)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmc01,     mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Multifunction Cuztom 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmc02,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Onimusha Samanosuke Cuztom 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmc03,     mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Vehicle Summon Cuztom 2020-05-01)" , MACHINE_SUPPORTS_SAVE )
@@ -32781,14 +32735,12 @@ GAME( 2020, mslug3ctmc09,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2020, mslug3ctmc10,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Infinite Firepower Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmc11,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Easy Mode Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug3ctmc12,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Enemy Speed Up Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug3ctmc13,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Automatic Storage Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug3ctmc14,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Hybrid Bullets Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug3ctmc15,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Starlight Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug3ctmc16,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Green Blue Cuztom 2024-04-22)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug3ctmc17,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Unity Time! Cuztom 2024-04-22)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug3ctmc18,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake 1v2 Mode Cuztom 2024-04-22)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug3ctmc19,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Survival Cuztom 2024-04-29)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug3ctmc20,     mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3b6hb, ROT0, "PSMSlugForever",  "Metal Slug 6 (Metal Slug 3 Bootleg) (Enemy Remake Cuztom 2017-09-27)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug3ctmc13,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Hybrid Bullets Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug3ctmc14,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Starlight Cuztom 2020-05-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug3ctmc15,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Green Blue Cuztom 2024-04-22)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug3ctmc16,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3de,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Unity Time! Cuztom 2024-04-22)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug3ctmc17,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Survival Cuztom 2024-04-29)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug3ctmc18,     mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3b6hb, ROT0, "PSMSlugForever",  "Metal Slug 6 (Metal Slug 3 Bootleg) (Enemy Remake Cuztom 2017-09-27)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ctmd01,     mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Multifunction Cuztom 2023-03-28)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ctmd02,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Onimusha Samanosuke Cuztom 2023-03-28)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3ctmd03,     mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Vehicle Summon Cuztom 2023-03-28)" , MACHINE_SUPPORTS_SAVE )
