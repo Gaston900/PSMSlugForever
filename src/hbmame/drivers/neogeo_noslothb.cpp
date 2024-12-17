@@ -3870,7 +3870,7 @@ INPUT_PORTS_END
 	MSLUG3H_STARTTWOLIFE_MODS_FILL \
     MSLUG3H_CUZTOMLOGOTWO_MODS_FILL \
     MSLUG3G_SOLDIER_CHANGING_UNIFORM_MODS_FILL \
-	MSLUG3SD_THELONGESTFIGHT_MODS_FILL \
+	MSLUG3H_THELONGESTFIGHT_MODS_FILL \
     MSLUG3H_AMMUNITION2X_MODS_FILL \
 	MSLUG3H_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
 	MSLUG3H_SOLDIERSHIELD_CHANGING_UNIFORM_MODS_FILL \
@@ -11519,7 +11519,23 @@ INPUT_PORTS_END
 	ROM_FILL(0x460F58,1,0x56)\
     ROM_FILL(0x460F59,1,0xCB)\
     ROM_FILL(0x460F5A,1,0x39)\
-    ROM_FILL(0x460F5B,1,0xE5)
+    ROM_FILL(0x460F5B,1,0xE5)\
+	ROM_FILL(0x46009C,1,0x7F)\
+    ROM_FILL(0x46009D,1,0xB9)\
+    ROM_FILL(0x46009E,1,0x72)\
+    ROM_FILL(0x46009F,1,0x80)\
+	ROM_FILL(0x4600BC,1,0x69)\
+    ROM_FILL(0x4600BD,1,0xC0)\
+    ROM_FILL(0x4600BE,1,0x45)\
+    ROM_FILL(0x4600BF,1,0x00)\
+	ROM_FILL(0x466EDC,1,0x7F)\
+    ROM_FILL(0x466EDD,1,0x89)\
+    ROM_FILL(0x466EDE,1,0x72)\
+    ROM_FILL(0x466EDF,1,0x65)\
+	ROM_FILL(0x466EFC,1,0x61)\
+    ROM_FILL(0x466EFD,1,0xA0)\
+    ROM_FILL(0x466EFE,1,0x40)\
+    ROM_FILL(0x466EFF,1,0xE0)
 
 #define MSLUG3DD_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
     ROM_FILL(0x106EC8,1,0x56)\
@@ -24870,8 +24886,8 @@ ROM_END
 
 ROM_START( mslug3hc41 ) //mslug3cqtfb
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_hc41.p1", 0x000000, 0x100000, CRC(4ad95272) SHA1(cc05f6deecde5de61b5891ad1b23a29dc6ef622b) )
-	ROM_LOAD16_WORD_SWAP( "256_hc41.p2", 0x100000, 0x800000, CRC(7a34c4e5) SHA1(8ac29d4733ec9289e98b47a32afda057a359f2dc) )
+	ROM_LOAD16_WORD_SWAP( "256_hc41.p1", 0x000000, 0x100000, CRC(6333ad7b) SHA1(109e2a1faa6a10d54ca117c3a0e2246de23f281f) )
+	ROM_LOAD16_WORD_SWAP( "256_hc41.p2", 0x100000, 0x800000, CRC(e3b3c8a2) SHA1(203dbf5926b3b7a6f313d1f849c45dd236ca72cf) )
     MSLUG3CQT_ESSENTIALPATCH_MODS_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
@@ -32528,13 +32544,13 @@ GAME( 2012, mslug3hc31,       mslug3,   neogeo_noslot, mslug3v,    neogeo_state,
 GAME( 2004, mslug3hc32,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "Shyma.X",         "Metal Slug 3 (French Translation 2006-12-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug3hc33,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Easy Mode 2018-11-16)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3hc34,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug3hc35,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (The Longest Fight 2023-03-14)", MACHINE_SUPPORTS_SAVE )
+//GAME( 2023, mslug3hc35,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (The Longest Fight 2023-03-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3hc36,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Survival 2023-03-01)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3hc37,       mslug3,   neogeo_noslot, mslug3cq,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary 4.5 2024-12-03)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3hc38,       mslug3,   neogeo_noslot, mslug3cqi,  neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Firepower Showdown 5.0 2024-12-03)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 GAME( 2012, mslug3hc39,       mslug3,   neogeo_noslot, mslug3wp,   neogeo_state,    init_mslug3de,   ROT0, "LB70 (Eezezy)",   "Metal Slug 3 (Crazy Fire 2012-01-16)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3hc40,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Double Enemy 2024-11-20)" , MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug3hc41,       mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Tower Defense 3.0 2024-11-22)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug3hc41,       mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Tower Defense 4.0 2024-12-16)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3hc42,       mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Journey 2024-11-13)" , MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */

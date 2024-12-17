@@ -27,7 +27,7 @@ Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use O
 New Games
 ---------------------------------
 - [mslug3hc40]              Metal Slug 3 (Double Enemy 2024-11-20)
-- [mslug3hc41]              Metal Slug 3 (Legendary Tower Defense 3.0 2024-12-03)
+- [mslug3hc41]              Metal Slug 3 (Legendary Tower Defense 4.0 2024-12-16)
 - [mslug3hc42]              Metal Slug 3 (Legendary Journey 2024-11-13)
 - [mslug4hc25]              Metal Slug 4 (Legendary Firepower Showdown 3.5 2024-12-02)
 
