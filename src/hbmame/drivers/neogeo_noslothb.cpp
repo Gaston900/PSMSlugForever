@@ -3550,6 +3550,23 @@ INPUT_PORTS_END
 	MSLUG3H_MVS_FILL \
     MSLUG3H_AES_FILL
 
+#define MSLUG3SLUG_ESSENTIALPATCH_MODS_FILL \
+    MSLUG3H_SHOOTINGTHUNDERCLOUDWEAPONUNDERWATER_MODS_FILL \
+    MSLUG3H_SHOOTINGLASERWEAPONUNDERWATER_MODS_FILL \
+    MSLUG3H_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
+    MSLUG3H_POWNEVERLOSE_MODS_FILL \
+    MSLUG3H_FLASHOFF_MODS_FILL \
+    MSLUG3H_SLIPPERYFLOORS_MODS_FILL \
+    MSLUG3H_LIFEMORE_MODS_FILL \
+    MSLUG3H_CHANGEMOVINGPLAYERS_MODS_FILL \
+	MSLUG3H_STARTTWOLIFE_MODS_FILL \
+    MSLUG3H_CUZTOMPATCH_MODS_FILL \
+    MSLUG3H_CUZTOMLOGOONE_MODS_FILL \
+    MSLUG3H_THELONGESTFIGHT_MODS_FILL \
+    MSLUG3H_SLUGDISABLEMAXIMIZEWEAPONS_MODS_FILL \
+	MSLUG3H_MVS_FILL \
+    MSLUG3H_AES_FILL
+
 #define MSLUG3KI_ESSENTIALPATCH_MODS_FILL \
     MSLUG3H_SHOOTINGTHUNDERCLOUDWEAPONUNDERWATER_MODS_FILL \
     MSLUG3H_SHOOTINGLASERWEAPONUNDERWATER_MODS_FILL \
@@ -25233,7 +25250,7 @@ ROM_END
 
 ROM_START( mslug5cq )
 	ROM_REGION( 0xa00000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_hc13a.p1", 0x000000, 0xa00000, CRC(6baa2e80) SHA1(026a17f66d78a0cbcc7cf0696da31ed3f5e8bada) )
+	ROM_LOAD16_WORD_SWAP( "268_hc13a.p1", 0x000000, 0xa00000, CRC(07723765) SHA1(117a5f0cbb88c59c9907291eb53c9fd884cc9c83) )
     MSLUG5CQ_ESSENTIALPATCH_MODS_FILL
     MSLUG5D_SFIX_128K
     MSLUG5ND_AUDIOBIOS_128K
@@ -25885,7 +25902,7 @@ ROM_START( mslug3hc21 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc21.p1", 0x000000, 0x100000, CRC(bb448975) SHA1(3b9565ad6f2468ee95b953161d1701c88c9568e5) )
 	ROM_LOAD16_WORD_SWAP( "256h.p2",     0x100000, 0x400000, CRC(1f3d8ce8) SHA1(08b05a8abfb86ec09a5e758d6273acf1489961f9) )
-    MSLUG3HB_ESSENTIALPATCH_MODS_FILL
+    MSLUG3SLUG_ESSENTIALPATCH_MODS_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3_YMSND
@@ -33692,7 +33709,7 @@ GAME( 2016, mslug5f,          mslug5,   neogeo_noslot, mslug5w,    neogeo_state,
 GAME( 2015, mslug5w,          mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (New Battle 2015-03-27)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2021, mslug5unity,      mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Unity Time! 2021-04-23)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2023, mslug5sc,         mslug5,   neogeo_noslot, mslug5cq,   neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Survival 2023-06-12)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-GAME( 2024, mslug5cq,         mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Legendary 2.0 2024-09-17)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
+GAME( 2024, mslug5cq,         mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Legendary 2.0 2024-05-02)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2016, mslug5l9a,        mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_s1945p,     ROT0, "hack",            "Metal Slug 5 (New Battle 2016-01-04)(No Official Version)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslug5l9b,        mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_s1945p,     ROT0, "hack",            "Metal Slug 5 (Fierce Battle 2016-01-04)(No Official Version)", MACHINE_SUPPORTS_SAVE )
 
