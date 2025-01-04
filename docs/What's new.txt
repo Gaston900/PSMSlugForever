@@ -25,6 +25,9 @@ Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use O
 
 2024-12-25
 
+- Code cleanup complete
+- They have been implemented for all versions, in combining all the alternative scenarios into a single level 
+  called "The Longest Battle" to Metal Slug 3/4/5 hack, Cuztom, Remix and Remix Extreme.
 - Updated Roms Metal Slug (Unity Item Random, Powerful Enemy Defense 2024-11-08)
 - Updated Roms Metal Slug 3 (Legendary 4.5 2024-12-03) (Not working)
 - Updated Roms Metal Slug 3 (Legendary Firepower Showdown 5.0 2024-12-03)
