@@ -18,7 +18,8 @@ Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use O
 2025-XX-XX
 
 - Updated Roms Metal Slug X (Legendary Firepower Showdown 5.0 2024-12-23)
-- Updated Roms Metal Slug 3 (Legendary Tower Defense 5.0 2024-12-26)
+- Updated Roms Metal Slug 3 (Legendary Tower Defense 5.0 2024-12-29)
+- Updated Roms Metal Slug 4 (Legendary Firepower Showdown 3.6 2024-12-31)
 - Updated Roms Metal Slug 5 (Legendary 4.0 2024-12-25)
 
 

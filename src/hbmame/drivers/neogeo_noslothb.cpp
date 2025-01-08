@@ -18745,7 +18745,9 @@ INPUT_PORTS_END
 	ROM_FILL(0xC4C5E,1,0x06)\
     ROM_FILL(0xC4C5F,1,0x06)\
 	ROM_FILL(0xC4B3C,1,0x08)\
-    ROM_FILL(0xC4B3D,1,0x08)
+    ROM_FILL(0xC4B3D,1,0x08)\
+	ROM_FILL(0xC4B46,1,0x08)\
+    ROM_FILL(0xC4B47,1,0x08)
 
 #define MSLUG4_CHANGEOFFUNCTIONTRANSFORMATIONEFFECTFAT_MODS_FILL \
 	ROM_FILL(0xC4B68,1,0x02)\
@@ -18761,7 +18763,9 @@ INPUT_PORTS_END
 	ROM_FILL(0xC4C5E,1,0x06)\
     ROM_FILL(0xC4C5F,1,0x06)\
 	ROM_FILL(0xC4B3C,1,0x08)\
-    ROM_FILL(0xC4B3D,1,0x08)
+    ROM_FILL(0xC4B3D,1,0x08)\
+	ROM_FILL(0xC4B46,1,0x08)\
+    ROM_FILL(0xC4B47,1,0x08)
 
 #define MSLUG4_CHANGEOFFUNCTIONEFFECTFAT_MODS_FILL \
 	ROM_FILL(0xC4B68,1,0x02)\
@@ -18781,7 +18785,9 @@ INPUT_PORTS_END
     ROM_FILL(0xC4B0A,1,0x02)\
     ROM_FILL(0xC4B0B,1,0x02)\
 	ROM_FILL(0xC4B3C,1,0x08)\
-    ROM_FILL(0xC4B3D,1,0x08)
+    ROM_FILL(0xC4B3D,1,0x08)\
+	ROM_FILL(0xC4B46,1,0x08)\
+    ROM_FILL(0xC4B47,1,0x08)
 
 #define MSLUG4_CUZTOMCHANGEOFFUNCTIONEFFECT_MODS_FILL \
 	ROM_FILL(0xC4B68,1,0x03)\
@@ -18797,7 +18803,9 @@ INPUT_PORTS_END
 	ROM_FILL(0xC4C5E,1,0x06)\
     ROM_FILL(0xC4C5F,1,0x06)\
 	ROM_FILL(0xC4B3C,1,0x08)\
-    ROM_FILL(0xC4B3D,1,0x08)
+    ROM_FILL(0xC4B3D,1,0x08)\
+	ROM_FILL(0xC4B46,1,0x08)\
+    ROM_FILL(0xC4B47,1,0x08)
 
 #define MSLUG4_CUZTOMPATCH_MODS_FILL \
     ROM_FILL(0x71E0,1,0x20)\
@@ -22658,7 +22666,7 @@ INPUT_PORTS_END
 	NEO_EUROPE_MVS_BIOS_BOOT_AUDIO_512K( "256_hc10.m1", CRC(c84d22f2) SHA1(069d5eafa859acbebc35394344df78ea84055cf7) )
 
 #define MSLUG4QCI_AUDIOBIOS_128K \
-	NEO_EUROPE_MVS_BIOS_BOOT_AUDIO_128K( "263_hc25.m1", CRC(2c722ea4) SHA1(cb84b280d14709530e26caed318e04b0a962361b) )
+	NEO_EUROPE_MVS_BIOS_BOOT_AUDIO_128K( "263_hc25.m1", CRC(98e75e61) SHA1(e2826b1472b0a5a442d56e563b85c6c3f9b532e2) )
 
 #define MSLUG4_AUDIOBIOS_FIX_COIN_ENCRYPTED_128K \
     NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO_ENCRYPTED_128K( "263.m1", CRC(46ac8228) SHA1(5aeea221050c98e4bb0f16489ce772bf1c80f787) )
@@ -23240,8 +23248,8 @@ INPUT_PORTS_END
 
 #define MSLUG4QCI_YMSND \
 	ROM_REGION( 0x1000000, "ymsnd", 0 ) \
-	ROM_LOAD( "263_hc25.v1", 0x000000, 0x800000, CRC(e06d7658) SHA1(d8939470b2f38f1142e124703fddcf1bc31eafe9) )\
-	ROM_LOAD( "263_hc25.v2", 0x800000, 0x800000, CRC(f74df238) SHA1(b03bd7c5ac5083186d8adfdd5f03f55ab70f61fb) )
+	ROM_LOAD( "263_hc25.v1", 0x000000, 0x800000, CRC(3a8ff8f1) SHA1(6a961a116639e1a557526fab1b7aac892b2d4e87) )\
+	ROM_LOAD( "263_hc25.v2", 0x800000, 0x800000, CRC(fe4f910c) SHA1(de919362c9c1db00a9b497bf190a4e9d88654941) )
 
 #define MSLUG4_SPRITES \
 	ROM_REGION( 0x3000000, "sprites", 0 ) \
@@ -26363,7 +26371,7 @@ ROM_END
 ROM_START( mslug3hc41 ) //mslug3cqtfb
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256_hc41.p1", 0x000000, 0x100000, CRC(9a40066b) SHA1(e7c712118b9061eeb85e54a65e47109f6b6694da) )
-	ROM_LOAD16_WORD_SWAP( "256_hc41.p2", 0x100000, 0x800000, CRC(485f3b7a) SHA1(987d8d6c3a1b239c305ba69f126bc2a62f6ed408) )
+	ROM_LOAD16_WORD_SWAP( "256_hc41.p2", 0x100000, 0x800000, CRC(fcf952e5) SHA1(10f8fd828ca8cfd6fcdb5d47952399d086762774) )
     MSLUG3CQT_ESSENTIALPATCH_MODS_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3HCR_AUDIO_256K
@@ -26652,7 +26660,7 @@ ROM_END
 
 ROM_START( mslug4hc25 ) //mslug4cqi
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_hc25.p1", 0x000000, 0x100000, CRC(2403ce15) SHA1(9cad7f529d2b3e0cd87ec102fccb94e05fb963f8) )
+	ROM_LOAD16_WORD_SWAP( "263_hc25.p1", 0x000000, 0x100000, CRC(b18b7cd8) SHA1(89713b3e6023210bee3cfd69622a19ed1f2e7f0c) )
 	ROM_LOAD16_WORD_SWAP( "263_hc25.p2", 0x100000, 0x800000, CRC(e0ed3fe0) SHA1(97322c5fa2779055a0affccfe52c672c7060fd88) )
     MSLUG4QCI_ESSENTIALPATCH_MODS_FILL
     MSLUG4HD_SFIX_128K
@@ -34026,7 +34034,7 @@ GAME( 2024, mslug3hc37,       mslug3,   neogeo_noslot, mslug3cq,   neogeo_state,
 GAME( 2024, mslug3hc38,       mslug3,   neogeo_noslot, mslug3cqi,  neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Firepower Showdown 5.0 2024-12-03)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 GAME( 2012, mslug3hc39,       mslug3,   neogeo_noslot, mslug3wp,   neogeo_state,    init_mslug3de,   ROT0, "LB70 (Eezezy)",   "Metal Slug 3 (Crazy Fire 2012-01-16)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3hc40,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Double Enemy 2024-11-20)" , MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug3hc41,       mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Tower Defense 5.0 2024-12-26)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug3hc41,       mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Tower Defense 5.0 2024-12-29)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3hc42,       mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Journey 2024-11-13)" , MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
@@ -34055,7 +34063,7 @@ GAME( 2007, mslug4hc21,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,
 GAME( 2018, mslug4hc22,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Easy Mode 2018-11-16)", MACHINE_SUPPORTS_SAVE ) // Fix Gaston90 2023
 GAME( 2023, mslug4hc23,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2012, mslug4hc24,       mslug4,   neogeo_noslot, mslug4cf,   neogeo_state,    init_mslug4hb,   ROT0, "LB70 (Eezezy)",   "Metal Slug 4 (Crazy Fire 2012-01-16)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug4hc25,       mslug4,   neogeo_noslot, mslug4cqi,  neogeo_state,    init_mslug4hb,   ROT0, "GOTVG",           "Metal Slug 4 (Legendary Firepower Showdown 3.5 2024-12-02)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug4hc25,       mslug4,   neogeo_noslot, mslug4cqi,  neogeo_state,    init_mslug4hb,   ROT0, "GOTVG",           "Metal Slug 4 (Legendary Firepower Showdown 3.6 2024-12-31)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug 5
