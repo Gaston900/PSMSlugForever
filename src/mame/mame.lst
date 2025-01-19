@@ -142,7 +142,7 @@ mslug5ndnsd       // Fully Decrypted (Neo SD)
 mslugxnsd         // SNK (Neo SD)
 
 @source:neogeo.cpp
-mslug2dnds        // Hack (Neo SD)
+mslug2ddnds       // Hack (Neo SD)
 mslug2egnds       // Hack (Neo SD)
 mslug2frnds       // Hack (Neo SD)
 mslug3chuanqinds  // Hack (Neo SD)
