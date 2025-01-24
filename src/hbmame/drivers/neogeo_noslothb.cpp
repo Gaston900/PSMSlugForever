@@ -1984,7 +1984,7 @@ void neogeo_state::init_mslug5dd()
 	m_pvc_prot->install_pvc_protection(m_maincpu,m_banked_cart);
 }
 
-void neogeo_state::init_mslug5de()
+void neogeo_state::init_mslug5ddh()
 {
 	init_mslug5hb();
 	m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
@@ -35916,11 +35916,11 @@ GAME( 2002, mslug4frdd,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,
 GAME( 2022, mslug4kidd,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4dd,   ROT0, "hack",            "Metal Slug 4 (Komorebi 2022-05-20)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug4lwdd,       mslug4,   neogeo_noslot, mslug4lw,   neogeo_state,    init_mslug4dd,   ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix 2023-02-25)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug4lwqdd,      mslug4,   neogeo_noslot, mslug4lw,   neogeo_state,    init_mslug4dd,   ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix - Without Body Armor 2023-02-25)(Darksoft)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug5cqdd,       mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_mslug5de,   ROT0, "hack",            "Metal Slug 5 (Legendary 4.0 2024-12-25)(Darksoft)", MACHINE_SUPPORTS_SAVE )
-GAME( 2015, mslug5fdd,        mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_mslug5de,   ROT0, "hack",            "Metal Slug 5 (Fierce Battle 2015-04-10)(Darksoft)", MACHINE_SUPPORTS_SAVE )
-GAME( 2006, mslug5frdd,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5de,   ROT0, "hack",            "Metal Slug 5 (French Translation 2006-09-26)(Darksoft)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug5scdd,       mslug5,   neogeo_noslot, mslug5cq,   neogeo_state,    init_mslug5de,   ROT0, "hack",            "Metal Slug 5 (Survival 2023-06-12)(Darksoft)", MACHINE_SUPPORTS_SAVE )
-GAME( 2015, mslug5wdd,        mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_mslug5de,   ROT0, "hack",            "Metal Slug 5 (New Battle 2015-02-27)(Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5cqdd,       mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_mslug5ddh,  ROT0, "hack",            "Metal Slug 5 (Legendary 4.0 2024-12-25)(Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2015, mslug5fdd,        mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_mslug5ddh,  ROT0, "hack",            "Metal Slug 5 (Fierce Battle 2015-04-10)(Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslug5frdd,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5ddh,  ROT0, "hack",            "Metal Slug 5 (French Translation 2006-09-26)(Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug5scdd,       mslug5,   neogeo_noslot, mslug5cq,   neogeo_state,    init_mslug5ddh,  ROT0, "hack",            "Metal Slug 5 (Survival 2023-06-12)(Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2015, mslug5wdd,        mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_mslug5ddh,  ROT0, "hack",            "Metal Slug 5 (New Battle 2015-02-27)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugxchuanqidd,  mslugx,   neogeo_noslot, mslugxcqi,  neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Legendary Firepower Showdown 5.0 2024-12-23)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugxcqdd,       mslugx,   neogeo_noslot, mslugxcq,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Legendary 4.5 2024-06-13)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxdddd,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Starlight 2022-08-10)(Darksoft)", MACHINE_SUPPORTS_SAVE )
