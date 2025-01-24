@@ -106,15 +106,15 @@ public:
 	void init_mslug3dde();
     void init_mslug3b6d();
     void init_mslug3b6dd();
-    void init_mslug4dc();
     void init_mslug4dd();
+	void init_mslug4dde();
 	void init_mslug4hb();
     void init_mslug4lw();
 	void init_mslug4p();
 	void init_mslug5b();
 	void init_mslug5dd();
 	void init_mslug5dde();
-	void init_mslug5de();
+	void init_mslug5ddh();
 	void init_mslug5b2();
 	void init_mslug5hb();
 	void init_mslugx();
