@@ -36015,8 +36015,8 @@ GAME( 2015, mslug5w,          mslug5,   neogeo_noslot, mslug5w,    neogeo_state,
 GAME( 2021, mslug5unity,      mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Unity Time! 2021-04-23)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2023, mslug5sc,         mslug5,   neogeo_noslot, mslug5cq,   neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Survival 2023-06-12)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2024, mslug5cq,         mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Legendary 2.0 2024-05-02)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-GAME( 2016, mslug5l9a,        mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_s1945p,     ROT0, "hack",            "Metal Slug 5 (New Battle 2016-01-04)(No Official Version)", MACHINE_SUPPORTS_SAVE )
-GAME( 2016, mslug5l9b,        mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_s1945p,     ROT0, "hack",            "Metal Slug 5 (Fierce Battle 2016-01-04)(No Official Version)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, mslug5l9a,        mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_s1945p,     ROT0, "hack",            "Metal Slug 5 (New Battle 2015-03-27)(GFX Strikers 1945 Plus)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, mslug5l9b,        mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_s1945p,     ROT0, "hack",            "Metal Slug 5 (Fierce Battle 2015-03-25)(GFX Strikers 1945 Plus)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug
