@@ -906,6 +906,12 @@ mslug4ld02        // Hack
 mslug4ld03        // Hack
 mslug4ld04        // Hack
 mslug4ld05        // Hack
+mslug4le01        // Hack
+mslug4le02        // Hack
+mslug4le03        // Hack
+mslug4le04        // Hack
+mslug4le05        // Hack
+
 mslug5la01        // Hack
 mslug5la02        // Hack
 mslug5la03        // Hack
@@ -976,6 +982,9 @@ mslug4rmb01       // Hack
 mslug4rmc01       // Hack
 mslug4rmd01       // Hack
 mslug4rme01       // Hack
+mslug4rmf01       // Hack
+
+
 mslug5rma01       // Hack
 mslug5rmb01       // Hack
 mslug5rmc01       // Hack
