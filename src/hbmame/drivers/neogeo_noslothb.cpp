@@ -3527,7 +3527,6 @@ INPUT_PORTS_END
     MSLUG3H_AES_FILL
 
 #define MSLUG3DD_ESSENTIALPATCH_MODS_FILL \
-    MSLUG3DD_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
     MSLUG3H_FLASHOFF_MODS_FILL \
 	MSLUG3H_MVS_FILL \
     MSLUG3H_AES_FILL
@@ -26822,6 +26821,19 @@ INPUT_PORTS_END
 	ROM_LOAD16_BYTE( "3x3.c1", 0x000000, 0x800000, CRC(9be2f993) SHA1(ce9b7c5ae226f4e9bebc95d1b34affa48693a910) )\
 	ROM_LOAD16_BYTE( "3x3.c2", 0x000001, 0x800000, CRC(9f261733) SHA1(6a740972dc9011815614c2d70c10166113e8d4a2) )
 
+#define MSLUG3XE_AUDIO_ENCRYPTED_128K \
+	NEO_BIOS_AUDIO_ENCRYPTED_128K( "3xe.m1", CRC(876df5e1) SHA1(a54bd3eb76d9768fec26fbf4153c0a6055df159f) )
+
+#define MSLUG3XE_YMSND \
+	ROM_REGION( 0x1000000, "ymsnd", 0 ) \
+	ROM_LOAD( "3xe.v1", 0x000000, 0x800000, CRC(5d904213) SHA1(62bf1a832c14203ce913f6ac3dc5df75d141155a) )\
+	ROM_LOAD( "3xe.v2", 0x800000, 0x800000, CRC(97cee550) SHA1(b4429e71847ead15b146754f35023efa276253a7) )
+
+#define MSLUG3XE_SPRITES \
+    ROM_REGION( 0x1000000, "sprites", 0 ) \
+	ROM_LOAD16_BYTE( "3xe.c1", 0x000000, 0x800000, CRC(92a89586) SHA1(9d6dca9fd73cdd6d382d26708c632ec01654c050) )\
+	ROM_LOAD16_BYTE( "3xe.c2", 0x000001, 0x800000, CRC(18d14a71) SHA1(95e7518091fe5600bd5fb5c90fcec22670bf8910) )
+
 #define NEOPANG_SFIX_64K \
 	NEO_SFIX_64K( "neop.s1", CRC(d78bd9a0) SHA1(17a237166aede98bee27d5b52654414c8a1b071a) )
 
@@ -28935,6 +28947,16 @@ ROM_START( mslug5l9b )
 	MSLUG5W_AUDIO_512K
 	MSLUG5L9B_YMSND
 	MSLUG5L9B_SPRITES
+ROM_END
+
+ROM_START( mslug3xe )
+	ROM_REGION( 0x800000, "maincpu", 0 )
+	ROM_LOAD32_WORD_SWAP( "3xe.p1", 0x000000, 0x400000, CRC(1e0506cf) SHA1(f1a20f1f0fc3fd74dd5d258eaf75965eb2b4cd91) )
+	ROM_LOAD32_WORD_SWAP( "3xe.p2", 0x000002, 0x400000, CRC(894cd3dd) SHA1(553f90fce8c04940892bd797dc4f1dddf7276c81) )
+	MSLUG5_SFIX_MT_128K
+	MSLUG3XE_AUDIO_ENCRYPTED_128K
+	MSLUG3XE_YMSND
+	MSLUG3XE_SPRITES
 ROM_END
 
  /****************
@@ -38039,7 +38061,7 @@ GAME( 2015, mslugxlbnds,      mslugx,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2023, mslugxscnds,      mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Survival 2023-02-13)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
-// Metal Slug (Documentation C, V & P Decrypter To Encrypte)
+// Metal Slug (TAOENWEN Neo Geo Hack Converted C, V, M, S & P Decrypter To Encrypte)
 GAME( 2019, mslug31v2,        mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (1v2 Mode 2019-05-11)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2014, mslug3eb,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Green Blue 2014-10-15)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2018, mslug3sd,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Shop 2017-12-17)(Encrypted C)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
@@ -38071,6 +38093,7 @@ GAME( 2023, mslug5sc,         mslug5,   neogeo_noslot, mslug5cq,   neogeo_state,
 GAME( 2024, mslug5cq,         mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Legendary 2.0 2024-05-02)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2016, mslug5l9a,        mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_s1945p,     ROT0, "hack",            "Metal Slug 5 (New Battle 2015-03-27)(GFX Strikers 1945 Plus)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslug5l9b,        mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_s1945p,     ROT0, "hack",            "Metal Slug 5 (Fierce Battle 2015-03-25)(GFX Strikers 1945 Plus)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslug3xe,         mslug3x,  neogeo_noslot, neogeo,     neogeo_state,    init_mslug5hb,   ROT0, "CB, Willnie",     "Metal Slug HomeBrew (Mothership Armageddon Easter Egg Beta 2022-01-10)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug
@@ -38260,13 +38283,13 @@ GAME( 2024, mslugxhc36,       mslugx,   neogeo_noslot, mslugxcqi,  neogeo_state,
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // HomeBrew
-GAME( 2022, mslug3x,          neogeo,   neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "CB, Willnie",     "Metal Slug HomeBrew (Mothership Armageddon Easter Egg Final Release 2022-02-03)", MACHINE_SUPPORTS_SAVE )// Metal Slug 3X (Complete Collection)
-GAME( 2021, mslug3xb,         mslug3x,  neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "CB, Willnie",     "Metal Slug HomeBrew (Mothership Armageddon Easter Egg Beta 2022-01-10)", MACHINE_SUPPORTS_SAVE )// Metal Slug 3X (Complete Collection)
-GAME( 2020, mslug3x0,         mslug3x,  neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "CB, Willnie",     "Metal Slug HomeBrew (Mothership Armageddon Easter Egg Demo 0 2020-01-20)", MACHINE_SUPPORTS_SAVE )// Metal Slug 3X (Complete Collection)
-GAME( 2020, mslug3x1,         mslug3x,  neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "CB, Willnie",     "Metal Slug HomeBrew (Mothership Armageddon Easter Egg Demo 1 2020-04-14)", MACHINE_SUPPORTS_SAVE )// Metal Slug 3X (Complete Collection)
-GAME( 2020, mslug3x2,         mslug3x,  neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "CB, Willnie",     "Metal Slug HomeBrew (Mothership Armageddon Easter Egg Demo 2 2020-04-16)", MACHINE_SUPPORTS_SAVE )// Metal Slug 3X (Complete Collection)
-GAME( 2021, mslug3x3,         mslug3x,  neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "CB, Willnie",     "Metal Slug HomeBrew (Mothership Armageddon Easter Egg Demo 3 2021-08-21)", MACHINE_SUPPORTS_SAVE )// Metal Slug 3X (Complete Collection)
-GAME( 2010, neopang,          mslug3x,  neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "CeL",             "Metal Slug HomeBrew (Neo Pang)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslug3x,          neogeo,   neogeo_noslot, neogeo,     neogeo_state,    init_neogeo,     ROT0, "CB, Willnie",     "Metal Slug HomeBrew (Mothership Armageddon Easter Egg Final Release 2022-02-03)", MACHINE_SUPPORTS_SAVE )// Metal Slug 3X (Complete Collection)
+GAME( 2022, mslug3xb,         mslug3x,  neogeo_noslot, neogeo,     neogeo_state,    init_neogeo,     ROT0, "CB, Willnie",     "Metal Slug HomeBrew (Mothership Armageddon Easter Egg Beta 2022-01-10)", MACHINE_SUPPORTS_SAVE )// Metal Slug 3X (Complete Collection)
+GAME( 2020, mslug3x0,         mslug3x,  neogeo_noslot, neogeo,     neogeo_state,    init_neogeo,     ROT0, "CB, Willnie",     "Metal Slug HomeBrew (Mothership Armageddon Easter Egg Demo 0 2020-01-20)", MACHINE_SUPPORTS_SAVE )// Metal Slug 3X (Complete Collection)
+GAME( 2020, mslug3x1,         mslug3x,  neogeo_noslot, neogeo,     neogeo_state,    init_neogeo,     ROT0, "CB, Willnie",     "Metal Slug HomeBrew (Mothership Armageddon Easter Egg Demo 1 2020-04-14)", MACHINE_SUPPORTS_SAVE )// Metal Slug 3X (Complete Collection)
+GAME( 2020, mslug3x2,         mslug3x,  neogeo_noslot, neogeo,     neogeo_state,    init_neogeo,     ROT0, "CB, Willnie",     "Metal Slug HomeBrew (Mothership Armageddon Easter Egg Demo 2 2020-04-16)", MACHINE_SUPPORTS_SAVE )// Metal Slug 3X (Complete Collection)
+GAME( 2021, mslug3x3,         mslug3x,  neogeo_noslot, neogeo,     neogeo_state,    init_neogeo,     ROT0, "CB, Willnie",     "Metal Slug HomeBrew (Mothership Armageddon Easter Egg Demo 3 2021-08-21)", MACHINE_SUPPORTS_SAVE )// Metal Slug 3X (Complete Collection)
+GAME( 2010, neopang,          mslug3x,  neogeo_noslot, neogeo,     neogeo_state,    init_neogeo,     ROT0, "CeL",             "Metal Slug HomeBrew (Neo Pang)", MACHINE_SUPPORTS_SAVE )
 
 /***************
  Only exclusive
