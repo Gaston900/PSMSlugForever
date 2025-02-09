@@ -1766,6 +1766,22 @@ void neogeo_state::init_ms5plusd()
 	m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size,0);
 }
 
+void neogeo_state::init_ms5pluse()
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 1;
+	m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region, audio_region_size);
+	m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 2);
+    m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG5_GFX_KEY);
+	m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size,1);
+}
+
+void neogeo_state::init_ms5plush()
+{
+	init_mslug5hb();
+	m_bootleg_prot->install_ms5plus_protection(m_maincpu,m_banked_cart);
+}
+
 void neogeo_state::init_ms5pcbhb()
 {
 	init_neogeo();
@@ -26144,6 +26160,9 @@ INPUT_PORTS_END
 #define MS5PLUSD_AUDIO_512K \
     NEO_BIOS_AUDIO_512K( "ms5pd.m1", CRC(39f3cbba) SHA1(56f9ba6a1ecfc28733b7b88c9796415cba0461f2) )
 
+#define MS5PLUSH_AUDIO_128K \
+    NEO_BIOS_AUDIO_128K("ms5ph.m1", CRC(346d4a30) SHA1(3fe143afab3ff75365750ca5c14d02737306cbc8) )
+
 #define MSLUG5_AUDIO_ENCRYPTED_512K \
 	NEO_BIOS_AUDIO_ENCRYPTED_512K( "268.m1", CRC(4a5a6e0e) SHA1(df0f660f2465e1db7be5adfcaf5e88ad61a74a42) )
 
@@ -28610,6 +28629,18 @@ ROM_END
  Decrypter To Encrypted GFX
 *******************************/
 
+ROM_START( ms5plush )
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "ms5ph.p1", 0x000000, 0x100000, CRC(612b6005) SHA1(aeb0b7865eb6cb10af484e5304d8802eb37745c9) )
+	ROM_LOAD16_WORD_SWAP( "ms5ph.p2", 0x100000, 0x200000, CRC(9a644e2a) SHA1(6f40d4b8026750d495d221834d82f59636d83eeb) )
+	ROM_LOAD16_WORD_SWAP( "ms5ph.p3", 0x300000, 0x200000, CRC(1bd24469) SHA1(e999b860b1f86315157df7f46994530677e145a6) )
+    MSLUG5N_ESSENTIALPATCH_MODS_FILL
+    MS5PLUS_SFIX_128K
+    MSLUG5_AUDIO_ENCRYPTED_512K
+	MSLUG5_YMSND
+	MSLUG5_SPRITES
+ROM_END
+
 ROM_START( mslug31v2 )
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "neo1v2-sma", 0x0c0000, 0x040000, CRC(1c090500) SHA1(d4ca78c9848418ff89a3d756051051a6c1125b52) )
@@ -30362,8 +30393,8 @@ ROM_START( mslug5hc24 ) //mslug5fr
 	ROM_LOAD16_WORD_SWAP( "268n.p2",     0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
     MSLUG5N_ESSENTIALPATCH_MODS_FILL
     MSLUG5FR_SFIX_128K
-    MSLUG5D_AUDIO_64K
-	MS5PLUSD_YMSND
+	MSLUG5_AUDIO_ENCRYPTED_512K
+	MSLUG5_YMSND
 	MSLUG5FR_SPRITES
 ROM_END
 
@@ -30411,12 +30442,12 @@ ROM_END
 
 ROM_START( mslug5hc29 ) //ms5plush
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_hc29.p1", 0x000000, 0x100000, CRC(612b6005) SHA1(aeb0b7865eb6cb10af484e5304d8802eb37745c9) )
-	ROM_LOAD16_WORD_SWAP( "268_hc29.p2",  0x100000, 0x200000, CRC(9a644e2a) SHA1(6f40d4b8026750d495d221834d82f59636d83eeb) )
-	ROM_LOAD16_WORD_SWAP( "268_hc29.p3",  0x300000, 0x200000, CRC(1bd24469) SHA1(e999b860b1f86315157df7f46994530677e145a6) )
+	ROM_LOAD16_WORD_SWAP( "268_hc29.p1", 0x000000, 0x100000, CRC(c61e6444) SHA1(9aec69201472080d2205af14ecc3f9a30ab4c6c2) )
+	ROM_LOAD16_WORD_SWAP( "ms5p.p2",     0x100000, 0x200000, CRC(d6a458e8) SHA1(c0a8bdae06d62859fb6734766ccc190eb2a809a4) )
+	ROM_LOAD16_WORD_SWAP( "ms5p.p3",     0x300000, 0x200000, CRC(439ec031) SHA1(f0ad8f9be7d26bc504593c1321bd23c286a221f0) )
     MSLUG5N_ESSENTIALPATCH_MODS_FILL
     MS5PLUSD_SFIX_128K
-    MS5PLUSD_AUDIO_512K
+    MS5PLUSH_AUDIO_128K
 	MS5PLUSD_YMSND
 	MSLUG5ND_SPRITES
 ROM_END
@@ -38062,6 +38093,7 @@ GAME( 2023, mslugxscnds,      mslugx,   neogeo_noslot, neogeohb,   neogeo_state,
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (TAOENWEN Neo Geo Hack Converted C, V, M, S & P Decrypter To Encrypte)
+GAME( 2019, ms5plush,         mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_ms5pluse,   ROT0, "hack",            "Metal Slug 5 Plus (2019-07-26)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2019, mslug31v2,        mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (1v2 Mode 2019-05-11)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2014, mslug3eb,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Green Blue 2014-10-15)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2018, mslug3sd,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Shop 2017-12-17)(Encrypted C)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
@@ -38239,7 +38271,7 @@ GAME( 2018, mslug5hc25,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,
 //GAME( 2020, mslug5hc26,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Enemy Soldiers Enhanced 2020-04-06)(Earlier)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc27,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (X 2022-06-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug5hc28,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 Plus (Hide Oh Big Mode 2022-11-03)", MACHINE_SUPPORTS_SAVE )
-GAME( 2019, mslug5hc29,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 5 Plus (2019-07-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, mslug5hc29,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_ms5plush,   ROT0, "GOTVG",           "Metal Slug 5 Plus (2019-07-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug5hc30,       mslug5,   neogeo_noslot, mslug5zh,   neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (War Chariot 2015-05-20)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
