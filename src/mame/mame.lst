@@ -219,6 +219,12 @@ mslug5l9b         // Hack Encrypted GFX (Documentation)
 mslug3xe          // Hack Encrypted GFX (Documentation)
 
 @source:neogeo.cpp
+mslugdyf1         // Hack (Exclusive Fightcade2)
+mslug2fm          // Hack (Exclusive Fightcade2)
+mslug5sgf         // Hack (Exclusive Fightcade2)
+mslugxsrf         // Hack (Exclusive Fightcade2)
+
+@source:neogeo.cpp
 mslughc01         // Hack
 mslughc02         // Hack
 mslughc03         // Hack
@@ -346,7 +352,7 @@ mslug5hc22        // Hack
 mslug5hc23        // Hack
 mslug5hc24        // Hack
 mslug5hc25        // Hack
-//mslug5hc26        // Hack // Disable
+mslug5hc26        // Hack
 mslug5hc27        // Hack
 mslug5hc28        // Hack
 mslug5hc29        // Hack
