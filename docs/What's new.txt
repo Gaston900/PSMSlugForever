@@ -19,8 +19,13 @@ Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use O
 
 - Updated Roms Metal Slug X (Legendary Firepower Showdown 5.0 2024-12-23)
 - Updated Roms Metal Slug 3 (Legendary Tower Defense 5.0 2024-12-29)
-- Updated Roms Metal Slug 4 (Legendary Firepower Showdown 3.6 2024-12-31)
+- Updated Roms Metal Slug 4 (Legendary Firepower Showdown 4.0 2025-01-22)
 - Updated Roms Metal Slug 5 (Legendary 4.0 2024-12-25)
+
+New Games
+---------------------------------
+- [mslug3esl]              Metal Slug 3 (Enemy Survival v0.4 2025-02-09)
+- [mslug3or]               Metal Slug 3 (Ostrich Route Revamp Showcase v1.2 2024-05-13)
 
 
 

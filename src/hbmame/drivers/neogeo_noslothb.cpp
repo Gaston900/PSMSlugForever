@@ -29111,6 +29111,31 @@ ROM_START( mslugxsrf )
 	MSLUGX_SPRITES
 ROM_END
 
+ /**********************************
+  Exclusive Material Soldier Rebel
+*************************************/
+
+ROM_START( mslug3esl )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256esl.p1", 0x000000, 0x900000, CRC(c3ffa496) SHA1(ae8faf524707307453f5955449122d12ff03ebd2) )
+    ROM_DEFAULT_BIOS( "console_mode" )
+	MSLUG3DD_ESSENTIALPATCH_MODS_FILL
+	MSLUG3_SFIX_MT_512K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+	MSLUG3_SPRITES
+ROM_END
+
+ROM_START( mslug3or )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256or.p1", 0x000000, 0x900000, CRC(1bf28288) SHA1(d8477f3c78f3858b70312a622d6a1391158275b7) )
+	MSLUG3DD_ESSENTIALPATCH_MODS_FILL
+	MSLUG3_SFIX_MT_512K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+	MSLUG3_SPRITES
+ROM_END
+
  /****************
   Metal Slug Hack
 *******************/
@@ -38177,6 +38202,12 @@ GAME( 2024, mslugdyf1,        mslug,    neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2021, mslug2fm,         mslug2,   neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "CXZInc, Alice",   "Metal Slug 2 (Friendly Fire 2021-04-15)(Fightcade2)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug5sgf,        mslug5,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Remake 2021-10-03)(Fightcade2)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslugxsrf,        mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (AzStar Soda Remix 2021-02-12)(Fightcade2)", MACHINE_SUPPORTS_SAVE )
+
+// YouTube Channel: https://www.youtube.com/@soldierrebel6603
+/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
+// Metal Slug (Exclusive Material Soldier Rebel)
+GAME( 2025, mslug3esl,        mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3e,    ROT0, "Soldier Rebel",   "Metal Slug 3 (Enemy Survival v0.4 2025-02-09)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug3or,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3e,    ROT0, "Soldier Rebel",   "Metal Slug 3 (Ostrich Route Revamp Showcase v1.2 2024-05-13)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug
