@@ -27398,6 +27398,9 @@ INPUT_PORTS_END
 #define MSLUG3GW_AUDIO_BIOS_512K \
 	NEO_EUROPE_MVS_BIOS_BOOT_AUDIO_512K( "256_hc10.m1", CRC(c84d22f2) SHA1(069d5eafa859acbebc35394344df78ea84055cf7) )
 
+#define MSLUG4EQCI_AUDIO_BIOS_128K \
+	NEO_EUROPE_MVS_BIOS_BOOT_AUDIO_ENCRYPTED_128K( "263cqi.m1", CRC(828e6447) SHA1(c306d72b07304f1f6cf3b79c7f26849046378fab) )
+
 #define MSLUG4QCI_AUDIO_BIOS_128K \
 	NEO_EUROPE_MVS_BIOS_BOOT_AUDIO_128K( "263_hc25.m1", CRC(98e75e61) SHA1(e2826b1472b0a5a442d56e563b85c6c3f9b532e2) )
 
@@ -28086,6 +28089,11 @@ INPUT_PORTS_END
 	ROM_LOAD( "263ndp.v3",   0x800000, 0x400000, CRC(7616fcec) SHA1(83006094379d0373b967603dcaa1cec69c2f746f) )\
 	ROM_LOAD( "263_hc12.v4", 0xC00000, 0x400000, CRC(c5967f91) SHA1(874562109c3df9e1fdefbb3970092128aaa31a17) )
 
+#define MSLUG4EQCI_YMSND \
+	ROM_REGION( 0x1000000, "ymsnd", 0 ) \
+	ROM_LOAD( "263cqi.v1", 0x000000, 0x800000, CRC(a437cfe3) SHA1(c81ee73f35ddb6f2164fcf73b8f4f63299700d36) )\
+	ROM_LOAD( "263cqi.v2", 0x800000, 0x800000, CRC(493b56dd) SHA1(e40c9f7a5c48f59a6b751b15e99069ac1cf05e10) )
+
 #define MSLUG4QCI_YMSND \
 	ROM_REGION( 0x1000000, "ymsnd", 0 ) \
 	ROM_LOAD( "263_hc25.v1", 0x000000, 0x800000, CRC(3a8ff8f1) SHA1(6a961a116639e1a557526fab1b7aac892b2d4e87) )\
@@ -28262,6 +28270,15 @@ INPUT_PORTS_END
 	ROM_LOAD16_BYTE( "263d.c4",     0x1000001, 0x800000, CRC(f2c544fd) SHA1(179b064f81b49f5808d7a7a5bce28e95b09e5abe) )\
 	ROM_LOAD16_BYTE( "263d.c5",     0x2000000, 0x800000, CRC(84c66c44) SHA1(9273f44bf11891aa04ddd2cbb6442d084c2a2e04) )\
 	ROM_LOAD16_BYTE( "263d.c6",     0x2000001, 0x800000, CRC(5ed018ab) SHA1(e78501fa8a80960093a4d54ce952681a98300148) )
+
+#define MSLUG4ECQI_SPRITES \
+	ROM_REGION( 0x3000000, "sprites", 0 ) \
+ 	ROM_LOAD16_BYTE( "263.c1",    0x0000000, 0x800000, CRC(84865f8a) SHA1(34467ada896eb7c7ca58658bf2a932936d8b632c) )\
+	ROM_LOAD16_BYTE( "263.c2",    0x0000001, 0x800000, CRC(81df97f2) SHA1(2b74493b8ec8fd49216a627aeb3db493f76124e3) )\
+	ROM_LOAD16_BYTE( "263.c3",    0x1000000, 0x800000, CRC(1a343323) SHA1(bbbb5232bba538c277ce2ee02e2956ca2243b787) )\
+	ROM_LOAD16_BYTE( "263.c4",    0x1000001, 0x800000, CRC(942cfb44) SHA1(d9b46c71726383c4581fb042e63897e5a3c92d1b) )\
+	ROM_LOAD16_BYTE( "263cqi.c5", 0x2000000, 0x800000, CRC(922a2d9a) SHA1(a89f1d90981c1b49db6dd1ecfa94805416ff7379) )\
+	ROM_LOAD16_BYTE( "263cqi.c6", 0x2000001, 0x800000, CRC(51cf6828) SHA1(76e4366f1d69a86dc122f915765281aaf9eb5304) )
 
 #define MSLUG4CQI_SPRITES \
 	ROM_REGION( 0x3000000, "sprites", 0 ) \
@@ -28742,14 +28759,14 @@ INPUT_PORTS_END
 
 #define MSLUG5ECQ_SPRITES \
 	ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD16_BYTE( "268cq.c1", 0x0000000, 0x800000, CRC(a8417858) SHA1(ba06e36827b146670fcabde5a3532f3a61a4eaa7) )\
-	ROM_LOAD16_BYTE( "268cq.c2", 0x0000001, 0x800000, CRC(66caabde) SHA1(4d1de42817cc7befcd8a52bb91ee63900bed296c) )\
-	ROM_LOAD16_BYTE( "268cq.c3", 0x1000000, 0x800000, CRC(0de85240) SHA1(b35c7c583ff28121563487abdd3175ffed689354) )\
-	ROM_LOAD16_BYTE( "268cq.c4", 0x1000001, 0x800000, CRC(c983239d) SHA1(feefbdbdb2eb5704952eb5185def2b2c909f1687) )\
-	ROM_LOAD16_BYTE( "268cq.c5", 0x2000000, 0x800000, CRC(2a16746a) SHA1(29be7dbc4a5dac4ff3b6289cf5814c88517750c2) )\
-	ROM_LOAD16_BYTE( "268cq.c6", 0x2000001, 0x800000, CRC(61a609f9) SHA1(0a7d30d31a49d87e0191b7ad89132f3e94b8a46e) )\
-	ROM_LOAD16_BYTE( "268cq.c7", 0x3000000, 0x800000, CRC(43b32c9b) SHA1(af39d67bcc4e1b4458d05a90971ec0bfcf832e8f) )\
-	ROM_LOAD16_BYTE( "268cq.c8", 0x3000001, 0x800000, CRC(0747489a) SHA1(4542858cbe416a359ac28e654b2aba5a549cf20b) )
+	ROM_LOAD16_BYTE( "268cq.c1", 0x0000000, 0x800000, CRC(58441261) SHA1(bff4f782f50ee41482dd1d6e11ffcc91dfb44fb8) )\
+	ROM_LOAD16_BYTE( "268cq.c2", 0x0000001, 0x800000, CRC(427fb1cc) SHA1(e7be294803908aa0ded66f749ad53e7a244f29e5) )\
+	ROM_LOAD16_BYTE( "268cq.c3", 0x1000000, 0x800000, CRC(3668bdc7) SHA1(8685bb85c698bcd86bc8a1837194af5862abed09) )\
+	ROM_LOAD16_BYTE( "268cq.c4", 0x1000001, 0x800000, CRC(dbe709b2) SHA1(c6767c2e42ca86211b80ec207547029e43f5d1e2) )\
+	ROM_LOAD16_BYTE( "268cq.c5", 0x2000000, 0x800000, CRC(7bb451e3) SHA1(eb1a771735d6b66c69756d6503d07e88af98166e) )\
+	ROM_LOAD16_BYTE( "268cq.c6", 0x2000001, 0x800000, CRC(20149339) SHA1(69245f5b8781daf16046e97fabd7c41e695e5b91) )\
+	ROM_LOAD16_BYTE( "268cq.c7", 0x3000000, 0x800000, CRC(128956bb) SHA1(0a55b1bb6454e4afa0958e3faa92c9ab5b572d2d) )\
+	ROM_LOAD16_BYTE( "268cq.c8", 0x3000001, 0x800000, CRC(bbdb29a3) SHA1(0b12e76b86c58ded9a74a745e82510ece8461c0f) )
 
 #define MSLUG5L9A_SPRITES \
 	ROM_REGION( 0x4000000, "sprites", 0 ) \
@@ -30000,7 +30017,7 @@ ROM_END
 
 ROM_START( mslug3cqtfbdd )
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256cqtfbdd.p1", 0x000000, 0x900000, CRC(0831e057) SHA1(3fd7614cba30e843042c8f313e4eaea1d1241dc4) )
+	ROM_LOAD16_WORD_SWAP( "256cqtfbdd.p1", 0x000000, 0x900000, CRC(d901929f) SHA1(323b160f7588484277225b9ae452b290a398b849) )
     MSLUG3CQT_ESSENTIALPATCH_MODS_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3HCR_AUDIO_256K
@@ -30090,7 +30107,7 @@ ROM_END
 
 ROM_START( mslug4cqidd )
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263cqidd.p1", 0x000000, 0x900000, CRC(02e820ee) SHA1(5b99136a70c9381eb0361b17b02c8d0bdec2fb41) )
+	ROM_LOAD16_WORD_SWAP( "263cqidd.p1", 0x000000, 0x900000, CRC(d62d1530) SHA1(f15c691ab901a21b2b23104bac2216d796ebd002) )
     MSLUG4QCI_ESSENTIALPATCH_MODS_FILL
     MSLUG4HD_SFIX_128K
     MSLUG4QCI_AUDIO_BIOS_128K
@@ -30200,7 +30217,7 @@ ROM_END
 
 ROM_START( mslugxchuanqidd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250chuanqidd.p1", 0x000000, 0x500000, CRC(328ac6e2) SHA1(e524d55b6a572f44b67ee7885c14a60c4ac00d6c) )
+	ROM_LOAD16_WORD_SWAP( "250chuanqidd.p1", 0x000000, 0x500000, CRC(3a042db3) SHA1(e060e201dc01e8f6e2e1299e79a70575604c8ebb) )
     MSLUGXCQI_ESSENTIALPATCH_MODS_FILL
 	MSLUGXSC_SFIX_128K
     MSLUGXSC_AUDIO_BIOS_128K
@@ -30512,7 +30529,7 @@ ROM_END
 
 ROM_START( mslug3cqtfbnds )
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256cqtfbdd.p1", 0x000000, 0x900000, CRC(0831e057) SHA1(3fd7614cba30e843042c8f313e4eaea1d1241dc4) )
+	ROM_LOAD16_WORD_SWAP( "256cqtfbdd.p1", 0x000000, 0x900000, CRC(d901929f) SHA1(323b160f7588484277225b9ae452b290a398b849) )
     MSLUG3CQT_ESSENTIALPATCH_MODS_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3HCR_AUDIO_256K
@@ -30602,7 +30619,7 @@ ROM_END
 
 ROM_START( mslug4cqinds )
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263cqidd.p1", 0x000000, 0x900000, CRC(02e820ee) SHA1(5b99136a70c9381eb0361b17b02c8d0bdec2fb41) )
+	ROM_LOAD16_WORD_SWAP( "263cqidd.p1", 0x000000, 0x900000, CRC(d62d1530) SHA1(f15c691ab901a21b2b23104bac2216d796ebd002) )
     MSLUG4QCI_ESSENTIALPATCH_MODS_FILL
     MSLUG4HD_SFIX_128K
     MSLUG4QCI_AUDIO_BIOS_128K
@@ -30712,7 +30729,7 @@ ROM_END
 
 ROM_START( mslugxchuanqinds )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250chuanqidd.p1", 0x000000, 0x500000, CRC(328ac6e2) SHA1(e524d55b6a572f44b67ee7885c14a60c4ac00d6c) )
+	ROM_LOAD16_WORD_SWAP( "250chuanqidd.p1", 0x000000, 0x500000, CRC(3a042db3) SHA1(e060e201dc01e8f6e2e1299e79a70575604c8ebb) )
     MSLUGXCQI_ESSENTIALPATCH_MODS_FILL
 	MSLUGXSC_SFIX_128K
     MSLUGXSC_AUDIO_BIOS_128K
@@ -30850,6 +30867,40 @@ ROM_START( mslug3chuanqi )
 	MSLUG3_AUDIO_BIOS_512K
     MSLUG3_YMSND
 	MSLUG3ECQI_SPRITES
+ROM_END
+
+ROM_START( mslug3cqtfb )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256_hc38.p1", 0x000000, 0x100000, CRC(9a40066b) SHA1(e7c712118b9061eeb85e54a65e47109f6b6694da) )
+	ROM_LOAD16_WORD_SWAP( "256_hc38.p2", 0x100000, 0x800000, CRC(2dc9202d) SHA1(2793b3d2e8fa82f0f8c24bb0b91cd4bcccee8ddd) )
+    MSLUG3CQT_ESSENTIALPATCH_MODS_FILL
+	MSLUG3HD_SFIX_128K
+	MSLUG3HCR_AUDIO_256K
+    MSLUG3_YMSND
+    //MSLUG3ECQTFQ_SPRITES
+ROM_END
+
+ROM_START( mslug3cqzt )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "256_hc39.p1", 0x000000, 0x100000, CRC(da6213f0) SHA1(472b1ab3adaf7a858361070e8faaccc72b306741) )
+	ROM_LOAD16_WORD_SWAP( "256_hc39.p2", 0x100000, 0x800000, CRC(e2d8d250) SHA1(17ad669b33ea8c1ec34684abf7e4a85ae9bd17fb) )
+    MSLUG3CQT_ESSENTIALPATCH_MODS_FILL
+	MSLUG3HD_SFIX_128K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+    //MSLUG3ECQZT_SPRITES
+ROM_END
+
+ROM_START( mslug3dbplus )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "neodbplus-sma", 0x0c0000, 0x040000, CRC(293acec7) SHA1(36fccf691173a4ca276db6e6a1d293a27d970b49) )
+	ROM_LOAD16_WORD_SWAP( "256dbplus.p1",  0x100000, 0x400000, CRC(764feac4) SHA1(eeb74afba74b1ad20a5f9fa0bd2124eba5aa8153) )
+	ROM_LOAD16_WORD_SWAP( "256dbplus.p2",  0x500000, 0x400000, CRC(c8d3a9f9) SHA1(33c0827053276f603ddba57e5191b07941055603) )
+    MSLUG3HB_ESSENTIALPATCH_MODS_FILL
+	MSLUG3HD_SFIX_128K
+	MSLUG3_AUDIO_512K
+    MSLUG3_YMSND
+    MSLUG3_SPRITES
 ROM_END
 
 ROM_START( mslug3c )
@@ -31050,6 +31101,17 @@ ROM_START( mslug4ki )
 	MSLUG4EKI_SPRITES
 ROM_END
 
+ROM_START( mslug4cqi )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "263_hc25.p1", 0x000000, 0x100000, CRC(7ff2f18e) SHA1(4903e796641ccf29a04d3879ebbb54323667b935) )
+	ROM_LOAD16_WORD_SWAP( "263_hc25.p2", 0x100000, 0x800000, CRC(22abf687) SHA1(1f8f6d9e689ea3f97e447469758735f867aaeab0) )
+    MSLUG4QCI_ESSENTIALPATCH_MODS_FILL
+    MSLUG4HD_SFIX_128K
+    MSLUG4EQCI_AUDIO_BIOS_128K
+	MSLUG4EQCI_YMSND
+	MSLUG4ECQI_SPRITES
+ROM_END
+
 ROM_START( mslug5f )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc05.p1", 0x000000, 0x100000, CRC(6be7043d) SHA1(caaf24cc653abbd435de7732f6489c613f3911ac) )
@@ -31095,7 +31157,7 @@ ROM_END
 
 ROM_START( mslug5cq )
 	ROM_REGION( 0xa00000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_hc13a.p1", 0x000000, 0xa00000, CRC(07723765) SHA1(117a5f0cbb88c59c9907291eb53c9fd884cc9c83) )
+	ROM_LOAD16_WORD_SWAP( "268_hc13.p1", 0x000000, 0xa00000, CRC(64596568) SHA1(f958f79152ca2e3206ad90ba0dc78f7dded2283c) )
     MSLUG5CQ_ESSENTIALPATCH_MODS_FILL
     MSLUG5ND_SFIX_128K
     MSLUG5_AUDIO_BIOS_ENCRYPTED_512K
@@ -40148,7 +40210,7 @@ GAME( 2021, mslug2egdd,       mslug2,   neogeo_noslot, mslug2eg,   neogeo_state,
 GAME( 2006, mslug2frdd,       mslug2,   neogeo_noslot, neogeohb,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (French Translation 2006-09-26)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3chuanqidd,  mslug3,   neogeo_noslot, mslug3cqi,  neogeo_state,    init_mslug3dd,   ROT0, "hack",            "Metal Slug 3 (Legendary Firepower Showdown 5.0 2024-12-03)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3cqdd,       mslug3,   neogeo_noslot, mslug3cq,   neogeo_state,    init_mslug3dd,   ROT0, "hack",            "Metal Slug 3 (Legendary 4.5 2024-12-03)(Darksoft)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug3cqtfbdd,    mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3dd,   ROT0, "hack",            "Metal Slug 3 (Legendary Tower Defense 5.0 2024-12-29)(Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug3cqtfbdd,    mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3dd,   ROT0, "hack",            "Metal Slug 3 (Legendary Tower Defense 5.0 2025-02-13)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3cqztdd,     mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3dd,   ROT0, "hack",            "Metal Slug 3 (Legendary Journey 2024-11-13)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3dddd,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3dd,   ROT0, "hack",            "Metal Slug 3 (Starlight 2022-05-11)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2004, mslug3frdd,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3dd,   ROT0, "hack",            "Metal Slug 3 (French Translation 2006-12-23)(Darksoft)", MACHINE_SUPPORTS_SAVE )
@@ -40157,7 +40219,7 @@ GAME( 2022, mslug3kidd,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2023, mslug3nddd,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3dd,   ROT0, "hack",            "Metal Slug 3 (Pigeon Slug 2023-05-07)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3scdd,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3dd,   ROT0, "hack",            "Metal Slug 3 (Survival 2023-03-01)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug4ammordd,    mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4dd,   ROT0, "hack",            "Metal Slug 4 (Random Ammunition 2023-02-25)(Darksoft)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug4cqidd,      mslug4,   neogeo_noslot, mslug4cqi,  neogeo_state,    init_mslug4dd,   ROT0, "hack",            "Metal Slug 4 (Legendary Firepower Showdown 4.0 2025-01-22)(Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug4cqidd,      mslug4,   neogeo_noslot, mslug4cqi,  neogeo_state,    init_mslug4dd,   ROT0, "hack",            "Metal Slug 4 (Legendary Firepower Showdown 5.0 2025-02-13)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4dddd,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4dd,   ROT0, "hack",            "Metal Slug 4 (Starlight 2022-10-05)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, mslug4frdd,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4dd,   ROT0, "hack",            "Metal Slug 4 (French Translation 2006-12-23)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4kidd,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4dd,   ROT0, "hack",            "Metal Slug 4 (Komorebi 2022-05-20)(Darksoft)", MACHINE_SUPPORTS_SAVE )
@@ -40168,7 +40230,7 @@ GAME( 2015, mslug5fdd,        mslug5,   neogeo_noslot, mslug5w,    neogeo_state,
 GAME( 2006, mslug5frdd,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5ddh,  ROT0, "hack",            "Metal Slug 5 (French Translation 2006-09-26)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug5scdd,       mslug5,   neogeo_noslot, mslug5cq,   neogeo_state,    init_mslug5ddh,  ROT0, "hack",            "Metal Slug 5 (Survival 2023-06-12)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug5wdd,        mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_mslug5ddh,  ROT0, "hack",            "Metal Slug 5 (New Battle 2015-02-27)(Darksoft)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslugxchuanqidd,  mslugx,   neogeo_noslot, mslugxcqi,  neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Legendary Firepower Showdown 5.0 2024-12-23)(Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugxchuanqidd,  mslugx,   neogeo_noslot, mslugxcqi,  neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Legendary Firepower Showdown 5.0 2025-02-13)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugxcqdd,       mslugx,   neogeo_noslot, mslugxcq,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Legendary 4.5 2024-06-13)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxdddd,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Starlight 2022-08-10)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2006, mslugxfrdd,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (French Translation 2006-09-26)(Darksoft)", MACHINE_SUPPORTS_SAVE )
@@ -40204,7 +40266,7 @@ GAME( 2021, mslug2egnds,      mslug2,   neogeo_noslot, mslug2eg,   neogeo_state,
 GAME( 2006, mslug2frnds,      mslug2,   neogeo_noslot, neogeohb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (French Translation 2006-09-26)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3chuanqinds, mslug3,   neogeo_noslot, mslug3cqi,  neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Legendary Firepower Showdown 5.0 2024-12-03)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3cqnds,      mslug3,   neogeo_noslot, mslug3cq,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Legendary 4.5 2024-12-03)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug3cqtfbnds,   mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Legendary Tower Defense 5.0 2024-12-29)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug3cqtfbnds,   mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Legendary Tower Defense 5.0 2025-02-13)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3cqztnds,    mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Legendary Journey 2024-11-13)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3ddnds,      mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Starlight 2022-05-11)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2004, mslug3frnds,      mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (French Translation 2006-12-23)(Neo SD)", MACHINE_SUPPORTS_SAVE )
@@ -40213,7 +40275,7 @@ GAME( 2022, mslug3kinds,      mslug3,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2023, mslug3ndnds,      mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Pigeon Slug 2023-05-07)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3scnds,      mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Survival 2023-03-01)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug4ammornds,   mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Random Ammunition 2023-02-25)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug4cqinds,     mslug4,   neogeo_noslot, mslug4cqi,  neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Legendary Firepower Showdown 4.0 2025-01-22)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug4cqinds,     mslug4,   neogeo_noslot, mslug4cqi,  neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Legendary Firepower Showdown 5.0 2025-02-13)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4ddnds,      mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Starlight 2022-10-05)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, mslug4frnds,      mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (French Translation 2006-12-23)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4kinds,      mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Komorebi 2022-05-20)(Neo SD)", MACHINE_SUPPORTS_SAVE )
@@ -40224,7 +40286,7 @@ GAME( 2015, mslug5fnds,       mslug5,   neogeo_noslot, mslug5w,    neogeo_state,
 GAME( 2006, mslug5frnds,      mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (French Translation 2006-09-26)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug5scnds,      mslug5,   neogeo_noslot, mslug5cq,   neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Survival 2023-06-12)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug5wnds,       mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (New Battle 2015-02-27)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslugxchuanqinds, mslugx,   neogeo_noslot, mslugxcqi,  neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Legendary Firepower Showdown 5.0 2024-12-23)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugxchuanqinds, mslugx,   neogeo_noslot, mslugxcqi,  neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Legendary Firepower Showdown 5.0 2025-02-13)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugxcqnds,      mslugx,   neogeo_noslot, mslugxcq,   neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Legendary 4.5 2024-06-13)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxddnds,      mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Starlight 2022-08-10)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2006, mslugxfrnds,      mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (French Translation 2006-09-26)(Neo SD)", MACHINE_SUPPORTS_SAVE )
@@ -40238,8 +40300,11 @@ GAME( 2019, mslug31v2,        mslug3,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2014, mslug3eb,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Green Blue 2014-10-15)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2018, mslug3sd,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Shop 2017-12-17)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2023, mslug3sc,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Survival 2023-03-01)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
-GAME( 2024, mslug3cq,         mslug3,   neogeo_noslot, mslug3cq,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Legendary 4.5 2024-06-12)(Encrypted C)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
-GAME( 2024, mslug3chuanqi,    mslug3,   neogeo_noslot, mslug3cqi,  neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Legendary Firepower Showdown 4.0 2024-06-21)(Encrypted C)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2024, mslug3cq,         mslug3,   neogeo_noslot, mslug3cq,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Legendary 4.5 2024-06-12)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2024, mslug3chuanqi,    mslug3,   neogeo_noslot, mslug3cqi,  neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Legendary Firepower Showdown 4.0 2024-06-21)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+//GAME( 2025, mslug3cqtfb,      mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Legendary Tower Defense 5.0 2025-02-13)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+//GAME( 2024, mslug3cqzt,       mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Legendary Journey 2024-11-13)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+//GAME( 2024, mslug3dbplus,     mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Double Enemy 2024-11-20)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2019, mslug3c,          mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Enemies Resetting 2019-07-20)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2004, mslug3fr,         mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (French Translation 2003-07-29)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2019, mslug3g,          mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Multifunction 2019-03-05)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
@@ -40258,11 +40323,12 @@ GAME( 2023, mslug4ammor,      mslug4,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2023, mslug4lwq,        mslug4,   neogeo_noslot, mslug4lw,   neogeo_state,    init_mslug4lw,   ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix - Without Body Armor 2023-02-25)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2022, mslug4dde,        mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Starlight 2022-10-05)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2022, mslug4ki,         mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Komorebi 2022-05-11)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
+GAME( 2025, mslug4cqi,        mslug4,   neogeo_noslot, mslug4cqi,  neogeo_state,    init_mslug4lw,   ROT0, "hack",            "Metal Slug 4 (Legendary Firepower Showdown 5.0 2025-02-13)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2016, mslug5f,          mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Fierce Battle 2015-03-25)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2015, mslug5w,          mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (New Battle 2015-03-27)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2021, mslug5unity,      mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Unity Time! 2021-04-23)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2023, mslug5sc,         mslug5,   neogeo_noslot, mslug5cq,   neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Survival 2023-06-12)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-GAME( 2024, mslug5cq,         mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Legendary 2.0 2024-05-02)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
+GAME( 2024, mslug5cq,         mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (Legendary 4.0 2024-12-25)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2016, mslug5l9a,        mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_s1945p,     ROT0, "hack",            "Metal Slug 5 (New Battle 2015-03-27)(GFX Strikers 1945 Plus)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslug5l9b,        mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_s1945p,     ROT0, "hack",            "Metal Slug 5 (Fierce Battle 2015-03-25)(GFX Strikers 1945 Plus)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3xe,         mslug3x,  neogeo_noslot, neogeo,     neogeo_state,    init_mslug5hb,   ROT0, "CB, Willnie",     "Metal Slug HomeBrew (Mothership Armageddon Easter Egg Beta 2022-01-10)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */

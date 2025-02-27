@@ -15,7 +15,7 @@ for the 86/64 bit cpu of the compatible microprocessors.
 Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use Or Using The Project For A Fundraising Fundraiser.
 
 ===============================================================================================================================
-2025-XX-XX
+2025-03-XX
 
 - Updated Roms Metal Slug X (Legendary Firepower Showdown 5.0 2025-02-13)
 - Updated Roms Metal Slug 3 (Legendary Tower Defense 5.0 2025-02-13)

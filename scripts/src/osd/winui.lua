@@ -30,7 +30,7 @@ function maintargetosdoptions(_target,_subtarget)
 		}
 
 	configuration { "x64", "Release" }
-		targetname "PSMSlugForever64x"
+		targetname "PSMSlugForever"
 
 	configuration { "x32", "Release" }
 		targetname "PSMSlugForever32x"
