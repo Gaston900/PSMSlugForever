@@ -308,6 +308,7 @@ public:
 	u16 m_cartridge_ram[0x1000];
 
 	void mslug5_decrypt_68k(u8* rom, u32 size);
+	void mslug5nd_decrypt_68k(u8* rom, u32 size);
 	void svc_px_decrypt(u8* rom, u32 size);
 	void kf2k3pcb_decrypt_68k(u8* rom, u32 size);
 	void kof2003_decrypt_68k(u8* rom, u32 size);

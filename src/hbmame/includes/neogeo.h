@@ -118,6 +118,7 @@ public:
 	void init_mslug5dd();
 	void init_mslug5dde();
 	void init_mslug5ddh();
+	void init_mslug5nd();
 	void init_mslug5hb();
 	void init_mslugx();
 	void init_mslugxdd();

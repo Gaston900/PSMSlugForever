@@ -2012,6 +2012,48 @@ void neogeo_state::init_mslug5e()
 	m_pvc_prot->install_pvc_protection(m_maincpu, m_banked_cart);
 }
 
+void neogeo_state::init_mslug5nd()
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 2; // for those sets with 512k of s1
+
+	// decrypt p roms if needed
+	u8 *ram = memregion("maincpu")->base();
+	if (ram[0x100] != 0x45)
+	{
+		//printf("Maincpu=%X\n",ram[0x100]);fflush(stdout);
+		m_pvc_prot->mslug5nd_decrypt_68k(cpuregion, cpuregion_size);
+	}
+
+	// decrypt m1 if needed
+	if (memregion("audiocrypt"))
+		m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region, audio_region_size);
+
+	// decrypt v roms if needed
+	ram = memregion("ymsnd")->base();
+	if (ram[0x60] != 0x82)
+	{
+		//printf("ym=%X\n",ram[0x60]);
+		m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 2);
+	}
+
+	// decrypt c roms if needed
+	ram = memregion("sprites")->base();
+	if (ram[0] != 0)
+	{
+		//printf("Sprites=%X\n",ram[0]);
+		m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG5_GFX_KEY);
+	}
+
+	// if no s rom, copy info from end of c roms
+	ram = memregion("fixed")->base();
+	if (ram[0x100] == 0)
+	{
+		//printf("Fixed1=%X\n",ram[0x100]);
+		m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+	}
+}
+
 void neogeo_state::init_mslug5hb()
 {
 	init_neogeo();
@@ -29629,6 +29671,17 @@ ROM_START( mslug5nd )
 	MSLUG5ND_SPRITES
 ROM_END
 
+ROM_START( mslug5end )
+	ROM_REGION( 0xa00000, "maincpu", 0 )
+	ROM_LOAD32_WORD_SWAP( "268end.p1", 0x000000, 0x400000, CRC(23c4f6a9) SHA1(6b942688dc021dfa24b2137c9a35ebf74cb440cd) )
+	ROM_LOAD32_WORD_SWAP( "268end.p2", 0x000002, 0x400000, CRC(04ed7883) SHA1(340c7ef17cfc6a896df7a3c787dced7bc2827226) )
+    MSLUG5_ESSENTIALPATCH_MODS_FILL
+	MSLUG5ND_SFIX_128K
+    MSLUG5ND_AUDIO_128K
+	MSLUG5_YMSND
+	MSLUG5ND_SPRITES
+ROM_END
+
 /* Decrypt P Roms mslug5b2 */
 ROM_START( mslug5nde )
     ROM_REGION( 0x600000, "maincpu", 0 )
@@ -40170,6 +40223,7 @@ GAME( 2003, mslug5hd,         mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,
 GAME( 2003, mslug5e,          mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "SNK Playmore",    "Metal Slug 5 (NGM-2680)(Earlier)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5n,          mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "SNK Playmore",    "Metal Slug 5 (Decrypted C & V)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5nd,         mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "SNK Playmore",    "Metal Slug 5 (Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, mslug5end,        mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5nd,   ROT0, "SNK Playmore",    "Metal Slug 5 (Fully Decrypted)(Encrypted P)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5nde,        mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5e,    ROT0, "SNK Playmore",    "Metal Slug 5 (Fully Decrypted)(Predecrypted / Set 1)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5nde1,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "SNK Playmore",    "Metal Slug 5 (Fully Decrypted)(Predecrypted / Set 2)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5nde2,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "SNK Playmore",    "Metal Slug 5 (Fully Decrypted)(Predecrypted / Set 3)", MACHINE_SUPPORTS_SAVE )
