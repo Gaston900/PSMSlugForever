@@ -96,7 +96,6 @@ public:
 	void init_darksoft();
 	void init_neogeo();
 	void init_ms5plusd();
-	void init_ms5pluse();	
 	void init_ms5plush();
 	void init_ms5plusdd();
 	void init_ms5plushb();

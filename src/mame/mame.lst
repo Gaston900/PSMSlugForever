@@ -59,6 +59,7 @@ mslug5end         // SNK Playmore
 mslug5nde         // SNK Playmore
 mslug5nde1        // SNK Playmore
 mslug5nde2        // SNK Playmore
+mslug5eb2         // Bootleg
 mslug5b2          // Bootleg
 mslug5b3          // Bootleg
 mslug5b4          // Bootleg
@@ -214,13 +215,29 @@ mslug4lwq         // Hack Encrypted GFX (Documentation)
 mslug4dde         // Hack Encrypted GFX (Documentation)
 mslug4ki          // Hack Encrypted GFX (Documentation)
 mslug4cqi         // Hack Encrypted GFX (Documentation)
+mslug51v2         // Hack Encrypted GFX (Documentation)
+mslug5ae          // Hack Encrypted GFX (Documentation)
+mslug5bs          // Hack Encrypted GFX (Documentation)
+mslug5burt        // Hack Encrypted GFX (Documentation)
+mslug5ddd         // Hack Encrypted GFX (Documentation)
+mslug5db          // Hack Encrypted GFX (Documentation)
+mslug5c           // Hack Encrypted GFX (Documentation)
+mslug5esr         // Hack Encrypted GFX (Documentation)
+mslug5ex          // Hack Encrypted GFX (Documentation)
 mslug5f           // Hack Encrypted GFX (Documentation)
+mslug5g           // Hack Encrypted GFX (Documentation)
 mslug5w           // Hack Encrypted GFX (Documentation)
 mslug5unity       // Hack Encrypted GFX (Documentation)
 mslug5sc          // Hack Encrypted GFX (Documentation)
+mslug5sg          // Hack Encrypted GFX (Documentation)
 mslug5cq          // Hack Encrypted GFX (Documentation)
+mslug5ki          // Hack Encrypted GFX (Documentation)
 mslug5l9a         // Hack Encrypted GFX (Documentation)
 mslug5l9b         // Hack Encrypted GFX (Documentation)
+mslug5mg          // Hack Encrypted GFX (Documentation)
+mslug5rmk         // Hack Encrypted GFX (Documentation)
+mslug5x           // Hack Encrypted GFX (Documentation)
+mslug5zh          // Hack Encrypted GFX (Documentation)
 mslug3xe          // Hack Encrypted GFX (Documentation)
 
 @source:neogeo.cpp
