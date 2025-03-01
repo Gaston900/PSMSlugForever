@@ -2441,7 +2441,7 @@ void pvc_prot_device::mslug5nd_decrypt_68k(u8* rom, u32 size)
 	}
 
 	memcpy( &buf[0], rom, rom_size );
-	memcpy( &rom[ 0x100000 ], &buf[ 0x700000 ], 0x100000 );
+	memcpy( &rom[ 0x200000 ], &buf[ 0x700000 ], 0x100000 );
 	memcpy( &rom[ 0x200000 ], &buf[ 0x200000 ], 0x600000 );
 }
 
