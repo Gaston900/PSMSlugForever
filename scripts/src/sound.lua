@@ -26,19 +26,19 @@ files {
 --@src/devices/sound/beep.h,SOUNDS["BEEP"] = true
 ---------------------------------------------------
 
-if (SOUNDS["DAC"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/sound/dac.cpp",
-		MAME_DIR .. "src/devices/sound/dac.h",
-	}
-end
+--if (SOUNDS["DAC"]~=null) then
+--	files {
+--		MAME_DIR .. "src/devices/sound/dac.cpp",
+--		MAME_DIR .. "src/devices/sound/dac.h",
+--	}
+--end
 
-if (SOUNDS["DMADAC"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/sound/dmadac.cpp",
-		MAME_DIR .. "src/devices/sound/dmadac.h",
-	}
-end
+--if (SOUNDS["DMADAC"]~=null) then
+--	files {
+--		MAME_DIR .. "src/devices/sound/dmadac.cpp",
+--		MAME_DIR .. "src/devices/sound/dmadac.h",
+--	}
+--end
 
 if (SOUNDS["SPEAKER"]~=null) then
 	files {
@@ -47,12 +47,12 @@ if (SOUNDS["SPEAKER"]~=null) then
 	}
 end
 
-if (SOUNDS["BEEP"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/sound/beep.cpp",
-		MAME_DIR .. "src/devices/sound/beep.h",
-	}
-end
+--if (SOUNDS["BEEP"]~=null) then
+--	files {
+--		MAME_DIR .. "src/devices/sound/beep.cpp",
+--		MAME_DIR .. "src/devices/sound/beep.h",
+--	}
+--end
 
 ---------------------------------------------------
 -- Yamaha FM synthesizers
@@ -71,19 +71,19 @@ end
 --@src/devices/sound/262intf.h,SOUNDS["YMF262"] = true
 ---------------------------------------------------
 
-if (SOUNDS["YM2151"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/sound/ym2151.cpp",
-		MAME_DIR .. "src/devices/sound/ym2151.h",
-	}
-end
+--if (SOUNDS["YM2151"]~=null) then
+--	files {
+--		MAME_DIR .. "src/devices/sound/ym2151.cpp",
+--		MAME_DIR .. "src/devices/sound/ym2151.h",
+--	}
+--end
 
-if (SOUNDS["YM2413"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/sound/ym2413.cpp",
-		MAME_DIR .. "src/devices/sound/ym2413.h",
-	}
-end
+--if (SOUNDS["YM2413"]~=null) then
+--	files {
+--		MAME_DIR .. "src/devices/sound/ym2413.cpp",
+--		MAME_DIR .. "src/devices/sound/ym2413.h",
+--	}
+--end
 
 if (SOUNDS["YM2203"]~=null or SOUNDS["YM2608"]~=null or SOUNDS["YM2610"]~=null or SOUNDS["YM2610B"]~=null or SOUNDS["YM2612"]~=null or SOUNDS["YM3438"]~=null) then
 --if (SOUNDS["YM2203"]~=null) then
@@ -135,60 +135,60 @@ if (SOUNDS["YM2203"]~=null or SOUNDS["YM2608"]~=null or SOUNDS["YM2610"]~=null o
 --end
 end
 
-if (SOUNDS["YM3812"]~=null or SOUNDS["YM3526"]~=null or SOUNDS["Y8950"]~=null) then
+--if (SOUNDS["YM3812"]~=null or SOUNDS["YM3526"]~=null or SOUNDS["Y8950"]~=null) then
 --if (SOUNDS["YM3812"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/sound/3812intf.cpp",
-		MAME_DIR .. "src/devices/sound/3812intf.h",
-		MAME_DIR .. "src/devices/sound/fmopl.cpp",
-		MAME_DIR .. "src/devices/sound/fmopl.h",
-		MAME_DIR .. "src/devices/sound/ymdeltat.cpp",
-		MAME_DIR .. "src/devices/sound/ymdeltat.h",
-	}
+--	files {
+--		MAME_DIR .. "src/devices/sound/3812intf.cpp",
+--		MAME_DIR .. "src/devices/sound/3812intf.h",
+--		MAME_DIR .. "src/devices/sound/fmopl.cpp",
+--		MAME_DIR .. "src/devices/sound/fmopl.h",
+--		MAME_DIR .. "src/devices/sound/ymdeltat.cpp",
+--		MAME_DIR .. "src/devices/sound/ymdeltat.h",
+--	}
 --end
 
 --if (SOUNDS["YM3526"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/sound/3526intf.cpp",
-		MAME_DIR .. "src/devices/sound/3526intf.h",
-		MAME_DIR .. "src/devices/sound/fmopl.cpp",
-		MAME_DIR .. "src/devices/sound/fmopl.h",
-		MAME_DIR .. "src/devices/sound/ymdeltat.cpp",
-		MAME_DIR .. "src/devices/sound/ymdeltat.h",
-	}
+--	files {
+--		MAME_DIR .. "src/devices/sound/3526intf.cpp",
+--		MAME_DIR .. "src/devices/sound/3526intf.h",
+--		MAME_DIR .. "src/devices/sound/fmopl.cpp",
+--		MAME_DIR .. "src/devices/sound/fmopl.h",
+--		MAME_DIR .. "src/devices/sound/ymdeltat.cpp",
+--		MAME_DIR .. "src/devices/sound/ymdeltat.h",
+--	}
 --end
 
 --if (SOUNDS["Y8950"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/sound/8950intf.cpp",
-		MAME_DIR .. "src/devices/sound/8950intf.h",
-		MAME_DIR .. "src/devices/sound/fmopl.cpp",
-		MAME_DIR .. "src/devices/sound/fmopl.h",
-		MAME_DIR .. "src/devices/sound/ymdeltat.cpp",
-		MAME_DIR .. "src/devices/sound/ymdeltat.h",
-	}
+--	files {
+--		MAME_DIR .. "src/devices/sound/8950intf.cpp",
+--		MAME_DIR .. "src/devices/sound/8950intf.h",
+--		MAME_DIR .. "src/devices/sound/fmopl.cpp",
+--		MAME_DIR .. "src/devices/sound/fmopl.h",
+--		MAME_DIR .. "src/devices/sound/ymdeltat.cpp",
+--		MAME_DIR .. "src/devices/sound/ymdeltat.h",
+--	}
 --end
-end
+--end
 
-if (SOUNDS["YMF262"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/sound/ymf262.cpp",
-		MAME_DIR .. "src/devices/sound/ymf262.h",
-		MAME_DIR .. "src/devices/sound/262intf.cpp",
-		MAME_DIR .. "src/devices/sound/262intf.h",
-	}
-end
+--if (SOUNDS["YMF262"]~=null) then
+--	files {
+--		MAME_DIR .. "src/devices/sound/ymf262.cpp",
+--		MAME_DIR .. "src/devices/sound/ymf262.h",
+--		MAME_DIR .. "src/devices/sound/262intf.cpp",
+--		MAME_DIR .. "src/devices/sound/262intf.h",
+--	}
+--end
 
-if (SOUNDS["YMF271"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/sound/ymf271.cpp",
-		MAME_DIR .. "src/devices/sound/ymf271.h",
-	}
-end
+--if (SOUNDS["YMF271"]~=null) then
+--	files {
+--		MAME_DIR .. "src/devices/sound/ymf271.cpp",
+--		MAME_DIR .. "src/devices/sound/ymf271.h",
+--	}
+--end
 
-if (SOUNDS["YMF278B"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/sound/ymf278b.cpp",
-		MAME_DIR .. "src/devices/sound/ymf278b.h",
-	}
-end
+--if (SOUNDS["YMF278B"]~=null) then
+--	files {
+--		MAME_DIR .. "src/devices/sound/ymf278b.cpp",
+--		MAME_DIR .. "src/devices/sound/ymf278b.h",
+--	}
+--end

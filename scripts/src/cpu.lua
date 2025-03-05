@@ -25,28 +25,28 @@ end
 
 if (CPU_INCLUDE_DRC) then
 	files {
-		MAME_DIR .. "src/devices/cpu/drcbec.cpp",
-		MAME_DIR .. "src/devices/cpu/drcbec.h",
-		MAME_DIR .. "src/devices/cpu/drcbeut.cpp",
-		MAME_DIR .. "src/devices/cpu/drcbeut.h",
-		MAME_DIR .. "src/devices/cpu/drccache.cpp",
-		MAME_DIR .. "src/devices/cpu/drccache.h",
-		MAME_DIR .. "src/devices/cpu/drcfe.cpp",
-		MAME_DIR .. "src/devices/cpu/drcfe.h",
-		MAME_DIR .. "src/devices/cpu/drcuml.cpp",
-		MAME_DIR .. "src/devices/cpu/drcuml.h",
-		MAME_DIR .. "src/devices/cpu/uml.cpp",
-		MAME_DIR .. "src/devices/cpu/uml.h",
-		MAME_DIR .. "src/devices/cpu/x86log.cpp",
-		MAME_DIR .. "src/devices/cpu/x86log.h",
-		MAME_DIR .. "src/devices/cpu/drcumlsh.h",
+--		MAME_DIR .. "src/devices/cpu/drcbec.cpp",
+--		MAME_DIR .. "src/devices/cpu/drcbec.h",
+--		MAME_DIR .. "src/devices/cpu/drcbeut.cpp",
+--		MAME_DIR .. "src/devices/cpu/drcbeut.h",
+--		MAME_DIR .. "src/devices/cpu/drccache.cpp",
+--		MAME_DIR .. "src/devices/cpu/drccache.h",
+--		MAME_DIR .. "src/devices/cpu/drcfe.cpp",
+--		MAME_DIR .. "src/devices/cpu/drcfe.h",
+--		MAME_DIR .. "src/devices/cpu/drcuml.cpp",
+--		MAME_DIR .. "src/devices/cpu/drcuml.h",
+--		MAME_DIR .. "src/devices/cpu/uml.cpp",
+--		MAME_DIR .. "src/devices/cpu/uml.h",
+--		MAME_DIR .. "src/devices/cpu/x86log.cpp",
+--		MAME_DIR .. "src/devices/cpu/x86log.h",
+--		MAME_DIR .. "src/devices/cpu/drcumlsh.h",
 	}
 	if not _OPTIONS["FORCE_DRC_C_BACKEND"] then
 		files {
-			MAME_DIR .. "src/devices/cpu/drcbex64.cpp",
-			MAME_DIR .. "src/devices/cpu/drcbex64.h",
-			MAME_DIR .. "src/devices/cpu/drcbex86.cpp",
-			MAME_DIR .. "src/devices/cpu/drcbex86.h",
+--			MAME_DIR .. "src/devices/cpu/drcbex64.cpp",
+--			MAME_DIR .. "src/devices/cpu/drcbex64.h",
+--			MAME_DIR .. "src/devices/cpu/drcbex86.cpp",
+--			MAME_DIR .. "src/devices/cpu/drcbex86.h",
 		}
 	end
 end
