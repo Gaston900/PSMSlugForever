@@ -2815,6 +2815,13 @@ INPUT_PORTS_START( mslug3cqi )
     PORT_BIT( 0x2000+0x0200, IP_ACTIVE_LOW, IPT_BUTTON8 ) PORT_NAME("@P1 Lower Star Difficulty Level @Button8") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x2200) PORT_CODE(KEYCODE_E)
 INPUT_PORTS_END
 
+INPUT_PORTS_START( mslug3db )
+	PORT_INCLUDE( neogeohb )
+
+	PORT_MODIFY("DSW")
+	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_NAME("@P1 Enable Weapons Mobile Sattelite @Button4") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8000)
+INPUT_PORTS_END
+
 INPUT_PORTS_START( mslug3hb )
 	PORT_INCLUDE( neogeo )
 
@@ -3061,6 +3068,22 @@ INPUT_PORTS_START( mslug4zh )
 	PORT_BIT( 0x00020002, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_PLAYER(2)PORT_NAME("@P2 Spawner Tank @Button6") PORT_CONDITION("AUDIO/COIN", 0x00020002, EQUALS, 0x00020002) PORT_CODE(KEYCODE_Q)
 INPUT_PORTS_END
 
+INPUT_PORTS_START( mslug5boss )
+	PORT_INCLUDE( neogeohb )
+
+	PORT_MODIFY("DSW")
+	PORT_BIT( 0xB100, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_NAME("@P1 Will Come Help You Hyakutaro And Aquiles @Button6") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0xB100) PORT_CODE(KEYCODE_W)
+    PORT_BIT( 0xB400, IP_ACTIVE_LOW, IPT_BUTTON7 ) PORT_NAME("@P1 Enable Normal Mode @Button7") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0xB400) PORT_CODE(KEYCODE_E)
+    PORT_BIT( 0xB200, IP_ACTIVE_LOW, IPT_BUTTON8 ) PORT_NAME("@P1 Enable ????? Mode @Button8") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0xB200) PORT_CODE(KEYCODE_R)
+	PORT_BIT( 0xB800, IP_ACTIVE_LOW, IPT_BUTTON9 ) PORT_NAME("@P1 Disable Normal Mode @Button9") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0xB800) PORT_CODE(KEYCODE_T)
+//	PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_BUTTON10 ) PORT_NAME("@P1 Disable Sliding Open @Button10") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x2000) PORT_CODE(KEYCODE_Y)
+
+//	PORT_MODIFY("SYSTEM")
+//	PORT_BIT( 0x0010, IP_ACTIVE_LOW, IPT_CUSTOM )  PORT_CONDITION("SYSTEM", 0x0110, NOTEQUALS, 0x0010)
+//	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_START1 )  PORT_CONDITION("SYSTEM", 0x0110, NOTEQUALS, 0x0100)
+//	PORT_BIT( 0x0110, IP_ACTIVE_LOW, IPT_BUTTON10 ) PORT_NAME("@P1 Disable Sliding Open @Button10") PORT_CONDITION("SYSTEM", 0x0110, EQUALS, 0x0110) PORT_CODE(KEYCODE_Y)
+INPUT_PORTS_END
+
 INPUT_PORTS_START( mslug5es )
 	PORT_INCLUDE( mslug5vh )
 
@@ -3081,6 +3104,18 @@ INPUT_PORTS_START( mslug5sc )
 
 	PORT_MODIFY("P2")
 	PORT_BIT( 0x3000, IP_ACTIVE_LOW, IPT_BUTTON5 ) PORT_PLAYER(2) PORT_NAME("@P2 Vehicle Self-Destruct! @Button5") PORT_CONDITION("P2", 0xF000, NOTEQUALS, 0x3000) PORT_CODE(KEYCODE_Q)
+INPUT_PORTS_END
+
+INPUT_PORTS_START( mslug5sg )
+	PORT_INCLUDE( mslug5sc )
+
+	PORT_MODIFY("DSW")
+	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_NAME("@P1 Enable Random Mode @Button6") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8000) PORT_CODE(KEYCODE_W)
+
+	PORT_MODIFY("SYSTEM")
+	PORT_BIT( 0x0010, IP_ACTIVE_LOW, IPT_CUSTOM )  PORT_CONDITION("SYSTEM", 0x0110, NOTEQUALS, 0x0010)
+	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_START1 )  PORT_CONDITION("SYSTEM", 0x0110, NOTEQUALS, 0x0100)
+	PORT_BIT( 0x0110, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_NAME("@P1 Enable Random Mode @Button6") PORT_CONDITION("SYSTEM", 0x0110, EQUALS, 0x0110) PORT_CODE(KEYCODE_W)
 INPUT_PORTS_END
 
 INPUT_PORTS_START( mslug5cq )
@@ -3105,10 +3140,16 @@ INPUT_PORTS_START( mslug5cqi )
 	PORT_DIPNAME( 0x40, 0x40, DEF_STR( Free_Play ) ) PORT_DIPLOCATION("SW:7")
 	PORT_DIPSETTING(    0x40, DEF_STR( Off ) )
 	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
-	PORT_BIT( 0x2000+0x8000, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_NAME("@P1 Enable Items Random Mode @Button6") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0xA000) PORT_CODE(KEYCODE_W)
+	PORT_BIT( 0x2000+0x8000, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_NAME("@P1 Enable Enemy Random Mode @Button6") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0xA000) PORT_CODE(KEYCODE_W)
     PORT_BIT( 0x2000+0x0100, IP_ACTIVE_LOW, IPT_BUTTON7 ) PORT_NAME("@P1 Increase Star Difficulty Level @Button7") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x2100) PORT_CODE(KEYCODE_E)
     PORT_BIT( 0x2000+0x0200, IP_ACTIVE_LOW, IPT_BUTTON8 ) PORT_NAME("@P1 Lower Star Difficulty Level @Button8") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x2200) PORT_CODE(KEYCODE_R)
     PORT_BIT( 0x1000+0x2000+0x4000, IP_ACTIVE_LOW, IPT_BUTTON9 ) PORT_NAME("@P1 Enable Mod LV=X @Button9") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x7000) PORT_CODE(KEYCODE_T)
+//    PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_BUTTON10 ) PORT_NAME("@P1 Disable Sliding Open @Button10") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x2000) PORT_CODE(KEYCODE_Y)
+
+//	PORT_MODIFY("SYSTEM")
+//	PORT_BIT( 0x0010, IP_ACTIVE_LOW, IPT_CUSTOM )  PORT_CONDITION("SYSTEM", 0x0110, NOTEQUALS, 0x0010)
+//	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_START1 )  PORT_CONDITION("SYSTEM", 0x0110, NOTEQUALS, 0x0100)
+//	PORT_BIT( 0x0110, IP_ACTIVE_LOW, IPT_BUTTON10 ) PORT_NAME("@P1 Disable Sliding Open @Button10") PORT_CONDITION("SYSTEM", 0x0110, EQUALS, 0x0110) PORT_CODE(KEYCODE_Y)
 INPUT_PORTS_END
 
 INPUT_PORTS_START( mslug5w )
@@ -3167,6 +3208,19 @@ INPUT_PORTS_START( mslugxsc )
 
 	PORT_MODIFY("P2")
 	PORT_BIT( 0x3000, IP_ACTIVE_LOW, IPT_BUTTON5 ) PORT_PLAYER(2) PORT_NAME("@P2 Vehicle Self-Destruct! @Button5") PORT_CONDITION("P2", 0xF000, NOTEQUALS, 0x3000) PORT_CODE(KEYCODE_Q)
+INPUT_PORTS_END
+
+INPUT_PORTS_START( mslugxdg )
+	PORT_INCLUDE( mslugxsc )
+
+	PORT_MODIFY("DSW")
+    PORT_BIT( 0x8000+0x2000, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_NAME("@P1 Enable Items Random Mode @Button6") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0xA000) PORT_CODE(KEYCODE_W)
+	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON7 ) PORT_NAME("@P1 Enable 1v2 Game Mode @Button7") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x2000) PORT_CODE(KEYCODE_E)
+
+	PORT_MODIFY("SYSTEM")
+	PORT_BIT( 0x0010, IP_ACTIVE_LOW, IPT_CUSTOM )  PORT_CONDITION("SYSTEM", 0x0110, NOTEQUALS, 0x0010)
+	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_START1 )  PORT_CONDITION("SYSTEM", 0x0110, NOTEQUALS, 0x0100)
+	PORT_BIT( 0x0110, IP_ACTIVE_LOW, IPT_BUTTON7 ) PORT_NAME("@P1 Enable 1v2 Game Mode @Button7") PORT_CONDITION("SYSTEM", 0x0110, EQUALS, 0x0110) PORT_CODE(KEYCODE_E)
 INPUT_PORTS_END
 
 INPUT_PORTS_START( mslugxcq )
@@ -27585,142 +27639,244 @@ INPUT_PORTS_END
     ROM_FILL(0x43589,1,0x71)
 
 #define MSLUG5N_SOLDIER_CHANGING_UNIFORM_MODS_FILL \
-    ROM_FILL(0x143C98,1,0x7F)\
-	ROM_FILL(0x143C99,1,0xAD)\
-	ROM_FILL(0x143C9A,1,0x72)\
-    ROM_FILL(0x143C9B,1,0xC8)\
-    ROM_FILL(0x143C9C,1,0x55)\
-    ROM_FILL(0x143C9D,1,0xC0)\
-    ROM_FILL(0x143C9E,1,0x30)\
-    ROM_FILL(0x143C9F,1,0xE0)\
-	ROM_FILL(0x1445D8,1,0x7F)\
-    ROM_FILL(0x1445D9,1,0xAD)\
-    ROM_FILL(0x1445DA,1,0x72)\
-    ROM_FILL(0x1445DB,1,0xC8)\
-	ROM_FILL(0x1445DC,1,0x55)\
-    ROM_FILL(0x1445DD,1,0xC0)\
-	ROM_FILL(0x1445DE,1,0x30)\
-    ROM_FILL(0x1445DF,1,0xE0)\
-	ROM_FILL(0x1446D8,1,0x7F)\
-	ROM_FILL(0x1446D9,1,0xAD)\
-    ROM_FILL(0x1446DA,1,0x72)\
-    ROM_FILL(0x1446DB,1,0xC8)\
-    ROM_FILL(0x1446DC,1,0x55)\
-    ROM_FILL(0x1446DD,1,0xC0)\
-    ROM_FILL(0x1446DE,1,0x30)\
-	ROM_FILL(0x1446DF,1,0xE0)\
-	ROM_FILL(0x144738,1,0x7F)\
-    ROM_FILL(0x144739,1,0xAD)\
-	ROM_FILL(0x14473A,1,0x72)\
-    ROM_FILL(0x14473B,1,0xC8)\
-    ROM_FILL(0x14473C,1,0x55)\
-	ROM_FILL(0x14473D,1,0xC0)\
-	ROM_FILL(0x14473E,1,0x30)\
-    ROM_FILL(0x14473F,1,0xE0)\
-    ROM_FILL(0x144798,1,0x7F)\
-    ROM_FILL(0x144799,1,0xAD)\
-    ROM_FILL(0x14479A,1,0x72)\
-    ROM_FILL(0x14479B,1,0xC8)\
-	ROM_FILL(0x14479C,1,0x55)\
-    ROM_FILL(0x14479D,1,0xC0)\
-    ROM_FILL(0x14479E,1,0x30)\
-    ROM_FILL(0x14479F,1,0xE0)\
-	ROM_FILL(0x144A38,1,0x7F)\
-    ROM_FILL(0x144A39,1,0xAD)\
-	ROM_FILL(0x144A3A,1,0x72)\
-    ROM_FILL(0x144A3B,1,0xC8)\
-	ROM_FILL(0x144A3C,1,0x55)\
-	ROM_FILL(0x144A3D,1,0xC0)\
-    ROM_FILL(0x144A3E,1,0x30)\
-    ROM_FILL(0x144A3F,1,0xE0)\
-    ROM_FILL(0x145C98,1,0x7F)\
-    ROM_FILL(0x145C99,1,0xAD)\
-    ROM_FILL(0x145C9A,1,0x72)\
-	ROM_FILL(0x145C9B,1,0xC8)\
-    ROM_FILL(0x145C9C,1,0x55)\
-	ROM_FILL(0x145C9D,1,0xC0)\
-	ROM_FILL(0x145C9E,1,0x30)\
-    ROM_FILL(0x145C9F,1,0xE0)\
-    ROM_FILL(0x143C78,1,0x7F)\
-	ROM_FILL(0x143C79,1,0xAD)\
-	ROM_FILL(0x143C7A,1,0x72)\
-    ROM_FILL(0x143C7B,1,0xC8)\
-    ROM_FILL(0x143C7C,1,0x55)\
-    ROM_FILL(0x143C7D,1,0xC0)\
-    ROM_FILL(0x143C7E,1,0x30)\
-    ROM_FILL(0x143C7F,1,0xE0)\
-	ROM_FILL(0x144378,1,0x7F)\
-    ROM_FILL(0x144379,1,0xAD)\
-    ROM_FILL(0x14437A,1,0x72)\
-    ROM_FILL(0x14437B,1,0xC8)\
-	ROM_FILL(0x14437C,1,0x55)\
-    ROM_FILL(0x14437D,1,0xC0)\
-	ROM_FILL(0x14437E,1,0x30)\
-    ROM_FILL(0x14437F,1,0xE0)\
-	ROM_FILL(0x1447B8,1,0x7F)\
-	ROM_FILL(0x1447B9,1,0xAD)\
-    ROM_FILL(0x1447BA,1,0x72)\
-    ROM_FILL(0x1447BB,1,0xC8)\
-    ROM_FILL(0x1447BC,1,0x55)\
-    ROM_FILL(0x1447BD,1,0xC0)\
-    ROM_FILL(0x1447BE,1,0x30)\
-	ROM_FILL(0x1447BF,1,0xE0)\
-	ROM_FILL(0x1447F8,1,0x7F)\
-    ROM_FILL(0x1447F9,1,0xAD)\
-	ROM_FILL(0x1447FA,1,0x72)\
-    ROM_FILL(0x1447FB,1,0xC8)\
-    ROM_FILL(0x1447FC,1,0x55)\
-	ROM_FILL(0x1447FD,1,0xC0)\
-	ROM_FILL(0x1447FE,1,0x30)\
-    ROM_FILL(0x1447FF,1,0xE0)\
-    ROM_FILL(0x144818,1,0x7F)\
-    ROM_FILL(0x144819,1,0xAD)\
-    ROM_FILL(0x14481A,1,0x72)\
-    ROM_FILL(0x14481B,1,0xC8)\
-	ROM_FILL(0x14481C,1,0x55)\
-    ROM_FILL(0x14481D,1,0xC0)\
-    ROM_FILL(0x14481E,1,0x30)\
-    ROM_FILL(0x14481F,1,0xE0)\
-	ROM_FILL(0x144838,1,0x7F)\
-    ROM_FILL(0x144839,1,0xAD)\
-	ROM_FILL(0x14483A,1,0x72)\
-    ROM_FILL(0x14483B,1,0xC8)\
-	ROM_FILL(0x14483C,1,0x55)\
-	ROM_FILL(0x14483D,1,0xC0)\
-    ROM_FILL(0x14483E,1,0x30)\
-    ROM_FILL(0x14483F,1,0xE0)\
-    ROM_FILL(0x144858,1,0x7F)\
-    ROM_FILL(0x144859,1,0xAD)\
-    ROM_FILL(0x14485A,1,0x72)\
-	ROM_FILL(0x14485B,1,0xC8)\
-    ROM_FILL(0x14485C,1,0x55)\
-	ROM_FILL(0x14485D,1,0xC0)\
-	ROM_FILL(0x14485E,1,0x30)\
-    ROM_FILL(0x14485F,1,0xE0)\
-	ROM_FILL(0x144D18,1,0x7F)\
-    ROM_FILL(0x144D19,1,0xAD)\
-	ROM_FILL(0x144D1A,1,0x72)\
-    ROM_FILL(0x144D1B,1,0xC8)\
-	ROM_FILL(0x144D1C,1,0x55)\
-	ROM_FILL(0x144D1D,1,0xC0)\
-    ROM_FILL(0x144D1E,1,0x30)\
-    ROM_FILL(0x144D1F,1,0xE0)\
-    ROM_FILL(0x1455D8,1,0x7F)\
-    ROM_FILL(0x1455D9,1,0xAD)\
-    ROM_FILL(0x1455DA,1,0x72)\
-	ROM_FILL(0x1455DB,1,0xC8)\
-    ROM_FILL(0x1455DC,1,0x55)\
-	ROM_FILL(0x1455DD,1,0xC0)\
-	ROM_FILL(0x1455DE,1,0x30)\
-    ROM_FILL(0x1455DF,1,0xE0)\
-    ROM_FILL(0x132E98,1,0x7F)\
-    ROM_FILL(0x132E99,1,0xAD)\
-    ROM_FILL(0x132E9A,1,0x72)\
-	ROM_FILL(0x132E9B,1,0xC8)\
-    ROM_FILL(0x132E9C,1,0x55)\
-	ROM_FILL(0x132E9D,1,0xC0)\
-	ROM_FILL(0x132E9E,1,0x30)\
-    ROM_FILL(0x132E9F,1,0xE0)
+    ROM_FILL(0x143C92,1,0x5A)\
+    ROM_FILL(0x143C93,1,0xD6)\
+    ROM_FILL(0x143C94,1,0x7F)\
+    ROM_FILL(0x143C95,1,0xFD)\
+    ROM_FILL(0x143C96,1,0x7F)\
+	ROM_FILL(0x143C97,1,0xAD)\
+	ROM_FILL(0x143C98,1,0x72)\
+    ROM_FILL(0x143C99,1,0xC8)\
+    ROM_FILL(0x143C9A,1,0x55)\
+    ROM_FILL(0x143C9B,1,0xC0)\
+    ROM_FILL(0x143C9C,1,0x30)\
+    ROM_FILL(0x143C9D,1,0xE0)\
+    ROM_FILL(0x143C9E,1,0x10)\
+    ROM_FILL(0x143C9F,1,0x60)\
+    ROM_FILL(0x1445D2,1,0x5A)\
+    ROM_FILL(0x1445D3,1,0xD6)\
+    ROM_FILL(0x1445D4,1,0x7F)\
+    ROM_FILL(0x1445D5,1,0xFD)\
+	ROM_FILL(0x1445D6,1,0x7F)\
+    ROM_FILL(0x1445D7,1,0xAD)\
+    ROM_FILL(0x1445D8,1,0x72)\
+    ROM_FILL(0x1445D9,1,0xC8)\
+	ROM_FILL(0x1445DA,1,0x55)\
+    ROM_FILL(0x1445DB,1,0xC0)\
+	ROM_FILL(0x1445DC,1,0x30)\
+    ROM_FILL(0x1445DD,1,0xE0)\
+    ROM_FILL(0x1445DE,1,0x10)\
+    ROM_FILL(0x1445DF,1,0x60)\
+    ROM_FILL(0x1446D2,1,0x5A)\
+    ROM_FILL(0x1446D3,1,0xD6)\
+    ROM_FILL(0x1446D4,1,0x7F)\
+    ROM_FILL(0x1446D5,1,0xFD)\
+	ROM_FILL(0x1446D6,1,0x7F)\
+	ROM_FILL(0x1446D7,1,0xAD)\
+    ROM_FILL(0x1446D8,1,0x72)\
+    ROM_FILL(0x1446D9,1,0xC8)\
+    ROM_FILL(0x1446DA,1,0x55)\
+    ROM_FILL(0x1446DB,1,0xC0)\
+    ROM_FILL(0x1446DC,1,0x30)\
+	ROM_FILL(0x1446DD,1,0xE0)\
+    ROM_FILL(0x1446DE,1,0x10)\
+    ROM_FILL(0x1446DF,1,0x60)\
+    ROM_FILL(0x144732,1,0x5A)\
+    ROM_FILL(0x144733,1,0xD6)\
+    ROM_FILL(0x144734,1,0x7F)\
+    ROM_FILL(0x144735,1,0xFD)\
+	ROM_FILL(0x144736,1,0x7F)\
+    ROM_FILL(0x144737,1,0xAD)\
+	ROM_FILL(0x144738,1,0x72)\
+    ROM_FILL(0x144739,1,0xC8)\
+    ROM_FILL(0x14473A,1,0x55)\
+	ROM_FILL(0x14473B,1,0xC0)\
+	ROM_FILL(0x14473C,1,0x30)\
+    ROM_FILL(0x14473D,1,0xE0)\
+    ROM_FILL(0x14473E,1,0x10)\
+    ROM_FILL(0x14473F,1,0x60)\
+    ROM_FILL(0x144792,1,0x5A)\
+    ROM_FILL(0x144793,1,0xD6)\
+    ROM_FILL(0x144794,1,0x7F)\
+    ROM_FILL(0x144795,1,0xFD)\
+	ROM_FILL(0x144796,1,0x7F)\
+    ROM_FILL(0x144797,1,0xAD)\
+    ROM_FILL(0x144798,1,0x72)\
+    ROM_FILL(0x144799,1,0xC8)\
+	ROM_FILL(0x14479A,1,0x55)\
+    ROM_FILL(0x14479B,1,0xC0)\
+    ROM_FILL(0x14479C,1,0x30)\
+    ROM_FILL(0x14479D,1,0xE0)\
+    ROM_FILL(0x14479E,1,0x10)\
+    ROM_FILL(0x14479F,1,0x60)\
+    ROM_FILL(0x144A32,1,0x5A)\
+    ROM_FILL(0x144A33,1,0xD6)\
+    ROM_FILL(0x144A34,1,0x7F)\
+    ROM_FILL(0x144A35,1,0xFD)\
+	ROM_FILL(0x144A36,1,0x7F)\
+    ROM_FILL(0x144A37,1,0xAD)\
+	ROM_FILL(0x144A38,1,0x72)\
+    ROM_FILL(0x144A39,1,0xC8)\
+	ROM_FILL(0x144A3A,1,0x55)\
+	ROM_FILL(0x144A3B,1,0xC0)\
+    ROM_FILL(0x144A3C,1,0x30)\
+    ROM_FILL(0x144A3D,1,0xE0)\
+    ROM_FILL(0x144A3E,1,0x10)\
+    ROM_FILL(0x144A3F,1,0x60)\
+    ROM_FILL(0x145C92,1,0x5A)\
+    ROM_FILL(0x145C93,1,0xD6)\
+    ROM_FILL(0x145C94,1,0x7F)\
+    ROM_FILL(0x145C95,1,0xFD)\
+	ROM_FILL(0x145C96,1,0x7F)\
+    ROM_FILL(0x145C97,1,0xAD)\
+    ROM_FILL(0x145C98,1,0x72)\
+	ROM_FILL(0x145C99,1,0xC8)\
+    ROM_FILL(0x145C9A,1,0x55)\
+	ROM_FILL(0x145C9B,1,0xC0)\
+	ROM_FILL(0x145C9C,1,0x30)\
+    ROM_FILL(0x145C9D,1,0xE0)\
+    ROM_FILL(0x145C9E,1,0x10)\
+    ROM_FILL(0x145C9F,1,0x60)\
+    ROM_FILL(0x143C72,1,0x5A)\
+    ROM_FILL(0x143C73,1,0xD6)\
+    ROM_FILL(0x143C74,1,0x7F)\
+    ROM_FILL(0x143C75,1,0xFD)\
+	ROM_FILL(0x143C76,1,0x7F)\
+	ROM_FILL(0x143C77,1,0xAD)\
+	ROM_FILL(0x143C78,1,0x72)\
+    ROM_FILL(0x143C79,1,0xC8)\
+    ROM_FILL(0x143C7A,1,0x55)\
+    ROM_FILL(0x143C7B,1,0xC0)\
+    ROM_FILL(0x143C7C,1,0x30)\
+    ROM_FILL(0x143C7D,1,0xE0)\
+    ROM_FILL(0x143C7E,1,0x10)\
+    ROM_FILL(0x143C7F,1,0x60)\
+    ROM_FILL(0x144372,1,0x5A)\
+    ROM_FILL(0x144373,1,0xD6)\
+    ROM_FILL(0x144374,1,0x7F)\
+    ROM_FILL(0x144375,1,0xFD)\
+	ROM_FILL(0x144376,1,0x7F)\
+    ROM_FILL(0x144377,1,0xAD)\
+    ROM_FILL(0x144378,1,0x72)\
+    ROM_FILL(0x144379,1,0xC8)\
+	ROM_FILL(0x14437A,1,0x55)\
+    ROM_FILL(0x14437B,1,0xC0)\
+	ROM_FILL(0x14437C,1,0x30)\
+    ROM_FILL(0x14437D,1,0xE0)\
+    ROM_FILL(0x14437E,1,0x10)\
+    ROM_FILL(0x14437F,1,0x60)\
+    ROM_FILL(0x1447B2,1,0x5A)\
+    ROM_FILL(0x1447B3,1,0xD6)\
+    ROM_FILL(0x1447B4,1,0x7F)\
+    ROM_FILL(0x1447B5,1,0xFD)\
+	ROM_FILL(0x1447B6,1,0x7F)\
+	ROM_FILL(0x1447B7,1,0xAD)\
+    ROM_FILL(0x1447B8,1,0x72)\
+    ROM_FILL(0x1447B9,1,0xC8)\
+    ROM_FILL(0x1447BA,1,0x55)\
+    ROM_FILL(0x1447BB,1,0xC0)\
+    ROM_FILL(0x1447BC,1,0x30)\
+	ROM_FILL(0x1447BD,1,0xE0)\
+    ROM_FILL(0x1447BE,1,0x10)\
+    ROM_FILL(0x1447BF,1,0x60)\
+    ROM_FILL(0x1447F2,1,0x5A)\
+    ROM_FILL(0x1447F3,1,0xD6)\
+    ROM_FILL(0x1447F4,1,0x7F)\
+    ROM_FILL(0x1447F5,1,0xFD)\
+	ROM_FILL(0x1447F6,1,0x7F)\
+    ROM_FILL(0x1447F7,1,0xAD)\
+	ROM_FILL(0x1447F8,1,0x72)\
+    ROM_FILL(0x1447F9,1,0xC8)\
+    ROM_FILL(0x1447FA,1,0x55)\
+	ROM_FILL(0x1447FB,1,0xC0)\
+	ROM_FILL(0x1447FC,1,0x30)\
+    ROM_FILL(0x1447FD,1,0xE0)\
+    ROM_FILL(0x1447FE,1,0x10)\
+    ROM_FILL(0x1447FF,1,0x60)\
+    ROM_FILL(0x144812,1,0x5A)\
+    ROM_FILL(0x144813,1,0xD6)\
+    ROM_FILL(0x144814,1,0x7F)\
+    ROM_FILL(0x144815,1,0xFD)\
+	ROM_FILL(0x144816,1,0x7F)\
+    ROM_FILL(0x144817,1,0xAD)\
+    ROM_FILL(0x144818,1,0x72)\
+    ROM_FILL(0x144819,1,0xC8)\
+	ROM_FILL(0x14481A,1,0x55)\
+    ROM_FILL(0x14481B,1,0xC0)\
+    ROM_FILL(0x14481C,1,0x30)\
+    ROM_FILL(0x14481D,1,0xE0)\
+    ROM_FILL(0x14481E,1,0x10)\
+    ROM_FILL(0x14481F,1,0x60)\
+    ROM_FILL(0x144832,1,0x5A)\
+    ROM_FILL(0x144833,1,0xD6)\
+    ROM_FILL(0x144834,1,0x7F)\
+    ROM_FILL(0x144835,1,0xFD)\
+	ROM_FILL(0x144836,1,0x7F)\
+    ROM_FILL(0x144837,1,0xAD)\
+	ROM_FILL(0x144838,1,0x72)\
+    ROM_FILL(0x144839,1,0xC8)\
+	ROM_FILL(0x14483A,1,0x55)\
+	ROM_FILL(0x14483B,1,0xC0)\
+    ROM_FILL(0x14483C,1,0x30)\
+    ROM_FILL(0x14483D,1,0xE0)\
+    ROM_FILL(0x14483E,1,0x10)\
+    ROM_FILL(0x14483F,1,0x60)\
+    ROM_FILL(0x144852,1,0x5A)\
+    ROM_FILL(0x144853,1,0xD6)\
+    ROM_FILL(0x144854,1,0x7F)\
+    ROM_FILL(0x144855,1,0xFD)\
+	ROM_FILL(0x144856,1,0x7F)\
+    ROM_FILL(0x144857,1,0xAD)\
+    ROM_FILL(0x144858,1,0x72)\
+	ROM_FILL(0x144859,1,0xC8)\
+    ROM_FILL(0x14485A,1,0x55)\
+	ROM_FILL(0x14485B,1,0xC0)\
+	ROM_FILL(0x14485C,1,0x30)\
+    ROM_FILL(0x14485D,1,0xE0)\
+    ROM_FILL(0x14485E,1,0x10)\
+    ROM_FILL(0x14485F,1,0x60)\
+    ROM_FILL(0x144D12,1,0x5A)\
+    ROM_FILL(0x144D13,1,0xD6)\
+    ROM_FILL(0x144D14,1,0x7F)\
+    ROM_FILL(0x144D15,1,0xFD)\
+	ROM_FILL(0x144D16,1,0x7F)\
+    ROM_FILL(0x144D17,1,0xAD)\
+	ROM_FILL(0x144D18,1,0x72)\
+    ROM_FILL(0x144D19,1,0xC8)\
+	ROM_FILL(0x144D1A,1,0x55)\
+	ROM_FILL(0x144D1B,1,0xC0)\
+    ROM_FILL(0x144D1C,1,0x30)\
+    ROM_FILL(0x144D1D,1,0xE0)\
+    ROM_FILL(0x144D1E,1,0x10)\
+    ROM_FILL(0x144D1F,1,0x60)\
+    ROM_FILL(0x1455D2,1,0x5A)\
+    ROM_FILL(0x1455D3,1,0xD6)\
+    ROM_FILL(0x1455D4,1,0x7F)\
+    ROM_FILL(0x1455D5,1,0xFD)\
+	ROM_FILL(0x1455D6,1,0x7F)\
+    ROM_FILL(0x1455D7,1,0xAD)\
+    ROM_FILL(0x1455D8,1,0x72)\
+	ROM_FILL(0x1455D9,1,0xC8)\
+    ROM_FILL(0x1455DA,1,0x55)\
+	ROM_FILL(0x1455DB,1,0xC0)\
+	ROM_FILL(0x1455DC,1,0x30)\
+    ROM_FILL(0x1455DD,1,0xE0)\
+    ROM_FILL(0x1455DE,1,0x10)\
+    ROM_FILL(0x1455DF,1,0x60)\
+    ROM_FILL(0x132E92,1,0x5A)\
+    ROM_FILL(0x132E93,1,0xD6)\
+    ROM_FILL(0x132E94,1,0x7F)\
+    ROM_FILL(0x132E95,1,0xFD)\
+	ROM_FILL(0x132E96,1,0x7F)\
+    ROM_FILL(0x132E97,1,0xAD)\
+    ROM_FILL(0x132E98,1,0x72)\
+	ROM_FILL(0x132E99,1,0xC8)\
+    ROM_FILL(0x132E9A,1,0x55)\
+	ROM_FILL(0x132E9B,1,0xC0)\
+	ROM_FILL(0x132E9C,1,0x30)\
+    ROM_FILL(0x132E9D,1,0xE0)\
+    ROM_FILL(0x132E9E,1,0x10)\
+    ROM_FILL(0x132E9F,1,0x60)
 
 #define MSLUG5ND_SOLDIER_CHANGING_UNIFORM_MODS_FILL \
     ROM_FILL(0x243C92,1,0x5A)\
@@ -43978,7 +44134,7 @@ GAME( 2017, mslug3hc19,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2023, mslug3hc20,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Pigeon Slug 2023-05-07)", MACHINE_SUPPORTS_SAVE ) //Fix Gaston90
 GAME( 2017, mslug3hc21,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "Wanghua123",      "Metal Slug 3 (Slug #1 2017-10-09)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug3hc22,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Slug #2 2019-02-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug3hc23,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Double Enemy 2024-11-20)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug3hc23,       mslug3,   neogeo_noslot, mslug3db,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Double Enemy 2024-11-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug3hc24,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3e,    ROT0, "hack",            "Metal Slug 3 (Unity Time! 2021-02-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug3hc25,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3e,    ROT0, "GOTVG",           "Metal Slug 3 (1v2 Mode 2019-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3hc26,       mslug3,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Starlight 2022-05-11)", MACHINE_SUPPORTS_SAVE )
@@ -44032,8 +44188,8 @@ GAME( 2022, mslug5hc03,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,
 GAME( 2015, mslug5hc04,       mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (New Battle 2015-02-27)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug5hc05,       mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Fierce Battle 2015-04-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug5hc06,       mslug5,   neogeo_noslot, mslug5zh,   neogeo_state,    init_mslug5hb,   ROT0, "hack",            "Metal Slug 5 (War Chariot 2015-05-20)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug5hc07,       mslug5,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Stone Turtle 2024-04-11)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug5hc08,       mslug5,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Boss Battles 2024-04-20)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5hc07,       mslug5,   neogeo_noslot, mslug5sg,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Stone Turtle 2024-04-11)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5hc08,       mslug5,   neogeo_noslot, mslug5boss, neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Boss Battles 2024-04-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug5hc09,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Ultimate Simplified 2021-01-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug5hc10,       mslug5,   neogeo_noslot, mslug5es,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (The Longest Battle 2023-02-08)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc11,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "PPXCLUB",         "Metal Slug 5 (Burst Enhanced 2022-11-03)", MACHINE_SUPPORTS_SAVE )
@@ -44070,7 +44226,7 @@ GAME( 2016, mslugxhc09,       mslugx,   neogeo_noslot, mslugxzh,   neogeo_state,
 GAME( 2020, mslugxhc10,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Infinite Firepower 2021-03-20 )", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslugxhc11,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Unlimited Firepower 2020-10-18)(Earlier)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslugxhc12,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Unlimited Firepower 2021-03-20)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxhc13,       mslugx,   neogeo_noslot, mslugxsc,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Multifunction 2023-06-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslugxhc13,       mslugx,   neogeo_noslot, mslugxdg,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Multifunction 2023-06-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxhc14,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PPXCLUB",         "Metal Slug X (Burst Enhanced 2022-11-03)", MACHINE_SUPPORTS_SAVE )
 GAME( 2013, mslugxhc15,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Multi Vehicle 2013-05-15)", MACHINE_SUPPORTS_SAVE )
 GAME( 2014, mslugxhc16,       mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Hybrid Bullets 2014-11-08)", MACHINE_SUPPORTS_SAVE )
@@ -44436,7 +44592,7 @@ GAME( 2023, mslugxctma07,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2023, mslugxctma08,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower Survival Cuztom 2024-04-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctma09,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower Unity Time! Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctma10,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower Survival Attack Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxctma11,     mslugx,   neogeo_noslot, mslugxsc,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslugxctma11,     mslugx,   neogeo_noslot, mslugxdg,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctma12,     mslugx,   neogeo_noslot, mslugxzh,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower War Chariot Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctma13,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower Hybrid Bullets Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctma14,     mslugx,   neogeo_noslot, mslugxwp,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower Change Weapon And Mummy Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
@@ -44452,7 +44608,7 @@ GAME( 2023, mslugxctmb07,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2023, mslugxctmb08,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Heavy Plate Survival Cuztom 2024-04-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmb09,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Heavy Plate Unity Time! Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmb10,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Heavy Plate Survival Attack Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxctmb11,     mslugx,   neogeo_noslot, mslugxsc,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Heavy Plate Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslugxctmb11,     mslugx,   neogeo_noslot, mslugxdg,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Heavy Plate Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmb12,     mslugx,   neogeo_noslot, mslugxzh,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Heavy Plate War Chariot Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmb13,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Heavy Plate Hybrid Bullets Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmb14,     mslugx,   neogeo_noslot, mslugxwp,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Heavy Plate Change Weapon And Mummy Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
@@ -44468,7 +44624,7 @@ GAME( 2023, mslugxctmc07,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2023, mslugxctmc08,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Soldiers Remake Survival Cuztom 2024-04-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmc09,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Soldiers Remake Unity Time! Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmc10,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Soldiers Remake Survival Attack Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxctmc11,     mslugx,   neogeo_noslot, mslugxsc,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Soldiers Remake Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslugxctmc11,     mslugx,   neogeo_noslot, mslugxdg,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Soldiers Remake Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmc12,     mslugx,   neogeo_noslot, mslugxzh,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Soldiers Remake War Chariot Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmc13,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Soldiers Remake Hybrid Bullets Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmc14,     mslugx,   neogeo_noslot, mslugxwp,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Soldiers Remake Change Weapon And Mummy Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
@@ -44484,7 +44640,7 @@ GAME( 2023, mslugxctmd07,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2023, mslugxctmd08,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Allen O'Neil See You In Hell Survival Cuztom 2024-04-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmd09,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Allen O'Neil See You In Hell Unity Time! Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmd10,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Allen O'Neil See You In Hell Survival Attack Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxctmd11,     mslugx,   neogeo_noslot, mslugxsc,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Allen O'Neil See You In Hell Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslugxctmd11,     mslugx,   neogeo_noslot, mslugxdg,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Allen O'Neil See You In Hell Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmd12,     mslugx,   neogeo_noslot, mslugxzh,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Allen O'Neil See You In Hell War Chariot Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmd13,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Allen O'Neil See You In Hell Hybrid Bullets Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmd14,     mslugx,   neogeo_noslot, mslugxwp,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Allen O'Neil See You In Hell Change Weapon And Mummy Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
@@ -44500,7 +44656,7 @@ GAME( 2023, mslugxctme07,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2023, mslugxctme08,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Multi Vehicle Survival Cuztom 2024-04-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctme09,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Multi Vehicle Unity Time! Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctme10,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Multi Vehicle Survival Attack Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxctme11,     mslugx,   neogeo_noslot, mslugxsc,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Multi Vehicle Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslugxctme11,     mslugx,   neogeo_noslot, mslugxdg,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Multi Vehicle Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctme12,     mslugx,   neogeo_noslot, mslugxzh,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Multi Vehicle War Chariot Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctme13,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Multi Vehicle Hybrid Bullets Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctme14,     mslugx,   neogeo_noslot, mslugxwp,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Multi Vehicle Change Weapon And Mummy Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
@@ -44516,7 +44672,7 @@ GAME( 2023, mslugxctmf07,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2023, mslugxctmf08,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Level Reset Special Survival Cuztom 2024-04-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmf09,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Level Reset Special Unity Time! Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmf10,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Level Reset Special Survival Attack Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxctmf11,     mslugx,   neogeo_noslot, mslugxsc,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Level Reset Special Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslugxctmf11,     mslugx,   neogeo_noslot, mslugxdg,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Level Reset Special Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmf12,     mslugx,   neogeo_noslot, mslugxzh,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Level Reset Special War Chariot Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmf13,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Level Reset Special Hybrid Bullets Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmf14,     mslugx,   neogeo_noslot, mslugxwp,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Level Reset Special Change Weapon And Mummy Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
@@ -44532,7 +44688,7 @@ GAME( 2023, mslugxctmg07,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2023, mslugxctmg08,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Warriors Survival Cuztom 2024-04-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmg09,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Warriors Unity Time! Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmg10,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Warriors Survival Attack Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxctmg11,     mslugx,   neogeo_noslot, mslugxsc,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Warriors Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslugxctmg11,     mslugx,   neogeo_noslot, mslugxdg,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Warriors Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmg12,     mslugx,   neogeo_noslot, mslugxzh,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Warriors War Chariot Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmg13,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Warriors Hybrid Bullets Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmg14,     mslugx,   neogeo_noslot, mslugxwp,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Warriors Change Weapon And Mummy Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
@@ -44548,7 +44704,7 @@ GAME( 2023, mslugxctmh07,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2023, mslugxctmh08,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting Survival Cuztom 2024-04-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmh09,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting Unity Time! Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmh10,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting Survival Attack Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxctmh11,     mslugx,   neogeo_noslot, mslugxsc,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslugxctmh11,     mslugx,   neogeo_noslot, mslugxdg,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmh12,     mslugx,   neogeo_noslot, mslugxzh,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting War Chariot Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmh13,     mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting Hybrid Bullets Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmh14,     mslugx,   neogeo_noslot, mslugxwp,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting Change Weapon And Mummy Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
