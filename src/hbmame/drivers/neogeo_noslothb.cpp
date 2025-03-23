@@ -2828,7 +2828,7 @@ INPUT_PORTS_START( mslug3db )
 	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_NAME("@P1 Enable Weapons Mobile Sattelite @Button4") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8000)
 INPUT_PORTS_END
 
-INPUT_PORTS_START( mslug3hb )
+INPUT_PORTS_START( mslug3g )
 	PORT_INCLUDE( neogeo )
 
 	PORT_MODIFY("DSW")
@@ -2836,21 +2836,15 @@ INPUT_PORTS_START( mslug3hb )
 	PORT_DIPSETTING(    0x02, DEF_STR( Normal ) )
 	PORT_DIPSETTING(    0x00, "VS Mode" )
     PORT_BIT( 0x1000+0x2000+0x4000, IP_ACTIVE_LOW, IPT_BUTTON5 ) PORT_NAME("@P1 Vehicle Self-Destruct! @Button5") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x7000) PORT_CODE(KEYCODE_Q)
+//  PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_NAME("@P1 Enable Random Items @Button2") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x2000) PORT_CODE(KEYCODE_S)
+
+//	PORT_MODIFY("SYSTEM")
+//	PORT_BIT( 0x0010, IP_ACTIVE_LOW, IPT_CUSTOM )  PORT_CONDITION("SYSTEM", 0x0110, NOTEQUALS, 0x0010)
+//	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_START1 )  PORT_CONDITION("SYSTEM", 0x0110, NOTEQUALS, 0x0100)
+//	PORT_BIT( 0x0110, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_NAME("@P1 Enable Random Items @Button2") PORT_CONDITION("SYSTEM", 0x0110, EQUALS, 0x0110) PORT_CODE(KEYCODE_S)
 
 	PORT_MODIFY("P2")
     PORT_BIT( 0x1000+0x2000+0x4000, IP_ACTIVE_LOW, IPT_BUTTON5 ) PORT_PLAYER(2) PORT_NAME("@P2 Vehicle Self-Destruct! @Button5") PORT_CONDITION("P2", 0xF000, NOTEQUALS, 0x7000) PORT_CODE(KEYCODE_Q)
-INPUT_PORTS_END
-
-INPUT_PORTS_START( mslug3g )
-	PORT_INCLUDE( mslug3hb )
-
-	PORT_MODIFY("DSW")
-	PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_NAME("@P1 Enable Random Items @Button2") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x2000) PORT_CODE(KEYCODE_S)
-
-	PORT_MODIFY("SYSTEM")
-	PORT_BIT( 0x0010, IP_ACTIVE_LOW, IPT_CUSTOM )  PORT_CONDITION("SYSTEM", 0x0110, NOTEQUALS, 0x0010)
-	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_START1 )  PORT_CONDITION("SYSTEM", 0x0110, NOTEQUALS, 0x0100)
-	PORT_BIT( 0x0110, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_NAME("@P1 Enable Random Items @Button2") PORT_CONDITION("SYSTEM", 0x0110, EQUALS, 0x0110) PORT_CODE(KEYCODE_S)
 INPUT_PORTS_END
 
 INPUT_PORTS_START( mslug3sd )
@@ -3004,18 +2998,6 @@ INPUT_PORTS_START( mslug4er )
 	PORT_BIT( 0x00000002, IP_ACTIVE_LOW, IPT_COIN2 ) PORT_CONDITION("AUDIO/COIN", 0x00020002, NOTEQUALS, 0x00000002)
 	PORT_BIT( 0x00020000, IP_ACTIVE_LOW, IPT_CUSTOM ) PORT_PLAYER(2) PORT_CONDITION("AUDIO/COIN", 0x00020002, NOTEQUALS, 0x00020000)
 	PORT_BIT( 0x00020002, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_PLAYER(2)PORT_NAME("@P2 Spawner Tank @Button6") PORT_CONDITION("AUDIO/COIN", 0x00020002, EQUALS, 0x00020002) PORT_CODE(KEYCODE_E)
-INPUT_PORTS_END
-
-INPUT_PORTS_START( mslug4lw )
-	PORT_INCLUDE( neogeohb )
-
-	PORT_MODIFY("DSW")
-	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_NAME("@P1 Enable The Portal @Button4") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8000) PORT_CODE(KEYCODE_Z)
-
-	PORT_MODIFY("SYSTEM")
-	PORT_BIT( 0x0010, IP_ACTIVE_LOW, IPT_CUSTOM )  PORT_CONDITION("SYSTEM", 0x0110, NOTEQUALS, 0x0010)
-	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_START1 )  PORT_CONDITION("SYSTEM", 0x0110, NOTEQUALS, 0x0100)
-	PORT_BIT( 0x0110, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_NAME("@P1 Enable The Portal @Button4") PORT_CONDITION("SYSTEM", 0x0110, EQUALS, 0x0110) PORT_CODE(KEYCODE_Z)
 INPUT_PORTS_END
 
 INPUT_PORTS_START( mslug4lwq )
@@ -43940,8 +43922,8 @@ GAME( 2025, mslug4cqidd,      mslug4,   neogeo_noslot, mslug4cqi,  neogeo_state,
 GAME( 2022, mslug4dddd,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Starlight 2022-10-05)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, mslug4frdd,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (French Translation 2006-12-23)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4kidd,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Komorebi 2022-05-20)(Darksoft)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4lwdd,       mslug4,   neogeo_noslot, mslug4lw,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix 2023-02-25)(Darksoft)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4lwqdd,      mslug4,   neogeo_noslot, mslug4lw,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix - Without Body Armor 2023-02-25)(Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4lwdd,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix 2023-02-25)(Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4lwqdd,      mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix - Without Body Armor 2023-02-25)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5cqdd,       mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_mslug5ndd,  ROT0, "hack",            "Metal Slug 5 (Legendary 4.0 2024-12-25)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug5fdd,        mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_mslug5ndd,  ROT0, "hack",            "Metal Slug 5 (Fierce Battle 2015-04-10)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2006, mslug5frdd,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5ndd,  ROT0, "hack",            "Metal Slug 5 (French Translation 2006-09-26)(Darksoft)", MACHINE_SUPPORTS_SAVE )
@@ -44004,8 +43986,8 @@ GAME( 2024, mslug4cqinds,     mslug4,   neogeo_noslot, mslug4cqi,  neogeo_state,
 GAME( 2022, mslug4ddnds,      mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Starlight 2022-10-05)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, mslug4frnds,      mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (French Translation 2006-12-23)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4kinds,      mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Komorebi 2022-05-20)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4lwnds,      mslug4,   neogeo_noslot, mslug4lw,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix 2023-02-25)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4lwqnds,     mslug4,   neogeo_noslot, mslug4lw,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix - Without Body Armor 2023-02-25)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4lwnds,      mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix 2023-02-25)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4lwqnds,     mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix - Without Body Armor 2023-02-25)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5cqnds,      mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_mslug5ndd,  ROT0, "hack",            "Metal Slug 5 (Legendary 4.0 2024-12-25)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug5fnds,       mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_mslug5ndd,  ROT0, "hack",            "Metal Slug 5 (Fierce Battle 2015-04-10)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2006, mslug5frnds,      mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5ndd,  ROT0, "hack",            "Metal Slug 5 (French Translation 2006-09-26)(Neo SD)", MACHINE_SUPPORTS_SAVE )
@@ -44044,9 +44026,9 @@ GAME( 2021, mslug3unity,      mslug3,   neogeo_noslot, neogeohb,   neogeo_state,
 GAME( 2012, mslug3v,          mslug3,   neogeo_noslot, mslug3v,    neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Violence 2012-03-01)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2018, mslug3zh,         mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Vehicle Summon 2017-04-04)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2002, mslug4fr,         mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (French Translation 2006-12-23)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-GAME( 2023, mslug4lw,         mslug4,   neogeo_noslot, mslug4lw,   neogeo_state,    init_mslug4lw,   ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix 2023-02-25)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
+GAME( 2023, mslug4lw,         mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4lw,   ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix 2023-02-25)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2023, mslug4ammor,      mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4lw,   ROT0, "hack",            "Metal Slug 4 (Random Ammunition 2023-02-25)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-GAME( 2023, mslug4lwq,        mslug4,   neogeo_noslot, mslug4lw,   neogeo_state,    init_mslug4lw,   ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix - Without Body Armor 2023-02-25)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
+GAME( 2023, mslug4lwq,        mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4lw,   ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix - Without Body Armor 2023-02-25)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2022, mslug4dde,        mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Starlight 2022-10-05)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2022, mslug4ki,         mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Komorebi 2022-05-11)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2025, mslug4cqi,        mslug4,   neogeo_noslot, mslug4cqi,  neogeo_state,    init_mslug4lw,   ROT0, "hack",            "Metal Slug 4 (Legendary Firepower Showdown 5.0 2025-02-13)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
@@ -44175,9 +44157,9 @@ GAME( 2024, mslug3hc39,       mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,
 // Metal Slug 4
 GAME( 2007, mslug4hc01,       mslug4,   neogeo_noslot, mslug4sd,   neogeo_state,    init_mslug4hb,   ROT0, "HappyAsr",        "Metal Slug 4 (Super D Version 2013-03-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4hc02,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "PPXCLUB",         "Metal Slug 4 (Burst Enhanced 2022-11-03)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4hc03,       mslug4,   neogeo_noslot, mslug4lw,   neogeo_state,    init_mslug4hb,   ROT0, "GOTVG",           "Metal Slug 4 (Last Bullet Remix 2023-02-25)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4hc03,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "GOTVG",           "Metal Slug 4 (Last Bullet Remix 2023-02-25)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug4hc04,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "GOTVG",           "Metal Slug 4 (Random Ammunition 2023-02-25)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug4hc05,       mslug4,   neogeo_noslot, mslug4lw,   neogeo_state,    init_mslug4hb,   ROT0, "GOTVG",           "Metal Slug 4 (Last Bullet Remix - Without Body Armor 2023-02-25)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug4hc05,       mslug4,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslug4hb,   ROT0, "GOTVG",           "Metal Slug 4 (Last Bullet Remix - Without Body Armor 2023-02-25)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug4hc06,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "GOTVG",           "Metal Slug 4 (Enemies Resetting 2019-02-11)(Earlier)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslug4hc07,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "GOTVG",           "Metal Slug 4 (Enemies Resetting 2020-02-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4hc08,       mslug4,   neogeo_noslot, mslug4sc,   neogeo_state,    init_mslug4hb,   ROT0, "GOTVG",           "Metal Slug 4 (20th Anniversary 2022-03-26)", MACHINE_SUPPORTS_SAVE )
