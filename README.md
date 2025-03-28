@@ -29,6 +29,8 @@ Overclocking Default 200%.
 
 The M68000 CPU core has been modified to be compatible with all current types of hack ROMs.
 
+Expand the adpcma rom that can be read to 0x2000000.
+
 Removed the black border on NeoGeo systems, now has full screen.
 
 Removed warning screen.
