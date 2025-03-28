@@ -9,9 +9,8 @@ Version 0.224 [HBMAME/EKMAME] is being used as the base system. Users are being 
 
 What has been optimized in this version?
 ---------------------------------------
-The NeoGeo systems command was optimized, now it is much more practical to be able to play players 1 and players 2, the arrow command "Up, Down, Left, Right" comes by default, this command is used to move and to perform actions To shoot or jump and throw grenades use the A, S, D, Z key.
-
 This command will help us have much easier access to the settings:
+
 * To save the game, press the "7" key.
 * To load the game, press the "8" key.
 * To reset the game, press the "9" key.
@@ -20,6 +19,11 @@ This command will help us have much easier access to the settings:
 * To accelerate the Frames per second (FPS), press the "ALT" key.
 * To play in windowed mode, press the "Spacebar" key.
 * To accelerate the game by 3x, press the "Backspace" key.
+
+Players 1 and 2 use this controller by default:
+
+* To move, use the arrow keys "Up, Down, Left, Right."
+* To perform actions, use the "A, S, D, Z" keys.
 
 Overclocking Default 200%.
 
