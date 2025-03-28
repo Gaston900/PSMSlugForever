@@ -13,7 +13,7 @@ The NeoGeo systems command was optimized, now it is much more practical to be ab
 
 Overclocking Default 200%.
 
-It is compatible with all hack roms and formats.
+The M68000 CPU core has been modified to be compatible with all current types of hack ROMs.
 
 Removed the black border on NeoGeo systems, now has full screen.
 
