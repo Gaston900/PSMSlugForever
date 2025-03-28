@@ -5,11 +5,15 @@ It is called Project Shadow Metal Slug Forever, this project was part of the HBM
 
 Afterwards, it has been decided to make the project independent in 2021, providing all kinds of support, repairing all bugs and glitches, correcting incompatibility with the NeoGeo system, etc.
 
-Version 0.224 [HBMAME/EKMAME] is being used as the base system. Users are being offered the pleasure and convenience of being able to play all the Metal Slug game franchises of the "Neo Geo MVS/AES", All Lost Media Predecrypted, Decrypter, Earlier And Bootleg, Decrypter Darksoft, Neo SD And Hack.
+Version 0.224 [HBMAME/EKMAME] is being used as the base system. Users are being offered the pleasure and convenience of being able to play all the Metal Slug game franchises of the "Neo Geo MVS/AES", All Lost Media Predecrypted, Decrypter, Encrypte, Earlier And Bootleg, Decrypter Darksoft, Neo SD And Hack.
 
 What has been optimized in this version?
 ---------------------------------------
 The NeoGeo systems command was optimized, now it is much more practical to be able to play player 1 and player 2, the arrow command "Up, Down, Left, Right" comes by default, this command is used to move and to perform actions To shoot or jump and throw grenades use the A, S, D, Z key.
+
+Overclocking Default 200%.
+
+It is compatible with all hack roms and formats.
 
 Removed the black border on NeoGeo systems, now has full screen.
 
