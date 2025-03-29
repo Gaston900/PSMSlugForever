@@ -5,7 +5,7 @@
 #include "includes/neogeo.h"
 #include "neogeo.lh"
 
-/************************************************************************************************************************************
+/***********************************************************************************************************************************
     In 2010, SNK Playmore, the successor of SNK, released a title catalogue which lists the released
     games (MVS/AES).
     The included title catalogue is the english one.
@@ -16810,22 +16810,16 @@ INPUT_PORTS_END
 #define MSLUG3H_Z0MBIEDEATH_MODS_FILL \
     ROM_FILL(0x263AA,1,0xFF)\
 	ROM_FILL(0x263AB,1,0xBC)\
-	ROM_FILL(0x263AE,1,0xFF)\
-    ROM_FILL(0x263AF,1,0xB8)\
     ROM_FILL(0x263B2,1,0xFF)\
     ROM_FILL(0x263B3,1,0xB4)\
     ROM_FILL(0x263B6,1,0xFF)\
     ROM_FILL(0x263B7,1,0xB0)\
     ROM_FILL(0x263BA,1,0xFF)\
 	ROM_FILL(0x263BB,1,0xAC)\
-	ROM_FILL(0x263BE,1,0xFF)\
-	ROM_FILL(0x263BF,1,0xA8)\
     ROM_FILL(0x263C2,1,0xFF)\
 	ROM_FILL(0x263C3,1,0xA4)\
 	ROM_FILL(0x263C6,1,0xFF)\
     ROM_FILL(0x263C7,1,0xA0)\
-    ROM_FILL(0x263CA,1,0xFF)\
-    ROM_FILL(0x263CB,1,0x9C)\
     ROM_FILL(0x263CE,1,0xFF)\
     ROM_FILL(0x263CF,1,0x98)\
     ROM_FILL(0x263D2,1,0xFF)\
@@ -16856,6 +16850,17 @@ INPUT_PORTS_END
 	ROM_FILL(0x26403,1,0x64)\
 	ROM_FILL(0x26406,1,0xFF)\
 	ROM_FILL(0x26407,1,0x60)
+
+/********************************
+    ROM_FILL(0x263CA,1,0xFF)\
+    ROM_FILL(0x263CB,1,0x9C)\
+	
+	ROM_FILL(0x263BE,1,0xFF)\
+	ROM_FILL(0x263BF,1,0xA8)\
+	
+	ROM_FILL(0x263AE,1,0xFF)\
+    ROM_FILL(0x263AF,1,0xB8)\
+********************************/
 
 #define MSLUG3H_Z0MBIE_CHANGING_SKIN_MODS_FILL \
     ROM_FILL(0x4713B0,1,0x52)\
@@ -22672,22 +22677,16 @@ INPUT_PORTS_END
 	ROM_FILL(0xC8B41,1,0xC0)\
 	ROM_FILL(0xC8B44,1,0xFF)\
     ROM_FILL(0xC8B45,1,0xBC)\
-    ROM_FILL(0xC8B48,1,0xFF)\
-    ROM_FILL(0xC8B49,1,0xB8)\
     ROM_FILL(0xC8B4C,1,0xFF)\
     ROM_FILL(0xC8B4D,1,0xB4)\
     ROM_FILL(0xC8B50,1,0xFF)\
 	ROM_FILL(0xC8B51,1,0xB0)\
 	ROM_FILL(0xC8B54,1,0xFF)\
 	ROM_FILL(0xC8B55,1,0xAC)\
-    ROM_FILL(0xC8B58,1,0xFF)\
-	ROM_FILL(0xC8B59,1,0xA8)\
 	ROM_FILL(0xC8B5C,1,0xFF)\
     ROM_FILL(0xC8B5D,1,0xA4)\
     ROM_FILL(0xC8B60,1,0xFF)\
     ROM_FILL(0xC8B61,1,0xA0)\
-    ROM_FILL(0xC8B64,1,0xFF)\
-    ROM_FILL(0xC8B65,1,0x9C)\
     ROM_FILL(0xC8B68,1,0xFF)\
 	ROM_FILL(0xC8B69,1,0x98)\
 	ROM_FILL(0xC8B6C,1,0xFF)\
@@ -22720,6 +22719,17 @@ INPUT_PORTS_END
 	ROM_FILL(0xC8BA1,1,0x60)\
 	ROM_FILL(0xC8BA4,1,0xFF)\
 	ROM_FILL(0xC8BA5,1,0x5C)
+
+/*******************************
+    ROM_FILL(0xC8B64,1,0xFF)\
+    ROM_FILL(0xC8B65,1,0x9C)\
+	
+    ROM_FILL(0xC8B58,1,0xFF)\
+	ROM_FILL(0xC8B59,1,0xA8)\
+
+    ROM_FILL(0xC8B48,1,0xFF)\
+    ROM_FILL(0xC8B49,1,0xB8)\
+*********************************/
 
 #define MSLUG4_Z0MBIE_CHANGING_SKIN_MODS_FILL \
     ROM_FILL(0x2113B4,1,0x52)\
