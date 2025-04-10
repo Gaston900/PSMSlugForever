@@ -61,6 +61,8 @@ mslug5nde         // SNK Playmore
 mslug5nde1        // SNK Playmore
 mslug5nde2        // SNK Playmore
 mslug5nde3        // SNK Playmore
+mslug5nde4        // SNK Playmore
+mslug5nde5        // SNK Playmore
 mslug5eb2         // Bootleg
 mslug5b2          // Bootleg
 mslug5b3          // Bootleg
@@ -68,6 +70,7 @@ mslug5b4          // Bootleg
 mslug5b5          // Bootleg
 mslug5b6          // Bootleg
 mslug5b7          // Bootleg
+mslug5b8          // Bootleg
 mslugxb           // Bootleg
 
 @source:neogeo.cpp

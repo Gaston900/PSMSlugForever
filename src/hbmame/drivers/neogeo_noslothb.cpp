@@ -31208,8 +31208,8 @@ INPUT_PORTS_END
 #define MSLUG3ND_SFIX_512K \
     NEO_SFIX_512K( "256nd.s1", CRC(2628d663) SHA1(a976bdac2d7908e3203c7ffdc6a103cd327c656e) )
 
-#define MSLUG3FRDD_SFIX_512K \
-    NEO_SFIX_512K( "256frdd.s1", CRC(74daf862) SHA1(48a1fe1f29f7f44831ae9b3fe091aa0519708066) )
+#define MSLUG3FRDD_SFIX_128K \
+    NEO_SFIX_128K( "256frdd.s1", CRC(15ac546b) SHA1(b91235ac7d669840f36033a5c5f69fa362274e76) )
 
 #define MSLUG3HCR_AUDIO_256K \
     NEO_BIOS_AUDIO_256K( "256_hc19.m1", CRC(2f88e0c0) SHA1(bf95881d1c8861cba1a154eb26552520a764c5ba) )
@@ -33214,10 +33214,40 @@ ROM_START( mslug5nde3 )
     ROM_LOAD16_WORD_SWAP( "268nde3.p1",  0x000000, 0x100000, CRC(d99c035c) SHA1(09873ade2106f77918dd8e8cf108914df0c6ec63) )
     ROM_LOAD16_WORD_SWAP( "268n.p2",     0x100000, 0x400000, CRC(768ee64a) SHA1(76a65a69aee749758a2101aabdd44f3404838b54) )
     MSLUG5D_ESSENTIALPATCH_MODS_FILL
-	MS5BOOT_AUDIO_128K
     MSLUG5D_SFIX_128K
+	MS5BOOT_AUDIO_128K
 	MSLUG5D_YMSND
 	MSLUG5D_SPRITES
+ROM_END
+
+/* Decrypt P Roms mslug5b6 */
+ROM_START( mslug5nde4 )
+	ROM_REGION( 0x800000, "maincpu", 0 )
+    ROM_LOAD16_WORD_SWAP( "268nde4.p1",  0x000000, 0x400000, CRC(5d1a8668) SHA1(bd35cb1e772e9406da1eda2daf0ed4782eb98dea) )
+    ROM_LOAD16_WORD_SWAP( "268nde4.p2",  0x400000, 0x400000, CRC(47662c5e) SHA1(68d055343e26d13f39dbc241d91f863364b04eaa) )
+    MSLUG5D_ESSENTIALPATCH_MODS_FILL
+    MSLUG5D_SFIX_128K
+	MS5BOOT_AUDIO_128K
+	MS5PCBD_YMSND
+	MS5PCBD_SPRITES
+ROM_END
+
+/* Decrypt P Roms mslug5b7 */
+ROM_START( mslug5nde5 )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+    ROM_LOAD16_WORD_SWAP( "268nde5.p1",  0x000000, 0x100000, CRC(5fb516fb) SHA1(49cca3ff47f257a5087facc2319f935a979f4ff3) )
+    ROM_CONTINUE( 0x200000, 0x100000 )
+	ROM_CONTINUE( 0x300000, 0x100000 )
+	ROM_CONTINUE( 0x400000, 0x100000 )
+    ROM_LOAD16_WORD_SWAP( "268nde4.p2",  0x500000, 0x100000, CRC(47662c5e) SHA1(68d055343e26d13f39dbc241d91f863364b04eaa) )
+	ROM_CONTINUE( 0x100000, 0x100000 )
+	ROM_CONTINUE( 0x600000, 0x100000 )
+	ROM_CONTINUE( 0x700000, 0x100000 )
+	MSLUG5D_ESSENTIALPATCH_MODS_FILL
+    MSLUG5D_SFIX_128K
+	MS5BOOT_AUDIO_128K
+	MS5PCBD_YMSND
+	MS5PCBD_SPRITES
 ROM_END
 
 ROM_START( mslug5eb2 )
@@ -33289,26 +33319,38 @@ ROM_START( mslug5b5 )
 ROM_END
 
 ROM_START( mslug5b6 )
-	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268b6.p1", 0x000000, 0x600000, CRC(6790d64e) SHA1(997f765a1e02a85aa52aa715d564416728fa2d04) )
+	ROM_REGION( 0x800000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "268b6.p1", 0x000000, 0x800000, CRC(2d79971c) SHA1(18f7244a9223114ad2fe75899581ba3093ab47d5) )
     MSLUG5D_ESSENTIALPATCH_MODS_FILL
     MSLUG5_SFIX_MT_128K
     MSLUG5_AUDIO_ENCRYPTED_512K
 	MSLUG5_YMSND
-	MSLUG5_SPRITES
+	MSLUG5E_SPRITES
 ROM_END
 
 ROM_START( mslug5b7 )
-	ROM_REGION( 0x600000, "maincpu", 0 )
-    ROM_LOAD16_WORD_SWAP( "268b7.p1", 0x000000, 0x100000, CRC(241d56bc) SHA1(d20776cb6d0f85261cb661efef66bc7df6f83d21) )
+	ROM_REGION( 0x800000, "maincpu", 0 )
+    ROM_LOAD16_WORD_SWAP( "268b7.p1", 0x000000, 0x100000, CRC(2ecc772d) SHA1(971db65d11aa98833c494fc2d7657cea702e4caa) )
 	ROM_CONTINUE( 0x200000, 0x100000 )
 	ROM_CONTINUE( 0x300000, 0x100000 )
 	ROM_CONTINUE( 0x400000, 0x100000 )
 	ROM_CONTINUE( 0x500000, 0x100000 )
 	ROM_CONTINUE( 0x100000, 0x100000 )
+	ROM_CONTINUE( 0x600000, 0x100000 )
+	ROM_CONTINUE( 0x700000, 0x100000 )
     MSLUG5D_ESSENTIALPATCH_MODS_FILL
     MSLUG5_SFIX_MT_128K
-	MSLUG5_AUDIO_ENCRYPTED_512K
+	MSLUG5E_AUDIO_256K
+	MSLUG5E_YMSND
+	MSLUG5E_SPRITES
+ROM_END
+
+ROM_START( mslug5b8 )
+	ROM_REGION( 0x600000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "268b8.p1", 0x000000, 0x600000, CRC(b9136fce) SHA1(669c0b189cf22a82fbbfb77471612c726e7c674b) )
+    MSLUG5D_ESSENTIALPATCH_MODS_FILL
+    MSLUG5_SFIX_MT_128K
+    MSLUG5_AUDIO_ENCRYPTED_512K
 	MSLUG5_YMSND
 	MSLUG5_SPRITES
 ROM_END
@@ -33612,7 +33654,7 @@ ROM_START( mslug3frdd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "256frdd.p1", 0x000000, 0x500000, CRC(6e632d38) SHA1(c3ee7f27bac5fa6528e6ace695648fa4e62cc961) )
     MSLUG3HB_ESSENTIALPATCH_MODS_FILL
-	MSLUG3FRDD_SFIX_512K
+	MSLUG3FRDD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3DD_YMSND
     MSLUG3FRDD_SPRITES
@@ -34180,7 +34222,7 @@ ROM_START( mslug3frnds )
     ROM_CONTINUE( 0x000000, 0x501000 )
 	ROM_IGNORE( 0x507F000 )
 	MSLUG3HB_ESSENTIALPATCH_MODS_FILL
-	MSLUG3FRDD_SFIX_512K
+	MSLUG3FRDD_SFIX_128K
 	MSLUG3_AUDIO_512K
     MSLUG3DD_YMSND
     MSLUG3FRDD_SPRITES
@@ -43998,9 +44040,9 @@ GAME( 2003, mslug5b1,         mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,
 GAME( 1999, mslugx,           neogeo,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "SNK",             "Metal Slug X - Super Vehicle-001 (NGM-2500 ~ NGH-2500)", MACHINE_SUPPORTS_SAVE )
 
 /***************************************************************************************************************************************************
-  The prototype roms that had been published by the NEO RAGE X, FBA Evolution, MAMEYA, Mame Plus, Neomame32 emulator are included, in the NeoGeo system 
-  that presented some copyrighted roms in that period of the year "1999-2000-2002-2003" that could not be legally emulated, they were Looked for an 
-  alternate means to be able to play this roms by making an encrypted file. 
+  The prototype roms that had been published by the NEORAGEX, FBA Evolution, MAMEYA Lite, Mame Plus, Neomame32 Plus, Caname emulator are included, in 
+  the NeoGeo system that presented some copyrighted roms in that period of the year "1999-2000-2002-2003" that could not be legally emulated, they 
+  were Looked for an alternate means to be able to play this roms by making an encrypted file. 
 *****************************************************************************************************************************************************/
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
@@ -44043,6 +44085,8 @@ GAME( 2003, mslug5nde,        mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,
 GAME( 2003, mslug5nde1,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "SNK Playmore",    "Metal Slug 5 (Fully Decrypted)(Predecrypted C & V)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5nde2,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "SNK Playmore",    "Metal Slug 5 (Fully Decrypted)(Predecrypted C & P)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5nde3,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "SNK Playmore",    "Metal Slug 5 (Fully Decrypted)(Predecrypted S & P)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, mslug5nde4,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "SNK Playmore",    "Metal Slug 5 (Fully Decrypted)(Predecrypted C, V & P1/P2)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, mslug5nde5,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5e,    ROT0, "SNK Playmore",    "Metal Slug 5 (Fully Decrypted)(Predecrypted C, V & P1)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5eb2,        mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "Bootleg",         "Metal Slug 5 (Bootleg, Set 2)(Encrypted P)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5b2,         mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5e,    ROT0, "Bootleg",         "Metal Slug 5 (Bootleg, Set 2)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5b3,         mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5e,    ROT0, "Bootleg",         "Metal Slug 5 (Bootleg, Set 3)", MACHINE_SUPPORTS_SAVE )
@@ -44050,6 +44094,7 @@ GAME( 2003, mslug5b4,         mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,
 GAME( 2003, mslug5b5,         mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "Bootleg",         "Metal Slug 5 (Bootleg, Set 5)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5b6,         mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "Bootleg",         "Metal Slug 5 (Bootleg, Set 6)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5b7,         mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5e,    ROT0, "Bootleg",         "Metal Slug 5 (Bootleg, Set 7)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, mslug5b8,         mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5e,    ROT0, "Bootleg",         "Metal Slug 5 (Bootleg, Set 8)", MACHINE_SUPPORTS_SAVE )
 GAME( 1999, mslugxb,          mslugx,   neogeo_noslot, neogeohb,   neogeo_state,    init_mslugx,     ROT0, "Bootleg",         "Metal Slug X (Bootleg)", MACHINE_SUPPORTS_SAVE ) 
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
