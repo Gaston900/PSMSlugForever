@@ -59,9 +59,13 @@ How to compile
 
 In order to compile this version we will need the source code, for this we will locate it in the folder docs / Source Code [HBMame] / hbmame-tag224.7z. 001, once located we will begin to unzip the files, it will take a few minutes, once unzipped we will have a folder with the name hbmame-tag224.7z, we will rename it to “src”, Now we will get the latest source code of this Github container once downloaded we will begin to unzip and once finished unzipping we will select the files that we had left in the folder “scripts, src and makefile” we will copy them into the src folder, the system will ask us to replace it we will say yes.
 
-And we will apply this command to start the compilation, this command is for Windows 64Bit system:
+And we will apply this command to start the compilation, this command is for Windows 64-Bit system:
 ```
 make PTR64=1 TARGET=mame OSD=winui NOWERROR=1 STRIP_SYMBOLS=1
+```
+And we will apply this command to start the compilation, this command is for Windows 32-Bit system:
+```
+make PTR64=0 TARGET=mame OSD=winui NOWERROR=1 STRIP_SYMBOLS=1
 ```
 And we will apply this command to start the compilation, this command is for Windows 32Bit system:
 
