@@ -86,19 +86,19 @@ enum
 	FOLDER_SAVESTATE, //Do not disable
 //	FOLDER_DUMPING,
 //#ifdef USE_GAMEFOLDERS
-//	FOLDER_KOREAN,
-//	FOLDER_NEOGEO,
-//	FOLDER_NEOHACK,
+	FOLDER_MSLUG,
+	FOLDER_MSLUG2,
+	FOLDER_MSLUG3,
+	FOLDER_MSLUG4,
+	FOLDER_MSLUG5,
+	FOLDER_MSLUGX,
+	FOLDER_HOMEBREW,
 //	FOLDER_NAMCO,			
 //	FOLDER_TAITO,				
 //	FOLDER_KONAMI,				
 //	FOLDER_SEGA,			
-//	FOLDER_CAVE,				
-//	FOLDER_CPS,
-//	FOLDER_CPSHACK,
-//	FOLDER_PGMHACK,
-//	FOLDER_PGM,
-//	FOLDER_PSXGAME,		
+//	FOLDER_CAVE,
+//	FOLDER_PSXGAME,
 //#endif	
 	MAX_FOLDERS
 };
@@ -177,13 +177,13 @@ int GetTreeViewIconIndex(int icon_id);
 void ResetTreeViewFolders(void);
 void SelectTreeViewFolder(int folder_id);
 //#ifdef USE_GAMEFOLDERS
-void CreateKOREANFolders(int parent_index);
-void CreateNEOGEOFolders(int parent_index);
-void CreateNEOHACKFolders(int parent_index);
-void CreateCPSFolders(int parent_index);
-void CreateCPSHACKFolders(int parent_index);
-void CreatePGMFolders(int parent_index);
-void CreatePGMHACKFolders(int parent_index);
+void CreateMSLUGFolders(int parent_index);
+void CreateMSLUG2Folders(int parent_index);
+void CreateMSLUG3Folders(int parent_index);
+void CreateMSLUG4Folders(int parent_index);
+void CreateMSLUG5Folders(int parent_index);
+void CreateMSLUGXFolders(int parent_index);
+void CreateHOMEBREWFolders(int parent_index);
 
 void CreateNAMCOFolders(int parent_index);
 void CreateTAITOFolders(int parent_index);

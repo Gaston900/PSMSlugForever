@@ -163,18 +163,18 @@
 #define IDI_SNAPSHEET                   283
 #define IDI_SHADER                      284
 #define IDB_KLIST						285	//USE_KLIST
-#define IDI_FOLDER_NEOGEO				286
-#define IDI_FOLDER_NAMCO				287	
-#define IDI_FOLDER_TAITO				288
-#define IDI_FOLDER_KONAMI				289
-#define IDI_FOLDER_SEGA 				290
-#define IDI_FOLDER_CAVE 				291
-#define IDI_FOLDER_CAPCOM				292
-#define IDI_FOLDER_NEOHACK				293
-#define IDI_FOLDER_KOREAN				294
-#define IDI_FOLDER_CPSHACK				295
-#define IDI_FOLDER_PGMHACK				296
-#define IDI_FOLDER_PGM					297
+#define IDI_FOLDER_MSLUG				286
+#define IDI_FOLDER_MSLUG2				287
+#define IDI_FOLDER_MSLUG3				288
+#define IDI_FOLDER_MSLUG4				289
+#define IDI_FOLDER_MSLUG5				290
+#define IDI_FOLDER_MSLUGX				291
+#define IDI_FOLDER_HOMEBREW				292
+#define IDI_FOLDER_NAMCO				293
+#define IDI_FOLDER_TAITO				294
+#define IDI_FOLDER_KONAMI				295
+#define IDI_FOLDER_SEGA 				296
+#define IDI_FOLDER_CAVE 				297
 #define IDI_HEADER_UP                   298
 #define IDI_HEADER_DOWN                 299
 
