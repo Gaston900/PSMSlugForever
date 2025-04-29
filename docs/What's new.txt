@@ -17,10 +17,13 @@ Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use O
 ===============================================================================================================================
 2025-0X-XX
 
+- Updated Roms Metal Slug (Origins 2025-04-30)
+
 New Games
 ---------------------------------
+
 - [mslugxhc26]             Metal Slug X (Random Ammo 2024-11-03)
-- [mslugxhc31]             Metal Slug X (Rebel Soldier 2025-04-23)
+- [mslugxhc31]             Metal Slug X (Rebel Soldier 2025-04-28)
 
 
 
