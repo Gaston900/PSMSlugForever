@@ -99,3 +99,6 @@ And we will apply this command to start the compilation, this command is for Win
 
 The compilation [TOOL](https://github.com/mamedev/buildtools/releases) is suggested to be version msys64 2017-12-26.
 
+Open Source Software Projects
+------------------------------
+Although the source code is free to use, please note that the use of this code for any commercial exploitation or use of the project for fundraising purposes is prohibited.
