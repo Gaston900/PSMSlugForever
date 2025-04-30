@@ -35,6 +35,8 @@ The free mod is enabled on the NeoGeo system by pressing the Start button, you d
 
 It has been configured by default that it has 99 Credits in MVS/AES mode.
 
+Added custom buttons and autofire.
+
 Removed the black border on NeoGeo systems, now has full screen.
 
 Removed warning screen.
