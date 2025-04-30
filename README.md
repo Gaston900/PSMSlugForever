@@ -29,7 +29,7 @@ Overclocking Default 200%.
 
 The M68000 CPU core has been modified to be compatible with all current types of hack ROMs.
 
-Expand the adpcma rom that can be read to 0x2000000.
+Expand the memory file adpcma rom that can be read to 0x2000000.
 
 The free mod is enabled on the NeoGeo system by pressing the Start button, you don't need to add credits every time you lose.
 
@@ -47,6 +47,10 @@ The Arcade64 "GUI" some default settings have been implemented.
 
 It is already pre-configured, enforce aspect ratio is disabled, full screen mode and tricks are already enabled by default.
 
+The cheat reference function, if the cloned game does not have a cheat file, it will reference the cheat file of the main ROM.
+
+Supports game list lst language files.
+
 Two new folder sections called “config” and “support” were added that independently group the configurations + extra content, so that everything is kept in order in a single folder.
 
 In the Config folders it is incorporated by:
@@ -57,6 +61,16 @@ In the support folders it is incorporated by:
 
 Artpreview, Artwork, Bosses, Cabinets, Cheat, Cpanel, Ctrlr, Flyers, Gameover, Howto, Icons,
 Logo, Manuals, Marquees, Pcb, Roms, Samples, Scores, Select, Snap, Titles, Versus, Video, Cheat.7z, Command.dat, Gameinit.dat, Hiscore.dat, History.dat, Mameinfo.dat, Story. dat and Sysinfo.dat
+
+Added 7 new UI folders by default.
+
+* Metal Slug
+* Metal Slug 2
+* Metal Slug 3
+* Metal Slug 4
+* Metal Slug 5
+* Metal Slug X
+* HomeBrew
 
 How to compile
 --------------
