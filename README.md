@@ -31,6 +31,10 @@ The M68000 CPU core has been modified to be compatible with all current types of
 
 Expand the adpcma rom that can be read to 0x2000000.
 
+The free mod is enabled on the NeoGeo system by pressing the Start button, you don't need to add credits every time you lose.
+
+It has been configured by default that it has 99 Credits in MVS/AES mode.
+
 Removed the black border on NeoGeo systems, now has full screen.
 
 Removed warning screen.
