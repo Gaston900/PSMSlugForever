@@ -5,7 +5,11 @@ It is called Project Shadow Metal Slug Forever, this project was part of the HBM
 
 Afterwards, it has been decided to make the project independent in 2021, providing all kinds of support, repairing all bugs and glitches, correcting incompatibility with the NeoGeo system, etc.
 
-Version 0.224 [HBMAME/EKMAME] is being used as the base system. Users are being offered the pleasure and convenience of being able to play all the Metal Slug game franchises of the "Neo Geo MVS/AES", All Lost Media Predecrypted, Decrypter, Encrypte, Earlier And Bootleg, Decrypter Darksoft, Neo SD And Hack.
+Version 0.224 [HBMAME/EKMAME] is being used as the base system.
+
+Users are offered the experience of playing all Metal Slug franchises on the Neo Geo MVS/AES system.
+
+The project focuses on preserving all existing ROMs: Predecrypted, Decrypter, Encrypte, Earlier and Bootleg, Darksoft, Neo SD, and Hack.
 
 I am only supporting the operating systems, Windows 7, Windows 8, Windows 10 and Windows 11.
 
