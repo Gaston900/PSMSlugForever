@@ -7,6 +7,8 @@ Afterwards, it has been decided to make the project independent in 2021, providi
 
 Version 0.224 [HBMAME/EKMAME] is being used as the base system. Users are being offered the pleasure and convenience of being able to play all the Metal Slug game franchises of the "Neo Geo MVS/AES", All Lost Media Predecrypted, Decrypter, Encrypte, Earlier And Bootleg, Decrypter Darksoft, Neo SD And Hack.
 
+I am only supporting the operating systems, Windows 7, Windows 8, Windows 10 and Windows 11.
+
 What has been optimized in this version?
 ---------------------------------------
 This command will help us have much easier access to the settings:
