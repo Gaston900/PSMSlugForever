@@ -95,7 +95,6 @@ And we will apply this command to start the compilation, this command is for Win
 ```
 make PTR64=0 TARGET=mame OSD=winui NOWERROR=1 STRIP_SYMBOLS=1
 ```
-And we will apply this command to start the compilation, this command is for Windows 32Bit system:
 
 The compilation [TOOL](https://github.com/mamedev/buildtools/releases) is suggested to be version msys64 2017-12-26.
 
