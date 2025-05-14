@@ -1169,7 +1169,7 @@ ROM_END
 
 ROM_START( mslughc03 ) //mslugdqy
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "201_hc03.p1", 0x100000, 0x100000, CRC(f50e465c) SHA1(cebd6f2046c88470812cb3ab5963a3e999002184) )
+	ROM_LOAD16_WORD_SWAP( "201_hc03.p1", 0x100000, 0x100000, CRC(c11b1c34) SHA1(d44a30789326da8f6f44e2f2657b0e7b0ee9e6d2) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
     MSLUGHB_ESSENTIALPATCH_MODS_FILL
 	MSLUG_SFIX_128K
@@ -1511,7 +1511,7 @@ GAME( 2024, mslugdyf1,        mslug,    neogeo_noslot, mslughb,   neogeo_state, 
 // Metal Slug (Hack)
 GAME( 2016, mslughc01,        mslug,    neogeo_noslot, mslugwp,   neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug (Change Weapon 2016-03-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslughc02,        mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "FBN4DROID",       "Metal Slug (Random Items Explosives 2021-06-08)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslughc03,        mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Origins 2025-04-30)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslughc03,        mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Origins 2025-05-02)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslughc04,        mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Multifunction 2018-04-30)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslughc05,        mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "PPXCLUB",         "Metal Slug (Burst Enhanced 2022-11-03)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslughc06,        mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (1v2 Mode 2023-06-26)", MACHINE_SUPPORTS_SAVE )
