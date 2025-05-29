@@ -27,8 +27,9 @@ Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use O
 New Games
 ---------------------------------
 
-- [mslugdyf1]              Metal Slug Metal Slug (Origins Random Item 2025-05-27)(Fightcade2)
-- [mslug5hc30]             Metal Slug X (Random Ammo 2024-11-03)
+- [mslugdyf1]              Metal Slug (Origins Random Item 2025-05-27)(Fightcade2)
+- [mslug5hc30]             Metal Slug 5 (Ammo Random 2025-02-08)
+- [mslugxhc26]             Metal Slug X (Ammo Random 2024-11-03)
 - [mslugxhc31]             Metal Slug X (Rebel Soldier 2025-04-28)
 
 
