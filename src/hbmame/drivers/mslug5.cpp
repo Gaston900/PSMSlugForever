@@ -9191,7 +9191,7 @@ GAME( 2003, mslug5ndd,        mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (DARKSOFT Neo Geo Hacks Converted MVS To Decrypter/Encrypted C)
-GAME( 2025, mslug5cqdd,       mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_mslug5ndd,  ROT0, "hack",            "Metal Slug 5 (Legendary 6.0 2025-04-03)(Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug5cqdd,       mslug5,   aks_sakura,    mslug5cqi,  neogeo_state,    init_mslug5ndd,  ROT0, "hack",            "Metal Slug 5 (Legendary 6.0 2025-04-03)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug5fdd,        mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_mslug5ndd,  ROT0, "hack",            "Metal Slug 5 (Fierce Battle 2015-04-10)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2006, mslug5frdd,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5ndd,  ROT0, "hack",            "Metal Slug 5 (French Translation 2006-09-26)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug5scdd,       mslug5,   neogeo_noslot, mslug5cq,   neogeo_state,    init_mslug5ndd,  ROT0, "hack",            "Metal Slug 5 (Survival 2023-06-12)(Darksoft)", MACHINE_SUPPORTS_SAVE )
@@ -9212,7 +9212,7 @@ GAME( 2003, mslug5ndnsd,      mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (MATT GREER "CITY41" Neo Geo Hack Converted .NEO SD)
-GAME( 2025, mslug5cqnds,      mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_mslug5ndd,  ROT0, "hack",            "Metal Slug 5 (Legendary 6.0 2025-04-03)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug5cqnds,      mslug5,   aks_sakura,    mslug5cqi,  neogeo_state,    init_mslug5ndd,  ROT0, "hack",            "Metal Slug 5 (Legendary 6.0 2025-04-03)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug5fnds,       mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_mslug5ndd,  ROT0, "hack",            "Metal Slug 5 (Fierce Battle 2015-04-10)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2006, mslug5frnds,      mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5ndd,  ROT0, "hack",            "Metal Slug 5 (French Translation 2006-09-26)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug5scnds,      mslug5,   neogeo_noslot, mslug5cq,   neogeo_state,    init_mslug5ndd,  ROT0, "hack",            "Metal Slug 5 (Survival 2023-06-12)(Neo SD)", MACHINE_SUPPORTS_SAVE )

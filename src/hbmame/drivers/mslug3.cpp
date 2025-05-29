@@ -14939,9 +14939,9 @@ GAME( 2000, mslug3b6dd,       mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (DARKSOFT Neo Geo Hacks Converted MVS To Decrypter/Encrypted C)
-GAME( 2025, mslug3chuanqidd,  mslug3,   neogeo_noslot, mslug3cqi,  neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary Firepower Showdown 6.0 2025-04-03)(Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3chuanqidd,  mslug3,   aks_sakura,    mslug3cqi,  neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary Firepower Showdown 6.0 2025-04-03)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3cqdd,       mslug3,   neogeo_noslot, mslug3cq,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary 4.5 2024-12-03)(Darksoft)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3cqtfbdd,    mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary Tower Defense 5.0 2025-05-08)(Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3cqtfbdd,    mslug3,   aks_sakura,    mslug3sc,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary Tower Defense 5.0 2025-05-08)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3cqztdd,     mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary Journey 2024-11-13)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3dddd,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Starlight 2022-05-11)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2004, mslug3frdd,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (French Translation 2006-12-23)(Darksoft)", MACHINE_SUPPORTS_SAVE )
@@ -14963,9 +14963,9 @@ GAME( 2000, mslug3b6nsd,      mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (MATT GREER "CITY41" Neo Geo Hack Converted .NEO SD)
-GAME( 2025, mslug3chuanqinds, mslug3,   neogeo_noslot, mslug3cqi,  neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary Firepower Showdown 6.0 2025-04-03)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3chuanqinds, mslug3,   aks_sakura,    mslug3cqi,  neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary Firepower Showdown 6.0 2025-04-03)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3cqnds,      mslug3,   neogeo_noslot, mslug3cq,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary 4.5 2024-12-03)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3cqtfbnds,   mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary Tower Defense 5.0 2025-05-08)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3cqtfbnds,   mslug3,   aks_sakura,    mslug3sc,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary Tower Defense 5.0 2025-05-08)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3cqztnds,    mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary Journey 2024-11-13)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3ddnds,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Starlight 2022-05-11)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2004, mslug3frnds,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (French Translation 2006-12-23)(Neo SD)", MACHINE_SUPPORTS_SAVE )
