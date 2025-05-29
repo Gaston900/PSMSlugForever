@@ -15,14 +15,20 @@ for the 86/64 bit cpu of the compatible microprocessors.
 Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use Or Using The Project For A Fundraising Fundraiser.
 
 ===============================================================================================================================
-2025-0X-XX
+2025-05-30
 
 - Updated Roms Metal Slug (Origins 2025-05-02)
+- Updated Roms Metal Slug 3 (Legendary Firepower Showdown 6.0 2025-04-03)
+- Updated Roms Metal Slug 3 (Legendary Tower Defense 5.0 2025-04-08)
+- Updated Roms Metal Slug 4 (Legendary Firepower Showdown 6.0 2025-04-03)
+- Updated Roms Metal Slug 5 (Legendary 6.0 2025-04-03)
+- Updated Roms Metal Slug X (Legendary Firepower Showdown 6.0 2025-04-03)
 
 New Games
 ---------------------------------
 
-- [mslugxhc26]             Metal Slug X (Random Ammo 2024-11-03)
+- [mslugdyf1]              Metal Slug Metal Slug (Origins Random Item 2025-05-27)(Fightcade2)
+- [mslug5hc30]             Metal Slug X (Random Ammo 2024-11-03)
 - [mslugxhc31]             Metal Slug X (Rebel Soldier 2025-04-28)
 
 
