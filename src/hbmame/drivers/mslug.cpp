@@ -142,6 +142,12 @@ INPUT_PORTS_END
 	MSLUG_MVS_FILL \
     MSLUG_AES_FILL
 
+#define MSLUGDYF1_ESSENTIALPATCH_MODS_FILL \
+    MSLUG_FLASHOFF_MODS_FILL \
+    MSLUG_POWNEVERLOSE_MODS_FILL \
+	MSLUG_MVS_FILL \
+    MSLUG_AES_FILL
+
 #define MSLUGHB_REMIXCUZTOMPATCH_MODS_FILL \
     MSLUG_CUZTOMPATCH_MODS_FILL \
     MSLUG_STARTTWOHUNDREDANDFIFTYLIFE_MODS_FILL \
@@ -1131,15 +1137,14 @@ ROM_END
 
 ROM_START( mslugdyf1 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "201dyf1.p1", 0x100000, 0x100000, CRC(a0af0bfc) SHA1(f5447905a7f5a515e6a80e61c53253ca593e0749) )
+	ROM_LOAD16_WORD_SWAP( "201dyf1.p1", 0x100000, 0x100000, CRC(23bf5414) SHA1(6289c39056b9203df50005cd389432198ff0971c) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
-    MSLUGHB_ESSENTIALPATCH_MODS_FILL
+    MSLUGDYF1_ESSENTIALPATCH_MODS_FILL
 	MSLUG_SFIX_128K
 	MSLUG_AUDIO_128K
     MSLUG_YMSND
     MSLUG_SPRITES
 ROM_END
-
 
  /*****
   Hack
@@ -1505,7 +1510,7 @@ GAME( 1996, mslugnsd,         mslug,    neogeo_noslot, mslughb,   neogeo_state, 
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Exclusive Fightcade2)
-GAME( 2024, mslugdyf1,        mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Origins Random Item 2024-04-15)(Fightcade2)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugdyf1,        mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Origins Random Item 2025-05-27)(Fightcade2)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Hack)

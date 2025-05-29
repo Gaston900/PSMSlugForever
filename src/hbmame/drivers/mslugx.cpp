@@ -607,7 +607,7 @@ INPUT_PORTS_END
     MSLUGX_TANKTHATFIRESFASTER_MODS_FILL \
     MSLUGX_CUZTOMPATCH_MODS_FILL \
     MSLUGX_1V2GENERATION_MODS_FILL \
-    MSLUGX_DEBUGMENUENGLISHTRANSLATION_MODS_FILL \
+	MSLUGX_DEBUGMENUENGLISHTRANSLATION_MODS_FILL \
 	MSLUGX_MVS_FILL \
     MSLUGX_AES_FIX_FILL \
 	MSLUGX_AES_FILL
@@ -3904,6 +3904,14 @@ INPUT_PORTS_END
     ROM_FILL(0xF265A,1,0x4E)\
 	ROM_FILL(0xF265B,1,0x75)
 
+#define MSLUGX_INFINITETIME_MODS_FILL \
+	ROM_FILL(0x18098,1,0x3B)\
+    ROM_FILL(0x1809A,1,0xFF)\
+    ROM_FILL(0x1809D,1,0x02)\
+	ROM_FILL(0x1860A,1,0x3B)\
+    ROM_FILL(0x1860C,1,0xFF)\
+    ROM_FILL(0x1860F,1,0x01)
+
 #define MSLUGXC1_1V2GENERATION_MODS_FILL \
     ROM_FILL(0x19080,1,0x94)\
     ROM_FILL(0x19081,1,0xC4)\
@@ -4176,8 +4184,8 @@ INPUT_PORTS_END
 	ROM_LOAD( "250dd.c1", 0x0000000, 0x3000000, CRC(a3710983) SHA1(196dc03485d3cb3e37d328dfdc79a494258fe6c4) )
 
 #define MSLUGXCQIDD_SPRITES \
-	ROM_REGION( 0x3000000, "sprites", 0 ) \
-	ROM_LOAD( "250cqidd.c1", 0x0000000, 0x3000000, CRC(dc983b61) SHA1(211e7a5fc4c649cf6140f52aca6182fc0db29fdc) )
+	ROM_REGION( 0x4000000, "sprites", 0 ) \
+	ROM_LOAD( "250cqidd.c1", 0x0000000, 0x4000000, CRC(8fd2716b) SHA1(3e30c9f5379a37a70faae3d38dabe2e799d5255a) )
 
 #define MSLUGXCQDD_SPRITES \
 	ROM_REGION( 0x3000000, "sprites", 0 ) \
@@ -4245,13 +4253,15 @@ INPUT_PORTS_END
 	ROM_LOAD16_BYTE( "250_hc33.c6",  0x2000001, 0x800000, CRC(ec2f6882) SHA1(35835faf840ee358df06aaef89244dbb04a6fca1) )
 
 #define MSLUGXCQI_SPRITES \
-	ROM_REGION( 0x3000000, "sprites", 0 ) \
+	ROM_REGION( 0x4000000, "sprites", 0 ) \
 	ROM_LOAD16_BYTE( "250.c1",       0x0000000, 0x800000, CRC(09a52c6f) SHA1(c3e8a8ccdac0f8bddc4c3413277626532405fae2) )\
 	ROM_LOAD16_BYTE( "250.c2",       0x0000001, 0x800000, CRC(31679821) SHA1(554f600a3aa09c16c13c625299b087a79d0d15c5) )\
 	ROM_LOAD16_BYTE( "250_hc33.c3",  0x1000000, 0x800000, CRC(917f95c5) SHA1(c08ed27bf82892c401b855731cb0ea6f03f6e858) )\
 	ROM_LOAD16_BYTE( "250_hc33.c4",  0x1000001, 0x800000, CRC(93290f81) SHA1(cb541431b95d42aff9f6ae5d85f9239cc1a52f23) )\
-	ROM_LOAD16_BYTE( "250_hc34.c5",  0x2000000, 0x800000, CRC(9b14fbf2) SHA1(a68f6a090aa7d6591a621bb6568f31dca893d2df) )\
-	ROM_LOAD16_BYTE( "250_hc34.c6",  0x2000001, 0x800000, CRC(e0e796d3) SHA1(88582e3b0f814ba97211f19e469ed7390f3bfcff) )
+	ROM_LOAD16_BYTE( "250_hc34.c5",  0x2000000, 0x800000, CRC(e66c6f58) SHA1(5b1870817df5d515d9284812953d5a316bbb7ad6) )\
+	ROM_LOAD16_BYTE( "250_hc34.c6",  0x2000001, 0x800000, CRC(d6406f54) SHA1(e6f94f08479826766bb3bcd36814c688c30e7152) )\
+	ROM_LOAD16_BYTE( "250_hc34.c7",  0x3000000, 0x800000, CRC(616082e8) SHA1(21c30e39d71c2964596d5a8bbc5252b2daef90a9) )\
+	ROM_LOAD16_BYTE( "250_hc34.c8",  0x3000001, 0x800000, CRC(b9710e89) SHA1(f837e22433b3ede0928f46c481f3154028f5a1a7) )
 
 /*********************
  MVS AND AES VERSION
@@ -4302,8 +4312,8 @@ ROM_END
 *******************************/
 
 ROM_START( mslugxchuanqidd )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250chuanqidd.p1", 0x000000, 0x500000, CRC(3a042db3) SHA1(e060e201dc01e8f6e2e1299e79a70575604c8ebb) )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "250chuanqidd.p1", 0x000000, 0x900000, CRC(41f9b9d6) SHA1(8d33d6bb6c78f29d52e9459b4a0bc2732b92ebe4) )
     MSLUGXCQI_ESSENTIALPATCH_MODS_FILL
 	MSLUGXSC_SFIX_128K
     MSLUGXSC_AUDIO_BIOS_128K
@@ -4382,10 +4392,10 @@ ROM_END
 *******************************/
 
 ROM_START( mslugxchuanqinds )
-	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "mslugxcqi.neo", 0x000000, 0x001000, CRC(37fd3d0c) SHA1(6d96872a519acd40ceede91c41cac9e6af4e460a) )
-    ROM_CONTINUE( 0x000000, 0x501000 )
-	ROM_IGNORE( 0x3A3F000 )
+	ROM_REGION( 0xa00000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "mslugxcqi.neo", 0x000000, 0x001000, CRC(462ba8af) SHA1(bd725627c81a393ea4f5e5caf0339d40b91a01bb) )
+    ROM_CONTINUE( 0x000000, 0x901000 )
+	ROM_IGNORE( 0x4A3F000 )
 	MSLUGXCQI_ESSENTIALPATCH_MODS_FILL
 	MSLUGXSC_SFIX_128K
     MSLUGXSC_AUDIO_BIOS_128K
@@ -4836,9 +4846,9 @@ ROM_START( mslugxhc33 ) //mslugxcq
 ROM_END
 
 ROM_START( mslugxhc34 ) //mslugxchuanqi
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250_hc34.p1", 0x000000, 0x100000, CRC(f1cd0db7) SHA1(25815d111bb3b141e139de7896875a6ebee0ab03) )
-	ROM_LOAD16_WORD_SWAP( "250_hc34.p2", 0x100000, 0x400000, CRC(ab4cd88e) SHA1(55d3f33ba41c1a507f6e64a968f3ce5d4f6299fa) )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "250_hc34.p1", 0x000000, 0x100000, CRC(b4cc793f) SHA1(a1a49b0e4874a58969ff731d05197a5d80dccc46) )
+	ROM_LOAD16_WORD_SWAP( "250_hc34.p2", 0x100000, 0x800000, CRC(93534961) SHA1(cf725da8a4b1dcafece6e15db76e2d0b597146bf) )
     MSLUGXCQI_ESSENTIALPATCH_MODS_FILL
 	MSLUGXSC_SFIX_128K
     MSLUGXSC_AUDIO_BIOS_128K
@@ -6785,7 +6795,7 @@ GAME( 1999, mslugxdd,         mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (DARKSOFT Neo Geo Hacks Converted MVS To Decrypter/Encrypted C)
-GAME( 2024, mslugxchuanqidd,  mslugx,   neogeo_noslot, mslugxcqi,  neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Legendary Firepower Showdown 5.0 2025-02-13)(Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugxchuanqidd,  mslugx,   neogeo_noslot, mslugxcqi,  neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Legendary Firepower Showdown 6.0 2025-04-03)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugxcqdd,       mslugx,   neogeo_noslot, mslugxcq,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Legendary 4.5 2024-06-13)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxdddd,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Starlight 2022-08-10)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2006, mslugxfrdd,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (French Translation 2006-09-26)(Darksoft)", MACHINE_SUPPORTS_SAVE )
@@ -6802,7 +6812,7 @@ GAME( 1999, mslugxnsd,        mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (MATT GREER "CITY41" Neo Geo Hack Converted .NEO SD)
-GAME( 2024, mslugxchuanqinds, mslugx,   neogeo_noslot, mslugxcqi,  neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Legendary Firepower Showdown 5.0 2025-02-13)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugxchuanqinds, mslugx,   neogeo_noslot, mslugxcqi,  neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Legendary Firepower Showdown 6.0 2025-04-03)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugxcqnds,      mslugx,   neogeo_noslot, mslugxcq,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Legendary 4.5 2024-06-13)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxddnds,      mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Starlight 2022-08-10)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2006, mslugxfrnds,      mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (French Translation 2006-09-26)(Neo SD)", MACHINE_SUPPORTS_SAVE )
@@ -6840,7 +6850,7 @@ GAME( 2020, mslugxhc22,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,
 GAME( 2020, mslugxhc23,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (2R 1V2 Mode 2020-05-19)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxhc24,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Starlight 2022-08-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslugxhc25,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslugxhc26,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Random Ammo 2024-11-03)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugxhc26,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Ammo Random 2024-11-03)", MACHINE_SUPPORTS_SAVE )
 GAME( 2012, mslugxhc27,       mslugx,   neogeo_noslot, mslugxv,    neogeo_state,    init_mslugx,     ROT0, "lb70 (Eezezy)",   "Metal Slug X (Violence 2012-01-08)", MACHINE_SUPPORTS_SAVE )
 GAME( 2006, mslugxhc28,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "Shyma.X",         "Metal Slug X (French Translation 2006-09-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslugxhc29,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "Clomax & Ombra",  "Metal Slug X (Italian Translation 2005-01-22)", MACHINE_SUPPORTS_SAVE )
@@ -6848,7 +6858,7 @@ GAME( 2023, mslugxhc30,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,
 GAME( 2025, mslugxhc31,       mslugx,   neogeo_noslot, mslugxsvh,  neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Rebel Soldier 2025-04-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxhc32,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Survival 2023-02-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugxhc33,       mslugx,   neogeo_noslot, mslugxcq,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Legendary 4.5 2024-12-02)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslugxhc34,       mslugx,   neogeo_noslot, mslugxcqi,  neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Legendary Firepower Showdown 5.0 2025-02-13)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugxhc34,       mslugx,   aks_sakura,    mslugxcqi,  neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Legendary Firepower Showdown 6.0 2025-04-03)", MACHINE_SUPPORTS_SAVE )
 
 /*********************************************************************************
 * This game sector is exclusive 2017 - 2025, its modifications that load have been customized
