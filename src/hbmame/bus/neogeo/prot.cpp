@@ -3075,6 +3075,33 @@ void sma_prot_device::mslug3_decrypt_68k(u8* base)
 	}
 }
 
+void sma_prot_device::mslug3cqt_decrypt_68k(u8* base)
+{
+	int i,j;
+
+	/* thanks to Razoola and Mr K for the info */
+	u16 *rom = (u16 *)(base + 0x100000);
+	/* swap data lines on the whole ROMs */
+	for (i = 0;i < 0x800000/2;i++)
+		rom[i] = bitswap<16>(rom[i],4,11,14,3,1,13,0,7,2,8,12,15,10,9,5,6);
+
+	/* swap address lines & relocate fixed part */
+	rom = (u16 *)base;
+	for (i = 0;i < 0x0c0000/2;i++)
+		rom[i] = rom[0x5d0000/2 + bitswap<24>(i,23,22,21,20,19,18,15,2,1,13,3,0,9,6,16,4,11,5,7,12,17,14,10,8)];
+
+	/* swap address lines for the banked part */
+	rom = (u16 *)(base + 0x100000);
+	for (i = 0;i < 0x800000/2;i+=0x10000/2)
+	{
+		u16 buffer[0x10000/2];
+		memcpy(buffer,&rom[i],0x10000);
+		for (j = 0;j < 0x10000/2;j++)
+			rom[i+j] = buffer[bitswap<24>(j,23,22,21,20,19,18,17,16,15,2,11,0,14,6,4,13,8,9,3,10,7,5,12,1)];
+	}
+    memmove(&rom[0x500000/2], &rom[0x900000/2], 0x100000);
+}
+
  //By Remikare [kuroma_mameui]
 void sma_prot_device::mslug3a_decrypt_68k(u8* base)
 {

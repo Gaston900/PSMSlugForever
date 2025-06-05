@@ -373,6 +373,7 @@ public:
 	void garouh_decrypt_68k(u8* base);
 	void mslug3_decrypt_68k(u8* base);
 	void mslug3a_decrypt_68k(u8* base);
+	void mslug3cqt_decrypt_68k(u8* base);
 	void kof2000_decrypt_68k(u8* base);
 
 	// PCB decrypts (not sma)

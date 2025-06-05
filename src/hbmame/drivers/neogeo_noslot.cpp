@@ -1178,18 +1178,6 @@ void neogeo_state::main_map_slot(address_map &map)
 //  AM_RANGE(0x2ffff0, 0x2fffff) AM_WRITE(main_cpu_bank_select_w)
 }
 
-void neogeo_state::aks_sakura_map(address_map &map)
-{
-	main_map_noslot(map);
-	map(0x100000,0x1FFFFF).ram();
-}
-
-void neogeo_state::aks_sakura(machine_config &config)
-{
-	neogeo_noslot(config);
-	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::aks_sakura_map);
-}
-
 /*************************************
  *
  *  Audio CPU memory handlers
@@ -1433,6 +1421,18 @@ void neogeo_state::neogeo_noslot(machine_config &config)
 	FATFURY2_PROT(config, "fatfury2_prot");
 	KOF98_PROT(config, "kof98_prot");
 	SBP_PROT(config, "sbp_prot");
+}
+
+void neogeo_state::aks_sakura_map(address_map &map)
+{
+	main_map_noslot(map);
+	map(0x100000,0x1FFFFF).ram();
+}
+
+void neogeo_state::aks_sakura(machine_config &config)
+{
+	neogeo_noslot(config);
+	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::aks_sakura_map);
 }
 
 /*********************************************** non-carts */

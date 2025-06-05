@@ -106,6 +106,7 @@ public:
 	void init_mslug3a();
 	void init_mslug3e();
 	void init_mslug3hb();
+	void init_mslug3cqt();
 	void init_mslug3dd();
 	void init_mslug3ndd();
     void init_mslug3b6d();
