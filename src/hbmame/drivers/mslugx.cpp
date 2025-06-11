@@ -4313,7 +4313,7 @@ ROM_END
 
 ROM_START( mslugxchuanqidd )
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250chuanqidd.p1", 0x000000, 0x900000, CRC(41f9b9d6) SHA1(8d33d6bb6c78f29d52e9459b4a0bc2732b92ebe4) )
+	ROM_LOAD16_WORD_SWAP( "250chuanqidd.p1", 0x000000, 0x900000, CRC(52dcc59f) SHA1(aaddc81cc501cb28c540a9104b57fe7a97f6b48e) )
     MSLUGXCQI_ESSENTIALPATCH_MODS_FILL
 	MSLUGXSC_SFIX_128K
     MSLUGXSC_AUDIO_BIOS_128K
@@ -4393,7 +4393,7 @@ ROM_END
 
 ROM_START( mslugxchuanqinds )
 	ROM_REGION( 0xa00000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "mslugxcqi.neo", 0x000000, 0x001000, CRC(462ba8af) SHA1(bd725627c81a393ea4f5e5caf0339d40b91a01bb) )
+	ROM_LOAD16_WORD_SWAP( "mslugxcqi.neo", 0x000000, 0x001000, CRC(41f7cbe5) SHA1(5fd13eb1d76cb027493ce0e91c91361cc73c95a7) )
     ROM_CONTINUE( 0x000000, 0x901000 )
 	ROM_IGNORE( 0x4A3F000 )
 	MSLUGXCQI_ESSENTIALPATCH_MODS_FILL
@@ -4847,8 +4847,8 @@ ROM_END
 
 ROM_START( mslugxhc34 ) //mslugxchuanqi
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250_hc34.p1", 0x000000, 0x100000, CRC(b4cc793f) SHA1(a1a49b0e4874a58969ff731d05197a5d80dccc46) )
-	ROM_LOAD16_WORD_SWAP( "250_hc34.p2", 0x100000, 0x800000, CRC(93534961) SHA1(cf725da8a4b1dcafece6e15db76e2d0b597146bf) )
+	ROM_LOAD16_WORD_SWAP( "250_hc34.p1", 0x000000, 0x100000, CRC(cce1fb1b) SHA1(84ff694bc0e503355301892e08ccf77c0d54079b) )
+	ROM_LOAD16_WORD_SWAP( "250_hc34.p2", 0x100000, 0x800000, CRC(1dca19dd) SHA1(5f8547c07e3c2fc4118dc28e522056161ca9cf67) )
     MSLUGXCQI_ESSENTIALPATCH_MODS_FILL
 	MSLUGXSC_SFIX_128K
     MSLUGXSC_AUDIO_BIOS_128K
@@ -6795,7 +6795,7 @@ GAME( 1999, mslugxdd,         mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (DARKSOFT Neo Geo Hacks Converted MVS To Decrypter/Encrypted C)
-GAME( 2025, mslugxchuanqidd,  mslugx,   aks_sakura,    mslugxcqi,  neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Legendary Firepower Showdown 6.0 2025-04-03)(Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugxchuanqidd,  mslugx,   aks_sakura,    mslugxcqi,  neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Legendary Firepower Showdown 6.0 2025-06-09)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugxcqdd,       mslugx,   neogeo_noslot, mslugxcq,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Legendary 4.5 2024-06-13)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxdddd,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Starlight 2022-08-10)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2006, mslugxfrdd,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (French Translation 2006-09-26)(Darksoft)", MACHINE_SUPPORTS_SAVE )
@@ -6812,7 +6812,7 @@ GAME( 1999, mslugxnsd,        mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (MATT GREER "CITY41" Neo Geo Hack Converted .NEO SD)
-GAME( 2025, mslugxchuanqinds, mslugx,   aks_sakura,    mslugxcqi,  neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Legendary Firepower Showdown 6.0 2025-04-03)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugxchuanqinds, mslugx,   aks_sakura,    mslugxcqi,  neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Legendary Firepower Showdown 6.0 2025-06-09)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugxcqnds,      mslugx,   neogeo_noslot, mslugxcq,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Legendary 4.5 2024-06-13)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxddnds,      mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Starlight 2022-08-10)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2006, mslugxfrnds,      mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (French Translation 2006-09-26)(Neo SD)", MACHINE_SUPPORTS_SAVE )
@@ -6858,7 +6858,7 @@ GAME( 2023, mslugxhc30,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,
 GAME( 2025, mslugxhc31,       mslugx,   neogeo_noslot, mslugxsvh,  neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Rebel Soldier 2025-04-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxhc32,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Survival 2023-02-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugxhc33,       mslugx,   neogeo_noslot, mslugxcq,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Legendary 4.5 2024-12-02)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslugxhc34,       mslugx,   aks_sakura,    mslugxcqi,  neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Legendary Firepower Showdown 6.0 2025-04-03)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugxhc34,       mslugx,   aks_sakura,    mslugxcqi,  neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Legendary Firepower Showdown 6.0 2025-06-09)", MACHINE_SUPPORTS_SAVE )
 
 /*********************************************************************************
 * This game sector is exclusive 2017 - 2025, its modifications that load have been customized
