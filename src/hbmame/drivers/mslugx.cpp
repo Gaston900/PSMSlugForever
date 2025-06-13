@@ -1306,10 +1306,6 @@ INPUT_PORTS_END
     MSLUGX_CUZTOMWEAPONANIMATION_MODS_FILL \
     MSLUGX_STARTWALKINGALLLEVELS1_MODS_FILL \
     MSLUGXSC_REMOVESTARTERBOXLEVEL6_MODS_FILL \
-	MSLUGX_BOSS_MODS_FILL \
-    MSLUGX_CHANGETANKSLUGTEXT_MODS_FILL \
-    MSLUGX_SPEEDUPLEVELTEXTLEVEL_MODS_FILL \
-	MSLUGX_FLASHOFF_MODS_FILL \
 	MSLUGX_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
     MSLUGX_POWNEVERLOSE_MODS_FILL \
     MSLUGX_CHANGEMOVINGPLAYERS_MODS_FILL \
@@ -7107,7 +7103,7 @@ GAME( 2023, mslugxctmh04,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,
 GAME( 2023, mslugxctmh05,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting Big Heavy Machine Gun Flame Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmh06,     mslugx,   neogeo_noslot, mslugxv,    neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting Violence Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmh07,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting Enemy Speed Up Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxctmh08,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting Survival Cuztom 2024-04-28)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugxctmh08,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting Survival Cuztom 2024-04-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmh09,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting Unity Time! Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslugxctmh10,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting Rebel Soldier Cuztom 2025-06-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmh11,     mslugx,   neogeo_noslot, mslugxdg,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
