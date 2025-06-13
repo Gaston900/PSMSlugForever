@@ -707,6 +707,29 @@ INPUT_PORTS_END
     MSLUGX_AES_FIX_FILL \
 	MSLUGX_AES_FILL
 
+#define MSLUGXSVH_CUZTOMESSENTIALPATCH_MODS_FILL \
+    MSLUGX_CUZTOMWEAPONANIMATION_MODS_FILL \
+    MSLUGX_BOSS_MODS_FILL \
+	MSLUGX_CHANGETANKSLUGTEXT_MODS_FILL \
+    MSLUGX_SPEEDUPLEVELTEXTLEVEL_MODS_FILL \
+    MSLUGX_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
+    MSLUGX_POWNEVERLOSE_MODS_FILL \
+    MSLUGX_FLASHOFF_MODS_FILL \
+    MSLUGX_ALIEN_MODS_FILL \
+    MSLUGX_THEYTEARYOUAPARTWHENITDIES_MODS_FILL \
+    MSLUGX_CUZTOMPATCH_MODS_FILL \
+    MSLUGX_2RCUZTOMLOGOONE_MODS_FILL \
+	MSLUGX_SOLDIER_CHANGING_UNIFORM_MODS_FILL \
+	MSLUGX_1V2GENERATION_MODS_FILL \
+	MSLUGX_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
+	MSLUGX_CHANGETHESKYOF_MODS_FILL \
+	MSLUGX_SOLDIERSHIELD_CHANGING_UNIFORM_MODS_FILL \
+	MSLUGX_SOLDIERTARTERBOX_MODS_FILL \
+	MSLUGX_DEBUGMENUENGLISHTRANSLATION_MODS_FILL \
+	MSLUGX_MVS_FILL \
+    MSLUGX_AES_FIX_FILL \
+	MSLUGX_AES_FILL
+
 #define MSLUGXHB_HLCUZTOMESSENTIALPATCH_MODS_FILL \
     MSLUGX_CUZTOMWEAPONANIMATION_MODS_FILL \
     MSLUGX_STARTWALKINGALLLEVELS1_MODS_FILL \
@@ -797,6 +820,29 @@ INPUT_PORTS_END
     MSLUGX_AES_FIX_FILL \
 	MSLUGX_AES_FILL
 
+#define MSLUGXSVH_HLCUZTOMESSENTIALPATCH_MODS_FILL \
+    MSLUGX_CUZTOMWEAPONANIMATION_MODS_FILL \
+    MSLUGX_BOSS_MODS_FILL \
+	MSLUGX_CHANGETANKSLUGTEXT_MODS_FILL \
+    MSLUGX_SPEEDUPLEVELTEXTLEVEL_MODS_FILL \
+    MSLUGX_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
+    MSLUGX_POWNEVERLOSE_MODS_FILL \
+    MSLUGX_FLASHOFF_MODS_FILL \
+    MSLUGX_ALIEN_MODS_FILL \
+    MSLUGX_THEYTEARYOUAPARTWHENITDIES_MODS_FILL \
+    MSLUGX_CUZTOMPATCH_MODS_FILL \
+	MSLUGX_2RCUZTOMLOGOONE_MODS_FILL \
+	MSLUGX_SOLDIER_CHANGING_UNIFORM_MODS_FILL \
+	MSLUGX_1V2GENERATION_MODS_FILL \
+	MSLUGX_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
+	MSLUGX_CHANGETHESKYOF_MODS_FILL \
+	MSLUGX_SOLDIERSHIELD_CHANGING_UNIFORM_MODS_FILL \
+	MSLUGX_SOLDIERTARTERBOX_MODS_FILL \
+	MSLUGX_DEBUGMENUENGLISHTRANSLATION_MODS_FILL \
+	MSLUGX_MVS_FILL \
+    MSLUGX_AES_FIX_FILL \
+	MSLUGX_AES_FILL
+
 #define MSLUGXHB_C1CUZTOMESSENTIALPATCH_MODS_FILL \
     MSLUGX_CUZTOMWEAPONANIMATION_MODS_FILL \
     MSLUGX_STARTWALKINGALLLEVELS1_MODS_FILL \
@@ -882,6 +928,29 @@ INPUT_PORTS_END
 	MSLUGX_CHANGETHESKYOF_MODS_FILL \
 	MSLUGX_DISABLEFASTBOMB_MODS_FILL \
 	MSLUGX_SOLDIERSHIELD_CHANGING_UNIFORM_MODS_FILL \
+	MSLUGX_DEBUGMENUENGLISHTRANSLATION_MODS_FILL \
+	MSLUGX_MVS_FILL \
+    MSLUGX_AES_FIX_FILL \
+	MSLUGX_AES_FILL
+
+#define MSLUGXSVH_C1CUZTOMESSENTIALPATCH_MODS_FILL \
+    MSLUGX_CUZTOMWEAPONANIMATION_MODS_FILL \
+    MSLUGX_BOSS_MODS_FILL \
+	MSLUGX_CHANGETANKSLUGTEXT_MODS_FILL \
+    MSLUGX_SPEEDUPLEVELTEXTLEVEL_MODS_FILL \
+    MSLUGX_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
+    MSLUGX_POWNEVERLOSE_MODS_FILL \
+    MSLUGX_FLASHOFF_MODS_FILL \
+    MSLUGX_ALIEN_MODS_FILL \
+    MSLUGX_THEYTEARYOUAPARTWHENITDIES_MODS_FILL \
+    MSLUGX_CUZTOMPATCH_MODS_FILL \
+	MSLUGX_2RCUZTOMLOGOONE_MODS_FILL \
+	MSLUGX_SOLDIER_CHANGING_UNIFORM_MODS_FILL \
+	MSLUGX_1V2GENERATION_MODS_FILL \
+	MSLUGX_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
+	MSLUGX_CHANGETHESKYOF_MODS_FILL \
+	MSLUGX_SOLDIERSHIELD_CHANGING_UNIFORM_MODS_FILL \
+	MSLUGX_SOLDIERTARTERBOX_MODS_FILL \
 	MSLUGX_DEBUGMENUENGLISHTRANSLATION_MODS_FILL \
 	MSLUGX_MVS_FILL \
     MSLUGX_AES_FIX_FILL \
@@ -1005,6 +1074,31 @@ INPUT_PORTS_END
     MSLUGX_AES_FIX_FILL \
 	MSLUGX_AES_FILL
 
+#define MSLUGXSVH_C2CUZTOMESSENTIALPATCH_MODS_FILL \
+    MSLUGX_CUZTOMWEAPONANIMATION_MODS_FILL \
+    MSLUGX_BOSS_MODS_FILL \
+	MSLUGX_CHANGETANKSLUGTEXT_MODS_FILL \
+    MSLUGX_SPEEDUPLEVELTEXTLEVEL_MODS_FILL \
+    MSLUGX_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
+    MSLUGX_POWNEVERLOSE_MODS_FILL \
+    MSLUGX_FLASHOFF_MODS_FILL \
+    MSLUGX_ALIEN_MODS_FILL \
+    MSLUGX_THEYTEARYOUAPARTWHENITDIES_MODS_FILL \
+    MSLUGX_CUZTOMPATCH_MODS_FILL \
+    MSLUGX_2RCUZTOMLOGOONE_MODS_FILL \
+	MSLUGX_SOLDIER_CHANGING_UNIFORM_MODS_FILL \
+	MSLUGX_1V2GENERATION_MODS_FILL \
+	MSLUGX_HELICOPTER_FIX_FILL \
+	MSLUGX_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
+	MSLUGX_CHANGETHESKYOF_MODS_FILL \
+	MSLUGXC2_ENEMYRESET_FIX_FILL \
+	MSLUGX_SOLDIERSHIELD_CHANGING_UNIFORM_MODS_FILL \
+	MSLUGX_SOLDIERTARTERBOX_MODS_FILL \
+	MSLUGX_DEBUGMENUENGLISHTRANSLATION_MODS_FILL \
+	MSLUGX_MVS_FILL \
+    MSLUGX_AES_FIX_FILL \
+	MSLUGX_AES_FILL
+
 #define MSLUGXHB_XRCUZTOMESSENTIALPATCH_MODS_FILL \
     MSLUGX_CUZTOMWEAPONANIMATION_MODS_FILL \
     MSLUGX_STARTWALKINGALLLEVELS1_MODS_FILL \
@@ -1092,10 +1186,37 @@ INPUT_PORTS_END
     MSLUGX_AES_FIX_FILL \
 	MSLUGX_AES_FILL
 
+#define MSLUGXSVH_XRCUZTOMESSENTIALPATCH_MODS_FILL \
+    MSLUGX_CUZTOMWEAPONANIMATION_MODS_FILL \
+    MSLUGX_BOSS_MODS_FILL \
+    MSLUGX_CHANGETANKSLUGTEXT_MODS_FILL \
+    MSLUGX_SPEEDUPLEVELTEXTLEVEL_MODS_FILL \
+    MSLUGX_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
+    MSLUGX_POWNEVERLOSE_MODS_FILL \
+    MSLUGX_FLASHOFF_MODS_FILL \
+    MSLUGX_ALIEN_MODS_FILL \
+    MSLUGX_THEYTEARYOUAPARTWHENITDIES_MODS_FILL \
+    MSLUGX_CUZTOMPATCH_MODS_FILL \
+    MSLUGX_SOLDIER_CHANGING_UNIFORM_MODS_FILL \
+	MSLUGX_1V2GENERATION_MODS_FILL \
+	MSLUGX_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
+	MSLUGX_CHANGETHESKYOF_MODS_FILL \
+	MSLUGX_2RCUZTOMLOGOONE_MODS_FILL \
+	MSLUGX_SOLDIERSHIELD_CHANGING_UNIFORM_MODS_FILL \
+	MSLUGX_SOLDIERTARTERBOX_MODS_FILL \
+	MSLUGX_DEBUGMENUENGLISHTRANSLATION_MODS_FILL \
+	MSLUGX_MVS_FILL \
+    MSLUGX_AES_FIX_FILL \
+	MSLUGX_AES_FILL
+
 #define MSLUGXHB_SCCUZTOMESSENTIALPATCH_MODS_FILL \
     MSLUGX_CUZTOMWEAPONANIMATION_MODS_FILL \
     MSLUGX_STARTWALKINGALLLEVELS1_MODS_FILL \
     MSLUGXSC_REMOVESTARTERBOXLEVEL6_MODS_FILL \
+	MSLUGX_BOSS_MODS_FILL \
+    MSLUGX_CHANGETANKSLUGTEXT_MODS_FILL \
+    MSLUGX_SPEEDUPLEVELTEXTLEVEL_MODS_FILL \
+	MSLUGX_FLASHOFF_MODS_FILL \
 	MSLUGX_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
     MSLUGX_POWNEVERLOSE_MODS_FILL \
     MSLUGX_LIFEMORE_MODS_FILL \
@@ -1123,6 +1244,10 @@ INPUT_PORTS_END
     MSLUGX_CUZTOMWEAPONANIMATION_MODS_FILL \
     MSLUGX_STARTWALKINGALLLEVELS1_MODS_FILL \
     MSLUGXSC_REMOVESTARTERBOXLEVEL6_MODS_FILL \
+	MSLUGX_BOSS_MODS_FILL \
+    MSLUGX_CHANGETANKSLUGTEXT_MODS_FILL \
+    MSLUGX_SPEEDUPLEVELTEXTLEVEL_MODS_FILL \
+	MSLUGX_FLASHOFF_MODS_FILL \
 	MSLUGX_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
     MSLUGX_POWNEVERLOSE_MODS_FILL \
     MSLUGX_LIFEMORE_MODS_FILL \
@@ -1150,6 +1275,10 @@ INPUT_PORTS_END
     MSLUGX_CUZTOMWEAPONANIMATION_MODS_FILL \
     MSLUGX_STARTWALKINGALLLEVELS1_MODS_FILL \
     MSLUGXSC_REMOVESTARTERBOXLEVEL6_MODS_FILL \
+	MSLUGX_BOSS_MODS_FILL \
+    MSLUGX_CHANGETANKSLUGTEXT_MODS_FILL \
+    MSLUGX_SPEEDUPLEVELTEXTLEVEL_MODS_FILL \
+	MSLUGX_FLASHOFF_MODS_FILL \
 	MSLUGX_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
 	MSLUGX_LIFEMORE_MODS_FILL \
 	MSLUGX_CHANGEMOVINGPLAYERS_MODS_FILL \
@@ -1177,6 +1306,10 @@ INPUT_PORTS_END
     MSLUGX_CUZTOMWEAPONANIMATION_MODS_FILL \
     MSLUGX_STARTWALKINGALLLEVELS1_MODS_FILL \
     MSLUGXSC_REMOVESTARTERBOXLEVEL6_MODS_FILL \
+	MSLUGX_BOSS_MODS_FILL \
+    MSLUGX_CHANGETANKSLUGTEXT_MODS_FILL \
+    MSLUGX_SPEEDUPLEVELTEXTLEVEL_MODS_FILL \
+	MSLUGX_FLASHOFF_MODS_FILL \
 	MSLUGX_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
     MSLUGX_POWNEVERLOSE_MODS_FILL \
     MSLUGX_CHANGEMOVINGPLAYERS_MODS_FILL \
@@ -1196,24 +1329,26 @@ INPUT_PORTS_END
     MSLUGX_AES_FIX_FILL \
 	MSLUGX_AES_FILL
 
-#define MSLUGXSCI_SCCUZTOMESSENTIALPATCH_MODS_FILL \
+#define MSLUGXSVH_SCCUZTOMESSENTIALPATCH_MODS_FILL \
     MSLUGX_CUZTOMWEAPONANIMATION_MODS_FILL \
-    MSLUGX_STARTWALKINGALLLEVELS3_MODS_FILL \
-    MSLUGX_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
+	MSLUGX_BOSS_MODS_FILL \
+    MSLUGX_CHANGETANKSLUGTEXT_MODS_FILL \
+    MSLUGX_SPEEDUPLEVELTEXTLEVEL_MODS_FILL \
+	MSLUGX_FLASHOFF_MODS_FILL \
+	MSLUGX_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
     MSLUGX_POWNEVERLOSE_MODS_FILL \
-    MSLUGX_CHANGEMOVINGPLAYERS_MODS_FILL \
-    MSLUGX_TANKTHATFIRESFASTER_MODS_FILL \
+    MSLUGX_ALIEN_MODS_FILL \
+    MSLUGX_THEYTEARYOUAPARTWHENITDIES_MODS_FILL \
     MSLUGX_CUZTOMPATCH_MODS_FILL \
     MSLUGX_SOLDIER_CHANGING_UNIFORM_MODS_FILL \
-	MSLUGX_1V2GENERATION_MODS_FILL \
+    MSLUGX_1V2GENERATION_MODS_FILL \
     MSLUGX_ANTIAIRCRAFT_FIX_FILL \
 	MSLUGX_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
 	MSLUGX_CHANGETHESKYOF_MODS_FILL \
-	MSLUGX_PALETTEOFCOLORCARROT_MODS_FILL \
 	MSLUGX_2RCUZTOMLOGOONE_MODS_FILL \
 	MSLUGX_SOLDIERSHIELD_CHANGING_UNIFORM_MODS_FILL \
+	MSLUGX_SOLDIERTARTERBOX_MODS_FILL \
 	MSLUGX_DEBUGMENUENGLISHTRANSLATION_MODS_FILL \
-	MSLUGXSC_FIX_FILL \
 	MSLUGX_MVS_FILL \
     MSLUGX_AES_FIX_FILL \
 	MSLUGX_AES_FILL
@@ -1221,7 +1356,11 @@ INPUT_PORTS_END
 #define MSLUGXDG_SCCUZTOMESSENTIALPATCH_MODS_FILL \
     MSLUGX_CUZTOMWEAPONANIMATION_MODS_FILL \
     MSLUGX_STARTWALKINGALLLEVELS1_MODS_FILL \
-    MSLUGXSC_REMOVESTARTERBOXLEVEL6_MODS_FILL \
+    MSLUGX_BOSS_MODS_FILL \
+    MSLUGX_CHANGETANKSLUGTEXT_MODS_FILL \
+    MSLUGX_SPEEDUPLEVELTEXTLEVEL_MODS_FILL \
+	MSLUGX_FLASHOFF_MODS_FILL \
+	MSLUGXSC_REMOVESTARTERBOXLEVEL6_MODS_FILL \
 	MSLUGX_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
     MSLUGX_POWNEVERLOSE_MODS_FILL \
     MSLUGX_LIFEMORE_MODS_FILL \
@@ -1250,6 +1389,10 @@ INPUT_PORTS_END
     MSLUGX_CUZTOMWEAPONANIMATION_MODS_FILL \
     MSLUGX_STARTWALKINGALLLEVELS1_MODS_FILL \
     MSLUGXSC_REMOVESTARTERBOXLEVEL6_MODS_FILL \
+	MSLUGX_BOSS_MODS_FILL \
+    MSLUGX_CHANGETANKSLUGTEXT_MODS_FILL \
+    MSLUGX_SPEEDUPLEVELTEXTLEVEL_MODS_FILL \
+	MSLUGX_FLASHOFF_MODS_FILL \
 	MSLUGX_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
     MSLUGX_POWNEVERLOSE_MODS_FILL \
     MSLUGX_LIFEMORE_MODS_FILL \
@@ -1269,6 +1412,28 @@ INPUT_PORTS_END
 	MSLUGX_CHANGETHESKYOF_MODS_FILL \
 	MSLUGX_SOLDIERSHIELD_CHANGING_UNIFORM_MODS_FILL \
 	MSLUGX_DEBUGMENUENGLISHTRANSLATION_MODS_FILL \
+	MSLUGX_MVS_FILL \
+    MSLUGX_AES_FIX_FILL \
+	MSLUGX_AES_FILL
+
+#define MSLUGXSCI_SCCUZTOMESSENTIALPATCH_MODS_FILL \
+    MSLUGX_CUZTOMWEAPONANIMATION_MODS_FILL \
+    MSLUGX_STARTWALKINGALLLEVELS3_MODS_FILL \
+	MSLUGX_SOLDIERDOESNTDISAPPEARWHENHEDIES_MODS_FILL \
+    MSLUGX_POWNEVERLOSE_MODS_FILL \
+    MSLUGX_CHANGEMOVINGPLAYERS_MODS_FILL \
+    MSLUGX_TANKTHATFIRESFASTER_MODS_FILL \
+    MSLUGX_CUZTOMPATCH_MODS_FILL \
+    MSLUGX_SOLDIER_CHANGING_UNIFORM_MODS_FILL \
+	MSLUGX_1V2GENERATION_MODS_FILL \
+    MSLUGX_ANTIAIRCRAFT_FIX_FILL \
+	MSLUGX_PLAYERS_CHANGING_UNIFORM_MODS_FILL \
+	MSLUGX_CHANGETHESKYOF_MODS_FILL \
+	MSLUGX_PALETTEOFCOLORCARROT_MODS_FILL \
+	MSLUGX_2RCUZTOMLOGOONE_MODS_FILL \
+	MSLUGX_SOLDIERSHIELD_CHANGING_UNIFORM_MODS_FILL \
+	MSLUGX_DEBUGMENUENGLISHTRANSLATION_MODS_FILL \
+	MSLUGXSC_FIX_FILL \
 	MSLUGX_MVS_FILL \
     MSLUGX_AES_FIX_FILL \
 	MSLUGX_AES_FILL
@@ -2087,6 +2252,11 @@ INPUT_PORTS_END
 	ROM_FILL(0x2F3327,1,0x58)\
     ROM_FILL(0x2F3329,1,0x58)\
 	ROM_FILL(0x2F332B,1,0x4F)
+
+#define MSLUGX_SOLDIERTARTERBOX_MODS_FILL \
+	ROM_FILL(0x4011,1,0x10)\
+    ROM_FILL(0x4033,1,0x10)\
+	ROM_FILL(0x4034,1,0x63)
 
 #define MSLUGXSC_REMOVESTARTERBOXLEVEL6_MODS_FILL \
 	ROM_FILL(0x2DF694,1,0x02)\
@@ -4904,14 +5074,14 @@ ROM_START( mslugxctma09 )
 ROM_END
 
 ROM_START( mslugxctma10 )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250_cma01.p1", 0x000000, 0x100000, CRC(971f8454) SHA1(73033339931de870bb5a5a64f34ce51c63c4ed15) )
-	ROM_LOAD16_WORD_SWAP( "250_hc11.p2",  0x100000, 0x400000, CRC(8d595131) SHA1(523401915e5b751c9d67c169173de7e17fe7ff00) )
-    MSLUGXHB_CUZTOMESSENTIALPATCH_MODS_FILL
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "250_cma10.p1", 0x000000, 0x100000, CRC(52c06fa5) SHA1(b8b118cd4994b71187d9cffb0660419e35d331f1) )
+	ROM_LOAD16_WORD_SWAP( "250_cma10.p2", 0x100000, 0x800000, CRC(4aeff920) SHA1(f19e1258d394b7ae5e1dc7b471662e96ca0b8321) )
+    MSLUGXSVH_CUZTOMESSENTIALPATCH_MODS_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
     MSLUGX_YMSND
-    MSLUGX_SPRITES
+    MSLUGXSR_SPRITES
 ROM_END
 
 ROM_START( mslugxctma11 )
@@ -5080,14 +5250,14 @@ ROM_START( mslugxctmb09 )
 ROM_END
 
 ROM_START( mslugxctmb10 )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250_cma01.p1", 0x000000, 0x100000, CRC(971f8454) SHA1(73033339931de870bb5a5a64f34ce51c63c4ed15) )
-	ROM_LOAD16_WORD_SWAP( "250_hc07.p2",  0x100000, 0x400000, CRC(a2a2a303) SHA1(0a85555253dbff4f0d2ae4edf92dd36f7c0114d8) )
-    MSLUGXHB_CUZTOMESSENTIALPATCH_MODS_FILL
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "250_cma10.p1", 0x000000, 0x100000, CRC(52c06fa5) SHA1(b8b118cd4994b71187d9cffb0660419e35d331f1) )
+	ROM_LOAD16_WORD_SWAP( "250_cmb10.p2", 0x100000, 0x800000, CRC(80cba788) SHA1(c5e02fad0f28e518ff5966a36de740fc013f2d5b) )
+    MSLUGXSVH_CUZTOMESSENTIALPATCH_MODS_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
     MSLUGX_YMSND
-    MSLUGX_SPRITES
+    MSLUGXSR_SPRITES
 ROM_END
 
 ROM_START( mslugxctmb11 )
@@ -5256,14 +5426,14 @@ ROM_START( mslugxctmc09 )
 ROM_END
 
 ROM_START( mslugxctmc10 )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250_cma01.p1", 0x000000, 0x100000, CRC(971f8454) SHA1(73033339931de870bb5a5a64f34ce51c63c4ed15) )
-	ROM_LOAD16_WORD_SWAP( "250_hc03.p2",  0x100000, 0x400000, CRC(dda3726f) SHA1(7bd181f10e0737e3284c787581cca5b8199485d4) )
-    MSLUGXHB_CUZTOMESSENTIALPATCH_MODS_FILL
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "250_cma10.p1", 0x000000, 0x100000, CRC(52c06fa5) SHA1(b8b118cd4994b71187d9cffb0660419e35d331f1) )
+	ROM_LOAD16_WORD_SWAP( "250_cmc10.p2", 0x100000, 0x800000, CRC(f0a2842f) SHA1(5b9b1367abc122b6e10dcc7649187e7d0858943b) )
+    MSLUGXSVH_CUZTOMESSENTIALPATCH_MODS_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
     MSLUGX_YMSND
-    MSLUGX_SPRITES
+    MSLUGXSR_SPRITES
 ROM_END
 
 ROM_START( mslugxctmc11 )
@@ -5432,14 +5602,14 @@ ROM_START( mslugxctmd09 )
 ROM_END
 
 ROM_START( mslugxctmd10 )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250_cmd10.p1", 0x000000, 0x100000, CRC(900245b4) SHA1(30b72d81ce9bc4a8118a4d4e52a2bc09ad57c5a7) )
-	ROM_LOAD16_WORD_SWAP( "250_cmd01.p2", 0x100000, 0x400000, CRC(4b2d73fb) SHA1(6db9c31083c9b94d320fd2ce051cd8dacfb077ec) )
-    MSLUGXHB_HLCUZTOMESSENTIALPATCH_MODS_FILL
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "250_cmd10.p1", 0x000000, 0x100000, CRC(2467d7ae) SHA1(36c5b66a98e579e66d69901d019127b9d96a6106) )
+	ROM_LOAD16_WORD_SWAP( "250_cmd10.p2", 0x100000, 0x800000, CRC(323b18d0) SHA1(2a70a67a5cb4dacc1b62b564f72a69dfde6417d6) )
+    MSLUGXSVH_HLCUZTOMESSENTIALPATCH_MODS_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
     MSLUGX_YMSND
-    MSLUGX_SPRITES
+    MSLUGXSR_SPRITES
 ROM_END
 
 ROM_START( mslugxctmd11 )
@@ -5608,14 +5778,14 @@ ROM_START( mslugxctme09 )
 ROM_END
 
 ROM_START( mslugxctme10 )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250_cme10.p1", 0x000000, 0x100000, CRC(e2f8ae43) SHA1(c0de81f255dfe024d15dec3636214dbed5bbd30b) )
-	ROM_LOAD16_WORD_SWAP( "250_cme01.p2", 0x100000, 0x400000, CRC(86d1585d) SHA1(fd3ff56d90a9d2b02c2d96de827ac89d224ccd9c) )
-    MSLUGXHB_C1CUZTOMESSENTIALPATCH_MODS_FILL
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "250_cme10.p1", 0x000000, 0x100000, CRC(8a6a8ea1) SHA1(184758a0f3728d4a08deac4628935b6e31e17f47) )
+	ROM_LOAD16_WORD_SWAP( "250_cme10.p2", 0x100000, 0x800000, CRC(98e9d68b) SHA1(0947f2267225f16fcb2e7276dc43245aac5fbafc) )
+    MSLUGXSVH_C1CUZTOMESSENTIALPATCH_MODS_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
     MSLUGX_YMSND
-    MSLUGX_SPRITES
+    MSLUGXSR_SPRITES
 ROM_END
 
 ROM_START( mslugxctme11 )
@@ -5784,14 +5954,14 @@ ROM_START( mslugxctmf09 )
 ROM_END
 
 ROM_START( mslugxctmf10 )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250_cma01.p1", 0x000000, 0x100000, CRC(971f8454) SHA1(73033339931de870bb5a5a64f34ce51c63c4ed15) )
-	ROM_LOAD16_WORD_SWAP( "250_hc01.p2",  0x100000, 0x400000, CRC(5d1c52cd) SHA1(b2b131fa845b0098cbf0750fee20b402e276483b) )
-    MSLUGXHB_C2CUZTOMESSENTIALPATCH_MODS_FILL
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "250_cma10.p1", 0x000000, 0x100000, CRC(52c06fa5) SHA1(b8b118cd4994b71187d9cffb0660419e35d331f1) )
+	ROM_LOAD16_WORD_SWAP( "250_cmf10.p2", 0x100000, 0x800000, CRC(cdb6ec5d) SHA1(52ba5e0ab4ca1f21a7587b196dbdcd2a211411a8) )
+    MSLUGXSVH_C2CUZTOMESSENTIALPATCH_MODS_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
     MSLUGX_YMSND
-    MSLUGX_SPRITES
+    MSLUGXSR_SPRITES
 ROM_END
 
 ROM_START( mslugxctmf11 )
@@ -5960,14 +6130,14 @@ ROM_START( mslugxctmg09 )
 ROM_END
 
 ROM_START( mslugxctmg10 )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250_cma01.p1", 0x000000, 0x100000, CRC(971f8454) SHA1(73033339931de870bb5a5a64f34ce51c63c4ed15) )
-	ROM_LOAD16_WORD_SWAP( "250_hc19.p2",  0x100000, 0x400000, CRC(0efc5d67) SHA1(21a370ebc96e1b17ecfb12085732512dc51491d3) )
-    MSLUGXHB_XRCUZTOMESSENTIALPATCH_MODS_FILL
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "250_cma10.p1", 0x000000, 0x100000, CRC(52c06fa5) SHA1(b8b118cd4994b71187d9cffb0660419e35d331f1) )
+	ROM_LOAD16_WORD_SWAP( "250_cmg10.p2", 0x100000, 0x800000, CRC(32d9f85f) SHA1(d8479b514c39af5616e18aaa21d1ab20d47140e7) )
+    MSLUGXSVH_XRCUZTOMESSENTIALPATCH_MODS_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
     MSLUGX_YMSND
-    MSLUGX_SPRITES
+    MSLUGXSR_SPRITES
 ROM_END
 
 ROM_START( mslugxctmg11 )
@@ -6136,14 +6306,14 @@ ROM_START( mslugxctmh09 )
 ROM_END
 
 ROM_START( mslugxctmh10 )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250_cma01.p1", 0x000000, 0x100000, CRC(971f8454) SHA1(73033339931de870bb5a5a64f34ce51c63c4ed15) )
-	ROM_LOAD16_WORD_SWAP( "250_cmh01.p2", 0x100000, 0x400000, CRC(509261ef) SHA1(4c740c8cbf47d3fbd84f913944240a31c1add208) )
-    MSLUGXHB_SCCUZTOMESSENTIALPATCH_MODS_FILL
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "250_cma10.p1", 0x000000, 0x100000, CRC(52c06fa5) SHA1(b8b118cd4994b71187d9cffb0660419e35d331f1) )
+	ROM_LOAD16_WORD_SWAP( "250_cmh10.p2", 0x100000, 0x800000, CRC(8fd68e4e) SHA1(3cad0275ab95bd0465b604711d6be3efbd97fbdc) )
+    MSLUGXSVH_SCCUZTOMESSENTIALPATCH_MODS_FILL
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
     MSLUGX_YMSND
-    MSLUGX_SPRITES
+    MSLUGXSR_SPRITES
 ROM_END
 
 ROM_START( mslugxctmh11 )
@@ -6827,7 +6997,7 @@ GAME( 2023, mslugxctma06,     mslugx,   neogeo_noslot, mslugxv,    neogeo_state,
 GAME( 2023, mslugxctma07,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower Enemy Speed Up Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctma08,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower Survival Cuztom 2024-04-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctma09,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower Unity Time! Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxctma10,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower Survival Attack Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugxctma10,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower Rebel Soldier Cuztom 2025-06-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctma11,     mslugx,   neogeo_noslot, mslugxdg,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctma12,     mslugx,   neogeo_noslot, mslugxzh,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower War Chariot Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctma13,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Unlimited Firepower Hybrid Bullets Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
@@ -6843,7 +7013,7 @@ GAME( 2023, mslugxctmb06,     mslugx,   neogeo_noslot, mslugxv,    neogeo_state,
 GAME( 2023, mslugxctmb07,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Heavy Plate Enemy Speed Up Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmb08,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Heavy Plate Survival Cuztom 2024-04-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmb09,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Heavy Plate Unity Time! Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxctmb10,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Heavy Plate Survival Attack Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugxctmb10,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Heavy Plate Rebel Soldier Cuztom 2025-06-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmb11,     mslugx,   neogeo_noslot, mslugxdg,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Heavy Plate Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmb12,     mslugx,   neogeo_noslot, mslugxzh,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Heavy Plate War Chariot Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmb13,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Heavy Plate Hybrid Bullets Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
@@ -6859,7 +7029,7 @@ GAME( 2023, mslugxctmc06,     mslugx,   neogeo_noslot, mslugxv,    neogeo_state,
 GAME( 2023, mslugxctmc07,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Soldiers Remake Enemy Speed Up Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmc08,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Soldiers Remake Survival Cuztom 2024-04-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmc09,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Soldiers Remake Unity Time! Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxctmc10,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Soldiers Remake Survival Attack Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugxctmc10,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Soldiers Remake Rebel Soldier Cuztom 2025-06-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmc11,     mslugx,   neogeo_noslot, mslugxdg,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Soldiers Remake Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmc12,     mslugx,   neogeo_noslot, mslugxzh,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Soldiers Remake War Chariot Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmc13,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Enemy Soldiers Remake Hybrid Bullets Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
@@ -6875,7 +7045,7 @@ GAME( 2023, mslugxctmd06,     mslugx,   neogeo_noslot, mslugxv,    neogeo_state,
 GAME( 2023, mslugxctmd07,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Allen O'Neil See You In Hell Enemy Speed Up Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmd08,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Allen O'Neil See You In Hell Survival Cuztom 2024-04-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmd09,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Allen O'Neil See You In Hell Unity Time! Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxctmd10,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Allen O'Neil See You In Hell Survival Attack Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugxctmd10,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Allen O'Neil See You In Hell Rebel Soldier Cuztom 2025-06-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmd11,     mslugx,   neogeo_noslot, mslugxdg,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Allen O'Neil See You In Hell Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmd12,     mslugx,   neogeo_noslot, mslugxzh,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Allen O'Neil See You In Hell War Chariot Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmd13,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Allen O'Neil See You In Hell Hybrid Bullets Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
@@ -6891,7 +7061,7 @@ GAME( 2023, mslugxctme06,     mslugx,   neogeo_noslot, mslugxv,    neogeo_state,
 GAME( 2023, mslugxctme07,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Multi Vehicle Enemy Speed Up Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctme08,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Multi Vehicle Survival Cuztom 2024-04-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctme09,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Multi Vehicle Unity Time! Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxctme10,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Multi Vehicle Survival Attack Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugxctme10,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Multi Vehicle Rebel Soldier Cuztom 2025-06-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctme11,     mslugx,   neogeo_noslot, mslugxdg,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Multi Vehicle Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctme12,     mslugx,   neogeo_noslot, mslugxzh,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Multi Vehicle War Chariot Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctme13,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Multi Vehicle Hybrid Bullets Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
@@ -6907,7 +7077,7 @@ GAME( 2023, mslugxctmf06,     mslugx,   neogeo_noslot, mslugxv,    neogeo_state,
 GAME( 2023, mslugxctmf07,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Level Reset Special Enemy Speed Up Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmf08,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Level Reset Special Survival Cuztom 2024-04-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmf09,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Level Reset Special Unity Time! Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxctmf10,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Level Reset Special Survival Attack Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugxctmf10,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Level Reset Special Rebel Soldier Cuztom 2025-06-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmf11,     mslugx,   neogeo_noslot, mslugxdg,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Level Reset Special Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmf12,     mslugx,   neogeo_noslot, mslugxzh,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Level Reset Special War Chariot Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmf13,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Level Reset Special Hybrid Bullets Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
@@ -6923,7 +7093,7 @@ GAME( 2023, mslugxctmg06,     mslugx,   neogeo_noslot, mslugxv,    neogeo_state,
 GAME( 2023, mslugxctmg07,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Warriors Enemy Speed Up Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmg08,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Warriors Survival Cuztom 2024-04-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmg09,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Warriors Unity Time! Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxctmg10,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Warriors Survival Attack Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugxctmg10,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Warriors Rebel Soldier Cuztom 2025-06-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmg11,     mslugx,   neogeo_noslot, mslugxdg,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Warriors Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmg12,     mslugx,   neogeo_noslot, mslugxzh,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Warriors War Chariot Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmg13,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Warriors Hybrid Bullets Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
@@ -6939,7 +7109,7 @@ GAME( 2023, mslugxctmh06,     mslugx,   neogeo_noslot, mslugxv,    neogeo_state,
 GAME( 2023, mslugxctmh07,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting Enemy Speed Up Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmh08,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting Survival Cuztom 2024-04-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmh09,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting Unity Time! Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxctmh10,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting Survival Attack Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugxctmh10,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting Rebel Soldier Cuztom 2025-06-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmh11,     mslugx,   neogeo_noslot, mslugxdg,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting Multifunction Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmh12,     mslugx,   neogeo_noslot, mslugxzh,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting War Chariot Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxctmh13,     mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PSMSlugForever",  "Metal Slug X (Legendary Enemies Resetting Hybrid Bullets Cuztom 2023-07-07)", MACHINE_SUPPORTS_SAVE )
