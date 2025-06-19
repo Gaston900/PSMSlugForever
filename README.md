@@ -9,7 +9,7 @@ Version 0.224 [HBMAME/EKMAME] is being used as the base system.
 
 Users are offered the experience of playing all Metal Slug franchises on the Neo Geo MVS/AES system.
 
-The project focuses on preserving all existing ROMs: Predecrypted, Decrypter, Encrypte, Earlier and Bootleg, Darksoft, Neo SD, and Hack.
+This project was dedicated with much effort and great care, it was developed with so much passion and with great enthusiasm, with such a deep dedication of interest in preserving the history in the roms that were published since the beginning of the emulation era since 1999 (Predecrypted, Decrypter, Encrypte, Earlier and Bootleg, Darksoft, Neo SD and Hack)
 
 I am only supporting the operating systems, Windows 7, Windows 8, Windows 10 and Windows 11.
 
