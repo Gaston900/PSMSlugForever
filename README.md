@@ -7,7 +7,7 @@ Afterwards, it has been decided to make the project independent in 2021, providi
 
 Version 0.224 [HBMAME/EKMAME] is being used as the base system.
 
-It allows users to enjoy a unique and distinctive gaming experience, having a great time exploring a wide catalog of different versions of the NeoGeo MVS/AES system.
+It allows users to enjoy a unique and distinctive gaming experience, having a great time exploring a wide catalog of different versions of all the franchises available on the NeoGeo MVS/AES system.
 
 This project was dedicated with much effort and great care, it was developed with so much passion and with great enthusiasm, with such a deep dedication of interest in preserving the history in the roms that were published since the beginning of the emulation era since 1999 (Predecrypted, Decrypter, Encrypte, Earlier and Bootleg, Darksoft, Neo SD and Hack)
 
