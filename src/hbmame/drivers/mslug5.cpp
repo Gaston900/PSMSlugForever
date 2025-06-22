@@ -396,8 +396,7 @@ INPUT_PORTS_START( mslug5cqi )
 	PORT_BIT( 0x2000+0x8000, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_NAME("@P1 Enable Enemy Random Mode @Button6") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0xA000) PORT_CODE(KEYCODE_W)
     PORT_BIT( 0x2000+0x0100, IP_ACTIVE_LOW, IPT_BUTTON7 ) PORT_NAME("@P1 Increase Star Difficulty Level @Button7") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x2100) PORT_CODE(KEYCODE_E)
     PORT_BIT( 0x2000+0x0200, IP_ACTIVE_LOW, IPT_BUTTON8 ) PORT_NAME("@P1 Lower Star Difficulty Level @Button8") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x2200) PORT_CODE(KEYCODE_R)
-    PORT_BIT( 0x1000+0x2000+0x4000, IP_ACTIVE_LOW, IPT_BUTTON9 ) PORT_NAME("@P1 Enable Mod LV=X @Button9") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x7000) PORT_CODE(KEYCODE_T)
-//	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_BUTTON10 ) PORT_NAME("@P1 Enable Enemy Random Mode Increase Game Difficulty @Button10") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x0200) PORT_CODE(KEYCODE_Y)
+//	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_BUTTON9 ) PORT_NAME("@P1 Enable Enemy Random Mode Increase Game Difficulty @Button9") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x0200) PORT_CODE(KEYCODE_T)
 
 //	PORT_MODIFY("SYSTEM")
 //	PORT_BIT( 0x0010, IP_ACTIVE_LOW, IPT_CUSTOM )  PORT_CONDITION("SYSTEM", 0x0110, NOTEQUALS, 0x0010)
@@ -7351,7 +7350,7 @@ ROM_END
 
 ROM_START( mslug5hc13 ) //mslug5cq
 	ROM_REGION( 0xa00000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_hc13.p1", 0x000000, 0xa00000, CRC(80179a8d) SHA1(ba7d3729dfce62bab46f1cad7d12760481e3e1c9) )
+	ROM_LOAD16_WORD_SWAP( "268_hc13.p1", 0x000000, 0xa00000, CRC(6a78dd0a) SHA1(8b823902b6d4012792173d25a7f5c7b60b0d9108) )
     MSLUG5CQ_ESSENTIALPATCH_MODS_FILL
     MSLUG5D_SFIX_128K
     MSLUG5D_AUDIO_BIOS_512K
@@ -9262,7 +9261,7 @@ GAME( 2021, mslug5hc09,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,
 GAME( 2023, mslug5hc10,       mslug5,   neogeo_noslot, mslug5es,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (The Longest Battle 2023-02-08)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc11,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "PPXCLUB",         "Metal Slug 5 (Burst Enhanced 2022-11-03)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug5hc12,       mslug5,   neogeo_noslot, mslug5cq,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Survival 2023-06-12)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug5hc13,       mslug5,   aks_sakura,    mslug5cqi,  neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Legendary 6.0 2025-06-09)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug5hc13,       mslug5,   aks_sakura,    mslug5cqi,  neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Legendary 6.0 2025-06-19)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug5hc14,       mslug5,   neogeo_noslot, mslug5hb,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Devil Enemy Remix 2019-12-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug5hc15,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (1v2 Mode 2019-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug5hc16,       mslug5,   neogeo_noslot, mslug5hb,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Vehicle Slug 2018-09-18)", MACHINE_SUPPORTS_SAVE )

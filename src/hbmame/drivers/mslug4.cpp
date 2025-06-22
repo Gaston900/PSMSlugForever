@@ -160,8 +160,7 @@ INPUT_PORTS_START( mslug4cqi )
 	PORT_DIPSETTING(    0x00, "VS Mode" )
 	PORT_BIT( 0x2000+0x0100, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_NAME("@P1 Increase Star Difficulty Level @Button6") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x2100) PORT_CODE(KEYCODE_W)
     PORT_BIT( 0x2000+0x0200, IP_ACTIVE_LOW, IPT_BUTTON7 ) PORT_NAME("@P1 Lower Star Difficulty Level @Button7") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x2200) PORT_CODE(KEYCODE_E)
-    PORT_BIT( 0x1000+0x2000+0x4000, IP_ACTIVE_LOW, IPT_BUTTON8 ) PORT_NAME("@P1 Enable Mod LV=X @Button8") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x7000) PORT_CODE(KEYCODE_R)
-//	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_BUTTON9 ) PORT_NAME("@P1 Enable Enemy Random Mode Increase Game Difficulty @Button9") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x0200) PORT_CODE(KEYCODE_T)
+//	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_BUTTON8 ) PORT_NAME("@P1 Enable Enemy Random Mode Increase Game Difficulty @Button8") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x0200) PORT_CODE(KEYCODE_R)
 
 //	PORT_MODIFY("SYSTEM")
 //	PORT_BIT( 0x0010, IP_ACTIVE_LOW, IPT_CUSTOM )  PORT_CONDITION("SYSTEM", 0x0110, NOTEQUALS, 0x0010)
@@ -6452,10 +6451,10 @@ ROM_START( mslug4hc24 )
 	MSLUG4D_SPRITES
 ROM_END
 
-ROM_START( mslug4hc25 ) //mslug4zj
+ROM_START( mslug4hc25 ) //mslug4zjhl
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc25.p1", 0x000000, 0x100000, CRC(2ea44ba5) SHA1(03b74fe15184ded32978235616d1af8e1f84af50) )
-	ROM_LOAD16_WORD_SWAP( "263_hc25.p2", 0x100000, 0x800000, CRC(57d3bd0b) SHA1(c1b89026ec90b376203a713446a52ce58281f60b) )
+	ROM_LOAD16_WORD_SWAP( "263_hc25.p2", 0x100000, 0x800000, CRC(87659fef) SHA1(4b9809e578e543ac7243b39acce877a7b16d2766) )
     MSLUG4QCI_ESSENTIALPATCH_MODS_FILL
     MSLUG4HD_SFIX_128K
     MSLUG4QCI_AUDIO_BIOS_128K
@@ -7629,7 +7628,7 @@ GAME( 2007, mslug4hc21,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,
 GAME( 2018, mslug4hc22,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Easy Mode 2018-11-16)", MACHINE_SUPPORTS_SAVE ) // Fix Gaston90 2023
 GAME( 2023, mslug4hc23,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2012, mslug4hc24,       mslug4,   neogeo_noslot, mslug4cf,   neogeo_state,    init_mslug4hb,   ROT0, "LB70 (Eezezy)",   "Metal Slug 4 (Crazy Fire 2012-01-16)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug4hc25,       mslug4,   aks_sakura,    mslug4cqi,  neogeo_state,    init_mslug4hb,   ROT0, "GOTVG",           "Metal Slug 4 (Legendary Firepower Showdown 6.0 2025-06-09)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug4hc25,       mslug4,   aks_sakura,    mslug4cqi,  neogeo_state,    init_mslug4hb,   ROT0, "GOTVG",           "Metal Slug 4 (Legendary Firepower Showdown 6.0 2025-06-19)", MACHINE_SUPPORTS_SAVE )
 
 /*********************************************************************************
 * This game sector is exclusive 2017 - 2025, its modifications that load have been customized

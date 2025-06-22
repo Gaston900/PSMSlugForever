@@ -119,7 +119,6 @@ INPUT_PORTS_START( mslugxcqi )
 	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
 	PORT_BIT( 0x2000+0x0100, IP_ACTIVE_LOW, IPT_BUTTON7 ) PORT_NAME("@P1 Increase Star Difficulty Level @Button7") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x2100) PORT_CODE(KEYCODE_W)
     PORT_BIT( 0x2000+0x0200, IP_ACTIVE_LOW, IPT_BUTTON8 ) PORT_NAME("@P1 Lower Star Difficulty Level @Button8") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x2200) PORT_CODE(KEYCODE_E)
-	PORT_BIT( 0x1000+0x2000+0x4000, IP_ACTIVE_LOW, IPT_BUTTON9 ) PORT_NAME("@P1 Enable Mod LV=X @Button9") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x7000) PORT_CODE(KEYCODE_R)
 INPUT_PORTS_END
 
 INPUT_PORTS_START( mslugxsvh )
@@ -4957,8 +4956,8 @@ ROM_END
 
 ROM_START( mslugxhc34 ) //mslugxchuanqi
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250_hc34.p1", 0x000000, 0x100000, CRC(cce1fb1b) SHA1(84ff694bc0e503355301892e08ccf77c0d54079b) )
-	ROM_LOAD16_WORD_SWAP( "250_hc34.p2", 0x100000, 0x800000, CRC(1dca19dd) SHA1(5f8547c07e3c2fc4118dc28e522056161ca9cf67) )
+	ROM_LOAD16_WORD_SWAP( "250_hc34.p1", 0x000000, 0x100000, CRC(774d4b6e) SHA1(68e1cac4edc1679ed49d37e69dadc5d68005b8bd) )
+	ROM_LOAD16_WORD_SWAP( "250_hc34.p2", 0x100000, 0x800000, CRC(62aa22c8) SHA1(9a284024de66cc71b1752145152032012cc522ab) )
     MSLUGXCQI_ESSENTIALPATCH_MODS_FILL
 	MSLUGXSC_SFIX_128K
     MSLUGXSC_AUDIO_BIOS_128K
@@ -6968,7 +6967,7 @@ GAME( 2023, mslugxhc30,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,
 GAME( 2025, mslugxhc31,       mslugx,   neogeo_noslot, mslugxsvh,  neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Rebel Soldier 2025-04-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxhc32,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Survival 2023-02-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugxhc33,       mslugx,   neogeo_noslot, mslugxcq,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Legendary 4.5 2024-12-02)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslugxhc34,       mslugx,   aks_sakura,    mslugxcqi,  neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Legendary Firepower Showdown 6.0 2025-06-09)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugxhc34,       mslugx,   aks_sakura,    mslugxcqi,  neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Legendary Firepower Showdown 6.0 2025-06-19)", MACHINE_SUPPORTS_SAVE )
 
 /*********************************************************************************
 * This game sector is exclusive 2017 - 2025, its modifications that load have been customized
