@@ -17,6 +17,7 @@
 #include "machine/ng_memcard.h"
 #include "machine/gen_latch.h"
 #include "video/neogeo_spr.h"
+#include "imagedev/snapquik.h"
 #include "bus/neogeo/prot.h"
 #include "bus/neogeo/banked_cart.h"
 #include "bus/neogeo_ctrl/ctrl.h"
@@ -92,6 +93,7 @@ public:
 	void neogeo_base(machine_config &config);
 	void neogeo_noslot(machine_config &config);
     void aks_sakura(machine_config &config);
+    void neosd(machine_config &config);
 
 	// fixed software configurations
 	void init_neogeo();
@@ -154,6 +156,7 @@ private:
 	TIMER_CALLBACK_MEMBER(display_position_interrupt_callback);
 	TIMER_CALLBACK_MEMBER(display_position_vblank_callback);
 	TIMER_CALLBACK_MEMBER(vblank_interrupt_callback);
+    DECLARE_QUICKLOAD_LOAD_MEMBER(neo_q_cb);
 
 	u32 screen_update_neogeo(screen_device &screen, bitmap_rgb32 &bitmap, const rectangle &cliprect);
 
