@@ -1696,7 +1696,7 @@ ROM_END
 /*    YEAR  NAME        PARENT    MACHINE   INPUT            CLASS         INIT    */
 GAME( 1990, neogeo,     0,        mvs,      neogeo_6slot,   neogeo_state, init_neogeo,  ROT0, "SNK", "Neo-Geo", MACHINE_IS_BIOS_ROOT | MACHINE_SUPPORTS_SAVE )
 GAME( 1990, neosd,      neogeo,   neosd,    neogeo,         neogeo_state, init_neogeo,  ROT0, "SNK", "Neo-Geo .neo support", 0 )
-GAME( 1990, neosdcq,    neogeo,   neosd_cq, neogeo,         neogeo_state, init_neogeo,  ROT0, "SNK", "Neo-Geo .neo support (Metal Slug Legendary Firepower Showdown)", 0 )
+GAME( 1990, neosdcq,    neogeo,   neosd_cq, neogeo,         neogeo_state, init_neogeo,  ROT0, "SNK", "Neo-Geo .neo support (Neo 68K Ram Hack)", 0 )
 
 /***********************************************************************************************************************************
  Old Documentation PSMAME PLUS (Metal Slug Forever Special Edition Final):
