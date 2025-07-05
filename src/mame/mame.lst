@@ -6,8 +6,8 @@
 
 @source:neogeo.cpp
 neogeo            // MVS
-neosd             // NDS
-neosdcq           // NDS
+neosd             // NDS (.neo support)
+neosdcq           // NDS / Neo 68K Ram Hack (.neo support)
 ms5pcb            // SNK Playmore
 ms4plus           // Bootleg
 ms5plus           // Bootleg
