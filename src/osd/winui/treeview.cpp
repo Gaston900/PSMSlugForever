@@ -53,7 +53,7 @@ static bool FilterAvailable(int driver_index);
 //static void CreateYearFolders(int parent_index);
 static void CreateSourceFolders(int parent_index);
 //static void CreateDeficiencyFolders(int parent_index);
-//static void CreateBIOSFolders(int parent_index);
+static void CreateBIOSFolders(int parent_index);
 //static void CreateCPUFolders(int parent_index);
 //static void CreateSoundFolders(int parent_index);
 //static void CreateScreenFolders(int parent_index);
@@ -85,9 +85,10 @@ char * ConvertWCtoC(wchar_t* str)
 extern const FOLDERDATA g_folderData[] =
 {
 	// commented-out lines have parts not defined elsewhere
-	{"All Games",    "allgames",          FOLDER_ALLGAMES,     IDI_FOLDER_ALLGAMES,      0,             0,            0, NULL,                       NULL,                    true },
-	{"Available",    "available",         FOLDER_AVAILABLE,    IDI_FOLDER_AVAILABLE,     F_AVAILABLE,   0,            0, NULL,                       FilterAvailable,         true },
-    {"Not Working",  "nonworking",        FOLDER_NONWORKING,   IDI_NONWORKING,           F_NONWORKING,  F_WORKING,    0, NULL,                       DriverIsBroken,          true },
+	{"All Games",     "allgames",         FOLDER_ALLGAMES,     IDI_FOLDER_ALLGAMES,      0,             0,            0, NULL,                       NULL,                    true },
+	{"Available",     "available",        FOLDER_AVAILABLE,    IDI_FOLDER_AVAILABLE,     F_AVAILABLE,   0,            0, NULL,                       FilterAvailable,         true },
+    {"Not Working",   "nonworking",       FOLDER_NONWORKING,   IDI_NONWORKING,           F_NONWORKING,  F_WORKING,    0, NULL,                       DriverIsBroken,          true },
+	{"BIOS",          "bios",             FOLDER_BIOS,         IDI_FOLDER_BIOS,          0,             0,            1, CreateBIOSFolders,          DriverIsBios,            true },
 //	{"Unavailable",  "unavailable",       FOLDER_UNAVAILABLE,  IDI_FOLDER_UNAVAILABLE,   0,             F_AVAILABLE,  0, NULL,                       FilterAvailable,         false },
 //#ifdef USE_GAMEFOLDERS
 	{"Metal Slug 1",  "metalslug1",	      FOLDER_MSLUG,		    IDI_FOLDER_MSLUG,		  0,			 0, 		   0, CreateMSLUGFolders },
@@ -114,7 +115,6 @@ extern const FOLDERDATA g_folderData[] =
 //	{"Imperfect",     "imperfect",        FOLDER_DEFICIENCY,   IDI_FOLDER_IMPERFECT,     0,             0,            0, CreateDeficiencyFolders },
 //	{"Year",          "year",             FOLDER_YEAR,         IDI_FOLDER_YEAR,          0,             0,            0, CreateYearFolders },
 //	{"Manufacturer",  "manufacturer",     FOLDER_MANUFACTURER, IDI_FOLDER_MANUFACTURER,  0,             0,            0, CreateManufacturerFolders },
-//	{"BIOS",          "bios",             FOLDER_BIOS,         IDI_FOLDER_BIOS,          0,             0,            1, CreateBIOSFolders,          DriverIsBios,            true },
 //	{"CHD",           "harddisk",         FOLDER_HARDDISK,     IDI_HARDDISK,             0,             0,            0, NULL,                       DriverIsHarddisk,        true },
 //	{"CPU",           "cpu",              FOLDER_CPU,          IDI_FOLDER_CPU,           0,             0,            1, CreateCPUFolders },
 //	{"Lightgun",      "lightgun",         FOLDER_LIGHTGUN,     IDI_FOLDER_LIGHTGUN,      0,             0,            0, NULL,                       DriverUsesLightGun,      true },
@@ -616,7 +616,6 @@ static void CreateYearFolders(int parent_index)
 }
 */
 
-/*
 static void CreateBIOSFolders(int parent_index)
 {
 	int i = 0; 
@@ -665,7 +664,7 @@ static void CreateBIOSFolders(int parent_index)
 		}
 	}
 }
-*/
+
 
 /*
 static void CreateScreenFoldersIni(int parent_index)

@@ -1477,7 +1477,7 @@ ROM_END
 
 /*    YEAR  NAME         PARENT    MACHINE      INPUT           CLASS         INIT    */
 GAME( 1990, neogeo,      0,        mvs,         neogeo_6slot,   neogeo_state, init_neogeo,  ROT0, "SNK", "Neo-Geo", MACHINE_IS_BIOS_ROOT | MACHINE_SUPPORTS_SAVE )
-GAME( 1990, neosd,       neogeo,   neosd,       neogeo,         neogeo_state, init_neogeo,  ROT0, "SNK", "Neo-Geo .neo support", 0 )
-GAME( 1990, neosd_cq,    neogeo,   neosd_cq,    neogeo,         neogeo_state, init_neogeo,  ROT0, "SNK", "Neo-Geo .neo support (Neo 68K Ram Hack)", 0 )
-GAME( 1990, multimvs,    neogeo,   multimvs,    neogeo,         neogeo_state, init_neogeo,  ROT0, "SNK", "Neo-Geo MultiMVS support", 0 )
-GAME( 1990, multimvs_cq, neogeo,   multimvs_cq, neogeo,         neogeo_state, init_neogeo,  ROT0, "SNK", "Neo-Geo MultiMVS support (Neo 68K Ram Hack)", 0 )
+GAME( 1990, neosd,       neogeo,   neosd,       neogeo,         neogeo_state, init_neogeo,  ROT0, "SNK", "Neo-Geo .neo support", MACHINE_IS_BIOS_ROOT | MACHINE_SUPPORTS_SAVE )
+GAME( 1990, neosd_cq,    neogeo,   neosd_cq,    neogeo,         neogeo_state, init_neogeo,  ROT0, "SNK", "Neo-Geo .neo support (Neo 68K Ram Hack)", MACHINE_IS_BIOS_ROOT | MACHINE_SUPPORTS_SAVE )
+GAME( 1990, multimvs,    neogeo,   multimvs,    neogeo,         neogeo_state, init_neogeo,  ROT0, "SNK", "Neo-Geo MultiMVS support", MACHINE_IS_BIOS_ROOT | MACHINE_SUPPORTS_SAVE )
+GAME( 1990, multimvs_cq, neogeo,   multimvs_cq, neogeo,         neogeo_state, init_neogeo,  ROT0, "SNK", "Neo-Geo MultiMVS support (Neo 68K Ram Hack)", MACHINE_IS_BIOS_ROOT | MACHINE_SUPPORTS_SAVE )
