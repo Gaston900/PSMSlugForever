@@ -93,7 +93,9 @@ public:
 	void neogeo_base(machine_config &config);
 	void neogeo_noslot(machine_config &config);
     void aks_sakura(machine_config &config);
-    void neosd(machine_config &config);
+    void multimvs(machine_config &config);
+	void multimvs_cq(machine_config &config);
+	void neosd(machine_config &config);
     void neosd_cq(machine_config &config);
 
 	// fixed software configurations
@@ -136,6 +138,7 @@ public:
 
 private:
 
+	u32 mvs_open7z(std::string zip_name, std::string filename, uint8_t *region_name, u32 region_size);
 	void io_control_w(offs_t offset, u8 data);
 	u16 memcard_r(offs_t offset);
 	void memcard_w(offs_t offset, u16 data, u16 mem_mask = ~0);
@@ -157,7 +160,8 @@ private:
 	TIMER_CALLBACK_MEMBER(display_position_interrupt_callback);
 	TIMER_CALLBACK_MEMBER(display_position_vblank_callback);
 	TIMER_CALLBACK_MEMBER(vblank_interrupt_callback);
-    DECLARE_QUICKLOAD_LOAD_MEMBER(neo_q_cb);
+    DECLARE_QUICKLOAD_LOAD_MEMBER(mvs_q_cb);
+	DECLARE_QUICKLOAD_LOAD_MEMBER(neo_q_cb);
 
 	u32 screen_update_neogeo(screen_device &screen, bitmap_rgb32 &bitmap, const rectangle &cliprect);
 
@@ -362,7 +366,7 @@ INPUT_PORTS_EXTERN(dualbios);
 	ROM_SYSTEM_BIOS( x+14, "unibios10", "Universe Bios (Hack, Ver. 1.0)" ) \
 	ROM_LOAD16_WORD_SWAP_BIOS( x+14, "uni-bios_1_0.rom",  0x00000, 0x020000, CRC(0ce453a0) SHA1(3b4c0cd26c176fc6b26c3a2f95143dd478f6abf9) ) /* Universe Bios v1.0 (hack) */
 
-#define NEOGEO_NDS_BIOS \
+#define MULTIMVS_BIOS \
 	ROM_REGION16_BE( 0x80000, "mainbios", 0 ) \
 	ROMX_LOAD( "sp-s2.sp1", 0x00000, 0x020000, CRC(9036d879) SHA1(4f5ed7105b7128794654ce82b51723e16e389543), ROM_GROUPWORD | ROM_REVERSE ) \
 	ROM_SYSTEM_BIOS( 0, "euro", "Europe MVS (Ver. 2)" ) \
@@ -632,5 +636,3 @@ INPUT_PORTS_EXTERN(dualbios);
 
 #define NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO_512K(name, hash) \
 	NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO(0x80000, name, hash)
-
-
