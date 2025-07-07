@@ -92,11 +92,9 @@ public:
 	void neogeo_arcade(machine_config &config);
 	void neogeo_base(machine_config &config);
 	void neogeo_noslot(machine_config &config);
-    void aks_sakura(machine_config &config);
+    void neogeo_68kram(machine_config &config);
     void multimvs(machine_config &config);
-	void multimvs_cq(machine_config &config);
 	void neosd(machine_config &config);
-    void neosd_cq(machine_config &config);
 
 	// fixed software configurations
 	void init_neogeo();
@@ -171,7 +169,7 @@ private:
 	void audio_io_map(address_map &map);
 	void main_map_noslot(address_map &map);
 	void main_map1(address_map &map);
-    void aks_sakura_map(address_map &map);
+    void neogeo_68kram_map(address_map &map);
 
 	void neogeo_postload();
 	void update_interrupts();

@@ -1042,16 +1042,16 @@ void neogeo_state::neogeo_noslot(machine_config &config)
 	SBP_PROT(config, "sbp_prot");
 }
 
-void neogeo_state::aks_sakura_map(address_map &map)
+void neogeo_state::neogeo_68kram_map(address_map &map)
 {
 	main_map_noslot(map);
 	map(0x100000,0x1FFFFF).ram();
 }
 
-void neogeo_state::aks_sakura(machine_config &config)
+void neogeo_state::neogeo_68kram(machine_config &config)
 {
 	neogeo_noslot(config);
-	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::aks_sakura_map);
+	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::neogeo_68kram_map);
 }
 
 void neogeo_state::neosd(machine_config &config)
@@ -1064,13 +1064,6 @@ void neogeo_state::neosd(machine_config &config)
 	quickload.set_load_callback(FUNC(neogeo_state::neo_q_cb));
 	quickload.set_interface("neo_quik");
 	SOFTWARE_LIST(config, "quik_list").set_original("neo_quik");
-}
-
-void neogeo_state::neosd_cq(machine_config &config)
-{
-	neosd(config);
-    m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::aks_sakura_map);
-
 }
 
 QUICKLOAD_LOAD_MEMBER(neogeo_state::neo_q_cb)
@@ -1260,13 +1253,6 @@ void neogeo_state::multimvs(machine_config &config)
 	//SOFTWARE_LIST(config, "quik_list").set_original("mvs_quik");    // not working
 }
 
-void neogeo_state::multimvs_cq(machine_config &config)
-{
-	multimvs(config);
-    m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::aks_sakura_map);
-
-}
-
 QUICKLOAD_LOAD_MEMBER(neogeo_state::mvs_q_cb)
 {
 	u32 psize = 0U, ssize = 0U, msize = 0U, vsize = 0U, csize = 0U, fsize = 0U;
@@ -1378,31 +1364,6 @@ ROM_END
 ROM_START( neosd )
 	MULTIMVS_BIOS
 
-	ROM_REGION( 0x900000, "maincpu", ROMREGION_ERASEFF )
-
-	ROM_REGION( 0x20000, "audiobios", 0 )
-	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) )
-
-	ROM_REGION( 0x90000, "audiocpu", 0 )
-	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) )
-
-	ROM_Y_ZOOM
-
-	ROM_REGION( 0x80000, "fixed", ROMREGION_ERASEFF )
-
-	ROM_REGION( 0x20000, "fixedbios", 0 )
-	ROM_LOAD( "sfix.sfix", 0x000000, 0x20000, CRC(c2ea0cfd) SHA1(fd4a618cdcdbf849374f0a50dd8efe9dbab706c3) )
-
-	ROM_REGION( 0x2000000, "ymsnd", ROMREGION_ERASEFF )
-
-	ROM_REGION( 0x2000000, "ymsnd.deltat", ROMREGION_ERASEFF )
-
-	ROM_REGION( 0x4000000, "sprites", ROMREGION_ERASEFF )
-ROM_END
-
-ROM_START( neosd_cq )
-	MULTIMVS_BIOS
-
 	ROM_REGION( 0xa00000, "maincpu", ROMREGION_ERASEFF )
 
 	ROM_REGION( 0x20000, "audiobios", 0 )
@@ -1426,31 +1387,6 @@ ROM_START( neosd_cq )
 ROM_END
 
 ROM_START( multimvs )
-	MULTIMVS_BIOS
-
-	ROM_REGION( 0x900000, "maincpu", ROMREGION_ERASEFF )
-
-	ROM_REGION( 0x20000, "audiobios", 0 )
-	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) )
-
-	ROM_REGION( 0x90000, "audiocpu", 0 )
-	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) )
-
-	ROM_Y_ZOOM
-
-	ROM_REGION( 0x80000, "fixed", ROMREGION_ERASEFF )
-
-	ROM_REGION( 0x20000, "fixedbios", 0 )
-	ROM_LOAD( "sfix.sfix", 0x000000, 0x20000, CRC(c2ea0cfd) SHA1(fd4a618cdcdbf849374f0a50dd8efe9dbab706c3) )
-
-	ROM_REGION( 0x2000000, "ymsnd", ROMREGION_ERASEFF )
-
-	ROM_REGION( 0x2000000, "ymsnd.deltat", ROMREGION_ERASEFF )
-
-	ROM_REGION( 0x4000000, "sprites", ROMREGION_ERASEFF )
-ROM_END
-
-ROM_START( multimvs_cq )
 	MULTIMVS_BIOS
 
 	ROM_REGION( 0xa00000, "maincpu", ROMREGION_ERASEFF )
@@ -1478,6 +1414,4 @@ ROM_END
 /*    YEAR  NAME         PARENT    MACHINE      INPUT           CLASS         INIT    */
 GAME( 1990, neogeo,      0,        mvs,         neogeo_6slot,   neogeo_state, init_neogeo,  ROT0, "SNK", "Neo-Geo", MACHINE_IS_BIOS_ROOT | MACHINE_SUPPORTS_SAVE )
 GAME( 1990, neosd,       neogeo,   neosd,       neogeo,         neogeo_state, init_neogeo,  ROT0, "SNK", "Neo-Geo .neo support", MACHINE_IS_BIOS_ROOT | MACHINE_SUPPORTS_SAVE )
-GAME( 1990, neosd_cq,    neogeo,   neosd_cq,    neogeo,         neogeo_state, init_neogeo,  ROT0, "SNK", "Neo-Geo .neo support (Neo 68K Ram Hack)", MACHINE_IS_BIOS_ROOT | MACHINE_SUPPORTS_SAVE )
 GAME( 1990, multimvs,    neogeo,   multimvs,    neogeo,         neogeo_state, init_neogeo,  ROT0, "SNK", "Neo-Geo MultiMVS support", MACHINE_IS_BIOS_ROOT | MACHINE_SUPPORTS_SAVE )
-GAME( 1990, multimvs_cq, neogeo,   multimvs_cq, neogeo,         neogeo_state, init_neogeo,  ROT0, "SNK", "Neo-Geo MultiMVS support (Neo 68K Ram Hack)", MACHINE_IS_BIOS_ROOT | MACHINE_SUPPORTS_SAVE )

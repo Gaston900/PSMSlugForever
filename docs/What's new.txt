@@ -15,6 +15,18 @@ for the 86/64 bit cpu of the compatible microprocessors.
 Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use Or Using The Project For A Fundraising Fundraiser.
 
 ===============================================================================================================================
+2025-07-XX
+
+- Support For Multimvs Files (HBMAME)
+- Support for neosd .neo files (HBMAME)
+- Updated Roms Metal Slug 3 (Legendary Firepower Showdown 7.0 2025-07-06)
+- Updated Roms Metal Slug 3 (Legendary Tower Defense 5.0 2025-07-06)
+- Updated Roms Metal Slug 4 (Legendary Firepower Showdown 7.0 2025-07-06)
+- Updated Roms Metal Slug 5 (Legendary 7.0 2025-07-06)
+- Updated Roms Metal Slug X (Legendary Firepower Showdown 7.0 2025-07-06)
+
+
+
 2025-05-30
 
 - Updated Roms Metal Slug (Origins 2025-05-02)
