@@ -11910,11 +11910,11 @@ INPUT_PORTS_END
 
 #define MSLUG3DD_YMSND \
 	ROM_REGION( 0x1000000, "ymsnd", 0 ) \
-	ROM_LOAD( "256dd.v1", 0x000000, 0x1000000, CRC(644b999c) SHA1(b01d08f8e0fc35b22ace183f966e463ac9ce1696) )\
+	ROM_LOAD( "vroma0", 0x000000, 0x1000000, CRC(644b999c) SHA1(b01d08f8e0fc35b22ace183f966e463ac9ce1696) )\
 
 #define MSLUG3LWDD_YMSND \
 	ROM_REGION( 0x1000000, "ymsnd", 0 ) \
-	ROM_LOAD( "256lwdd.v1", 0x000000, 0x1000000, CRC(1b42a7f7) SHA1(c7c959c643ca3da31fafa04bf0e5c5a397b4c7ea) )\
+	ROM_LOAD( "vroma0lw", 0x000000, 0x1000000, CRC(1b42a7f7) SHA1(c7c959c643ca3da31fafa04bf0e5c5a397b4c7ea) )\
 
 #define MSLUG3GW_YMSND \
 	ROM_REGION( 0x1000000, "ymsnd", 0 ) \
@@ -11983,63 +11983,63 @@ INPUT_PORTS_END
 
 #define MSLUG3DD_SPRITES \
     ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD( "256dd.c1", 0x0000000, 0x4000000, CRC(fc25d034) SHA1(db06b90cf86964ca1c26010c8724eeb0a79c2bf7) )
+	ROM_LOAD( "crom0", 0x0000000, 0x4000000, CRC(fc25d034) SHA1(db06b90cf86964ca1c26010c8724eeb0a79c2bf7) )
 
 #define MSLUG3NDD_SPRITES \
     ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD( "256ndd.c1", 0x0000000, 0x4000000, CRC(8aeb46d2) SHA1(41d1ad1a168cb7a6299cd73d3671599471651c69) )
+	ROM_LOAD( "crom0nd", 0x0000000, 0x4000000, CRC(8aeb46d2) SHA1(41d1ad1a168cb7a6299cd73d3671599471651c69) )
 
 #define MSLUG3B6DD_SPRITES \
     ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD( "299db6dd.c1", 0x0000000, 0x4000000, CRC(dce911e7) SHA1(409b6f7f1377a58159479273db343147d5be46cd) )
-
-#define MSLUG3NEOSD_SPRITES \
-    ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD( "256nsd.c1", 0x0000000, 0x4000000, CRC(1f6546d4) SHA1(64a5fbf25446bd5a5706d2be8e60e42636f945c0) )
-
-#define MSLUG3NDNEOSD_SPRITES \
-    ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD( "256dnsd.c1", 0x0000000, 0x4000000, CRC(9787615e) SHA1(818b037d35121435242831b756d921ac49935df0) )
-
-#define MSLUG3B6NEOSD_SPRITES \
-    ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD( "299b6nsd.c1", 0x0000000, 0x4000000, CRC(907c1d52) SHA1(a379ecf17ef5d9f1d8c60791a9d751593c862587) )
+	ROM_LOAD( "crom0b6", 0x0000000, 0x4000000, CRC(dce911e7) SHA1(409b6f7f1377a58159479273db343147d5be46cd) )
 
 #define MSLUG3DCQIDD_SPRITES \
     ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD( "256chuanqidd.c1", 0x0000000, 0x4000000, CRC(77dcfa46) SHA1(1b58c581398641ff85faa7e6bd1643cddcaa48bb) )
+	ROM_LOAD( "crom0cqi", 0x0000000, 0x4000000, CRC(77dcfa46) SHA1(1b58c581398641ff85faa7e6bd1643cddcaa48bb) )
 
 #define MSLUG3CQDD_SPRITES \
     ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD( "256cqdd.c1", 0x0000000, 0x4000000, CRC(daad346b) SHA1(117a968735f107cd630fdd9b3268ef83de747336) )
+	ROM_LOAD( "crom0cq", 0x0000000, 0x4000000, CRC(daad346b) SHA1(117a968735f107cd630fdd9b3268ef83de747336) )
 
 #define MSLUG3CQTFQDD_SPRITES \
     ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD( "256cqtfbdd.c1", 0x0000000, 0x4000000, CRC(2751a852) SHA1(64c708d4af6397f918ff9d4886e6d42c0e03b9d1) )
+	ROM_LOAD( "crom0cqt", 0x0000000, 0x4000000, CRC(2751a852) SHA1(64c708d4af6397f918ff9d4886e6d42c0e03b9d1) )
 
 #define MSLUG3CQZTDD_SPRITES \
     ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD( "256cqztdd.c1", 0x0000000, 0x4000000, CRC(2751a852) SHA1(64c708d4af6397f918ff9d4886e6d42c0e03b9d1) )
+	ROM_LOAD( "crom0cqz", 0x0000000, 0x4000000, CRC(2751a852) SHA1(64c708d4af6397f918ff9d4886e6d42c0e03b9d1) )
 
 #define MSLUG3DDDD_SPRITES \
     ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD( "256dddd.c1", 0x0000000, 0x4000000, CRC(b20f6897) SHA1(e35890787f92371ed6cea32049ca4b40dc759928) )
+	ROM_LOAD( "crom0dd", 0x0000000, 0x4000000, CRC(b20f6897) SHA1(e35890787f92371ed6cea32049ca4b40dc759928) )
 
 #define MSLUG3FRDD_SPRITES \
     ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD( "256frdd.c1", 0x0000000, 0x4000000, CRC(91c1ad95) SHA1(b4a5d0634ca41ae6c3117b3acc3d7d061d096f69) )
+	ROM_LOAD( "crom0fr", 0x0000000, 0x4000000, CRC(91c1ad95) SHA1(b4a5d0634ca41ae6c3117b3acc3d7d061d096f69) )
 
 #define MSLUG3GDD_SPRITES \
     ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD( "256gdd.c1", 0x0000000, 0x4000000, CRC(f4bdc741) SHA1(3ed62dd270b5d60c678f598dddf81478f608e1e8) )
+	ROM_LOAD( "crom0g", 0x0000000, 0x4000000, CRC(f4bdc741) SHA1(3ed62dd270b5d60c678f598dddf81478f608e1e8) )
 
 #define MSLUG3LWDD_SPRITES \
     ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD( "256lwdd.c1", 0x0000000, 0x4000000, CRC(91dad97b) SHA1(5a9c212ef58e738fd33c26b2cd467e4e56bd24a8) )
+	ROM_LOAD( "crom0lw", 0x0000000, 0x4000000, CRC(91dad97b) SHA1(5a9c212ef58e738fd33c26b2cd467e4e56bd24a8) )
 
 #define MSLUG3SCDD_SPRITES \
     ROM_REGION( 0x4000000, "sprites", 0 ) \
-	ROM_LOAD( "256scdd.c1", 0x0000000, 0x4000000, CRC(27a8df13) SHA1(d4f962edc92e59c2bcd86da5f34ec048bc3a688c) )
+	ROM_LOAD( "crom0sc", 0x0000000, 0x4000000, CRC(27a8df13) SHA1(d4f962edc92e59c2bcd86da5f34ec048bc3a688c) )
+
+#define MSLUG3NSD_SPRITES \
+    ROM_REGION( 0x4000000, "sprites", 0 ) \
+	ROM_LOAD( "256nsd.c1", 0x0000000, 0x4000000, CRC(1f6546d4) SHA1(64a5fbf25446bd5a5706d2be8e60e42636f945c0) )
+
+#define MSLUG3NDNSD_SPRITES \
+    ROM_REGION( 0x4000000, "sprites", 0 ) \
+	ROM_LOAD( "256dnsd.c1", 0x0000000, 0x4000000, CRC(9787615e) SHA1(818b037d35121435242831b756d921ac49935df0) )
+
+#define MSLUG3B6NSD_SPRITES \
+    ROM_REGION( 0x4000000, "sprites", 0 ) \
+	ROM_LOAD( "299b6nsd.c1", 0x0000000, 0x4000000, CRC(907c1d52) SHA1(a379ecf17ef5d9f1d8c60791a9d751593c862587) )
 
 #define MSLUG3EFR_SPRITES \
     ROM_REGION( 0x4000000, "sprites", 0 ) \
@@ -12414,7 +12414,7 @@ ROM_END
 
 ROM_START( mslug3dd )
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256dd.p1", 0x000000, 0x900000, CRC(d015d8ad) SHA1(5e1faaef3da621d579eabc9172f1e03cba56a67d) )
+	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x900000, CRC(d015d8ad) SHA1(5e1faaef3da621d579eabc9172f1e03cba56a67d) )
     MSLUG3DD_ESSENTIALPATCH_MODS_FILL
 	MSLUG3ND_SFIX_512K
 	MSLUG3_AUDIO_512K
@@ -12424,7 +12424,7 @@ ROM_END
 
 ROM_START( mslug3hdd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256hdd.p1", 0x000000, 0x500000, CRC(95af2ffe) SHA1(0672796ece5a5563c3883041d9f06b737736ba1e) )
+	ROM_LOAD16_WORD_SWAP( "promh", 0x000000, 0x500000, CRC(95af2ffe) SHA1(0672796ece5a5563c3883041d9f06b737736ba1e) )
     MSLUG3H_ESSENTIALPATCH_MODS_FILL
 	MSLUG3ND_SFIX_512K
 	MSLUG3_AUDIO_512K
@@ -12434,7 +12434,7 @@ ROM_END
 
 ROM_START( mslug3ndd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256ndd.p1", 0x000000, 0x500000, CRC(1a3c34f5) SHA1(c94ac83b713560240a20d706b179bae637411d91) )
+	ROM_LOAD16_WORD_SWAP( "promnd", 0x000000, 0x500000, CRC(1a3c34f5) SHA1(c94ac83b713560240a20d706b179bae637411d91) )
     MSLUG3H_ESSENTIALPATCH_MODS_FILL
 	MSLUG3ND_SFIX_512K
 	MSLUG3_AUDIO_512K
@@ -12444,7 +12444,7 @@ ROM_END
 
 ROM_START( mslug3b6dd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "299dd.p1", 0x000000, 0x500000, CRC(dce39f91) SHA1(93b30050caae55bc0ee3ca5c0ad457383173d543) )
+	ROM_LOAD16_WORD_SWAP( "promb6", 0x000000, 0x500000, CRC(dce39f91) SHA1(93b30050caae55bc0ee3ca5c0ad457383173d543) )
 	MSLUG3B6_ESSENTIALPATCH_MODS_FILL
 	MSLUG3_SFIX_MT_512K
 	MSLUG3_AUDIO_512K
@@ -12458,7 +12458,7 @@ ROM_END
 
 ROM_START( mslug3chuanqidd )
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256chuanqidd.p1", 0x000000, 0x900000, CRC(2f6d9c3c) SHA1(0e5cec3353f3c85e11b3da2a0f3a1682bdd300db) )
+	ROM_LOAD16_WORD_SWAP( "promcqi", 0x000000, 0x900000, CRC(6a758e1f) SHA1(48d5a4da21e1624a177d2db5d39480d5f61fccee) )
     MSLUG3CQI_ESSENTIALPATCH_MODS_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_BIOS_512K
@@ -12468,7 +12468,7 @@ ROM_END
 
 ROM_START( mslug3cqdd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256cqdd.p1", 0x000000, 0x500000, CRC(b9c723b7) SHA1(f39af92da84d8d71431efe8096568579b424d30f) )
+	ROM_LOAD16_WORD_SWAP( "promcq", 0x000000, 0x500000, CRC(b9c723b7) SHA1(f39af92da84d8d71431efe8096568579b424d30f) )
     MSLUG3CQ_ESSENTIALPATCH_MODS_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_BIOS_512K
@@ -12478,7 +12478,7 @@ ROM_END
 
 ROM_START( mslug3cqtfbdd )
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256cqtfbdd.p1", 0x000000, 0x900000, CRC(155ef220) SHA1(ebb89335cd28858914b9e9e89b3dc78fd7424131) )
+	ROM_LOAD16_WORD_SWAP( "promcqt", 0x000000, 0x900000, CRC(a69afbb8) SHA1(790092659bc7687747b31152e905df75c45e45ef) )
     MSLUG3CQT_ESSENTIALPATCH_MODS_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3HCR_AUDIO_256K
@@ -12488,7 +12488,7 @@ ROM_END
 
 ROM_START( mslug3cqztdd )
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256cqztdd.p1", 0x000000, 0x900000, CRC(c825e9f9) SHA1(9408fb2b2c555929ddda191e8e4bb692c558065d) )
+	ROM_LOAD16_WORD_SWAP( "promcqz", 0x000000, 0x900000, CRC(c825e9f9) SHA1(9408fb2b2c555929ddda191e8e4bb692c558065d) )
     MSLUG3CQT_ESSENTIALPATCH_MODS_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
@@ -12498,7 +12498,7 @@ ROM_END
 
 ROM_START( mslug3dddd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256dddd.p1", 0x000000, 0x500000, CRC(c91f7371) SHA1(b0a57360d9ee5b01f485cf6a7cfa2c1f1726a1de) )
+	ROM_LOAD16_WORD_SWAP( "promdd", 0x000000, 0x500000, CRC(c91f7371) SHA1(b0a57360d9ee5b01f485cf6a7cfa2c1f1726a1de) )
     MSLUG3HB_ESSENTIALPATCH_MODS_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
@@ -12508,7 +12508,7 @@ ROM_END
 
 ROM_START( mslug3frdd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256frdd.p1", 0x000000, 0x500000, CRC(6e632d38) SHA1(c3ee7f27bac5fa6528e6ace695648fa4e62cc961) )
+	ROM_LOAD16_WORD_SWAP( "promfr", 0x000000, 0x500000, CRC(6e632d38) SHA1(c3ee7f27bac5fa6528e6ace695648fa4e62cc961) )
     MSLUG3HB_ESSENTIALPATCH_MODS_FILL
 	MSLUG3FRDD_SFIX_128K
 	MSLUG3_AUDIO_512K
@@ -12518,7 +12518,7 @@ ROM_END
 
 ROM_START( mslug3gdd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256gdd.p1", 0x000000, 0x500000, CRC(a6085054) SHA1(b04a593e537f7f599e8439d74e717842cbff72c9) )
+	ROM_LOAD16_WORD_SWAP( "promg", 0x000000, 0x500000, CRC(a6085054) SHA1(b04a593e537f7f599e8439d74e717842cbff72c9) )
     MSLUG3G_ESSENTIALPATCH_MODS_FILL
     MSLUG3G_SFIX_128K
 	MSLUG3_AUDIO_BIOS_512K
@@ -12528,7 +12528,7 @@ ROM_END
 
 ROM_START( mslug3kidd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256kidd.p1", 0x000000, 0x500000, CRC(35480add) SHA1(9a629d85d1a56b7c57d0801305cc7a9652db009a) )
+	ROM_LOAD16_WORD_SWAP( "promki", 0x000000, 0x500000, CRC(35480add) SHA1(9a629d85d1a56b7c57d0801305cc7a9652db009a) )
     MSLUG3KI_ESSENTIALPATCH_MODS_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
@@ -12538,7 +12538,7 @@ ROM_END
 
 ROM_START( mslug3nddd )
 	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256nddd.p1", 0x000000, 0x500000, CRC(0b52a130) SHA1(8bcf4a347eef16e6a5f539afd53b8caa37cb8def) )
+	ROM_LOAD16_WORD_SWAP( "promlw", 0x000000, 0x500000, CRC(0b52a130) SHA1(8bcf4a347eef16e6a5f539afd53b8caa37cb8def) )
     MSLUG3ND_ESSENTIALPATCH_MODS_FILL
 	MSLUG3HD_SFIX_128K
     MSLUG3LW_AUDIO_512K
@@ -12548,7 +12548,7 @@ ROM_END
 
 ROM_START( mslug3scdd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256scdd.p1", 0x000000, 0x500000, CRC(a6bf609d) SHA1(3269dd55375c6ec931025e7e4cfe556b5f361863) )
+	ROM_LOAD16_WORD_SWAP( "promsc", 0x000000, 0x500000, CRC(a6bf609d) SHA1(3269dd55375c6ec931025e7e4cfe556b5f361863) )
     MSLUG3SC_ESSENTIALPATCH_MODS_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_512K
@@ -12569,7 +12569,7 @@ ROM_START( mslug3nsd )
 	MSLUG3_SFIX_MT_512K
 	MSLUG3_AUDIO_512K
     MSLUG3DD_YMSND
-	MSLUG3NEOSD_SPRITES
+	MSLUG3NSD_SPRITES
 ROM_END
 
 ROM_START( mslug3hnsd )
@@ -12581,7 +12581,7 @@ ROM_START( mslug3hnsd )
 	MSLUG3_SFIX_MT_512K
 	MSLUG3_AUDIO_512K
     MSLUG3DD_YMSND
-	MSLUG3NEOSD_SPRITES
+	MSLUG3NSD_SPRITES
 ROM_END
 
 ROM_START( mslug3ndnsd )
@@ -12593,7 +12593,7 @@ ROM_START( mslug3ndnsd )
 	MSLUG3ND_SFIX_512K
 	MSLUG3_AUDIO_512K
     MSLUG3DD_YMSND
-	MSLUG3NDNEOSD_SPRITES
+	MSLUG3NDNSD_SPRITES
 ROM_END
 
 ROM_START( mslug3b6nsd )
@@ -12605,7 +12605,7 @@ ROM_START( mslug3b6nsd )
 	MSLUG3_SFIX_MT_512K
 	MSLUG3_AUDIO_512K
     MSLUG3DD_YMSND
-	MSLUG3B6NEOSD_SPRITES
+	MSLUG3B6NSD_SPRITES
 ROM_END
 
  /***************************
@@ -12614,7 +12614,7 @@ ROM_END
 
 ROM_START( mslug3chuanqinds )
 	ROM_REGION( 0xa00000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "mslug3cqi.neo", 0x000000, 0x001000, CRC(fa61045e) SHA1(3ecfec23a73aae7e2f529d6db0b490d641f9e4f2) )
+	ROM_LOAD16_WORD_SWAP( "mslug3cqi.neo", 0x000000, 0x001000, CRC(04f719f3) SHA1(7c056154a20900aef61a50504b8d5164cb2a3d84) )
     ROM_CONTINUE( 0x000000, 0x901000 )
 	ROM_IGNORE( 0x509F000 )
     MSLUG3CQI_ESSENTIALPATCH_MODS_FILL
@@ -12638,9 +12638,9 @@ ROM_END
 
 ROM_START( mslug3cqtfbnds )
 	ROM_REGION( 0xa00000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "mslug3cqtfb.neo", 0x000000, 0x001000, CRC(a382ce14) SHA1(f277d1abf9df0d4e268d01f22b33ebaaf3f7ff4b) )
+	ROM_LOAD16_WORD_SWAP( "mslug3cqtfb.neo", 0x000000, 0x001000, CRC(fd6cdad7) SHA1(81da790c8d453b65876e176d4184519a181c59e6) )
     ROM_CONTINUE( 0x000000, 0x901000 )
-	ROM_IGNORE( 0x509F000 )
+	ROM_IGNORE( 0x505F000 )
     MSLUG3CQT_ESSENTIALPATCH_MODS_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3HCR_AUDIO_256K
@@ -15458,9 +15458,9 @@ GAME( 2000, mslug3b6dd,       mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (DARKSOFT Neo Geo Hacks Converted MVS To Decrypter/Encrypted C)
-GAME( 2025, mslug3chuanqidd,  mslug3,   neogeo_68kram, mslug3cqi,  neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary Firepower Showdown 6.0 2025-06-09)(Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3chuanqidd,  mslug3,   neogeo_noslot, mslug3cqi,  neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary Firepower Showdown 7.0 2025-07-06)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3cqdd,       mslug3,   neogeo_noslot, mslug3cq,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary 4.5 2024-12-03)(Darksoft)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3cqtfbdd,    mslug3,   neogeo_68kram, mslug3sc,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary Tower Defense 6.0 2025-06-10)(Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3cqtfbdd,    mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary Tower Defense 5.0 2025-07-06)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug3cqztdd,     mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary Journey 5.0 2025-06-09)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3dddd,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Starlight 2022-05-11)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2004, mslug3frdd,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (French Translation 2006-12-23)(Darksoft)", MACHINE_SUPPORTS_SAVE )
@@ -15482,9 +15482,9 @@ GAME( 2000, mslug3b6nsd,      mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (MATT GREER "CITY41" Neo Geo Hack Converted .NEO SD)
-GAME( 2025, mslug3chuanqinds, mslug3,   neogeo_68kram, mslug3cqi,  neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary Firepower Showdown 6.0 2025-04-03)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3chuanqinds, mslug3,   neogeo_noslot, mslug3cqi,  neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary Firepower Showdown 7.0 2025-07-06)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3cqnds,      mslug3,   neogeo_noslot, mslug3cq,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary 4.5 2024-12-03)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3cqtfbnds,   mslug3,   neogeo_68kram, mslug3sc,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary Tower Defense 6.0 2025-06-10)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3cqtfbnds,   mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary Tower Defense 5.0 2025-07-06)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug3cqztnds,    mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Legendary Journey 5.0 2025-06-09)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug3ddnds,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (Starlight 2022-05-11)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2004, mslug3frnds,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3ndd,  ROT0, "hack",            "Metal Slug 3 (French Translation 2006-12-23)(Neo SD)", MACHINE_SUPPORTS_SAVE )

@@ -18,7 +18,7 @@ Please Note That The Use Of This Emulator Is Prohibited For Any Commercial Use O
 2025-07-XX
 
 - Support For Multimvs Files (HBMAME)
-- Support for neosd .neo files (HBMAME)
+- Support For Neosd .neo Files (HBMAME)
 - Updated Roms Metal Slug 3 (Legendary Firepower Showdown 7.0 2025-07-06)
 - Updated Roms Metal Slug 3 (Legendary Tower Defense 5.0 2025-07-06)
 - Updated Roms Metal Slug 4 (Legendary Firepower Showdown 7.0 2025-07-06)

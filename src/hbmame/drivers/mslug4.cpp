@@ -5393,7 +5393,7 @@ INPUT_PORTS_END
     NEO_SFIX_512K( "263d.s1", CRC(c349ad60) SHA1(10b818f22b8c1b6d6c93a7afb159791b3feaa6bf) )
 
 #define MSLUG4DD_SFIX_512K \
-    NEO_SFIX_512K( "263dd.s1", CRC(1eaa05e0) SHA1(73a7e158c3c4fa602e17dcb517190fd91a9dbab8) )
+    NEO_SFIX_512K( "srom", CRC(1eaa05e0) SHA1(73a7e158c3c4fa602e17dcb517190fd91a9dbab8) )
 
 #define MSLUG4E_SFIX_128K \
 	NEO_SFIX_128K( "263e.s1", CRC(62575f68) SHA1(3972bac3d865f45982fdc387eb3d8684168aaa08) )
@@ -5450,23 +5450,23 @@ INPUT_PORTS_END
 
 #define MS4BOOTDD_YMSND \
 	ROM_REGION( 0x1000000, "ymsnd", 0 ) \
-	ROM_LOAD( "263bootdd.v1", 0x000000, 0x1000000, CRC(3bf11f09) SHA1(2f43f454019e4cc32f54a66b510d2a60ca774f3b) )
+	ROM_LOAD( "vroma0b", 0x000000, 0x1000000, CRC(3bf11f09) SHA1(2f43f454019e4cc32f54a66b510d2a60ca774f3b) )
 
 #define MSLUG4DD_YMSND \
 	ROM_REGION( 0x1000000, "ymsnd", 0 ) \
-	ROM_LOAD( "263dd.v1", 0x000000, 0x1000000, CRC(21d6deeb) SHA1(673523c95fceca37694f27a5d5a10c5bf0684511) )
+	ROM_LOAD( "vroma0", 0x000000, 0x1000000, CRC(21d6deeb) SHA1(673523c95fceca37694f27a5d5a10c5bf0684511) )
 
 #define MSLUG4NDD_YMSND \
 	ROM_REGION( 0x1000000, "ymsnd", 0 ) \
-	ROM_LOAD( "263ndnsd.v1", 0x000000, 0x1000000, CRC(56bdbee9) SHA1(f5133b9eb2e85776e1edaf9ce25a882e1164a1fd) )
+	ROM_LOAD( "vroma0nd", 0x000000, 0x1000000, CRC(56bdbee9) SHA1(f5133b9eb2e85776e1edaf9ce25a882e1164a1fd) )
 
 #define MSLUG4LWDD_YMSND \
 	ROM_REGION( 0x2000000, "ymsnd", 0 ) \
-	ROM_LOAD( "263lwdd.v1", 0x000000, 0x1400000, CRC(39b16202) SHA1(389ae9b05b21cf2158be51d00944856641901e9b) )
+	ROM_LOAD( "vroma0lw", 0x000000, 0x1400000, CRC(39b16202) SHA1(389ae9b05b21cf2158be51d00944856641901e9b) )
 
 #define MSLUG4CQIDD_YMSND \
-	ROM_REGION( 0x1000000, "ymsnd", 0 ) \
-	ROM_LOAD( "263cqidd.v1", 0x000000, 0x1000000, CRC(622a0e74) SHA1(0bf9fb9f6032083dc746213427fc0ade81b26a70) )
+	ROM_REGION( 0x2000000, "ymsnd", 0 ) \
+	ROM_LOAD( "vroma0cqi", 0x000000, 0x1800000, CRC(d3013f8c) SHA1(303199469046a520d10aff556fa9a3c30048aeb6) )
 
 #define MSLUG4E_YMSND \
 	ROM_REGION( 0x1000000, "ymsnd", 0 ) \
@@ -5529,45 +5529,41 @@ INPUT_PORTS_END
 	ROM_LOAD16_BYTE( "263.c5", 0x2000000, 0x800000, CRC(a748854f) SHA1(2611bbedf9b5d8e82c6b2c99b88f842c46434d41) )\
 	ROM_LOAD16_BYTE( "263.c6", 0x2000001, 0x800000, CRC(5c8ba116) SHA1(6034db09c8706d4ddbcefc053efbc47a0953eb92) )
 
-#define MS4PLUSDD_SPRITES \
-	ROM_REGION( 0x3000000, "sprites", 0 ) \
- 	ROM_LOAD( "ms4pdd.c1", 0x0000000, 0x3000000, CRC(6fa5ab74) SHA1(c5072e7fcc1e6981c100019f361e5f673140bceb) )
-
 #define MSLUG4DD_SPRITES \
 	ROM_REGION( 0x3000000, "sprites", 0 ) \
- 	ROM_LOAD( "263dd.c1", 0x0000000, 0x3000000, CRC(dfe1e9af) SHA1(f3bdc8f855557f2e5d27da437ecefdb5bd50a6e0) )
+ 	ROM_LOAD( "crom0", 0x0000000, 0x3000000, CRC(dfe1e9af) SHA1(f3bdc8f855557f2e5d27da437ecefdb5bd50a6e0) )
 
 #define MSLUG4NDD_SPRITES \
 	ROM_REGION( 0x2800000, "sprites", 0 ) \
- 	ROM_LOAD( "263ndd.c1", 0x0000000, 0x2800000, CRC(62c1c1f5) SHA1(88d8849ae93e22226dbdc0019b9938ec505c243b) )
-
-#define MS4PLUSNEOSD_SPRITES \
-	ROM_REGION( 0x3000000, "sprites", 0 ) \
- 	ROM_LOAD( "ms4pnsd.c1", 0x0000000, 0x3000000, CRC(e4a96825) SHA1(628fec0b5f19d659b67b0168a37015df5c4b7d5c) )
-
-#define MSLUG4NEOSD_SPRITES \
-	ROM_REGION( 0x3000000, "sprites", 0 ) \
- 	ROM_LOAD( "263nsd.c1", 0x0000000, 0x3000000, CRC(51c52d21) SHA1(64d6e42663f6f126d6ffe7fbb226c267dff63f4a) )
-
-#define MSLUG4NDNEOSD_SPRITES \
-	ROM_REGION( 0x3000000, "sprites", 0 ) \
- 	ROM_LOAD( "263ndnsd.c1", 0x0000000, 0x2800000, CRC(51105730) SHA1(5ce8d26ef963f1d7ba68bff3a316587e8b385e73) )
+ 	ROM_LOAD( "crom0nd", 0x0000000, 0x2800000, CRC(62c1c1f5) SHA1(88d8849ae93e22226dbdc0019b9938ec505c243b) )
 
 #define MSLUG4LWDD_SPRITES \
 	ROM_REGION( 0x2800000, "sprites", 0 ) \
- 	ROM_LOAD( "263lwdd.c1", 0x0000000, 0x2800000, CRC(5882a6c9) SHA1(8aaf9d14c93bf6a6e306bd506b35d7081fe3b151) )
+ 	ROM_LOAD( "crom0lw", 0x0000000, 0x2800000, CRC(5882a6c9) SHA1(8aaf9d14c93bf6a6e306bd506b35d7081fe3b151) )
 
 #define MSLUG4CQIDD_SPRITES \
 	ROM_REGION( 0x3000000, "sprites", 0 ) \
- 	ROM_LOAD( "263cqidd.c1", 0x0000000, 0x3000000, CRC(65fcfbff) SHA1(7061e802984395a26c49c1e9523f5f8f86e510c8) )
+ 	ROM_LOAD( "crom0cqi", 0x0000000, 0x3000000, CRC(65fcfbff) SHA1(7061e802984395a26c49c1e9523f5f8f86e510c8) )
 
 #define MSLUG4DDDD_SPRITES \
 	ROM_REGION( 0x3000000, "sprites", 0 ) \
- 	ROM_LOAD( "263dddd.c1", 0x0000000, 0x3000000, CRC(5dd63967) SHA1(bfeba7ffe823927fea81eab95f55554d54aa2227) )
+ 	ROM_LOAD( "crom0dd", 0x0000000, 0x3000000, CRC(5dd63967) SHA1(bfeba7ffe823927fea81eab95f55554d54aa2227) )
 
 #define MSLUG4FRDD_SPRITES \
 	ROM_REGION( 0x3000000, "sprites", 0 ) \
- 	ROM_LOAD( "263frdd.c1", 0x0000000, 0x3000000, CRC(1dba1a4d) SHA1(5beb612475a8ce8ad047011eb99468aae03c217f) )
+ 	ROM_LOAD( "crom0fr", 0x0000000, 0x3000000, CRC(1dba1a4d) SHA1(5beb612475a8ce8ad047011eb99468aae03c217f) )
+
+#define MS4PLUSNSD_SPRITES \
+	ROM_REGION( 0x3000000, "sprites", 0 ) \
+ 	ROM_LOAD( "ms4pnsd.c1", 0x0000000, 0x3000000, CRC(e4a96825) SHA1(628fec0b5f19d659b67b0168a37015df5c4b7d5c) )
+
+#define MSLUG4NSD_SPRITES \
+	ROM_REGION( 0x3000000, "sprites", 0 ) \
+ 	ROM_LOAD( "263nsd.c1", 0x0000000, 0x3000000, CRC(51c52d21) SHA1(64d6e42663f6f126d6ffe7fbb226c267dff63f4a) )
+
+#define MSLUG4NDNSD_SPRITES \
+	ROM_REGION( 0x3000000, "sprites", 0 ) \
+ 	ROM_LOAD( "263ndnsd.c1", 0x0000000, 0x2800000, CRC(51105730) SHA1(5ce8d26ef963f1d7ba68bff3a316587e8b385e73) )
 
 #define MSLUG4E_SPRITES \
 	ROM_REGION( 0x3000000, "sprites", 0 ) \
@@ -5844,7 +5840,7 @@ ROM_END
 
 ROM_START( ms4bootdd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263ndd.p1", 0x000000, 0x500000, CRC(3d6245b3) SHA1(e30dbb19de3da43297f95cf3c827f677e7d83e2f) )
+	ROM_LOAD16_WORD_SWAP( "promnd", 0x000000, 0x500000, CRC(3d6245b3) SHA1(e30dbb19de3da43297f95cf3c827f677e7d83e2f) )
     MSLUG4_ESSENTIALPATCH_MODS_FILL
 	MSLUG4DD_SFIX_512K
 	MSLUG4D_AUDIO_128K
@@ -5854,7 +5850,7 @@ ROM_END
 
 ROM_START( ms4plusdd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "ms4pdd.p1", 0x000000, 0x500000, CRC(474fa26d) SHA1(1a59429df71c85610d4656ef88ca490b7d2fe907) )
+	ROM_LOAD16_WORD_SWAP( "promp", 0x000000, 0x500000, CRC(474fa26d) SHA1(1a59429df71c85610d4656ef88ca490b7d2fe907) )
     MSLUG4_ESSENTIALPATCH_MODS_FILL
 	MSPLUS4_SFIX_128K
 	MSLUG4_AUDIO_ENCRYPTED_128K
@@ -5862,10 +5858,9 @@ ROM_START( ms4plusdd )
     MSLUG4DD_SPRITES
 ROM_END
 
-
 ROM_START( mslug4dd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263dd.p1", 0x000000, 0x500000, CRC(c6dbdff1) SHA1(35f72712147cfa5bcfc39c3f5d8cb570757daa6b) )
+	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x500000, CRC(c6dbdff1) SHA1(35f72712147cfa5bcfc39c3f5d8cb570757daa6b) )
     MSLUG4_ESSENTIALPATCH_MODS_FILL
 	MSLUG4DD_SFIX_512K
 	MSLUG4_AUDIO_ENCRYPTED_128K
@@ -5875,7 +5870,7 @@ ROM_END
 
 ROM_START( mslug4hdd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263hdd.p1", 0x000000, 0x500000, CRC(9dd8a0bd) SHA1(2330bca1d871ab4bd14e42c78f6cd2984eba63fa) )
+	ROM_LOAD16_WORD_SWAP( "promh", 0x000000, 0x500000, CRC(9dd8a0bd) SHA1(2330bca1d871ab4bd14e42c78f6cd2984eba63fa) )
     MSLUG4H_ESSENTIALPATCH_MODS_FILL
 	MSLUG4DD_SFIX_512K
 	MSLUG4_AUDIO_ENCRYPTED_128K
@@ -5885,7 +5880,7 @@ ROM_END
 
 ROM_START( mslug4ndd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263ndd.p1", 0x000000, 0x500000, CRC(3d6245b3) SHA1(e30dbb19de3da43297f95cf3c827f677e7d83e2f) )
+	ROM_LOAD16_WORD_SWAP( "promnd", 0x000000, 0x500000, CRC(3d6245b3) SHA1(e30dbb19de3da43297f95cf3c827f677e7d83e2f) )
     MSLUG4_ESSENTIALPATCH_MODS_FILL
 	MSLUG4DD_SFIX_512K
 	MSLUG4D_AUDIO_128K
@@ -5899,7 +5894,7 @@ ROM_END
 
 ROM_START( mslug4ammordd )
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263ammordd.p1", 0x000000, 0x900000, CRC(af0054f8) SHA1(bb642e0ab3e09f15d6e8dc22fe59059c7e563810) )
+	ROM_LOAD16_WORD_SWAP( "promammor", 0x000000, 0x900000, CRC(af0054f8) SHA1(bb642e0ab3e09f15d6e8dc22fe59059c7e563810) )
     MSLUG4LW_ESSENTIALPATCH_MODS_FILL
     MSLUG4HD_SFIX_128K
     MSLUG4LW_AUDIO_128K
@@ -5909,7 +5904,7 @@ ROM_END
 
 ROM_START( mslug4cqidd )
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263cqidd.p1", 0x000000, 0x900000, CRC(0f3a0a79) SHA1(e4067ad133d5b5b195f75fa3f3b011d3280e61e2) )
+	ROM_LOAD16_WORD_SWAP( "promcqi", 0x000000, 0x900000, CRC(f1f8e132) SHA1(0a2d37ef1faa35b9ac1b845123c872df5816fb0d) )
     MSLUG4QCI_ESSENTIALPATCH_MODS_FILL
     MSLUG4HD_SFIX_128K
     MSLUG4QCI_AUDIO_BIOS_128K
@@ -5919,7 +5914,7 @@ ROM_END
 
 ROM_START( mslug4dddd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263dddd.p1", 0x000000, 0x500000, CRC(84bf17df) SHA1(47550ee65586ba106feecca7cda1b48d1feed6c0) )
+	ROM_LOAD16_WORD_SWAP( "promdd", 0x000000, 0x500000, CRC(84bf17df) SHA1(47550ee65586ba106feecca7cda1b48d1feed6c0) )
     MSLUG4HB_ESSENTIALPATCH_MODS_FILL
     MSLUG4HD_SFIX_128K
 	MSLUG4D_AUDIO_128K
@@ -5929,7 +5924,7 @@ ROM_END
 
 ROM_START( mslug4frdd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263frdd.p1", 0x000000, 0x500000, CRC(7f248582) SHA1(8f396853a5ff2723fa9177ab851cc96c03596fd9) )
+	ROM_LOAD16_WORD_SWAP( "promfr", 0x000000, 0x500000, CRC(7f248582) SHA1(8f396853a5ff2723fa9177ab851cc96c03596fd9) )
     MSLUG4HB_ESSENTIALPATCH_MODS_FILL
     MSLUG4FR_SFIX_128K
 	MSLUG4D_AUDIO_128K
@@ -5939,7 +5934,7 @@ ROM_END
 
 ROM_START( mslug4kidd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263kidd.p1", 0x000000, 0x500000, CRC(a363e4e3) SHA1(4dd0b1345dd5634fa339a83bb6ca62398389dacb) )
+	ROM_LOAD16_WORD_SWAP( "promki", 0x000000, 0x500000, CRC(a363e4e3) SHA1(4dd0b1345dd5634fa339a83bb6ca62398389dacb) )
     MSLUG4KI_ESSENTIALPATCH_MODS_FILL
     MSLUG4HD_SFIX_128K
 	MSLUG4D_AUDIO_128K
@@ -5949,7 +5944,7 @@ ROM_END
 
 ROM_START( mslug4lwdd )
 	ROM_REGION( 0x900000, "maincpu", 0 )
-    ROM_LOAD16_WORD_SWAP( "263lwdd.p1", 0x000000, 0x900000, CRC(f139c9d7) SHA1(b36f9e49dab23616571b77fd0a86307178a51efb) )
+    ROM_LOAD16_WORD_SWAP( "promlw", 0x000000, 0x900000, CRC(f139c9d7) SHA1(b36f9e49dab23616571b77fd0a86307178a51efb) )
     MSLUG4LW_ESSENTIALPATCH_MODS_FILL
     MSLUG4HD_SFIX_128K
     MSLUG4LW_AUDIO_128K
@@ -5959,7 +5954,7 @@ ROM_END
 
 ROM_START( mslug4lwqdd )
 	ROM_REGION( 0x900000, "maincpu", 0 )
-    ROM_LOAD16_WORD_SWAP( "263lwqdd.p1", 0x000000, 0x900000, CRC(d6c81802) SHA1(8b6cb910b436b12dc9a44579d406fd07fbbb9b78) )
+    ROM_LOAD16_WORD_SWAP( "promlwq", 0x000000, 0x900000, CRC(d6c81802) SHA1(8b6cb910b436b12dc9a44579d406fd07fbbb9b78) )
     MSLUG4LW_ESSENTIALPATCH_MODS_FILL
     MSLUG4HD_SFIX_128K
     MSLUG4LW_AUDIO_128K
@@ -5980,7 +5975,7 @@ ROM_START( ms4bootnsd )
 	MSLUG4HD_SFIX_128K
 	MSLUG4D_AUDIO_128K
 	MS4BOOTDD_YMSND
-    MSLUG4NDNEOSD_SPRITES
+    MSLUG4NDNSD_SPRITES
 ROM_END
 
 ROM_START( ms4plusnsd )
@@ -5992,7 +5987,7 @@ ROM_START( ms4plusnsd )
 	MSLUG4_SFIX_MT_512K
 	MSLUG4_AUDIO_ENCRYPTED_128K
 	MSLUG4DD_YMSND
-    MS4PLUSNEOSD_SPRITES
+    MS4PLUSNSD_SPRITES
 ROM_END
 
 ROM_START( mslug4nsd )
@@ -6004,7 +5999,7 @@ ROM_START( mslug4nsd )
 	MSLUG4_SFIX_MT_512K
 	MSLUG4_AUDIO_ENCRYPTED_128K
 	MSLUG4DD_YMSND
-    MSLUG4NEOSD_SPRITES
+    MSLUG4NSD_SPRITES
 ROM_END
 
 ROM_START( mslug4hnsd )
@@ -6016,7 +6011,7 @@ ROM_START( mslug4hnsd )
 	MSLUG4_SFIX_MT_512K
 	MSLUG4_AUDIO_ENCRYPTED_128K
 	MSLUG4DD_YMSND
-    MSLUG4NEOSD_SPRITES
+    MSLUG4NSD_SPRITES
 ROM_END
 
 ROM_START( mslug4ndnsd )
@@ -6028,7 +6023,7 @@ ROM_START( mslug4ndnsd )
 	MSLUG4HD_SFIX_128K
 	MSLUG4D_AUDIO_128K
 	MSLUG4NDD_YMSND
-    MSLUG4NDNEOSD_SPRITES
+    MSLUG4NDNSD_SPRITES
 ROM_END
 
  /***************************
@@ -6049,9 +6044,9 @@ ROM_END
 
 ROM_START( mslug4cqinds )
 	ROM_REGION( 0xa00000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "mslug4cqi.neo", 0x000000, 0x001000, CRC(ed76f5c3) SHA1(9a85933afd83f735e71638f5c95b885785f47c1e) )
+	ROM_LOAD16_WORD_SWAP( "mslug4cqi.neo", 0x000000, 0x001000, CRC(5a2b9d01) SHA1(da9389e83df707d3d3a2876be24d8d610d55999b) )
     ROM_CONTINUE( 0x000000, 0x901000 )
-	ROM_IGNORE( 0x403F000 )
+	ROM_IGNORE( 0x483F000 )
     MSLUG4QCI_ESSENTIALPATCH_MODS_FILL
     MSLUG4HD_SFIX_128K
     MSLUG4QCI_AUDIO_BIOS_128K
@@ -7580,7 +7575,7 @@ GAME( 2002, mslug4ndd,        mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (DARKSOFT Neo Geo Hacks Converted MVS To Decrypter/Encrypted C)
 GAME( 2023, mslug4ammordd,    mslug4,   neogeo_noslot, mslug4hb,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Random Ammunition 2023-02-25)(Darksoft)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug4cqidd,      mslug4,   neogeo_68kram, mslug4cqi,  neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Legendary Firepower Showdown 6.0 2025-06-09)(Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug4cqidd,      mslug4,   neogeo_noslot, mslug4cqi,  neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Legendary Firepower Showdown 7.0 2025-07-06)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4dddd,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Starlight 2022-10-05)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, mslug4frdd,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (French Translation 2006-12-23)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4kidd,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Komorebi 2022-05-20)(Darksoft)", MACHINE_SUPPORTS_SAVE )
@@ -7602,7 +7597,7 @@ GAME( 2002, mslug4ndnsd,      mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (MATT GREER "CITY41" Neo Geo Hack Converted .NEO SD)
 GAME( 2023, mslug4ammornds,   mslug4,   neogeo_noslot, mslug4hb,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Random Ammunition 2023-02-25)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug4cqinds,     mslug4,   neogeo_68kram, mslug4cqi,  neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Legendary Firepower Showdown 6.0 2025-06-09)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug4cqinds,     mslug4,   neogeo_noslot, mslug4cqi,  neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Legendary Firepower Showdown 7.0 2025-07-06)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4ddnds,      mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Starlight 2022-10-05)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, mslug4frnds,      mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (French Translation 2006-12-23)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4kinds,      mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Komorebi 2022-05-20)(Neo SD)", MACHINE_SUPPORTS_SAVE )
