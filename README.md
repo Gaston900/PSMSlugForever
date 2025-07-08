@@ -31,6 +31,10 @@ Players 1 and 2 use this controller by default:
 * To move, use the arrow keys "Up, Down, Left, Right."
 * To perform actions, use the "A, S, D, Z" keys.
 
+Support For Multimvs Files (By HBMAME)
+
+Support For Neosd .neo Files (By HBMAME)
+
 Overclocking Default 200%.
 
 The M68000 CPU core has been modified to be compatible with all current types of hack ROMs.
