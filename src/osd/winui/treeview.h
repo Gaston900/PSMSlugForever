@@ -86,14 +86,14 @@ enum
 	FOLDER_SAVESTATE, //Do not disable
 //	FOLDER_DUMPING,
 //#ifdef USE_GAMEFOLDERS
+	FOLDER_MSLUGXAT,
 	FOLDER_MSLUG,
 	FOLDER_MSLUG2,
 	FOLDER_MSLUG3,
 	FOLDER_MSLUG4,
 	FOLDER_MSLUG5,
 	FOLDER_MSLUGX,
-	FOLDER_HOMEBREW,
-//	FOLDER_NAMCO,			
+	FOLDER_HOMEBREW,			
 //	FOLDER_TAITO,				
 //	FOLDER_KONAMI,				
 //	FOLDER_SEGA,			
@@ -177,6 +177,7 @@ int GetTreeViewIconIndex(int icon_id);
 void ResetTreeViewFolders(void);
 void SelectTreeViewFolder(int folder_id);
 //#ifdef USE_GAMEFOLDERS
+void CreateMSLUGXATFolders(int parent_index);
 void CreateMSLUGFolders(int parent_index);
 void CreateMSLUG2Folders(int parent_index);
 void CreateMSLUG3Folders(int parent_index);
@@ -185,7 +186,6 @@ void CreateMSLUG5Folders(int parent_index);
 void CreateMSLUGXFolders(int parent_index);
 void CreateHOMEBREWFolders(int parent_index);
 
-void CreateNAMCOFolders(int parent_index);
 void CreateTAITOFolders(int parent_index);
 void CreateKONAMIFolders(int parent_index);
 void CreateSEGAFolders(int parent_index);

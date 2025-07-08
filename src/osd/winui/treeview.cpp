@@ -85,26 +85,24 @@ char * ConvertWCtoC(wchar_t* str)
 extern const FOLDERDATA g_folderData[] =
 {
 	// commented-out lines have parts not defined elsewhere
-	{"All Games",     "allgames",         FOLDER_ALLGAMES,     IDI_FOLDER_ALLGAMES,      0,             0,            0, NULL,                       NULL,                    true },
-	{"Available",     "available",        FOLDER_AVAILABLE,    IDI_FOLDER_AVAILABLE,     F_AVAILABLE,   0,            0, NULL,                       FilterAvailable,         true },
-    {"Not Working",   "nonworking",       FOLDER_NONWORKING,   IDI_NONWORKING,           F_NONWORKING,  F_WORKING,    0, NULL,                       DriverIsBroken,          true },
-	{"BIOS",          "bios",             FOLDER_BIOS,         IDI_FOLDER_BIOS,          0,             0,            1, CreateBIOSFolders,          DriverIsBios,            true },
-//	{"Unavailable",  "unavailable",       FOLDER_UNAVAILABLE,  IDI_FOLDER_UNAVAILABLE,   0,             F_AVAILABLE,  0, NULL,                       FilterAvailable,         false },
-//#ifdef USE_GAMEFOLDERS
-	{"Metal Slug 1",  "metalslug1",	      FOLDER_MSLUG,		    IDI_FOLDER_MSLUG,		  0,			 0, 		   0, CreateMSLUGFolders },
-	{"Metal Slug 2",  "metalslug2", 	  FOLDER_MSLUG2,		IDI_FOLDER_MSLUG2,		  0,			 0, 		   0, CreateMSLUG2Folders },
-	{"Metal Slug 3",  "metalslug3", 	  FOLDER_MSLUG3,		IDI_FOLDER_MSLUG3,		  0,			 0, 		   0, CreateMSLUG3Folders },
-	{"Metal Slug 4",  "metalslug4",		  FOLDER_MSLUG4,		IDI_FOLDER_MSLUG4,		  0,			 0, 		   0, CreateMSLUG4Folders },
-	{"Metal Slug 5",  "metalslug5",		  FOLDER_MSLUG5,		IDI_FOLDER_MSLUG5,		  0,			 0, 		   0, CreateMSLUG5Folders },
-	{"Metal Slug X",  "metalslugx",		  FOLDER_MSLUGX,		IDI_FOLDER_MSLUGX,		  0,			 0, 		   0, CreateMSLUGXFolders },
-	{"HomeBrew", 	  "homebrew",		  FOLDER_HOMEBREW,		IDI_FOLDER_HOMEBREW,	  0,			 0, 		   0, CreateHOMEBREWFolders },
-//	{"Namco", 		  "namco",			  FOLDER_NAMCO,		IDI_FOLDER_NAMCO,		  0,			 0, 		   0, CreateNAMCOFolders },
+	{"All Games",        "allgames",          FOLDER_ALLGAMES,      IDI_FOLDER_ALLGAMES,      0,             0,            0, NULL,                       NULL,                    true },
+	{"Available",        "available",         FOLDER_AVAILABLE,     IDI_FOLDER_AVAILABLE,     F_AVAILABLE,   0,            0, NULL,                       FilterAvailable,         true },
+    {"Not Working",      "nonworking",        FOLDER_NONWORKING,    IDI_NONWORKING,           F_NONWORKING,  F_WORKING,    0, NULL,                       DriverIsBroken,          true },
+	{"BIOS",             "bios",              FOLDER_BIOS,          IDI_FOLDER_BIOS,          0,             0,            1, CreateBIOSFolders,          DriverIsBios,            true },
+	{"Apocalyptic Time", "apocalyptic time",  FOLDER_MSLUGXAT,		IDI_FOLDER_MSLUGXAT,      0,			 0, 		   0, CreateMSLUGXATFolders },
+	{"Metal Slug 1",     "metalslug1",	      FOLDER_MSLUG,		    IDI_FOLDER_MSLUG,		  0,			 0, 		   0, CreateMSLUGFolders },
+	{"Metal Slug 2",     "metalslug2", 	      FOLDER_MSLUG2,		IDI_FOLDER_MSLUG2,		  0,			 0, 		   0, CreateMSLUG2Folders },
+	{"Metal Slug 3",     "metalslug3", 	      FOLDER_MSLUG3,		IDI_FOLDER_MSLUG3,		  0,			 0, 		   0, CreateMSLUG3Folders },
+	{"Metal Slug 4",     "metalslug4",		  FOLDER_MSLUG4,		IDI_FOLDER_MSLUG4,		  0,			 0, 		   0, CreateMSLUG4Folders },
+	{"Metal Slug 5",     "metalslug5",		  FOLDER_MSLUG5,		IDI_FOLDER_MSLUG5,		  0,			 0, 		   0, CreateMSLUG5Folders },
+	{"Metal Slug X",     "metalslugx",		  FOLDER_MSLUGX,		IDI_FOLDER_MSLUGX,		  0,			 0, 		   0, CreateMSLUGXFolders },
+	{"HomeBrew", 	     "homebrew",		  FOLDER_HOMEBREW,		IDI_FOLDER_HOMEBREW,	  0,			 0, 		   0, CreateHOMEBREWFolders },
 //	{"Taito", 		  "taito",			  FOLDER_TAITO,		IDI_FOLDER_TAITO,		  0,			 0, 		   0, CreateTAITOFolders },
 //	{"Konami",		  "konami", 		  FOLDER_KONAMI,		IDI_FOLDER_KONAMI,		  0,			 0, 		   0, CreateKONAMIFolders },
 //	{"Sega",		  "sega",			  FOLDER_SEGA, 		IDI_FOLDER_SEGA,		  0,			 0, 		   0, CreateSEGAFolders },
 //	{"Toa/Cave/BP",	  "cave",			  FOLDER_CAVE, 		IDI_FOLDER_CAVE,		  0,			 0, 		   0, CreateTOAFolders },
 //	{TEXT("PSXGame"),		  "psxgame",		   FOLDER_PSXGAME,		IDI_FOLDER_PSXGAME, 	  0,			 F_AVAILABLE,  NULL,					   DriverUsesPSXCpu,  TRUE },
-//#endif 
+//	{"Unavailable",   "unavailable",      FOLDER_UNAVAILABLE,  IDI_FOLDER_UNAVAILABLE,   0,             F_AVAILABLE,  0, NULL,                       FilterAvailable,         false },
 //	{"Parents",       "originals",        FOLDER_ORIGINAL,     IDI_FOLDER_ORIGINALS,     F_ORIGINALS,   F_CLONES,     0, NULL,                       DriverIsClone,           false },
 //	{"Clones",        "clones",           FOLDER_CLONES,       IDI_FOLDER_CLONES,        F_CLONES,      F_ORIGINALS,  0, NULL,                       DriverIsClone,           true },
 	{"Source",        "source",           FOLDER_SOURCE,       IDI_FOLDER_SOURCE,        0,             0,            0, CreateSourceFolders },
@@ -167,14 +165,14 @@ static const TREEICON treeIconNames[] =
 	{ IDI_FOLDER_ORIGINALS,    	"foldorig" },
 	{ IDI_FOLDER_SOURCE,		"foldsrc" },	
 //#ifdef USE_GAMEFOLDERS
+ 	{ IDI_FOLDER_MSLUGXAT,	   "fold_mslugxat"},
 	{ IDI_FOLDER_MSLUG,	       "fold_mslug" },
 	{ IDI_FOLDER_MSLUG2,       "fold_mslug2" },
 	{ IDI_FOLDER_MSLUG3,       "fold_mslug3" },
     { IDI_FOLDER_MSLUG4,	   "fold_mslug4" },
     { IDI_FOLDER_MSLUG5,	   "fold_mslug5" },
     { IDI_FOLDER_MSLUGX,	   "fold_mslugx" },
-    { IDI_FOLDER_HOMEBREW,	   "fold_homebrew" },
- 	{ IDI_FOLDER_NAMCO,		   "fold_namco"},			
+    { IDI_FOLDER_HOMEBREW,	   "fold_homebrew" },			
  	{ IDI_FOLDER_TAITO,		   "fold_taito"},	
  	{ IDI_FOLDER_KONAMI,	   "fold_konami"},			
  	{ IDI_FOLDER_SEGA,		   "fold_sega"},		
@@ -2314,11 +2312,12 @@ void CreateHOMEBREWFolders(int parent_index)
 	}
 }
 
-/*
-void CreateNAMCOFolders(int parent_index)
+void CreateMSLUGXATFolders(int parent_index)
 {
 	int jj;
 	int nGames = GetNumGames();
+
+	
 	LPTREEFOLDER lpFolder = treeFolders[parent_index];
 
 	// no games in top level folder
@@ -2326,34 +2325,28 @@ void CreateNAMCOFolders(int parent_index)
 
 	for (jj = 0; jj < nGames; jj++)
 	{
-		const char *s = GetDriverFileName(jj);
+		const char *s = GetDriverGameName(jj);
 
 		if (s == NULL || s[0] == '\0')
 			continue;
 
-		if (!strcmp("namcos1.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("namcos2.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("namcos86.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("baraduke.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("galaga.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("digdug.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("gaplus.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("mappy.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("xevious.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("toypop.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("skykid.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("pacland.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("phozon.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("grobda.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("namcona1.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("namconb1.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("namcond1.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("tceptor.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("bosco.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("polepos.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("mslug2at01", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mslugxtst01", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mslugxtao01", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mslugxat01", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mslugxat02", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mslugxat03", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mslugxat04", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mslugxat05", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mslugxat06", s))		    AddGame(lpFolder, jj);
+		if (!strcmp("mslugxat07", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mslugxat08", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mslugxat09", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mslugxat10", s))			AddGame(lpFolder, jj);
 	}
 }
 
+/*
 void CreateTAITOFolders(int parent_index)
 {
 	int jj;
