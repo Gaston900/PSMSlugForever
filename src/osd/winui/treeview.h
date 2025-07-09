@@ -105,6 +105,18 @@ enum
     FOLDER_NEOSD,
     FOLDER_NEOSDHACK,
     FOLDER_ORIGINAL,
+    FOLDER_REMIX,
+    FOLDER_REMIXEXTREME,
+    FOLDER_SERIEEASYMODE,
+    FOLDER_SERIEENEMYRESET,
+	FOLDER_SERIEFIREPOWER,
+	FOLDER_SERIEGREENBLUE,
+	FOLDER_SERIELEGENDARY,
+	FOLDER_SERIEMULTIFUNCTION,
+	FOLDER_SERIERANDOM,
+	FOLDER_SERIESPEEDRUN,
+	FOLDER_SOLDIERREBEL,
+	FOLDER_UPDATE,
 //#endif	
 	MAX_FOLDERS
 };
@@ -202,6 +214,18 @@ void CreateMSLUGXFolders(int parent_index);
 void CreateNEOSDFolders(int parent_index);
 void CreateNEOSDHACKFolders(int parent_index);
 void CreateORIGINALFolders(int parent_index);
+void CreateREMIXFolders(int parent_index);
+void CreateREMIXEXTREMEFolders(int parent_index);
+void CreateSERIEEASYMODEFolders(int parent_index);
+void CreateSERIEENEMYRESETFolders(int parent_index);
+void CreateSERIEFIREPOWERFolders(int parent_index);
+void CreateSERIEGREENBLUEFolders(int parent_index);
+void CreateSERIELEGENDARYFolders(int parent_index);
+void CreateSERIEMULTIFUNCTIONFolders(int parent_index);
+void CreateSERIERANDOMFolders(int parent_index);
+void CreateSERIESPEEDRUNFolders(int parent_index);
+void CreateSOLDIERREBELFolders(int parent_index);
+void CreateUPDATEFolders(int parent_index);
 //#endif
 
 #endif

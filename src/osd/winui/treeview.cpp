@@ -85,29 +85,41 @@ char * ConvertWCtoC(wchar_t* str)
 extern const FOLDERDATA g_folderData[] =
 {
 	// commented-out lines have parts not defined elsewhere
-	{"All Games",        "allgames",          FOLDER_ALLGAMES,      IDI_FOLDER_ALLGAMES,      0,             0,            0, NULL,                       NULL,                    true },
-	{"Available",        "available",         FOLDER_AVAILABLE,     IDI_FOLDER_AVAILABLE,     F_AVAILABLE,   0,            0, NULL,                       FilterAvailable,         true },
-    {"Not Working",      "nonworking",        FOLDER_NONWORKING,    IDI_NONWORKING,           F_NONWORKING,  F_WORKING,    0, NULL,                       DriverIsBroken,          true },
-	{"BIOS",             "bios",              FOLDER_BIOS,          IDI_FOLDER_BIOS,          0,             0,            1, CreateBIOSFolders,          DriverIsBios,            true },
-	{"Apocalyptic Time", "apocalyptic time",  FOLDER_AT,		    IDI_FOLDER_AT,            0,			 0, 		   0, CreateATFolders },
-	{"Cuztom", 		     "cuztom",			  FOLDER_CUZTOM,		IDI_FOLDER_CUZTOM,		  0,			 0, 		   0, CreateCUZTOMFolders },
-	{"Darksoft",		 "darksoft", 		  FOLDER_DARKSOFT,		IDI_FOLDER_DARKSOFT,	  0,			 0, 		   0, CreateDARKSOFTFolders },
-	{"Darksoft ~ Hack",  "darksoft~hack",	  FOLDER_DARKSOFTHACK, 	IDI_FOLDER_DARKSOFTHACK,  0,			 0, 		   0, CreateDARKSOFTHACKFolders },	
-	{"Decrypted E & B",	 "decrypted e & b",   FOLDER_DECRYPTEDEANDB,IDI_FOLDER_DECRYPTEDEANDB,0,			 0, 		   0, CreateDECRYPTEDEANDBFolders },
-	{"Encrypted C & P",	 "encrypted c & p",	  FOLDER_ENCRYPTEDCANDP,IDI_FOLDER_ENCRYPTEDCANDP,0,			 0,            0, CreateENCRYPTEDCANDPFolders },
-	{"FB4Droid",	     "fb4droid",	      FOLDER_FB4DROID,      IDI_FOLDER_FB4DROID,      0,			 0,            0, CreateFB4DROIDFolders },
-	{"Fightcade 2",	     "fightcade 2",	      FOLDER_FIGHTCADE2,    IDI_FOLDER_FIGHTCADE2,    0,			 0,            0, CreateFIGHTCADE2Folders },
-	{"GOTVG",	         "gotvg",	          FOLDER_GOTVG,         IDI_FOLDER_GOTVG,         0,			 0,            0, CreateGOTVGFolders },
-	{"HomeBrew", 	     "homebrew",		  FOLDER_HOMEBREW,		IDI_FOLDER_HOMEBREW,	  0,			 0, 		   0, CreateHOMEBREWFolders },
-	{"Metal Slug 1",     "metalslug1",	      FOLDER_MSLUG,		    IDI_FOLDER_MSLUG,		  0,			 0, 		   0, CreateMSLUGFolders },
-	{"Metal Slug 2",     "metalslug2", 	      FOLDER_MSLUG2,		IDI_FOLDER_MSLUG2,		  0,			 0, 		   0, CreateMSLUG2Folders },
-	{"Metal Slug 3",     "metalslug3", 	      FOLDER_MSLUG3,		IDI_FOLDER_MSLUG3,		  0,			 0, 		   0, CreateMSLUG3Folders },
-	{"Metal Slug 4",     "metalslug4",		  FOLDER_MSLUG4,		IDI_FOLDER_MSLUG4,		  0,			 0, 		   0, CreateMSLUG4Folders },
-	{"Metal Slug 5",     "metalslug5",		  FOLDER_MSLUG5,		IDI_FOLDER_MSLUG5,		  0,			 0, 		   0, CreateMSLUG5Folders },
-	{"Metal Slug X",     "metalslugx",		  FOLDER_MSLUGX,		IDI_FOLDER_MSLUGX,		  0,			 0, 		   0, CreateMSLUGXFolders },
-	{"NeoSD", 	         "neosd",		      FOLDER_NEOSD,		    IDI_FOLDER_NEOSD,	      0,			 0, 		   0, CreateNEOSDFolders },
-	{"NeoSD ~ Hack", 	 "neosd~hack",		  FOLDER_NEOSDHACK,		IDI_FOLDER_NEOSDHACK,	  0,			 0, 		   0, CreateNEOSDHACKFolders },
-	{"Original", 	     "original",		  FOLDER_ORIGINAL,		IDI_FOLDER_ORIGINAL,	  0,			 0, 		   0, CreateORIGINALFolders },
+	{"All Games",           "allgames",            FOLDER_ALLGAMES,            IDI_FOLDER_ALLGAMES,            0,            0,            0, NULL,                       NULL,                    true },
+	{"Available",           "available",           FOLDER_AVAILABLE,           IDI_FOLDER_AVAILABLE,           F_AVAILABLE,  0,            0, NULL,                       FilterAvailable,         true },
+    {"Not Working",         "nonworking",          FOLDER_NONWORKING,          IDI_NONWORKING,                 F_NONWORKING, F_WORKING,    0, NULL,                       DriverIsBroken,          true },
+	{"BIOS",                "bios",                FOLDER_BIOS,                IDI_FOLDER_BIOS,                0,            0,            1, CreateBIOSFolders,          DriverIsBios,            true },
+	{"Apocalyptic Time",    "apocalyptic time",    FOLDER_AT,		           IDI_FOLDER_AT,                  0,			 0, 		   0, CreateATFolders },
+	{"Cuztom", 		        "cuztom",			   FOLDER_CUZTOM,		       IDI_FOLDER_CUZTOM,		       0,			 0, 		   0, CreateCUZTOMFolders },
+	{"Darksoft",		    "darksoft", 		   FOLDER_DARKSOFT,		       IDI_FOLDER_DARKSOFT,	           0,			 0, 		   0, CreateDARKSOFTFolders },
+	{"Darksoft ~ Hack",     "darksoft~hack",	   FOLDER_DARKSOFTHACK, 	   IDI_FOLDER_DARKSOFTHACK,        0,			 0, 		   0, CreateDARKSOFTHACKFolders },	
+	{"Decrypted E & B",	    "decrypted e & b",     FOLDER_DECRYPTEDEANDB,      IDI_FOLDER_DECRYPTEDEANDB,      0,			 0, 		   0, CreateDECRYPTEDEANDBFolders },
+	{"Encrypted C & P",	    "encrypted c & p",	   FOLDER_ENCRYPTEDCANDP,      IDI_FOLDER_ENCRYPTEDCANDP,      0,			 0,            0, CreateENCRYPTEDCANDPFolders },
+	{"FB4Droid",	        "fb4droid",	           FOLDER_FB4DROID,            IDI_FOLDER_FB4DROID,            0,			 0,            0, CreateFB4DROIDFolders },
+	{"Fightcade 2",	        "fightcade 2",	       FOLDER_FIGHTCADE2,          IDI_FOLDER_FIGHTCADE2,          0,			 0,            0, CreateFIGHTCADE2Folders },
+	{"GOTVG",	            "gotvg",	           FOLDER_GOTVG,               IDI_FOLDER_GOTVG,               0,			 0,            0, CreateGOTVGFolders },
+	{"HomeBrew", 	        "homebrew",		       FOLDER_HOMEBREW,		       IDI_FOLDER_HOMEBREW,	           0,			 0, 		   0, CreateHOMEBREWFolders },
+	{"Metal Slug 1",        "metalslug1",	       FOLDER_MSLUG,		       IDI_FOLDER_MSLUG,		       0,			 0, 		   0, CreateMSLUGFolders },
+	{"Metal Slug 2",        "metalslug2", 	       FOLDER_MSLUG2,		       IDI_FOLDER_MSLUG2,		       0,			 0, 		   0, CreateMSLUG2Folders },
+	{"Metal Slug 3",        "metalslug3", 	       FOLDER_MSLUG3,		       IDI_FOLDER_MSLUG3,		       0,			 0, 		   0, CreateMSLUG3Folders },
+	{"Metal Slug 4",        "metalslug4",		   FOLDER_MSLUG4,		       IDI_FOLDER_MSLUG4,		       0,			 0, 		   0, CreateMSLUG4Folders },
+	{"Metal Slug 5",        "metalslug5",		   FOLDER_MSLUG5,		       IDI_FOLDER_MSLUG5,		       0,			 0, 		   0, CreateMSLUG5Folders },
+	{"Metal Slug X",        "metalslugx",		   FOLDER_MSLUGX,		       IDI_FOLDER_MSLUGX,		       0,			 0, 		   0, CreateMSLUGXFolders },
+	{"NeoSD", 	            "neosd",		       FOLDER_NEOSD,		       IDI_FOLDER_NEOSD,	           0,			 0, 		   0, CreateNEOSDFolders },
+	{"NeoSD ~ Hack", 	    "neosd~hack",		   FOLDER_NEOSDHACK,		   IDI_FOLDER_NEOSDHACK,	       0,			 0, 		   0, CreateNEOSDHACKFolders },
+	{"Original", 	        "original",		       FOLDER_ORIGINAL,		       IDI_FOLDER_ORIGINAL,	           0,			 0, 		   0, CreateORIGINALFolders },
+	{"Remix", 	            "remix",		       FOLDER_REMIX,		       IDI_FOLDER_REMIX,	           0,			 0, 		   0, CreateREMIXFolders },
+	{"Remix Extreme", 	    "remix extreme",	   FOLDER_REMIXEXTREME,        IDI_FOLDER_REMIXEXTREME,        0,			 0, 		   0, CreateREMIXEXTREMEFolders },
+	{"Serie Easy Mode",     "serie easy mode",	   FOLDER_SERIEEASYMODE,       IDI_FOLDER_SERIEEASYMODE,       0,			 0, 		   0, CreateSERIEEASYMODEFolders },
+	{"Serie Enemy Reset",   "serie enemy reset",   FOLDER_SERIEENEMYRESET,     IDI_FOLDER_SERIEENEMYRESET,     0,			 0, 		   0, CreateSERIEENEMYRESETFolders },
+	{"Serie Firepower",     "serie firepower",	   FOLDER_SERIEFIREPOWER,      IDI_FOLDER_SERIEFIREPOWER,      0,			 0, 		   0, CreateSERIEFIREPOWERFolders },
+	{"Serie Green Blue",    "serie green blue",    FOLDER_SERIEGREENBLUE,      IDI_FOLDER_SERIEGREENBLUE,      0,			 0, 		   0, CreateSERIEGREENBLUEFolders },
+	{"Serie Legendary",     "serie legendary",	   FOLDER_SERIELEGENDARY,      IDI_FOLDER_SERIELEGENDARY,      0,			 0, 		   0, CreateSERIELEGENDARYFolders },
+	{"Serie MultiFunction", "serie multiFunction", FOLDER_SERIEMULTIFUNCTION,  IDI_FOLDER_SERIEMULTIFUNCTION,  0,			 0, 		   0, CreateSERIEMULTIFUNCTIONFolders },
+	{"Serie Random", 	    "serie random",	       FOLDER_SERIERANDOM,         IDI_FOLDER_SERIERANDOM,         0,			 0, 		   0, CreateSERIERANDOMFolders },
+	{"Serie Speedrun", 	    "serie speedrun",	   FOLDER_SERIESPEEDRUN,       IDI_FOLDER_SERIESPEEDRUN,       0,			 0, 		   0, CreateSERIESPEEDRUNFolders },
+	{"Soldier Rebel", 	    "soldier rebel",	   FOLDER_SOLDIERREBEL,        IDI_FOLDER_SOLDIERREBEL,        0,			 0, 		   0, CreateSOLDIERREBELFolders },
+	{"Update 2025", 	    "Update 2025",	       FOLDER_UPDATE,              IDI_FOLDER_UPDATE,              0,			 0, 		   0, CreateUPDATEFolders },
 //	{"Unavailable",   "unavailable",      FOLDER_UNAVAILABLE,  IDI_FOLDER_UNAVAILABLE,   0,             F_AVAILABLE,  0, NULL,                       FilterAvailable,         false },
 //	{"Parents",       "originals",        FOLDER_ORIGINAL,     IDI_FOLDER_ORIGINALS,     F_ORIGINALS,   F_CLONES,     0, NULL,                       DriverIsClone,           false },
 //	{"Clones",        "clones",           FOLDER_CLONES,       IDI_FOLDER_CLONES,        F_CLONES,      F_ORIGINALS,  0, NULL,                       DriverIsClone,           true },
@@ -189,6 +201,18 @@ static const TREEICON treeIconNames[] =
     { IDI_FOLDER_NEOSD,	        "fold_neosd" },
 	{ IDI_FOLDER_NEOSDHACK,	    "fold_neosdh" },
     { IDI_FOLDER_ORIGINAL,	    "fold_original" },
+	{ IDI_FOLDER_REMIX,	        "fold_remix" },
+	{ IDI_FOLDER_REMIXEXTREME,	"fold_remixe" },
+	{ IDI_FOLDER_SERIEEASYMODE,	"fold_serieem" },
+	{ IDI_FOLDER_SERIEENEMYRESET, "fold_serieer" },
+	{ IDI_FOLDER_SERIEFIREPOWER,  "fold_serief" },
+	{ IDI_FOLDER_SERIEGREENBLUE,  "fold_seriegb" },
+	{ IDI_FOLDER_SERIELEGENDARY,  "fold_seriel" },
+	{ IDI_FOLDER_SERIEMULTIFUNCTION,   "fold_seriemf" },
+	{ IDI_FOLDER_SERIERANDOM,	  "fold_serier" },
+	{ IDI_FOLDER_SERIESPEEDRUN,	  "fold_series" },
+	{ IDI_FOLDER_SOLDIERREBEL,	  "fold_soldier" },
+	{ IDI_FOLDER_UPDATE,	    "fold_update" },
 
 //#endif	
 	{ IDI_FOLDER_MANUFACTURER,	"foldmanu" },
@@ -3535,6 +3559,554 @@ void CreateORIGINALFolders(int parent_index)
 		if (!strcmp("mslug5h", s))			        AddGame(lpFolder, jj);
 		if (!strcmp("mslug5b1", s))			        AddGame(lpFolder, jj);
 		if (!strcmp("mslugx", s))			        AddGame(lpFolder, jj);
+	}
+}
+
+void CreateREMIXFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+
+	
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverGameName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("mslugla01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("msluglb01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug2la01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug2la02", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug2la03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug2la04", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug2la05", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug2la06", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug2la07", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug2la08", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug2lb01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug2lb02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug2lb03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug2lb04", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug2lb05", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug2lb06", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug2lb07", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug2lb08", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3la01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3la02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3la03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3la04", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug3la05", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3la06", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lb01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lb02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lb03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lb04", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lb05", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lb06", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lc01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lc02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lc03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lc04", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lc05", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lc06", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3ld01", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug3ld02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3ld03", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug3ld04", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3ld05", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3ld06", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3le01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3le02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3le03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3le04", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug3le05", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3le06", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lf01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lf02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lf03", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lf04", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lf05", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lf06", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lg01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lg02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lg03", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lg04", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lg05", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lg06", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lh01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lh02", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lh03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lh04", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lh05", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3lh06", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3li01", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug4la01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4la02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4la03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4la04", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4la05", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4lb01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4lb02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4lb03", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug4lb04", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4lb05", s))	                AddGame(lpFolder, jj);
+        if (!strcmp("mslug4lc01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4lc02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4lc03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4lc04", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug4lc05", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4ld01", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug4ld02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4ld03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4ld04", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug4ld05", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4le01", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug4le02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4le03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4le04", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4le05", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4lf01", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug4lf02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4lf03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4lf04", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4lf05", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4lg01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4lg02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4lg03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4lg04", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4lg05", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug5la01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5la02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5la03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5lb01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5lb02", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug5lb03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5lc01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5lc02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5lc03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5ld01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5ld02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5ld03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5le01", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug5le02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5le03", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug5lf01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5lf02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5lf03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5lg01", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug5lg02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5lg03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5lh01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5lh02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5lh03", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslugxla01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxla02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxla03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxlb01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxlb02", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslugxlb03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxlc01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxlc02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxlc03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxld01", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslugxld02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxld03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxle01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxle02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxle03", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslugxlf01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxlf02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxlf03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxlg01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxlg02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxlg03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxlh01", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslugxlh02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxlh03", s))		            AddGame(lpFolder, jj);
+	}
+}
+
+void CreateREMIXEXTREMEFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+
+	
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverGameName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("mslugrma01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugrmb01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug2rma01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug2rma02", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug2rmb01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug2rmb02", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug3rma01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3rmb01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3rmc01", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug3rmd01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3rme01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3rmf01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3rmg01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3rmh01", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug3rmi01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4rma01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4rmb01", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug4rmc01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4rmd01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4rme01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4rmf01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4rmg01", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug4rmh01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5rma01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5rmb01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5rmc01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5rmd01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5rme01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5rmf01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5rmg01", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug5rmh01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxrma01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxrmb01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxrmc01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxrmd01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxrme01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxrmf01", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslugxrmg01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxrmh01", s))		            AddGame(lpFolder, jj);
+	}
+}
+
+void CreateSERIEEASYMODEFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+
+	
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverGameName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("mslughc11", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug2hc19", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc33", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4hc22", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug5hc25", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc25", s))	                AddGame(lpFolder, jj);
+	}
+}
+
+void CreateSERIEENEMYRESETFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+
+	
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverGameName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("mslug2hc01", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc14", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc15", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc17", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc18", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc20", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc36", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc37", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4hc03", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug4hc07", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4hc25", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5hc03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5hc04", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5hc05", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug5hc07", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5hc10", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5hc13", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug5hc14", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5hc23", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug5hc27", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslughc03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc01", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc02", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc07", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc15", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc19", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc20", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc33", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc34", s))		            AddGame(lpFolder, jj);
+	}
+}
+
+void CreateSERIEFIREPOWERFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+
+	
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverGameName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("mslughc16", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc11", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc37", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4hc25", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug5hc13", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc10", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc11", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc12", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc34", s))	                AddGame(lpFolder, jj);
+	}
+}
+
+void CreateSERIEGREENBLUEFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+
+	
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverGameName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("mslug2hc05", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc06", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc07", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc05", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc06", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc22", s))	                AddGame(lpFolder, jj);
+	}
+}
+
+void CreateSERIELEGENDARYFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+
+	
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverGameName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("mslug2hc10", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc35", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc36", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc37", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc38", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc39", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug4hc25", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug5hc12", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug5hc13", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc32", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc33", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc34", s))	                AddGame(lpFolder, jj);
+	}
+}
+
+void CreateSERIEMULTIFUNCTIONFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+
+	
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverGameName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("mslughc04", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug2hc09", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4hc12", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug5hc17", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc13", s))	                AddGame(lpFolder, jj);
+	}
+}
+
+void CreateSERIERANDOMFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+
+	
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverGameName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("mslug2hc10", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc35", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc36", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc37", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4hc08", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug4hc09", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug4hc25", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug5hc07", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug5hc12", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug5hc13", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslughc02", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslughc15", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc13", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc26", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc32", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc34", s))	                AddGame(lpFolder, jj);
+	}
+}
+
+void CreateSERIESPEEDRUNFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+
+	
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverGameName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("mslughc07", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug2hc03", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc24", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4hc11", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug5hc18", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc04", s))	                AddGame(lpFolder, jj);
+	}
+}
+
+void CreateSOLDIERREBELFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+
+	
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverGameName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("mslug3esl", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3or", s))			            AddGame(lpFolder, jj);
+	}
+}
+
+void CreateUPDATEFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+
+	
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverGameName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("mslug3esl", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3or", s))			            AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc37", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc38", s))		            AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc39", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4hc25", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug5hc13", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug5hc30", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslugdyf1", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslughc03", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc26", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc31", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc34", s))	                AddGame(lpFolder, jj);
 	}
 }
 
