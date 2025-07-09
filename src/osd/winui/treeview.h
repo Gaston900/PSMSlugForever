@@ -86,19 +86,25 @@ enum
 	FOLDER_SAVESTATE, //Do not disable
 //	FOLDER_DUMPING,
 //#ifdef USE_GAMEFOLDERS
-	FOLDER_MSLUGXAT,
+	FOLDER_AT,
+	FOLDER_CUZTOM,
+	FOLDER_DARKSOFT,
+	FOLDER_DARKSOFTHACK,
+	FOLDER_DECRYPTEDEANDB,
+	FOLDER_ENCRYPTEDCANDP,
+	FOLDER_FB4DROID,
+	FOLDER_FIGHTCADE2,
+	FOLDER_GOTVG,
+	FOLDER_HOMEBREW,
 	FOLDER_MSLUG,
 	FOLDER_MSLUG2,
 	FOLDER_MSLUG3,
 	FOLDER_MSLUG4,
 	FOLDER_MSLUG5,
 	FOLDER_MSLUGX,
-	FOLDER_HOMEBREW,			
-//	FOLDER_TAITO,				
-//	FOLDER_KONAMI,				
-//	FOLDER_SEGA,			
-//	FOLDER_CAVE,
-//	FOLDER_PSXGAME,
+    FOLDER_NEOSD,
+    FOLDER_NEOSDHACK,
+    FOLDER_ORIGINAL,
 //#endif	
 	MAX_FOLDERS
 };
@@ -177,19 +183,25 @@ int GetTreeViewIconIndex(int icon_id);
 void ResetTreeViewFolders(void);
 void SelectTreeViewFolder(int folder_id);
 //#ifdef USE_GAMEFOLDERS
-void CreateMSLUGXATFolders(int parent_index);
+void CreateATFolders(int parent_index);
+void CreateCUZTOMFolders(int parent_index);
+void CreateDARKSOFTFolders(int parent_index);
+void CreateDARKSOFTHACKFolders(int parent_index);
+void CreateDECRYPTEDEANDBFolders(int parent_index);
+void CreateENCRYPTEDCANDPFolders(int parent_index);
+void CreateFB4DROIDFolders(int parent_index);
+void CreateFIGHTCADE2Folders(int parent_index);
+void CreateGOTVGFolders(int parent_index);
+void CreateHOMEBREWFolders(int parent_index);
 void CreateMSLUGFolders(int parent_index);
 void CreateMSLUG2Folders(int parent_index);
 void CreateMSLUG3Folders(int parent_index);
 void CreateMSLUG4Folders(int parent_index);
 void CreateMSLUG5Folders(int parent_index);
 void CreateMSLUGXFolders(int parent_index);
-void CreateHOMEBREWFolders(int parent_index);
-
-void CreateTAITOFolders(int parent_index);
-void CreateKONAMIFolders(int parent_index);
-void CreateSEGAFolders(int parent_index);
-void CreateTOAFolders(int parent_index);
+void CreateNEOSDFolders(int parent_index);
+void CreateNEOSDHACKFolders(int parent_index);
+void CreateORIGINALFolders(int parent_index);
 //#endif
 
 #endif
