@@ -120,6 +120,7 @@ extern const FOLDERDATA g_folderData[] =
 	{"Serie Speedrun", 	    "serie speedrun",	   FOLDER_SERIESPEEDRUN,       IDI_FOLDER_SERIESPEEDRUN,       0,			 0, 		   0, CreateSERIESPEEDRUNFolders },
 	{"Soldier Rebel", 	    "soldier rebel",	   FOLDER_SOLDIERREBEL,        IDI_FOLDER_SOLDIERREBEL,        0,			 0, 		   0, CreateSOLDIERREBELFolders },
 	{"Update 2025", 	    "Update 2025",	       FOLDER_UPDATE,              IDI_FOLDER_UPDATE,              0,			 0, 		   0, CreateUPDATEFolders },
+//	{"Mechanical",    "mechanical",       FOLDER_MECHANICAL,   IDI_MECHANICAL,           0,             0,            0, NULL,                       DriverIsMechanical,      true },
 //	{"Unavailable",   "unavailable",      FOLDER_UNAVAILABLE,  IDI_FOLDER_UNAVAILABLE,   0,             F_AVAILABLE,  0, NULL,                       FilterAvailable,         false },
 //	{"Parents",       "originals",        FOLDER_ORIGINAL,     IDI_FOLDER_ORIGINALS,     F_ORIGINALS,   F_CLONES,     0, NULL,                       DriverIsClone,           false },
 //	{"Clones",        "clones",           FOLDER_CLONES,       IDI_FOLDER_CLONES,        F_CLONES,      F_ORIGINALS,  0, NULL,                       DriverIsClone,           true },
@@ -138,7 +139,6 @@ extern const FOLDERDATA g_folderData[] =
 //	{"Vector",        "vector",           FOLDER_VECTOR,       IDI_FOLDER_VECTOR,        F_VECTOR,      F_RASTER,     0, NULL,                       DriverIsVector,          true },
 //	{"Savestate",     "savestate",        FOLDER_SAVESTATE,    IDI_FOLDER_SAVESTATE,     0,             0,            0, CreateSaveStateFolders },
 //	{"Dumping Status","dumping",          FOLDER_DUMPING,      IDI_FOLDER_DUMP,          0,             0,            1, CreateDumpingFolders },
-//	{"Mechanical",    "mechanical",       FOLDER_MECHANICAL,   IDI_MECHANICAL,           0,             0,            0, NULL,                       DriverIsMechanical,      true },
 //  {"Non Mechanical",  "nonmechanical",     FOLDER_NONMECHANICAL,IDI_FOLDER,               0,             0,            0, NULL,                       DriverIsMechanical,      FALSE },
 //	{"Refresh",       "refresh",          FOLDER_FPS,          IDI_FOLDER_FPS,           0,             0,            1, CreateFPSFolders },
 //	{"Resolution",    "resolution",       FOLDER_RESOLUTION,   IDI_FOLDER_RESOL,         0,             0,            1, CreateResolutionFolders },
@@ -388,6 +388,14 @@ bool GameFiltered(int nGame, DWORD dwMask)
 		if(DriverIsBios(nGame))
 			return true;
 	}
+
+/* Add games "MACHINE_MECHANICAL" */
+//	if(lpFolder && lpFolder->m_nFolderId != FOLDER_MECHANICAL)
+//	{
+//		if(DriverIsMechanical(nGame))
+//			return true;
+//	}
+//@Gaston90
 
 	if(driver_list::driver(nGame).name[0] == '_')
 		return true;
