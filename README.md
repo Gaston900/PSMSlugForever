@@ -76,16 +76,6 @@ In the support folders it is incorporated by:
 Artpreview, Artwork, Bosses, Cabinets, Cheat, Cpanel, Ctrlr, Flyers, Gameover, Howto, Icons,
 Logo, Manuals, Marquees, Pcb, Roms, Samples, Scores, Select, Snap, Titles, Versus, Video, Cheat.7z, Command.dat, Gameinit.dat, Hiscore.dat, History.dat, Mameinfo.dat, Story. dat and Sysinfo.dat
 
-Added 7 new UI folders by default.
-
-* Metal Slug
-* Metal Slug 2
-* Metal Slug 3
-* Metal Slug 4
-* Metal Slug 5
-* Metal Slug X
-* HomeBrew
-
 How to compile
 --------------
 
