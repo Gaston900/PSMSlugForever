@@ -253,11 +253,6 @@ u16 neogeo_state::in1_r()
 	return ((m_edge->in1_r() & m_ctrl2->read_ctrl()) << 8) | 0xff;
 }
 
-CUSTOM_INPUT_MEMBER(neogeo_state::kizuna4p_start_r)
-{
-	return (m_edge->read_start_sel() & 0x05) | ~0x05;
-}
-
 void neogeo_state::io_control_w(offs_t offset, u8 data)
 {
 	switch (offset)
@@ -1047,82 +1042,6 @@ void neogeo_state::neogeo_noslot(machine_config &config)
 	SBP_PROT(config, "sbp_prot");
 }
 
-void neogeo_state::neogeo_kog(machine_config &config)
-{
-	neogeo_arcade(config);
-	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::main_map_noslot);
-
-	//joystick controller
-	NEOGEO_CTRL_EDGE_CONNECTOR(config, m_edge, neogeo_arc_edge, "joy", true);
-
-	//no mahjong controller
-	NEOGEO_CONTROL_PORT(config, "ctrl1", neogeo_arc_pin15, nullptr, true);
-	NEOGEO_CONTROL_PORT(config, "ctrl2", neogeo_arc_pin15, nullptr, true);
-
-	NGBOOTLEG_PROT(config, "bootleg_prot");
-	KOG_PROT(config, "kog_prot");
-}
-
-// these basically correspond to the cabinets which were available in arcades:
-// with mahjong panel, with dial for Pop'n Bounce and with 4 controls for Kizuna...
-void neogeo_state::neogeo_mj(machine_config &config)
-{
-	neogeo_noslot(config);
-
-	//no joystick panel
-	NEOGEO_CTRL_EDGE_CONNECTOR(config.replace(), m_edge, neogeo_arc_edge_fixed, nullptr, true);
-
-	//P1 mahjong controller
-	config.device_remove("ctrl1");
-	config.device_remove("ctrl2");
-	NEOGEO_CONTROL_PORT(config, "ctrl1", neogeo_arc_pin15, "mahjong", false);
-	NEOGEO_CONTROL_PORT(config, "ctrl2", neogeo_arc_pin15, nullptr, true);
-}
-
-void neogeo_state::neogeo_dial(machine_config &config)
-{
-	neogeo_noslot(config);
-	NEOGEO_CTRL_EDGE_CONNECTOR(config.replace(), m_edge, neogeo_arc_edge_fixed, "dial", true);
-}
-
-void neogeo_state::neogeo_imaze(machine_config &config)
-{
-	neogeo_noslot(config);
-	NEOGEO_CTRL_EDGE_CONNECTOR(config.replace(), m_edge, neogeo_arc_edge_fixed, "irrmaze", true);
-}
-
-void neogeo_state::neogeo_kiz4p(machine_config &config)
-{
-	neogeo_noslot(config);
-	NEOGEO_CTRL_EDGE_CONNECTOR(config.replace(), m_edge, neogeo_arc_edge_fixed, "kiz4p", true);
-}
-
-// this is used by V-Liner, which handles differently inputs...
-void neogeo_state::neogeo_noctrl(machine_config &config)
-{
-	neogeo_noslot(config);
-	config.device_remove("ctrl1");
-	config.device_remove("ctrl2");
-}
-
-void neogeo_state::no_watchdog(machine_config &config)
-{
-	neogeo_noslot(config);
-	subdevice<watchdog_timer_device>("watchdog")->set_time(attotime::from_seconds(0.0));
-}
-
-void neogeo_state::gsc_map(address_map &map)
-{
-	main_map_noslot(map);
-	map(0x900000,0x91ffff).rom().region("gsc", 0);  // extra rom
-}
-
-void neogeo_state::gsc(machine_config &config)
-{
-	neogeo_noslot(config);
-	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::gsc_map);
-}
-
 void neogeo_state::neogeo_68kram_map(address_map &map)
 {
 	main_map_noslot(map);
@@ -1443,7 +1362,7 @@ ROM_START( neogeo )
 ROM_END
 
 ROM_START( neosd )
-	NEOGEO_BIOS
+	MULTIMVS_BIOS
 
 	ROM_REGION( 0xa00000, "maincpu", ROMREGION_ERASEFF )
 
@@ -1468,7 +1387,7 @@ ROM_START( neosd )
 ROM_END
 
 ROM_START( multimvs )
-	NEOGEO_BIOS
+	MULTIMVS_BIOS
 
 	ROM_REGION( 0xa00000, "maincpu", ROMREGION_ERASEFF )
 

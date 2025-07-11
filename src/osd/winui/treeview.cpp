@@ -120,7 +120,7 @@ extern const FOLDERDATA g_folderData[] =
 	{"Serie Speedrun", 	    "serie speedrun",	   FOLDER_SERIESPEEDRUN,       IDI_FOLDER_SERIESPEEDRUN,       0,			 0, 		   0, CreateSERIESPEEDRUNFolders },
 	{"Soldier Rebel", 	    "soldier rebel",	   FOLDER_SOLDIERREBEL,        IDI_FOLDER_SOLDIERREBEL,        0,			 0, 		   0, CreateSOLDIERREBELFolders },
 	{"Update 2025", 	    "Update 2025",	       FOLDER_UPDATE,              IDI_FOLDER_UPDATE,              0,			 0, 		   0, CreateUPDATEFolders },
-	{"NEOGEO (MVS/AES)",    "neogeo (mvs/aes)",    FOLDER_MECHANICAL,          IDI_MECHANICAL,                 0,            0,            0, NULL,                       DriverIsMechanical,      true },
+//	{"NEOGEO (MVS/AES)",    "neogeo (mvs/aes)",    FOLDER_MECHANICAL,          IDI_MECHANICAL,                 0,            0,            0, NULL,                       DriverIsMechanical,      true },
 //	{"Unavailable",   "unavailable",      FOLDER_UNAVAILABLE,  IDI_FOLDER_UNAVAILABLE,   0,             F_AVAILABLE,  0, NULL,                       FilterAvailable,         false },
 //	{"Parents",       "originals",        FOLDER_ORIGINAL,     IDI_FOLDER_ORIGINALS,     F_ORIGINALS,   F_CLONES,     0, NULL,                       DriverIsClone,           false },
 //	{"Clones",        "clones",           FOLDER_CLONES,       IDI_FOLDER_CLONES,        F_CLONES,      F_ORIGINALS,  0, NULL,                       DriverIsClone,           true },
@@ -390,11 +390,11 @@ bool GameFiltered(int nGame, DWORD dwMask)
 	}
 
 /* Add games "MACHINE_MECHANICAL" */
-	if(lpFolder && lpFolder->m_nFolderId != FOLDER_MECHANICAL)
-	{
-		if(DriverIsMechanical(nGame))
-			return true;
-	}
+//	if(lpFolder && lpFolder->m_nFolderId != FOLDER_MECHANICAL)
+//	{
+//		if(DriverIsMechanical(nGame))
+//			return true;
+//	}
 
 	if(driver_list::driver(nGame).name[0] == '_')
 		return true;

@@ -91,16 +91,7 @@ public:
 	void mvs(machine_config &config);
 	void neogeo_arcade(machine_config &config);
 	void neogeo_base(machine_config &config);
-	void neogeo_dial(machine_config &config);
-	void neogeo_imaze(machine_config &config);
-	void neogeo_kiz4p(machine_config &config);
-	void neogeo_kog(machine_config &config);
-	void neogeo_mj(machine_config &config);
-	void neogeo_noctrl(machine_config &config);
 	void neogeo_noslot(machine_config &config);
-    void no_watchdog(machine_config &config);
-	void gsc(machine_config &config);
-	void hbmame_kog(machine_config &config);
 	void neogeo_68kram(machine_config &config);
     void multimvs(machine_config &config);
 	void neosd(machine_config &config);
@@ -139,98 +130,8 @@ public:
 	void init_mslugxdd();
 	void init_s1945p();
 
-	// fixed software roms extra configurations
-	void init_bangbead();
-	void init_cmc42sfix();
-	void init_ct2k3sp();
-	void init_ct2k3sa();
-	void init_cthd2003();
-	void init_cthd2k3a();
-	void init_fatfury2();
-	void init_ganryu();
-	void init_garou();
-	void init_garouh();
-	void init_garoubl();
-	void init_garoud();
-	void init_garouhd();
-	void init_irrmaze();
-	void init_jckeygpd();
-	void init_jockeygp();
-	void init_kf10thep();
-	void init_kf2k1pa();
-	void init_kf2k2mp2hb();
-	void init_kf2k2pla();
-	void init_kf2k2plb();
-	void init_kf2k2plc();
-	void init_kf2k2mp();
-	void init_kf2k2mp2();
-	void init_kf2k3pcb();
-	void init_kf2k3pl();
-	void init_kf2k3upl();
-	void init_kf2k5uni();
-	void init_kof10th();
-	void init_kof10thu();
-	void init_kof2k2bd();
-	void init_kof2k2plus();
-	void init_kof2k3fd();
-	void init_kof2k3hd();
-	void init_kof2k3pcd();
-	void init_kof2k4pls();
-	void init_kof2k4se();
-	void init_kof96ep();
-	void init_kof97pla();
-	void init_kof97oro();
-	void init_kof98();
-	void init_kof99();
-	void init_kof99d();
-	void init_kof2000();
-	void init_kof2001();
-	void init_kof2002();
-	void init_kof2002b();
-	void init_kof2003();
-	void init_kof2003h();
-	void init_kof2003b();
-	void init_kog();
-	void init_kogd();
-	void init_lans2004();
-	void init_matrim();
-	void init_matrima();
-	void init_matrimbl();
-	void init_matrimd();
-	void init_matrmehc();
-	void init_nitd();
-	void init_pnyaa();
-	void init_pnyaad();
-	void init_pnyaan();
-	void init_preisle2();
-	void init_rotd();
-	void init_rotdb();
-	void init_rotdd();
-	void init_rotdnd();
-	void init_sam5hb();
-	void init_sam5sphb();
-	void init_sam5sphb2();
-	void init_samsh5sp();
-	void init_samsho5();
-	void init_samsho5b();
-	void init_sbp();
-	void init_sengo3d();
-	void init_sengoku3();
-	void init_shockt2w();
-	void init_svc();
-	void init_svchb();
-	void init_svcboot();
-	void init_svcpcb();
-	void init_svcpcd();
-	void init_svcplus();
-	void init_svcplusa();
-	void init_svcsplus();
-	void init_vliner();
-	void init_zupapa();
-
 	DECLARE_CUSTOM_INPUT_MEMBER(get_memcard_status);
 	DECLARE_CUSTOM_INPUT_MEMBER(get_audio_result);
-	DECLARE_CUSTOM_INPUT_MEMBER(kizuna4p_start_r);
 	DECLARE_INPUT_CHANGED_MEMBER(select_bios);
 
 private:
@@ -267,7 +168,6 @@ private:
 	void audio_map(address_map &map);
 	void audio_io_map(address_map &map);
 	void main_map_noslot(address_map &map);
-	void gsc_map(address_map &map);
 	void main_map1(address_map &map);
     void neogeo_68kram_map(address_map &map);
 
@@ -386,7 +286,6 @@ private:
 /*----------- defined in drivers/neogeo.c -----------*/
 
 INPUT_PORTS_EXTERN(neogeo);
-INPUT_PORTS_EXTERN(jockeygp);
 INPUT_PORTS_EXTERN(dualbios);
 
 /*************************************
@@ -424,6 +323,14 @@ INPUT_PORTS_EXTERN(dualbios);
 #define ROM_LOAD16_WORD_SWAP_BIOS(bios,name,offset,length,hash) \
 		ROMX_LOAD(name, offset, length, hash, ROM_GROUPWORD | ROM_REVERSE | ROM_BIOS(bios))
 
+#define NEOGEO_BIOS \
+	ROM_REGION16_BE( 0x80000, "mainbios", 0 ) \
+	ROM_SYSTEM_BIOS( 0, "arcade_mode", "Arcade Mode MVS" ) \
+	ROM_LOAD16_WORD_SWAP_BIOS( 0, "arcade mode.rom",  0x00000, 0x020000, CRC(0de70ac8) SHA1(d41ab190a2c9f91c52649f7e0faf85a9cfa8ed24) ) \
+	ROM_SYSTEM_BIOS( 1, "console_mode", "Consola Mode AES" ) \
+	ROM_LOAD16_WORD_SWAP_BIOS( 1, "console mode.rom", 0x00000, 0x020000, CRC(a371d430) SHA1(9519a43eaed7a5753a9fdffaca8167b7214c4d93) ) \
+	ROM_DEFAULT_BIOS("arcade_mode")
+
 #define NEOGEO_UNIBIOS(x) \
 	ROM_SYSTEM_BIOS( x+ 0, "unibios40", "Universe Bios (Hack, Ver. 4.0)" ) \
 	ROM_LOAD16_WORD_SWAP_BIOS( x+ 0, "uni-bios_4_0.rom",  0x00000, 0x020000, CRC(a7aab458) SHA1(938a0bda7d9a357240718c2cec319878d36b8f72) ) /* Universe Bios v4.0 (hack) */ \
@@ -456,13 +363,8 @@ INPUT_PORTS_EXTERN(dualbios);
 	ROM_LOAD16_WORD_SWAP_BIOS( x+13, "uni-bios_1_1.rom",  0x00000, 0x020000, CRC(5dda0d84) SHA1(4153d533c02926a2577e49c32657214781ff29b7) ) /* Universe Bios v1.1 (hack) */ \
 	ROM_SYSTEM_BIOS( x+14, "unibios10", "Universe Bios (Hack, Ver. 1.0)" ) \
 	ROM_LOAD16_WORD_SWAP_BIOS( x+14, "uni-bios_1_0.rom",  0x00000, 0x020000, CRC(0ce453a0) SHA1(3b4c0cd26c176fc6b26c3a2f95143dd478f6abf9) ) /* Universe Bios v1.0 (hack) */
-#define NEOGEO_MVS_AES_BIOS(x) \
-	ROM_SYSTEM_BIOS( x+15, "arcade_mode", "Arcade Mode MVS" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( x+15, "arcade mode.rom",  0x00000, 0x020000, CRC(0de70ac8) SHA1(d41ab190a2c9f91c52649f7e0faf85a9cfa8ed24) ) \
-	ROM_SYSTEM_BIOS( x+16, "console_mode", "Consola Mode AES" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( x+16, "console mode.rom", 0x00000, 0x020000, CRC(a371d430) SHA1(9519a43eaed7a5753a9fdffaca8167b7214c4d93) ) \
 
-#define NEOGEO_BIOS \
+#define MULTIMVS_BIOS  \
 	ROM_REGION16_BE( 0x80000, "mainbios", 0 ) \
 	ROMX_LOAD( "sp-s2.sp1", 0x00000, 0x020000, CRC(9036d879) SHA1(4f5ed7105b7128794654ce82b51723e16e389543), ROM_GROUPWORD | ROM_REVERSE ) \
 	ROM_SYSTEM_BIOS( 0, "euro", "Europe MVS (Ver. 2)" ) \
@@ -503,8 +405,7 @@ INPUT_PORTS_EXTERN(dualbios);
 	\
 	NEOGEO_UNIBIOS(16) \
 	NEOGEO_UNIBIOS_1_2_AND_OLDER(16) \
-	NEOGEO_MVS_AES_BIOS(16) \
-	ROM_DEFAULT_BIOS("arcade_mode")
+	ROM_DEFAULT_BIOS("euro")
 
 #define NEO_BIOS_AUDIO(size, name, hash) \
 	NEOGEO_BIOS \
@@ -610,7 +511,7 @@ INPUT_PORTS_EXTERN(dualbios);
 
 #define NEO_EUROPE_MVS_BIOS_AUDIO_ENCRYPTED(size, name, hash) \
 	ROM_REGION16_BE( 0x20000, "mainbios", 0 ) \
-	ROM_LOAD16_WORD_SWAP("sp-s1.sp1",  0x00000, 0x20000, CRC(9b1a7cbe) SHA1(1695d3c488961a0f3667bd9b94ff678fd7c56d76) ) \
+	ROM_LOAD16_WORD_SWAP("sp-s2.sp1",  0x00000, 0x20000, CRC(9b1a7cbe) SHA1(1695d3c488961a0f3667bd9b94ff678fd7c56d76) ) \
 	ROM_REGION( 0x20000, "audiobios", 0 ) \
 	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
 	ROM_REGION( 0x90000, "audiocpu", ROMREGION_ERASEFF ) \
@@ -631,7 +532,7 @@ INPUT_PORTS_EXTERN(dualbios);
 
 #define NEO_EUROPE_MVS_BIOS_AUDIO(size, name, hash) \
 	ROM_REGION16_BE( 0x20000, "mainbios", 0 ) \
-	ROM_LOAD16_WORD_SWAP("sp-s1.sp1",  0x00000, 0x20000, CRC(9b1a7cbe) SHA1(1695d3c488961a0f3667bd9b94ff678fd7c56d76) ) \
+	ROM_LOAD16_WORD_SWAP("sp-s2.sp1",  0x00000, 0x20000, CRC(9b1a7cbe) SHA1(1695d3c488961a0f3667bd9b94ff678fd7c56d76) ) \
 	ROM_REGION( 0x20000, "audiobios", 0 ) \
 	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
 	ROM_REGION( size+0x10000, "audiocpu", 0 ) \
