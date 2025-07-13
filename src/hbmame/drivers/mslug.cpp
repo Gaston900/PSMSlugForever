@@ -1049,6 +1049,10 @@ INPUT_PORTS_END
 	ROM_REGION( 0x1000000, "sprites", 0 ) \
 	ROM_LOAD( "crom0", 0x000000, 0x1000000, CRC(d2955fc3) SHA1(4b69f4926766543ae289546569b27c80a82d53d5) )
 
+#define MSLUGNDS_SPRITES \
+	ROM_REGION( 0x1000000, "sprites", 0 ) \
+	ROM_LOAD( "201nds.c1", 0x000000, 0x1000000, CRC(e20d5589) SHA1(94a962a7a8dd0fbe12e20be31c8b795e52b7a69f) )
+
 #define MSLUGE_SPRITES \
 	ROM_REGION( 0x1000000, "sprites", 0 ) \
 	ROM_LOAD16_BYTE( "201e.c1", 0x400000, 0x200000, CRC(d00bd152) SHA1(eb688dba2233bece1c3ba120ac8eb342f37fba37) )\
@@ -1128,7 +1132,7 @@ ROM_START( mslugnsd )
 	MSLUG_SFIX_128K
 	MSLUG_AUDIO_128K
     MSLUGDD_YMSND
-    MSLUGDD_SPRITES
+    MSLUGNDS_SPRITES
 ROM_END
 
  /**********************
@@ -1501,12 +1505,11 @@ GAME( 1996, msluge,           mslug,    neogeo_noslot, mslughb,   neogeo_state, 
 GAME( 1996, mslugdd,          mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_mslugdd,    ROT0, "Nazca",           "Metal Slug (Decrypted C / Darksoft)", MACHINE_SUPPORTS_SAVE )
 
 // This uses a .neo file: 0x1000 bytes for header, then p rom (word_swap), then remainder is normal (HBMAME)
-// At the moment only the P1 .neo boot file is used, the remaining configuration is reused from DARKSOFT.
-// All files are similar to the DARKSOFT versions. P1, S1, M1, V1 only changes the GFX graphical encryption.
+// The .neo boot file (P1) is used, converted .neo to GFX Encrypted/Decrypted.
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (MATT GREER "CITY41" Neo Geo Converted .NEO SD)
-GAME( 1996, mslugnsd,         mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_mslugdd,    ROT0, "Nazca",           "Metal Slug (Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, mslugnsd,         mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "Nazca",           "Metal Slug (Neo SD)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Exclusive Fightcade2)

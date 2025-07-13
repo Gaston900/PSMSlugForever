@@ -4432,6 +4432,34 @@ INPUT_PORTS_END
 	ROM_REGION( 0x3000000, "sprites", 0 ) \
 	ROM_LOAD( "crom0sc", 0x0000000, 0x3000000, CRC(2dcaee02) SHA1(41f1b3d2b55028febe2dd62ab03b305ffb0dd94f) )
 
+#define MSLUGXNDS_SPRITES \
+	ROM_REGION( 0x3000000, "sprites", 0 ) \
+	ROM_LOAD( "250nds.c1", 0x0000000, 0x3000000, CRC(0c046464) SHA1(0434006f83ac310a9804d8a86393f391f19721a6) )
+
+#define MSLUGXCQINDS_SPRITES \
+	ROM_REGION( 0x4000000, "sprites", 0 ) \
+	ROM_LOAD( "250cqinds.c1", 0x0000000, 0x4000000, CRC(a8772623) SHA1(85023b9e6c1569351bc84e5d3dae1403a7ea6d89) )
+
+#define MSLUGXCQNDS_SPRITES \
+	ROM_REGION( 0x3000000, "sprites", 0 ) \
+	ROM_LOAD( "250cqnds.c1", 0x0000000, 0x3000000, CRC(c4163700) SHA1(844143f1037c23859f3ba5a507881a05880a0fa7) )
+
+#define MSLUGXDDNDS_SPRITES \
+	ROM_REGION( 0x3000000, "sprites", 0 ) \
+	ROM_LOAD( "250ddnds.c1", 0x0000000, 0x3000000, CRC(b002cca2) SHA1(d86a9600be3cde837691f777e2fda37e2f25b35c) )
+
+#define MSLUGXFRNDS_SPRITES \
+	ROM_REGION( 0x3000000, "sprites", 0 ) \
+	ROM_LOAD( "250frnds.c1", 0x0000000, 0x3000000, CRC(ebb79cd1) SHA1(b384ad63fd543fcfd5c7923e6fe2cda319290663) )
+
+#define MSLUGXLBNDS_SPRITES \
+	ROM_REGION( 0x3000000, "sprites", 0 ) \
+	ROM_LOAD( "250lbnds.c1", 0x0000000, 0x3000000, CRC(c0226816) SHA1(20fd9bb2d90615e4d791f71761beeffa47062469) )
+
+#define MSLUGXSCNDS_SPRITES \
+	ROM_REGION( 0x3000000, "sprites", 0 ) \
+	ROM_LOAD( "250scnds.c1", 0x0000000, 0x3000000, CRC(d2959c33) SHA1(1fcc715d8660a95d68381ddc95ebf9433686e081) )
+
 #define MSLUGXLB_SPRITES \
 	ROM_REGION( 0x3000000, "sprites", 0 ) \
 	ROM_LOAD16_BYTE( "250_hc02.c1", 0x0000000, 0x800000, CRC(d52e8702) SHA1(e332e9c95679dbdbcdfdf868b3a0233ad6bd47c4) )\
@@ -4609,7 +4637,7 @@ ROM_START( mslugxnsd )
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGXDD_YMSND
-	MSLUGXDD_SPRITES
+	MSLUGXNDS_SPRITES
 ROM_END
 
  /***************************
@@ -4625,7 +4653,7 @@ ROM_START( mslugxchuanqinds )
 	MSLUGXSC_SFIX_128K
     MSLUGXSC_AUDIO_BIOS_128K
 	MSLUGXDD_YMSND
-	MSLUGXCQIDD_SPRITES
+	MSLUGXCQINDS_SPRITES
 ROM_END
 
 ROM_START( mslugxcqnds )
@@ -4637,7 +4665,7 @@ ROM_START( mslugxcqnds )
 	MSLUGXSC_SFIX_128K
     MSLUGXSC_AUDIO_BIOS_128K
 	MSLUGXDD_YMSND
-	MSLUGXCQDD_SPRITES
+	MSLUGXCQNDS_SPRITES
 ROM_END
 
 ROM_START( mslugxddnds )
@@ -4649,7 +4677,7 @@ ROM_START( mslugxddnds )
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGXDD_YMSND
-	MSLUGXDDDD_SPRITES
+	MSLUGXDDNDS_SPRITES
 ROM_END
 
 ROM_START( mslugxfrnds )
@@ -4661,7 +4689,7 @@ ROM_START( mslugxfrnds )
     MSLUGXFR_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGXDD_YMSND
-	MSLUGXFRDD_SPRITES
+	MSLUGXFRNDS_SPRITES
 ROM_END
 
 ROM_START( mslugxlbnds )
@@ -4673,7 +4701,7 @@ ROM_START( mslugxlbnds )
     MSLUGX_SFIX_128K
     MSLUGX_AUDIO_128K
 	MSLUGXDD_YMSND
-	MSLUGXLBDD_SPRITES
+	MSLUGXLBNDS_SPRITES
 ROM_END
 
 ROM_START( mslugxscnds )
@@ -4685,7 +4713,7 @@ ROM_START( mslugxscnds )
     MSLUGXSC_SFIX_128K
     MSLUGXSC_AUDIO_BIOS_128K
 	MSLUGXDD_YMSND
-	MSLUGXSCDD_SPRITES
+	MSLUGXSCNDS_SPRITES
 ROM_END
 
  /**********************
@@ -7028,21 +7056,20 @@ GAME( 2015, mslugxlbdd,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,
 GAME( 2023, mslugxscdd,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Survival 2023-02-13)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 
 // This uses a .neo file: 0x1000 bytes for header, then p rom (word_swap), then remainder is normal (HBMAME)
-// At the moment only the P1 .neo boot file is used, the remaining configuration is reused from DARKSOFT.
-// All files are similar to the DARKSOFT versions. P1, S1, M1, V1 only changes the GFX graphical encryption.
+// The .neo boot file (P1) is used, converted .neo to GFX Encrypted/Decrypted.
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (MATT GREER "CITY41" Neo Geo Converted .NEO SD)
-GAME( 1999, mslugxnsd,        mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugxdd,   ROT0, "SNK",             "Metal Slug X (Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 1999, mslugxnsd,        mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "SNK",             "Metal Slug X (Neo SD)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (MATT GREER "CITY41" Neo Geo Hack Converted .NEO SD)
-GAME( 2025, mslugxchuanqinds, mslugx,   neogeo_noslot, mslugxcqi,  neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Legendary Firepower Showdown 7.0 2025-07-06)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslugxcqnds,      mslugx,   neogeo_noslot, mslugxcq,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Legendary 4.5 2024-06-13)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslugxddnds,      mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Starlight 2022-08-10)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2006, mslugxfrnds,      mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (French Translation 2006-09-26)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2015, mslugxlbnds,      mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Extreme Space 2015-04-21)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslugxscnds,      mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugxdd,   ROT0, "hack",            "Metal Slug X (Survival 2023-02-13)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugxchuanqinds, mslugx,   neogeo_noslot, mslugxcqi,  neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Legendary Firepower Showdown 7.0 2025-07-06)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugxcqnds,      mslugx,   neogeo_noslot, mslugxcq,   neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Legendary 4.5 2024-06-13)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslugxddnds,      mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Starlight 2022-08-10)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslugxfrnds,      mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (French Translation 2006-09-26)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2015, mslugxlbnds,      mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Extreme Space 2015-04-21)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslugxscnds,      mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "hack",            "Metal Slug X (Survival 2023-02-13)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Exclusive Fightcade2)
