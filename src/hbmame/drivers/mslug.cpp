@@ -1141,7 +1141,7 @@ ROM_END
 
 ROM_START( mslugdyf1 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "201dyf1.p1", 0x100000, 0x100000, CRC(23bf5414) SHA1(6289c39056b9203df50005cd389432198ff0971c) )
+	ROM_LOAD16_WORD_SWAP( "201dyf1.p1", 0x100000, 0x100000, CRC(380258a9) SHA1(7cded3f2cd056619a69a7606d56db9fef11ab3ef) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
     MSLUGDYF1_ESSENTIALPATCH_MODS_FILL
 	MSLUG_SFIX_128K
@@ -1513,7 +1513,7 @@ GAME( 1996, mslugnsd,         mslug,    neogeo_noslot, mslughb,   neogeo_state, 
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Exclusive Fightcade2)
-GAME( 2025, mslugdyf1,        mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Origins Random Item 2025-05-27)(Fightcade2)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugdyf1,        mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Origins Random Item 2025-07-18)(Fightcade2)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Hack)
