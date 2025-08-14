@@ -5098,10 +5098,10 @@ ROM_START( mslugxhc33 ) //mslugxcq
 	MSLUGXCQ_SPRITES
 ROM_END
 
-ROM_START( mslugxhc34 ) //mslugxchuanqi
+ROM_START( mslugxhc34 ) //mslugxchuanqi old / mslugxmdjdfc
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250_hc34.p1", 0x000000, 0x100000, CRC(ab07db9b) SHA1(52fb830b5dbd14b3e1a8beef82874a583cb2fb6e) )
-	ROM_LOAD16_WORD_SWAP( "250_hc34.p2", 0x100000, 0x800000, CRC(307f1787) SHA1(ba4c5b18a249677801b2100856a2d271536b347b) )
+	ROM_LOAD16_WORD_SWAP( "250_hc34.p1", 0x000000, 0x100000, CRC(fab06096) SHA1(351d35841c5a7dcce570f9fa1cea3b36253ab7ba) )
+	ROM_LOAD16_WORD_SWAP( "250_hc34.p2", 0x100000, 0x800000, CRC(310fccc8) SHA1(2b24bf5ec052f7e36a2e66bcdc2c88678a193e3d) )
     MSLUGXCQI_ESSENTIALPATCH_MODS_FILL
 	MSLUGXSC_SFIX_128K
     MSLUGXSC_AUDIO_BIOS_128K
@@ -7110,7 +7110,7 @@ GAME( 2023, mslugxhc30,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,
 GAME( 2025, mslugxhc31,       mslugx,   neogeo_noslot, mslugxsvh,  neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Rebel Soldier 2025-04-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxhc32,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Survival 2023-02-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugxhc33,       mslugx,   neogeo_noslot, mslugxcq,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Legendary 4.5 2024-12-02)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslugxhc34,       mslugx,   neogeo_noslot, mslugxcqi,  neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Legendary Firepower Showdown 7.0 2025-07-11)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugxhc34,       mslugx,   neogeo_noslot, mslugxcqi,  neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Revenge of the Morden Army 7.M 2025-07-19)", MACHINE_SUPPORTS_SAVE )
 
 /*********************************************************************************
 * This game sector is exclusive 2017 - 2025, its modifications that load have been customized

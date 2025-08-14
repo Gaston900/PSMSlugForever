@@ -7396,9 +7396,9 @@ ROM_START( mslug5hc12 ) //mslug5sc
 	MSLUG5SC_SPRITES
 ROM_END
 
-ROM_START( mslug5hc13 ) //mslug5cq
+ROM_START( mslug5hc13 ) //mslug5cq old / mslug5tlmjjq
 	ROM_REGION( 0xa00000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_hc13.p1", 0x000000, 0xa00000, CRC(c0faa4aa) SHA1(122b73123e0744172c5e9b6ceba9be1a03843a1b) )
+	ROM_LOAD16_WORD_SWAP( "268_hc13.p1", 0x000000, 0xa00000, CRC(ebe3bae8) SHA1(f59c288d8e54cd37f3e2639226361a17d5315a79) )
     MSLUG5CQ_ESSENTIALPATCH_MODS_FILL
     MSLUG5D_SFIX_128K
     MSLUG5CQ_AUDIO_BIOS_128K
@@ -9308,7 +9308,7 @@ GAME( 2021, mslug5hc09,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,
 GAME( 2023, mslug5hc10,       mslug5,   neogeo_noslot, mslug5es,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (The Longest Battle 2023-02-08)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc11,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "PPXCLUB",         "Metal Slug 5 (Burst Enhanced 2022-11-03)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug5hc12,       mslug5,   neogeo_noslot, mslug5cq,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Survival 2023-06-12)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug5hc13,       mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Legendary 7.0 2025-07-06)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug5hc13,       mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Rise of the Ptolemaic Army 7.T 2025-07-19)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug5hc14,       mslug5,   neogeo_noslot, mslug5hb,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Devil Enemy Remix 2019-12-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug5hc15,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (1v2 Mode 2019-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug5hc16,       mslug5,   neogeo_noslot, mslug5hb,   neogeo_state,    init_mslug5hb,   ROT0, "GOTVG",           "Metal Slug 5 (Vehicle Slug 2018-09-18)", MACHINE_SUPPORTS_SAVE )

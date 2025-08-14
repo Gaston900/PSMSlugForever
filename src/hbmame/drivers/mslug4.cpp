@@ -6477,10 +6477,10 @@ ROM_START( mslug4hc24 )
 	MSLUG4D_SPRITES
 ROM_END
 
-ROM_START( mslug4hc25 ) //mslug4zjhl
+ROM_START( mslug4hc25 ) //mslug4zjhl old / mslug4zzfj
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "263_hc25.p1", 0x000000, 0x100000, CRC(98bdd962) SHA1(4930e723ad806cba3c73cb717f31eea461e3f958) )
-	ROM_LOAD16_WORD_SWAP( "263_hc25.p2", 0x100000, 0x800000, CRC(4d8ff476) SHA1(3cb88d734b3b2db05645ab9f4f5adc2553818acd) )
+	ROM_LOAD16_WORD_SWAP( "263_hc25.p1", 0x000000, 0x100000, CRC(8c25a45b) SHA1(a322311610dd4d2688496acb48b20ca27143208b) )
+	ROM_LOAD16_WORD_SWAP( "263_hc25.p2", 0x100000, 0x800000, CRC(346efc18) SHA1(39ab8b9e5817bc45a51f53612f373ab9f352560b) )
     MSLUG4QCI_ESSENTIALPATCH_MODS_FILL
     MSLUG4HD_SFIX_128K
     MSLUG4QCI_AUDIO_BIOS_128K
@@ -7653,7 +7653,7 @@ GAME( 2007, mslug4hc21,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,
 GAME( 2018, mslug4hc22,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Easy Mode 2018-11-16)", MACHINE_SUPPORTS_SAVE ) // Fix Gaston90 2023
 GAME( 2023, mslug4hc23,       mslug4,   neogeo_noslot, mslug4vh,   neogeo_state,    init_mslug4hb,   ROT0, "hack",            "Metal Slug 4 (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2012, mslug4hc24,       mslug4,   neogeo_noslot, mslug4cf,   neogeo_state,    init_mslug4hb,   ROT0, "LB70 (Eezezy)",   "Metal Slug 4 (Crazy Fire 2012-01-16)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug4hc25,       mslug4,   neogeo_noslot, mslug4cqi,  neogeo_state,    init_mslug4hb,   ROT0, "GOTVG",           "Metal Slug 4 (Legendary Firepower Showdown 7.0 2025-07-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug4hc25,       mslug4,   neogeo_noslot, mslug4cqi,  neogeo_state,    init_mslug4hb,   ROT0, "GOTVG",           "Metal Slug 4 (Final Counterattack 7.Z 2025-07-19)", MACHINE_SUPPORTS_SAVE )
 
 /*********************************************************************************
 * This game sector is exclusive 2017 - 2025, its modifications that load have been customized
