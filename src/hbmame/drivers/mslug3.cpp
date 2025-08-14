@@ -15597,7 +15597,7 @@ GAME( 2004, mslug3hc32,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,
 GAME( 2018, mslug3hc33,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Easy Mode 2018-11-16)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3hc34,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug3hc35,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Survival 2023-03-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3hc36,       mslug3,   neogeo_noslot, mslug3cq,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary 4.5 2024-07-14)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3hc36,       mslug3,   neogeo_noslot, mslug3cq,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary 4.5 2025-07-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug3hc37,       mslug3,   neogeo_noslot, mslug3cqi,  neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Dark Fate 7.H 2025-07-19)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug3hc38,       mslug3,   neogeo_68kram, mslug3sc,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Tower Defense 6.0 2025-06-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3hc39,       mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Journey 2024-11-14)", MACHINE_SUPPORTS_SAVE )
