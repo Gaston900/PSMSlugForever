@@ -1448,6 +1448,76 @@ zupapad                         // Decrypted / Bootleg
 zupapand                        // Decrypted / Bootleg
 
 @source:neogeo.cpp
+androdunp                       // Predecrypted
+bangbeadp                       // Predecrypted
+crswordp                        // Predecrypted
+ct2k3spdp                       // Predecrypted
+diggermap                       // Predecrypted
+fatfury2p                       // Predecrypted
+fightfevp                       // Predecrypted
+ganryup                         // Predecrypted
+gururinp                        // Predecrypted
+irrmazep                        // Predecrypted
+kf10thepp                       // Predecrypted
+kizunap                         // Predecrypted
+kof10thp                        // Predecrypted
+kf2k5unip                       // Predecrypted
+kof95p                          // Predecrypted
+kof95hp                         // Predecrypted
+kof96p                          // Predecrypted
+kof96bp                         // Predecrypted
+kof97plsp                       // Predecrypted
+kof99kp                         // Predecrypted
+kof99pp                         // Predecrypted
+kof2knp                         // Predecrypted
+kof2k1p                         // Predecrypted
+kof2k1plsp                      // Predecrypted
+kof2k1pap                       // Predecrypted
+kof2k2p                         // Predecrypted
+kf2k2plap                       // Predecrypted
+kf2k2plbp                       // Predecrypted
+kf2k2plcp                       // Predecrypted
+kf2k2mpp                        // Predecrypted
+kf2k2mp2p                       // Predecrypted
+kof2003p                        // Predecrypted
+kf2k3uplp                       // Predecrypted
+kofse2k4p                       // Predecrypted
+kof2k4splp                      // Predecrypted
+lastbladhp                      // Predecrypted
+lans2004p                       // Predecrypted
+legendosp                       // Predecrypted
+matrimp                         // Predecrypted
+matrimdap                       // Predecrypted
+matrimdp                        // Predecrypted
+miexchngp                       // Predecrypted
+neocup98p                       // Predecrypted
+neomrdop                        // Predecrypted
+nitdp                           // Predecrypted
+panicbomp                       // Predecrypted
+pbobblenp                       // Predecrypted
+preisl2p                        // Predecrypted
+puzzldprp                       // Predecrypted
+rotdp                           // Predecrypted
+rbff2p                          // Predecrypted
+s1945pp                         // Predecrypted
+samsh5ndp                       // Predecrypted
+samsh5spdp                      // Predecrypted
+samsh5spndp                     // Predecrypted
+sengoku2p                       // Predecrypted
+sengok3p                        // Predecrypted
+sengok3ndp                      // Predecrypted
+sonicwi2p                       // Predecrypted
+strhoopp                        // Predecrypted
+svcp                            // Predecrypted
+svcplusp                        // Predecrypted
+svcplusap                       // Predecrypted
+svcsplusp                       // Predecrypted
+wh1p                            // Predecrypted
+whpp                            // Predecrypted
+wjammersp                       // Predecrypted
+zupapap                         // Predecrypted
+
+@source:neogeo.cpp
 2020bbe                         // Earlier
 3countbe                        // Earlier
 aof3e                           // Earlier
@@ -1527,17 +1597,25 @@ zintrkcd                        // CD conversion
 
 @source:neogeo.cpp
 19yy                            // HomeBrew
+19yyo                           // HomeBrew
+4play
 abyssal                         // HomeBrew
 abyssal1                        // HomeBrew
+amazonn                         // HomeBrew
+badapple                        // HomeBrew
+beast                           // HomeBrew
+bpanicdx                        // HomeBrew
 cabalng                         // HomeBrew
 cabalng1                        // HomeBrew
 cakefght                        // HomeBrew
 caravan                         // HomeBrew
+cbarrel                         // HomeBrew
 cnbe                            // HomeBrew
 cnbe2018                        // HomeBrew
 cphd                            // HomeBrew
 columnsn                        // HomeBrew
 columnsncd                      // HomeBrew
+cyborg                          // HomeBrew
 ffeast                          // HomeBrew
 gladmortd                       // HomeBrew
 hypernoid                       // HomeBrew
