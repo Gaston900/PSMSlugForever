@@ -91,7 +91,16 @@ public:
 	void mvs(machine_config &config);
 	void neogeo_arcade(machine_config &config);
 	void neogeo_base(machine_config &config);
+	void neogeo_dial(machine_config &config);
+	void neogeo_imaze(machine_config &config);
+	void neogeo_kiz4p(machine_config &config);
+	void neogeo_kog(machine_config &config);
+	void neogeo_mj(machine_config &config);
+	void neogeo_noctrl(machine_config &config);
 	void neogeo_noslot(machine_config &config);
+    void no_watchdog(machine_config &config);
+	void gsc(machine_config &config);
+	void hbmame_kog(machine_config &config);
 	void neogeo_68kram(machine_config &config);
     void multimvs(machine_config &config);
 	void neosd(machine_config &config);
@@ -130,8 +139,98 @@ public:
 	void init_mslugxdd();
 	void init_s1945p();
 
+	// fixed software roms extra configurations
+	void init_bangbead();
+	void init_cmc42sfix();
+	void init_ct2k3sp();
+	void init_ct2k3sa();
+	void init_cthd2003();
+	void init_cthd2k3a();
+	void init_fatfury2();
+	void init_ganryu();
+	void init_garou();
+	void init_garouh();
+	void init_garoubl();
+	void init_garoud();
+	void init_garouhd();
+	void init_irrmaze();
+	void init_jckeygpd();
+	void init_jockeygp();
+	void init_kf10thep();
+	void init_kf2k1pa();
+	void init_kf2k2mp2hb();
+	void init_kf2k2pla();
+	void init_kf2k2plb();
+	void init_kf2k2plc();
+	void init_kf2k2mp();
+	void init_kf2k2mp2();
+	void init_kf2k3pcb();
+	void init_kf2k3pl();
+	void init_kf2k3upl();
+	void init_kf2k5uni();
+	void init_kof10th();
+	void init_kof10thu();
+	void init_kof2k2bd();
+	void init_kof2k2plus();
+	void init_kof2k3fd();
+	void init_kof2k3hd();
+	void init_kof2k3pcd();
+	void init_kof2k4pls();
+	void init_kof2k4se();
+	void init_kof96ep();
+	void init_kof97pla();
+	void init_kof97oro();
+	void init_kof98();
+	void init_kof99();
+	void init_kof99d();
+	void init_kof2000();
+	void init_kof2001();
+	void init_kof2002();
+	void init_kof2002b();
+	void init_kof2003();
+	void init_kof2003h();
+	void init_kof2003b();
+	void init_kog();
+	void init_kogd();
+	void init_lans2004();
+	void init_matrim();
+	void init_matrima();
+	void init_matrimbl();
+	void init_matrimd();
+	void init_matrmehc();
+	void init_nitd();
+	void init_pnyaa();
+	void init_pnyaad();
+	void init_pnyaan();
+	void init_preisle2();
+	void init_rotd();
+	void init_rotdb();
+	void init_rotdd();
+	void init_rotdnd();
+	void init_sam5hb();
+	void init_sam5sphb();
+	void init_sam5sphb2();
+	void init_samsh5sp();
+	void init_samsho5();
+	void init_samsho5b();
+	void init_sbp();
+	void init_sengo3d();
+	void init_sengoku3();
+	void init_shockt2w();
+	void init_svc();
+	void init_svchb();
+	void init_svcboot();
+	void init_svcpcb();
+	void init_svcpcd();
+	void init_svcplus();
+	void init_svcplusa();
+	void init_svcsplus();
+	void init_vliner();
+	void init_zupapa();
+
 	DECLARE_CUSTOM_INPUT_MEMBER(get_memcard_status);
 	DECLARE_CUSTOM_INPUT_MEMBER(get_audio_result);
+	DECLARE_CUSTOM_INPUT_MEMBER(kizuna4p_start_r);
 	DECLARE_INPUT_CHANGED_MEMBER(select_bios);
 
 private:
@@ -168,6 +267,7 @@ private:
 	void audio_map(address_map &map);
 	void audio_io_map(address_map &map);
 	void main_map_noslot(address_map &map);
+	void gsc_map(address_map &map);
 	void main_map1(address_map &map);
     void neogeo_68kram_map(address_map &map);
 
@@ -286,6 +386,7 @@ private:
 /*----------- defined in drivers/neogeo.c -----------*/
 
 INPUT_PORTS_EXTERN(neogeo);
+INPUT_PORTS_EXTERN(jockeygp);
 INPUT_PORTS_EXTERN(dualbios);
 
 /*************************************
