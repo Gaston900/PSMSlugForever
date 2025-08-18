@@ -1260,6 +1260,7 @@ popbounc                        // 0237 (c) 1997 Video System Co.
 preisle2                        // 0255 (c) 1999 Yumekobo
 pspikes2                        // 0068 (c) 1994 Video System Co.
 pulstar                         // 0089 (c) 1995 Aicom
+pulstara                        // 0089 (c) 1995 Aicom
 puzzldpr                        // 0235 (c) 1997 Taito (Visco license)
 puzzledp                        // 0202 (c) 1995 Taito (Visco license)
 quizdai2                        // 0042 (c) 1992 SNK
@@ -1598,13 +1599,15 @@ zintrkcd                        // CD conversion
 @source:neogeo.cpp
 19yy                            // HomeBrew
 19yyo                           // HomeBrew
-4play
+240ptest                        // HomeBrew
+4play                           // HomeBrew
 abyssal                         // HomeBrew
 abyssal1                        // HomeBrew
 amazonn                         // HomeBrew
 badapple                        // HomeBrew
 beast                           // HomeBrew
 bpanicdx                        // HomeBrew
+bonusstage                      // HomeBrew
 cabalng                         // HomeBrew
 cabalng1                        // HomeBrew
 cakefght                        // HomeBrew
@@ -1617,13 +1620,28 @@ columnsn                        // HomeBrew
 columnsncd                      // HomeBrew
 cyborg                          // HomeBrew
 ffeast                          // HomeBrew
+gladmort                        // HomeBrew
 gladmortd                       // HomeBrew
+goldaxen                        // HomeBrew
+horekidb3                       // HomeBrew
 hypernoid                       // HomeBrew
+iocero                          // HomeBrew
+karnovn                         // HomeBrew
+knightsch                       // HomeBrew
 lhbb                            // HomeBrew
 lhcdb                           // HomeBrew
 lhcdba                          // HomeBrew
 looptris                        // HomeBrew
+looptrsp                        // HomeBrew
 ltorb                           // HomeBrew
+nblktiger                       // HomeBrew
+neo2500                         // HomeBrew
+neo2048                         // HomeBrew
+neo3d                           // HomeBrew
+neocstlv                        // HomeBrew
+neodemo                         // HomeBrew
+neogal1                         // HomeBrew
+neogal1t                        // HomeBrew
 neonopon                        // HomeBrew
 neopong                         // HomeBrew
 neoponga                        // HomeBrew
@@ -1631,26 +1649,35 @@ neothund                        // HomeBrew
 neotrisd1                       // HomeBrew
 neotrisd2                       // HomeBrew
 neotrisd3                       // HomeBrew
-bonusstage                      // HomeBrew
-nblktiger                       // HomeBrew
+ngcdtdd0                        // HomeBrew
 ngem2k                          // HomeBrew
+ngftdemo                        // HomeBrew
+ngmontst                        // HomeBrew
 ngtetris                        // HomeBrew
 nsmbd                           // HomeBrew
 nsmb                            // HomeBrew
+poknight                        // HomeBrew
 santabll                        // HomeBrew
+sgz                             // HomeBrew
+shinobin                        // HomeBrew
 seafight                        // HomeBrew
+syscheck                        // HomeBrew
 teot                            // HomeBrew
 timesup                         // HomeBrew
 timesupd                        // HomeBrew
 totc                            // HomeBrew
+ww2demo                         // HomeBrew
 yoyoshkn                        // HomeBrew
+xeviousn                        // HomeBrew
 xeno                            // HomeBrew
 
 @source:neogeo.cpp
 cndi                            // Intro Demo Music
 dti                             // Intro Demo Music
 dwi                             // Intro Demo Music
+dwia                            // Intro Demo Music
 gbi                             // Intro Demo Music
 rci                             // Intro Demo Music
 smi                             // Intro Demo Music
 tmnti                           // Intro Demo Music
+tmntia                          // Intro Demo Music
