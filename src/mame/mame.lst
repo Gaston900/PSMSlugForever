@@ -1700,7 +1700,6 @@ breakrevhc02                    // Hack
 breakrevhc03                    // Hack
 breakrevhc04                    // Hack
 breakrevhc05                    // Hack
-breakrevhc06                    // Hack
 cthd2k3bhc01                    // Hack
 cthd2k3bhc02                    // Hack
 ctomadayhc01                    // Hack
@@ -1759,8 +1758,6 @@ kof94hc06                       // Hack
 kof94hc07                       // Hack
 kof94hc08                       // Hack
 kof94hc09                       // Hack
-kof94hc10                       // Hack
-kof94hc11                       // Hack
 kof95hc01                       // Hack
 kof95hc02                       // Hack
 kof95hc03                       // Hack
@@ -2214,7 +2211,6 @@ lastbladhc03                    // Hack
 lastbladhc04                    // Hack
 lastbladhc05                    // Hack
 lastbladhc06                    // Hack
-lastbladhc07                    // Hack
 lastbld2hc01                    // Hack
 lastbld2hc02                    // Hack
 lastbld2hc03                    // Hack
@@ -2222,7 +2218,6 @@ lastbld2hc04                    // Hack
 lastbld2hc05                    // Hack
 lastbld2hc06                    // Hack
 lastbld2hc07                    // Hack
-lastbld2hc08                    // Hack
 lresorthc01                     // Hack
 magdrop3hc01                    // Hack
 magdrop3hc02                    // Hack
@@ -2240,9 +2235,6 @@ neobombehc01                    // Hack
 ninjamashc01                    // Hack
 ninjamashc02                    // Hack
 ninjamashc03                    // Hack
-ninjamashc04                    // Hack
-ninjamashc05                    // Hack
-ninjamashc06                    // Hack
 nitdhc01                        // Hack
 nitdhc02                        // Hack
 nitdhc03                        // Hack
@@ -2272,7 +2264,6 @@ samshohc02                      // Hack
 samshohc03                      // Hack
 samshohc04                      // Hack
 samshohc05                      // Hack
-samshohc06                      // Hack
 samsho2hc01                     // Hack
 samsho2hc02                     // Hack
 samsho2hc03                     // Hack
@@ -2283,9 +2274,6 @@ samsho2hc07                     // Hack
 samsho2hc08                     // Hack
 samsho2hc09                     // Hack
 samsho2hc10                     // Hack
-samsho2hc11                     // Hack
-samsho2hc12                     // Hack
-samsho2hc13                     // Hack
 samsho3hc01                     // Hack
 samsho3hc02                     // Hack
 samsho3hc03                     // Hack
@@ -2310,10 +2298,6 @@ samsho5hc05                     // Hack
 samsho5hc06                     // Hack
 samsho5hc07                     // Hack
 samsho5hc08                     // Hack
-samsho5hc09                     // Hack
-samsho5hc10                     // Hack
-samsho5hc11                     // Hack
-samsho5hc12                     // Hack
 samsh5sphc01                    // Hack
 samsh5sphc02                    // Hack
 samsh5sphc03                    // Hack
@@ -2363,7 +2347,6 @@ svchc08                         // Hack
 svchc09                         // Hack
 svchc10                         // Hack
 svchc11                         // Hack
-svchc12                         // Hack
 tophuntrhc01                    // Hack
 tophuntrhc02                    // Hack
 twinsprihc01                    // Hack
