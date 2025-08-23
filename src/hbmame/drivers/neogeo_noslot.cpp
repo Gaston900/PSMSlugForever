@@ -4062,6 +4062,30 @@ ROM_START( fatfury3 ) /* MVS AND AES VERSION */
 	ROM_LOAD16_BYTE( "069.c6", 0x1000001, 0x200000, CRC(69210441) SHA1(6d496c549dba65caabeaffe5b762e86f9d648a26) )
 ROM_END
 
+ROM_START( fatfury3a ) /* MVS AND AES VERSION */
+	ROM_REGION( 0x300000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "069a.p1", 0x000000, 0x100000, CRC(4e27bd16) SHA1(a218574ba48a394ba649b4aad618a6b1256b9027) )
+	ROM_LOAD16_WORD_SWAP( "069.p2", 0x100000, 0x200000, CRC(dbe963ed) SHA1(8ece7f663cfe8e563576a397e41161d392cee67e) )
+    ROM_DEFAULT_BIOS("console_mode")
+
+	NEO_SFIX_128K( "069.s1", CRC(0b33a800) SHA1(b7d2cc97da4f30ddebc7b801f5e1d17d2306b2db) )
+
+	NEO_BIOS_AUDIO_128K( "069.m1", CRC(fce72926) SHA1(a40c74f793900b8542f0b8383ce4bf46fca112d4) )
+
+	ROM_REGION( 0xa00000, "ymsnd", 0 )
+	ROM_LOAD( "069.v1", 0x000000, 0x400000, CRC(2bdbd4db) SHA1(5f4fecf69c2329d699cbd45829c19303b1e2a80e) )
+	ROM_LOAD( "069.v2", 0x400000, 0x400000, CRC(a698a487) SHA1(11b8bc53bc26a51f4a408e900e3769958625c4ed) )
+	ROM_LOAD( "069.v3", 0x800000, 0x200000, CRC(581c5304) SHA1(e9550ec547b4f605afed996b22d711f49b48fa92) )
+
+	ROM_REGION( 0x1400000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "069.c1", 0x0000000, 0x400000, CRC(e302f93c) SHA1(d8610b14900b2b8fe691b67ca9b1abb335dbff74) )
+	ROM_LOAD16_BYTE( "069.c2", 0x0000001, 0x400000, CRC(1053a455) SHA1(69501bfac68739e63d798045b812badd251d57b8) )
+	ROM_LOAD16_BYTE( "069.c3", 0x0800000, 0x400000, CRC(1c0fde2f) SHA1(cf6c2ef56c03a861de3b0b6dc0d7c9204d947f9d) )
+	ROM_LOAD16_BYTE( "069.c4", 0x0800001, 0x400000, CRC(a25fc3d0) SHA1(83cb349e2f1032652060b233e741fb893be5af16) )
+	ROM_LOAD16_BYTE( "069.c5", 0x1000000, 0x200000, CRC(b3ec6fa6) SHA1(7e4c8ee9dd8d9a25ff183d9d8b05f38769348bc7) )
+	ROM_LOAD16_BYTE( "069.c6", 0x1000001, 0x200000, CRC(69210441) SHA1(6d496c549dba65caabeaffe5b762e86f9d648a26) )
+ROM_END
+
 /****************************************
  ID-0070
  . ??M-070
@@ -15377,6 +15401,42 @@ ROM_START( cyborg )
 	ROM_LOAD16_BYTE( "502.c2",   0x0000001, 0x1000000, CRC(a5abdb83) SHA1(cfc54c46ae6a593a9d2f4fdd1ee0d27877f55c20) )
 ROM_END
 
+ROM_START( doubled1 ) // 2025-02-17
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "505b.p1", 0x000000, 0x100000, CRC(0dd47ea6) SHA1(b792a538d7653f7cba53541e8bbe95c9e1db6ca0) )
+	ROM_LOAD16_WORD_SWAP( "505b.p2", 0x100000, 0x400000, CRC(719b98e6) SHA1(b0a95156c48e54ee7f51cbda3abb293a61f9b007) )
+
+	NEO_SFIX_128K( "505b.s1", CRC(bbb20072) SHA1(0197ba8d3a382f4d022f9573f3c6e6e4cf1fc25f) )
+
+	NEO_BIOS_AUDIO_64K( "505b.m1", CRC(128a9f84) SHA1(4bf52b9babaabf1f6d96b305732168b5b4d9d259) )
+
+	ROM_REGION( 0x1000000, "ymsnd", 0 )
+	ROM_LOAD( "505b.v1",   0x000000, 0x800000, CRC(5018b7a9) SHA1(86adce8b24e551d42a2594f39124cffd17364f6e) )
+	ROM_LOAD( "502b.v2",   0x800000, 0x800000, CRC(f5c8192f) SHA1(dcef8c78bee1a8e88aa3f45ce9c8e5ab212d9238) )
+
+	ROM_REGION( 0x2000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "505b.c1",   0x0000000, 0x1000000, CRC(d4c50841) SHA1(c806d0f01fe29984efa49e8c524c86f6e2de8b0e) )
+	ROM_LOAD16_BYTE( "505b.c2",   0x0000001, 0x1000000, CRC(728eb8ae) SHA1(a2e9d020cb940ea4ebdb1946eb3ab136c643da17) )
+ROM_END
+
+// 415 : Flappy Chicken by Blastar 2023-04-30
+ROM_START( flapchck )
+	ROM_REGION( 0x100000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "415.p1", 0x000000, 0x080000, CRC(2a7454a1) SHA1(6351645c6afdc8b1392e05c6f508217dd7af5bb2) )
+
+	NEO_SFIX_128K( "415.s1", CRC(3fd2b4d4) SHA1(98e6ae2c5cb6ca6b0022b7335cddc83496c4b69d) )
+
+	NEO_BIOS_AUDIO_128K( "415.m1", CRC(5abc1bf6) SHA1(150fe7580e6f9e974a1c9004862c2c50c0c67d7a) )
+
+	ROM_REGION( 0x100000, "ymsnd", 0 )
+	ROM_LOAD( "415.v1",  0x000000, 0x080000, CRC(c5d09e58) SHA1(6536a18a2df3eec251478ca0dd622d64accb9e40) )
+	ROM_LOAD( "415.v2",  0x080000, 0x080000, CRC(b9afe241) SHA1(f6224822730b667a38643627160278bb84eb695f) )
+
+	ROM_REGION( 0x100000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "415.c1", 0x000000, 0x80000, CRC(4ecdb8ca) SHA1(fb0ae76f1343f92a111763be267cec56c013972e) )
+	ROM_LOAD16_BYTE( "415.c2", 0x000001, 0x80000, CRC(47d06927) SHA1(bf9ada131768c23f816a9c367596782e5bedc739) )
+ROM_END
+
 // 415 : Frog Feast by Rastersoft
 ROM_START( ffeast ) /* Frog Feast - Full Version */
 	ROM_REGION( 0x100000, "maincpu", 0 )
@@ -17067,6 +17127,7 @@ GAME( 1994, samsho2,    neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_
 GAME( 1994, samsho2k,   samsho2,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "Saulabi Spirits / Jin Saulabi Tu Hon (Korean release of Samurai Shodown II, set 1)", MACHINE_MECHANICAL ) // official or hack?
 GAME( 1994, samsho2ka,  samsho2,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "Saulabi Spirits / Jin Saulabi Tu Hon (Korean release of Samurai Shodown II, set 2)", MACHINE_MECHANICAL )
 GAME( 1995, fatfury3,   neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "Fatal Fury 3 - Road to the Final Victory / Garou Densetsu 3 - haruka-naru tatakai (NGM-069 ~ NGH-069)", MACHINE_MECHANICAL )
+GAME( 1995, fatfury3a,  fatfury3, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "Fatal Fury 3 - Road to the Final Victory / Garou Densetsu 3 - haruka-naru tatakai (NGM-069 ~ NGH-069)(Alternate Board)", MACHINE_MECHANICAL )
 GAME( 1995, ssideki3,   neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "Super Sidekicks 3 - The Next Glory / Tokuten Ou 3 - eikou e no michi", MACHINE_MECHANICAL )
 GAME( 1995, kof95,      neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "The King of Fighters '95 (NGM-084)", MACHINE_MECHANICAL )
 GAME( 1995, kof95a,     kof95,    neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "The King of Fighters '95 (NGM-084), Alternate Board", MACHINE_MECHANICAL )
@@ -17585,6 +17646,8 @@ GAME( 2013, cphd,       neogeo,   neogeo_noslot,   neogeo,     neogeo_state, ini
 GAME( 1990, columnsn,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Jeff Kurtz", "Columns (NeoGeo)", MACHINE_MECHANICAL )
 GAME( 1990, columnsncd, columnsn, neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Jeff Kurtz", "Columns (CD conversion)", MACHINE_MECHANICAL )
 GAME( 2023, cyborg,     neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Neo Byte Force", "Cyborg Force", MACHINE_MECHANICAL )
+GAME( 2025, doubled1,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "La Casa De Ruivo / Neo Byte Force", "Double Dragon One Demo (2025-02-17)", MACHINE_MECHANICAL )
+GAME( 2023, flapchck,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Blastar", "Flappy Chicken (2023-04-30)", MACHINE_MECHANICAL )
 GAME( 2006, ffeast,     neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Rastersoft", "Frog Feast (NeoGeo)", MACHINE_MECHANICAL )
 GAME( 2024, gladmort,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Pixelheart / ChipsOnSteroids", "Gladmort", MACHINE_MECHANICAL )
 GAME( 2009, gladmortd,  neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Pixelheart", "Gladmort (Demo)", MACHINE_MECHANICAL )

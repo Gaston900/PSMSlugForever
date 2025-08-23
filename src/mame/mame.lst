@@ -1133,6 +1133,7 @@ fatfurspa                       // 0058 (c) 1993 SNK
 fatfury1                        // 0033 (c) 1991 SNK
 fatfury2                        // 0047 (c) 1992 SNK
 fatfury3                        // 0069 (c) 1995 SNK
+fatfury3a                       // 0069 (c) 1995 SNK
 fbfrenzy                        // 0034 (c) 1992 SNK
 fightfev                        // 0060 (c) 1994 Viccom
 fightfeva                       // 0060 (c) 1994 Viccom
@@ -1619,6 +1620,8 @@ cphd                            // HomeBrew
 columnsn                        // HomeBrew
 columnsncd                      // HomeBrew
 cyborg                          // HomeBrew
+doubled1                        // HomeBrew
+flapchck                        // HomeBrew
 ffeast                          // HomeBrew
 gladmort                        // HomeBrew
 gladmortd                       // HomeBrew
@@ -1714,6 +1717,7 @@ doubledrhc07                    // Hack
 eightmanhc01                    // Hack
 fatfursphc01                    // Hack
 fatfursphc02                    // Hack
+fatfursphc03                    // Hack
 fatfury1hc01                    // Hack
 fatfury2hc01                    // Hack
 fatfury2hc02                    // Hack
@@ -1727,15 +1731,17 @@ galaxyfghc01                    // Hack
 garouhc01                       // Hack
 garouhc02                       // Hack
 garouhc03                       // Hack
+garouhc04                       // Hack
 ganryuhc01                      // Hack
 gowcaizrhc01                    // Hack
 gowcaizrhc02                    // Hack
+gowcaizrhc03                    // Hack
 gpilotshc01                     // Hack
 kabukiklhc01                    // Hack
+kabukiklhc02                    // Hack
 karnovrhc01                     // Hack 
 kizunahc01                      // Hack 
 kizunahc02                      // Hack 
-kizunahc03                      // Hack 
 kof2k4sehc01                    // Hack
 kof2k4sehc02                    // Hack
 kof2k4sehc03                    // Hack
@@ -2211,6 +2217,7 @@ lastbladhc03                    // Hack
 lastbladhc04                    // Hack
 lastbladhc05                    // Hack
 lastbladhc06                    // Hack
+lastbladhc07                    // Hack
 lastbld2hc01                    // Hack
 lastbld2hc02                    // Hack
 lastbld2hc03                    // Hack
@@ -2257,6 +2264,7 @@ rotdhc02                        // Hack
 rotdhc03                        // Hack
 rotdhc04                        // Hack
 rotdhc05                        // Hack
+rotdhc06                        // Hack
 s1945phc01                      // Hack
 s1945phc02                      // Hack
 samshohc01                      // Hack
@@ -2323,10 +2331,6 @@ sengoku3hc04                    // Hack
 sengoku3hc05                    // Hack
 sengoku3hc06                    // Hack
 sengoku3hc07                    // Hack
-sengoku3hc08                    // Hack
-sengoku3hc09                    // Hack
-sengoku3hc10                    // Hack
-sengoku3hc11                    // Hack
 shocktrohc01                    // Hack
 shocktr2hc01                    // Hack
 shocktr2hc02                    // Hack
@@ -2347,6 +2351,7 @@ svchc08                         // Hack
 svchc09                         // Hack
 svchc10                         // Hack
 svchc11                         // Hack
+svchc12                         // Hack
 tophuntrhc01                    // Hack
 tophuntrhc02                    // Hack
 twinsprihc01                    // Hack
@@ -2355,6 +2360,7 @@ viewpoinhc02                    // Hack
 wakuwak7hc01                    // Hack
 wakuwak7hc02                    // Hack
 wakuwak7hc03                    // Hack
+wakuwak7hc04                    // Hack
 wjammershc01                    // Hack
 wjammershc02                    // Hack
 wh1hc01                         // Hack
@@ -2366,4 +2372,5 @@ wh2jhc01                        // Hack
 wh2jhc02                        // Hack
 whphc01                         // Hack
 whphc02                         // Hack
+whphc03                         // Hack
 zintrckbhc01                    // Hack
