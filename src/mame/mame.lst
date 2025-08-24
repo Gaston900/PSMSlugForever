@@ -1210,6 +1210,7 @@ kof99k                          // 0152 (c) 1999 SNK
 kof99ka                         // 0152 (c) 1999 SNK
 kof99p                          // 0251 (c) 1999 SNK
 kog                             // bootleg of kof97
+kogplus                         // bootleg of kof97
 kotm                            // 0016 (c) 1991 SNK
 kotm2                           // 0039 (c) 1992 SNK
 kotm2a                          // 0039 (c) 1992 SNK
@@ -1356,6 +1357,7 @@ wh1ha                           // 0053 (c) 1992 Alpha Denshi Co.
 wh2                             // 0057 (c) 1993 ADK
 wh2h                            //
 wh2j                            // 0064 (c) 1994 ADK / SNK
+wh2ja                           // 0064 (c) 1994 ADK / SNK
 whp                             // 0090 (c) 1995 ADK / SNK
 wjammers                        // 0065 (c) 1994 Data East Corporation
 zedblade                        // 0076 (c) 1994 NMK
@@ -1382,6 +1384,7 @@ kof2k1d                         // Decrypted / Bootleg
 kof2k1hd                        // Decrypted / Bootleg
 kof2k1nd                        // Decrypted / Bootleg
 kof2k1e                         // Decrypted / Bootleg
+kf2k1bh                         // Decrypted / Bootleg
 kf2k1pls                        // Decrypted / Bootleg
 kf2k1pla                        // Decrypted / Bootleg
 kof2k2d                         // Decrypted / Bootleg
@@ -1389,6 +1392,8 @@ kof2k2nd                        // Decrypted / Bootleg
 kf2k2plad                       // Decrypted / Bootleg
 kf2k2plb                        // Decrypted / Bootleg
 kf2k2plc                        // Decrypted / Bootleg
+kf2k2pld                        // Decrypted / Bootleg
+kf2k2mpl                        // Decrypted / Bootleg
 kof2003d                        // Decrypted / Bootleg
 kof2003f                        // Decrypted / Bootleg
 kof2k3d                         // Decrypted / Bootleg
@@ -1400,7 +1405,7 @@ kf2k3pd                         // Decrypted / Bootleg
 kf2k3upd                        // Decrypted / Bootleg
 kf2k3bl2                        // Decrypted / Bootleg
 kogd                            // Decrypted / Bootleg
-kogplus                         // Decrypted / Bootleg
+kogplusd                        // Decrypted / Bootleg
 kof10thd                        // Decrypted / Bootleg
 kf2k8uni                        // Decrypted / Bootleg
 kf2k8unid                       // Decrypted / Bootleg
@@ -1739,7 +1744,8 @@ gowcaizrhc03                    // Hack
 gpilotshc01                     // Hack
 kabukiklhc01                    // Hack
 kabukiklhc02                    // Hack
-karnovrhc01                     // Hack 
+karnovrhc01                     // Hack
+karnovrhc02                     // Hack
 kizunahc01                      // Hack 
 kizunahc02                      // Hack 
 kof2k4sehc01                    // Hack
@@ -1770,6 +1776,7 @@ kof95hc03                       // Hack
 kof95hc04                       // Hack
 kof95hc05                       // Hack
 kof95hc06                       // Hack
+kof95hc07                       // Hack
 kof96hc01                       // Hack
 kof96hc02                       // Hack
 kof96hc03                       // Hack
@@ -1778,6 +1785,7 @@ kof96hc05                       // Hack
 kof96hc06                       // Hack
 kof96hc07                       // Hack
 kof96hc08                       // Hack
+kof96hc09                       // Hack
 kof97hc01                       // Hack
 kof97hc02                       // Hack
 kof97hc03                       // Hack
@@ -1804,7 +1812,7 @@ kof97hc23                       // Hack
 kof97hc24                       // Hack
 kof97hc25                       // Hack
 kof97hc26                       // Hack
-//kof97hc27                       // Hack
+kof97hc27                       // Hack
 kof97hc28                       // Hack
 kof97hc29                       // Hack
 kof97hc30                       // Hack
@@ -1937,7 +1945,7 @@ kof97hc156                      // Hack
 kof97hc157                      // Hack
 kof97hc158                      // Hack
 kof97hc159                      // Hack
-//kof97hc160                      // Hack
+kof97hc160                      // Hack
 kof97hc161                      // Hack
 kof97hc162                      // Hack
 kof97hc163                      // Hack
@@ -1948,7 +1956,7 @@ kof97hc167                      // Hack
 kof97hc168                      // Hack
 kof97hc169                      // Hack
 kof97hc170                      // Hack
-//kof97hc171                      // Hack
+kof97hc171                      // Hack
 kof97hc172                      // Hack
 kof97hc173                      // Hack
 kof97hc174                      // Hack
@@ -1961,6 +1969,9 @@ kof97hc180                      // Hack
 kof97hc181                      // Hack
 kof97hc182                      // Hack
 kof97hc183                      // Hack
+kof97hc184                      // Hack
+kof97hc185                      // Hack
+kof97hc186                      // Hack
 kof98hc01                       // Hack
 kof98hc02                       // Hack
 kof98hc03                       // Hack
@@ -2160,7 +2171,7 @@ kof2002hc57                     // Hack
 kof2002hc58                     // Hack
 kof2002hc59                     // Hack
 kof2002hc60                     // Hack
-//kof2002hc61                     // Hack
+kof2002hc61                     // Hack
 //kof2002hc62                     // Hack
 kof2002hc63                     // Hack
 kof2002hc64                     // Hack

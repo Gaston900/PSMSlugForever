@@ -314,6 +314,13 @@ void neogeo_state::init_rotd()
 	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
 }
 
+void neogeo_state::init_rotdnd()
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 1;
+	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+}
+
 void neogeo_state::init_pnyaa()
 {
 	init_neogeo();
@@ -383,40 +390,151 @@ void neogeo_state::init_matrim()
 void neogeo_state::init_samsho5()
 {
 	init_neogeo();
-	m_kof2002_prot->samsho5_decrypt_68k(cpuregion, cpuregion_size);
-	m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 4);
+	// This is needed if s1 size > 0x20000, ignored otherwise
 	m_sprgen->m_fixed_layer_bank_type = 1;
-	m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region,audio_region_size);
-	m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, SAMSHO5_GFX_KEY);
-	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
-}
 
+	// decrypt p roms if needed
+	u8 *ram = memregion("maincpu")->base();
+	if (ram[0x100007] != 0xC2)
+	{
+		//printf("Maincpu=%X\n",ram[0x100007]);fflush(stdout);
+		m_kof2002_prot->samsho5_decrypt_68k(cpuregion, cpuregion_size);
+	}
+
+	// decrypt m1 if needed
+	if (memregion("audiocrypt"))
+		m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region, audio_region_size);
+
+	// decrypt v roms if needed
+	ram = memregion("ymsnd")->base();
+	if (ram[0] != 8)
+	{
+		//printf("ym=%X\n",ram[0]);
+		m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 4);
+	}
+
+	// decrypt c roms if needed
+	ram = memregion("sprites")->base();
+	if (ram[0] != 0)
+	{
+		//printf("Sprites=%X\n",ram[0]);
+		m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, SAMSHO5_GFX_KEY);
+	}
+
+	// if no s rom, copy info from end of c roms
+	ram = memregion("fixed")->base();
+	if (ram[0x100] == 0)
+	{
+		//printf("Fixed1=%X\n",ram[0x100]);
+		m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+	}
+}
 
 void neogeo_state::init_samsh5sp()
 {
-	if (ym_region[0] == 0xE0) ym_region[0] = 0x43; // [6bc0] becomes 08
-	if (ym_region[1] == 0x25) ym_region[1] = 0xC9; // [16bc0] becomes 82
-	if (ym_region[0x18180] == 0xAC) ym_region[0x18180] = 0x2D; // [ed41] becomes 89
-	if (ym_region[0x18181] == 0x7E) ym_region[0x18181] = 0x2B; // [1ed41] becomes 8f
 	init_neogeo();
-	m_kof2002_prot->samsh5sp_decrypt_68k(cpuregion, cpuregion_size);
-	m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 6);
+	// This is needed if s1 size > 0x20000, ignored otherwise
 	m_sprgen->m_fixed_layer_bank_type = 1;
-	m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region,audio_region_size);
-	m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, SAMSHO5SP_GFX_KEY);
-	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+
+	// decrypt p roms if needed
+	u8 *ram = memregion("maincpu")->base();
+	if (ram[0x100007] == 0)
+	{
+		//printf("Maincpu=%X\n",ram[0x100007]);fflush(stdout);
+		m_kof2002_prot->samsh5sp_decrypt_68k(cpuregion, cpuregion_size);
+	}
+
+	// decrypt m1 if needed
+	if (memregion("audiocrypt"))
+		m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region, audio_region_size);
+
+	// decrypt v roms if needed
+	ram = memregion("ymsnd")->base();
+	if (ram[0] != 8)
+	{
+		// fix sound crackling on encrypted
+		if (ym_region[0] == 0xE0) ym_region[0] = 0x43; // [6bc0] becomes 08
+		if (ym_region[1] == 0x25) ym_region[1] = 0xC9; // [16bc0] becomes 82
+		if (ym_region[0x18180] == 0xAC) ym_region[0x18180] = 0x2D; // [ed41] becomes 89
+		if (ym_region[0x18181] == 0x7E) ym_region[0x18181] = 0x2B; // [1ed41] becomes 8f
+		//printf("ym=%X\n",ram[0]);
+		m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 6);
+	}
+	else
+	{
+		// fix sound crackling on decrypted
+		if (ym_region[0x6bc0] == 0xAB) ym_region[0x6bc0] = 0x08;
+		if (ym_region[0xed41] == 0x08) ym_region[0xed41] = 0x89;
+		if (ym_region[0x16bc0] == 0x6E) ym_region[0x16bc0] = 0x82;
+		if (ym_region[0x1ed41] == 0xDA) ym_region[0x1ed41] = 0x8F;
+	}
+
+	// decrypt c roms if needed
+	ram = memregion("sprites")->base();
+	if (ram[0] != 0)
+	{
+		//printf("Sprites=%X\n",ram[0]);
+		m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, SAMSHO5SP_GFX_KEY);
+	}
+
+	// if no s rom, copy info from end of c roms
+	ram = memregion("fixed")->base();
+	if (ram[0x100] == 0)
+	{
+		//printf("Fixed1=%X\n",ram[0x100]);
+		m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+	}
 }
 
 void neogeo_state::init_svc()
 {
 	init_neogeo();
-	m_pvc_prot->svc_px_decrypt(cpuregion, cpuregion_size);
-	m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 3);
+	// This is needed if s1 size > 0x20000, ignored otherwise
 	m_sprgen->m_fixed_layer_bank_type = 2;
-	m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region,audio_region_size);
-	m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, SVC_GFX_KEY);
-	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
-	m_pvc_prot->install_pvc_protection(m_maincpu,m_banked_cart);
+
+	// decrypt p roms if needed
+	u8 *ram = memregion("maincpu")->base();
+	if (ram[0x100] != 0x45)
+	{
+		//printf("Maincpu=%X\n",ram[0x100]);fflush(stdout);
+		m_pvc_prot->svc_px_decrypt(cpuregion, cpuregion_size);
+		m_pvc_prot->install_pvc_protection(m_maincpu,m_banked_cart);
+	}
+
+	// decrypt m1 if needed
+	if (memregion("audiocrypt"))
+		m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region, audio_region_size);
+
+	// decrypt v roms if needed
+	ram = memregion("ymsnd")->base();
+	if (ram[0x91] != 0x33)
+	{
+		//printf("ym=%X\n",ram[0x91]);
+		m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 3);
+	}
+
+	// decrypt c roms if needed
+	ram = memregion("sprites")->base();
+	if (ram[0] != 0)
+	{
+		//printf("Sprites=%X\n",ram[0]);
+		m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, SVC_GFX_KEY);
+	}
+
+	// if no s rom, copy info from end of c roms
+	ram = memregion("fixed")->base();
+	if (ram[0x100] == 0)
+	{
+		//printf("Fixed1=%X\n",ram[0x100]);
+		m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+	}
+
+	// decrypt s1 if needed
+	if (ram[0x100] != 0xBB)
+	{
+		//printf("Fixed2=%X\n",ram[0]);
+		m_sma_prot->svcpcb_s1data_decrypt(fix_region, fix_region_size);
+	}
 }
 
 void neogeo_state::init_kof2003()
@@ -938,23 +1056,6 @@ void neogeo_state::init_kf2k1pa()
 	init_kof2001();
 }
 
-void neogeo_state::init_kof2k2bd()
-{
-	init_neogeo();
-#if 0
-	std::vector<u8> src( fix_region_size );
-	int j;
-	u8 *dst = fix_region;
-	memcpy (&src[0], &dst[0], fix_region_size);
-
-	for (u32 i = 1; i < fix_region_size/0x80; i++)
-	{
-		j = bitswap<16>(i, 15, 14, 13, 12, 11, 10, 9, 7, 6, 2, 5, 4, 3, 1, 0, 8);
-		memcpy(&dst[i*0x80], &src[j*0x80], 0x80);
-	}
-#endif
-}
-
 void neogeo_state::init_kf2k2mp2hb()
 {
 	init_kof2002();
@@ -1074,199 +1175,6 @@ void neogeo_state::init_shockt2w()
 	/* Above causes checksum failure, so patch it out */
 	mem16[0x11c62/2] = 0x4e71;
 	mem16[0x11c64/2] = 0x4e71;
-}
-
-void neogeo_state::init_sam5hb()
-{
-	init_neogeo();
-	// This is needed if s1 size > 0x20000, ignored otherwise
-	m_sprgen->m_fixed_layer_bank_type = 1;
-
-	// decrypt p roms if needed
-	u8 *ram = memregion("maincpu")->base();
-	if (ram[0x100007] != 0xC2)
-	{
-		//printf("Maincpu=%X\n",ram[0x100007]);fflush(stdout);
-		m_kof2002_prot->samsho5_decrypt_68k(cpuregion, cpuregion_size);
-	}
-
-	// decrypt m1 if needed
-	if (memregion("audiocrypt"))
-		m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region, audio_region_size);
-
-	// decrypt v roms if needed
-	ram = memregion("ymsnd")->base();
-	if (ram[0] != 8)
-	{
-		//printf("ym=%X\n",ram[0]);
-		m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 4);
-	}
-
-	// decrypt c roms if needed
-	ram = memregion("sprites")->base();
-	if (ram[0] != 0)
-	{
-		//printf("Sprites=%X\n",ram[0]);
-		m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, SAMSHO5_GFX_KEY);
-	}
-
-	// if no s rom, copy info from end of c roms
-	ram = memregion("fixed")->base();
-	if (ram[0x100] == 0)
-	{
-		//printf("Fixed1=%X\n",ram[0x100]);
-		m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
-	}
-}
-
-void neogeo_state::init_sam5sphb2() // for samsh5spds11
-{
-	// decrypt c roms
-	m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, SAMSHO5SP_GFX_KEY);
-	init_sam5sphb();
-}
-
-void neogeo_state::init_sam5sphb()
-{
-	init_neogeo();
-	// This is needed if s1 size > 0x20000, ignored otherwise
-	m_sprgen->m_fixed_layer_bank_type = 1;
-
-	// decrypt p roms if needed
-	u8 *ram = memregion("maincpu")->base();
-	if (ram[0x100007] == 0)
-	{
-		//printf("Maincpu=%X\n",ram[0x100007]);fflush(stdout);
-		m_kof2002_prot->samsh5sp_decrypt_68k(cpuregion, cpuregion_size);
-	}
-
-	// decrypt m1 if needed
-	if (memregion("audiocrypt"))
-		m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region, audio_region_size);
-
-	// decrypt v roms if needed
-	ram = memregion("ymsnd")->base();
-	if (ram[0] != 8)
-	{
-		// fix sound crackling on encrypted
-		if (ym_region[0] == 0xE0) ym_region[0] = 0x43; // [6bc0] becomes 08
-		if (ym_region[1] == 0x25) ym_region[1] = 0xC9; // [16bc0] becomes 82
-		if (ym_region[0x18180] == 0xAC) ym_region[0x18180] = 0x2D; // [ed41] becomes 89
-		if (ym_region[0x18181] == 0x7E) ym_region[0x18181] = 0x2B; // [1ed41] becomes 8f
-		//printf("ym=%X\n",ram[0]);
-		m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 6);
-	}
-	else
-	{
-		// fix sound crackling on decrypted
-		if (ym_region[0x6bc0] == 0xAB) ym_region[0x6bc0] = 0x08;
-		if (ym_region[0xed41] == 0x08) ym_region[0xed41] = 0x89;
-		if (ym_region[0x16bc0] == 0x6E) ym_region[0x16bc0] = 0x82;
-		if (ym_region[0x1ed41] == 0xDA) ym_region[0x1ed41] = 0x8F;
-	}
-
-	// if no s rom, copy info from end of c roms
-	ram = memregion("fixed")->base();
-	if (ram[0x100] == 0)
-	{
-		//printf("Fixed1=%X\n",ram[0x100]);
-		m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
-	}
-}
-
-void neogeo_state::init_sengo3d()
-{
-	init_neogeo();
-	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
-}
-
-void neogeo_state::init_svchb()
-{
-	init_neogeo();
-	// This is needed if s1 size > 0x20000, ignored otherwise
-	m_sprgen->m_fixed_layer_bank_type = 2;
-
-	// decrypt p roms if needed
-	u8 *ram = memregion("maincpu")->base();
-	if (ram[0x100] != 0x45)
-	{
-		//printf("Maincpu=%X\n",ram[0x100]);fflush(stdout);
-		m_pvc_prot->svc_px_decrypt(cpuregion, cpuregion_size);
-		m_pvc_prot->install_pvc_protection(m_maincpu, m_banked_cart);
-	}
-
-	// decrypt m1 if needed
-	if (memregion("audiocrypt"))
-		m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region, audio_region_size);
-
-	// decrypt v roms if needed
-	ram = memregion("ymsnd")->base();
-	if (ram[0x91] != 0x33)
-	{
-		//printf("ym=%X\n",ram[0x91]);
-		m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 3);
-	}
-
-	// decrypt c roms if needed
-	ram = memregion("sprites")->base();
-	if (ram[0] != 0)
-	{
-		//printf("Sprites=%X\n",ram[0]);
-		m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, SVC_GFX_KEY);
-	}
-
-	// if no s rom, copy info from end of c roms
-	ram = memregion("fixed")->base();
-	if (ram[0x100] == 0)
-	{
-		//printf("Fixed1=%X\n",ram[0x100]);
-		m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
-	}
-
-	// decrypt s1 if needed
-	if (ram[0x100] != 0xBB)
-	{
-		//printf("Fixed2=%X\n",ram[0]);
-		m_sma_prot->svcpcb_s1data_decrypt(fix_region, fix_region_size);
-	}
-}
-
-void neogeo_state::init_svcpcd()
-{
-	init_svchb();
-	install_banked_bios();
-}
-
-void neogeo_state::init_rotdb()
-{
-	init_neogeo();
-	m_sprgen->m_fixed_layer_bank_type = 1;
-	m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, ROTD_GFX_KEY);
-	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
-	m_pcm2_prot->neo_pcm2_snk_1999(ym_region, ym_region_size, 16);
-}
-
-void neogeo_state::init_rotdd()
-{
-	init_neogeo();
-	m_sprgen->m_fixed_layer_bank_type = 1;
-	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
-	m_pcm2_prot->neo_pcm2_snk_1999(ym_region, ym_region_size, 16);
-}
-
-void neogeo_state::init_rotdnd()
-{
-	init_neogeo();
-	m_sprgen->m_fixed_layer_bank_type = 1;
-	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
-}
-
-void neogeo_state::init_kof99d()
-{
-	init_neogeo();
-	m_sma_prot->kof99_decrypt_68k(cpuregion);
-	m_sma_prot->kof99_install_protection(m_maincpu, m_banked_cart);
-	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
 }
 
 /*************************************
@@ -3923,6 +3831,26 @@ ROM_START( wh2j ) /* MVS AND AES VERSION */
 	ROM_LOAD16_BYTE( "064.c8", 0xc00001, 0x200000, CRC(fc092367) SHA1(69ff4ae909dd857de3ca8645d63f8b4bde117448) )
 ROM_END
 
+ROM_START( wh2ja ) /* MVS AND AES VERSION */
+	ROM_REGION( 0x200000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "064.p1", 0x100000, 0x100000, CRC(385a2e86) SHA1(cfde4a1aeae038a3d6ca9946065624f097682d3d) )
+	ROM_CONTINUE( 0x000000, 0x100000 )
+
+	NEO_SFIX_128K( "064.s1", CRC(2a03998a) SHA1(5e33f469982f12d4622a06d323a345f192bf88e6) )
+
+	NEO_BIOS_AUDIO_128K( "064.m1", CRC(d2eec9d3) SHA1(09478787045f1448d19d064dd3d540d1741fd619) )
+
+	ROM_REGION( 0x400000, "ymsnd", 0 )
+	ROM_LOAD( "064.v1", 0x000000, 0x200000, CRC(aa277109) SHA1(35c22b15bb0a4d0ab118cb22a2d450d03995a17c) )
+	ROM_LOAD( "064.v2", 0x200000, 0x200000, CRC(b6527edd) SHA1(2bcf5bfa6e117cf4a3728a5e5f5771313c93f22a) )
+
+	ROM_REGION( 0x1000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "064ja.c1", 0x000000, 0x400000, CRC(771a6365) SHA1(646bdf3a79819fbca98f513c172b9e9500c073be) )
+	ROM_LOAD16_BYTE( "064ja.c2", 0x000001, 0x400000, CRC(e7863a05) SHA1(39d34119137216f914b8b8b7b3e622a6c210f130) )
+	ROM_LOAD16_BYTE( "064ja.c3", 0x800000, 0x400000, CRC(64594ed4) SHA1(982dbb932c0cb2eb9292bf19c463fd618c8180f3) )
+	ROM_LOAD16_BYTE( "064ja.c4", 0x800001, 0x400000, CRC(6e385398) SHA1(e74a0e72876bff8766152b76e5d94f2958b03cf2) )
+ROM_END
+
 /****************************************
  ID-0065
  . DEM-002
@@ -5489,7 +5417,7 @@ ROM_START( kof96a ) /* AES VERSION */
 	ROM_LOAD16_WORD_SWAP( "214epr.p2", 0x080000, 0x080000, CRC(6abc7ae5) SHA1(1bcbed38ef1934a0701d1c95b30ffe63316f92a8) )
     ROM_LOAD16_WORD_SWAP( "214epr.p3", 0x100000, 0x080000, CRC(a588dff4) SHA1(32d30bdf9b7bc9201b3930f5a0f126c79af97f3d) )
 	ROM_LOAD16_WORD_SWAP( "214epr.p4", 0x180000, 0x080000, CRC(6d6f17eb) SHA1(51f61c9a4215584493cf1dc37c4e307e1216626c) )
-	ROM_LOAD16_WORD_SWAP( "214epr.p5", 0x200000, 0x200000, CRC(d388f4da) SHA1(1d31ad2d92474701d9c7a2b67318edfc66f727ec) )
+	ROM_LOAD16_WORD_SWAP( "214epr.p5", 0x200000, 0x100000, CRC(9f3c6bc9) SHA1(90370a2ad42421a533182569e63ab81822e37878) )
 	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "214.s1", CRC(1254cbdb) SHA1(fce5cf42588298711a3633e9c9c1d4dcb723ac76) )
@@ -7557,7 +7485,7 @@ ROM_END
 
 ROM_START( rotdh ) /* Encrypted Set */ /* AES VERSION */
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "264-pk1.p1",  0x000000, 0x100000, CRC(ff2fa719) SHA1(03009e3693648ac0d892390c3bba2ceac6c9564b) )
+	ROM_LOAD16_WORD_SWAP( "264-pk1.p1", 0x000000, 0x100000, CRC(ff2fa719) SHA1(03009e3693648ac0d892390c3bba2ceac6c9564b) )
 	ROM_LOAD16_WORD_SWAP( "264-pk2.p2", 0x100000, 0x200000, CRC(0df2e112) SHA1(c521783483117859a2b250190be77f6d49412ae8) )
     ROM_DEFAULT_BIOS("console_mode")
 
@@ -8327,6 +8255,29 @@ ROM_START( kog )
 	ROM_LOAD16_WORD_SWAP( "232.p2",  0x200000, 0x400000, CRC(158b23f6) SHA1(9744620a70513490aaf9c5eda33e5ec31222be19) )
 
 	NEO_SFIX_128K( "5232-s1.bin", CRC(0bef69da) SHA1(80918586e694dce35c4dba796eb18abf6a070ebb) )
+
+	NEO_BIOS_AUDIO_128K( "232.m1", CRC(45348747) SHA1(ed77cbae2b208d1177a9f5f6e8cd57070e90b65b) )
+
+	ROM_REGION( 0xc00000, "ymsnd", 0 )
+	ROM_LOAD( "232.v1", 0x000000, 0x400000, CRC(22a2b5b5) SHA1(ebdbc977332e6d93e266755000b43857e0082965) )
+	ROM_LOAD( "232.v2", 0x400000, 0x400000, CRC(2304e744) SHA1(98d283e2bcc9291a53f52afd35ef76dfb0828432) )
+	ROM_LOAD( "232.v3", 0x800000, 0x400000, CRC(759eb954) SHA1(54e77c4e9e6b89458e59824e478ddc33a9c72655) )
+
+	ROM_REGION( 0x2800000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "5232-c1a.bin", 0x0000000, 0x800000, CRC(4eab9b0a) SHA1(a6f6b755215a3f41474e0a76b5463303a522c2d3) )
+	ROM_LOAD16_BYTE( "5232-c2a.bin", 0x0000001, 0x800000, CRC(697f8fd0) SHA1(5784464c2357ccef8e6e79b6298843fc3d13b39c) )
+	ROM_LOAD16_BYTE( "5232-c1b.bin", 0x1000000, 0x800000, CRC(1143fdf3) SHA1(9dc5fe9a3b7599380db62095880e2d6f237a41bd) )
+	ROM_LOAD16_BYTE( "5232-c2b.bin", 0x1000001, 0x800000, CRC(ea82cf8f) SHA1(3d9ab64b69cecd6b3950839ac2c6d151ad66dcf8) )
+	ROM_LOAD16_BYTE( "5232-c3.bin",  0x2000000, 0x400000, CRC(abd1be07) SHA1(857eb68bbee4538770bbfa77aaa540d61ab0abcd) )
+	ROM_LOAD16_BYTE( "5232-c4.bin",  0x2000001, 0x400000, CRC(d2bd967b) SHA1(c494e0a98e127d37ca360a28accc167fa50fb626) )
+ROM_END
+
+ROM_START( kogplus )
+	ROM_REGION( 0x600000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "5232p-p1.bin", 0x000000, 0x200000, CRC(0338f453) SHA1(01ea5ca6cc632d732a539542dc163bbafb071b88) )
+	ROM_LOAD16_WORD_SWAP( "kf97-p2p.bin", 0x200000, 0x400000, CRC(5502b020) SHA1(37c48198d8b3798910a44075782cd1a20b687b4a) )
+
+	NEO_SFIX_128K( "5232p-s1.bin", CRC(6271e9ba) SHA1(5bc94426e916d0ad16b6660bfc2b9e21f717fa32) )
 
 	NEO_BIOS_AUDIO_128K( "232.m1", CRC(45348747) SHA1(ed77cbae2b208d1177a9f5f6e8cd57070e90b65b) )
 
@@ -9340,9 +9291,9 @@ ROM_END
 
 ROM_START( kof96ep )
 	ROM_REGION( 0x380000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "214.p1",  0x000000, 0x100000, CRC(52755d74) SHA1(4232d627f1d2e6ea9fc8cf01571d77d4d5b8a1bb) )
+	ROM_LOAD16_WORD_SWAP( "214.p1", 0x000000, 0x100000, CRC(52755d74) SHA1(4232d627f1d2e6ea9fc8cf01571d77d4d5b8a1bb) )
 	ROM_LOAD16_WORD_SWAP( "214.p2", 0x100000, 0x200000, CRC(002ccb73) SHA1(3ae8df682c75027ca82db25491021eeba00a267e) )
-	ROM_LOAD16_WORD_SWAP( "214ep.p1",   0x300000, 0x080000, CRC(e5f2fb43) SHA1(5efff9873b30679ea924b7770606c889a1076315) )
+	ROM_LOAD16_WORD_SWAP( "214ep.p1", 0x300000, 0x080000, CRC(e5f2fb43) SHA1(5efff9873b30679ea924b7770606c889a1076315) )
     ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "214.s1", CRC(1254cbdb) SHA1(fce5cf42588298711a3633e9c9c1d4dcb723ac76) )
@@ -9609,6 +9560,33 @@ ROM_START( kof2k1e )
 	ROM_LOAD16_BYTE( "262d.c8", 0x3000001, 0x800000, CRC(954d0e16) SHA1(975803c130df3a6e835b9bf0f8532d6586058c54) )
 ROM_END
 
+ROM_START( kf2k1bh )
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "262bh.p1",  0x000000, 0x100000, CRC(d8b7a627) SHA1(ac0a9e7643e2f595391b793860068748757d1c4e) )
+	ROM_LOAD16_WORD_SWAP( "262h.p2", 0x100000, 0x400000, CRC(91eea062) SHA1(82bae42bbeedb9f3aa0c7c0b0a7a69be499cf98f) )
+    ROM_DEFAULT_BIOS("console_mode")
+
+	NEO_SFIX_MT_128K
+
+	NEO_BIOS_AUDIO_ENCRYPTED_256K( "262.m1", CRC(a7f8119f) SHA1(71805b39b8b09c32425cf39f9de59b2f755976c2) )
+
+	ROM_REGION( 0x1000000, "ymsnd", 0 )
+	ROM_LOAD( "262.v1", 0x000000, 0x400000, CRC(83d49ecf) SHA1(2f2c116e45397652e77fcf5d951fa5f71b639572) )
+	ROM_LOAD( "262.v2", 0x400000, 0x400000, CRC(003f1843) SHA1(bdd58837ad542548bd4053c262f558af88e3b989) )
+	ROM_LOAD( "262.v3", 0x800000, 0x400000, CRC(2ae38dbe) SHA1(4e82b7dd3b899d61907620517a5a27bdaba0725d) )
+	ROM_LOAD( "262.v4", 0xc00000, 0x400000, CRC(26ec4dd9) SHA1(8bd68d95a2d913be41a51f51e48dbe3bff5924fb) )
+
+	ROM_REGION( 0x4000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "262.c1", 0x0000000, 0x800000, CRC(99cc785a) SHA1(374f0674871d0196fa274aa6c5956d7b3848d5da) )
+	ROM_LOAD16_BYTE( "262.c2", 0x0000001, 0x800000, CRC(50368cbf) SHA1(5d9e206e98e0b0c7735b72ea46b45058fdec2352) )
+	ROM_LOAD16_BYTE( "262.c3", 0x1000000, 0x800000, CRC(fb14ff87) SHA1(445a8db2fc69eff54a252700f2d3a89244c58e75) )
+	ROM_LOAD16_BYTE( "262.c4", 0x1000001, 0x800000, CRC(4397faf8) SHA1(6752b394f6647502a649a3e62bd3442f936b733e) )
+	ROM_LOAD16_BYTE( "262.c5", 0x2000000, 0x800000, CRC(91f24be4) SHA1(88190c41f7d4a0f4b1982149fc9acfc640af498d) )
+	ROM_LOAD16_BYTE( "262.c6", 0x2000001, 0x800000, CRC(a31e4403) SHA1(5cd1a14703aa58810e2377dfb7353c61e9dc9c1f) )
+	ROM_LOAD16_BYTE( "262.c7", 0x3000000, 0x800000, CRC(54d9d1ec) SHA1(80c3a8ec39130dd5d3da561f287709da6b8abcf4) )
+	ROM_LOAD16_BYTE( "262.c8", 0x3000001, 0x800000, CRC(59289a6b) SHA1(ddfce7c85b2a144975db5bb14b4b51aaf881880e) )
+ROM_END
+
 ROM_START( kf2k1pls )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "262pls.p1", 0x000000, 0x100000, CRC(758529a7) SHA1(cefdc7049772dcb77d658ac8571a12eedabda3c9) )
@@ -9772,6 +9750,56 @@ ROM_START( kf2k2plc )
     ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "265plc.s1", CRC(fecbb589) SHA1(90ffc38651af9907aa7c54914d6f74b674fb0ad9) )
+
+	NEO_BIOS_AUDIO_ENCRYPTED_128K( "265.m1", CRC(85aaa632) SHA1(744fba4ca3bc3a5873838af886efb97a8a316104) )
+
+	ROM_REGION( 0x1000000, "ymsnd", 0 )
+	ROM_LOAD( "265.v1", 0x000000, 0x800000, CRC(15e8f3f5) SHA1(7c9e6426b9fa6db0158baa17a6485ffce057d889) )
+	ROM_LOAD( "265.v2", 0x800000, 0x800000, CRC(da41d6f9) SHA1(a43021f1e58947dcbe3c8ca5283b20b649f0409d) )
+
+	ROM_REGION( 0x4000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "265.c1", 0x0000000, 0x800000, CRC(2b65a656) SHA1(9c46d8cf5b1ef322db442ac6a9b9406ab49206c5) )
+	ROM_LOAD16_BYTE( "265.c2", 0x0000001, 0x800000, CRC(adf18983) SHA1(150cd4a5e51e9df88688469d2ea7675c2cf3658a) )
+	ROM_LOAD16_BYTE( "265.c3", 0x1000000, 0x800000, CRC(875e9fd7) SHA1(28f52d56192d48bbc5dc3c97abf456bd34a58cbd) )
+	ROM_LOAD16_BYTE( "265.c4", 0x1000001, 0x800000, CRC(2da13947) SHA1(f8d79ec2c236aa3d3648a4f715676899602122c1) )
+	ROM_LOAD16_BYTE( "265.c5", 0x2000000, 0x800000, CRC(61bd165d) SHA1(b3424db84bc683d858fb635bc42728f9cdd89caf) )
+	ROM_LOAD16_BYTE( "265.c6", 0x2000001, 0x800000, CRC(03fdd1eb) SHA1(6155c7e802062f4eafa27e414c4e73ee59b868bf) )
+	ROM_LOAD16_BYTE( "265.c7", 0x3000000, 0x800000, CRC(1a2749d8) SHA1(af7d9ec1d576209826fa568f676bbff92f6d6ddd) )
+	ROM_LOAD16_BYTE( "265.c8", 0x3000001, 0x800000, CRC(ab0bb549) SHA1(d23afb60b7f831f7d4a98ad3c4a00ee19877a1ce) )
+ROM_END
+
+ROM_START( kf2k2pld )
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "265pld.p1", 0x000000, 0x100000, CRC(ea1b6e9c) SHA1(cd03c205eb775f133d1f13b1524aac17ec1a6ce3) )
+	ROM_LOAD16_WORD_SWAP( "265.p2", 0x100000, 0x400000, CRC(327266b8) SHA1(98f445cc0a94f8744d74bca71cb420277622b034) )
+    ROM_DEFAULT_BIOS("console_mode")
+
+	NEO_SFIX_128K( "2k2plcd.s1", CRC(7df52924) SHA1(4b89eb6a2eeeccf5aef40b0775d61970ea9de60c) )
+
+	NEO_BIOS_AUDIO_ENCRYPTED_128K( "265.m1", CRC(85aaa632) SHA1(744fba4ca3bc3a5873838af886efb97a8a316104) )
+
+	ROM_REGION( 0x1000000, "ymsnd", 0 )
+	ROM_LOAD( "265.v1", 0x000000, 0x800000, CRC(15e8f3f5) SHA1(7c9e6426b9fa6db0158baa17a6485ffce057d889) )
+	ROM_LOAD( "265.v2", 0x800000, 0x800000, CRC(da41d6f9) SHA1(a43021f1e58947dcbe3c8ca5283b20b649f0409d) )
+
+	ROM_REGION( 0x4000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "265.c1", 0x0000000, 0x800000, CRC(2b65a656) SHA1(9c46d8cf5b1ef322db442ac6a9b9406ab49206c5) )
+	ROM_LOAD16_BYTE( "265.c2", 0x0000001, 0x800000, CRC(adf18983) SHA1(150cd4a5e51e9df88688469d2ea7675c2cf3658a) )
+	ROM_LOAD16_BYTE( "265.c3", 0x1000000, 0x800000, CRC(875e9fd7) SHA1(28f52d56192d48bbc5dc3c97abf456bd34a58cbd) )
+	ROM_LOAD16_BYTE( "265.c4", 0x1000001, 0x800000, CRC(2da13947) SHA1(f8d79ec2c236aa3d3648a4f715676899602122c1) )
+	ROM_LOAD16_BYTE( "265.c5", 0x2000000, 0x800000, CRC(61bd165d) SHA1(b3424db84bc683d858fb635bc42728f9cdd89caf) )
+	ROM_LOAD16_BYTE( "265.c6", 0x2000001, 0x800000, CRC(03fdd1eb) SHA1(6155c7e802062f4eafa27e414c4e73ee59b868bf) )
+	ROM_LOAD16_BYTE( "265.c7", 0x3000000, 0x800000, CRC(1a2749d8) SHA1(af7d9ec1d576209826fa568f676bbff92f6d6ddd) )
+	ROM_LOAD16_BYTE( "265.c8", 0x3000001, 0x800000, CRC(ab0bb549) SHA1(d23afb60b7f831f7d4a98ad3c4a00ee19877a1ce) )
+ROM_END
+
+ROM_START( kf2k2mpl )
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "265mpl.p1", 0x000000, 0x100000, CRC(aba169fe) SHA1(934dd20f6e3da261cb9f3587cdd8145ecdcdfa84) )
+	ROM_LOAD16_WORD_SWAP( "265.p2", 0x100000, 0x400000, CRC(327266b8) SHA1(98f445cc0a94f8744d74bca71cb420277622b034) )
+    ROM_DEFAULT_BIOS("console_mode")
+
+	NEO_SFIX_128K( "265mpl.s1", CRC(29c0693e) SHA1(a852d15a8558b4a1cadf1ed9ef357d765ff88d35) )
 
 	NEO_BIOS_AUDIO_ENCRYPTED_128K( "265.m1", CRC(85aaa632) SHA1(744fba4ca3bc3a5873838af886efb97a8a316104) )
 
@@ -10075,7 +10103,7 @@ ROM_START( kogd )
 	ROM_LOAD16_BYTE( "361d.c6", 0x2000001, 0x400000, CRC(b057db30) SHA1(2f342f03848f3f553bc70b2dbee2cc388a344a06) )
 ROM_END
 
-ROM_START( kogplus ) 
+ROM_START( kogplusd ) 
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "361plus1.p1",  0x000000, 0x100000, CRC(98241142) SHA1(9bb2c382063f84920841463f9b4ca87862e336de) )
 	ROM_LOAD16_WORD_SWAP( "kf97-p2p.bin", 0x100000, 0x400000, CRC(5502b020) SHA1(37c48198d8b3798910a44075782cd1a20b687b4a) )
@@ -10589,13 +10617,13 @@ ROM_START( rotdd )
 	ROM_LOAD16_WORD_SWAP( "264.p1", 0x000000, 0x800000, CRC(b8cc969d) SHA1(4f2205b4bdd32dd1522106ef4df10ac0eb1b852d) )
     ROM_DEFAULT_BIOS("console_mode")
 
-	NEO_SFIX_MT_128K
+	NEO_SFIX_128K( "264nd.s1", CRC(c155d4ff) SHA1(cc20d4e30004ca82da2ba075c084d294c94651d0) )
 
 	NEO_BIOS_AUDIO_128K( "264nd.m1", CRC(c5d36af9) SHA1(320739d0cfa6cc84455ae1f7b1f9cdab3c018933) )
 
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
-	ROM_LOAD( "264.v1", 0x000000, 0x800000, CRC(fa005812) SHA1(73723126dab5a640ac11955ed6da1bf7a91394f5) )
-	ROM_LOAD( "264.v2", 0x800000, 0x800000, CRC(c3dc8bf0) SHA1(a105e37262d9500a30fb8a5dac05aa4fab2562a3) )
+	ROM_LOAD( "264nd.v1", 0x000000, 0x800000, CRC(2c49f3fa) SHA1(501e8b792bc96a262058326541333738418fbbdd) )
+	ROM_LOAD( "264nd.v2", 0x800000, 0x800000, CRC(967279da) SHA1(21e90e14f6a6d73dd049541120c36d4421e237e6) )
 
 	ROM_REGION( 0x4000000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "264d.c1", 0x0000000, 0x800000, CRC(ec9d18c0) SHA1(83ebedae9655b6c64421cd131930b27d252853ec) )
@@ -10639,7 +10667,7 @@ ROM_START( rotdndd )
 
 	NEO_SFIX_128K( "264nd.s1", CRC(c155d4ff) SHA1(cc20d4e30004ca82da2ba075c084d294c94651d0) )
 
-	NEO_BIOS_AUDIO_128K( "264nd.m1", CRC(c5d36af9) SHA1(320739d0cfa6cc84455ae1f7b1f9cdab3c018933) )
+	NEO_BIOS_AUDIO_128K( "264nd.m1", CRC(ebaec46f) SHA1(baac3c7d4f03eb3befd0158fec4e396897b8c111) )
 
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
 	ROM_LOAD( "264ndd.v1", 0x000000, 0x400000, CRC(5c77a3fe) SHA1(3de61ff174d8b5b1a735666d3ed30554637e4b2d) )
@@ -14085,7 +14113,7 @@ ROM_START( kf2k2plcp )
 	ROM_LOAD16_WORD_SWAP( "k2k2m2p2.bin", 0x100000, 0x400000, CRC(432fdf53) SHA1(d7e542cd84d948162c60768e40ee4ed33d8e7913) )
     ROM_DEFAULT_BIOS("console_mode")
 
-	NEO_SFIX_128K( "2k2plcp.s1", CRC(7df52924) SHA1(4b89eb6a2eeeccf5aef40b0775d61970ea9de60c) )
+	NEO_SFIX_128K( "2k2plcd.s1", CRC(7df52924) SHA1(4b89eb6a2eeeccf5aef40b0775d61970ea9de60c) )
 
 	NEO_BIOS_AUDIO_128K( "265d.m1", CRC(1c661a4b) SHA1(4e5aa862a0a182a806d538996ddc68d9f2dffaf7) )
 
@@ -14137,7 +14165,7 @@ ROM_START( kf2k2plap )
 	ROM_LOAD16_WORD_SWAP( "2k2plap.p2", 0x100000, 0x400000, CRC(dec98282) SHA1(8a3c055c6c728a77134bda1f379995ebca623654) )
     ROM_DEFAULT_BIOS("console_mode")
 
-	NEO_SFIX_128K( "2k2plap.s1", CRC(29c0693e) SHA1(a852d15a8558b4a1cadf1ed9ef357d765ff88d35) )
+	NEO_SFIX_128K( "265mpl.s1", CRC(29c0693e) SHA1(a852d15a8558b4a1cadf1ed9ef357d765ff88d35) )
 
 	NEO_BIOS_AUDIO_128K( "265d.m1", CRC(1c661a4b) SHA1(4e5aa862a0a182a806d538996ddc68d9f2dffaf7) )
 
@@ -14581,8 +14609,8 @@ ROM_START( rotdp )
 
 	NEO_SFIX_128K( "264nd.s1", CRC(c155d4ff) SHA1(cc20d4e30004ca82da2ba075c084d294c94651d0) )
 
-	NEO_BIOS_AUDIO_128K( "264nd.m1", CRC(c5d36af9) SHA1(320739d0cfa6cc84455ae1f7b1f9cdab3c018933) )
-
+	NEO_BIOS_AUDIO_128K( "264ndp.m1", CRC(ebaec46f) SHA1(baac3c7d4f03eb3befd0158fec4e396897b8c111) )
+	
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
 	ROM_LOAD( "264nd.v1", 0x000000, 0x800000, CRC(2c49f3fa) SHA1(501e8b792bc96a262058326541333738418fbbdd) )
 	ROM_LOAD( "264nd.v2", 0x800000, 0x800000, CRC(967279da) SHA1(21e90e14f6a6d73dd049541120c36d4421e237e6) )
@@ -17143,7 +17171,7 @@ GAME( 1996, aof3,       neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_
 GAME( 1996, aof3k,      aof3,     neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "Art of Fighting 3 - The Path of the Warrior (Korean release)", MACHINE_MECHANICAL ) // no Japanese title / mode
 GAME( 1996, kof96,      neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "The King of Fighters '96 (NGM-214)", MACHINE_MECHANICAL )
 GAME( 1996, kof96h,     kof96,    neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "The King of Fighters '96 (NGH-214)", MACHINE_MECHANICAL )
-GAME( 1996, kof96a,     kof96,    neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "The King of Fighters '96 (NGM-214, Alternate Board)", MACHINE_MECHANICAL )
+GAME( 1996, kof96a,     kof96,    neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "The King of Fighters '96 (NGM-214) (Alternate Board)", MACHINE_MECHANICAL )
 GAME( 1996, ssideki4,   neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "The Ultimate 11 - The SNK Football Championship / Tokuten Ou - Honoo no Libero", MACHINE_MECHANICAL )
 GAME( 1996, kizuna,     neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "Kizuna Encounter - Super Tag Battle / Fu'un Super Tag Battle", MACHINE_MECHANICAL )
 GAME( 1996, kizuna4p,   kizuna,   neogeo_kiz4p,    kizuna4p, neogeo_state,   init_neogeo,   ROT0, "SNK", "Kizuna Encounter - Super Tag Battle 4 Way Battle Version / Fu'un Super Tag Battle Special Version", MACHINE_MECHANICAL )
@@ -17157,6 +17185,7 @@ GAME( 1997, kof97k,     kof97,    neogeo_noslot,   neogeo, neogeo_state,   init_
 GAME( 1997, kof97pls,   kof97,    neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "The King of Fighters '97 Plus (bootleg)", MACHINE_MECHANICAL )
 GAME( 1997, kof97oro,   kof97,    neogeo_noslot,   neogeo, neogeo_state,   init_kof97oro, ROT0, "bootleg", "The King of Fighters '97 Oroshi Plus 2003 (bootleg)", MACHINE_MECHANICAL )
 GAME( 1997, kog,        kof97,    neogeo_kog,      neogeo, neogeo_state,   init_kog,      ROT0, "bootleg", "King of Gladiator (The King of Fighters '97 bootleg)", MACHINE_MECHANICAL )
+GAME( 1997, kogplus,    kof97,    neogeo_kog,      neogeo, neogeo_state,   init_kog,      ROT0, "bootleg", "King of Gladiator Plus (The King of Fighters '97 bootleg)", MACHINE_MECHANICAL )
 GAME( 1997, lastblad,   neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "The Last Blade / Bakumatsu Roman - Gekka no Kenshi (NGM-2340)", MACHINE_MECHANICAL )
 GAME( 1997, lastblada,  lastblad, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "The Last Blade / Bakumatsu Roman - Gekka no Kenshi (NGM-2340, Alternate Board)", MACHINE_MECHANICAL )
 GAME( 1997, lastbladh,  lastblad, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "The Last Blade / Bakumatsu Roman - Gekka no Kenshi (NGH-2340)", MACHINE_MECHANICAL )
@@ -17197,14 +17226,14 @@ GAME( 2002, kof2002,    neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_
 GAME( 2002, kof2002b,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2002b, ROT0, "bootleg", "The King of Fighters 2002 (bootleg)", MACHINE_MECHANICAL )
 GAME( 2002, kf2k2pls,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2002,  ROT0, "bootleg", "The King of Fighters 2002 Plus (bootleg set 1)" , MACHINE_MECHANICAL ) /* Encrypted GFX */
 GAME( 2002, kf2k2pla,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2002,  ROT0, "bootleg", "The King of Fighters 2002 Plus (bootleg set 2)" , MACHINE_MECHANICAL ) /* Encrypted GFX */
-GAME( 2002, kf2k2mp,    kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kf2k2mp,  ROT0, "bootleg", "The King of Fighters 2002 Magic Plus (bootleg)" , MACHINE_MECHANICAL ) /* Encrypted GFX */
+GAME( 2002, kf2k2mp,    kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kf2k2mp,  ROT0, "bootleg", "The King of Fighters 2002 Magic Plus (bootleg, set 1)" , MACHINE_MECHANICAL ) /* Encrypted GFX */
 GAME( 2002, kf2k2mp2,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kf2k2mp2, ROT0, "bootleg", "The King of Fighters 2002 Magic Plus II (bootleg)" , MACHINE_MECHANICAL ) /* Encrypted GFX */
 GAME( 2002, kof10th,    kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kof10th,  ROT0, "bootleg", "The King of Fighters 10th Anniversary (The King of Fighters 2002 bootleg)", MACHINE_MECHANICAL ) // fake SNK copyright
 GAME( 2005, kf10thep,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kf10thep, ROT0, "bootleg", "The King of Fighters 10th Anniversary Extra Plus (The King of Fighters 2002 bootleg)", MACHINE_MECHANICAL ) // fake SNK copyright
 GAME( 2004, kf2k5uni,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kf2k5uni, ROT0, "bootleg", "The King of Fighters 10th Anniversary 2005 Unique (The King of Fighters 2002 bootleg)", MACHINE_MECHANICAL ) // fake SNK copyright
 GAME( 2004, kof2k4se,   neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_kof2k4se, ROT0, "bootleg", "The King of Fighters Special Edition 2004 (The King of Fighters 2002 bootleg Set 1)", MACHINE_MECHANICAL ) /* Hack / Bootleg of kof2002 */
-GAME( 2003, svcpcb,     0,        neogeo_noslot,   dualbios, neogeo_state,   init_svcpcb,   ROT0, "SNK Playmore", "SNK vs. Capcom - SVC Chaos (JAMMA PCB, set 1)", MACHINE_MECHANICAL ) // not a clone of neogeo because it's NOT a neogeo cart.
-GAME( 2003, svcpcba,    svcpcb,   neogeo_noslot,   dualbios, neogeo_state,   init_svcpcb,   ROT0, "SNK Playmore", "SNK vs. Capcom - SVC Chaos (JAMMA PCB, set 2)" , MACHINE_MECHANICAL ) /* Encrypted Code */
+GAME( 2003, svcpcb,     0,        neogeo_noslot,   dualbios, neogeo_state, init_svcpcb,   ROT0, "SNK Playmore", "SNK vs. Capcom - SVC Chaos (JAMMA PCB, set 1)", MACHINE_MECHANICAL ) // not a clone of neogeo because it's NOT a neogeo cart.
+GAME( 2003, svcpcba,    svcpcb,   neogeo_noslot,   dualbios, neogeo_state, init_svcpcb,   ROT0, "SNK Playmore", "SNK vs. Capcom - SVC Chaos (JAMMA PCB, set 2)" , MACHINE_MECHANICAL ) /* Encrypted Code */
 GAME( 2003, svc,        neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_svc,      ROT0, "SNK Playmore", "SNK vs. Capcom - SVC Chaos (NGM-2690)(NGH-2690)", MACHINE_MECHANICAL )
 GAME( 2003, svcboot,    svc,      neogeo_noslot,   neogeo, neogeo_state,   init_svcboot,  ROT0, "bootleg", "SNK vs. Capcom - SVC Chaos (bootleg)", MACHINE_MECHANICAL )
 GAME( 2003, svcplus,    svc,      neogeo_noslot,   neogeo, neogeo_state,   init_svcplus,  ROT0, "bootleg", "SNK vs. Capcom - SVC Chaos Plus (bootleg set 1)", MACHINE_MECHANICAL )
@@ -17241,6 +17270,7 @@ GAME( 1992, wh1ha,      wh1,      neogeo_noslot,   neogeo, neogeo_state,   init_
 GAME( 1993, wh2,        neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "ADK",              "World Heroes 2 (ALM-006)(ALH-006)", MACHINE_MECHANICAL )
 GAME( 1993, wh2h,       wh2,      neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "ADK",              "World Heroes 2 (ALH-006)", MACHINE_MECHANICAL )
 GAME( 1994, wh2j,       neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "ADK / SNK",        "World Heroes 2 Jet (ADM-007)(ADH-007)", MACHINE_MECHANICAL )
+GAME( 1994, wh2ja,      wh2j,     neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "ADK / SNK",        "World Heroes 2 Jet (ADM-007)(Alternate Board)", MACHINE_MECHANICAL )
 GAME( 1994, aodk,       neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "ADK / SNK",        "Aggressors of Dark Kombat / Tsuukai GANGAN Koushinkyoku (ADM-008 ~ ADH-008)", MACHINE_MECHANICAL )
 GAME( 1995, whp,        neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "ADK / SNK",        "World Heroes Perfect", MACHINE_MECHANICAL )
 GAME( 1995, moshougi,   neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "ADK / SNK",        "Syougi No Tatsujin - Master of Syougi", MACHINE_MECHANICAL )
@@ -17371,11 +17401,11 @@ GAME( 2002, matrimbl,   matrim,   neogeo_noslot,   neogeo, neogeo_state,   init_
 GAME( 2001, jockeygp,   neogeo,   neogeo_noslot,   jockeygp, neogeo_state, init_jockeygp, ROT0, "Sun Amusement / BrezzaSoft", "Jockey Grand Prix (set 1)", MACHINE_MECHANICAL )
 GAME( 2001, jockeygpa,  jockeygp, neogeo_noslot,   jockeygp, neogeo_state, init_jockeygp, ROT0, "Sun Amusement / BrezzaSoft", "Jockey Grand Prix (set 2)", MACHINE_MECHANICAL )
 
-GAME( 2001, vliner,     neogeo,   neogeo_noctrl,   vliner,   neogeo_state,   init_vliner,   ROT0, "Dyna / BrezzaSoft", "V-Liner (v0.7a)", MACHINE_MECHANICAL )
-GAME( 2001, vliner7e,   vliner,   neogeo_noctrl,   vliner,   neogeo_state,   init_vliner,   ROT0, "Dyna / BrezzaSoft", "V-Liner (v0.7e)", MACHINE_MECHANICAL )
-GAME( 2001, vliner6e,   vliner,   neogeo_noctrl,   vliner,   neogeo_state,   init_vliner,   ROT0, "Dyna / BrezzaSoft", "V-Liner (v0.6e)", MACHINE_MECHANICAL )
-GAME( 2001, vliner54,   vliner,   neogeo_noctrl,   vliner,   neogeo_state,   init_vliner,   ROT0, "Dyna / BrezzaSoft", "V-Liner (v0.54)", MACHINE_MECHANICAL )
-GAME( 2001, vliner53,   vliner,   neogeo_noctrl,   vliner,   neogeo_state,   init_vliner,   ROT0, "Dyna / BrezzaSoft", "V-Liner (v0.53)", MACHINE_MECHANICAL )
+GAME( 2001, vliner,     neogeo,   neogeo_noctrl,   vliner,   neogeo_state, init_vliner,   ROT0, "Dyna / BrezzaSoft", "V-Liner (v0.7a)", MACHINE_MECHANICAL )
+GAME( 2001, vliner7e,   vliner,   neogeo_noctrl,   vliner,   neogeo_state, init_vliner,   ROT0, "Dyna / BrezzaSoft", "V-Liner (v0.7e)", MACHINE_MECHANICAL )
+GAME( 2001, vliner6e,   vliner,   neogeo_noctrl,   vliner,   neogeo_state, init_vliner,   ROT0, "Dyna / BrezzaSoft", "V-Liner (v0.6e)", MACHINE_MECHANICAL )
+GAME( 2001, vliner54,   vliner,   neogeo_noctrl,   vliner,   neogeo_state, init_vliner,   ROT0, "Dyna / BrezzaSoft", "V-Liner (v0.54)", MACHINE_MECHANICAL )
+GAME( 2001, vliner53,   vliner,   neogeo_noctrl,   vliner,   neogeo_state, init_vliner,   ROT0, "Dyna / BrezzaSoft", "V-Liner (v0.53)", MACHINE_MECHANICAL )
 
 /* Kyle Hodgetts */
 GAME( 2000, diggerma,   neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Kyle Hodgetts", "Digger Man (Prototype)", MACHINE_MECHANICAL )
@@ -17397,8 +17427,8 @@ GAME( 1999, garoud,     garou,    neogeo_noslot,   neogeo, neogeo_state,   init_
 GAME( 1999, garouhd,    garou,    neogeo_noslot,   neogeo, neogeo_state,   init_garouhd,  ROT0, "SNK", "Garou - Mark of the Wolves (NGM-2530 ~ NGH-2530)(Decrypted C)" , MACHINE_MECHANICAL )
 GAME( 2001, jckeygpd,   jockeygp, neogeo_noslot,   jockeygp, neogeo_state, init_jckeygpd, ROT0, "Sun Amusement / BrezzaSoft", "Jockey Grand Prix (Decrypted C)", MACHINE_MECHANICAL )
 GAME( 1996, kof96ep,    kof96,    neogeo_noslot,   neogeo, neogeo_state,   init_kof96ep,  ROT0, "bootleg", "The King of Fighters '96 (bootleg)", MACHINE_MECHANICAL )
-GAME( 2003, kof97pla,   kof97,    neogeo_noslot,   neogeo, neogeo_state,   init_kof97pla, ROT0, "bootleg", "The King of Fighters '97 Orochi Plus 2003 (bootleg)", MACHINE_MECHANICAL )
-GAME( 1999, kof99d,     kof99,    neogeo_noslot,   neogeo, neogeo_state,   init_kof99d,   ROT0, "SNK", "The King of Fighters '99  - Millennium Battle (Decrypted C)" , MACHINE_MECHANICAL )
+GAME( 2003, kof97pla,   kof97,    neogeo_noslot,   neogeo, neogeo_state,   init_kof97pla, ROT0, "bootleg", "The King of Fighters '97 Chongchu Jianghu Plus 2003 (bootleg)", MACHINE_MECHANICAL )
+GAME( 1999, kof99d,     kof99,    neogeo_noslot,   neogeo, neogeo_state,   init_kof99,    ROT0, "SNK", "The King of Fighters '99  - Millennium Battle (Decrypted C)" , MACHINE_MECHANICAL )
 GAME( 1999, kof99kd,    kof99,    neogeo_noslot,   neogeo, neogeo_state,   init_kof99,    ROT0, "SNK", "The King of Fighters '99  - Millennium Battle (Korean release, decrypted C)", MACHINE_MECHANICAL )
 GAME( 2000, kof2kd,     kof2000,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2000,  ROT0, "SNK", "The King of Fighters 2000 (Decrypted C)", MACHINE_MECHANICAL )
 GAME( 2000, kof2knd,    kof2000,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2000,  ROT0, "SNK", "The King of Fighters 2000 (Non-encrypted, Decrypted C)", MACHINE_MECHANICAL )
@@ -17406,13 +17436,16 @@ GAME( 2001, kof2k1d,    kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_
 GAME( 2001, kof2k1hd,   kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Eolith / SNK", "The King of Fighters 2001 (Non-encrypted, Decrypted C)", MACHINE_MECHANICAL )
 GAME( 2001, kof2k1nd,   kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Eolith / SNK", "The King of Fighters 2001 (Fully Decrypted)", MACHINE_MECHANICAL )
 GAME( 2001, kof2k1e,    kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Eolith / SNK", "The King of Fighters 2001 (Fully Decrypted, Earlier)", MACHINE_MECHANICAL )
-GAME( 2002, kf2k1pls,   kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2001,  ROT0, "bootleg", "The King of Fighters 2001 Plus (Set 2, bootleg)", MACHINE_MECHANICAL )
-GAME( 2003, kf2k1pla,   kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_kf2k1pa,  ROT0, "bootleg", "The King of Fighters 2001 Plus (set 1, bootleg)", MACHINE_MECHANICAL )
+GAME( 2001, kf2k1bh,    kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2001,  ROT0, "Eolith / SNK", "The King of Fighters 2001 (bootleg)" , MACHINE_MECHANICAL )
+GAME( 2002, kf2k1pls,   kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2001,  ROT0, "bootleg", "The King of Fighters 2001 Plus (Set 1, bootleg)", MACHINE_MECHANICAL )
+GAME( 2003, kf2k1pla,   kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_kf2k1pa,  ROT0, "bootleg", "The King of Fighters 2001 Plus (set 2, bootleg)", MACHINE_MECHANICAL )
 GAME( 2002, kof2k2d,    kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2002,  ROT0, "Eolith / Playmore", "The King of Fighters 2002 (Decrypted C)", MACHINE_MECHANICAL )
 GAME( 2002, kof2k2nd,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Eolith / Playmore", "The King of Fighters 2002 (Full Decrypted)" , MACHINE_MECHANICAL )
 GAME( 2002, kf2k2plad,  kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kf2k2pla, ROT0, "bootleg", "The King of Fighters 2002 Plus (bootleg Set 1, Decrypted C)", MACHINE_MECHANICAL )
 GAME( 2002, kf2k2plb,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kf2k2plb, ROT0, "bootleg", "The King of Fighters 2002 Plus (bootleg Set 3)" , MACHINE_MECHANICAL )
 GAME( 2002, kf2k2plc,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kf2k2plc, ROT0, "bootleg", "The King of Fighters 2002 Plus (bootleg Set 4)" , MACHINE_MECHANICAL )
+GAME( 2002, kf2k2pld,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2002,  ROT0, "bootleg", "The King of Fighters 2002 Plus (bootleg Set 5)" , MACHINE_MECHANICAL )
+GAME( 2002, kf2k2mpl,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2002,  ROT0, "bootleg", "The King of Fighters 2002 Magic Plus (bootleg, set 2)", MACHINE_MECHANICAL )
 GAME( 2003, kof2003d,   kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2003,  ROT0, "SNK Playmore", "The King of Fighters 2003 (Decrypted P&C)", MACHINE_MECHANICAL )
 GAME( 2003, kof2003f,   kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK Playmore", "The King of Fighters 2003 (Fully Decrypted - Fixed)", MACHINE_MECHANICAL )
 GAME( 2003, kof2k3d,    kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2003,  ROT0, "SNK Playmore", "The King of Fighters 2003 (Decrypted C)", MACHINE_MECHANICAL )
@@ -17424,7 +17457,7 @@ GAME( 2004, kf2k3pd,    kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_
 GAME( 2003, kf2k3upd,   kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK Playmore", "The King of Fighters 2004 EX Ultra Plus (The King of Fighters 2003 bootleg, fully decrypted)", MACHINE_MECHANICAL )
 GAME( 2003, kf2k3bl2,   kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2003b, ROT0, "bootleg", "The King of Fighters 2003 (bootleg Boss hack)", MACHINE_MECHANICAL )
 GAME( 1997, kogd,       kof97,    hbmame_kog,      neogeo, neogeo_state,   init_kogd,     ROT0, "bootleg", "King of Gladiator (The King of Fighters '97 bootleg / fully Decrypted)", MACHINE_MECHANICAL )
-GAME( 1997, kogplus,    kof97,    hbmame_kog,      neogeo, neogeo_state,   init_kogd,     ROT0, "bootleg", "King of Gladiator Plus (The King of Fighters '97 bootleg)", MACHINE_MECHANICAL )
+GAME( 1997, kogplusd,   kof97,    hbmame_kog,      neogeo, neogeo_state,   init_kogd,     ROT0, "bootleg", "King of Gladiator Plus (The King of Fighters '97 bootleg / fully Decrypted)", MACHINE_MECHANICAL )
 GAME( 2005, kof10thd,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "The King of Fighters 10th Anniversary (The King of Fighters 2002 bootleg / fully decrypted)", MACHINE_MECHANICAL )
 GAME( 2008, kf2k8uni,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "The King of Fighters 10th Anniversary 2008 Unique (The King of Fighters 2002 bootleg)", MACHINE_MECHANICAL )
 GAME( 2008, kf2k8unid,  kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "The King of Fighters 10th Anniversary 2008 Unique (The King of Fighters 2002 bootleg / fully decrypted)" , MACHINE_MECHANICAL )
@@ -17445,31 +17478,31 @@ GAME( 2003, pnyaad,     pnyaa,    neogeo_noslot,   neogeo, neogeo_state,   init_
 GAME( 2003, pnyaadd,    pnyaa,    neogeo_noslot,   neogeo, neogeo_state,   init_pnyaad,   ROT0, "Aiky", "Pochi and Nyaa (Decrypted C, Set 2)", MACHINE_MECHANICAL )
 GAME( 2003, pnyaan,     pnyaa,    neogeo_noslot,   neogeo, neogeo_state,   init_pnyaan,   ROT0, "Aiky", "Pochi and Nyaa (Fully Decrypted)", MACHINE_MECHANICAL )
 GAME( 1999, preisl2d,   preisle2, neogeo_noslot,   neogeo, neogeo_state,   init_cmc42sfix,ROT0, "Yumekobo", "Prehistoric Isle 2 (Decrypted C)", MACHINE_MECHANICAL )
-GAME( 2002, rotdd,      rotd,     neogeo_noslot,   neogeo, neogeo_state,   init_rotdd,    ROT0, "Evoga / Playmore", "Rage of the Dragons (Decrypted C)", MACHINE_MECHANICAL )
-GAME( 2002, rotdnd,     rotd,     neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Evoga / Playmore", "Rage of the Dragons (Fully Decrypted)", MACHINE_MECHANICAL )
+GAME( 2002, rotdd,      rotd,     neogeo_noslot,   neogeo, neogeo_state,   init_rotdnd,   ROT0, "Evoga / Playmore", "Rage of the Dragons (Decrypted C)", MACHINE_MECHANICAL )
+GAME( 2002, rotdnd,     rotd,     neogeo_noslot,   neogeo, neogeo_state,   init_rotdnd,   ROT0, "Evoga / Playmore", "Rage of the Dragons (Fully Decrypted)", MACHINE_MECHANICAL )
 GAME( 2002, rotdndd,    rotd,     neogeo_noslot,   neogeo, neogeo_state,   init_rotdnd,   ROT0, "Bootleg", "Rage of the Dragons (bootleg, Decrypted C)", MACHINE_MECHANICAL )
 GAME( 1999, s1945pd,    s1945p,   neogeo_noslot,   neogeo, neogeo_state,   init_cmc42sfix,ROT0, "Psikyo", "Strikers 1945 Plus (Decrypted C)", MACHINE_MECHANICAL )
 GAME( 2010, samsh3bh,   samsho3,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "Samurai Shodown III / Samurai Spirits - Zankurou Musouken (Enhanced, bootleg, Hack)", MACHINE_MECHANICAL )
 GAME( 2003, samsh5bd,   samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "Samurai Shodown V / Samurai Spirits Zero (bootleg, fully decrypted)", MACHINE_MECHANICAL )
-GAME( 2003, samsh5cd,   samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_sam5hb,   ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V / Samurai Spirits Zero (Custom Decrypted)", MACHINE_MECHANICAL )
-GAME( 2003, samsh5d,    samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_sam5hb,   ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V / Samurai Spirits Zero (Decrypted C)", MACHINE_MECHANICAL )
-GAME( 2003, samsh5hd,   samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_sam5hb,   ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V / Samurai Spirits Zero (Non-encrypted, Decrypted C)", MACHINE_MECHANICAL )
-GAME( 2003, samsh5nd,   samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_sam5hb,   ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V / Samurai Spirits Zero (Fully Decrypted)", MACHINE_MECHANICAL )
+GAME( 2003, samsh5cd,   samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_samsho5,  ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V / Samurai Spirits Zero (Custom Decrypted)", MACHINE_MECHANICAL )
+GAME( 2003, samsh5d,    samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_samsho5,  ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V / Samurai Spirits Zero (Decrypted C)", MACHINE_MECHANICAL )
+GAME( 2003, samsh5hd,   samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_samsho5,  ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V / Samurai Spirits Zero (Non-encrypted, Decrypted C)", MACHINE_MECHANICAL )
+GAME( 2003, samsh5nd,   samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_samsho5,  ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V / Samurai Spirits Zero (Fully Decrypted)", MACHINE_MECHANICAL )
 GAME( 2004, ssh5spnd,   samsh5sp, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V Special / Samurai Spirits Zero Special (Non encrypted P, decrypted C)", MACHINE_MECHANICAL )
 GAME( 2004, ssh5spn,    samsh5sp, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V Special / Samurai Spirits Zero Special (Fully decrypted)", MACHINE_MECHANICAL )
-GAME( 2004, sams5spd,   samsh5sp, neogeo_noslot,   neogeo, neogeo_state,   init_sam5sphb, ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V Special / Samurai Spirits Zero Special (Decrypted C)", MACHINE_MECHANICAL )
-GAME( 2004, samsh5spd,  samsh5sp, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V Special / Samurai Spirits Zero Special (Fully Decrypted C)", MACHINE_MECHANICAL )
-GAME( 2004, samsh5spd2, samsh5sp, neogeo_noslot,   neogeo, neogeo_state,   init_sam5sphb, ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V Special / Samurai Spirits Zero Special (No encrypted P)", MACHINE_MECHANICAL )
-GAME( 2004, sams5sod,   samsh5sp, neogeo_noslot,   neogeo, neogeo_state,   init_sam5sphb, ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V Special / Samurai Spirits Zero Special (1st release, censored)(decrypted C)", MACHINE_MECHANICAL )
-GAME( 2004, sams5shd,   samsh5sp, neogeo_noslot,   neogeo, neogeo_state,   init_sam5sphb, ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V Special / Samurai Spirits Zero Special (2nd release, less censored)(decrypted C)", MACHINE_MECHANICAL )
+GAME( 2004, sams5spd,   samsh5sp, neogeo_noslot,   neogeo, neogeo_state,   init_samsh5sp, ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V Special / Samurai Spirits Zero Special (Decrypted C)", MACHINE_MECHANICAL )
+GAME( 2004, samsh5spd,  samsh5sp, neogeo_noslot,   neogeo, neogeo_state,   init_samsh5sp,   ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V Special / Samurai Spirits Zero Special (Fully Decrypted C)", MACHINE_MECHANICAL )
+GAME( 2004, samsh5spd2, samsh5sp, neogeo_noslot,   neogeo, neogeo_state,   init_samsh5sp, ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V Special / Samurai Spirits Zero Special (No encrypted P)", MACHINE_MECHANICAL )
+GAME( 2004, sams5sod,   samsh5sp, neogeo_noslot,   neogeo, neogeo_state,   init_samsh5sp, ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V Special / Samurai Spirits Zero Special (1st release, censored)(decrypted C)", MACHINE_MECHANICAL )
+GAME( 2004, sams5shd,   samsh5sp, neogeo_noslot,   neogeo, neogeo_state,   init_samsh5sp, ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V Special / Samurai Spirits Zero Special (2nd release, less censored)(decrypted C)", MACHINE_MECHANICAL )
 GAME( 2001, sengok3d,   sengoku3, neogeo_noslot,   neogeo, neogeo_state,   init_cmc42sfix,ROT0, "Noise Factory / SNK",  "Sengoku 3 / Sengoku Densho 2001 (Decrypted C)", MACHINE_MECHANICAL )
 GAME( 2003, svcda,      svc,      neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK Playmore", "SNK vs. Capcom - SVC Chaos (MVS / Fully Decrypted)", MACHINE_MECHANICAL )
-GAME( 2003, svcd,       svc,      neogeo_noslot,   neogeo, neogeo_state,   init_svchb,    ROT0, "SNK Playmore", "SNK vs. Capcom - SVC Chaos (Decrypted C)", MACHINE_MECHANICAL )
-GAME( 2003, svcnd,      svc,      neogeo_noslot,   neogeo, neogeo_state,   init_svchb,    ROT0, "SNK Playmore", "SNK vs. Capcom - SVC Chaos (Fully Decrypted)", MACHINE_MECHANICAL )
+GAME( 2003, svcd,       svc,      neogeo_noslot,   neogeo, neogeo_state,   init_svc,      ROT0, "SNK Playmore", "SNK vs. Capcom - SVC Chaos (Decrypted C)", MACHINE_MECHANICAL )
+GAME( 2003, svcnd,      svc,      neogeo_noslot,   neogeo, neogeo_state,   init_svc,      ROT0, "SNK Playmore", "SNK vs. Capcom - SVC Chaos (Fully Decrypted)", MACHINE_MECHANICAL )
 GAME( 2003, svcplusb,   svc,      neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "SNK vs. Capcom - SVC Chaos (bootleg, set 3)", MACHINE_MECHANICAL )
-GAME( 2003, svcplusn,   svc,      neogeo_noslot,   neogeo, neogeo_state,   init_svchb,    ROT0, "bootleg", "SNK vs. Capcom - SVC Chaos Plus (bootleg, set 1)", MACHINE_MECHANICAL )
-GAME( 2003, svcplusd,   svc,      neogeo_noslot,   neogeo, neogeo_state,   init_svchb,    ROT0, "bootleg", "SNK vs. Capcom - SVC Chaos Plus (bootleg, fully decrypted)", MACHINE_MECHANICAL )
-GAME( 2003, svcpcbd,    svcpcb,   neogeo_noslot,   dualbios, neogeo_state, init_svchb,    ROT0, "SNK Playmore", "SNK vs. Capcom - SVC Chaos (JAMMA PCB, Decrypted C & V)", MACHINE_MECHANICAL )
+GAME( 2003, svcplusn,   svc,      neogeo_noslot,   neogeo, neogeo_state,   init_svc,      ROT0, "bootleg", "SNK vs. Capcom - SVC Chaos Plus (bootleg, set 1)", MACHINE_MECHANICAL )
+GAME( 2003, svcplusd,   svc,      neogeo_noslot,   neogeo, neogeo_state,   init_svc,      ROT0, "bootleg", "SNK vs. Capcom - SVC Chaos Plus (bootleg, fully decrypted)", MACHINE_MECHANICAL )
+GAME( 2003, svcpcbd,    svcpcb,   neogeo_noslot,   dualbios, neogeo_state, init_svc,      ROT0, "SNK Playmore", "SNK vs. Capcom - SVC Chaos (JAMMA PCB, Decrypted C & V)", MACHINE_MECHANICAL )
 GAME( 2001, zupapad,    zupapa,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "Zupapa! (Custom decrypted C, Set 1)", MACHINE_MECHANICAL )
 GAME( 2001, zupapand,   zupapa,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "Zupapa! (Custom decrypted C, Set 2)", MACHINE_MECHANICAL )
 
@@ -17603,7 +17636,7 @@ GAME( 1994, panicbomp,  panicbom, neogeo_noslot,   neogeo, neogeo_state,   init_
 GAME( 1994, pbobblenp,  pbobblen, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Taito", "Puzzle Bobble / Bust-A-Move (Predecrypted P)", MACHINE_MECHANICAL )
 GAME( 1999, preisl2p,   preisle2, neogeo_noslot,   neogeo, neogeo_state,   init_cmc42sfix, ROT0, "Yumekobo", "Prehistoric Isle 2 (Predecrypted S)", MACHINE_MECHANICAL )
 GAME( 1997, puzzldprp,  puzzledp, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Taito (Visco license)", "Puzzle De Pon! R! (Predecrypted S)", MACHINE_MECHANICAL )
-GAME( 2002, rotdp,      rotd,     neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Evoga / Playmore", "Rage of the Dragons (Predecrypted P)", MACHINE_MECHANICAL )
+GAME( 2002, rotdp,      rotd,     neogeo_noslot,   neogeo, neogeo_state,   init_rotdnd,   ROT0, "Evoga / Playmore", "Rage of the Dragons (Predecrypted P)", MACHINE_MECHANICAL )
 GAME( 1998, rbff2p,     rbff2,    neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "Real Bout Fatal Fury 2 - The Newcomers / Real Bout Garou Densetsu 2 - the newcomers (Predecrypted V)", MACHINE_MECHANICAL )
 GAME( 1999, s1945pp,    s1945p,   neogeo_noslot,   neogeo, neogeo_state,   init_cmc42sfix, ROT0, "Psikyo", "Strikers 1945 Plus (Predecrypted S)", MACHINE_MECHANICAL )
 GAME( 2003, samsh5ndp,  samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Yuki Enterprise / SNK Playmore",  "Samurai Shodown V / Samurai Spirits Zero (Fully Decrypted)(Predecrypted C & V)", MACHINE_MECHANICAL )
@@ -17614,10 +17647,10 @@ GAME( 2001, sengok3p,   sengoku3, neogeo_noslot,   neogeo, neogeo_state,   init_
 GAME( 2001, sengok3ndp, sengoku3, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Noise Factory / SNK",  "Sengoku 3 / Sengoku Densho 2001 (Fully Decrypted)(Predecrypted S & P)", MACHINE_MECHANICAL )
 GAME( 1994, sonicwi2p,  sonicwi2, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Video System Co.", "Aero Fighters 2 / Sonic Wings 2 (Predecrypted V)", MACHINE_MECHANICAL )
 GAME( 1994, strhoopp,   strhoop,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Data East Corporation", "Street Hoop / Street Slam / Dunk Dream (Predecrypted C & V)", MACHINE_MECHANICAL )
-GAME( 2003, svcp,       svcpcb,   neogeo_noslot,   neogeo, neogeo_state,   init_svchb,    ROT0, "SNK Playmore", "SNK vs. Capcom - SVC Chaos (Predecrypted S & P)", MACHINE_MECHANICAL )
-GAME( 2003, svcplusp,   svcpcb,   neogeo_noslot,   neogeo, neogeo_state,   init_svchb,    ROT0, "bootleg", "SNK vs. Capcom - SVC Chaos Plus (bootleg set 1)(Predecrypted M & P)", MACHINE_MECHANICAL )
-GAME( 2003, svcplusap,  svcpcb,   neogeo_noslot,   neogeo, neogeo_state,   init_svchb,    ROT0, "bootleg", "SNK vs. Capcom - SVC Chaos Plus (bootleg set 2)(Predecrypted M & P)", MACHINE_MECHANICAL )
-GAME( 2003, svcsplusp,  svcpcb,   neogeo_noslot,   neogeo, neogeo_state,   init_svchb,    ROT0, "bootleg", "SNK vs. Capcom - SVC Chaos Super Plus (bootleg)(Predecrypted M & P)", MACHINE_MECHANICAL )
+GAME( 2003, svcp,       svcpcb,   neogeo_noslot,   neogeo, neogeo_state,   init_svc,      ROT0, "SNK Playmore", "SNK vs. Capcom - SVC Chaos (Predecrypted S & P)", MACHINE_MECHANICAL )
+GAME( 2003, svcplusp,   svcpcb,   neogeo_noslot,   neogeo, neogeo_state,   init_svc,      ROT0, "bootleg", "SNK vs. Capcom - SVC Chaos Plus (bootleg set 1)(Predecrypted M & P)", MACHINE_MECHANICAL )
+GAME( 2003, svcplusap,  svcpcb,   neogeo_noslot,   neogeo, neogeo_state,   init_svc,      ROT0, "bootleg", "SNK vs. Capcom - SVC Chaos Plus (bootleg set 2)(Predecrypted M & P)", MACHINE_MECHANICAL )
+GAME( 2003, svcsplusp,  svcpcb,   neogeo_noslot,   neogeo, neogeo_state,   init_svc,      ROT0, "bootleg", "SNK vs. Capcom - SVC Chaos Super Plus (bootleg)(Predecrypted M & P)", MACHINE_MECHANICAL )
 GAME( 1992, wh1p,       wh1,      neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Alpha Denshi Co.", "World Heroes (Predecrypted C)", MACHINE_MECHANICAL )
 GAME( 1995, whpp,       whp,      neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "ADK / SNK", "World Heroes Perfect (Predecrypted C)", MACHINE_MECHANICAL )
 GAME( 1994, wjammersp,  wjammers, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Data East Corporation", "Windjammers / Flying Power Disc (Predecrypted S & V)", MACHINE_MECHANICAL )
