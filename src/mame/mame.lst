@@ -1439,10 +1439,10 @@ samsh5nd                        // Decrypted / Bootleg
 ssh5spnd                        // Decrypted / Bootleg
 ssh5spn                         // Decrypted / Bootleg
 sams5spd                        // Decrypted / Bootleg
-samsh5spd                       // Decrypted / Bootleg
-samsh5spd2                      // Decrypted / Bootleg
 sams5sod                        // Decrypted / Bootleg
 sams5shd                        // Decrypted / Bootleg
+samsh5sphd                      // Decrypted / Bootleg
+samsh5spnd                      // Decrypted / Bootleg
 sengok3d                        // Decrypted / Bootleg
 svcda                           // Decrypted / Bootleg
 svcd                            // Decrypted / Bootleg
@@ -1509,6 +1509,7 @@ rbff2p                          // Predecrypted
 s1945pp                         // Predecrypted
 samsh5ndp                       // Predecrypted
 samsh5spdp                      // Predecrypted
+samsh5spdp1                     // Predecrypted
 samsh5spndp                     // Predecrypted
 sengoku2p                       // Predecrypted
 sengok3p                        // Predecrypted
@@ -2327,7 +2328,6 @@ samsh5sphc07                    // Hack
 samsh5sphc08                    // Hack
 samsh5sphc09                    // Hack
 samsh5sphc10                    // Hack
-samsh5sphc11                    // Hack
 savagerehc01                    // Hack
 savagerehc02                    // Hack
 savagerehc03                    // Hack
