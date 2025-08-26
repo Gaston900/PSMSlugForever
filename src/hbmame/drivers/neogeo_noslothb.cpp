@@ -11952,7 +11952,7 @@ ROM_START( kof2002hc25 ) //kof2002mp2
 	ROM_LOAD16_WORD_SWAP( "265_hc25.p2", 0x100000, 0x454F52, CRC(65264886) SHA1(261f539d1844b7fb1b560681ce1681ca1c615b5c) )
     ROM_DEFAULT_BIOS("console_mode")
 
-	NEO_SFIX_128K( "265_hc25.bin", CRC(446e74c5) SHA1(efc2afb26578bad9eb21659c70eb0f827d6d1ef6) )
+	NEO_SFIX_128K( "k2k2m2s1.bin", CRC(446e74c5) SHA1(efc2afb26578bad9eb21659c70eb0f827d6d1ef6) )
 
 	NEO_BIOS_AUDIO_ENCRYPTED_128K( "265.m1", CRC(85aaa632) SHA1(744fba4ca3bc3a5873838af886efb97a8a316104) )
 
@@ -12820,11 +12820,11 @@ ROM_START( kof2002hc56 ) //kof2k2plus
 
 	NEO_SFIX_128K( "265_hc56.s1", CRC(96bdd036) SHA1(62baba893e10dbed5c5099040b07432c0737be42) )
 
-	NEO_BIOS_AUDIO_ENCRYPTED_128K( "265.m1", CRC(85aaa632) SHA1(744fba4ca3bc3a5873838af886efb97a8a316104) )
+	NEO_BIOS_AUDIO_128K( "265d.m1", CRC(1c661a4b) SHA1(4e5aa862a0a182a806d538996ddc68d9f2dffaf7) )
 
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
-	ROM_LOAD( "265.v1", 0x000000, 0x800000, CRC(15e8f3f5) SHA1(7c9e6426b9fa6db0158baa17a6485ffce057d889) )
-	ROM_LOAD( "265.v2", 0x800000, 0x800000, CRC(da41d6f9) SHA1(a43021f1e58947dcbe3c8ca5283b20b649f0409d) )
+	ROM_LOAD( "kf10-v1.bin", 0x000000, 0x800000, CRC(0fc9a58d) SHA1(9d79ef00e2c2abd9f29af5521c2fbe5798bf336f) )
+	ROM_LOAD( "kf10-v2.bin", 0x800000, 0x800000, CRC(b8c475a4) SHA1(10caf9c69927a223445d2c4b147864c02ce520a8) )
 
 	ROM_REGION( 0x4000000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "265_hc54.c1", 0x0000000, 0x800000, CRC(93cf6345) SHA1(1e4194556082ed29bab45a5ccf42022c9c9515b0) )
@@ -13157,11 +13157,11 @@ ROM_START( kof2002hc69 ) //Kof2k2plus2017v2
 
 	NEO_SFIX_128K( "265_hc56.s1", CRC(96bdd036) SHA1(62baba893e10dbed5c5099040b07432c0737be42) )
 
-	NEO_BIOS_AUDIO_ENCRYPTED_128K( "265.m1", CRC(85aaa632) SHA1(744fba4ca3bc3a5873838af886efb97a8a316104) )
+	NEO_BIOS_AUDIO_128K( "265d.m1", CRC(1c661a4b) SHA1(4e5aa862a0a182a806d538996ddc68d9f2dffaf7) )
 
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
-	ROM_LOAD( "265.v1", 0x000000, 0x800000, CRC(15e8f3f5) SHA1(7c9e6426b9fa6db0158baa17a6485ffce057d889) )
-	ROM_LOAD( "265.v2", 0x800000, 0x800000, CRC(da41d6f9) SHA1(a43021f1e58947dcbe3c8ca5283b20b649f0409d) )
+	ROM_LOAD( "kf10-v1.bin", 0x000000, 0x800000, CRC(0fc9a58d) SHA1(9d79ef00e2c2abd9f29af5521c2fbe5798bf336f) )
+	ROM_LOAD( "kf10-v2.bin", 0x800000, 0x800000, CRC(b8c475a4) SHA1(10caf9c69927a223445d2c4b147864c02ce520a8) )
 
 	ROM_REGION( 0x4000000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "265_hc54.c1", 0x0000000, 0x800000, CRC(93cf6345) SHA1(1e4194556082ed29bab45a5ccf42022c9c9515b0) )
@@ -17519,7 +17519,7 @@ ROM_START( svchc03 ) //svcbfxl
 	ROM_LOAD16_WORD_SWAP( "269_hc03.p1", 0x000000, 0x600000, CRC(23cf45fe) SHA1(afe8ed7b714bee220052c90f07bb3b7f37fdec7b) )
     ROM_DEFAULT_BIOS("console_mode")
 
-	NEO_SFIX_512K( "269nd.s1", CRC(ad184232) SHA1(6645d323d641004fa7a17e3b1e65613f398c95dd) )
+	NEO_SFIX_512K( "269d.s1", CRC(ad184232) SHA1(6645d323d641004fa7a17e3b1e65613f398c95dd) )
 
 	NEO_BIOS_AUDIO_128K( "269d.m1", CRC(1bfa0f6f) SHA1(b59b02d73d5f9a32935db656f888caac6e622a20) )
 
@@ -18776,7 +18776,7 @@ GAME( 2020, kof2002hc52,      kof2002,  neogeo_noslot, neogeo, neogeo_state, ini
 GAME( 2020, kof2002hc53,      kof2002,  neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "The King of Fighters 2002 (Third Edition of the Kingdom of Gods 2020-06-14)", MACHINE_MECHANICAL )
 GAME( 2020, kof2002hc54,      kof2002,  gsc,           neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "The King of Fighters 2002 (Resurrection 2017 2020-07-17)", MACHINE_MECHANICAL )
 GAME( 2020, kof2002hc55,      kof2002,  neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "The King of Fighters 2002 (Lucar Enhanced Edition 2020-08-09)", MACHINE_MECHANICAL )
-GAME( 2020, kof2002hc56,      kof2002,  gsc,           neogeo, neogeo_state, init_kof2k2plus,ROT0, "hack",         "The King of Fighters 2002 (Come Back 2017 2020-10-22)", MACHINE_MECHANICAL )
+GAME( 2020, kof2002hc56,      kof2002,  gsc,           neogeo, neogeo_state, init_kof2002,ROT0, "hack",         "The King of Fighters 2002 (Come Back 2017 2020-10-22)", MACHINE_MECHANICAL )
 GAME( 2015, kof2002hc57,      kof2002,  neogeo_noslot, neogeo, neogeo_state, init_kof2002,   ROT0, "hack",         "The King of Fighters 2002 (Remix 2015-11-06)", MACHINE_MECHANICAL )
 GAME( 2018, kof2002hc58,      kof2002,  neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "The King of Fighters 2002 (Tongtian Edition 2018-11-25)", MACHINE_MECHANICAL )
 GAME( 2016, kof2002hc59,      kof2002,  neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "The King of Fighters 2002 (Remix Ultra 3.5 Original 2006-09-13)", MACHINE_MECHANICAL )
@@ -18789,7 +18789,7 @@ GAME( 2018, kof2002hc65,      kof2002,  neogeo_noslot, neogeo, neogeo_state, ini
 GAME( 2017, kof2002hc66,      kof2002,  neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "The King of Fighters 2002 (The 20th Anniversary Omega Edition 2017-12-28)", MACHINE_MECHANICAL )
 GAME( 2021, kof2002hc67,      kof2002,  neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "The King of Fighters 2002 (Snake Slayer Tongtian Ultimate Enhanced Edition 2021-03-30)", MACHINE_MECHANICAL )
 GAME( 2022, kof2002hc68,      kof2002,  neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "The King of Fighters 2002 (Kof All Mix Omega)", MACHINE_MECHANICAL )
-GAME( 2019, kof2002hc69,      kof2002,  gsc,           neogeo, neogeo_state, init_kof2k2plus,ROT0, "hack",         "The King of Fighters 2002 Plus (2019-01-06)" , MACHINE_MECHANICAL )
+GAME( 2019, kof2002hc69,      kof2002,  gsc,           neogeo, neogeo_state, init_kof2002,ROT0, "hack",         "The King of Fighters 2002 Plus (2019-01-06)" , MACHINE_MECHANICAL )
 GAME( 2014, kof2002hc70,      kof2002,  neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "The King of Fighters 2002 Plus (Optimised 2014-12-01)", MACHINE_MECHANICAL )
 GAME( 2019, kof2002hc71,      kof2002,  neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "The King of Fighters 2002 (Tianguo Protoss 2019-10-21)", MACHINE_MECHANICAL )
 GAME( 2019, kof2002hc72,      kof2002,  neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "The King of Fighters 2002 (The Resurrection of the Kingdom of Heaven 2019 2019-11-29)", MACHINE_MECHANICAL )
@@ -18864,12 +18864,12 @@ GAME( 1997, neobombehc01,     neobombe, neogeo_noslot, neogeo, neogeo_state, ini
 GAME( 1996, ninjamashc01,     ninjamas, neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Ninja Master's - haoh-ninpo-cho (Enable Hidden Characters)", MACHINE_MECHANICAL )
 GAME( 2022, ninjamashc02,     ninjamas, neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Ninja Master's - haoh-ninpo-cho (Ultimate Simplification 2021-06-18)", MACHINE_MECHANICAL )
 GAME( 2017, ninjamashc03,     ninjamas, neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Ninja Master's - haoh-ninpo-cho (Plus 2017-05-10)", MACHINE_MECHANICAL )
-GAME( 2000, nitdhc01,         nitd,     neogeo_noslot, neogeo, neogeo_state, init_cmc42sfix, ROT0, "hack",         "Nightmare in the Dark (Translation French)" , MACHINE_MECHANICAL )
-GAME( 2000, nitdhc02,         nitd,     neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Nightmare in the Dark (Translation Spanish)", MACHINE_MECHANICAL )
+GAME( 2000, nitdhc01,         nitd,     neogeo_noslot, neogeo, neogeo_state, init_nitd,      ROT0, "hack",         "Nightmare in the Dark (Translation French)" , MACHINE_MECHANICAL )
+GAME( 2000, nitdhc02,         nitd,     neogeo_noslot, neogeo, neogeo_state, init_nitd,      ROT0, "hack",         "Nightmare in the Dark (Translation Spanish)", MACHINE_MECHANICAL )
 GAME( 2000, nitdhc03,         nitd,     neogeo_noslot, neogeo, neogeo_state, init_nitd,      ROT0, "hack",         "Nightmare in the Dark (Ex Super Version)", MACHINE_MECHANICAL )
 GAME( 2009, pbobblenhc01,     pbobblen, neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Puzzle Bobble / Bust-A-Move (Crazy beta 2 2009-07-23)", MACHINE_MECHANICAL )
 GAME( 2020, pbobblenhc02,     pbobblen, neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Puzzle Bobble / Bust-A-Move Crazy", MACHINE_MECHANICAL )
-GAME( 1999, preisle2hc01,     preisle2, neogeo_noslot, neogeo, neogeo_state, init_cmc42sfix, ROT0, "hack",         "Prehistoric Isle 2 (Ex Super Version)", MACHINE_MECHANICAL )
+GAME( 1999, preisle2hc01,     preisle2, neogeo_noslot, neogeo, neogeo_state, init_preisle2,  ROT0, "hack",         "Prehistoric Isle 2 (Ex Super Version)", MACHINE_MECHANICAL )
 GAME( 1995, puzzledphc01,     puzzledp, neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Puzzle De Pon! (Translation Korean)", MACHINE_MECHANICAL )
 GAME( 1997, puzzldprhc01,     puzzledp, neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Puzzle De Pon! R (Translation Korean)", MACHINE_MECHANICAL )
 GAME( 2016, ragnagrdhc01,     ragnagrd, neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Ragnagard / Shin-Oh-Ken (Boss With Simple Attack Edition 2016-02-14)", MACHINE_MECHANICAL )
@@ -18949,7 +18949,7 @@ GAME( 2017, sengoku3hc01,     sengoku3, neogeo_noslot, neogeo, neogeo_state, ini
 GAME( 2001, sengoku3hc02,     sengoku3, neogeo_noslot, neogeo, neogeo_state, init_sengoku3,  ROT0, "DDJ",          "Sengoku 3 / Sengoku Densho 2001 (Always Have Super Move)" , MACHINE_MECHANICAL )
 GAME( 2001, sengoku3hc03,     sengoku3, neogeo_noslot, neogeo, neogeo_state, init_sengoku3,  ROT0, "DDJ",          "Sengoku 3 / Sengoku Densho 2001 (Easy Move)" , MACHINE_MECHANICAL )
 GAME( 2001, sengoku3hc04,     sengoku3, neogeo_noslot, neogeo, neogeo_state, init_sengoku3,  ROT0, "hack",         "Sengoku 3 / Sengoku Densho 2001 (Unlock All Stages And Hidden Character)" , MACHINE_MECHANICAL )
-GAME( 2001, sengoku3hc05,     sengoku3, neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Sengoku 3 / Sengoku Densho 2001 (Evolution v1.0)", MACHINE_MECHANICAL )
+GAME( 2001, sengoku3hc05,     sengoku3, neogeo_noslot, neogeo, neogeo_state, init_sengoku3,  ROT0, "hack",         "Sengoku 3 / Sengoku Densho 2001 (Evolution v1.0)", MACHINE_MECHANICAL )
 GAME( 2013, sengoku3hc06,     sengoku3, neogeo_noslot, neogeo, neogeo_state, init_sengoku3,  ROT0, "hack",         "Sengoku 3 / Sengoku Densho 2001 (Green Blue 2013-02-27)", MACHINE_MECHANICAL )
 GAME( 2020, sengoku3hc07,     sengoku3, neogeo_noslot, neogeo, neogeo_state, init_sengoku3,  ROT0, "hack",         "Sengoku 3 / Sengoku Densho 2001 (Fengshen Edition 2020-04-10)", MACHINE_MECHANICAL )
 GAME( 2009, shocktrohc01,     shocktro, neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Shock Troopers (Ex Super Version 2009-08-18)", MACHINE_MECHANICAL )

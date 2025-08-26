@@ -141,7 +141,6 @@ public:
 
 	// fixed software roms extra configurations
 	void init_bangbead();
-	void init_cmc42sfix();
 	void init_ct2k3sp();
 	void init_ct2k3sa();
 	void init_cthd2003();
@@ -151,10 +150,6 @@ public:
 	void init_garou();
 	void init_garouh();
 	void init_garoubl();
-	void init_garoud();
-	void init_garouhd();
-	void init_irrmaze();
-	void init_jckeygpd();
 	void init_jockeygp();
 	void init_kf10thep();
 	void init_kf2k1pa();
@@ -170,9 +165,6 @@ public:
 	void init_kf2k5uni();
 	void init_kof10th();
 	void init_kof10thu();
-	void init_kof2k2plus();
-	void init_kof2k3fd();
-	void init_kof2k3hd();
 	void init_kof2k3pcd();
 	void init_kof2k4pls();
 	void init_kof2k4se();
@@ -195,11 +187,9 @@ public:
 	void init_matrima();
 	void init_matrimbl();
 	void init_matrimd();
-	void init_matrmehc();
 	void init_nitd();
 	void init_pnyaa();
-	void init_pnyaad();
-	void init_pnyaan();
+	void init_pnyaand();
 	void init_preisle2();
 	void init_rotd();
 	void init_rotdnd();
