@@ -7535,7 +7535,7 @@ ROM_END
 
 ROM_START( kof2001h ) /* AES VERSION */
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "262h.p1",  0x000000, 0x100000, CRC(2af7e741) SHA1(e41282d73ed6d521da056f1a16573bb61bfa3826) )
+	ROM_LOAD16_WORD_SWAP( "262h.p1", 0x000000, 0x100000, CRC(2af7e741) SHA1(e41282d73ed6d521da056f1a16573bb61bfa3826) )
 	ROM_LOAD16_WORD_SWAP( "262h.p2", 0x100000, 0x400000, CRC(91eea062) SHA1(82bae42bbeedb9f3aa0c7c0b0a7a69be499cf98f) )
     ROM_DEFAULT_BIOS("console_mode")
 
@@ -7633,7 +7633,7 @@ ROM_END
 
 ROM_START( kof2002 ) /* Encrypted Set */ /* MVS AND AES VERSION */
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "265.p1",  0x000000, 0x100000, CRC(9ede7323) SHA1(ad9d45498777fda9fa58e75781f48e09aee705a6) )
+	ROM_LOAD16_WORD_SWAP( "265.p1", 0x000000, 0x100000, CRC(9ede7323) SHA1(ad9d45498777fda9fa58e75781f48e09aee705a6) )
 	ROM_LOAD16_WORD_SWAP( "265.p2", 0x100000, 0x400000, CRC(327266b8) SHA1(98f445cc0a94f8744d74bca71cb420277622b034) )
     ROM_DEFAULT_BIOS("console_mode")
 
@@ -9457,7 +9457,7 @@ ROM_START( kof99d )
 	ROM_LOAD16_WORD_SWAP( "251.p2",  0x500000, 0x400000, CRC(90175f15) SHA1(aa9e75810438a8b45808a8bf32cb04d91b5c0b3a) )
     ROM_DEFAULT_BIOS("console_mode")
 
-	NEO_SFIX_MT_128K
+	NEO_SFIX_128K( "251d.s1", CRC(1b0133fe) SHA1(7f8e743bc0c8384dec12ca7007d32b23fef8875d) )
 
 	NEO_BIOS_AUDIO_128K( "251.m1", CRC(5e74539c) SHA1(6f49a9343cbd026b2c6720ff3fa2e5b1f85e80da) )
 
@@ -9484,7 +9484,7 @@ ROM_START( kof99kd )
 	ROM_LOAD16_WORD_SWAP( "152.p2", 0x100000, 0x400000, CRC(274ef47a) SHA1(98654b68cc85c19d4a90b46f3110f551fa2e5357) )
     ROM_DEFAULT_BIOS("console_mode")
 
-	NEO_SFIX_MT_128K
+	NEO_SFIX_128K( "251d.s1", CRC(1b0133fe) SHA1(7f8e743bc0c8384dec12ca7007d32b23fef8875d) )
 
 	NEO_BIOS_AUDIO_128K( "251.m1", CRC(5e74539c) SHA1(6f49a9343cbd026b2c6720ff3fa2e5b1f85e80da) )
 
@@ -9566,7 +9566,7 @@ ROM_START( kof2k1d )
 	ROM_LOAD16_WORD_SWAP( "262.p2", 0x100000, 0x400000, CRC(8e0d8329) SHA1(10dcc1baf0aaf1fc84c4d856bca6bcff85aed2bc) )
     ROM_DEFAULT_BIOS("console_mode")
 
-	NEO_SFIX_MT_128K
+	NEO_SFIX_128K( "262d.s1", CRC(6d209796) SHA1(95fdb865e47d37916573ba12e8ba4a4aaece1cba) )
 
 	NEO_BIOS_AUDIO_128K( "262d.m1",  CRC(2fb0a8a5) SHA1(9878370ff8cef3e9c9f307ad64c29522dd625c8f) )
 
@@ -9593,8 +9593,8 @@ ROM_START( kof2k1hd )
 	ROM_LOAD16_WORD_SWAP( "262h.p2", 0x100000, 0x400000, CRC(91eea062) SHA1(82bae42bbeedb9f3aa0c7c0b0a7a69be499cf98f) )
     ROM_DEFAULT_BIOS("console_mode")
 
-	NEO_SFIX_128K( "262nd.s1", CRC(73efb81d) SHA1(9d294c5ecd658c2133a7d9f8c61c29715db33810) )
-    
+	NEO_SFIX_128K( "262d.s1", CRC(6d209796) SHA1(95fdb865e47d37916573ba12e8ba4a4aaece1cba) )
+
 	NEO_BIOS_AUDIO_128K( "262d.m1",  CRC(2fb0a8a5) SHA1(9878370ff8cef3e9c9f307ad64c29522dd625c8f) )
 
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
@@ -9622,7 +9622,7 @@ ROM_START( kof2k1nd )
 
 	NEO_SFIX_128K( "262nd.s1", CRC(73efb81d) SHA1(9d294c5ecd658c2133a7d9f8c61c29715db33810) )
 
-	NEO_BIOS_AUDIO_256K( "262n.m1", CRC(4bcc537b) SHA1(9fcf1342bcd53d5eec12c46ee41a51bf543256c2) )
+	NEO_BIOS_AUDIO_256K( "262nd.m1", CRC(4bcc537b) SHA1(9fcf1342bcd53d5eec12c46ee41a51bf543256c2) )
 
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
 	ROM_LOAD( "262.v1", 0x000000, 0x400000, CRC(83d49ecf) SHA1(2f2c116e45397652e77fcf5d951fa5f71b639572) )
@@ -9651,7 +9651,7 @@ ROM_START( kof2k1e )
 
 	NEO_SFIX_128K( "262n.s1", CRC(de828076) SHA1 (7f79d0245b02e64bd4b50c103722f7e115d1e711) )
 
-	NEO_BIOS_AUDIO_256K( "262n.m1", CRC(4bcc537b) SHA1(9fcf1342bcd53d5eec12c46ee41a51bf543256c2) )
+	NEO_BIOS_AUDIO_128K( "262d.m1",  CRC(2fb0a8a5) SHA1(9878370ff8cef3e9c9f307ad64c29522dd625c8f) )
 
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
 	ROM_LOAD( "262.v1", 0x000000, 0x400000, CRC(83d49ecf) SHA1(2f2c116e45397652e77fcf5d951fa5f71b639572) )
@@ -9757,13 +9757,13 @@ ROM_START( kof2k2d )
 	ROM_LOAD16_WORD_SWAP( "265.p2", 0x100000, 0x400000, CRC(327266b8) SHA1(98f445cc0a94f8744d74bca71cb420277622b034) )
     ROM_DEFAULT_BIOS("console_mode")
 
-	NEO_SFIX_MT_128K
+	NEO_SFIX_128K( "265d.s1", CRC(e0eaaba3) SHA1(831b642da9fe7617498cdb1c86475b3b3d3043bc) )
 
 	NEO_BIOS_AUDIO_128K( "265d.m1", CRC(1c661a4b) SHA1(4e5aa862a0a182a806d538996ddc68d9f2dffaf7) )
 
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
-	ROM_LOAD( "265.v1", 0x000000, 0x800000, CRC(15e8f3f5) SHA1(7c9e6426b9fa6db0158baa17a6485ffce057d889) )
-	ROM_LOAD( "265.v2", 0x800000, 0x800000, CRC(da41d6f9) SHA1(a43021f1e58947dcbe3c8ca5283b20b649f0409d) )
+	ROM_LOAD( "kf10-v1.bin", 0x000000, 0x800000, CRC(0fc9a58d) SHA1(9d79ef00e2c2abd9f29af5521c2fbe5798bf336f) )
+	ROM_LOAD( "kf10-v2.bin", 0x800000, 0x800000, CRC(b8c475a4) SHA1(10caf9c69927a223445d2c4b147864c02ce520a8) )
 
 	ROM_REGION( 0x4000000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "265d.c1", 0x0000000, 0x800000, CRC(7efa6ef7) SHA1(71345a4202e7cc9239538fb978638141416c8893) )
@@ -9782,7 +9782,7 @@ ROM_START( kof2k2nd )
 	ROM_LOAD16_WORD_SWAP( "k2k2m2p2.bin", 0x100000, 0x400000, CRC(432fdf53) SHA1(d7e542cd84d948162c60768e40ee4ed33d8e7913) )
     ROM_DEFAULT_BIOS("console_mode")
 
-	NEO_SFIX_128K( "265nd.s1", CRC(e0eaaba3) SHA1(831b642da9fe7617498cdb1c86475b3b3d3043bc) )
+	NEO_SFIX_128K( "265d.s1", CRC(e0eaaba3) SHA1(831b642da9fe7617498cdb1c86475b3b3d3043bc) )
 
 	NEO_BIOS_AUDIO_256K( "265nd.m1", CRC(84fa1431) SHA1(94a33d387e8f5c101fc46c50955084c635efb848) )
 
@@ -9803,31 +9803,6 @@ ROM_START( kof2k2nd )
 	ROM_LOAD16_BYTE( "265d.c8", 0x3000001, 0x800000, CRC(bef667a3) SHA1(D5E8BC185DCF63343D129C31D2DDAB9F723F1A12) )
 ROM_END
 
-ROM_START( kf2k2plad )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "2k2-p1pa.bin", 0x000000, 0x100000, CRC(6a3a02f3) SHA1(c9973b64e9a87fa38dde233ee3e9a73ba085b013) )
-	ROM_LOAD16_WORD_SWAP( "265.p2", 0x100000, 0x400000, CRC(327266b8) SHA1(98f445cc0a94f8744d74bca71cb420277622b034) )
-    ROM_DEFAULT_BIOS("console_mode")
-
-	NEO_SFIX_128K( "2k2-s1pa.bin", CRC(1a3ed064) SHA1(9749bb55c750e6b65d651998c2649c5fb68db68e) )
-
-	NEO_BIOS_AUDIO_128K( "265d.m1", CRC(1c661a4b) SHA1(4e5aa862a0a182a806d538996ddc68d9f2dffaf7) )
-
-	ROM_REGION( 0x1000000, "ymsnd", 0 )
-	ROM_LOAD( "265.v1", 0x000000, 0x800000, CRC(15e8f3f5) SHA1(7c9e6426b9fa6db0158baa17a6485ffce057d889) )
-	ROM_LOAD( "265.v2", 0x800000, 0x800000, CRC(da41d6f9) SHA1(a43021f1e58947dcbe3c8ca5283b20b649f0409d) )
-
-	ROM_REGION( 0x4000000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "265d.c1", 0x0000000, 0x800000, CRC(7efa6ef7) SHA1(71345a4202e7cc9239538fb978638141416c8893) )
-	ROM_LOAD16_BYTE( "265d.c2", 0x0000001, 0x800000, CRC(aa82948b) SHA1(b2a40797f68bdeb80bc54dccc5495be68934bf0e) )
-	ROM_LOAD16_BYTE( "265d.c3", 0x1000000, 0x800000, CRC(959fad0b) SHA1(63ab83ddc5f688dc8165a7ff8d262df3fcd942a2) )
-	ROM_LOAD16_BYTE( "265d.c4", 0x1000001, 0x800000, CRC(efe6a468) SHA1(2a414285e48aa948b5b0d4a9333bab083b5fb853) )
-	ROM_LOAD16_BYTE( "265d.c5", 0x2000000, 0x800000, CRC(74bba7c6) SHA1(e01adc7a4633bc0951b9b4f09abc07d728e9a2d9) )
-	ROM_LOAD16_BYTE( "265d.c6", 0x2000001, 0x800000, CRC(e20d2216) SHA1(5d28eea7b581e780b78f391a8179f1678ee0d9a5) )
-	ROM_LOAD16_BYTE( "265d.c7", 0x3000000, 0x800000, CRC(8a5b561c) SHA1(A19697D4C2CC8EDEBC669C95AE1DB4C8C2A70B2C) )
-	ROM_LOAD16_BYTE( "265d.c8", 0x3000001, 0x800000, CRC(bef667a3) SHA1(D5E8BC185DCF63343D129C31D2DDAB9F723F1A12) )
-ROM_END
-
 ROM_START( kf2k2plb )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "2k2-p1p.bin",0x000000, 0x100000, CRC(3ab03781) SHA1(86946c19f1c4d9ab5cde86688d698bf63118a39d) )
@@ -9836,7 +9811,7 @@ ROM_START( kf2k2plb )
 
 	NEO_SFIX_128K( "265plb.s1", CRC(2072d5e9) SHA1(45f9eb101f4b58ce40c307fd9fa8b1e95215a81b) )
 
-	NEO_BIOS_AUDIO_128K( "265d.m1", CRC(1c661a4b) SHA1(4e5aa862a0a182a806d538996ddc68d9f2dffaf7) )
+	NEO_BIOS_AUDIO_ENCRYPTED_128K( "265.m1", CRC(85aaa632) SHA1(744fba4ca3bc3a5873838af886efb97a8a316104) )
 
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
 	ROM_LOAD( "265.v1", 0x000000, 0x800000, CRC(15e8f3f5) SHA1(7c9e6426b9fa6db0158baa17a6485ffce057d889) )
@@ -10806,7 +10781,7 @@ ROM_START( s1945pd )
 	ROM_LOAD16_BYTE( "254d.c8", 0x3000001, 0x800000, CRC(178d4684) SHA1(3cbf379209c189ee48260a044dc2754035f57e14) )
 ROM_END
 
-ROM_START( samsh3bh )
+ROM_START( samsh3hb )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "087hb.p1", 0x000000, 0x100000, CRC(15e021ca) SHA1(78aba32741d2e4b5bc4c641a4166f4405ab240e2) )
 	ROM_LOAD16_WORD_SWAP( "087hb.p2", 0x100000, 0x200000, CRC(1cc2c370) SHA1(01fba8d315d684652fb506aa833fa0e8e3e350df) )
@@ -14016,7 +13991,7 @@ ROM_START( kof99kp )
 	ROM_LOAD16_WORD_SWAP( "152.p2", 0x100000, 0x400000, CRC(274ef47a) SHA1(98654b68cc85c19d4a90b46f3110f551fa2e5357) )
     ROM_DEFAULT_BIOS("console_mode")
 
-	NEO_SFIX_128K( "251kp.s1", CRC(1b0133fe) SHA1(7f8e743bc0c8384dec12ca7007d32b23fef8875d) )
+	NEO_SFIX_128K( "251d.s1", CRC(1b0133fe) SHA1(7f8e743bc0c8384dec12ca7007d32b23fef8875d) )
 
 	NEO_BIOS_AUDIO_128K( "251kp.m1", CRC(8c96b012) SHA1(8ae72cd0d88c742791b1f1f1d2af2253bf4f762d) )
 
@@ -14070,7 +14045,7 @@ ROM_START( kof2k1p )
 	ROM_LOAD16_WORD_SWAP( "262p.p2", 0x100000, 0x400000, CRC(c01720aa) SHA1(b4c3c0a91e0c37c9118453f3f99edd73a1dbee55) )
     ROM_DEFAULT_BIOS("console_mode")
 
-	NEO_SFIX_128K( "251p.s1", CRC(6d209796) SHA1(95fdb865e47d37916573ba12e8ba4a4aaece1cba) )
+	NEO_SFIX_128K( "262d.s1", CRC(6d209796) SHA1(95fdb865e47d37916573ba12e8ba4a4aaece1cba) )
 
 	NEO_BIOS_AUDIO_128K( "262p.m1", CRC(73c1f5b0) SHA1(27975713e091ecc2a370061080d0920a3c4fde63) )
 
@@ -14099,7 +14074,7 @@ ROM_START( kof2k1plsp )
 
 	NEO_SFIX_128K( "262pls.s1", CRC(088657e6) SHA1(7ab5eac3ff2a82e04fdc9dc8ee5d193db580e8d4) )
 
-	NEO_BIOS_AUDIO_256K( "262n.m1", CRC(4bcc537b) SHA1(9fcf1342bcd53d5eec12c46ee41a51bf543256c2) )
+	NEO_BIOS_AUDIO_128K( "262d.m1",  CRC(2fb0a8a5) SHA1(9878370ff8cef3e9c9f307ad64c29522dd625c8f) )
 
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
 	ROM_LOAD( "262.v1", 0x000000, 0x400000, CRC(83d49ecf) SHA1(2f2c116e45397652e77fcf5d951fa5f71b639572) )
@@ -14126,7 +14101,7 @@ ROM_START( kof2k1pap )
 
 	NEO_SFIX_128K( "262plsp2.s1", CRC(a4da10fd) SHA1(3b5f73d284f0f912d96e07d7b30122eaa43a04a8) )
 
-	NEO_BIOS_AUDIO_256K( "262n.m1", CRC(4bcc537b) SHA1(9fcf1342bcd53d5eec12c46ee41a51bf543256c2) )
+	NEO_BIOS_AUDIO_128K( "262d.m1",  CRC(2fb0a8a5) SHA1(9878370ff8cef3e9c9f307ad64c29522dd625c8f) )
 
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
 	ROM_LOAD( "262.v1", 0x000000, 0x400000, CRC(83d49ecf) SHA1(2f2c116e45397652e77fcf5d951fa5f71b639572) )
@@ -14226,7 +14201,7 @@ ROM_START( kof2k2p )
 	ROM_LOAD16_WORD_SWAP( "265p.p2", 0x100000, 0x400000, CRC(65df650d) SHA1(c13e466e3fdb349ba2e0d3fe01daede759130828) )
     ROM_DEFAULT_BIOS("console_mode")
 
-	NEO_SFIX_128K( "265nd.s1", CRC(e0eaaba3) SHA1(831b642da9fe7617498cdb1c86475b3b3d3043bc) )
+	NEO_SFIX_128K( "265d.s1", CRC(e0eaaba3) SHA1(831b642da9fe7617498cdb1c86475b3b3d3043bc) )
 
 	NEO_BIOS_AUDIO_128K( "265p.m1", CRC(ab9d360e) SHA1(a0c8a5aae387c4f0b72790211695da7df924c351) )
 
@@ -17332,11 +17307,11 @@ GAME( 1999, garouha,    garou,    neogeo_noslot,   neogeo, neogeo_state,   init_
 GAME( 1999, garoup,     garou,    neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "Garou - Mark of the Wolves (Prototype)", MACHINE_MECHANICAL )
 GAME( 1999, garoubl,    garou,    neogeo_noslot,   neogeo, neogeo_state,   init_garoubl,  ROT0, "bootleg", "Garou - Mark of the Wolves (bootleg)", MACHINE_MECHANICAL ) /* Bootleg of garoup */
 GAME( 2000, kof2000,    neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_kof2000,  ROT0, "SNK", "The King of Fighters 2000 (NGM-2570 ~ NGH-2570)" , MACHINE_MECHANICAL ) /* Encrypted Code & GFX */
-GAME( 2000, kof2000n,   kof2000,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2000,  ROT0, "SNK", "The King of Fighters 2000 (not encrypted)" , MACHINE_MECHANICAL ) /* Encrypted GFX */
+GAME( 2000, kof2000n,   kof2000,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2000,  ROT0, "SNK", "The King of Fighters 2000 (Not encrypted)" , MACHINE_MECHANICAL ) /* Encrypted GFX */
 GAME( 2001, zupapa,     neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_zupapa,   ROT0, "SNK", "Zupapa!" , MACHINE_MECHANICAL ) /* Encrypted GFX */
 GAME( 2001, sengoku3,   neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_sengoku3, ROT0, "Noise Factory / SNK", "Sengoku 3 / Sengoku Densho 2001 (set 1)" , MACHINE_MECHANICAL ) /* Encrypted GFX */
 GAME( 2001, sengoku3a,  sengoku3, neogeo_noslot,   neogeo, neogeo_state,   init_sengoku3, ROT0, "Noise Factory / SNK", "Sengoku 3 / Sengoku Densho 2001 (set 2)" , MACHINE_MECHANICAL ) /* Encrypted GFX */
-GAME( 2001, kof2001,    neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_kof2001,  ROT0, "Eolith / SNK", "The King of Fighters 2001 (NGM-262?)" , MACHINE_MECHANICAL ) /* Encrypted GFX */
+GAME( 2001, kof2001,    neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_kof2001,  ROT0, "Eolith / SNK", "The King of Fighters 2001 (NGM-2621)" , MACHINE_MECHANICAL ) /* Encrypted GFX */
 GAME( 2001, kof2001h,   kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2001,  ROT0, "Eolith / SNK", "The King of Fighters 2001 (NGH-2621)" , MACHINE_MECHANICAL ) /* Encrypted GFX */
 GAME( 2003, cthd2003,   kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_cthd2003, ROT0, "bootleg", "Crouching Tiger Hidden Dragon 2003 (The King of Fighters 2001 bootleg, set 1)", MACHINE_MECHANICAL ) /* Protected Hack / Bootleg of kof2001 */
 GAME( 2003, ct2k3sp,    kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_ct2k3sp,  ROT0, "bootleg", "Crouching Tiger Hidden Dragon 2003 Super Plus (The King of Fighters 2001 bootleg)", MACHINE_MECHANICAL ) /* Protected Hack / Bootleg of kof2001 */
@@ -17547,29 +17522,28 @@ GAME( 1999, garouhd,    garou,    neogeo_noslot,   neogeo, neogeo_state,   init_
 GAME( 2001, jckeygpd,   jockeygp, neogeo_noslot,   jockeygp, neogeo_state, init_jockeygp, ROT0, "Sun Amusement / BrezzaSoft", "Jockey Grand Prix (Decrypted C)", MACHINE_MECHANICAL )
 GAME( 1996, kof96ep,    kof96,    neogeo_noslot,   neogeo, neogeo_state,   init_kof96ep,  ROT0, "bootleg", "The King of Fighters '96 (bootleg)", MACHINE_MECHANICAL )
 GAME( 2003, kof97pla,   kof97,    neogeo_noslot,   neogeo, neogeo_state,   init_kof97pla, ROT0, "bootleg", "The King of Fighters '97 Chongchu Jianghu Plus 2003 (bootleg)", MACHINE_MECHANICAL )
-GAME( 1999, kof99d,     kof99,    neogeo_noslot,   neogeo, neogeo_state,   init_kof99,    ROT0, "SNK", "The King of Fighters '99  - Millennium Battle (Decrypted C)" , MACHINE_MECHANICAL )
+GAME( 1999, kof99d,     kof99,    neogeo_noslot,   neogeo, neogeo_state,   init_kof99,    ROT0, "SNK", "The King of Fighters '99  - Millennium Battle (NGM-2510)(Decrypted C)" , MACHINE_MECHANICAL )
 GAME( 1999, kof99kd,    kof99,    neogeo_noslot,   neogeo, neogeo_state,   init_kof99,    ROT0, "SNK", "The King of Fighters '99  - Millennium Battle (Korean release, decrypted C)", MACHINE_MECHANICAL )
-GAME( 2000, kof2kd,     kof2000,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2000,  ROT0, "SNK", "The King of Fighters 2000 (Decrypted C)", MACHINE_MECHANICAL )
-GAME( 2000, kof2knd,    kof2000,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2000,  ROT0, "SNK", "The King of Fighters 2000 (Non-encrypted, Decrypted C)", MACHINE_MECHANICAL )
-GAME( 2001, kof2k1d,    kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2001,  ROT0, "Eolith / SNK", "The King of Fighters 2001 (Decrypted C)", MACHINE_MECHANICAL )
-GAME( 2001, kof2k1hd,   kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Eolith / SNK", "The King of Fighters 2001 (Non-encrypted, Decrypted C)", MACHINE_MECHANICAL )
-GAME( 2001, kof2k1nd,   kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Eolith / SNK", "The King of Fighters 2001 (Fully Decrypted)", MACHINE_MECHANICAL )
-GAME( 2001, kof2k1e,    kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Eolith / SNK", "The King of Fighters 2001 (Fully Decrypted, Earlier)", MACHINE_MECHANICAL )
+GAME( 2000, kof2kd,     kof2000,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2000,  ROT0, "SNK", "The King of Fighters 2000 (NGM-2570 ~ NGH-2570) (Decrypted C)", MACHINE_MECHANICAL )
+GAME( 2000, kof2knd,    kof2000,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2000,  ROT0, "SNK", "The King of Fighters 2000 (Not encrypted) (Decrypted C)", MACHINE_MECHANICAL )
+GAME( 2001, kof2k1d,    kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2001,  ROT0, "Eolith / SNK", "The King of Fighters 2001 (NGM-2621) (Decrypted C)", MACHINE_MECHANICAL )
+GAME( 2001, kof2k1hd,   kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2001,  ROT0, "Eolith / SNK", "The King of Fighters 2001 (NGH-2621) (Decrypted C)", MACHINE_MECHANICAL )
+GAME( 2001, kof2k1nd,   kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2001,  ROT0, "Eolith / SNK", "The King of Fighters 2001 (Fully Decrypted)", MACHINE_MECHANICAL )
+GAME( 2001, kof2k1e,    kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2001,  ROT0, "Eolith / SNK", "The King of Fighters 2001 (Fully Decrypted, Earlier)", MACHINE_MECHANICAL )
 GAME( 2001, kf2k1bh,    kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2001,  ROT0, "Eolith / SNK", "The King of Fighters 2001 (bootleg)" , MACHINE_MECHANICAL )
 GAME( 2002, kf2k1pls,   kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2001,  ROT0, "bootleg", "The King of Fighters 2001 Plus (Set 1, bootleg)", MACHINE_MECHANICAL )
 GAME( 2003, kf2k1pla,   kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_kf2k1pa,  ROT0, "bootleg", "The King of Fighters 2001 Plus (set 2, bootleg)", MACHINE_MECHANICAL )
-GAME( 2002, kof2k2d,    kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2002,  ROT0, "Eolith / Playmore", "The King of Fighters 2002 (Decrypted C)", MACHINE_MECHANICAL )
+GAME( 2002, kof2k2d,    kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2002,  ROT0, "Eolith / Playmore", "The King of Fighters 2002 (NGM-2650)(NGH-2650) (Decrypted C)", MACHINE_MECHANICAL )
 GAME( 2002, kof2k2nd,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Eolith / Playmore", "The King of Fighters 2002 (Full Decrypted)" , MACHINE_MECHANICAL )
-GAME( 2002, kf2k2plad,  kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kf2k2pla, ROT0, "bootleg", "The King of Fighters 2002 Plus (bootleg Set 1, Decrypted C)", MACHINE_MECHANICAL )
-GAME( 2002, kf2k2plb,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kf2k2plb, ROT0, "bootleg", "The King of Fighters 2002 Plus (bootleg Set 3)" , MACHINE_MECHANICAL )
-GAME( 2002, kf2k2plc,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kf2k2plc, ROT0, "bootleg", "The King of Fighters 2002 Plus (bootleg Set 4)" , MACHINE_MECHANICAL )
-GAME( 2002, kf2k2pld,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2002,  ROT0, "bootleg", "The King of Fighters 2002 Plus (bootleg Set 5)" , MACHINE_MECHANICAL )
+GAME( 2002, kf2k2plb,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kf2k2plb, ROT0, "bootleg", "The King of Fighters 2002 Plus (bootleg, Set 3)" , MACHINE_MECHANICAL )
+GAME( 2002, kf2k2plc,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kf2k2plc, ROT0, "bootleg", "The King of Fighters 2002 Plus (bootleg, Set 4)" , MACHINE_MECHANICAL )
+GAME( 2002, kf2k2pld,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2002,  ROT0, "bootleg", "The King of Fighters 2002 Plus (bootleg, Set 5)" , MACHINE_MECHANICAL )
 GAME( 2002, kf2k2mpl,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2002,  ROT0, "bootleg", "The King of Fighters 2002 Magic Plus (bootleg, set 2)", MACHINE_MECHANICAL )
-GAME( 2003, kof2003d,   kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2003,  ROT0, "SNK Playmore", "The King of Fighters 2003 (Decrypted P&C)", MACHINE_MECHANICAL )
+GAME( 2003, kof2003d,   kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2003,  ROT0, "SNK Playmore", "The King of Fighters 2003 (Decrypted P & C)", MACHINE_MECHANICAL )
 GAME( 2003, kof2003f,   kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK Playmore", "The King of Fighters 2003 (Fully Decrypted - Fixed)", MACHINE_MECHANICAL )
-GAME( 2003, kof2k3d,    kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2003,  ROT0, "SNK Playmore", "The King of Fighters 2003 (Decrypted C)", MACHINE_MECHANICAL )
+GAME( 2003, kof2k3d,    kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2003,  ROT0, "SNK Playmore", "The King of Fighters 2003 (NGM-2710) (Decrypted C)", MACHINE_MECHANICAL )
 GAME( 2003, kf2k3bd,    kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg",      "The King of Fighters 2003 (bootleg, fully Decrypted)", MACHINE_MECHANICAL )
-GAME( 2003, kof2k3hd,   kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2003h, ROT0, "SNK Playmore", "The King of Fighters 2003 (Non-encrypted, Decrypted C)", MACHINE_MECHANICAL )
+GAME( 2003, kof2k3hd,   kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2003h, ROT0, "SNK Playmore", "The King of Fighters 2003 (NGH-2710) (Decrypted C)", MACHINE_MECHANICAL )
 GAME( 2003, kof2k3nd,   kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK Playmore", "The King of Fighters 2003 (Fully decrypted)", MACHINE_MECHANICAL )
 GAME( 2003, kf2k3pcd,   kf2k3pcb, neogeo_noslot,   neogeo, neogeo_state,   init_kof2k3pcd,ROT0, "SNK Playmore", "The King of Fighters 2003 (Japan, JAMMA PCB / decrypted C)", MACHINE_MECHANICAL )
 GAME( 2004, kf2k3pd,    kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK Playmore", "The King of Fighters 2004 EX Ultra Plus / Hero (The King of Fighters 2003 bootleg, fully decrypted)", MACHINE_MECHANICAL )
@@ -17600,7 +17574,7 @@ GAME( 2002, rotdd,      rotd,     neogeo_noslot,   neogeo, neogeo_state,   init_
 GAME( 2002, rotdnd,     rotd,     neogeo_noslot,   neogeo, neogeo_state,   init_rotdnd,   ROT0, "Evoga / Playmore", "Rage of the Dragons (Fully Decrypted)", MACHINE_MECHANICAL )
 GAME( 2002, rotdndd,    rotd,     neogeo_noslot,   neogeo, neogeo_state,   init_rotdnd,   ROT0, "Bootleg", "Rage of the Dragons (bootleg, Decrypted C)", MACHINE_MECHANICAL )
 GAME( 1999, s1945pd,    s1945p,   neogeo_noslot,   neogeo, neogeo_state,   init_s1945p,   ROT0, "Psikyo", "Strikers 1945 Plus (Decrypted C)", MACHINE_MECHANICAL )
-GAME( 2010, samsh3bh,   samsho3,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "Samurai Shodown III / Samurai Spirits - Zankurou Musouken (Enhanced, bootleg, Hack)", MACHINE_MECHANICAL )
+GAME( 2010, samsh3hb,   samsho3,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "Samurai Shodown III / Samurai Spirits - Zankurou Musouken (Enhanced, bootleg, Hack)", MACHINE_MECHANICAL )
 GAME( 2003, samsh5bd,   samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "Samurai Shodown V / Samurai Spirits Zero (bootleg, fully decrypted)", MACHINE_MECHANICAL )
 GAME( 2003, samsh5cd,   samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_samsho5,  ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V / Samurai Spirits Zero (Custom decrypted)", MACHINE_MECHANICAL )
 GAME( 2003, samsh5d,    samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_samsho5,  ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V / Samurai Spirits Zero (Decrypted C)", MACHINE_MECHANICAL )
@@ -17719,23 +17693,23 @@ GAME( 2005, kf10thepp,  kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_
 GAME( 1996, kizunap,    kizuna,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "Kizuna Encounter - Super Tag Battle / Fu'un Super Tag Battle (Predecrypted C)", MACHINE_MECHANICAL )
 GAME( 2002, kof10thp,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "The King of Fighters 10th Anniversary (The King of Fighters 2002 bootleg)(Predecrypted C & P)", MACHINE_MECHANICAL )
 GAME( 2008, kf2k5unip,  kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "The King of Fighters 10th Anniversary 2005 Unique (The King of Fighters 2002 bootleg)(Predecrypted P)", MACHINE_MECHANICAL )
-GAME( 1995, kof95p,     kof95,    neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "The King of Fighters '95 (Predecrypted C & P)", MACHINE_MECHANICAL )
+GAME( 1995, kof95p,     kof95,    neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "The King of Fighters '95 (NGM-084)(Predecrypted C & P)", MACHINE_MECHANICAL )
 GAME( 1995, kof95hp,    kof95,    neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "The King of Fighters '95 (NGH-084)(Predecrypted C & P)", MACHINE_MECHANICAL )
-GAME( 1996, kof96p,     kof96,    neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "The King of Fighters '96 (Predecrypted P)", MACHINE_MECHANICAL )
+GAME( 1996, kof96p,     kof96,    neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "The King of Fighters '96 (NGM-214)(Predecrypted P)", MACHINE_MECHANICAL )
 GAME( 1996, kof96bp,    kof96,    neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "The King of Fighters '96 (Bootleg)(Predecrypted P)", MACHINE_MECHANICAL )
 GAME( 1997, kof97plsp,  kof97,    neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "The King of Fighters '97 Plus (Predecrypted S & P)", MACHINE_MECHANICAL )
 GAME( 1999, kof99kp,    kof99,    neogeo_noslot,   neogeo, neogeo_state,   init_kof99,    ROT0, "SNK", "The King of Fighters '99 (Korean release)(Predecrypted S & P)", MACHINE_MECHANICAL )
-GAME( 1999, kof99pp,    kof99,    neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "The King of Fighters '99 - Millennium Battle (Prototype)(Predecrypted M & S)", MACHINE_MECHANICAL )
-GAME( 2000, kof2knp,    kof2000,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2000,  ROT0, "SNK", "The King of Fighters 2000 (Non-encrypted)(Predecrypted C & V)", MACHINE_MECHANICAL )
-GAME( 2001, kof2k1p,    kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Eolith / SNK", "The King of Fighters 2001 (Non-encrypted)(Predecrypted P)", MACHINE_MECHANICAL )
-GAME( 2001, kof2k1plsp, kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Eolith / SNK", "The King of Fighters 2001 Plus (bootleg set 1)(Predecrypted P)", MACHINE_MECHANICAL )
-GAME( 2001, kof2k1pap,  kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Eolith / SNK", "The King of Fighters 2001 Plus (bootleg set 2)(Predecrypted S & P)", MACHINE_MECHANICAL )
-GAME( 2002, kof2k2p,    kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2002,  ROT0, "Eolith / Playmore", "The King of Fighters 2002 (Predecrypted S & P)", MACHINE_MECHANICAL )
-GAME( 2002, kf2k2plap,  kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "The King of Fighters 2002 Plus (bootleg set 1)(Predecrypted P)" , MACHINE_MECHANICAL )
-GAME( 2002, kf2k2plbp,  kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "The King of Fighters 2002 Plus (bootleg set 2)(Predecrypted S & P)" , MACHINE_MECHANICAL )
-GAME( 2002, kf2k2plcp,  kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "The King of Fighters 2002 Plus (bootleg set 3)(Predecrypted C & P)" , MACHINE_MECHANICAL )
-GAME( 2002, kf2k2mpp,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "The King of Fighters 2002 Magic Plus (bootleg)(Predecrypted S & P)" , MACHINE_MECHANICAL )
-GAME( 2002, kf2k2mp2p,  kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "The King of Fighters 2002 Magic Plus II (bootleg)(Predecrypted P)" , MACHINE_MECHANICAL )
+GAME( 1999, kof99pp,    kof99,    neogeo_noslot,   neogeo, neogeo_state,   init_kof99,    ROT0, "SNK", "The King of Fighters '99 - Millennium Battle (Prototype)(Predecrypted M & S)", MACHINE_MECHANICAL )
+GAME( 2000, kof2knp,    kof2000,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2000,  ROT0, "SNK", "The King of Fighters 2000 (Not encrypted)(Predecrypted C & V)", MACHINE_MECHANICAL )
+GAME( 2001, kof2k1p,    kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2001,  ROT0, "Eolith / SNK", "The King of Fighters 2001 (NGM-2621) (Predecrypted P)", MACHINE_MECHANICAL )
+GAME( 2001, kof2k1plsp, kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2001,  ROT0, "Eolith / SNK", "The King of Fighters 2001 Plus (bootleg, set 1) (Predecrypted P)", MACHINE_MECHANICAL )
+GAME( 2001, kof2k1pap,  kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2001,  ROT0, "Eolith / SNK", "The King of Fighters 2001 Plus (bootleg, set 2) (Predecrypted S & P)", MACHINE_MECHANICAL )
+GAME( 2002, kof2k2p,    kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2002,  ROT0, "Eolith / Playmore", "The King of Fighters 2002 (NGM-2650)(NGH-2650) (Predecrypted S & P)", MACHINE_MECHANICAL )
+GAME( 2002, kf2k2plap,  kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2002,  ROT0, "bootleg", "The King of Fighters 2002 Plus (bootleg, set 1)(Predecrypted S & P)" , MACHINE_MECHANICAL )
+GAME( 2002, kf2k2plbp,  kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2002,  ROT0, "bootleg", "The King of Fighters 2002 Plus (bootleg, set 2)(Predecrypted S & P)" , MACHINE_MECHANICAL )
+GAME( 2002, kf2k2plcp,  kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2002,  ROT0, "bootleg", "The King of Fighters 2002 Plus (bootleg, set 3)(Predecrypted S & P)" , MACHINE_MECHANICAL )
+GAME( 2002, kf2k2mpp,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2002,  ROT0, "bootleg", "The King of Fighters 2002 Magic Plus (bootleg)(Predecrypted S & P)" , MACHINE_MECHANICAL )
+GAME( 2002, kf2k2mp2p,  kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2002,  ROT0, "bootleg", "The King of Fighters 2002 Magic Plus II (bootleg)(Predecrypted S & P)" , MACHINE_MECHANICAL )
 GAME( 2003, kof2003p,   kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK Playmore", "The King of Fighters 2003 (Predecrypted M & P)", MACHINE_MECHANICAL )
 GAME( 2003, kf2k3uplp,  kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "The King of Fighters 2004 Ultra Plus (The King of Fighters 2003 bootleg)(Predecrypted S & M)", MACHINE_MECHANICAL )
 GAME( 2004, kofse2k4p,  kof2k4se, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "The King of Fighters Special Edition 2004 (The King of Fighters 2002 Bootleg)(Predecrypted V & P)", MACHINE_MECHANICAL )
