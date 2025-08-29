@@ -139,7 +139,7 @@ public:
 	void init_mslugxdd();
 	void init_s1945p();
 
-	// fixed software roms extra configurations
+	// fixed MVS/AES software configurations
 	void init_bangbead();
 	void init_ct2k3sp();
 	void init_ct2k3sa();
@@ -189,7 +189,6 @@ public:
 	void init_matrimd();
 	void init_nitd();
 	void init_pnyaa();
-	void init_pnyaand();
 	void init_preisle2();
 	void init_rotd();
 	void init_rotdnd();
