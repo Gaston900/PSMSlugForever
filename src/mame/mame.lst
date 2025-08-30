@@ -1366,16 +1366,18 @@ zupapa                          // 0070 Zupapa - released in 2001, 1994 prototyp
 
 @source:neogeo.cpp
 bangbedd                        // Decrypted / Bootleg
-ct2k3spd                        // Decrypted / Bootleg
 cthd2k3d                        // Decrypted / Bootleg
-ct2k3ad                         // Decrypted / Bootleg
+cthd2k3da                       // Decrypted / Bootleg
 cthd2k3a                        // Decrypted / Bootleg
+ct2k3spd                        // Decrypted / Bootleg
+ct2k3spdp                       // Predecrypted / Bootleg
 ganryud                         // Decrypted / Bootleg
 garoud                          // Decrypted / Bootleg
 garouhd                         // Decrypted / Bootleg
 jckeygpd                        // Decrypted / Bootleg
 kof96ep                         // Decrypted / Bootleg
 kof97pla                        // Decrypted / Bootleg
+kof97orop                       // Predecrypted / Bootleg
 kof99d                          // Decrypted / Bootleg
 kof99kd                         // Decrypted / Bootleg
 kof2kd                          // Decrypted / Bootleg
@@ -1392,7 +1394,12 @@ kof2k2nd                        // Decrypted / Bootleg
 kf2k2plb                        // Decrypted / Bootleg
 kf2k2plc                        // Decrypted / Bootleg
 kf2k2pld                        // Decrypted / Bootleg
+kf2k2plap                       // Predecrypted / Bootleg
+kf2k2plbp                       // Predecrypted / Bootleg
+kf2k2plcp                       // Predecrypted / Bootleg
 kf2k2mpl                        // Decrypted / Bootleg
+kf2k2mpp                        // Predecrypted / Bootleg
+kf2k2mp2p                       // Predecrypted / Bootleg
 kof2003d                        // Decrypted / Bootleg
 kof2003f                        // Decrypted / Bootleg
 kof2k3d                         // Decrypted / Bootleg
@@ -1402,10 +1409,14 @@ kof2k3nd                        // Decrypted / Bootleg
 kf2k3pcd                        // Decrypted / Bootleg
 kf2k3pd                         // Decrypted / Bootleg
 kf2k3upd                        // Decrypted / Bootleg
+kf2k3uplp                       // Predecrypted / Bootleg
 kf2k3bl2                        // Decrypted / Bootleg
 kogd                            // Decrypted / Bootleg
 kogplusd                        // Decrypted / Bootleg
 kof10thd                        // Decrypted / Bootleg
+kof10thp                        // Predecrypted / Bootleg
+kf10thepp                       // Predecrypted / Bootleg
+kf2k5unip                       // Predecrypted / Bootleg
 kf2k8uni                        // Decrypted / Bootleg
 kf2k8unid                       // Decrypted / Bootleg
 kof10thu                        // Decrypted / Bootleg
@@ -1413,7 +1424,10 @@ kof10thud                       // Decrypted / Bootleg
 kof2k4mp                        // Decrypted / Bootleg
 kof2k4mp2                       // Decrypted / Bootleg
 kf2k4pls                        // Decrypted / Bootleg
+kf2k4plsp                       // Predecrypted / Bootleg
 kofse2k4                        // Decrypted / Bootleg
+kofse2k4p                       // Predecrypted / Bootleg
+lans2004p                       // Predecrypted / Bootleg
 lans2k4d                        // Decrypted / Bootleg
 matrimd                         // Decrypted / Bootleg
 matrima                         // Decrypted / Bootleg
@@ -1430,11 +1444,9 @@ rotdndd                         // Decrypted / Bootleg
 s1945pd                         // Decrypted / Bootleg
 samsh3hb                        // Decrypted / Bootleg
 samsh5bd                        // Decrypted / Bootleg
-samsh5cd                        // Decrypted / Bootleg
 samsh5d                         // Decrypted / Bootleg
 samsh5hd                        // Decrypted / Bootleg
 samsh5nd                        // Decrypted / Bootleg
-ssh5spnd                        // Decrypted / Bootleg
 ssh5spn                         // Decrypted / Bootleg
 sams5spd                        // Decrypted / Bootleg
 sams5sod                        // Decrypted / Bootleg
@@ -1448,75 +1460,28 @@ svcnd                           // Decrypted / Bootleg
 svcbp                           // Decrypted / Bootleg
 svcplusb                        // Decrypted / Bootleg
 svcplusd                        // Decrypted / Bootleg
+svcplusp                        // Predecrypted / Bootleg
+svcplusap                       // Predecrypted / Bootleg
+svcsplusp                       // Predecrypted / Bootleg
 svcpcbd                         // Decrypted / Bootleg
 zupapad                         // Decrypted / Bootleg
 zupapand                        // Decrypted / Bootleg
 
 @source:neogeo.cpp
-androdunp                       // Predecrypted
-bangbeadp                       // Predecrypted
-crswordp                        // Predecrypted
-ct2k3spdp                       // Predecrypted
-diggermap                       // Predecrypted
 fatfury2p                       // Predecrypted
-fightfevp                       // Predecrypted
-ganryup                         // Predecrypted
-gururinp                        // Predecrypted
-irrmazep                        // Predecrypted
-kf10thepp                       // Predecrypted
-kizunap                         // Predecrypted
-kof10thp                        // Predecrypted
-kf2k5unip                       // Predecrypted
-kof95p                          // Predecrypted
-kof95hp                         // Predecrypted
-kof96p                          // Predecrypted
-kof96bp                         // Predecrypted
-kof97plsp                       // Predecrypted
+ganryup                       // Predecrypted
 kof99kp                         // Predecrypted
-kof99pp                         // Predecrypted
-kof2knp                         // Predecrypted
-kof2k1p                         // Predecrypted
-kof2k1plsp                      // Predecrypted
-kof2k1pap                       // Predecrypted
+kof2knp                        // Predecrypted
+kof2k1p                        // Predecrypted
+kof2k1plsp                         // Predecrypted
+kof2k1pap                         // Predecrypted
 kof2k2p                         // Predecrypted
-kf2k2plap                       // Predecrypted
-kf2k2plbp                       // Predecrypted
-kf2k2plcp                       // Predecrypted
-kf2k2mpp                        // Predecrypted
-kf2k2mp2p                       // Predecrypted
-kof2003p                        // Predecrypted
-kf2k3uplp                       // Predecrypted
-kofse2k4p                       // Predecrypted
-kof2k4splp                      // Predecrypted
-lastbladhp                      // Predecrypted
-lans2004p                       // Predecrypted
-legendosp                       // Predecrypted
-matrimp                         // Predecrypted
-matrimdap                       // Predecrypted
-matrimdp                        // Predecrypted
-miexchngp                       // Predecrypted
-neocup98p                       // Predecrypted
-neomrdop                        // Predecrypted
-panicbomp                       // Predecrypted
-pbobblenp                       // Predecrypted
-puzzldprp                       // Predecrypted
-rotdp                           // Predecrypted
-rbff2p                          // Predecrypted
-samsh5ndp                       // Predecrypted
-samsh5spdp                      // Predecrypted
-samsh5spdp1                     // Predecrypted
-samsh5spndp                     // Predecrypted
-sengoku2p                       // Predecrypted
-sonicwi2p                       // Predecrypted
-strhoopp                        // Predecrypted
-svcp                            // Predecrypted
-svcplusp                        // Predecrypted
-svcplusap                       // Predecrypted
-svcsplusp                       // Predecrypted
-wh1p                            // Predecrypted
-whpp                            // Predecrypted
-wjammersp                       // Predecrypted
-zupapap                         // Predecrypted
+matrimdap                         // Predecrypted
+rotdp                      // Predecrypted
+samsh5p                       // Predecrypted
+samsh5spp                         // Predecrypted
+svcp                        // Predecrypted
+zupapap                      // Predecrypted
 
 @source:neogeo.cpp
 2020bbe                         // Earlier
