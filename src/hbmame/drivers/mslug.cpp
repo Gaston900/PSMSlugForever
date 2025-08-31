@@ -27,18 +27,6 @@
                                                                                                 NEOGEO ROM-cart:2004/02/19
 ************************************************************************************************************************************/
 
-/*************************************
- *
- *  Game-specific inits
- *
- *************************************/
-
-void neogeo_state::init_mslugdd()
-{
-	init_neogeo();
-	m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
-}
-
 /***********************************
    Game specific input definitions
  ************************************/
@@ -1502,7 +1490,7 @@ GAME( 1996, msluge,           mslug,    neogeo_noslot, mslughb,   neogeo_state, 
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (DARKSOFT Neo Geo Converted MVS To Decrypter/Encrypted C)
-GAME( 1996, mslugdd,          mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_mslugdd,    ROT0, "Nazca",           "Metal Slug (Decrypted C / Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, mslugdd,          mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_darksoft,   ROT0, "Nazca",           "Metal Slug (Decrypted C / Darksoft)", MACHINE_SUPPORTS_SAVE )
 
 // This uses a .neo file: 0x1000 bytes for header, then p rom (word_swap), then remainder is normal (HBMAME)
 // The .neo boot file (P1) is used, converted .neo to GFX Encrypted/Decrypted.

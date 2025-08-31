@@ -11912,7 +11912,7 @@ ROM_START( kof2002hc25 ) //kof2002mp2
 	ROM_LOAD16_WORD_SWAP( "265_hc25.p2", 0x100000, 0x454F52, CRC(65264886) SHA1(261f539d1844b7fb1b560681ce1681ca1c615b5c) )
     ROM_DEFAULT_BIOS("console_mode")
 
-	NEO_SFIX_128K( "k2k2m2s1.bin", CRC(446e74c5) SHA1(efc2afb26578bad9eb21659c70eb0f827d6d1ef6) )
+	NEO_SFIX_128K( "k2k2m2p2.s1", CRC(df4ce33b) SHA1(1287c84c16e17df7d5887af57fc6657da452d0ae) )
 
 	NEO_BIOS_AUDIO_128K( "265d.m1", CRC(1c661a4b) SHA1(4e5aa862a0a182a806d538996ddc68d9f2dffaf7) )
 
@@ -15036,8 +15036,8 @@ ROM_START( nitdhc03 )
     ROM_FILL(0x50820,1,0x08)  // fix crackle when jumping
 
 	ROM_REGION( 0x1000000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "260.c1", 0x0000000, 0x800000, CRC(147b0c7f) SHA1(a647c3a2f6d146ff47521c1d39f58830601f5781) )
-	ROM_LOAD16_BYTE( "260.c2", 0x0000001, 0x800000, CRC(d2b04b0d) SHA1(ce4322e6cfacb627fe997efe81018861e21d3c27) )
+	ROM_LOAD16_BYTE( "260d.c1", 0x0000000, 0x800000, CRC(f3ff4953) SHA1(0e54548387f3056088e89086a30da05935d08b24) )
+	ROM_LOAD16_BYTE( "260d.c2", 0x0000001, 0x800000, CRC(f1e49faa) SHA1(2a771e318423addd9daae3a9af200de2c70f4021) )
 ROM_END
 
 ROM_START( pbobblenhc01 )
@@ -16736,7 +16736,7 @@ ROM_START( samsh5sphc07 ) //samsh5fe
 
 	NEO_SFIX_128K( "272d.s1", CRC(c297f973) SHA1(b31af6b51e7536b538cd7eb3542c631c6327e826) )
 
-	NEO_BIOS_AUDIO_128K( "272d.m1", CRC(654e9236) SHA1(e13a1b4b73d43008565ee419c9714a220927d0bc) )
+	NEO_BIOS_AUDIO_512K( "272_hc07.m1", CRC(203d744e) SHA1(24fc73943009effa14eed0f7a29955f349ca8e8f) )
 
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
 	ROM_LOAD( "272d.v1", 0x000000, 0x800000, CRC(28d57d10) SHA1(4ee3cf7951070e0f957593ab984cc0cb334e5441) )
@@ -18615,7 +18615,7 @@ GAME( 2021, kof2002hc21,      kof2002,  neogeo_noslot, neogeo, neogeo_state, ini
 GAME( 2021, kof2002hc22,      kof2002,  neogeo_noslot, neogeo, neogeo_state, init_kof2002,   ROT0, "hack",         "The King of Fighters 2002 (One Key Edition 2021-02-14)", MACHINE_MECHANICAL )
 GAME( 2020, kof2002hc23,      kof2002,  neogeo_noslot, neogeo, neogeo_state, init_kof2002,   ROT0, "hack",         "The King of Fighters 2002 (All Mix Version 2020-12-30)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_MECHANICAL )
 GAME( 2023, kof2002hc24,      kof2002,  neogeo_noslot, neogeo, neogeo_state, init_kof2002,   ROT0, "hack",         "The King of Fighters 2002 (Imitation Enhanced One Key Version 2023-01-23)", MACHINE_MECHANICAL )
-GAME( 2016, kof2002hc25,      kof2002,  neogeo_noslot, neogeo, neogeo_state, init_kf2k2mp2hb,ROT0, "hack",         "The King of Fighters 2002 Magic Plus II (Ultimate Enhancement 2016-04-09)", MACHINE_MECHANICAL )
+GAME( 2016, kof2002hc25,      kof2002,  neogeo_noslot, neogeo, neogeo_state, init_kof2002,   ROT0, "hack",         "The King of Fighters 2002 Magic Plus II (Ultimate Enhancement 2016-04-09)", MACHINE_MECHANICAL )
 GAME( 2021, kof2002hc26,      kof2002,  neogeo_noslot, neogeo, neogeo_state, init_kof2002,   ROT0, "hack",         "The King of Fighters 2002 (Magic Enhanced Edition Original 2021-09-12)", MACHINE_MECHANICAL )
 GAME( 2021, kof2002hc27,      kof2002,  neogeo_noslot, neogeo, neogeo_state, init_kof2002,   ROT0, "hack",         "The King of Fighters 2002 (Magic Enhanced Edition Simplified 2021-09-12)", MACHINE_MECHANICAL )
 GAME( 2021, kof2002hc28,      kof2002,  neogeo_noslot, neogeo, neogeo_state, init_kof2002,   ROT0, "hack",         "The King of Fighters 2002 (Windbreaker Runaway Iori Original 2021-10-08)", MACHINE_MECHANICAL )

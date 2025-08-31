@@ -100,46 +100,12 @@ public:
 	void neogeo_noslot(machine_config &config);
     void no_watchdog(machine_config &config);
 	void gsc(machine_config &config);
-	void hbmame_kog(machine_config &config);
 	void neogeo_68kram(machine_config &config);
     void multimvs(machine_config &config);
 	void neosd(machine_config &config);
 
-	// fixed software configurations
+	// Fixed MVS/AES Software Configurations
 	void init_neogeo();
-	void init_ms5plusd();
-	void init_ms5plush();
-	void init_ms5plusdd();
-	void init_ms5plushb();
-	void init_ms5pcbhb();
-	void init_ms5pcbdd();
-	void init_mslugdd();
-	void init_mslug2dd();
-	void init_mslug3a();
-	void init_mslug3e();
-	void init_mslug3hb();
-	void init_mslug3cqt();
-	void init_mslug3dd();
-	void init_mslug3ndd();
-    void init_mslug3b6d();
-    void init_mslug3b6dd();
-    void init_mslug4dd();
-	void init_mslug4ndd();
-	void init_mslug4hb();
-    void init_mslug4lw();
-	void init_mslug4p();
-	void init_mslug5b();
-	void init_mslug5e();
-	void init_mslug5dd();
-	void init_mslug5ndd();
-	void init_mslug5dde();
-	void init_mslug5nd();
-	void init_mslug5hb();
-	void init_mslugx();
-	void init_mslugxdd();
-	void init_s1945p();
-
-	// fixed MVS/AES software configurations
 	void init_bangbead();
 	void init_ct2k3sp();
 	void init_ct2k3sa();
@@ -153,7 +119,6 @@ public:
 	void init_jockeygp();
 	void init_kf10thep();
 	void init_kf2k1pa();
-	void init_kf2k2mp2hb();
 	void init_kf2k2pla();
 	void init_kf2k2plb();
 	void init_kf2k2plc();
@@ -187,11 +152,29 @@ public:
 	void init_matrima();
 	void init_matrimbl();
 	void init_matrimd();
+	void init_ms5pcb();
+	void init_ms5plus();
+	void init_ms5plusd();
+	void init_ms5plush();
+	void init_mslug3();
+	void init_mslug3a();
+    void init_mslug3b6d();
+	void init_mslug3cqt();
+	void init_mslug3e();
+	void init_mslug4();
+    void init_mslug4lw();
+	void init_mslug4p();
+	void init_mslug5();
+	void init_mslug5b();
+	void init_mslug5e();
+	void init_mslug5nd();
+	void init_mslugx();
 	void init_nitd();
 	void init_pnyaa();
 	void init_preisle2();
 	void init_rotd();
 	void init_rotdnd();
+	void init_s1945p();
 	void init_samsh5sp();
 	void init_samsho5();
 	void init_samsho5b();
@@ -206,6 +189,20 @@ public:
 	void init_svcsplus();
 	void init_vliner();
 	void init_zupapa();
+
+	// Fixed MVS/AES Decrypted Darksoft Software Configurations
+	void init_darksoft();
+	void init_ms5pcbdd();
+	void init_ms5plusdd();
+    void init_mslug3b6dd();
+	void init_mslug3dd();
+	void init_mslug3ndd();
+    void init_mslug4dd();
+	void init_mslug4ndd();
+	void init_mslug5dd();
+	void init_mslug5ndd();
+	void init_mslugxdd();
+	void init_garodd();
 
 	DECLARE_CUSTOM_INPUT_MEMBER(get_memcard_status);
 	DECLARE_CUSTOM_INPUT_MEMBER(get_audio_result);
@@ -247,7 +244,6 @@ private:
 	void audio_io_map(address_map &map);
 	void main_map_noslot(address_map &map);
 	void gsc_map(address_map &map);
-	void main_map1(address_map &map);
     void neogeo_68kram_map(address_map &map);
 
 	void neogeo_postload();

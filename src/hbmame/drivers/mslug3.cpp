@@ -43,7 +43,7 @@ void neogeo_state::init_mslug3a()
 	m_sma_prot->mslug3a_install_protection(m_maincpu,m_banked_cart);
 }
 
-void neogeo_state::init_mslug3hb()
+void neogeo_state::init_mslug3()
 {
 	init_neogeo();
 	m_sprgen->m_fixed_layer_bank_type = 1;
@@ -107,7 +107,7 @@ void neogeo_state::init_mslug3cqt()
 
 void neogeo_state::init_mslug3ndd()
 {
-	init_mslug3hb();
+	init_mslug3();
 	m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
 }
 
@@ -122,13 +122,13 @@ void neogeo_state::init_mslug3dd()
 
 void neogeo_state::init_mslug3e()
 {
-	init_mslug3hb();
+	init_mslug3();
 	m_sma_prot->mslug3_install_protection(m_maincpu,m_banked_cart);
 }
 
 void neogeo_state::init_mslug3b6d()
 {
-	init_mslug3hb();
+	init_mslug3();
 	m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size,2);
 }
 
@@ -15463,9 +15463,9 @@ ROM_END
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (MVS AND AES VERSION)
-GAME( 2000, mslug3,           neogeo,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "SNK",             "Metal Slug 3 (NGM-2560)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2000, mslug3,           neogeo,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "SNK",             "Metal Slug 3 (NGM-2560)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2000, mslug3a,          mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3a,    ROT0, "SNK",             "Metal Slug 3 (NGM-2560, Earlier)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX - revision Mar/17/2000 1:36 (from SMA rom) */
-GAME( 2000, mslug3h,          mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "SNK",             "Metal Slug 3 (NGH-2560)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
+GAME( 2000, mslug3h,          mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "SNK",             "Metal Slug 3 (NGH-2560)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 GAME( 2000, mslug3b6,         mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3b6d,  ROT0, "Bootleg",         "Metal Slug 6 (Metal Slug 3 Bootleg)", MACHINE_SUPPORTS_SAVE ) /* real Metal Slug 6 is an Atomiswave HW game, see naomi.c ;-) */
 
 /***************************************************************************************************************************************************
@@ -15476,14 +15476,14 @@ GAME( 2000, mslug3b6,         mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Predecrypted, Decrypter, Earlier, Bootleg And Encrypted)
-GAME( 2000, ms3b6boot,        mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3hb,   ROT0, "Bootleg",         "Metal Slug 6 (Metal Slug 3 Bootleg)(Decrypted C & S)", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, mslug3d,          mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "SNK",             "Metal Slug 3 (NGM-2560)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, mslug3dh,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "SNK",             "Metal Slug 3 (NGM-2560 ~ NGH-2560)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, mslug3hd,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "SNK",             "Metal Slug 3 (NGH-2560)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, mslug3nd,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "SNK",             "Metal Slug 3 (Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, mslug3bd,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "SNK",             "Metal Slug 3 (Fully Decrypted ~ Bad Dump Sound)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
-GAME( 2000, mslug3b6d,        mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3hb,   ROT0, "Bootleg",         "Metal Slug 6 (Metal Slug 3 Bootleg)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, mslug3b6e,        mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3hb,   ROT0, "Bootleg",         "Metal Slug 6 (Metal Slug 3 Bootleg)(Encrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, ms3b6boot,        mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3,     ROT0, "Bootleg",         "Metal Slug 6 (Metal Slug 3 Bootleg)(Decrypted C & S)", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, mslug3d,          mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "SNK",             "Metal Slug 3 (NGM-2560)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, mslug3dh,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "SNK",             "Metal Slug 3 (NGM-2560 ~ NGH-2560)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, mslug3hd,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "SNK",             "Metal Slug 3 (NGH-2560)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, mslug3nd,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "SNK",             "Metal Slug 3 (Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, mslug3bd,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "SNK",             "Metal Slug 3 (Fully Decrypted ~ Bad Dump Sound)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
+GAME( 2000, mslug3b6d,        mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3,     ROT0, "Bootleg",         "Metal Slug 6 (Metal Slug 3 Bootleg)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, mslug3b6e,        mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3,     ROT0, "Bootleg",         "Metal Slug 6 (Metal Slug 3 Bootleg)(Encrypted C)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (DARKSOFT Neo Geo Converted MVS To Decrypter/Encrypted C)
@@ -15511,48 +15511,48 @@ GAME( 2023, mslug3scdd,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (MATT GREER "CITY41" Neo Geo Converted .NEO SD)
 GAME( 2000, mslug3nsd,        mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3e,    ROT0, "SNK",             "Metal Slug 3 (NGM-2630)(Neo SD)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-GAME( 2000, mslug3hnsd,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "SNK",             "Metal Slug 3 (NGH-2630)(Neo SD)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-GAME( 2000, mslug3ndnsd,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "SNK",             "Metal Slug 3 (Fully Decrypted)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, mslug3b6nsd,      mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3hb,   ROT0, "SNK",             "Metal Slug 6 (Metal Slug 3 Bootleg)(Neo SD)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
+GAME( 2000, mslug3hnsd,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "SNK",             "Metal Slug 3 (NGH-2630)(Neo SD)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
+GAME( 2000, mslug3ndnsd,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "SNK",             "Metal Slug 3 (Fully Decrypted)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, mslug3b6nsd,      mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3,     ROT0, "SNK",             "Metal Slug 6 (Metal Slug 3 Bootleg)(Neo SD)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (MATT GREER "CITY41" Neo Geo Hack Converted .NEO SD)
-GAME( 2025, mslug3chuanqinds, mslug3,   neogeo_noslot, mslug3cqi,  neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Legendary Firepower Showdown 7.0 2025-07-14)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug3cqnds,      mslug3,   neogeo_noslot, mslug3cq,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Legendary 4.5 2024-12-03)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3cqtfbnds,   mslug3,   neogeo_68kram, mslug3sc,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Legendary Tower Defense 6.0 2025-06-10)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug3cqztnds,    mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Legendary Journey 2024-11-14)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslug3ddnds,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Starlight 2022-05-11)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2004, mslug3frnds,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (French Translation 2006-12-23)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslug3gnds,       mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Multifunction 2022-08-23)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslug3kinds,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Komorebi 2022-05-11)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug3ndnds,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Pigeon Slug 2023-05-07)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug3scnds,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Survival 2023-03-01)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3chuanqinds, mslug3,   neogeo_noslot, mslug3cqi,  neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Legendary Firepower Showdown 7.0 2025-07-14)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug3cqnds,      mslug3,   neogeo_noslot, mslug3cq,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Legendary 4.5 2024-12-03)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3cqtfbnds,   mslug3,   neogeo_68kram, mslug3sc,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Legendary Tower Defense 6.0 2025-06-10)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug3cqztnds,    mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Legendary Journey 2024-11-14)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslug3ddnds,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Starlight 2022-05-11)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2004, mslug3frnds,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (French Translation 2006-12-23)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslug3gnds,       mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Multifunction 2022-08-23)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslug3kinds,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Komorebi 2022-05-11)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug3ndnds,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Pigeon Slug 2023-05-07)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug3scnds,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Survival 2023-03-01)(Neo SD)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (TAOENWEN Neo Geo Hack Converted C, V, M, S & P Decrypter To Encrypte)
-GAME( 2019, mslug31v2,        mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (1v2 Mode 2019-05-11)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
-GAME( 2022, mslug3burt,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Burst Enhanced 2022-11-03)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
-GAME( 2013, mslug3eb,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Green Blue 2013-02-27)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
-GAME( 2014, mslug3eb14,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Green Blue 2014-10-15)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
-GAME( 2018, mslug3sd,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Shop 2017-12-17)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
-GAME( 2023, mslug3sc,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Survival 2023-03-01)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
-GAME( 2024, mslug3cq,         mslug3,   neogeo_noslot, mslug3cq,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Legendary 4.5 2024-12-03)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2019, mslug31v2,        mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (1v2 Mode 2019-05-11)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2022, mslug3burt,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Burst Enhanced 2022-11-03)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2013, mslug3eb,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Green Blue 2013-02-27)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2014, mslug3eb14,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Green Blue 2014-10-15)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2018, mslug3sd,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Shop 2017-12-17)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2023, mslug3sc,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Survival 2023-03-01)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2024, mslug3cq,         mslug3,   neogeo_noslot, mslug3cq,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Legendary 4.5 2024-12-03)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2025, mslug3chuanqi,    mslug3,   neogeo_68kram, mslug3cqi,  neogeo_state,    init_mslug3cqt,  ROT0, "hack",            "Metal Slug 3 (Legendary Firepower Showdown 6.0 2025-06-09)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2025, mslug3cqtfb,      mslug3,   neogeo_68kram, mslug3sc,   neogeo_state,    init_mslug3cqt,  ROT0, "hack",            "Metal Slug 3 (Legendary Tower Defense 6.0 2025-06-10)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 2024, mslug3cqzt,       mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3cqt,  ROT0, "hack",            "Metal Slug 3 (Legendary Journey 2024-11-14)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
-GAME( 2024, mslug3dbplus,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Double Enemy 2024-11-20)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
-GAME( 2019, mslug3c,          mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Enemies Resetting 2019-07-20)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
-GAME( 2004, mslug3fr,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (French Translation 2003-07-29)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
-GAME( 2019, mslug3g,          mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Multifunction 2019-03-05)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
-GAME( 2018, mslug3gw,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Onimusha Samanosuke 2018-05-30)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
-GAME( 2021, mslug3i,          mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Infinite Firepower 2021-03-17)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
-GAME( 2022, mslug3dde,        mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Starlight 2022-05-11)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
-GAME( 2022, mslug3ki,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Komorebi 2022-05-11)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
-GAME( 2023, mslug3lw,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Pigeon Slug 2023-05-07)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
-GAME( 2022, mslug3se,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Special 2022-03-31)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
-GAME( 2021, mslug3unity,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Unity Time! 2021-02-13)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
-GAME( 2012, mslug3v,          mslug3,   neogeo_noslot, mslug3v,    neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Violence 2012-03-01)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
-GAME( 2018, mslug3zh,         mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Vehicle Summon 2017-04-04)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2024, mslug3dbplus,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Double Enemy 2024-11-20)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2019, mslug3c,          mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Enemies Resetting 2019-07-20)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2004, mslug3fr,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (French Translation 2003-07-29)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2019, mslug3g,          mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Multifunction 2019-03-05)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2018, mslug3gw,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Onimusha Samanosuke 2018-05-30)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2021, mslug3i,          mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Infinite Firepower 2021-03-17)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2022, mslug3dde,        mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Starlight 2022-05-11)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2022, mslug3ki,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Komorebi 2022-05-11)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2023, mslug3lw,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Pigeon Slug 2023-05-07)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2022, mslug3se,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Special 2022-03-31)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2021, mslug3unity,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Unity Time! 2021-02-13)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2012, mslug3v,          mslug3,   neogeo_noslot, mslug3v,    neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Violence 2012-03-01)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+GAME( 2018, mslug3zh,         mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Vehicle Summon 2017-04-04)(Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 
 // YouTube Channel: https://www.youtube.com/@soldierrebel6603
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
@@ -15562,45 +15562,45 @@ GAME( 2024, mslug3or,         mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug 3 (Hack)
-GAME( 2012, mslug3hc01,       mslug3,   neogeo_noslot, mslug3sd,   neogeo_state,    init_mslug3hb,   ROT0, "HappyAsr",        "Metal Slug 3 (Super D Version 2012-03-28)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslug3hc02,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PPXCLUB",         "Metal Slug 3 (Burst Enhanced 2022-11-03)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslug3hc03,       mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Multifunction 2022-08-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2019, mslug3hc04,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Special 2019-07-27)(Earlier)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslug3hc05,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Special 2022-03-31)", MACHINE_SUPPORTS_SAVE ) 
+GAME( 2012, mslug3hc01,       mslug3,   neogeo_noslot, mslug3sd,   neogeo_state,    init_mslug3,     ROT0, "HappyAsr",        "Metal Slug 3 (Super D Version 2012-03-28)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslug3hc02,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PPXCLUB",         "Metal Slug 3 (Burst Enhanced 2022-11-03)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslug3hc03,       mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Multifunction 2022-08-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, mslug3hc04,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Special 2019-07-27)(Earlier)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslug3hc05,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Special 2022-03-31)", MACHINE_SUPPORTS_SAVE ) 
 GAME( 2013, mslug3hc06,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3e,    ROT0, "GOTVG",           "Metal Slug 3 (Green Blue 2013-02-27)", MACHINE_SUPPORTS_SAVE )
 GAME( 2014, mslug3hc07,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3e,    ROT0, "PlayerX China",   "Metal Slug 3 (Green Blue 2014-10-15)", MACHINE_SUPPORTS_SAVE )
-GAME( 2017, mslug3hc08,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Shop 2017-12-17)", MACHINE_SUPPORTS_SAVE )
-GAME( 2018, mslug3hc09,       mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Vehicle Summon 2017-04-04)", MACHINE_SUPPORTS_SAVE )
-GAME( 2018, mslug3hc10,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Onimusha Samanosuke 2018-05-30)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug3hc11,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Infinite Firepower 2021-03-17)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug3hc12,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Ultimate Simplified 2020-08-25)", MACHINE_SUPPORTS_SAVE )
-GAME( 2013, mslug3hc13,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "FBN4DROID",       "Metal Slug 3 (Hybrid Bullets 2013-01-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslug3hc14,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "FBN4DROID",       "Metal Slug 3 (The Future 2020-09-12)", MACHINE_SUPPORTS_SAVE )
-GAME( 2017, mslug3hc15,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "FBN4DROID",       "Metal Slug 3 (Enemy Remake 2017-09-27)", MACHINE_SUPPORTS_SAVE )
-GAME( 2012, mslug3hc16,       mslug3,   neogeo_noslot, mslug3wp,   neogeo_state,    init_mslug3hb,   ROT0, "LB70 (Eezezy)",   "Metal Slug 3 (Crazy Fire 2012-01-16)", MACHINE_SUPPORTS_SAVE )
-GAME( 2019, mslug3hc17,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "FBN4DROID",       "Metal Slug 3 (Enemy Soldiers Reset 2019-01-02)(Earlier)", MACHINE_SUPPORTS_SAVE )
-GAME( 2019, mslug3hc18,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Enemies Resetting 2019-07-20)", MACHINE_SUPPORTS_SAVE )
-GAME( 2017, mslug3hc19,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "FBN4DROID",       "Metal Slug 3 (Random Enemies Resetting 2017-12-08)(Earlier)", MACHINE_SUPPORTS_SAVE ) //Fix Gaston90
-GAME( 2023, mslug3hc20,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Pigeon Slug 2023-05-07)", MACHINE_SUPPORTS_SAVE ) //Fix Gaston90
-GAME( 2017, mslug3hc21,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "Wanghua123",      "Metal Slug 3 (Slug #1 2017-10-09)", MACHINE_SUPPORTS_SAVE )
-GAME( 2019, mslug3hc22,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Slug #2 2019-02-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug3hc23,       mslug3,   neogeo_noslot, mslug3db,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Double Enemy 2024-11-20)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, mslug3hc08,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Shop 2017-12-17)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, mslug3hc09,       mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Vehicle Summon 2017-04-04)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, mslug3hc10,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Onimusha Samanosuke 2018-05-30)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug3hc11,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Infinite Firepower 2021-03-17)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug3hc12,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Ultimate Simplified 2020-08-25)", MACHINE_SUPPORTS_SAVE )
+GAME( 2013, mslug3hc13,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "FBN4DROID",       "Metal Slug 3 (Hybrid Bullets 2013-01-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslug3hc14,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "FBN4DROID",       "Metal Slug 3 (The Future 2020-09-12)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, mslug3hc15,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "FBN4DROID",       "Metal Slug 3 (Enemy Remake 2017-09-27)", MACHINE_SUPPORTS_SAVE )
+GAME( 2012, mslug3hc16,       mslug3,   neogeo_noslot, mslug3wp,   neogeo_state,    init_mslug3,     ROT0, "LB70 (Eezezy)",   "Metal Slug 3 (Crazy Fire 2012-01-16)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, mslug3hc17,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "FBN4DROID",       "Metal Slug 3 (Enemy Soldiers Reset 2019-01-02)(Earlier)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, mslug3hc18,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Enemies Resetting 2019-07-20)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, mslug3hc19,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "FBN4DROID",       "Metal Slug 3 (Random Enemies Resetting 2017-12-08)(Earlier)", MACHINE_SUPPORTS_SAVE ) //Fix Gaston90
+GAME( 2023, mslug3hc20,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Pigeon Slug 2023-05-07)", MACHINE_SUPPORTS_SAVE ) //Fix Gaston90
+GAME( 2017, mslug3hc21,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "Wanghua123",      "Metal Slug 3 (Slug #1 2017-10-09)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, mslug3hc22,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Slug #2 2019-02-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug3hc23,       mslug3,   neogeo_noslot, mslug3db,   neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Double Enemy 2024-11-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug3hc24,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3e,    ROT0, "hack",            "Metal Slug 3 (Unity Time! 2021-02-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug3hc25,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3e,    ROT0, "GOTVG",           "Metal Slug 3 (1v2 Mode 2019-05-11)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslug3hc26,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Starlight 2022-05-11)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslug3hc27,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Komorebi 2022-05-11)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug3hc28,       mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3hb,   ROT0, "DDJ",             "Metal Slug 3 (War Chariot 2023-08-18)", MACHINE_SUPPORTS_SAVE ) //Fix Gaston90
-GAME( 2012, mslug3hc29,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "DDJ",             "Metal Slug 3 (Change Weapons 2012-05-22)", MACHINE_SUPPORTS_SAVE )
-GAME( 2016, mslug3hc30,       mslug3,   neogeo_noslot, mslug3cb,   neogeo_state,    init_mslug3hb,   ROT0, "DDJ",             "Metal Slug 3 (Change Body 2016-03-10)", MACHINE_SUPPORTS_SAVE )
-GAME( 2012, mslug3hc31,       mslug3,   neogeo_noslot, mslug3v,    neogeo_state,    init_mslug3hb,   ROT0, "LB70 (Eezezy)",   "Metal Slug 3 (Violence 2012-03-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2004, mslug3hc32,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "Shyma.X",         "Metal Slug 3 (French Translation 2006-12-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2018, mslug3hc33,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Easy Mode 2018-11-16)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug3hc34,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "hack",            "Metal Slug 3 (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslug3hc35,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Survival 2023-03-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3hc36,       mslug3,   neogeo_noslot, mslug3cq,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary 4.5 2025-07-14)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3hc37,       mslug3,   neogeo_noslot, mslug3cqi,  neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Dark Fate 7.H 2025-07-19)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3hc38,       mslug3,   neogeo_68kram, mslug3sc,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Tower Defense 6.0 2025-06-10)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug3hc39,       mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3hb,   ROT0, "GOTVG",           "Metal Slug 3 (Legendary Journey 2024-11-14)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslug3hc26,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Starlight 2022-05-11)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslug3hc27,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Komorebi 2022-05-11)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug3hc28,       mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3,     ROT0, "DDJ",             "Metal Slug 3 (War Chariot 2023-08-18)", MACHINE_SUPPORTS_SAVE ) //Fix Gaston90
+GAME( 2012, mslug3hc29,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "DDJ",             "Metal Slug 3 (Change Weapons 2012-05-22)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, mslug3hc30,       mslug3,   neogeo_noslot, mslug3cb,   neogeo_state,    init_mslug3,     ROT0, "DDJ",             "Metal Slug 3 (Change Body 2016-03-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2012, mslug3hc31,       mslug3,   neogeo_noslot, mslug3v,    neogeo_state,    init_mslug3,     ROT0, "LB70 (Eezezy)",   "Metal Slug 3 (Violence 2012-03-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 2004, mslug3hc32,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "Shyma.X",         "Metal Slug 3 (French Translation 2006-12-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, mslug3hc33,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Easy Mode 2018-11-16)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug3hc34,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "hack",            "Metal Slug 3 (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslug3hc35,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Survival 2023-03-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3hc36,       mslug3,   neogeo_noslot, mslug3cq,   neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Legendary 4.5 2025-07-14)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3hc37,       mslug3,   neogeo_noslot, mslug3cqi,  neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Dark Fate 7.H 2025-07-19)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3hc38,       mslug3,   neogeo_68kram, mslug3sc,   neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Legendary Tower Defense 6.0 2025-06-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug3hc39,       mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Legendary Journey 2024-11-14)", MACHINE_SUPPORTS_SAVE )
 
 /*********************************************************************************
 * This game sector is exclusive 2017 - 2025, its modifications that load have been customized
@@ -15616,189 +15616,189 @@ GAME( 2024, mslug3hc39,       mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Cuztom)
-GAME( 2025, mslug3ctma01,     mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Multifunction Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctma02,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Onimusha Samanosuke Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctma03,     mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Vehicle Summon Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctma04,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Shop Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctma05,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting SE Special Cuztom 2025-02-05)(Earlier)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctma06,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Burst Enhanced Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctma07,     mslug3,   neogeo_noslot, mslug3sd,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Super D Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctma08,     mslug3,   neogeo_noslot, mslug3v,    neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Violence Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctma09,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Ultimate Simplified Cuztom 2025-02-05)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctma10,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Infinite Firepower Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctma11,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Easy Mode Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctma12,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Enemy Speed Up Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctma13,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Hybrid Bullets Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctma14,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Starlight Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctma01,     mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Multifunction Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctma02,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Onimusha Samanosuke Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctma03,     mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Vehicle Summon Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctma04,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Shop Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctma05,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting SE Special Cuztom 2025-02-05)(Earlier)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctma06,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Burst Enhanced Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctma07,     mslug3,   neogeo_noslot, mslug3sd,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Super D Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctma08,     mslug3,   neogeo_noslot, mslug3v,    neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Violence Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctma09,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Ultimate Simplified Cuztom 2025-02-05)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctma10,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Infinite Firepower Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctma11,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Easy Mode Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctma12,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Enemy Speed Up Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctma13,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Hybrid Bullets Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctma14,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Starlight Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug3ctma15,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3e,    ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Green Blue Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug3ctma16,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3e,    ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Unity Time! Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctma17,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Survival Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctma17,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Survival Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug3ctma18,     mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3b6d,  ROT0, "PSMSlugForever",  "Metal Slug 6 (Metal Slug 3 Bootleg) (Enemies Resetting Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctma19,     mslug3,   neogeo_noslot, mslug3db,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Double Enemy 2025-06-15)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmb01,     mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Multifunction Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmb02,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Onimusha Samanosuke Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmb03,     mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Vehicle Summon Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmb04,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Shop Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmb05,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future SE Special Cuztom 2025-02-05)(Earlier)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmb06,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Burst Enhanced Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmb07,     mslug3,   neogeo_noslot, mslug3sd,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Super D Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmb08,     mslug3,   neogeo_noslot, mslug3v,    neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Violence Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmb09,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Ultimate Simplified Cuztom 2025-02-05)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmb10,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Infinite Firepower Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmb11,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Easy Mode Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmb12,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Enemy Speed Up Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmb13,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Hybrid Bullets Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmb14,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Starlight Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctma19,     mslug3,   neogeo_noslot, mslug3db,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Double Enemy 2025-06-15)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmb01,     mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Multifunction Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmb02,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Onimusha Samanosuke Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmb03,     mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Vehicle Summon Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmb04,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Shop Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmb05,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future SE Special Cuztom 2025-02-05)(Earlier)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmb06,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Burst Enhanced Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmb07,     mslug3,   neogeo_noslot, mslug3sd,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Super D Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmb08,     mslug3,   neogeo_noslot, mslug3v,    neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Violence Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmb09,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Ultimate Simplified Cuztom 2025-02-05)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmb10,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Infinite Firepower Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmb11,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Easy Mode Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmb12,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Enemy Speed Up Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmb13,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Hybrid Bullets Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmb14,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Starlight Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug3ctmb15,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3e,    ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Green Blue Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug3ctmb16,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3e,    ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Unity Time! Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmb17,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Survival Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmb17,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Survival Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug3ctmb18,     mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3b6d,  ROT0, "PSMSlugForever",  "Metal Slug 6 (Metal Slug 3 Bootleg) (The Future Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmb19,     mslug3,   neogeo_noslot, mslug3db,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Double Enemy 2025-06-15)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmc01,     mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Multifunction Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmc02,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Onimusha Samanosuke Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmc03,     mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Vehicle Summon Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmc04,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Shop Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmc05,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake SE Special Cuztom 2025-02-05)(Earlier)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmc06,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Burst Enhanced Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmc07,     mslug3,   neogeo_noslot, mslug3sd,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Super D Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmc08,     mslug3,   neogeo_noslot, mslug3v,    neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Violence Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmc09,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Ultimate Simplified Cuztom 2025-02-05)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmc10,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Infinite Firepower Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmc11,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Easy Mode Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmc12,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Enemy Speed Up Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmc13,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Hybrid Bullets Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmc14,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Starlight Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmb19,     mslug3,   neogeo_noslot, mslug3db,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Double Enemy 2025-06-15)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmc01,     mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Multifunction Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmc02,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Onimusha Samanosuke Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmc03,     mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Vehicle Summon Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmc04,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Shop Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmc05,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake SE Special Cuztom 2025-02-05)(Earlier)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmc06,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Burst Enhanced Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmc07,     mslug3,   neogeo_noslot, mslug3sd,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Super D Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmc08,     mslug3,   neogeo_noslot, mslug3v,    neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Violence Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmc09,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Ultimate Simplified Cuztom 2025-02-05)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmc10,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Infinite Firepower Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmc11,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Easy Mode Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmc12,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Enemy Speed Up Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmc13,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Hybrid Bullets Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmc14,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Starlight Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug3ctmc15,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3e,    ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Green Blue Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug3ctmc16,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3e,    ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Unity Time! Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmc17,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Survival Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmc17,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Survival Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug3ctmc18,     mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3b6d,  ROT0, "PSMSlugForever",  "Metal Slug 6 (Metal Slug 3 Bootleg) (Enemy Remake Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmc19,     mslug3,   neogeo_noslot, mslug3db,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Double Enemy 2025-06-15)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmd01,     mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Multifunction Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmd02,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Onimusha Samanosuke Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmd03,     mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Vehicle Summon Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmd04,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Shop Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmd05,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 SE Special Cuztom 2025-02-05)(Earlier)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmd06,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Burst Enhanced Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmd07,     mslug3,   neogeo_noslot, mslug3sd,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Super D Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmd08,     mslug3,   neogeo_noslot, mslug3v,    neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Violence Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmd09,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Ultimate Simplified Cuztom 2025-02-05)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmd10,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Infinite Firepower Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmd11,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Easy Mode Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmd12,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Enemy Speed Up Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmd13,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Survival Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmd14,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Hybrid Bullets Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmc19,     mslug3,   neogeo_noslot, mslug3db,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Double Enemy 2025-06-15)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmd01,     mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Multifunction Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmd02,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Onimusha Samanosuke Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmd03,     mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Vehicle Summon Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmd04,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Shop Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmd05,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 SE Special Cuztom 2025-02-05)(Earlier)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmd06,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Burst Enhanced Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmd07,     mslug3,   neogeo_noslot, mslug3sd,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Super D Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmd08,     mslug3,   neogeo_noslot, mslug3v,    neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Violence Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmd09,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Ultimate Simplified Cuztom 2025-02-05)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmd10,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Infinite Firepower Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmd11,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Easy Mode Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmd12,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Enemy Speed Up Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmd13,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Survival Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmd14,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Hybrid Bullets Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug3ctmd15,     mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3b6d,  ROT0, "PSMSlugForever",  "Metal Slug 6 (Metal Slug 3 Bootleg) (Pigeon Slug #1 Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmd16,     mslug3,   neogeo_noslot, mslug3db,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Double Enemy 2025-06-15)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctme01,     mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Multifunction Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctme02,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Onimusha Samanosuke Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctme03,     mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Vehicle Summon Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctme04,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Shop Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctme05,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 SE Special Cuztom 2025-02-05)(Earlier)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctme06,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Burst Enhanced Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctme07,     mslug3,   neogeo_noslot, mslug3sd,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Super D Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctme08,     mslug3,   neogeo_noslot, mslug3v,    neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Violence Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctme09,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Ultimate Simplified Cuztom 2025-02-05)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctme10,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Infinite Firepower Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctme11,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Easy Mode Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctme12,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Enemy Speed Up Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctme13,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Survival Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctme14,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Hybrid Bullets Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmd16,     mslug3,   neogeo_noslot, mslug3db,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Double Enemy 2025-06-15)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctme01,     mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Multifunction Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctme02,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Onimusha Samanosuke Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctme03,     mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Vehicle Summon Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctme04,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Shop Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctme05,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 SE Special Cuztom 2025-02-05)(Earlier)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctme06,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Burst Enhanced Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctme07,     mslug3,   neogeo_noslot, mslug3sd,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Super D Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctme08,     mslug3,   neogeo_noslot, mslug3v,    neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Violence Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctme09,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Ultimate Simplified Cuztom 2025-02-05)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctme10,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Infinite Firepower Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctme11,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Easy Mode Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctme12,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Enemy Speed Up Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctme13,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Survival Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctme14,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Hybrid Bullets Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug3ctme15,     mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3b6d,  ROT0, "PSMSlugForever",  "Metal Slug 6 (Metal Slug 3 Bootleg) (Pigeon Slug #2 Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctme16,     mslug3,   neogeo_noslot, mslug3db,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Double Enemy 2025-06-15)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmf01,     mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Multifunction Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmf02,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Onimusha Samanosuke Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmf03,     mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Vehicle Summon Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmf04,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Shop Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmf05,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 SE Special Cuztom 2025-02-05)(Earlier)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmf06,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Burst Enhanced Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmf07,     mslug3,   neogeo_noslot, mslug3sd,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Super D Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmf08,     mslug3,   neogeo_noslot, mslug3v,    neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Violence Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmf09,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Ultimate Simplified Cuztom 2025-02-05)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmf10,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Infinite Firepower Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmf11,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Easy Mode Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmf12,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Enemy Speed Up Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmf13,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Survival Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmf14,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Hybrid Bullets Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctme16,     mslug3,   neogeo_noslot, mslug3db,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Double Enemy 2025-06-15)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmf01,     mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Multifunction Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmf02,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Onimusha Samanosuke Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmf03,     mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Vehicle Summon Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmf04,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Shop Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmf05,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 SE Special Cuztom 2025-02-05)(Earlier)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmf06,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Burst Enhanced Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmf07,     mslug3,   neogeo_noslot, mslug3sd,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Super D Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmf08,     mslug3,   neogeo_noslot, mslug3v,    neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Violence Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmf09,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Ultimate Simplified Cuztom 2025-02-05)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmf10,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Infinite Firepower Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmf11,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Easy Mode Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmf12,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Enemy Speed Up Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmf13,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Survival Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmf14,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Hybrid Bullets Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug3ctmf15,     mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3b6d,  ROT0, "PSMSlugForever",  "Metal Slug 6 (Metal Slug 3 Bootleg) (Pigeon Slug #3 Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmf16,     mslug3,   neogeo_noslot, mslug3db,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Double Enemy 2025-06-15)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmg01,     mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Multifunction Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmg02,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Onimusha Samanosuke Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmg03,     mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Vehicle Summon Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmg04,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Shop Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmg05,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 SE Special Cuztom 2025-02-05)(Earlier)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmg06,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Burst Enhanced Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmg07,     mslug3,   neogeo_noslot, mslug3sd,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Super D Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmg08,     mslug3,   neogeo_noslot, mslug3v,    neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Violence Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmg09,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Ultimate Simplified Cuztom 2025-02-05)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmg10,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Infinite Firepower Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmg11,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Easy Mode Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmg12,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Enemy Speed Up Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmg13,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Survival Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmg14,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Hybrid Bullets Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmf16,     mslug3,   neogeo_noslot, mslug3db,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Double Enemy 2025-06-15)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmg01,     mslug3,   neogeo_noslot, mslug3g,    neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Multifunction Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmg02,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Onimusha Samanosuke Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmg03,     mslug3,   neogeo_noslot, mslug3zh,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Vehicle Summon Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmg04,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Shop Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmg05,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 SE Special Cuztom 2025-02-05)(Earlier)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmg06,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Burst Enhanced Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmg07,     mslug3,   neogeo_noslot, mslug3sd,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Super D Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmg08,     mslug3,   neogeo_noslot, mslug3v,    neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Violence Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmg09,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Ultimate Simplified Cuztom 2025-02-05)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmg10,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Infinite Firepower Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmg11,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Easy Mode Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmg12,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Enemy Speed Up Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmg13,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Survival Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmg14,     mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Hybrid Bullets Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug3ctmg15,     mslug3,   neogeo_noslot, mslug3b6,   neogeo_state,    init_mslug3b6d,  ROT0, "PSMSlugForever",  "Metal Slug 6 (Metal Slug 3 Bootleg) (Pigeon Slug #4 Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ctmg16,     mslug3,   neogeo_noslot, mslug3db,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Double Enemy 2025-06-15)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ctmg16,     mslug3,   neogeo_noslot, mslug3db,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Double Enemy 2025-06-15)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Remix)
-GAME( 2025, mslug3la01,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Multifunction Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3la02,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Multifunction Fat Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3la03,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Multifunction Zombie Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3la04,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Multifunction Mummy Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3la05,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Multifunction Hybrid Bullets Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3la06,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Vehicle Summon Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lb01,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Multifunction Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lb02,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Multifunction Fat Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lb03,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Multifunction Zombie Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lb04,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Multifunction Mummy Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lb05,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Multifunction Hybrid Bullets Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lb06,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Vehicle Summon Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lc01,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Multifunction Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lc02,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Multifunction Fat Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lc03,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Multifunction Zombie Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lc04,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Multifunction Mummy Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lc05,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Multifunction Hybrid Bullets Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lc06,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Vehicle Summon Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ld01,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Multifunction Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ld02,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Multifunction Fat Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ld03,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Multifunction Zombie Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ld04,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Multifunction Mummy Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ld05,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Multifunction Hybrid Bullets Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3ld06,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Vehicle Summon Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3le01,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3le02,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Fat Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3le03,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Zombie Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3le04,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Mummy Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3le05,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Hybrid Bullets Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3le06,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Vehicle Summon Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lf01,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lf02,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Fat Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lf03,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Zombie Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lf04,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Mummy Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lf05,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Hybrid Bullets Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lf06,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Vehicle Summon Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lg01,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lg02,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Fat Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lg03,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Zombie Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lg04,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Mummy Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lg05,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Hybrid Bullets Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lg06,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Vehicle Summon Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lh01,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lh02,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Fat Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lh03,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Zombie Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lh04,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Mummy Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lh05,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Hybrid Bullets Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3lh06,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Vehicle Summon Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3li01,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Random Enemies Resetting Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3la01,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Multifunction Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3la02,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Multifunction Fat Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3la03,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Multifunction Zombie Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3la04,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Multifunction Mummy Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3la05,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Multifunction Hybrid Bullets Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3la06,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Vehicle Summon Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lb01,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Multifunction Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lb02,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Multifunction Fat Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lb03,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Multifunction Zombie Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lb04,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Multifunction Mummy Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lb05,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Multifunction Hybrid Bullets Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lb06,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Vehicle Summon Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lc01,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Multifunction Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lc02,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Multifunction Fat Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lc03,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Multifunction Zombie Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lc04,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Multifunction Mummy Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lc05,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Multifunction Hybrid Bullets Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lc06,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Vehicle Summon Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ld01,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Multifunction Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ld02,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Multifunction Fat Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ld03,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Multifunction Zombie Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ld04,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Multifunction Mummy Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ld05,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Multifunction Hybrid Bullets Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3ld06,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Vehicle Summon Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3le01,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3le02,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Fat Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3le03,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Zombie Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3le04,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Mummy Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3le05,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Hybrid Bullets Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3le06,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Vehicle Summon Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lf01,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lf02,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Fat Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lf03,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Zombie Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lf04,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Mummy Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lf05,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Hybrid Bullets Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lf06,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Vehicle Summon Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lg01,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lg02,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Fat Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lg03,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Zombie Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lg04,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Mummy Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lg05,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Hybrid Bullets Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lg06,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Vehicle Summon Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lh01,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lh02,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Fat Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lh03,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Zombie Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lh04,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Mummy Players Mode Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lh05,       mslug3,   neogeo_noslot, mslug3dg,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Hybrid Bullets Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3lh06,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Vehicle Summon Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3li01,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Random Enemies Resetting Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Remix Extreme)
-GAME( 2025, mslug3rma01,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Multifunction Remix Extreme 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3rmb01,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Multifunction Remix Extreme 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3rmc01,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Multifunction Remix Extreme 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3rmd01,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Multifunction Remix Extreme 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3rme01,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Remix Extreme 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3rmf01,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Remix Extreme 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3rmg01,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Remix Extreme 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3rmh01,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Remix Extreme 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3rmi01,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3hb,   ROT0, "PSMSlugForever",  "Metal Slug 3 (Random Enemies Resetting Remix Extreme 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3rma01,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Multifunction Remix Extreme 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3rmb01,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemies Resetting Multifunction Remix Extreme 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3rmc01,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (The Future Multifunction Remix Extreme 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3rmd01,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Enemy Remake Multifunction Remix Extreme 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3rme01,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #1 Remix Extreme 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3rmf01,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #2 Remix Extreme 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3rmg01,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #3 Remix Extreme 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3rmh01,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Pigeon Slug #4 Remix Extreme 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3rmi01,      mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "PSMSlugForever",  "Metal Slug 3 (Random Enemies Resetting Remix Extreme 2025-02-05)", MACHINE_SUPPORTS_SAVE )
 

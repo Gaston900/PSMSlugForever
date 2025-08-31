@@ -1045,6 +1045,7 @@ void neogeo_state::neogeo_noslot(machine_config &config)
 	FATFURY2_PROT(config, "fatfury2_prot");
 	KOF98_PROT(config, "kof98_prot");
 	SBP_PROT(config, "sbp_prot");
+	KOG_PROT(config, "kog_prot");
 }
 
 void neogeo_state::neogeo_kog(machine_config &config)

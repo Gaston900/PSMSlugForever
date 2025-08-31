@@ -28,18 +28,6 @@
 ************************************************************************************************************************************/
 
 /*************************************
- *
- *  Game-specific inits
- *
- *************************************/
-
-void neogeo_state::init_mslug2dd()
-{
-	init_neogeo();
-	m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
-}
-
-/*************************************
     Game specific input definitions
  *************************************/
 
@@ -2767,14 +2755,14 @@ GAME( 2015, mslug2t,          mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (DARKSOFT Neo Geo Converted MVS To Decrypter/Encrypted C)
-GAME( 1998, mslug2dd,         mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_mslug2dd,   ROT0, "SNK",             "Metal Slug 2 (Decrypted C / Darksoft)", MACHINE_SUPPORTS_SAVE )
-GAME( 1998, mslug2tdd,        mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_mslug2dd,   ROT0, "SNK",             "Metal Slug 2 Turbo (Decrypted C / Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 1998, mslug2dd,         mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "SNK",             "Metal Slug 2 (Decrypted C / Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 1998, mslug2tdd,        mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "SNK",             "Metal Slug 2 Turbo (Decrypted C / Darksoft)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (DARKSOFT Neo Geo Hacks Converted MVS To Decrypter/Encrypted C)
-GAME( 2022, mslug2dddd,       mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_mslug2dd,   ROT0, "hack",            "Metal Slug 2 (Starlight 2022-05-11)(Darksoft)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug2egdd,       mslug2,   neogeo_noslot, mslug2eg,   neogeo_state,    init_mslug2dd,   ROT0, "hack",            "Metal Slug 2 (Extraction Green Turbo 2021-09-16)(Darksoft)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2006, mslug2frdd,       mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_mslug2dd,   ROT0, "hack",            "Metal Slug 2 (French Translation 2006-09-26)(Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslug2dddd,       mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (Starlight 2022-05-11)(Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug2egdd,       mslug2,   neogeo_noslot, mslug2eg,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (Extraction Green Turbo 2021-09-16)(Darksoft)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslug2frdd,       mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (French Translation 2006-09-26)(Darksoft)", MACHINE_SUPPORTS_SAVE )
 
 // This uses a .neo file: 0x1000 bytes for header, then p rom (word_swap), then remainder is normal (HBMAME)
 // The .neo boot file (P1) is used, converted .neo to GFX Encrypted/Decrypted.

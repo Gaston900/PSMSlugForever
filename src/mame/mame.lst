@@ -1132,6 +1132,7 @@ fatfursp                        // 0058 (c) 1993 SNK
 fatfurspa                       // 0058 (c) 1993 SNK
 fatfury1                        // 0033 (c) 1991 SNK
 fatfury2                        // 0047 (c) 1992 SNK
+fatfury2a                       // 0047 (c) 1992 SNK
 fatfury3                        // 0069 (c) 1995 SNK
 fatfury3a                       // 0069 (c) 1995 SNK
 fbfrenzy                        // 0034 (c) 1992 SNK
@@ -1389,6 +1390,8 @@ kof2k1e                         // Decrypted / Bootleg
 kf2k1bh                         // Decrypted / Bootleg
 kf2k1pls                        // Decrypted / Bootleg
 kf2k1pla                        // Decrypted / Bootleg
+kf2k1plsp                       // Predecrypted / Bootleg
+kf2k1plap                       // Predecrypted / Bootleg
 kof2k2d                         // Decrypted / Bootleg
 kof2k2nd                        // Decrypted / Bootleg
 kf2k2plb                        // Decrypted / Bootleg
@@ -1431,6 +1434,7 @@ lans2004p                       // Predecrypted / Bootleg
 lans2k4d                        // Decrypted / Bootleg
 matrimd                         // Decrypted / Bootleg
 matrima                         // Decrypted / Bootleg
+matrimap                        // Predecrypted / Bootleg
 matrimeh                        // Decrypted / Bootleg
 matrimnd                        // Decrypted / Bootleg
 nitdd                           // Decrypted / Bootleg
@@ -1447,12 +1451,14 @@ samsh5bd                        // Decrypted / Bootleg
 samsh5d                         // Decrypted / Bootleg
 samsh5hd                        // Decrypted / Bootleg
 samsh5nd                        // Decrypted / Bootleg
+samsh5p                         // Predecrypted / Bootleg
 ssh5spn                         // Decrypted / Bootleg
 sams5spd                        // Decrypted / Bootleg
 sams5sod                        // Decrypted / Bootleg
 sams5shd                        // Decrypted / Bootleg
 samsh5sphd                      // Decrypted / Bootleg
 samsh5spnd                      // Decrypted / Bootleg
+samsh5spp                       // Predecrypted / Bootleg
 sengok3d                        // Decrypted / Bootleg
 svcda                           // Decrypted / Bootleg
 svcd                            // Decrypted / Bootleg
@@ -1468,25 +1474,10 @@ zupapad                         // Decrypted / Bootleg
 zupapand                        // Decrypted / Bootleg
 
 @source:neogeo.cpp
-fatfury2p                       // Predecrypted
-ganryup                       // Predecrypted
-kof99kp                         // Predecrypted
-kof2knp                        // Predecrypted
-kof2k1p                        // Predecrypted
-kof2k1plsp                         // Predecrypted
-kof2k1pap                         // Predecrypted
-kof2k2p                         // Predecrypted
-matrimdap                         // Predecrypted
-rotdp                      // Predecrypted
-samsh5p                       // Predecrypted
-samsh5spp                         // Predecrypted
-svcp                        // Predecrypted
-zupapap                      // Predecrypted
-
-@source:neogeo.cpp
 2020bbe                         // Earlier
 3countbe                        // Earlier
 aof3e                           // Earlier
+bangbeade                       // Earlier
 blazstre                        // Earlier
 goalx3e                         // Earlier
 kabukikle                       // Earlier
@@ -1560,6 +1551,9 @@ superspycd                      // CD conversion
 tpgolfcd                        // CD conversion
 trallycd                        // CD conversion
 zintrkcd                        // CD conversion
+
+@source:neogeo.cpp
+garoudd                         // Decrypted Darksoft
 
 @source:neogeo.cpp
 19yy                            // HomeBrew
