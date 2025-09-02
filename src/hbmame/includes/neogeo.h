@@ -192,6 +192,10 @@ public:
 
 	// Fixed MVS/AES Decrypted Darksoft Software Configurations
 	void init_darksoft();
+	void init_garoudd();
+	void init_garouhdd();
+	void init_kof99dd();
+	void init_kof2000dd();
 	void init_ms5pcbdd();
 	void init_ms5plusdd();
     void init_mslug3b6dd();
@@ -202,7 +206,8 @@ public:
 	void init_mslug5dd();
 	void init_mslug5ndd();
 	void init_mslugxdd();
-	void init_garodd();
+	void init_svcdd();
+	void init_svcpcbdd();
 
 	DECLARE_CUSTOM_INPUT_MEMBER(get_memcard_status);
 	DECLARE_CUSTOM_INPUT_MEMBER(get_audio_result);

@@ -7179,10 +7179,10 @@ ROM_START( garouha ) /* Original Version - Encrypted GFX */ /* AES VERSION */
 	ROM_REGION( 0x900000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "neo-sma", 0x0c0000, 0x040000, CRC(9aa450e6) SHA1(ba9c6fe10ef97255b004fcbf05065826d219a968) )  /* stored in the custom chip */
 	/* standard program roms are identical to 'garou' set, only content of custom chip above differs */
-	ROM_LOAD16_WORD_SWAP( "253-ep1.p1", 0x100000, 0x200000, CRC(ea3171a4) SHA1(bbda40f652baa0dc5fc6a006c001a1bdb0df43f6) ) /* M27C160 */
-	ROM_LOAD16_WORD_SWAP( "253-ep2.p2", 0x300000, 0x200000, CRC(382f704b) SHA1(0ace9c84a8b8a0524fd9a503e7d872de1bf1bd52) ) /* M27C160 */
-	ROM_LOAD16_WORD_SWAP( "253-ep3.p3", 0x500000, 0x200000, CRC(e395bfdd) SHA1(6b50f5ac15bf66b7e4e9bff57594fd3d7530c831) ) /* M27C160 */
-	ROM_LOAD16_WORD_SWAP( "253-ep4.p4", 0x700000, 0x200000, CRC(da92c08e) SHA1(5556f983ebcebc33160e90a6a6cf589d54c8cedc) ) /* M27C160 */
+	ROM_LOAD16_WORD_SWAP( "253.p1", 0x100000, 0x200000, CRC(ea3171a4) SHA1(bbda40f652baa0dc5fc6a006c001a1bdb0df43f6) ) /* M27C160 */
+	ROM_LOAD16_WORD_SWAP( "253.p2", 0x300000, 0x200000, CRC(382f704b) SHA1(0ace9c84a8b8a0524fd9a503e7d872de1bf1bd52) ) /* M27C160 */
+	ROM_LOAD16_WORD_SWAP( "253.p3", 0x500000, 0x200000, CRC(e395bfdd) SHA1(6b50f5ac15bf66b7e4e9bff57594fd3d7530c831) ) /* M27C160 */
+	ROM_LOAD16_WORD_SWAP( "253.p4", 0x700000, 0x200000, CRC(da92c08e) SHA1(5556f983ebcebc33160e90a6a6cf589d54c8cedc) ) /* M27C160 */
     ROM_DEFAULT_BIOS("console_mode")
 
 	ROM_Y_ZOOM
@@ -14183,6 +14183,24 @@ ROM_START( badapple )
 	ROM_LOAD16_BYTE( "642b.c2",  0x000001, 0x3100000, CRC(b64face4) SHA1(f7f36370c6d6f56a6b924bedbdf87a3cd572b61d) )
 ROM_END
 
+ROM_START( bdudes )
+	ROM_REGION( 0x800000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "bdudes.p1", 0x000000, 0x100000, CRC(77a74315) SHA1(90a63f02ec8e242af776b55aaca7998fa493cc39) )
+    ROM_LOAD16_WORD_SWAP( "bdudes.p2", 0x100000, 0x700000, CRC(f827dd6e) SHA1(36ac12cbde4869c266c1159a58c40d851d113fdf) )
+
+	NEO_SFIX_128K( "bdudes.s1", CRC(83b0f6c4) SHA1(4e3fd4369216fc9f4c699aea6bdf699b577c53e1) )
+
+	NEO_BIOS_AUDIO_64K( "bdudes.m1", CRC(2854b516) SHA1(9417756c419e374853d56d5025f78e2645956d85) )
+
+	ROM_REGION( 0x1000000, "ymsnd", 0 )
+	ROM_LOAD( "bdudes.v1", 0x000000, 0x800000, CRC(d8ac5857) SHA1(afea061d7122398938899a42f2c4141d4f125c69) )
+    ROM_LOAD( "bdudes.v2", 0x800000, 0x800000, CRC(f37bd666) SHA1(66d1cf293eea4cfe1cc36fe7ee9f6b46b0d731ee) )
+
+	ROM_REGION( 0x2000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "bdudes.c1", 0x000000, 0x1000000, CRC(fe7bb928) SHA1(9afa02773e1fcd845ecb3c7ec3c5d5232ac8be2c) )
+	ROM_LOAD16_BYTE( "bdudes.c2", 0x000001, 0x1000000, CRC(68deb392) SHA1(c01f17582b54332c50086f4161e13d6433d16c85) )
+ROM_END
+
 // 601 : Shadow of the Beast demo by Neobitz
 // No sound
 ROM_START( beast )
@@ -14455,20 +14473,20 @@ ROM_END
 
 ROM_START( doubled1 ) // 2025-02-17
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "505b.p1", 0x000000, 0x100000, CRC(0dd47ea6) SHA1(b792a538d7653f7cba53541e8bbe95c9e1db6ca0) )
-	ROM_LOAD16_WORD_SWAP( "505b.p2", 0x100000, 0x400000, CRC(719b98e6) SHA1(b0a95156c48e54ee7f51cbda3abb293a61f9b007) )
+	ROM_LOAD16_WORD_SWAP( "505b.p1", 0x000000, 0x100000, CRC(83d2ec24) SHA1(8af79b15115a82c545aecb2020806cea90cc69a2) )
+	ROM_LOAD16_WORD_SWAP( "505b.p2", 0x100000, 0x400000, CRC(7e5ed6b8) SHA1(cae16c7d27512f94a242bff167393a2c56c0220d) )
 
-	NEO_SFIX_128K( "505b.s1", CRC(bbb20072) SHA1(0197ba8d3a382f4d022f9573f3c6e6e4cf1fc25f) )
+	NEO_SFIX_128K( "505b.s1", CRC(714afb4b) SHA1(63b69781585e503e7fa6a62bcf1e6742f8cb3921) )
 
-	NEO_BIOS_AUDIO_64K( "505b.m1", CRC(128a9f84) SHA1(4bf52b9babaabf1f6d96b305732168b5b4d9d259) )
+	NEO_BIOS_AUDIO_64K( "505b.m1", CRC(43295479) SHA1(5f08b91444e89f918cd239019b6df540b5d158fc) )
 
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
-	ROM_LOAD( "505b.v1",   0x000000, 0x800000, CRC(5018b7a9) SHA1(86adce8b24e551d42a2594f39124cffd17364f6e) )
-	ROM_LOAD( "502b.v2",   0x800000, 0x800000, CRC(f5c8192f) SHA1(dcef8c78bee1a8e88aa3f45ce9c8e5ab212d9238) )
+	ROM_LOAD( "505b.v1",   0x000000, 0x800000, CRC(f01e97dc) SHA1(3bfb92c2cfb937ddf02299b6ac14c6851b6c1f11) )
+	ROM_LOAD( "502b.v2",   0x800000, 0x800000, CRC(79156c41) SHA1(8f8835139390c021b201384c304d235300b47af7) )
 
 	ROM_REGION( 0x2000000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "505b.c1",   0x0000000, 0x1000000, CRC(d4c50841) SHA1(c806d0f01fe29984efa49e8c524c86f6e2de8b0e) )
-	ROM_LOAD16_BYTE( "505b.c2",   0x0000001, 0x1000000, CRC(728eb8ae) SHA1(a2e9d020cb940ea4ebdb1946eb3ab136c643da17) )
+	ROM_LOAD16_BYTE( "505b.c1", 0x0000000, 0x1000000, CRC(fd883db8) SHA1(9b5c2e916a38438290d9b82eb7b5f34e8b27f660) )
+	ROM_LOAD16_BYTE( "505b.c2", 0x0000001, 0x1000000, CRC(718050d3) SHA1(4bab6c856a8e91d4d8dab12257211e6c6e82b306) )
 ROM_END
 
 // 415 : Flappy Chicken by Blastar 2023-04-30
@@ -14584,7 +14602,7 @@ ROM_START( horekidb3 ) // beta 3, incomplete?
 	ROM_LOAD16_BYTE( "500.c2", 0x0000001, 0x040000, CRC(9ccea1d5) SHA1(10c7c99d2a647e90e9b2b0d005733fea786ac61c) )
 ROM_END
 
-// 447 : Hypernoid by M.Priewe.
+// 447 : Hypernoid by M.Priewe.(2022-02-24)
 ROM_START( hypernoid )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "447.p1", 0x000000, 0x100000, CRC(43515e22) SHA1(14168cb0f51489ffbf6f4cd93ba62c4567378527) )
@@ -14602,6 +14620,24 @@ ROM_START( hypernoid )
 	ROM_REGION( 0x400000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "447.c1", 0x000000, 0x200000, CRC(41d6140a) SHA1(862b95ca1fe2b75d7ead0de8ac50c1b8a049c774) )
 	ROM_LOAD16_BYTE( "447.c2", 0x000001, 0x200000, CRC(36f35df2) SHA1(22715561d5383263e41563fcb060f83a0c544531) )
+ROM_END
+
+ROM_START( inthehunt )
+	ROM_REGION( 0x200000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "inthehunt.p1", 0x000000, 0x100000, CRC(58e3317a) SHA1(437dd2321f1bc8f5013daebe6399d25b02bd0fe9) )
+    ROM_LOAD16_WORD_SWAP( "inthehunt.p2", 0x100000, 0x100000, CRC(c6494f12) SHA1(3842c99dd0ad5443228f9db39c6f1e5a063e595b) )
+
+	NEO_SFIX_128K( "inthehunt.s1", CRC(35c8a6e0) SHA1(710af5ad77e5be09cbdaaa94624646cec54bca24) )
+
+	NEO_BIOS_AUDIO_64K( "inthehunt.m1", CRC(dd055711) SHA1(2fcae3ba868213d8efc0d17c1290d08aceb6cb4a) )
+
+	ROM_REGION( 0x1000000, "ymsnd", 0 )
+	ROM_LOAD( "inthehunt.v1", 0x000000, 0x800000, CRC(eb947c63) SHA1(acb360fed600fb8143c41ca5389c8f7263d3915b) )
+    ROM_LOAD( "502b.v2", 0x800000, 0x800000, CRC(79156c41) SHA1(8f8835139390c021b201384c304d235300b47af7) )
+
+	ROM_REGION( 0x2000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "inthehunt.c1", 0x000000, 0x1000000, CRC(1b32eaf5) SHA1(9d17ae76d8d67dbd34c209cd1c2a0036786b0924) )
+	ROM_LOAD16_BYTE( "inthehunt.c2", 0x000001, 0x1000000, CRC(87b8def8) SHA1(d27685fc28d5745a75ac7337c5765325c56f5d70) )
 ROM_END
 
 // 639 : Primo demo by BEY
@@ -16632,16 +16668,17 @@ GAME( 1991, trallycd,   trally,   neogeo_noslot,   neogeo,   neogeo_state, init_
 GAME( 1996, zintrkcd,   zintrckb, neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "CD_conv", "Zintrick / Oshidashi Zentrix (CD to MVS Conversion)", MACHINE_MECHANICAL )
 
 /* HomeBrew */
-GAME( 2022, 19yy,       neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Ichikyu Wai Wai/EKORZ/Elrayzeur", "19YY", MACHINE_MECHANICAL )
-GAME( 2022, 19yyo,      19yy,     neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Ichikyu Wai Wai/EKORZ", "19YY (Early Release)", MACHINE_MECHANICAL )
+GAME( 2022, 19yy,       neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Ichikyu Wai Wai/EKORZ/Elrayzeur", "19YY (Neo CD conversion)", MACHINE_MECHANICAL )
+GAME( 2022, 19yyo,      19yy,     neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Ichikyu Wai Wai/EKORZ", "19YY (Neo CD conversion / Early Release)", MACHINE_MECHANICAL )
 GAME( 2023, 240ptest,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Dasutin/Artemio", "240p Test Suite v1.0", MACHINE_MECHANICAL )
 GAME( 2022, 4play,      neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Ichikyu Wai Wai/EKORZ", "4 Player Input Test", MACHINE_MECHANICAL )
-GAME( 2021, abyssal,    neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Kako Eimon", "Abyssal Infants", MACHINE_MECHANICAL )
+GAME( 2021, abyssal,    neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Kako Eimon", "Abyssal Infants (HB)", MACHINE_MECHANICAL )
 GAME( 2021, abyssal1,   abyssal,  neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Kako Eimon", "Abyssal Infants (Newer version)", MACHINE_MECHANICAL )
 GAME( 2023, amazonn,    neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT270, "iq132", "Soldier Girl Amazon (Neo-Geo port)", MACHINE_MECHANICAL )
 GAME( 2017, badapple,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "HP Man", "Bad Apple demo (Giga Power Edition)", MACHINE_MECHANICAL )
+GAME( 2025, bdudes,     neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Balek Corp", "Bad Dudes - Burger Edition (Demo Version)", MACHINE_MECHANICAL )
 GAME( 2002, beast,      neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Jeff Kurtz", "Shadow Of The Beast (Neo Geo Demo)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_MECHANICAL )
-GAME( 2025, bpanicdx,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Blastar", "Block Panic DX (2025-01-01)", MACHINE_MECHANICAL )
+GAME( 2025, bpanicdx,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Blastar", "Block Panic DX", MACHINE_MECHANICAL )
 GAME( 2020, bonusstage, neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Totologic", "Bonus Stage", MACHINE_MECHANICAL )
 GAME( 2021, cabalng,    neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "iq132", "Cabal (Neo-Geo port)", MACHINE_MECHANICAL )
 GAME( 2021, cabalng1,   cabalng,  neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "iq132", "Cabal (Neo-Geo port, sprite fix)", MACHINE_MECHANICAL )
@@ -16654,22 +16691,23 @@ GAME( 2013, cphd,       neogeo,   neogeo_noslot,   neogeo,     neogeo_state, ini
 GAME( 1990, columnsn,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Jeff Kurtz", "Columns (NeoGeo)", MACHINE_MECHANICAL )
 GAME( 1990, columnsncd, columnsn, neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Jeff Kurtz", "Columns (CD conversion)", MACHINE_MECHANICAL )
 GAME( 2023, cyborg,     neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Neo Byte Force", "Cyborg Force", MACHINE_MECHANICAL )
-GAME( 2025, doubled1,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "La Casa De Ruivo / Neo Byte Force", "Double Dragon One Demo (2025-02-17)", MACHINE_MECHANICAL )
-GAME( 2023, flapchck,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Blastar", "Flappy Chicken (2023-04-30)", MACHINE_MECHANICAL )
+GAME( 2025, doubled1,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "La Casa De Ruivo / Neo Byte Force", "Double Dragon One Beta", MACHINE_MECHANICAL )
+GAME( 2023, flapchck,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Blastar", "Flappy Chicken", MACHINE_MECHANICAL )
 GAME( 2006, ffeast,     neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Rastersoft", "Frog Feast (NeoGeo)", MACHINE_MECHANICAL )
 GAME( 2024, gladmort,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Pixelheart / ChipsOnSteroids", "Gladmort", MACHINE_MECHANICAL )
 GAME( 2009, gladmortd,  neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Pixelheart", "Gladmort (Demo)", MACHINE_MECHANICAL )
 GAME( 2025, goldaxen,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Hoffman", "Golden Axe (Neo-Geo port)", MACHINE_MECHANICAL )
 GAME( 2022, horekidb3,  neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT270, "iq132", "Kid no Hore Hore Daisakusen (Neo-Geo port)", MACHINE_MECHANICAL )
-GAME( 2022, hypernoid,  neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "M.Priewe", "Hypernoid (2022-02-24)", MACHINE_MECHANICAL )
+GAME( 2022, hypernoid,  neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "M.Priewe", "Hypernoid", MACHINE_MECHANICAL )
+GAME( 2025, inthehunt,  neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "OzzyOuzo", "In The Hunt (Demo Version)", MACHINE_MECHANICAL )
 GAME( 2013, iocero,     neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "iocerom", "Primo Demo", MACHINE_MECHANICAL )
 GAME( 2025, karnovn,    neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "iq132", "Karnov (Neo-Geo port)", MACHINE_MECHANICAL )
 GAME( 2014, knightsch,  neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Neobitz", "Knight's Chance", MACHINE_MECHANICAL )
 GAME( 2020, lhbb,       lasthope, neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Elrayzeur", "Last Hope (Blue Bullets)", MACHINE_MECHANICAL )
 GAME( 2007, lhcdb,      lasthope, neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "NG:Dev.Team", "Last Hope CD Beta", MACHINE_IMPERFECT_GRAPHICS | MACHINE_MECHANICAL )
 GAME( 2007, lhcdba,     lasthope, neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "NG:Dev.Team", "Last Hope (Neo CD conversion)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_MECHANICAL )
-GAME( 2021, looptris,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Blastar", "Looptris (2021-12-26)", MACHINE_MECHANICAL )
-GAME( 2022, looptrsp,   looptris, neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Blastar", "Looptris Plus (2022-12-24)", MACHINE_MECHANICAL )
+GAME( 2021, looptris,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Blastar", "Looptris", MACHINE_MECHANICAL )
+GAME( 2022, looptrsp,   looptris, neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Blastar", "Looptris Plus", MACHINE_MECHANICAL )
 GAME( 2005, ltorb,      neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Blastar", "Jonas Indiana And The Lost Temple Of RA (Beta - 2005-07-17)", MACHINE_MECHANICAL )
 GAME( 2020, nblktiger,  neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "OzzyOuzo", "Neo Black Tiger", MACHINE_IS_INCOMPLETE | MACHINE_MECHANICAL )
 GAME( 2004, neo2500,    neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Blastar", "Neo 2500 Demo", MACHINE_MECHANICAL )
@@ -16677,8 +16715,8 @@ GAME( 2021, neo2048,    neogeo,   neogeo_noslot,   neogeo,     neogeo_state, ini
 GAME( 2012, neo3d,      neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Oxygene", "Neo 3D Demo", MACHINE_MECHANICAL )
 GAME( 2004, neocstlv,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "BarfHappy", "Neo Castlevania Demo", MACHINE_IS_INCOMPLETE | MACHINE_MECHANICAL )
 GAME( 2003, neodemo,    neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Charles Doty", "Demo - NeoGeo", MACHINE_MECHANICAL )
-GAME( 2013, neogal1,    neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Cristiano Bei", "Neo Geo Galaga Demo R001", MACHINE_MECHANICAL )
-GAME( 2013, neogal1t,   neogal1,  neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Cristiano Bei", "Neo Geo Galaga Demo R001 (Text)", MACHINE_MECHANICAL )
+GAME( 2013, neogal1,    neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Cristiano Bei", "Neo Geo Galaga Demo R001 (set 1)", MACHINE_MECHANICAL )
+GAME( 2013, neogal1t,   neogal1,  neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Cristiano Bei", "Neo Geo Galaga Demo R001 (set 2)", MACHINE_MECHANICAL )
 GAME( 2002, neonopon,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Blastar", "Neo No Panepon V.0.2", MACHINE_IMPERFECT_GRAPHICS | MACHINE_MECHANICAL )
 GAME( 2002, neopong,    neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Neodev", "Neo Pong (v1.1)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_MECHANICAL )
 GAME( 2002, neoponga,   neopong,  no_watchdog,     neogeo,     neogeo_state, init_neogeo,   ROT0, "Neodev", "Neo Pong (v1.0)", MACHINE_MECHANICAL )
