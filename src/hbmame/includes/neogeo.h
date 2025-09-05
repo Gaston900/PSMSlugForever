@@ -192,6 +192,11 @@ public:
 
 	// Fixed MVS/AES Decrypted Darksoft Software Configurations
 	void init_darksoft();
+	void init_ct2k3sadd();
+	void init_ct2k3spdd();
+	void init_cthd2003dd();
+	void init_fatfury2dd();
+	void init_ganryudd();
 	void init_garoudd();
 	void init_garouhdd();
 	void init_kof99dd();
