@@ -199,8 +199,12 @@ public:
 	void init_ganryudd();
 	void init_garoudd();
 	void init_garouhdd();
+	void init_jockeygpdd();
+	void init_kf2k2mpdd();
+	void init_kf2k2mp2dd();
 	void init_kof99dd();
 	void init_kof2000dd();
+	void init_kof2002dd();
 	void init_ms5pcbdd();
 	void init_ms5plusdd();
     void init_mslug3b6dd();
@@ -720,3 +724,90 @@ INPUT_PORTS_EXTERN(dualbios);
 
 #define NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO_512K(name, hash) \
 	NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO(0x80000, name, hash)
+
+
+/*************************************
+    Game specific input definitions
+ *************************************/
+ 
+INPUT_PORTS_START( dualbios )
+	PORT_INCLUDE( neogeo )
+
+	PORT_MODIFY("DSW")
+	PORT_DIPNAME( 0x04, 0x00, DEF_STR( Region ) ) PORT_DIPLOCATION("SW:3") PORT_CHANGED_MEMBER(DEVICE_SELF, neogeo_state, select_bios, 0)
+	PORT_DIPSETTING(    0x00, DEF_STR( Asia ) )
+	PORT_DIPSETTING(    0x04, DEF_STR( Japan ) )
+INPUT_PORTS_END
+
+INPUT_PORTS_START( mjneogeo )
+	PORT_INCLUDE( neogeo )
+
+	PORT_MODIFY("DSW")
+	PORT_DIPNAME( 0x04, 0x00, DEF_STR( Controller ) ) PORT_DIPLOCATION("SW:3")
+	PORT_DIPSETTING(    0x04, DEF_STR( Joystick ) )
+	PORT_DIPSETTING(    0x00, "Mahjong Panel" )
+INPUT_PORTS_END
+
+INPUT_PORTS_START( kizuna4p )
+	PORT_INCLUDE( neogeo )
+
+	PORT_MODIFY("DSW")
+	PORT_DIPNAME( 0x02, 0x00, DEF_STR( Players ) ) PORT_DIPLOCATION("SW:2")
+	PORT_DIPSETTING(    0x02, "2" )
+	PORT_DIPSETTING(    0x00, "4" )
+
+	PORT_MODIFY("SYSTEM")
+	PORT_BIT( 0x0f00, IP_ACTIVE_HIGH, IPT_CUSTOM ) PORT_CUSTOM_MEMBER(neogeo_state, kizuna4p_start_r)
+INPUT_PORTS_END
+
+INPUT_PORTS_START( irrmaze )
+	PORT_INCLUDE( neogeo )
+
+	PORT_MODIFY("SYSTEM")
+	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_UNUSED )
+	PORT_BIT( 0x0800, IP_ACTIVE_LOW, IPT_UNUSED )
+INPUT_PORTS_END
+
+INPUT_PORTS_START( vliner )
+	PORT_INCLUDE( neogeo )
+
+	PORT_MODIFY("DSW")
+	PORT_BIT( 0x0f00, IP_ACTIVE_LOW, IPT_UNUSED )
+	PORT_BIT( 0x1000, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_NAME("View Payout Table/Big")
+	PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_NAME("Bet/Small")
+	PORT_BIT( 0x4000, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_NAME("Stop/Double Up")
+	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_NAME("Start/Collect")
+
+	PORT_MODIFY("SYSTEM")
+	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_UNUSED )
+	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_UNKNOWN ) /* this bit is used.. */
+	PORT_BIT( 0x0400, IP_ACTIVE_LOW, IPT_UNUSED )
+	PORT_BIT( 0x0800, IP_ACTIVE_LOW, IPT_UNKNOWN ) /* this bit is used.. */
+
+	PORT_MODIFY("AUDIO/COIN")
+	PORT_BIT( 0x003f, IP_ACTIVE_LOW, IPT_UNUSED )
+
+	PORT_START("IN5")
+	PORT_BIT( 0x0001, IP_ACTIVE_LOW, IPT_COIN1 )
+	PORT_BIT( 0x0002, IP_ACTIVE_LOW, IPT_COIN2 )
+	PORT_BIT( 0x0004, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_BIT( 0x0008, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_BIT( 0x0010, IP_ACTIVE_LOW, IPT_OTHER ) PORT_NAME("Operator Menu") PORT_CODE(KEYCODE_F1)
+	PORT_BIT( 0x0020, IP_ACTIVE_LOW, IPT_BUTTON5 ) PORT_NAME("Clear Credit")
+	PORT_BIT( 0x0040, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_BIT( 0x0080, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_NAME("Hopper Out")
+	PORT_BIT( 0xff00, IP_ACTIVE_LOW, IPT_UNKNOWN )
+
+	/* not sure what any of these bits are */
+	PORT_START("IN6")
+	PORT_BIT( 0x0003, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_BIT( 0xffc0, IP_ACTIVE_HIGH, IPT_UNKNOWN )
+INPUT_PORTS_END
+
+INPUT_PORTS_START( jockeygp )
+	PORT_INCLUDE( neogeo )
+
+	PORT_MODIFY("SYSTEM")
+	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_UNKNOWN ) /* game freezes with this bit enabled */
+	PORT_BIT( 0x0400, IP_ACTIVE_LOW, IPT_UNKNOWN ) /* game freezes with this bit enabled */
+INPUT_PORTS_END
