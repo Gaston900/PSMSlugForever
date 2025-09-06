@@ -812,6 +812,11 @@ void neogeo_state::init_jockeygp()
 	// This is needed if s1 size > 0x20000, ignored otherwise
 	m_sprgen->m_fixed_layer_bank_type = 1;
 
+	/* install some extra RAM */
+	m_extra_ram = std::make_unique<uint16_t[]>(0x1000);
+	m_maincpu->space(AS_PROGRAM).install_ram(0x200000, 0x201fff, m_extra_ram.get());
+	save_pointer(NAME(m_extra_ram), 0x1000);
+
 	// decrypt m1 if needed
 	if (memregion("audiocrypt"))
 		m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region,audio_region_size);
@@ -832,12 +837,6 @@ void neogeo_state::init_jockeygp()
 		m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
 	}
 
-	// decrypt s1 if needed
-	if (ram[0x100] != 0xBB)
-	{
-		//printf("Fixed2=%X\n",ram[0]);
-		m_maincpu->space(AS_PROGRAM).install_ram(0x200000, 0x201fff);
-	}
 }
 
 void neogeo_state::init_vliner()
@@ -846,12 +845,13 @@ void neogeo_state::init_vliner()
 
 	m_sprgen->m_fixed_layer_bank_type = 0;
 
-	m_maincpu->space(AS_PROGRAM).install_ram(0x200000, 0x201fff);
+	m_extra_ram = std::make_unique<uint16_t[]>(0x1000);
+	m_maincpu->space(AS_PROGRAM).install_ram(0x200000, 0x201fff, m_extra_ram.get());
+	save_pointer(NAME(m_extra_ram), 0x1000);
 
 	m_maincpu->space(AS_PROGRAM).install_read_port(0x300000, 0x300001, 0x01ff7e, "DSW");
 	m_maincpu->space(AS_PROGRAM).install_read_port(0x280000, 0x280001, "IN5");
 	m_maincpu->space(AS_PROGRAM).install_read_port(0x2c0000, 0x2c0001, "IN6");
-
 }
 
 void neogeo_state::init_garoubl()

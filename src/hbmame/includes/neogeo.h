@@ -370,6 +370,7 @@ private:
 	optional_device<sbp_prot_device> m_sbp_prot;
 	optional_device<kog_prot_device> m_kog_prot;
 	output_finder<5> m_out_digit;
+    std::unique_ptr<uint16_t[]> m_extra_ram;
 };
 
 /*----------- defined in drivers/neogeo.c -----------*/
