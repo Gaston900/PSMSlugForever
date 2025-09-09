@@ -1628,9 +1628,7 @@ joyjoydd                        // Decrypted Darksoft
 kabukikldd                      // Decrypted Darksoft
 karnovrdd                       // Decrypted Darksoft
 kf2k2mpdd                       // Decrypted Darksoft
-kf2k2mpdnd                      // Fully Decrypted / Darksoft
 kf2k2mp2dd                      // Decrypted Darksoft
-kf2k2mp2dnd                     // Fully Decrypted / Darksoft
 kf2k2plsdd                      // Decrypted Darksoft
 kf2k2pladd                      // Decrypted Darksoft
 kf2k3bladd                      // Decrypted Darksoft
@@ -1653,11 +1651,47 @@ kof95dd                         // Decrypted Darksoft
 kof95hdd                        // Decrypted Darksoft
 kof96dd                         // Decrypted Darksoft
 kof96hdd                        // Decrypted Darksoft
+kof97dd                         // Decrypted Darksoft
+kof97hdd                        // Decrypted Darksoft
+kof97kdd                        // Decrypted Darksoft
+kof97plsdd                      // Decrypted Darksoft
+kof97orodd                      // Decrypted Darksoft
+kof98dd                         // Decrypted Darksoft
+kof98hdd                        // Decrypted Darksoft
+kof98kdd                        // Decrypted Darksoft
+kof98kadd                       // Decrypted Darksoft
 kof99dd                         // Decrypted Darksoft
 kof99edd                        // Decrypted Darksoft
 kof99hdd                        // Decrypted Darksoft
 kof99kdd                        // Decrypted Darksoft
-kof2000dd                       // Decrypted Darksoft
+kof99pdd                        // Decrypted Darksoft
+kogdd                           // Decrypted Darksoft
+kotmdd                          // Decrypted Darksoft
+kotmhdd                         // Decrypted Darksoft
+kotm2dd                         // Decrypted Darksoft
+kotm2add                        // Decrypted Darksoft
+kotm2pdd                        // Decrypted Darksoft
+lans2004dd                      // Decrypted Darksoft
+lastbladdd                      // Decrypted Darksoft
+lastbladhdd                     // Decrypted Darksoft
+lastsoldd                       // Decrypted Darksoft
+lasthopedd                      // Decrypted Darksoft
+lastbld2dd                      // Decrypted Darksoft
+lbowlingdd                      // Decrypted Darksoft
+legendosdd                      // Decrypted Darksoft
+lresortdd                       // Decrypted Darksoft
+lresortpdd                      // Decrypted Darksoft
+magdrop2dd                      // Decrypted Darksoft
+magdrop3dd                      // Decrypted Darksoft
+maglorddd                       // Decrypted Darksoft
+maglordhdd                      // Decrypted Darksoft
+mahretsudd                      // Decrypted Darksoft
+marukodqdd                      // Decrypted Darksoft
+matrimdd                        // Decrypted Darksoft
+miexchngdd                      // Decrypted Darksoft
+minasandd                       // Decrypted Darksoft
+moshougidd                      // Decrypted Darksoft
+mutnatdd                        // Decrypted Darksoft
 svcpcbdd                        // Decrypted Darksoft
 
 @source:neogeo.cpp
