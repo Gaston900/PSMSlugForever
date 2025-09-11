@@ -1,113 +1,359 @@
-// license:BSD-3-Clause
-// copyright-holders:Bryan McPhail,Ernesto Corvi,Andrew Prime,Zsolt Vasvari, Robbbert and Gaston90
-// thanks-to:Fuzz
+// Proyecto Shadows Metal Slug Forever
+// copyright-holders:Gaston90
+// Thanks To The Collaborators Who Have Made A Great Contribution To The Project: Robbert.
 
 #include "includes/neogeo.h"
 
 
-/*************************************
- *
- *  Official sets
- *
- *************************************
+/****************************************************************************************************************************************
+    In 2010, SNK Playmore, the successor of SNK, released a title catalogue which lists the released
+    games (MVS/AES/CD) including their release dates in Japan. It is not 100% complete.
+    The included title catalogue is the english one.
 
-    About supported sets:
-    =====================
-
-    MVS carts (arcade) were released before the AES carts (home)
-    The actual codepath taken depends entirely on the BIOS rom, not the roms in the cartridge, which (with
-    a few exceptions) support both codepaths.
-
-    The initial AES releases are therefore later revisions of the game, often with bug fixes over the
-    initial MVS releases. It isn't uncommon for later production runs and bootlegs to use these newer sets,
-    so all of them are supported in MAME.
-
-    Likewise, because the MVS carts were released first (and were produced in higher numbers and generally
-    have a lower cost) it's not uncommon for AES units to operate with converted MVS carts, so, with the
-    exception of the sets that specifically lock out the AES mode* these sets are all equally suitable
-    for MESS.
-    * nitd, kof2001 (initial release has no AES code), and a number of the hacked bootlegs.
-
-    The 'MVS ONLY RELEASE' tagged sets were not officially released for the AES (home) system.
-    Information about this can be found at 'The NeoGeo Master List' (unofficial) - http://www.neo-geo.com
-    and the official NeoGeo museum - http://neogeomuseum.snkplaymore.co.jp/english/index.php
-    Several unofficial 'conversions' of these sets can be found across the internet.
-    For completeness sake: Some of these have sets have been released for the CD system.
-
-
-    M1 (sound driver) rom information:
-    ==================================
-    . Many 'M1' roms contain mirrored data (64k mirrored or 128k mirrored).
-    . Found on several early sets (ID 0001 ~ 0045) and on the last sets (ID 0267 ~ 0272).
-    . This caused some confusion and incorrect rom sizes.
-    . Minimum 'M1' size is 1mbit, maximum size 4mbit.
-    . The remaining 64k 'M1' are marked BAD_DUMP.
-
-
-    S1 (text layer) rom information:
-    ================================
-    . All 'S1' roms found on prom are 1mbit.
-    . The remainig 64k 'S1' are marked BAD_DUMP.
-
-
-    MULTI PLAY MODE:
-    ================
-    The NeoGeo has three games which support MULTI PLAY MODE (Riding Hero / League Bowling / Trash Rally).
-    This allows you to 'link' 4 games (MVS) / 2 games (AES) using in game 'Multi-Play' option. To establish
-    a link between the carts you have to connect the carts to each other by a communicator cable. The communicatior
-    cable is a regular headphone cable with stereo pin jack. It has been reported that you can also 'link' MVS <-> AES.
-
-    All three games use a special PROG board for MULTI PLAY MODE support:
-    . Riding Hero    (AES - NEO-AEG PROG-HERO   / MVS NEO-MVS PROG-HERO)
-    . League Bowling (AES - NEO-AEG PROG-HERO   / MVS NEO-MVS PROG-HERO)
-    . Trash Rally    (AES - NEO-AEG PROG42G-COM / NEO-MVS PROG42G-COM)
-
-    A HD6301V1P MCU on the above boards is used for establishing the 'link'. The MCU has a 4kb internal ROM which
-    is not dumped.
-    To use the MULTI PLAY MODE on your MVS you have to set the following hardware dips:
-    HARD DIP SETTING  4   5   6
-    CABINET 1:        OFF OFF ON
-    CABINET 2:        OFF ON  ON
-    CABINET 3:        ON  OFF ON
-    CABINET 4:        ON  ON  ON
-
-
-    SPHERO SYMPHONY:
-    ================
-    Several early games have a 'feature' called "sphero symphony". None of the games featuring "sphero symphony"
-    uses special hardware. It is something sound based, but what exactly it is (specially arranged samples,
-    FM synthesis etc.) is unknown. The AES and MVS releases share the same sound data and driver.
-
-    The AES game-inserts and manuals have an eye-shaped logo with the following text (not to be found on MVS sets):
-    sphero
-    symphony
-    STEREOPHONIC SOUND
-
-    Experience this "LIVE" 3 dimensional sound coming from all around you.
-
-    Games featuring "sphero symphony":
-    ID-0006 - Riding Hero
-    ID-0007 - Alpha Mission II / ASO II - Last Guardian
-    ID-0009 - Ninja Combat
-    ID-0010 - Cyber-Lip
-    ID-0011 - The Super Spy
-    ID-0014 - Mutation Nation
-    ID-0017 - Sengoku / Sengoku Denshou
-    ID-0018 - Burning Fight
-    ID-0020 - Ghost Pilots
-    ID-0024 - Last Resort
-    ID-0031 - Soccer Brawl
-    ID-0033 - Fatal Fury - King of Fighters / Garou Densetsu - shukumei no tatakai
-    ID-0034 - Football Frenzy
-    ID-0037 - Crossed Swords
-    ID-0038 - Thrash Rally
-    ID-0039 - King of the Monsters 2 - The Next Thing
-    ID-0041 - Baseball Stars 2
-    ID-0044 - Art of Fighting / Ryuuko no Ken
-    ID-0047 - Fatal Fury 2 / Garou Densetsu 2 - arata-naru tatakai
-    ID-0049 - Andro Dunos
-
-*/
+    Game Title                                                  Genre           Publisher       Date Released (in Japan)
+    =================================================================================================================================
+    NAM-1975                                                    3D Action       SNK             MVS Cartridge:1990/04/26
+                                                                                                NEOGEO ROM-cart:1991/07/01
+                                                                                                NEOGEO CD:1994/09/09
+    MAHJONG KYORETSUDEN                                         Mahjong         SNK             MVS Cartridge:1990/04/26
+                                                                                                NEOGEO ROM-cart:1991/07/01
+                                                                                                NEOGEO CD:1994/09/09
+    MAGICIAN LORD                                               Action          ADK             MVS Cartridge:1990/04/26
+                                                                                                NEOGEO ROM-cart:1991/07/01
+                                                                                                NEOGEO CD:1994/10/31
+    BASEBALL STARS PROFESSIONAL                                 Sports          SNK             MVS Cartridge:1990/04/26
+                                                                                                NEOGEO ROM-cart:1991/07/01
+                                                                                                NEOGEO CD:1995/04/21
+    TOP PLAYER'S GOLF                                           Sports          SNK             MVS Cartridge:1990/05/23
+                                                                                                NEOGEO ROM-cart:1991/07/01
+                                                                                                NEOGEO CD:1994/09/09
+    NINJA COMBAT                                                Action          ADK             MVS Cartridge:1990/07/24
+                                                                                                NEOGEO ROM-cart:1991/07/01
+                                                                                                NEOGEO CD:1994/10/31
+    RIDING HERO                                                 3D Racing       SNK             MVS Cartridge:1990/07/24
+                                                                                                NEOGEO ROM-cart:1991/07/01
+                                                                                                NEOGEO CD:1995/05/26
+    THE SUPER SPY                                               3D Action       SNK             MVS Cartridge:1990/10/08
+                                                                                                NEOGEO ROM-cart:1991/07/01
+                                                                                                NEOGEO CD:1994/09/09
+    CYBER-LIP                                                   Action          SNK             MVS Cartridge:1990/11/07
+                                                                                                NEOGEO ROM-cart:1991/07/01
+                                                                                                NEOGEO CD:1995/04/21
+    PUZZLED                                                     Puzzle          SNK             MVS Cartridge:1990/11/20
+                                                                                                NEOGEO ROM-cart:1991/07/01
+                                                                                                NEOGEO CD:1994/09/09
+    LEAGUE BOWLING                                              Sports          SNK             MVS Cartridge:1990/12/10
+                                                                                                NEOGEO ROM-cart:1991/07/01
+                                                                                                NEOGEO CD:1994/09/09
+    GHOST PILOTS                                                Shooter         SNK             MVS Cartridge:1991/01/25
+                                                                                                NEOGEO ROM-cart:1991/07/01
+                                                                                                NEOGEO CD:1995/03/17
+    SENGOKU                                                     Action          SNK             MVS Cartridge:1991/02/12
+                                                                                                NEOGEO ROM-cart:1991/07/01
+                                                                                                NEOGEO CD:1995/03/17
+    KING OF THE MONSTERS                                        Fighting        SNK             MVS Cartridge:1991/02/25
+                                                                                                NEOGEO ROM-cart:1991/07/01
+    BLUE'S JOURNEY                                              Action          ADK             MVS Cartridge:1991/03/14
+                                                                                                NEOGEO ROM-cart:1991/07/01
+                                                                                                NEOGEO CD:1994/10/31
+    ALPHA MISSION II                                            Shooter         SNK             MVS Cartridge:1991/03/25
+                                                                                                NEOGEO ROM-cart:1991/07/01
+                                                                                                NEOGEO CD:1994/09/09
+    BURNING FIGHT                                               Action          SNK             MVS Cartridge:1991/05/20
+                                                                                                NEOGEO ROM-cart:1991/08/09
+                                                                                                NEOGEO CD:1994/09/09
+    MINNASAN NO OKAGESAMA DESU                                  Table           Monolith        MVS Cartridge:1991/07/25
+                                                                                                NEOGEO ROM-cart:1991/07/21
+    CROSSED SWORDS                                              Action          ADK             MVS Cartridge:1991/07/25
+                                                                                                NEOGEO ROM-cart:1991/10/01
+                                                                                                NEOGEO CD:1994/10/31
+    LEGEND OF SUCCESS JOE                                       Action          Wave            MVS Cartridge:1991/07
+                                                                                                NEOGEO ROM-cart:1991/08/30
+    QUIZ DAISUSA SEN: THE LAST COUNT DOWN                       Quiz            SNK             MVS Cartridge:1991/07
+                                                                                                NEOGEO ROM-cart:1991/08/30
+    SUPER BASEBALL 2020                                         Sports          SNK             MVS Cartridge:1991/09/20
+                                                                                                NEOGEO ROM-cart:1991/10/25
+                                                                                                NEOGEO CD:1995/02/25
+    ROBO ARMY                                                   Action          SNK             MVS Cartridge:1991/10/30
+                                                                                                NEOGEO ROM-cart:1991/12/20
+                                                                                                NEOGEO CD:1995/04/21
+    THRASH RALLY                                                Racing          ADK             MVS Cartridge:1991/11/08
+                                                                                                NEOGEO ROM-cart:1991/12/20
+                                                                                                NEOGEO CD:1994/10/31
+    EIGHT MAN                                                   Action          SNK             NEOGEO ROM-cart:1991/11/20
+    FATAL FURY                                                  Fighting        SNK             MVS Cartridge:1991/11/25
+                                                                                                NEOGEO ROM-cart:1991/12/20
+                                                                                                NEOGEO CD:1994/09/09
+    BAKATONO-SAMA MAHJONG MAN'YUKI                              Mahjong         Monolith        MVS Cartridge:1991/11
+                                                                                                NEOGEO ROM-cart:1991/12/13
+    THRASH RALLY                                                Racing          ADK             NEOGEO ROM-cart:1991/12/20
+    FOOTBALL FRENZY                                             Sports          SNK             MVS Cartridge:1992/01/31
+                                                                                                NEOGEO ROM-cart:1992/02/21
+                                                                                                NEOGEO CD:1994/09/09
+    SOCCER BRAWL                                                Sports          SNK             MVS Cartridge:1992/02/14
+                                                                                                NEOGEO ROM-cart:1992/03/13
+                                                                                                NEOGEO CD:1995/03/31
+    MUTATION NATION                                             Action          SNK             MVS Cartridge:1992/03/16
+                                                                                                NEOGEO ROM-cart:1992/04/17
+                                                                                                NEOGEO CD:1995/02/25
+    LAST RESORT                                                 Shooter         SNK             MVS Cartridge:1992/03/23
+                                                                                                NEOGEO ROM-cart:1992/04/24
+                                                                                                NEOGEO CD:1994/09/09
+    QUIZ MEITANTEI NEO & GEO: QUIZ DAISOUSASEN PART 2           Quiz            SNK             MVS Cartridge:1992/03
+                                                                                                NEOGEO ROM-cart:1991/04/24
+    BASEBALL STARS 2                                            Sports          SNK             MVS Cartridge:1992/04/15
+                                                                                                NEOGEO ROM-cart:1992/04/28
+                                                                                                NEOGEO CD:1994/09/09
+    NINJA COMMANDO                                              Shooter         ADK             MVS Cartridge:1992/04/30
+                                                                                                NEOGEO ROM-cart:1992/05/29
+                                                                                                NEOGEO CD:1994/10/31
+    KING OF THE MONSTERS 2                                      Fighting        SNK             MVS Cartridge:1992/05/25
+                                                                                                NEOGEO ROM-cart:1992/06/19
+                                                                                                NEOGEO CD:1994/09/09
+    ANDRO DUNOS                                                 Shooter         Visco           MVS Cartridge:1992/06/15
+                                                                                                NEOGEO ROM-cart:1992/07/17
+    WORLD HEROES                                                Fighting        ADK             MVS Cartridge:1992/07/28
+                                                                                                NEOGEO ROM-cart:1992/09/11
+                                                                                                NEOGEO CD:1995/03/17
+    ART OF FIGHTING                                             Fighting        SNK             MVS Cartridge:1992/09/24
+                                                                                                NEOGEO ROM-cart:1992/12/11
+                                                                                                NEOGEO CD:1994/09/09
+    VIEWPOINT                                                   Shooter         Sammy           MVS Cartridge:1992/11/20
+                                                                                                NEOGEO ROM-cart:1992/12/11
+                                                                                                NEOGEO CD:1995/02/25
+    FATAL FURY 2                                                Fighting        SNK             MVS Cartridge:1992/12/10
+                                                                                                NEOGEO ROM-cart:1993/03/05
+                                                                                                NEOGEO CD:1994/09/09
+    SUPER SIDEKICKS                                             Sports          SNK             MVS Cartridge:1992/12/14
+                                                                                                NEOGEO ROM-cart:1993/02/19
+                                                                                                NEOGEO CD:1995/03/31
+    SENGOKU 2                                                   Action          SNK             MVS Cartridge:1993/02/18
+                                                                                                NEOGEO ROM-cart:1993/04/09
+                                                                                                NEOGEO CD:1995/03/17
+    3 COUNT BOUT                                                Fighting        SNK             MVS Cartridge:1993/03/25
+                                                                                                NEOGEO ROM-cart:1993/04/23
+                                                                                                NEOGEO CD:1995/04/21
+    WORLD HEROES 2                                              Fighting        ADK             MVS Cartridge:1993/04/26
+                                                                                                NEOGEO ROM-cart:1993/06/04
+                                                                                                NEOGEO CD:1995/04/14
+    SAMURAI SHODOWN                                             Fighting        SNK             MVS Cartridge:1993/07/07
+                                                                                                NEOGEO ROM-cart:1993/08/11
+                                                                                                NEOGEO CD:1994/09/09
+    FATAL FURY SPECIAL                                          Fighting        SNK             MVS Cartridge:1993/09/16
+                                                                                                NEOGEO ROM-cart:1993/12/22
+                                                                                                NEOGEO CD:1994/09/09
+    SPINMASTER                                                  Sideview Action Data East       MVS Cartridge:1993/12/16
+                                                                                                NEOGEO ROM-cart:1994/02/18
+    ART OF FIGHTING 2                                           Fighting        SNK             MVS Cartridge:1994/02/03
+                                                                                                NEOGEO ROM-cart:1994/03/11
+                                                                                                NEOGEO CD:1994/09/09
+    WINDJAMMERS                                                 Sports          Data East       MVS Cartridge:1994/02/17
+                                                                                                NEOGEO ROM-cart:1994/04/08
+                                                                                                NEOGEO CD:1995/01/20
+    KARNOV'S REVENGE                                            Fighting        Data East       MVS Cartridge:1994/03/17
+                                                                                                NEOGEO ROM-cart:1994/04/28
+                                                                                                NEOGEO CD:1994/12/22
+    SUPER SIDEKICKS 2                                           Sports          SNK             MVS Cartridge:1994/04/19
+                                                                                                NEOGEO ROM-cart:1994/05/27
+                                                                                                NEOGEO CD:1994/09/09
+    WORLD HEROES 2 JET                                          Fighting        ADK             MVS Cartridge:1994/04/26
+                                                                                                NEOGEO ROM-cart:1994/06/10
+                                                                                                NEOGEO CD:1994/11/11
+    TOP HUNTER                                                  Action          SNK             MVS Cartridge:1994/05/18
+                                                                                                NEOGEO ROM-cart:1994/06/24
+                                                                                                NEOGEO CD:1994/09/29
+    GURURIN                                                     Puzzle          Face            MVS Cartridge:1994/05/25
+    FIGHT FEVER                                                 Fighting        VICCOM          MVS Cartridge:1994/06/28
+    JANSHIN DENSETSU: QUEST OF JONGMASTER                       Mahjong         Aicom           MVS Cartridge:1994/06/29
+                                                                                                NEOGEO CD:1995/03/31
+    AERO FIGHTERS 2                                             Topview Shooter Video System    MVS Cartridge:1994/07/18
+                                                                                                NEOGEO ROM-cart:1994/08/26
+                                                                                                NEOGEO CD:1994/09/29
+    AGGRESSORS OF DARK KOMBAT                                   Fighting        ADK             MVS Cartridge:1994/07/26
+                                                                                                NEOGEO ROM-cart:1994/08/26
+                                                                                                NEOGEO CD:1995/01/13
+    THE KING OF FIGHTERS '94                                    Fighting        SNK             MVS Cartridge:1994/08/25
+                                                                                                NEOGEO ROM-cart:1994/10/01
+                                                                                                NEOGEO CD:1994/11/02
+    ZED BLADE                                                   Shooter         NMK             MVS Cartridge:1994/09/13
+    POWER SPIKES II                                             Sports          Video System    MVS Cartridge:1994/10/19
+                                                                                                NEOGEO CD:1995/03/18
+    SAMURAI SHODOWN II                                          Fighting        SNK             MVS Cartridge:1994/10/28
+                                                                                                NEOGEO ROM-cart:1994/12/02
+                                                                                                NEOGEO CD:1994/12/15
+    STREET HOOP                                                 Sports          Data East       MVS Cartridge:1994/12/08
+                                                                                                NEOGEO ROM-cart:1994/12/09
+                                                                                                NEOGEO CD:1995/01/20
+    PUZZLE BOBBLE                                               Puzzle          TAITO           MVS Cartridge:1994/12/21
+                                                                                                NEOGEO CD:1995/05/02
+    SUPER VOLLEY '94                                            Sports          TAITO           MVS Cartridge:1994
+    BOMBERMAN: PANIC BOMBER                                     Puzzle          Eighting        MVS Cartridge:1995/01/18
+    GALAXY FIGHT: UNIVERSAL WARRIORS                            Fighting        Sunsoft         MVS Cartridge:1995/01/24
+                                                                                                NEOGEO ROM-cart:1995/02/25
+                                                                                                NEOGEO CD:1995/04/21
+    QUIZ KING OF FIGHTERS                                       Quiz            Saurus          MVS Cartridge:1995/02/01
+                                                                                                NEOGEO ROM-cart:1995/03/10
+                                                                                                NEOGEO CD:1995/04/07
+    DOUBLE DRAGON                                               Fighting        Technos         MVS Cartridge:1995/03/03
+                                                                                                NEOGEO ROM-cart:1995/03/31
+                                                                                                NEOGEO CD:1995/06/02
+    SUPER SIDEKICKS 3                                           Sports          SNK             MVS Cartridge:1995/03/07
+                                                                                                NEOGEO ROM-cart:1995/04/07
+                                                                                                NEOGEO CD:1995/06/23
+    FATAL FURY 3                                                Fighting        SNK             MVS Cartridge:1995/03/27
+                                                                                                NEOGEO ROM-cart:1995/04/21
+                                                                                                NEOGEO CD:1995/04/28
+    SAVAGE REIGN                                                Fighting        SNK             MVS Cartridge:1995/04/25
+                                                                                                NEOGEO ROM-cart:1995/03/10
+                                                                                                NEOGEO CD:1995/06/16
+    CROSSED SWORDS II                                           Action          ADK             NEOGEO CD:1995/05/02
+    WORLD HEROES PERFECT                                        Fighting        ADK             MVS Cartridge:1995/05/25
+                                                                                                NEOGEO ROM-cart:1995/06/30
+                                                                                                NEOGEO CD:1995/07/21
+    FAR EAST OF EDEN: KABUKI KLASH                              Fighting        Hudson Soft     MVS Cartridge:1995/06/20
+                                                                                                NEOGEO ROM-cart:1995/07/28
+                                                                                                NEOGEO CD:1995/11/24
+    THE KING OF FIGHTERS '95                                    Fighting        SNK             MVS Cartridge:1995/07/25
+                                                                                                NEOGEO ROM-cart:1995/09/01
+                                                                                                NEOGEO CD:1995/09/29
+    IDOL MAHJONG FINAL ROMANCE 2                                Mahjong         Video System    NEOGEO CD:1995/08/25
+    PULSTAR                                                     Sidevi. Shooter Aicom           MVS Cartridge:1995/08/28
+                                                                                                NEOGEO ROM-cart:1995/09/29
+                                                                                                NEOGEO CD:1995/10/27
+    VOLTAGE FIGHTER GOWCAIZER                                   Fighting        Technos         MVS Cartridge:1995/09/18
+                                                                                                NEOGEO ROM-cart:1995/10/20
+                                                                                                NEOGEO CD:1995/11/24
+    STAKES WINNER                                               Action          Saurus          MVS Cartridge:1995/09/27
+                                                                                                NEOGEO ROM-cart:1995/10/27
+                                                                                                NEOGEO CD:1996/03/22
+    SHOGI NO TATSUJIN - MASTER OF SYOUGI                        Japanese chess  ADK             MVS Cartridge:1995/09/28
+                                                                                                NEOGEO ROM-cart:1995/10/13
+                                                                                                NEOGEO CD:1995/10/20
+    AERO FIGHTERS 3                                             Topview Action  Video System    MVS Cartridge:1995/10/12
+                                                                                                NEOGEO ROM-cart:1995/11/17
+                                                                                                NEOGEO CD:1995/12/08
+    ADK WORLD                                                   Variety         ADK             NEOGEO CD:1995/11/10
+    SAMURAI SHODOWN III                                         Fighting        SNK             MVS Cartridge:1995/11/15
+                                                                                                NEOGEO ROM-cart:1995/12/01
+                                                                                                NEOGEO CD:1995/12/29
+    CHIBI MARUKO-CHAN DELUXE QUIZ                               Variety         Takara          MVS Cartridge:1995/11/27
+                                                                                                NEOGEO ROM-cart:1996/01/26
+    PUZZLE DE PON!                                              Puzzle          Visco           MVS Cartridge:1995/11/28
+    REAL BOUT FATAL FURY                                        Fighting        SNK             MVS Cartridge:1995/12/21
+                                                                                                NEOGEO ROM-cart:1996/01/26
+                                                                                                NEOGEO CD:1996/02/23
+    NEO-GEO CD SPECIAL                                          Variety         SNK             NEOGEO CD:1995/12/22
+    NEO TURF MASTERS                                            Sports          Nazca           MVS Cartridge:1996/01/29
+                                                                                                NEOGEO ROM-cart:1996/03/01
+                                                                                                NEOGEO CD:1996/05/03
+    ART OF FIGHTING 3                                           Fighting        SNK             MVS Cartridge:1996/03/12
+                                                                                                NEOGEO ROM-cart:1996/04/26
+                                                                                                NEOGEO CD:1996/06/14
+    MAGICAL DROP II                                             Puzzle          Data East       MVS Cartridge:1996/03/21
+                                                                                                NEOGEO ROM-cart:1996/04/19
+                                                                                                NEOGEO CD:1996/05/24
+    OSHIDASHI JIN TRICK                                         Puzzle          ADK             NEOGEO CD:1996/03/22
+    NEO DRIFT OUT                                               Racing          Visco           MVS Cartridge:1996/03/28
+                                                                                                NEOGEO CD:1996/07/26
+    OVER TOP                                                    Racing          ADK             MVS Cartridge:1996/04/26
+                                                                                                NEOGEO ROM-cart:1996/06/07
+                                                                                                NEOGEO CD:1996/07/26
+    NINJA MASTER'S                                              Fighting        ADK             MVS Cartridge:1996/05/27
+                                                                                                NEOGEO ROM-cart:1996/06/28
+                                                                                                NEOGEO CD:1996/09/27
+    RAGNAGARD                                                   Fighting        Saurus          MVS Cartridge:1996/06/13
+                                                                                                NEOGEO ROM-cart:1996/07/26
+                                                                                                NEOGEO CD:1996/08/23
+    FUTSAL                                                      Sports          Saurus          NEOGEO CD:1996/07/19
+    THE KING OF FIGHTERS '96                                    Fighting        SNK             MVS Cartridge:1996/07/30
+                                                                                                NEOGEO ROM-cart:1996/09/27
+                                                                                                NEOGEO CD:1996/10/25
+    KIZUNA ENCOUNTER SUPER TAG BATTLE                           Fighting        SNK             MVS Cartridge:1996/09/20
+                                                                                                NEOGEO ROM-cart:1996/11/08
+    CHOUTETSU BURIKINGA                                         Shooter         Saurus          NEOGEO CD:1996/09/20
+    STAKES WINNER 2                                             Real Jockey Act Saurus          MVS Cartridge:1996/09/24
+                                                                                                NEOGEO ROM-cart:1996/12/13
+    THE ULTIMATE 11                                             Sports          SNK             MVS Cartridge:1996/10/16
+                                                                                                NEOGEO ROM-cart:1996/12/20
+    SAMURAI SHODOWN IV                                          Fighting        SNK             MVS Cartridge:1996/10/25
+                                                                                                NEOGEO ROM-cart:1996/11/29
+                                                                                                NEOGEO CD:1996/12/27
+    WAKU WAKU 7                                                 Fighting        Sunsoft         MVS Cartridge:1996/11/21
+                                                                                                NEOGEO ROM-cart:1996/12/27
+    TWINKLE STAR SPRITES                                        Shooter         ADK             MVS Cartridge:1996/11/25
+                                                                                                NEOGEO ROM-cart:1997/01/31
+                                                                                                NEOGEO CD:1997/02/21
+    BREAKERS                                                    Fighting        Visco           MVS Cartridge:1996/12/17
+                                                                                                NEOGEO ROM-cart:1997/03/21
+                                                                                                NEOGEO CD:1997/04/25
+    MONEY IDOL EXCHANGER                                        Puzzle          Face            MVS Cartridge:1997/01/15
+    Real Bout FATAL FURY SPECIAL                                Fighting        SNK             MVS Cartridge:1997/01/28
+                                                                                                NEOGEO ROM-cart:1997/02/28
+                                                                                                NEOGEO CD:1997/03/03
+    THE KING OF FIGHTERS '96 NEOGEO COLLECTION                  Variety         SNK             NEOGEO CD:1997/02/14
+    MAGICAL DROP III                                            Puzzle          Data East       MVS Cartridge:1997/02/25
+                                                                                                NEOGEO ROM-cart:1997/04/25
+    NEO BOMBERMAN                                               Action          Hudson Soft     MVS Cartridge:1997/05/01
+    NEO MR.DO!                                                  Action          Visco           MVS Cartridge:1997/06/26
+    SHINSETSU SAMURAI SHODOWN BUSHIDO RETSUDEN                  Role-playing    SNK             NEOGEO CD:1997/06/27
+    THE KING OF FIGHTERS '97                                    Fighting        SNK             MVS Cartridge:1997/07/28
+                                                                                                NEOGEO ROM-cart:1997/09/25
+                                                                                                NEOGEO CD:1997/10/30
+    UCCHAN NANCHAN NO HONO NO CHALLENGER ULTRA DENRYU IRAIRABOU Action          Saurus          MVS Cartridge:1997/08/25
+    SHOCK TROOPERS                                              Shooter         Saurus          MVS Cartridge:1997/11/11
+    THE LAST BLADE                                              Fighting        SNK             MVS Cartridge:1997/12/05
+                                                                                                NEOGEO ROM-cart:1998/01/29
+                                                                                                NEOGEO CD:1998/03/26
+    BLAZING STAR                                                Shooter         Yumekobo        MVS Cartridge:1998/01/19
+                                                                                                NEOGEO ROM-cart:1998/02/26
+    REAL BOUT FATAL FURY 2                                      Fighting        SNK             MVS Cartridge:1998/03/20
+                                                                                                NEOGEO ROM-cart:1998/04/29
+                                                                                                NEOGEO CD:1998/07/23
+    NEOGEO CUP '98                                              Sports          SNK             MVS Cartridge:1998/05/28
+                                                                                                NEOGEO ROM-cart:1998/07/30
+    BREAKERS REVENGE                                            Fighting        Visco           MVS Cartridge:1998/07/03
+                                                                                                NEOGEO ROM-cart:
+    THE KING OF FIGHTERS '98                                    Fighting        SNK             MVS Cartridge:1998/07/23
+                                                                                                NEOGEO ROM-cart:1998/09/23
+                                                                                                NEOGEO CD:1998/12/23
+    SHOCK TROOPERS 2nd Squad                                    Action Shooter  Saurus          MVS Cartridge:1998/11/06
+                                                                                                NEOGEO ROM-cart:1999/06/24
+    THE LAST BLADE 2                                            Fighting        SNK             MVS Cartridge:1998/11/25
+                                                                                                NEOGEO ROM-cart:1999/01/28
+                                                                                                NEOGEO CD:1999/02/27
+    FLIP SHOT                                                   Action          Visco           MVS Cartridge:1998/12/08
+    CAPTAIN TOMADAY                                             Shooter         Visco           MVS Cartridge:1999/05/27
+    THE KING OF FIGHTERS '99                                    Fighting        SNK             MVS Cartridge:1999/07/22
+                                                                                                NEOGEO ROM-cart:1999/09/23
+                                                                                                NEOGEO CD:1999/12/02
+    PREHISTORIC ISLE 2                                          Shooter         Yumekobo        MVS Cartridge:1999/09/27
+    GAROU: MARK OF THE WOLVES                                   Fighting        SNK             MVS Cartridge:1999/11/26
+                                                                                                NEOGEO ROM-cart:2000/02/25
+    STRIKERS 1945 PLUS                                          Shooter         Psikyo          MVS Cartridge:1999/12/24
+    THE KING OF FIGHTERS 2000                                   Fighting        SNK             MVS Cartridge:2000/07/26
+                                                                                                NEOGEO ROM-cart:2000/12/21
+    NIGHTMARE IN THE DARK                                       Horror Action   Gavaking        MVS Cartridge:2001
+    ZUPAPA!                                                     Comical Action  Video System    MVS Cartridge:2001
+    SENGOKU 3                                                   Action          SNK PLAYMORE    MVS Cartridge:2001/07/18
+                                                                                                NEOGEO ROM-cart:2001/10/25
+    THE KING OF FIGHTERS 2001                                   Fighting        SNK PLAYMORE    MVS Cartridge:2001/11/15
+                                                                                                NEOGEO ROM-cart:2002/03/14
+    RAGE OF THE DRAGONS                                         Fighting        Evoga           MVS Cartridge:2002/06/06
+                                                                                                NEOGEO ROM-cart:2002/09/26
+    THE KING OF FIGHTERS 2002                                   Fighting        SNK PLAYMORE    MVS Cartridge:2002/10/10
+                                                                                                NEOGEO ROM-cart:2002/12/19
+    POWER INSTINCT MATRIMELEE                                   Fighting        ATLUS/NOISE FA. MVS Cartridge:2003/03/20
+                                                                                                NEOGEO ROM-cart:2003/05/29
+    SNK VS. CAPCOM: SVC CHAOS                                   Fighting        SNK PLAYMORE    MV-0:2003/07/24
+                                                                                                NEOGEO ROM-cart:2003/11/13
+    SAMURAI SHODOWN V                                           Fighting        SNK P/Yuki Ent  MVS Cartridge:2003/10/10
+                                                                                                NEOGEO ROM-cart:2003/12/11
+    THE KING OF FIGHTERS 2003                                   Fighting        SNK PLAYMORE    MV-0:2003/12/12
+                                                                                                NEOGEO ROM-cart:2004/03/18
+    POCHI & NYAA                                                Puzzle          Aiky            MVS Cartridge:2003/12/24
+    SAMURAI SHODOWN V SPECIAL                                   Fighting        SNK P/Yuki Ent  MVS Cartridge:2004/04/22
+                                                                                                NEOGEO ROM-cart:2004/07/15
+****************************************************************************************************************************************/
 
 /*************************************
  *
@@ -5554,7 +5800,7 @@ ROM_END
 
 ROM_START( ninjamas )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "217.p1",  0x000000, 0x100000, CRC(3e97ed69) SHA1(336bcae375a5109945d11356503bf0d9f4a9a50a) )
+	ROM_LOAD16_WORD_SWAP( "217.p1", 0x000000, 0x100000, CRC(3e97ed69) SHA1(336bcae375a5109945d11356503bf0d9f4a9a50a) )
 	ROM_LOAD16_WORD_SWAP( "217.p2", 0x100000, 0x200000, CRC(191fca88) SHA1(e318e5931704779bbe461719a5eeeba89bd83a5d) )
     ROM_DEFAULT_BIOS("console_mode")
 
@@ -13950,11 +14196,6 @@ ROM_START( zintrkcd )
 	ROM_LOAD16_BYTE( "zin-c2.bin", 0x000001, 0x200000, CRC(844ed4b3) SHA1(fb7cd057bdc6cbe8b78097dd124118bae7402256) )
 ROM_END
 
-
- /*************************************
-  Predecrypted, Decrypted And Bootleg 
-****************************************/
-
  /*********
   HomeBrew
 *************/
@@ -15706,362 +15947,6 @@ ROM_START( tmntia )
 	ROM_LOAD16_BYTE( "630.c8", 0x1800001, 0x400000, CRC(8c15d91b) SHA1(4b4d4fd2302c43a5c82bb849803d13d43947a695) )
 ROM_END
 
-/*************************************
- *
- *  Title catalog
- *  (source: http://neogeomuseum.snkplaymore.co.jp/english/catalogue/index.php)
- *
- *************************************
-
-    In 2010, SNK Playmore, the successor of SNK, released a title catalogue which lists the released
-    games (MVS/AES/CD) including their release dates in Japan. It is not 100% complete.
-    The included title catalogue is the english one.
-
-    Game Title                                                  Genre           Publisher       Date Released (in Japan)
-    =================================================================================================================================
-    NAM-1975                                                    3D Action       SNK             MVS Cartridge:1990/04/26
-                                                                                                NEOGEO ROM-cart:1991/07/01
-                                                                                                NEOGEO CD:1994/09/09
-    MAHJONG KYORETSUDEN                                         Mahjong         SNK             MVS Cartridge:1990/04/26
-                                                                                                NEOGEO ROM-cart:1991/07/01
-                                                                                                NEOGEO CD:1994/09/09
-    MAGICIAN LORD                                               Action          ADK             MVS Cartridge:1990/04/26
-                                                                                                NEOGEO ROM-cart:1991/07/01
-                                                                                                NEOGEO CD:1994/10/31
-    BASEBALL STARS PROFESSIONAL                                 Sports          SNK             MVS Cartridge:1990/04/26
-                                                                                                NEOGEO ROM-cart:1991/07/01
-                                                                                                NEOGEO CD:1995/04/21
-    TOP PLAYER'S GOLF                                           Sports          SNK             MVS Cartridge:1990/05/23
-                                                                                                NEOGEO ROM-cart:1991/07/01
-                                                                                                NEOGEO CD:1994/09/09
-    NINJA COMBAT                                                Action          ADK             MVS Cartridge:1990/07/24
-                                                                                                NEOGEO ROM-cart:1991/07/01
-                                                                                                NEOGEO CD:1994/10/31
-    RIDING HERO                                                 3D Racing       SNK             MVS Cartridge:1990/07/24
-                                                                                                NEOGEO ROM-cart:1991/07/01
-                                                                                                NEOGEO CD:1995/05/26
-    THE SUPER SPY                                               3D Action       SNK             MVS Cartridge:1990/10/08
-                                                                                                NEOGEO ROM-cart:1991/07/01
-                                                                                                NEOGEO CD:1994/09/09
-    CYBER-LIP                                                   Action          SNK             MVS Cartridge:1990/11/07
-                                                                                                NEOGEO ROM-cart:1991/07/01
-                                                                                                NEOGEO CD:1995/04/21
-    PUZZLED                                                     Puzzle          SNK             MVS Cartridge:1990/11/20
-                                                                                                NEOGEO ROM-cart:1991/07/01
-                                                                                                NEOGEO CD:1994/09/09
-    LEAGUE BOWLING                                              Sports          SNK             MVS Cartridge:1990/12/10
-                                                                                                NEOGEO ROM-cart:1991/07/01
-                                                                                                NEOGEO CD:1994/09/09
-    GHOST PILOTS                                                Shooter         SNK             MVS Cartridge:1991/01/25
-                                                                                                NEOGEO ROM-cart:1991/07/01
-                                                                                                NEOGEO CD:1995/03/17
-    SENGOKU                                                     Action          SNK             MVS Cartridge:1991/02/12
-                                                                                                NEOGEO ROM-cart:1991/07/01
-                                                                                                NEOGEO CD:1995/03/17
-    KING OF THE MONSTERS                                        Fighting        SNK             MVS Cartridge:1991/02/25
-                                                                                                NEOGEO ROM-cart:1991/07/01
-    BLUE'S JOURNEY                                              Action          ADK             MVS Cartridge:1991/03/14
-                                                                                                NEOGEO ROM-cart:1991/07/01
-                                                                                                NEOGEO CD:1994/10/31
-    ALPHA MISSION II                                            Shooter         SNK             MVS Cartridge:1991/03/25
-                                                                                                NEOGEO ROM-cart:1991/07/01
-                                                                                                NEOGEO CD:1994/09/09
-    BURNING FIGHT                                               Action          SNK             MVS Cartridge:1991/05/20
-                                                                                                NEOGEO ROM-cart:1991/08/09
-                                                                                                NEOGEO CD:1994/09/09
-    MINNASAN NO OKAGESAMA DESU                                  Table           Monolith        MVS Cartridge:1991/07/25
-                                                                                                NEOGEO ROM-cart:1991/07/21
-    CROSSED SWORDS                                              Action          ADK             MVS Cartridge:1991/07/25
-                                                                                                NEOGEO ROM-cart:1991/10/01
-                                                                                                NEOGEO CD:1994/10/31
-    LEGEND OF SUCCESS JOE                                       Action          Wave            MVS Cartridge:1991/07
-                                                                                                NEOGEO ROM-cart:1991/08/30
-    QUIZ DAISUSA SEN: THE LAST COUNT DOWN                       Quiz            SNK             MVS Cartridge:1991/07
-                                                                                                NEOGEO ROM-cart:1991/08/30
-    SUPER BASEBALL 2020                                         Sports          SNK             MVS Cartridge:1991/09/20
-                                                                                                NEOGEO ROM-cart:1991/10/25
-                                                                                                NEOGEO CD:1995/02/25
-    ROBO ARMY                                                   Action          SNK             MVS Cartridge:1991/10/30
-                                                                                                NEOGEO ROM-cart:1991/12/20
-                                                                                                NEOGEO CD:1995/04/21
-    THRASH RALLY                                                Racing          ADK             MVS Cartridge:1991/11/08
-                                                                                                NEOGEO ROM-cart:1991/12/20
-                                                                                                NEOGEO CD:1994/10/31
-    EIGHT MAN                                                   Action          SNK             NEOGEO ROM-cart:1991/11/20
-    FATAL FURY                                                  Fighting        SNK             MVS Cartridge:1991/11/25
-                                                                                                NEOGEO ROM-cart:1991/12/20
-                                                                                                NEOGEO CD:1994/09/09
-    BAKATONO-SAMA MAHJONG MAN'YUKI                              Mahjong         Monolith        MVS Cartridge:1991/11
-                                                                                                NEOGEO ROM-cart:1991/12/13
-    THRASH RALLY                                                Racing          ADK             NEOGEO ROM-cart:1991/12/20
-    FOOTBALL FRENZY                                             Sports          SNK             MVS Cartridge:1992/01/31
-                                                                                                NEOGEO ROM-cart:1992/02/21
-                                                                                                NEOGEO CD:1994/09/09
-    SOCCER BRAWL                                                Sports          SNK             MVS Cartridge:1992/02/14
-                                                                                                NEOGEO ROM-cart:1992/03/13
-                                                                                                NEOGEO CD:1995/03/31
-    MUTATION NATION                                             Action          SNK             MVS Cartridge:1992/03/16
-                                                                                                NEOGEO ROM-cart:1992/04/17
-                                                                                                NEOGEO CD:1995/02/25
-    LAST RESORT                                                 Shooter         SNK             MVS Cartridge:1992/03/23
-                                                                                                NEOGEO ROM-cart:1992/04/24
-                                                                                                NEOGEO CD:1994/09/09
-    QUIZ MEITANTEI NEO & GEO: QUIZ DAISOUSASEN PART 2           Quiz            SNK             MVS Cartridge:1992/03
-                                                                                                NEOGEO ROM-cart:1991/04/24
-    BASEBALL STARS 2                                            Sports          SNK             MVS Cartridge:1992/04/15
-                                                                                                NEOGEO ROM-cart:1992/04/28
-                                                                                                NEOGEO CD:1994/09/09
-    NINJA COMMANDO                                              Shooter         ADK             MVS Cartridge:1992/04/30
-                                                                                                NEOGEO ROM-cart:1992/05/29
-                                                                                                NEOGEO CD:1994/10/31
-    KING OF THE MONSTERS 2                                      Fighting        SNK             MVS Cartridge:1992/05/25
-                                                                                                NEOGEO ROM-cart:1992/06/19
-                                                                                                NEOGEO CD:1994/09/09
-    ANDRO DUNOS                                                 Shooter         Visco           MVS Cartridge:1992/06/15
-                                                                                                NEOGEO ROM-cart:1992/07/17
-    WORLD HEROES                                                Fighting        ADK             MVS Cartridge:1992/07/28
-                                                                                                NEOGEO ROM-cart:1992/09/11
-                                                                                                NEOGEO CD:1995/03/17
-    ART OF FIGHTING                                             Fighting        SNK             MVS Cartridge:1992/09/24
-                                                                                                NEOGEO ROM-cart:1992/12/11
-                                                                                                NEOGEO CD:1994/09/09
-    VIEWPOINT                                                   Shooter         Sammy           MVS Cartridge:1992/11/20
-                                                                                                NEOGEO ROM-cart:1992/12/11
-                                                                                                NEOGEO CD:1995/02/25
-    FATAL FURY 2                                                Fighting        SNK             MVS Cartridge:1992/12/10
-                                                                                                NEOGEO ROM-cart:1993/03/05
-                                                                                                NEOGEO CD:1994/09/09
-    SUPER SIDEKICKS                                             Sports          SNK             MVS Cartridge:1992/12/14
-                                                                                                NEOGEO ROM-cart:1993/02/19
-                                                                                                NEOGEO CD:1995/03/31
-    SENGOKU 2                                                   Action          SNK             MVS Cartridge:1993/02/18
-                                                                                                NEOGEO ROM-cart:1993/04/09
-                                                                                                NEOGEO CD:1995/03/17
-    3 COUNT BOUT                                                Fighting        SNK             MVS Cartridge:1993/03/25
-                                                                                                NEOGEO ROM-cart:1993/04/23
-                                                                                                NEOGEO CD:1995/04/21
-    WORLD HEROES 2                                              Fighting        ADK             MVS Cartridge:1993/04/26
-                                                                                                NEOGEO ROM-cart:1993/06/04
-                                                                                                NEOGEO CD:1995/04/14
-    SAMURAI SHODOWN                                             Fighting        SNK             MVS Cartridge:1993/07/07
-                                                                                                NEOGEO ROM-cart:1993/08/11
-                                                                                                NEOGEO CD:1994/09/09
-    FATAL FURY SPECIAL                                          Fighting        SNK             MVS Cartridge:1993/09/16
-                                                                                                NEOGEO ROM-cart:1993/12/22
-                                                                                                NEOGEO CD:1994/09/09
-    SPINMASTER                                                  Sideview Action Data East       MVS Cartridge:1993/12/16
-                                                                                                NEOGEO ROM-cart:1994/02/18
-    ART OF FIGHTING 2                                           Fighting        SNK             MVS Cartridge:1994/02/03
-                                                                                                NEOGEO ROM-cart:1994/03/11
-                                                                                                NEOGEO CD:1994/09/09
-    WINDJAMMERS                                                 Sports          Data East       MVS Cartridge:1994/02/17
-                                                                                                NEOGEO ROM-cart:1994/04/08
-                                                                                                NEOGEO CD:1995/01/20
-    KARNOV'S REVENGE                                            Fighting        Data East       MVS Cartridge:1994/03/17
-                                                                                                NEOGEO ROM-cart:1994/04/28
-                                                                                                NEOGEO CD:1994/12/22
-    SUPER SIDEKICKS 2                                           Sports          SNK             MVS Cartridge:1994/04/19
-                                                                                                NEOGEO ROM-cart:1994/05/27
-                                                                                                NEOGEO CD:1994/09/09
-    WORLD HEROES 2 JET                                          Fighting        ADK             MVS Cartridge:1994/04/26
-                                                                                                NEOGEO ROM-cart:1994/06/10
-                                                                                                NEOGEO CD:1994/11/11
-    TOP HUNTER                                                  Action          SNK             MVS Cartridge:1994/05/18
-                                                                                                NEOGEO ROM-cart:1994/06/24
-                                                                                                NEOGEO CD:1994/09/29
-    GURURIN                                                     Puzzle          Face            MVS Cartridge:1994/05/25
-    FIGHT FEVER                                                 Fighting        VICCOM          MVS Cartridge:1994/06/28
-    JANSHIN DENSETSU: QUEST OF JONGMASTER                       Mahjong         Aicom           MVS Cartridge:1994/06/29
-                                                                                                NEOGEO CD:1995/03/31
-    AERO FIGHTERS 2                                             Topview Shooter Video System    MVS Cartridge:1994/07/18
-                                                                                                NEOGEO ROM-cart:1994/08/26
-                                                                                                NEOGEO CD:1994/09/29
-    AGGRESSORS OF DARK KOMBAT                                   Fighting        ADK             MVS Cartridge:1994/07/26
-                                                                                                NEOGEO ROM-cart:1994/08/26
-                                                                                                NEOGEO CD:1995/01/13
-    THE KING OF FIGHTERS '94                                    Fighting        SNK             MVS Cartridge:1994/08/25
-                                                                                                NEOGEO ROM-cart:1994/10/01
-                                                                                                NEOGEO CD:1994/11/02
-    ZED BLADE                                                   Shooter         NMK             MVS Cartridge:1994/09/13
-    POWER SPIKES II                                             Sports          Video System    MVS Cartridge:1994/10/19
-                                                                                                NEOGEO CD:1995/03/18
-    SAMURAI SHODOWN II                                          Fighting        SNK             MVS Cartridge:1994/10/28
-                                                                                                NEOGEO ROM-cart:1994/12/02
-                                                                                                NEOGEO CD:1994/12/15
-    STREET HOOP                                                 Sports          Data East       MVS Cartridge:1994/12/08
-                                                                                                NEOGEO ROM-cart:1994/12/09
-                                                                                                NEOGEO CD:1995/01/20
-    PUZZLE BOBBLE                                               Puzzle          TAITO           MVS Cartridge:1994/12/21
-                                                                                                NEOGEO CD:1995/05/02
-    SUPER VOLLEY '94                                            Sports          TAITO           MVS Cartridge:1994
-    BOMBERMAN: PANIC BOMBER                                     Puzzle          Eighting        MVS Cartridge:1995/01/18
-    GALAXY FIGHT: UNIVERSAL WARRIORS                            Fighting        Sunsoft         MVS Cartridge:1995/01/24
-                                                                                                NEOGEO ROM-cart:1995/02/25
-                                                                                                NEOGEO CD:1995/04/21
-    QUIZ KING OF FIGHTERS                                       Quiz            Saurus          MVS Cartridge:1995/02/01
-                                                                                                NEOGEO ROM-cart:1995/03/10
-                                                                                                NEOGEO CD:1995/04/07
-    DOUBLE DRAGON                                               Fighting        Technos         MVS Cartridge:1995/03/03
-                                                                                                NEOGEO ROM-cart:1995/03/31
-                                                                                                NEOGEO CD:1995/06/02
-    SUPER SIDEKICKS 3                                           Sports          SNK             MVS Cartridge:1995/03/07
-                                                                                                NEOGEO ROM-cart:1995/04/07
-                                                                                                NEOGEO CD:1995/06/23
-    FATAL FURY 3                                                Fighting        SNK             MVS Cartridge:1995/03/27
-                                                                                                NEOGEO ROM-cart:1995/04/21
-                                                                                                NEOGEO CD:1995/04/28
-    SAVAGE REIGN                                                Fighting        SNK             MVS Cartridge:1995/04/25
-                                                                                                NEOGEO ROM-cart:1995/03/10
-                                                                                                NEOGEO CD:1995/06/16
-    CROSSED SWORDS II                                           Action          ADK             NEOGEO CD:1995/05/02
-    WORLD HEROES PERFECT                                        Fighting        ADK             MVS Cartridge:1995/05/25
-                                                                                                NEOGEO ROM-cart:1995/06/30
-                                                                                                NEOGEO CD:1995/07/21
-    FAR EAST OF EDEN: KABUKI KLASH                              Fighting        Hudson Soft     MVS Cartridge:1995/06/20
-                                                                                                NEOGEO ROM-cart:1995/07/28
-                                                                                                NEOGEO CD:1995/11/24
-    THE KING OF FIGHTERS '95                                    Fighting        SNK             MVS Cartridge:1995/07/25
-                                                                                                NEOGEO ROM-cart:1995/09/01
-                                                                                                NEOGEO CD:1995/09/29
-    IDOL MAHJONG FINAL ROMANCE 2                                Mahjong         Video System    NEOGEO CD:1995/08/25
-    PULSTAR                                                     Sidevi. Shooter Aicom           MVS Cartridge:1995/08/28
-                                                                                                NEOGEO ROM-cart:1995/09/29
-                                                                                                NEOGEO CD:1995/10/27
-    VOLTAGE FIGHTER GOWCAIZER                                   Fighting        Technos         MVS Cartridge:1995/09/18
-                                                                                                NEOGEO ROM-cart:1995/10/20
-                                                                                                NEOGEO CD:1995/11/24
-    STAKES WINNER                                               Action          Saurus          MVS Cartridge:1995/09/27
-                                                                                                NEOGEO ROM-cart:1995/10/27
-                                                                                                NEOGEO CD:1996/03/22
-    SHOGI NO TATSUJIN - MASTER OF SYOUGI                        Japanese chess  ADK             MVS Cartridge:1995/09/28
-                                                                                                NEOGEO ROM-cart:1995/10/13
-                                                                                                NEOGEO CD:1995/10/20
-    AERO FIGHTERS 3                                             Topview Action  Video System    MVS Cartridge:1995/10/12
-                                                                                                NEOGEO ROM-cart:1995/11/17
-                                                                                                NEOGEO CD:1995/12/08
-    ADK WORLD                                                   Variety         ADK             NEOGEO CD:1995/11/10
-    SAMURAI SHODOWN III                                         Fighting        SNK             MVS Cartridge:1995/11/15
-                                                                                                NEOGEO ROM-cart:1995/12/01
-                                                                                                NEOGEO CD:1995/12/29
-    CHIBI MARUKO-CHAN DELUXE QUIZ                               Variety         Takara          MVS Cartridge:1995/11/27
-                                                                                                NEOGEO ROM-cart:1996/01/26
-    PUZZLE DE PON!                                              Puzzle          Visco           MVS Cartridge:1995/11/28
-    REAL BOUT FATAL FURY                                        Fighting        SNK             MVS Cartridge:1995/12/21
-                                                                                                NEOGEO ROM-cart:1996/01/26
-                                                                                                NEOGEO CD:1996/02/23
-    NEO-GEO CD SPECIAL                                          Variety         SNK             NEOGEO CD:1995/12/22
-    NEO TURF MASTERS                                            Sports          Nazca           MVS Cartridge:1996/01/29
-                                                                                                NEOGEO ROM-cart:1996/03/01
-                                                                                                NEOGEO CD:1996/05/03
-    ART OF FIGHTING 3                                           Fighting        SNK             MVS Cartridge:1996/03/12
-                                                                                                NEOGEO ROM-cart:1996/04/26
-                                                                                                NEOGEO CD:1996/06/14
-    MAGICAL DROP II                                             Puzzle          Data East       MVS Cartridge:1996/03/21
-                                                                                                NEOGEO ROM-cart:1996/04/19
-                                                                                                NEOGEO CD:1996/05/24
-    OSHIDASHI JIN TRICK                                         Puzzle          ADK             NEOGEO CD:1996/03/22
-    NEO DRIFT OUT                                               Racing          Visco           MVS Cartridge:1996/03/28
-                                                                                                NEOGEO CD:1996/07/26
-    OVER TOP                                                    Racing          ADK             MVS Cartridge:1996/04/26
-                                                                                                NEOGEO ROM-cart:1996/06/07
-                                                                                                NEOGEO CD:1996/07/26
-    NINJA MASTER'S                                              Fighting        ADK             MVS Cartridge:1996/05/27
-                                                                                                NEOGEO ROM-cart:1996/06/28
-                                                                                                NEOGEO CD:1996/09/27
-    RAGNAGARD                                                   Fighting        Saurus          MVS Cartridge:1996/06/13
-                                                                                                NEOGEO ROM-cart:1996/07/26
-                                                                                                NEOGEO CD:1996/08/23
-    FUTSAL                                                      Sports          Saurus          NEOGEO CD:1996/07/19
-    THE KING OF FIGHTERS '96                                    Fighting        SNK             MVS Cartridge:1996/07/30
-                                                                                                NEOGEO ROM-cart:1996/09/27
-                                                                                                NEOGEO CD:1996/10/25
-    KIZUNA ENCOUNTER SUPER TAG BATTLE                           Fighting        SNK             MVS Cartridge:1996/09/20
-                                                                                                NEOGEO ROM-cart:1996/11/08
-    CHOUTETSU BURIKINGA                                         Shooter         Saurus          NEOGEO CD:1996/09/20
-    STAKES WINNER 2                                             Real Jockey Act Saurus          MVS Cartridge:1996/09/24
-                                                                                                NEOGEO ROM-cart:1996/12/13
-    THE ULTIMATE 11                                             Sports          SNK             MVS Cartridge:1996/10/16
-                                                                                                NEOGEO ROM-cart:1996/12/20
-    SAMURAI SHODOWN IV                                          Fighting        SNK             MVS Cartridge:1996/10/25
-                                                                                                NEOGEO ROM-cart:1996/11/29
-                                                                                                NEOGEO CD:1996/12/27
-    WAKU WAKU 7                                                 Fighting        Sunsoft         MVS Cartridge:1996/11/21
-                                                                                                NEOGEO ROM-cart:1996/12/27
-    TWINKLE STAR SPRITES                                        Shooter         ADK             MVS Cartridge:1996/11/25
-                                                                                                NEOGEO ROM-cart:1997/01/31
-                                                                                                NEOGEO CD:1997/02/21
-    BREAKERS                                                    Fighting        Visco           MVS Cartridge:1996/12/17
-                                                                                                NEOGEO ROM-cart:1997/03/21
-                                                                                                NEOGEO CD:1997/04/25
-    MONEY IDOL EXCHANGER                                        Puzzle          Face            MVS Cartridge:1997/01/15
-    Real Bout FATAL FURY SPECIAL                                Fighting        SNK             MVS Cartridge:1997/01/28
-                                                                                                NEOGEO ROM-cart:1997/02/28
-                                                                                                NEOGEO CD:1997/03/03
-    THE KING OF FIGHTERS '96 NEOGEO COLLECTION                  Variety         SNK             NEOGEO CD:1997/02/14
-    MAGICAL DROP III                                            Puzzle          Data East       MVS Cartridge:1997/02/25
-                                                                                                NEOGEO ROM-cart:1997/04/25
-    NEO BOMBERMAN                                               Action          Hudson Soft     MVS Cartridge:1997/05/01
-    NEO MR.DO!                                                  Action          Visco           MVS Cartridge:1997/06/26
-    SHINSETSU SAMURAI SHODOWN BUSHIDO RETSUDEN                  Role-playing    SNK             NEOGEO CD:1997/06/27
-    THE KING OF FIGHTERS '97                                    Fighting        SNK             MVS Cartridge:1997/07/28
-                                                                                                NEOGEO ROM-cart:1997/09/25
-                                                                                                NEOGEO CD:1997/10/30
-    UCCHAN NANCHAN NO HONO NO CHALLENGER ULTRA DENRYU IRAIRABOU Action          Saurus          MVS Cartridge:1997/08/25
-    SHOCK TROOPERS                                              Shooter         Saurus          MVS Cartridge:1997/11/11
-    THE LAST BLADE                                              Fighting        SNK             MVS Cartridge:1997/12/05
-                                                                                                NEOGEO ROM-cart:1998/01/29
-                                                                                                NEOGEO CD:1998/03/26
-    BLAZING STAR                                                Shooter         Yumekobo        MVS Cartridge:1998/01/19
-                                                                                                NEOGEO ROM-cart:1998/02/26
-    REAL BOUT FATAL FURY 2                                      Fighting        SNK             MVS Cartridge:1998/03/20
-                                                                                                NEOGEO ROM-cart:1998/04/29
-                                                                                                NEOGEO CD:1998/07/23
-    NEOGEO CUP '98                                              Sports          SNK             MVS Cartridge:1998/05/28
-                                                                                                NEOGEO ROM-cart:1998/07/30
-    BREAKERS REVENGE                                            Fighting        Visco           MVS Cartridge:1998/07/03
-                                                                                                NEOGEO ROM-cart:
-    THE KING OF FIGHTERS '98                                    Fighting        SNK             MVS Cartridge:1998/07/23
-                                                                                                NEOGEO ROM-cart:1998/09/23
-                                                                                                NEOGEO CD:1998/12/23
-    SHOCK TROOPERS 2nd Squad                                    Action Shooter  Saurus          MVS Cartridge:1998/11/06
-                                                                                                NEOGEO ROM-cart:1999/06/24
-    THE LAST BLADE 2                                            Fighting        SNK             MVS Cartridge:1998/11/25
-                                                                                                NEOGEO ROM-cart:1999/01/28
-                                                                                                NEOGEO CD:1999/02/27
-    FLIP SHOT                                                   Action          Visco           MVS Cartridge:1998/12/08
-    CAPTAIN TOMADAY                                             Shooter         Visco           MVS Cartridge:1999/05/27
-    THE KING OF FIGHTERS '99                                    Fighting        SNK             MVS Cartridge:1999/07/22
-                                                                                                NEOGEO ROM-cart:1999/09/23
-                                                                                                NEOGEO CD:1999/12/02
-    PREHISTORIC ISLE 2                                          Shooter         Yumekobo        MVS Cartridge:1999/09/27
-    GAROU: MARK OF THE WOLVES                                   Fighting        SNK             MVS Cartridge:1999/11/26
-                                                                                                NEOGEO ROM-cart:2000/02/25
-    STRIKERS 1945 PLUS                                          Shooter         Psikyo          MVS Cartridge:1999/12/24
-    THE KING OF FIGHTERS 2000                                   Fighting        SNK             MVS Cartridge:2000/07/26
-                                                                                                NEOGEO ROM-cart:2000/12/21
-    NIGHTMARE IN THE DARK                                       Horror Action   Gavaking        MVS Cartridge:2001
-    ZUPAPA!                                                     Comical Action  Video System    MVS Cartridge:2001
-    SENGOKU 3                                                   Action          SNK PLAYMORE    MVS Cartridge:2001/07/18
-                                                                                                NEOGEO ROM-cart:2001/10/25
-    THE KING OF FIGHTERS 2001                                   Fighting        SNK PLAYMORE    MVS Cartridge:2001/11/15
-                                                                                                NEOGEO ROM-cart:2002/03/14
-    RAGE OF THE DRAGONS                                         Fighting        Evoga           MVS Cartridge:2002/06/06
-                                                                                                NEOGEO ROM-cart:2002/09/26
-    THE KING OF FIGHTERS 2002                                   Fighting        SNK PLAYMORE    MVS Cartridge:2002/10/10
-                                                                                                NEOGEO ROM-cart:2002/12/19
-    POWER INSTINCT MATRIMELEE                                   Fighting        ATLUS/NOISE FA. MVS Cartridge:2003/03/20
-                                                                                                NEOGEO ROM-cart:2003/05/29
-    SNK VS. CAPCOM: SVC CHAOS                                   Fighting        SNK PLAYMORE    MV-0:2003/07/24
-                                                                                                NEOGEO ROM-cart:2003/11/13
-    SAMURAI SHODOWN V                                           Fighting        SNK P/Yuki Ent  MVS Cartridge:2003/10/10
-                                                                                                NEOGEO ROM-cart:2003/12/11
-    THE KING OF FIGHTERS 2003                                   Fighting        SNK PLAYMORE    MV-0:2003/12/12
-                                                                                                NEOGEO ROM-cart:2004/03/18
-    POCHI & NYAA                                                Puzzle          Aiky            MVS Cartridge:2003/12/24
-    SAMURAI SHODOWN V SPECIAL                                   Fighting        SNK P/Yuki Ent  MVS Cartridge:2004/04/22
-                                                                                                NEOGEO ROM-cart:2004/07/15
-****************************************************************************/
-
 /*    YEAR  NAME        PARENT    MACHINE          INPUT   INIT            MONITOR */
 /* SNK */
 GAME( 1990, nam1975,    neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "NAM-1975 (NGM-001 ~ NGH-001)", MACHINE_MECHANICAL )
@@ -16393,7 +16278,8 @@ GAME( 2004, sbp,        neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_
 /* NG:DEV.TEAM */
 GAME( 2005, lasthope,   neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "NG:DEV.TEAM", "Last Hope (bootleg AES to MVS conversion, no coin support)", MACHINE_MECHANICAL ) // wasn't actually released on MVS but bootleg carts have been sold, this doesn't accept coins, runs like a console game
 
-/* Predecrypted, Decrypted And Bootleg */
+/*    YEAR  NAME        PARENT    MACHINE          INPUT   INIT            MONITOR */
+/* SNK Predecrypted, Decrypted And Bootleg */
 GAME( 2000, bangbedd,   bangbead, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "Bang Bead (Decrypted C)", MACHINE_MECHANICAL )
 GAME( 2004, cthd2k3d,   kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "Crouching Tiger Hidden Dragon 2003 (The King of Fighters 2001 bootleg, fully decrypted / set 1)(Predecrypted P)", MACHINE_MECHANICAL )
 GAME( 2004, cthd2k3da,  kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "Crouching Tiger Hidden Dragon 2003 (The King of Fighters 2001 bootleg, fully decrypted / set 2)(Predecrypted P)", MACHINE_MECHANICAL )
@@ -16502,7 +16388,8 @@ GAME( 2003, svcpcbd,    svcpcb,   neogeo_noslot,   dualbios, neogeo_state, init_
 GAME( 2001, zupapad,    zupapa,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "Zupapa! (Decrypted)", MACHINE_MECHANICAL )
 GAME( 2001, zupapand,   zupapa,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "Zupapa! (Fully decrypted)", MACHINE_MECHANICAL )
 
-/* Earlier */
+/*    YEAR  NAME        PARENT    MACHINE          INPUT   INIT            MONITOR */
+/* SNK Earlier */
 GAME( 1991, 2020bbe,    2020bb,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK / Pallas", "2020 Super Baseball (Earlier)", MACHINE_MECHANICAL )
 GAME( 1993, 3countbe,   3countb,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "3 Count Bout / Fire Suplex (Earlier)", MACHINE_MECHANICAL )
 GAME( 1996, aof3e,      aof3,     neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "Art of Fighting 3 - The Path of the Warrior / Art of Fighting - Ryuuko no Ken Gaiden (Earlier)", MACHINE_MECHANICAL )
@@ -16532,7 +16419,8 @@ GAME( 1996, wakuwk7e,   wakuwak7, neogeo_noslot,   neogeo, neogeo_state,   init_
 GAME( 1995, whpe,       whp,      neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "ADK / SNK", "World Heroes Perfect (Earlier)", MACHINE_MECHANICAL )
 GAME( 1994, wjammere,   wjammers, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Data East Corporation", "Windjammers / Flying Power Disc (Earlier)", MACHINE_MECHANICAL )
 
-/* Multi Game Doctor 2 */
+/*    YEAR  NAME        PARENT    MACHINE          INPUT   INIT            MONITOR */
+/* SNK Multi Game Doctor 2 */
 GAME( 1993, 3countbd,   3countb,  neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "SNK", "3 Count Bout / Fire Suplex (Multi Game Doctor 2)", MACHINE_MECHANICAL )
 GAME( 1991, 2020bbd,    2020bb,   neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "SNK / Pallas", "2020 Super Baseball (Multi Game Doctor 2)", MACHINE_MECHANICAL )
 GAME( 1991, alpham2d,   alpham2,  neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "SNK", "Alpha Mission II / ASO II - Last Guardian (Multi Game Doctor 2)", MACHINE_MECHANICAL )
@@ -16552,7 +16440,7 @@ GAME( 1991, kotmd,      kotm,     neogeo_noslot,   neogeo,   neogeo_state, init_
 GAME( 1990, lbowlingd,  lbowling, neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "SNK", "League Bowling (Multi Game Doctor 2)", MACHINE_MECHANICAL )
 GAME( 1992, lresortd,   lresort,  neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "SNK", "Last Resort (Multi Game Doctor 2)", MACHINE_MECHANICAL )
 GAME( 1990, maglordd,   maglord,  neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "Alpha Denshi Co.", "Magician Lord (Multi Game Doctor 2)", MACHINE_MECHANICAL )
-GAME( 1990, minasand,   minasan,  neogeo_mj,       neogeo,     neogeo_state, init_neogeo,   ROT0, "Monolith Corp.", "Minnasanno Okagesamadesu (Multi Game Doctor 2)", MACHINE_MECHANICAL )
+GAME( 1990, minasand,   minasan,  neogeo_mj,       neogeo,   neogeo_state, init_neogeo,   ROT0, "Monolith Corp.", "Minnasanno Okagesamadesu (Multi Game Doctor 2)", MACHINE_MECHANICAL )
 GAME( 1992, mutnatd,    mutnat,   neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "SNK", "Mutation Nation (Multi Game Doctor 2)", MACHINE_MECHANICAL )
 GAME( 1990, ncombatd,   ncombat,  neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "Alpha Denshi Co.", "Ninja Combat (Multi Game Doctor 2)", MACHINE_MECHANICAL )
 GAME( 1992, ncommandd,  ncommand, neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "Alpha Denshi Co", "Ninja Commando (Multi Game Doctor 2)", MACHINE_MECHANICAL )
@@ -16566,7 +16454,8 @@ GAME( 1990, tpgolfd,    tpgolf,   neogeo_noslot,   neogeo,   neogeo_state, init_
 GAME( 1991, trallyd,    trally,   neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "Alpha Denshi Co.", "Thrash Rally (Multi Game Doctor 2)", MACHINE_MECHANICAL )
 GAME( 1992, wh1d,       wh1,      neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "Alpha Denshi Co.", "World Heroes (Multi Game Doctor 2)", MACHINE_MECHANICAL )
 
-/* CD conversion */
+/*    YEAR  NAME        PARENT    MACHINE          INPUT   INIT            MONITOR */
+/* SNK CD conversion */
 GAME( 1991, 2020bbcd,   2020bb,   neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "CD_conv", "2020 Super Baseball (CD to MVS Conversion)", MACHINE_MECHANICAL )
 GAME( 1996, crswd2bl,   neogeo,   neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "CD_conv", "Crossed Swords 2 (CD to MVS Conversion)", MACHINE_MECHANICAL )
 GAME( 1991, gpilotcd,   gpilots,  neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "CD_conv", "Ghost Pilots (CD to MVS Conversion)", MACHINE_MECHANICAL )
@@ -16583,7 +16472,8 @@ GAME( 2007, tpgolfcd,   tpgolf,   neogeo_noslot,   neogeo,   neogeo_state, init_
 GAME( 1991, trallycd,   trally,   neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "CD_conv", "Thrash Rally (CD to MVS Conversion)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_MECHANICAL )
 GAME( 1996, zintrkcd,   zintrckb, neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "CD_conv", "Zintrick / Oshidashi Zentrix (CD to MVS Conversion)", MACHINE_MECHANICAL )
 
-/* HomeBrew */
+/*    YEAR  NAME        PARENT    MACHINE          INPUT   INIT            MONITOR */
+/* SNK HomeBrew */
 GAME( 2022, 19yy,       neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Ichikyu Wai Wai/EKORZ/Elrayzeur", "19YY (Neo CD conversion)", MACHINE_MECHANICAL )
 GAME( 2022, 19yyo,      19yy,     neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Ichikyu Wai Wai/EKORZ", "19YY (Neo CD conversion / Early Release)", MACHINE_MECHANICAL )
 GAME( 2023, 240ptest,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Dasutin/Artemio", "240p Test Suite v1.0", MACHINE_MECHANICAL )
@@ -16662,7 +16552,8 @@ GAME( 2023, yoyoshkn,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, ini
 GAME( 2023, xeviousn,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT270, "tcdev", "Xevious (Beta 1, 2023-03-07)", MACHINE_MECHANICAL )
 GAME( 2019, xeno,       neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Bitmap Bureau", "Xeno Crisis v1.0.0", MACHINE_MECHANICAL )
 
-// Intro Demo Music
+/*    YEAR  NAME        PARENT    MACHINE          INPUT   INIT            MONITOR */
+/* SNK Intro Demo Music */
 GAME( 2009, cndi,       neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "[Raregame]", "Chip n Dale (FMV demo)", MACHINE_MECHANICAL )
 GAME( 2009, dti,        neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "[Raregame]", "Duck Tales (FMV demo)", MACHINE_MECHANICAL )
 GAME( 2009, dwi,        neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "[Raregame]", "DarkWing Duck (FMV demo)", MACHINE_MECHANICAL )
@@ -16672,17 +16563,3 @@ GAME( 2009, rci,        neogeo,   neogeo_noslot,   neogeo,     neogeo_state, ini
 GAME( 2009, smi,        neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "[Raregame]", "Spiderman (FMV demo)", MACHINE_IMPERFECT_SOUND | MACHINE_MECHANICAL )
 GAME( 2009, tmnti,      neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "[Raregame]", "Teenage Mutant Ninja Turtles (FMV demo)", MACHINE_MECHANICAL )
 GAME( 2009, tmntia,     tmnti,    neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "[Raregame]", "Teenage Mutant Ninja Turtles (FMV demo, alt)", MACHINE_MECHANICAL )
-
-// Last Hope Pink Bullets (c)2008 - MVS/AES
-// Fast Striker (c)2010 - MVS/AES
-// Fast Striker 1.5 (c)2010 - MVS/AES
-// GunLord (c)2012 - MVS/AES
-// Neo XYX (c)2013 - MVS/AES
-// Razion (c)2014 - MVS/AES?
-// Kraut Buster (c)2016 - MVS/AES
-
-/* N.C.I - LE CORTEX */
-// Treasure of the Caribbean (c)2011 - AES only (no credits system if ran on an MVS, Freeplay)
-
-/* NEOBITZ */
-// Knight's Chance (c)2014 - MVS/AES
