@@ -196,20 +196,14 @@ public:
 	void init_ct2k3spdd();
 	void init_cthd2003dd();
 	void init_fatfury2dd();
-	void init_ganryudd();
 	void init_garoudd();
 	void init_garouhdd();
 	void init_jockeygpdd();
 	void init_kf2k3pldd();
-	void init_kf2k3upldd();
 	void init_kof2000dd();
-	void init_kof2001dd();
 	void init_kof2002dd();
-	void init_kf10thepdd();
-	void init_kf2k5unidd();
 	void init_kof98dd();
 	void init_kof99dd();
-	void init_kogdd();
 	void init_ms5pcbdd();
 	void init_ms5plusdd();
     void init_mslug3b6dd();
@@ -220,6 +214,9 @@ public:
 	void init_mslug5dd();
 	void init_mslug5ndd();
 	void init_mslugxdd();
+	void init_samsh5spdd();
+	void init_samsho5dd();
+	void init_samsho5bdd();
 	void init_svcdd();
 	void init_svcpcbdd();
 

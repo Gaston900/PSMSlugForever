@@ -1606,7 +1606,6 @@ froman2bdd                      // Decrypted Darksoft
 fswordsdd                       // Decrypted Darksoft
 galaxyfgdd                      // Decrypted Darksoft
 ganryudd                        // Decrypted Darksoft
-ganryudnd                       // Fully Decrypted / Darksoft
 garoudd                         // Decrypted Darksoft
 garoubldd                       // Decrypted Darksoft
 garouhdd                        // Decrypted Darksoft
@@ -1692,26 +1691,69 @@ miexchngdd                      // Decrypted Darksoft
 minasandd                       // Decrypted Darksoft
 moshougidd                      // Decrypted Darksoft
 mutnatdd                        // Decrypted Darksoft
-nam1975dd
-ncombatdd
-ncombathdd
-ncommanddd
-neobombedd
-neocup98dd
-neodriftdd
-neomrdodd
-ninjamasdd
-nitddd
-nitdbldd
-overtopdd
-panicbomdd
-pbobbl2ndd
-pbobblendd
-pbobblenbdd
-pgoaldd
-pnyaadd
-pnyaaadd
-popbouncdd
+nam1975dd                       // Decrypted Darksoft
+ncombatdd                       // Decrypted Darksoft
+ncombathdd                      // Decrypted Darksoft
+ncommanddd                      // Decrypted Darksoft
+neobombedd                      // Decrypted Darksoft
+neocup98dd                      // Decrypted Darksoft
+neodriftdd                      // Decrypted Darksoft
+neomrdodd                       // Decrypted Darksoft
+ninjamasdd                      // Decrypted Darksoft
+nitddd                          // Decrypted Darksoft
+nitdbldd                        // Decrypted Darksoft
+overtopdd                       // Decrypted Darksoft
+panicbomdd                      // Decrypted Darksoft
+pbobbl2ndd                      // Decrypted Darksoft
+pbobblendd                      // Decrypted Darksoft
+pbobblenbdd                     // Decrypted Darksoft
+pgoaldd                         // Decrypted Darksoft
+pnyaadd                         // Decrypted Darksoft
+pnyaaadd                        // Decrypted Darksoft
+popbouncdd                      // Decrypted Darksoft
+preisle2dd                      // Decrypted Darksoft
+pspikes2dd                      // Decrypted Darksoft
+pulstardd                       // Decrypted Darksoft (Not working)
+puzzldprdd                      // Decrypted Darksoft
+puzzledpdd                      // Decrypted Darksoft
+quizdai2dd                      // Decrypted Darksoft
+quizdaisdd                      // Decrypted Darksoft
+quizdaiskdd                     // Decrypted Darksoft
+quizkofdd                       // Decrypted Darksoft
+quizkofkdd                      // Decrypted Darksoft
+ragnagrdd                       // Decrypted Darksoft
+rbff1dd                         // Decrypted Darksoft
+rbff1add                        // Decrypted Darksoft
+rbff1kdd                        // Decrypted Darksoft
+rbff1kadd                       // Decrypted Darksoft
+rbff2dd                         // Decrypted Darksoft
+rbff2hdd                        // Decrypted Darksoft
+rbff2kdd                        // Decrypted Darksoft
+rbffspecdd                      // Decrypted Darksoft
+rbffspeckdd                     // Decrypted Darksoft
+ridherodd                       // Decrypted Darksoft
+ridherohdd                      // Decrypted Darksoft
+roboarmydd                      // Decrypted Darksoft
+roboarmyadd                     // Decrypted Darksoft
+rotddd                          // Decrypted Darksoft
+rotdhdd                         // Decrypted Darksoft
+s1945pdd                        // Decrypted Darksoft
+samsh5spdd                      // Decrypted Darksoft
+samsh5sphdd                     // Decrypted Darksoft
+samsh5sphodd                    // Decrypted Darksoft
+samshodd                        // Decrypted Darksoft
+samshohdd                       // Decrypted Darksoft
+samsho2dd                       // Decrypted Darksoft
+samsho2kdd                      // Decrypted Darksoft
+samsho2kadd                     // Decrypted Darksoft
+samsho3dd                       // Decrypted Darksoft
+samsho3hdd                      // Decrypted Darksoft
+samsho4dd                       // Decrypted Darksoft
+samsho4kdd                      // Decrypted Darksoft
+samsho5dd                       // Decrypted Darksoft
+samsho5add                      // Decrypted Darksoft
+samsho5hdd                      // Decrypted Darksoft
+samsho5bdd                      // Decrypted Darksoft
 svcpcbdd                        // Decrypted Darksoft
 
 @source:neogeo.cpp
