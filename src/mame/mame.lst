@@ -1192,8 +1192,8 @@ kof95                           // 0084 (c) 1995 SNK
 kof95a                          // 0084 (c) 1995 SNK, alternate board
 kof95h                          // 0084 (c) 1995 SNK
 kof96                           // 0214 (c) 1996 SNK
-kof96h                          // 0214 (c) 1996 SNK
 kof96a                          // 0214 (c) 1996 SNK
+kof96h                          // 0214 (c) 1996 SNK
 kof97                           // 0232 (c) 1997 SNK
 kof97h                          // 0232 (c) 1997 SNK
 kof97k                          // 0232 (c) 1997 SNK
@@ -1292,6 +1292,8 @@ samsh5sp                        // 0272 (c) 2004 Playmore
 samsh5sph                       // 0272 (c) 2004 Playmore
 samsh5spho                      // 0272 (c) 2004 Playmore
 samsho                          // 0045 (c) 1993 SNK
+samshoh                         // 0045 (c) 1993 SNK
+samshoa                         //
 samsho2                         // 0063 (c) 1994 SNK
 samsho2k                        // 0063 (c) 1994 SNK (Korean hack)
 samsho2ka                       // 0063 (c) 1994 SNK (Korean hack)
@@ -1301,18 +1303,16 @@ samsho4                         // 0222 (c) 1996 SNK
 samsho4k                        // Censored Korean release of samsho4
 samsho5                         // 0270 (c) 2003 Playmore
 samsho5a                        // 0270 (c) 2003 Playmore
-samsho5b                        // bootleg
 samsho5h                        // 0270 (c) 2003 Playmore
-samshoh                         // 0045 (c) 1993 SNK
-samshoa                         //
+samsho5b                        // bootleg
 savagere                        // 0059 (c) 1995 SNK
 sbp                             // (c)2004 Vektorlogik
 sdodgeb                         // 0208 (c) 1996 Technos
 sengoku                         // 0017 (c) 1991 SNK
+sengokuh                        // 0017 (c) 1991 SNK
 sengoku2                        // 0040 (c) 1993 SNK
 sengoku3                        // 0261 (c) 2001 Noise Factory / SNK
 sengoku3a                       //
-sengokuh                        // 0017 (c) 1991 SNK
 shocktr2                        // 0246 (c) 1998 Saurus
 shocktro                        // 0238 (c) 1997 Saurus
 shocktroa                       // 0238 (c) 1997 Saurus
