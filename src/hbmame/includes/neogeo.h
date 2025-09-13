@@ -217,8 +217,8 @@ public:
 	void init_samsh5spdd();
 	void init_samsho5dd();
 	void init_samsho5bdd();
-	void init_svcdd();
 	void init_svcpcbdd();
+	void init_vlinerdd();
 
 	DECLARE_CUSTOM_INPUT_MEMBER(get_memcard_status);
 	DECLARE_CUSTOM_INPUT_MEMBER(get_audio_result);

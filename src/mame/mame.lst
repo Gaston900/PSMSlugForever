@@ -1585,7 +1585,6 @@ crswd2bldd                      // Decrypted Darksoft
 crsworddd                       // Decrypted Darksoft
 ct2k3sadd                       // Decrypted Darksoft
 ct2k3spdd                       // Decrypted Darksoft
-ct2k3spdnd                      // Fully Decrypted / Darksoft
 cthd2003dd                      // Decrypted Darksoft
 ctomadaydd                      // Decrypted Darksoft
 cyberlipdd                      // Decrypted Darksoft
@@ -1754,7 +1753,61 @@ samsho5dd                       // Decrypted Darksoft
 samsho5add                      // Decrypted Darksoft
 samsho5hdd                      // Decrypted Darksoft
 samsho5bdd                      // Decrypted Darksoft
+savageredd                      // Decrypted Darksoft
+sbpdd                           // Decrypted Darksoft
+sdodgebdd                       // Decrypted Darksoft
+sengokudd                       // Decrypted Darksoft
+sengokuhdd                      // Decrypted Darksoft
+sengoku2dd                      // Decrypted Darksoft
+sengoku3dd                      // Decrypted Darksoft
+sengoku3add                     // Decrypted Darksoft
+shocktr2dd                      // Decrypted Darksoft
+shocktrodd                      // Decrypted Darksoft
+shocktroadd                     // Decrypted Darksoft
+socbrawldd                      // Decrypted Darksoft
+socbrawlhdd                     // Decrypted Darksoft
+sonicwi2dd                      // Decrypted Darksoft
+sonicwi3dd                      // Decrypted Darksoft
+spinmastdd                      // Decrypted Darksoft
+ssidekidd                       // Decrypted Darksoft
+ssideki2dd                      // Decrypted Darksoft
+ssideki3dd                      // Decrypted Darksoft
+ssideki4dd                      // Decrypted Darksoft
+stakwindd                       // Decrypted Darksoft
+stakwin2dd                      // Decrypted Darksoft
+strhoopdd                       // Decrypted Darksoft (Not working)
+superspydd                      // Decrypted Darksoft
+svcdd                           // Decrypted Darksoft
+svcbootdd                       // Decrypted Darksoft
+svcplusdd                       // Decrypted Darksoft
+svcplusadd                      // Decrypted Darksoft
+svcsplusdd                      // Decrypted Darksoft
 svcpcbdd                        // Decrypted Darksoft
+tophuntrdd                      // Decrypted Darksoft
+tophuntrhdd                     // Decrypted Darksoft
+tpgolfdd                        // Decrypted Darksoft
+trallydd                        // Decrypted Darksoft
+turfmastdd                      // Decrypted Darksoft
+twinspridd                      // Decrypted Darksoft
+twsoc96dd                       // Decrypted Darksoft
+viewpoindd                      // Decrypted Darksoft
+vlinerdd                        // Decrypted Darksoft (Not working)
+vliner7edd                      // Decrypted Darksoft (Not working)
+vliner6edd                      // Decrypted Darksoft (Not working)
+vliner54dd                      // Decrypted Darksoft (Not working)
+vliner53dd                      // Decrypted Darksoft (Not working)
+wakuwak7dd                      // Decrypted Darksoft (Not working)
+wh1dd                           // Decrypted Darksoft
+wh1hdd                          // Decrypted Darksoft
+wh1hadd                         // Decrypted Darksoft
+wh2dd                           // Decrypted Darksoft
+wh2hdd                          // Decrypted Darksoft
+wh2jdd                          // Decrypted Darksoft
+whpdd                           // Decrypted Darksoft
+wjammersdd                      // Decrypted Darksoft (Not working)
+zedbladedd                      // Decrypted Darksoft
+zintrckbdd                      // Decrypted Darksoft
+zupapadd                        // Decrypted Darksoft
 
 @source:neogeo.cpp
 19yy                            // HomeBrew
