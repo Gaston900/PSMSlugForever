@@ -202,6 +202,7 @@ public:
 	void init_kf2k3pldd();
 	void init_kof2000dd();
 	void init_kof2002dd();
+	void init_kof2003hdd();
 	void init_kof98dd();
 	void init_kof99dd();
 	void init_ms5pcbdd();
