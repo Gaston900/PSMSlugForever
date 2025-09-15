@@ -70,7 +70,6 @@ void neogeo_state::init_jockeygpdd()
 	init_neogeo();
 	m_sprgen->m_fixed_layer_bank_type = 1;
     m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
-    m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region,audio_region_size);
     m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, JOCKEYGP_GFX_KEY);
 	/* install some extra RAM */
 	m_extra_ram = std::make_unique<uint16_t[]>(0x1000);
@@ -1262,13 +1261,13 @@ ROM_START( janshindd )
 ROM_END
 
 ROM_START( jockeygpdd )
-	ROM_REGION( 0x100000, "maincpu", 0 )
+	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(2fb7f388) SHA1(e3c9b03944b4c10cf5081caaf9c8be1f08c06493) )
-    ROM_DEFAULT_BIOS("console_mode")
+    ROM_FILL( 0x100000, 0x100000, 0xff )
 
 	NEO_SFIX_128K( "srom", CRC(bb0efa71) SHA1(203a572acdb48dc7b904a8f1e0766a13bfcaa3d3) )
 
-	NEO_BIOS_AUDIO_ENCRYPTED_512K( "m1rom", CRC(d163c690) SHA1(1dfd04d20c5985037f07cd01000d0b04f3a8f4f4) )
+	NEO_BIOS_AUDIO_512K( "m1rom", CRC(1cab4de2) SHA1(112ff90806d8757db0685b88b762c45ed02548de) )
 
 	ROM_REGION( 0x200000, "ymsnd", 0 )
 	ROM_LOAD( "vroma0", 0x000000, 0x200000, CRC(443eadba) SHA1(3def3c22f0e276bc4c2fc7ff70ce473c08b0d2df) )
@@ -1280,11 +1279,10 @@ ROM_END
 ROM_START( jockeygpadd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "proma", 0x000000, 0x100000, CRC(b8f35532) SHA1(b46c96677f1bfe324b678112e9c614a20c550d51) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(bb0efa71) SHA1(203a572acdb48dc7b904a8f1e0766a13bfcaa3d3) )
 
-	NEO_BIOS_AUDIO_ENCRYPTED_512K( "m1rom", CRC(d163c690) SHA1(1dfd04d20c5985037f07cd01000d0b04f3a8f4f4) )
+	NEO_BIOS_AUDIO_512K( "m1rom", CRC(1cab4de2) SHA1(112ff90806d8757db0685b88b762c45ed02548de) )
 
 	ROM_REGION( 0x200000, "ymsnd", 0 )
 	ROM_LOAD( "vroma0", 0x000000, 0x200000, CRC(443eadba) SHA1(3def3c22f0e276bc4c2fc7ff70ce473c08b0d2df) )
@@ -5497,11 +5495,10 @@ ROM_START( jockeygpnds )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(2fb7f388) SHA1(e3c9b03944b4c10cf5081caaf9c8be1f08c06493) )
     ROM_IGNORE( 0x507F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(bb0efa71) SHA1(203a572acdb48dc7b904a8f1e0766a13bfcaa3d3) )
 
-	NEO_BIOS_AUDIO_ENCRYPTED_512K( "m1rom", CRC(d163c690) SHA1(1dfd04d20c5985037f07cd01000d0b04f3a8f4f4) )
+	NEO_BIOS_AUDIO_512K( "m1rom", CRC(1cab4de2) SHA1(112ff90806d8757db0685b88b762c45ed02548de) )
 
 	ROM_REGION( 0x200000, "ymsnd", 0 )
 	ROM_LOAD( "vroma0", 0x000000, 0x200000, CRC(443eadba) SHA1(3def3c22f0e276bc4c2fc7ff70ce473c08b0d2df) )
@@ -5514,11 +5511,10 @@ ROM_START( jockeygpands )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "proma", 0x000000, 0x100000, CRC(b8f35532) SHA1(b46c96677f1bfe324b678112e9c614a20c550d51) )
     ROM_IGNORE( 0x507F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(bb0efa71) SHA1(203a572acdb48dc7b904a8f1e0766a13bfcaa3d3) )
 
-	NEO_BIOS_AUDIO_ENCRYPTED_512K( "m1rom", CRC(d163c690) SHA1(1dfd04d20c5985037f07cd01000d0b04f3a8f4f4) )
+	NEO_BIOS_AUDIO_512K( "m1rom", CRC(1cab4de2) SHA1(112ff90806d8757db0685b88b762c45ed02548de) )
 
 	ROM_REGION( 0x200000, "ymsnd", 0 )
 	ROM_LOAD( "vroma0", 0x000000, 0x200000, CRC(443eadba) SHA1(3def3c22f0e276bc4c2fc7ff70ce473c08b0d2df) )
