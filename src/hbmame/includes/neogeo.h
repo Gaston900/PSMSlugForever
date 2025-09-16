@@ -200,11 +200,13 @@ public:
 	void init_garouhdd();
 	void init_jockeygpdd();
 	void init_kf2k3pldd();
+	void init_kf2k3upldd();
 	void init_kof2000dd();
 	void init_kof2002dd();
-	void init_kof2003hdd();
+	void init_kof2003dd();
 	void init_kof98dd();
 	void init_kof99dd();
+	void init_matrimdd();
 	void init_ms5pcbdd();
 	void init_ms5plusdd();
     void init_mslug3b6dd();
@@ -218,7 +220,7 @@ public:
 	void init_samsh5spdd();
 	void init_samsho5dd();
 	void init_samsho5bdd();
-	void init_svcpcbdd();
+	void init_svcdd();
 	void init_vlinerdd();
 
 	DECLARE_CUSTOM_INPUT_MEMBER(get_memcard_status);

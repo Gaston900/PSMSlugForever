@@ -1637,6 +1637,7 @@ kf2k2mpdd                       // Decrypted Darksoft
 kf2k2mp2dd                      // Decrypted Darksoft
 kf2k2plsdd                      // Decrypted Darksoft
 kf2k2pladd                      // Decrypted Darksoft
+kf2k3bldd                       // Decrypted Darksoft
 kf2k3bladd                      // Decrypted Darksoft
 kf2k3upldd                      // Decrypted Darksoft
 kf2k3pldd                       // Decrypted Darksoft
@@ -1695,6 +1696,7 @@ maglordhdd                      // Decrypted Darksoft
 mahretsudd                      // Decrypted Darksoft
 marukodqdd                      // Decrypted Darksoft
 matrimdd                        // Decrypted Darksoft
+matrimbldd                      // Decrypted Darksoft
 miexchngdd                      // Decrypted Darksoft
 minasandd                       // Decrypted Darksoft
 moshougidd                      // Decrypted Darksoft
@@ -1792,6 +1794,7 @@ svcplusdd                       // Decrypted Darksoft
 svcplusadd                      // Decrypted Darksoft
 svcsplusdd                      // Decrypted Darksoft
 svcpcbdd                        // Decrypted Darksoft
+svcpcbadd                       // Decrypted Darksoft
 tophuntrdd                      // Decrypted Darksoft
 tophuntrhdd                     // Decrypted Darksoft
 tpgolfdd                        // Decrypted Darksoft
@@ -1800,12 +1803,7 @@ turfmastdd                      // Decrypted Darksoft
 twinspridd                      // Decrypted Darksoft
 twsoc96dd                       // Decrypted Darksoft
 viewpoindd                      // Decrypted Darksoft
-vlinerdd                        // Decrypted Darksoft (Not working)
-vliner7edd                      // Decrypted Darksoft (Not working)
-vliner6edd                      // Decrypted Darksoft (Not working)
-vliner54dd                      // Decrypted Darksoft (Not working)
-vliner53dd                      // Decrypted Darksoft (Not working)
-wakuwak7dd                      // Decrypted Darksoft (Not working)
+wakuwak7dd                      // Decrypted Darksoft
 wh1dd                           // Decrypted Darksoft
 wh1hdd                          // Decrypted Darksoft
 wh1hadd                         // Decrypted Darksoft
@@ -1871,11 +1869,11 @@ froman2bnds                     // NEO SD
 fswordsnds                      // NEO SD
 galaxyfgnds                     // NEO SD
 ganryunds                       // NEO SD
-//garounds                        // NEO SD
-//garoublnds                      // NEO SD
-//garouhnds                       // NEO SD
-//garouhands                      // NEO SD
-//garoupnds                       // NEO SD
+garounds                        // NEO SD
+garoublnds                      // NEO SD
+garouhnds                       // NEO SD
+garouhands                      // NEO SD
+garoupnds                       // NEO SD
 ghostlopnds                     // NEO SD (Not working)
 goalx3nds                       // NEO SD
 gowcaizrnds                     // NEO SD
@@ -1886,50 +1884,51 @@ ironcladnds                     // NEO SD
 ironcladonds                    // NEO SD
 irrmazends                      // NEO SD (Not working)
 janshinnds                      // NEO SD
-//jockeygpnds                     // NEO SD
-//jockeygpands                    // NEO SD
+jockeygpnds                     // NEO SD
+jockeygpands                    // NEO SD
 joyjoynds                       // NEO SD
 kabukiklnds                     // NEO SD
 karnovrnds                      // NEO SD
-//kf2k2mpnds                      // NEO SD
-//kf2k2mp2nds                     // NEO SD
-//kf2k2plsnds                     // NEO SD
-//kf2k2plands                     // NEO SD
-//kf2k3blands                     // NEO SD
-//kf2k3uplnds                     // NEO SD
-//kf2k3plnds                      // NEO SD
+kf2k2mpnds                      // NEO SD
+kf2k2mp2nds                     // NEO SD
+kf2k2plsnds                     // NEO SD
+kf2k2plands                     // NEO SD
+kf2k3blnds
+kf2k3blands                     // NEO SD
+kf2k3uplnds                     // NEO SD
+kf2k3plnds                      // NEO SD
 kizunands                       // NEO SD
-//kof2000nds                      // NEO SD
-//kof2000nnds                     // NEO SD
-//kof2001nds                      // NEO SD
-//kof2001hnds                     // NEO SD
-//kof2002nds                      // NEO SD
-//kof2002bnds                     // NEO SD
-//kof2003nds                      // NEO SD
-//kof2003hnds                     // NEO SD
+kof2000nds                      // NEO SD
+kof2000nnds                     // NEO SD
+kof2001nds                      // NEO SD
+kof2001hnds                     // NEO SD
+kof2002nds                      // NEO SD
+kof2002bnds                     // NEO SD
+kof2003nds                      // NEO SD
+kof2003hnds                     // NEO SD
 //kof10thnds                      // NEO SD
-//kf10thepnds                     // NEO SD
-//kf2k5uninds                     // NEO SD
-//kof2k4sends                     // NEO SD
-//kof94nds                        // NEO SD
-//kof95nds                        // NEO SD
-//kof95hnds                       // NEO SD
-//kof96nds                        // NEO SD
-//kof96hnds                       // NEO SD
-//kof97nds                        // NEO SD
-//kof97hnds                       // NEO SD
-//kof97knds                       // NEO SD
-//kof97plsnds                     // NEO SD
-//kof97oronds                     // NEO SD
-//kof98nds                        // NEO SD
-//kof98hnds                       // NEO SD
-//kof98knds                       // NEO SD
-//kof98kands                      // NEO SD
-//kof99nds                        // NEO SD
-//kof99ends                       // NEO SD
-//kof99hnds                       // NEO SD
-//kof99knds                       // NEO SD
-//kof99pnds                       // NEO SD
+kf10thepnds                     // NEO SD
+kf2k5uninds                     // NEO SD
+kof2k4sends                     // NEO SD
+kof94nds                        // NEO SD
+kof95nds                        // NEO SD
+kof95hnds                       // NEO SD
+kof96nds                        // NEO SD
+kof96hnds                       // NEO SD
+kof97nds                        // NEO SD
+kof97hnds                       // NEO SD
+kof97knds                       // NEO SD
+kof97plsnds                     // NEO SD
+kof97oronds                     // NEO SD
+kof98nds                        // NEO SD
+kof98hnds                       // NEO SD
+kof98knds                       // NEO SD
+kof98kands                      // NEO SD
+kof99nds                        // NEO SD
+kof99ends                       // NEO SD
+kof99hnds                       // NEO SD
+kof99knds                       // NEO SD
+kof99pnds                       // NEO SD
 kognds                          // NEO SD
 kotmnds                         // NEO SD
 kotmhnds                        // NEO SD
@@ -1953,6 +1952,7 @@ maglordhnds                     // NEO SD
 mahretsunds                     // NEO SD
 marukodqnds                     // NEO SD
 matrimnds                       // NEO SD
+matrimblnds                     // NEO SD
 miexchngnds                     // NEO SD
 minasannds                      // NEO SD
 moshouginds                     // NEO SD
@@ -2019,61 +2019,57 @@ samsho5nds                      // NEO SD
 //samsho5ands                     // NEO SD
 samsho5hnds                     // NEO SD
 samsho5bnds                     // NEO SD
-//savagerends                     // NEO SD
-//sbpnds                          // NEO SD
-//sdodgebnds                      // NEO SD
-//sengokunds                      // NEO SD
-//sengokuhnds                     // NEO SD
-//sengoku2nds                     // NEO SD
-//sengoku3nds                     // NEO SD
-//sengoku3ands                    // NEO SD
-//shocktr2nds                     // NEO SD
-//shocktronds                     // NEO SD
-//shocktroands                    // NEO SD
-//socbrawlnds                     // NEO SD
-//socbrawlhnds                    // NEO SD
-//sonicwi2nds                     // NEO SD
-//sonicwi3nds                     // NEO SD
-//spinmastnds                     // NEO SD
-//ssidekinds                      // NEO SD
-//ssideki2nds                     // NEO SD
-//ssideki3nds                     // NEO SD
-//ssideki4nds                     // NEO SD
-//stakwinnds                      // NEO SD
-//stakwin2nds                     // NEO SD
-//strhoopnds                      // NEO SD (Not working)
-//superspynds                     // NEO SD
-//svcnds                          // NEO SD
-//svcbootnds                      // NEO SD
-//svcplusnds                      // NEO SD
-//svcplusands                     // NEO SD
-//svcsplusnds                     // NEO SD
-//svcpcbnds                       // NEO SD
-//tophuntrnds                     // NEO SD
-//tophuntrhnds                    // NEO SD
-//tpgolfnds                       // NEO SD
-//trallynds                       // NEO SD
-//turfmastnds                     // NEO SD
-//twinsprinds                     // NEO SD
-//twsoc96nds                      // NEO SD
-//viewpoinnds                     // NEO SD
-//vlinernds                       // NEO SD (Not working)
-//vliner7ends                     // NEO SD (Not working)
-//vliner6ends                     // NEO SD (Not working)
-//vliner54nds                     // NEO SD (Not working)
-//vliner53nds                     // NEO SD (Not working)
-//wakuwak7nds                     // NEO SD (Not working)
-//wh1nds                          // NEO SD
-//wh1hnds                         // NEO SD
-//wh1hands                        // NEO SD
-//wh2nds                          // NEO SD
-//wh2hnds                         // NEO SD
-//wh2jnds                         // NEO SD
-//whpnds                          // NEO SD
-//wjammersnds                     // NEO SD (Not working)
-//zedbladends                     // NEO SD
-//zintrckbnds                     // NEO SD
-//zupapands                       // NEO SD
+savagerends                     // NEO SD
+sbpnds                          // NEO SD
+sdodgebnds                      // NEO SD
+sengokunds                      // NEO SD
+sengokuhnds                     // NEO SD
+sengoku2nds                     // NEO SD
+sengoku3nds                     // NEO SD
+sengoku3ands                    // NEO SD
+shocktr2nds                     // NEO SD
+shocktronds                     // NEO SD
+shocktroands                    // NEO SD
+socbrawlnds                     // NEO SD
+socbrawlhnds                    // NEO SD
+sonicwi2nds                     // NEO SD
+sonicwi3nds                     // NEO SD
+spinmastnds                     // NEO SD
+ssidekinds                      // NEO SD
+ssideki2nds                     // NEO SD
+ssideki3nds                     // NEO SD
+ssideki4nds                     // NEO SD
+stakwinnds                      // NEO SD
+stakwin2nds                     // NEO SD
+strhoopnds                      // NEO SD (Not working)
+superspynds                     // NEO SD
+svcnds                          // NEO SD
+svcbootnds                      // NEO SD
+svcplusnds                      // NEO SD
+svcplusands                     // NEO SD
+svcsplusnds                     // NEO SD
+svcpcbnds                       // NEO SD
+svcpcbands                      // NEO SD
+tophuntrnds                     // NEO SD
+tophuntrhnds                    // NEO SD
+tpgolfnds                       // NEO SD
+trallynds                       // NEO SD
+turfmastnds                     // NEO SD
+twinsprinds                     // NEO SD
+twsoc96nds                      // NEO SD
+viewpoinnds                     // NEO SD
+wakuwak7nds                     // NEO SD
+wh1nds                          // NEO SD
+wh1hnds                         // NEO SD
+wh1hands                        // NEO SD
+wh2nds                          // NEO SD
+wh2hnds                         // NEO SD
+wh2jnds                         // NEO SD
+whpnds                          // NEO SD
+wjammersnds                     // NEO SD (Not working)
+zedbladends                     // NEO SD
+zintrckbnds                     // NEO SD
+zupapands                       // NEO SD
 
 @source:neogeo.cpp
 19yy                            // HomeBrew
