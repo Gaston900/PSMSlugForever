@@ -1735,7 +1735,6 @@ ragnagrdd                       // Decrypted Darksoft
 rbff1dd                         // Decrypted Darksoft
 rbff1add                        // Decrypted Darksoft
 rbff1kdd                        // Decrypted Darksoft
-rbff1kadd                       // Decrypted Darksoft
 rbff2dd                         // Decrypted Darksoft
 rbff2hdd                        // Decrypted Darksoft
 rbff2kdd                        // Decrypted Darksoft
@@ -1761,7 +1760,6 @@ samsho3hdd                      // Decrypted Darksoft
 samsho4dd                       // Decrypted Darksoft
 samsho4kdd                      // Decrypted Darksoft
 samsho5dd                       // Decrypted Darksoft
-samsho5add                      // Decrypted Darksoft
 samsho5hdd                      // Decrypted Darksoft
 samsho5bdd                      // Decrypted Darksoft
 savageredd                      // Decrypted Darksoft
@@ -1906,7 +1904,7 @@ kof2002nds                      // NEO SD
 kof2002bnds                     // NEO SD
 kof2003nds                      // NEO SD
 kof2003hnds                     // NEO SD
-//kof10thnds                      // NEO SD
+kof10thnds                      // NEO SD
 kf10thepnds                     // NEO SD
 kf2k5uninds                     // NEO SD
 kof2k4sends                     // NEO SD

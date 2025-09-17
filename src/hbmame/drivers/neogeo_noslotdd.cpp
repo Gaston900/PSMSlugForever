@@ -130,24 +130,6 @@ void neogeo_state::init_matrimdd()
     m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
 }
 
-void neogeo_state::init_samsh5spdd()
-{
-	init_neogeo();
-
-    m_sprgen->m_fixed_layer_bank_type = 1;
-    m_kof2002_prot->samsh5sp_decrypt_68k(cpuregion, cpuregion_size);
-    m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
-}
-
-void neogeo_state::init_samsho5dd()
-{
-	init_neogeo();
-
-    m_sprgen->m_fixed_layer_bank_type = 1;
-    m_kof2002_prot->samsho5_decrypt_68k(cpuregion, cpuregion_size);
-    m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
-}
-
 void neogeo_state::init_samsho5bdd()
 {
 	init_neogeo();
@@ -674,18 +656,18 @@ ROM_END
 
 ROM_START( ct2k3sadd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "promsa", 0x000000, 0x500000, CRC(bc76c591) SHA1(8f17275f227f036aed082053b7e224db23f6b1d7) )
+	ROM_LOAD16_WORD_SWAP( "promsa", 0x000000, 0x500000, CRC(fa115c60) SHA1(bc12b5d1aeb5c3abf6bea96abaf598987a856ba6) )
     ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "sromsa", CRC(4e1f7eae) SHA1(3302ad290804272447ccd2e8edd3ce968f043db1) )
 
-	NEO_BIOS_AUDIO_128K( "m1romsa", CRC(1a8c274b) SHA1(5f6f9c533f4a296a18c741ce59a69cf6f5c836b9) )
+	NEO_BIOS_AUDIO_128K( "m1romds", CRC(7dfce5c0) SHA1(56084223e23ad5ca60f7d819bdcd2c61c0a7d523) )
 
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
 	ROM_LOAD( "vroma0", 0x000000, 0x1000000, CRC(f5314040) SHA1(8443085f2d8e28d8191dc12e343bfe70f378d97a) )
 
 	ROM_REGION( 0x4000000, "sprites", 0 )
-	ROM_LOAD( "crom0sa", 0x0000000, 0x4000000, CRC(1ba996b1) SHA1(4711772b4f2061b96e310ee2b9489f6673a61c13) )
+	ROM_LOAD( "crom0ds", 0x0000000, 0x4000000, CRC(0eaa2cc2) SHA1(f184111b9d8234c1c784540000638ceeb127072a) )
 ROM_END
 
 ROM_START( ct2k3spdd )
@@ -864,7 +846,7 @@ ROM_END
 
 ROM_START( fatfury2dd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(ecfdbb69) SHA1(59e2f137c6eaf043df4ddae865a9159a10265c60) )
+	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(a0084440) SHA1(8dab8411c48da7866e678c8ba4b19015e70b5d38) )
     ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(d7dbbf39) SHA1(29253e596f475ebd41a6e3bb53952e3a0ccd2eed) )
@@ -1159,8 +1141,8 @@ ROM_START( gpilotsdd )
 
 	NEO_BIOS_AUDIO_128K( "m1rom", CRC(48409377) SHA1(0e212d2c76856a90b2c2fdff675239525972ac43) )
 
-	ROM_REGION( 0x280000, "ymsnd", 0 )
-	ROM_LOAD( "vroma0", 0x000000, 0x280000, CRC(7ed5d77c) SHA1(005e470870fe66668ad788f160acf86d4ccc7701) )
+	ROM_REGION( 0x300000, "ymsnd", 0 )
+	ROM_LOAD( "vroma0", 0x000000, 0x300000, CRC(85f0a01b) SHA1(d40099a653d391575bcbacb7a76f9a3edbc2e1d6) )
 
 	ROM_REGION( 0x400000, "sprites", 0 )
 	ROM_LOAD( "crom0", 0x0000000, 0x400000, CRC(b4391c3e) SHA1(ef54ba4eae1b4f477f7b7408a3d5d86cea6013a6) )
@@ -1175,8 +1157,8 @@ ROM_START( gpilotshdd )
 
 	NEO_BIOS_AUDIO_128K( "m1rom", CRC(48409377) SHA1(0e212d2c76856a90b2c2fdff675239525972ac43) )
 
-	ROM_REGION( 0x280000, "ymsnd", 0 )
-	ROM_LOAD( "vroma0", 0x000000, 0x280000, CRC(7ed5d77c) SHA1(005e470870fe66668ad788f160acf86d4ccc7701) )
+	ROM_REGION( 0x300000, "ymsnd", 0 )
+	ROM_LOAD( "vroma0", 0x000000, 0x300000, CRC(85f0a01b) SHA1(d40099a653d391575bcbacb7a76f9a3edbc2e1d6) )
 
 	ROM_REGION( 0x400000, "sprites", 0 )
 	ROM_LOAD( "crom0", 0x0000000, 0x400000, CRC(b4391c3e) SHA1(ef54ba4eae1b4f477f7b7408a3d5d86cea6013a6) )
@@ -1486,7 +1468,7 @@ ROM_END
 
 ROM_START( kof2000dd )
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x900000, CRC(396aeed7) SHA1(0f0bad158b10855c32369d4ca6e5504ea4b611b6) )
+	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x900000, CRC(f6aca737) SHA1(a5b72e58538bdf641b11afd81b03de026c514876) )
     ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_512K( "srom.s1", CRC(38901d4d) SHA1(c7684f66ab4ed577094da6ae143477c9df28d1fe) )
@@ -1550,7 +1532,7 @@ ROM_END
 
 ROM_START( kof2002dd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x500000, CRC(3c393c7b) SHA1(9ed4e986b3d38ef88c9b80357d3a079978d04e3f) )
+	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x500000, CRC(4d648590) SHA1(15a889e1c0bbed3e959b822e3ba4b1e004960b60) )
     ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(e0eaaba3) SHA1(831b642da9fe7617498cdb1c86475b3b3d3043bc) )
@@ -1582,7 +1564,7 @@ ROM_END
 
 ROM_START( kof2003dd )
 	ROM_REGION( 0x800000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x800000, CRC(57a1981d) SHA1(0bc21c09c127e9abb3b03924166c0065ddec2057) )
+	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x800000, CRC(0a9f0f2c) SHA1(bc6f8c2bd2f427a12be5e4bb670c9681c2b0afde) )
     ROM_DEFAULT_BIOS("console_mode")
 
     NEO_SFIX_128K( "srom", CRC(7c7829aa) SHA1(22f8d38d1d0891295d0593741d9477fbe6b4f48c) )
@@ -1603,8 +1585,6 @@ ROM_START( kof2003hdd )
     ROM_DEFAULT_BIOS("console_mode")
 
     NEO_SFIX_128K( "srom", CRC(7c7829aa) SHA1(22f8d38d1d0891295d0593741d9477fbe6b4f48c) )
-
-//    NEO_SFIX_128K( "sromh", CRC(1d4ecb1e) SHA1(115101010fe739e6a684498ba5e6e468b62181b9) )
 
     NEO_BIOS_AUDIO_512K( "m1romh", CRC(5edcbaee) SHA1(014e98b2dc2fdc817ea847cdb0ec787dad10e60a) )
 
@@ -1841,7 +1821,7 @@ ROM_END
 
 ROM_START( kof98dd )
 	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x600000, CRC(3c8eafb3) SHA1(f0fe1df5495665702f9c70a13f01a59c4235c34b) )
+	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x600000, CRC(79c106cb) SHA1(2c373c55c747857d6b5114464d6c3f6d90237884) )
     ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7f7b4805) SHA1(80ee6e5d0ece9c34ebca54b043a7cb33f9ff6b92) )
@@ -1873,7 +1853,7 @@ ROM_END
 
 ROM_START( kof98kdd )
 	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x600000, CRC(3c8eafb3) SHA1(f0fe1df5495665702f9c70a13f01a59c4235c34b) )
+	ROM_LOAD16_WORD_SWAP( "promk", 0x000000, 0x600000, CRC(3c8eafb3) SHA1(f0fe1df5495665702f9c70a13f01a59c4235c34b) )
     ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7f7b4805) SHA1(80ee6e5d0ece9c34ebca54b043a7cb33f9ff6b92) )
@@ -1889,7 +1869,7 @@ ROM_END
 
 ROM_START( kof98kadd )
 	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x600000, CRC(3c8eafb3) SHA1(f0fe1df5495665702f9c70a13f01a59c4235c34b) )
+	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x600000, CRC(79c106cb) SHA1(2c373c55c747857d6b5114464d6c3f6d90237884) )
     ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7f7b4805) SHA1(80ee6e5d0ece9c34ebca54b043a7cb33f9ff6b92) )
@@ -2977,23 +2957,6 @@ ROM_START( rbff1kdd )
 	ROM_LOAD( "crom0", 0x0000000, 0x1c00000, CRC(10af3ab0) SHA1(f7b01d53f6e92fc9985d0058c3f5d95691d16db2) )
 ROM_END
 
-ROM_START( rbff1kadd )
-	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "promk", 0x000000, 0x300000, CRC(63a18188) SHA1(f692ec04e817e453490f1b4870a288a84aad0e59) )
-    ROM_LOAD16_WORD_SWAP( "promka", 0x000000, 0x080000, CRC(422093ed) SHA1(1b4cceec9b622d35f1bfdf01e314771b98483348) )
-	ROM_DEFAULT_BIOS("console_mode")
-
-	NEO_SFIX_128K( "srom", CRC(b6bf5e08) SHA1(b527355c35ea097f3448676f2ffa65b8e56ae30c) )
-
-	NEO_BIOS_AUDIO_128K( "m1rom", CRC(653492a7) SHA1(39e511fb9ed5d2135dc8428a31d0baafb2ab36e0) )
-
-	ROM_REGION( 0xc00000, "ymsnd", 0 )
-	ROM_LOAD( "vroma0", 0x000000, 0xc00000, CRC(2c1aafd8) SHA1(2a2be69232dbeb49d33d938321c7a271c6d5b6cc) )
-
-	ROM_REGION( 0x1c00000, "sprites", 0 )
-	ROM_LOAD( "crom0", 0x0000000, 0x1c00000, CRC(10af3ab0) SHA1(f7b01d53f6e92fc9985d0058c3f5d95691d16db2) )
-ROM_END
-
 ROM_START( rbff2dd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x500000, CRC(e9381358) SHA1(c8dcb65afe887dd71c70a2f07972837968731272) )
@@ -3197,10 +3160,10 @@ ROM_START( samsh5spdd )
 
 	NEO_SFIX_128K( "srom", CRC(c297f973) SHA1(b31af6b51e7536b538cd7eb3542c631c6327e826) )
 
-	NEO_BIOS_AUDIO_128K( "m1rom", CRC(654e9236) SHA1(e13a1b4b73d43008565ee419c9714a220927d0bc) )
+	NEO_BIOS_AUDIO_128K( "m1rom", CRC(203d744e) SHA1(24fc73943009effa14eed0f7a29955f349ca8e8f) )
 
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
-	ROM_LOAD( "vroma0", 0x000000, 0x1000000, CRC(80369c31) SHA1(dba53b5669f14ebf4a40738c8664c72b72d460e0) )
+	ROM_LOAD( "vroma0", 0x000000, 0x1000000, CRC(ae5a592d) SHA1(e3f9b44c9b94007172ea07dac11789a62a3811e3) )
 
 	ROM_REGION( 0x4000000, "sprites", 0 )
 	ROM_LOAD( "crom0", 0x0000000, 0x4000000, CRC(c734c427) SHA1(522c776a7c06c6f3b246aad1e9103d9ebbfead14) )
@@ -3213,10 +3176,10 @@ ROM_START( samsh5sphdd )
 
 	NEO_SFIX_128K( "srom", CRC(c297f973) SHA1(b31af6b51e7536b538cd7eb3542c631c6327e826) )
 
-	NEO_BIOS_AUDIO_128K( "m1rom", CRC(654e9236) SHA1(e13a1b4b73d43008565ee419c9714a220927d0bc) )
+	NEO_BIOS_AUDIO_128K( "m1rom", CRC(203d744e) SHA1(24fc73943009effa14eed0f7a29955f349ca8e8f) )
 
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
-	ROM_LOAD( "vroma0", 0x000000, 0x1000000, CRC(80369c31) SHA1(dba53b5669f14ebf4a40738c8664c72b72d460e0) )
+	ROM_LOAD( "vroma0", 0x000000, 0x1000000, CRC(ae5a592d) SHA1(e3f9b44c9b94007172ea07dac11789a62a3811e3) )
 
 	ROM_REGION( 0x4000000, "sprites", 0 )
 	ROM_LOAD( "crom0", 0x0000000, 0x4000000, CRC(c734c427) SHA1(522c776a7c06c6f3b246aad1e9103d9ebbfead14) )
@@ -3229,10 +3192,10 @@ ROM_START( samsh5sphodd )
 
 	NEO_SFIX_128K( "srom", CRC(c297f973) SHA1(b31af6b51e7536b538cd7eb3542c631c6327e826) )
 
-	NEO_BIOS_AUDIO_128K( "m1rom", CRC(654e9236) SHA1(e13a1b4b73d43008565ee419c9714a220927d0bc) )
+	NEO_BIOS_AUDIO_128K( "m1rom", CRC(203d744e) SHA1(24fc73943009effa14eed0f7a29955f349ca8e8f) )
 
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
-	ROM_LOAD( "vroma0", 0x000000, 0x1000000, CRC(80369c31) SHA1(dba53b5669f14ebf4a40738c8664c72b72d460e0) )
+	ROM_LOAD( "vroma0", 0x000000, 0x1000000, CRC(ae5a592d) SHA1(e3f9b44c9b94007172ea07dac11789a62a3811e3) )
 
 	ROM_REGION( 0x4000000, "sprites", 0 )
 	ROM_LOAD( "crom0", 0x0000000, 0x4000000, CRC(c734c427) SHA1(522c776a7c06c6f3b246aad1e9103d9ebbfead14) )
@@ -3384,23 +3347,7 @@ ROM_END
 
 ROM_START( samsho5dd )
 	ROM_REGION( 0x800000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x800000, CRC(5c7272fe) SHA1(e99c098d58df88cdb46fe57cd09b31aa5ba226f3) )
-	ROM_DEFAULT_BIOS("console_mode")
-
-	NEO_SFIX_128K( "srom", CRC(2ad6048b) SHA1(173c8561f0633e0d6e4a9750e632f2e46766e674) )
-
-	NEO_BIOS_AUDIO_512K( "m1rom", CRC(5218a10a) SHA1(da4968e55d4a56249d85d6742a6acffcff4ad65d) )
-
-	ROM_REGION( 0x1000000, "ymsnd", 0 )
-	ROM_LOAD( "vroma0", 0x000000, 0x1000000, CRC(e32a49d0) SHA1(b659f9e014d2a208839d17e8527d88e7cf094c39) )
-
-	ROM_REGION( 0x4000000, "sprites", 0 )
-	ROM_LOAD( "crom0", 0x0000000, 0x4000000, CRC(1140df84) SHA1(f6c83db5c5a26b6923ecc00fef5526afaf97a4d1) )
-ROM_END
-
-ROM_START( samsho5add )
-	ROM_REGION( 0x800000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "proma", 0x000000, 0x800000, CRC(5e138d79) SHA1(be9ceabb43e2dcaf483e9a05b25aac7563664079) )
+	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x800000, CRC(d102bd7a) SHA1(b2832bd48444dc780ee98818bb8485eb8d043708) )
 	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(2ad6048b) SHA1(173c8561f0633e0d6e4a9750e632f2e46766e674) )
@@ -3416,7 +3363,7 @@ ROM_END
 
 ROM_START( samsho5hdd )
 	ROM_REGION( 0x800000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "promh", 0x000000, 0x800000, CRC(e4e6c082) SHA1(883aa145edb9149ce595ccfd45ef3f163b06c967) )
+	ROM_LOAD16_WORD_SWAP( "promh", 0x000000, 0x800000, CRC(7b88cbef) SHA1(9db06a9478cdcca2a0244688321db2499b0a0190) )
 	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(2ad6048b) SHA1(173c8561f0633e0d6e4a9750e632f2e46766e674) )
@@ -3432,7 +3379,7 @@ ROM_END
 
 ROM_START( samsho5bdd )
 	ROM_REGION( 0x800000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "promb", 0x000000, 0x800000, CRC(dac5e3ee) SHA1(84270ad9c989bcc4511bc1ebb1bd09fd43b68a14) )
+	ROM_LOAD16_WORD_SWAP( "promb", 0x000000, 0x800000, CRC(611a6687) SHA1(55ff9122d64efd276e22a66fa443e0bebd079928) )
 	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "sromb", CRC(33227d62) SHA1(5f4b7ab642175657af212304783a1df98415ed44) )
@@ -3823,8 +3770,8 @@ ROM_START( superspydd )
 
 	NEO_BIOS_AUDIO_256K( "m1rom", CRC(ca661f1b) SHA1(4e3cb57db716ec48487c1b070c3a55a5faf40856) )
 
-	ROM_REGION( 0x280000, "ymsnd", 0 )
-	ROM_LOAD( "vroma0", 0x000000, 0x280000, CRC(5077b417) SHA1(f07a0c8b3d055452e711c551118639325ecf9baa) )
+	ROM_REGION( 0x300000, "ymsnd", 0 )
+	ROM_LOAD( "vroma0", 0x000000, 0x300000, CRC(18402ab8) SHA1(71d701cfffdfc3a31670138df83d7be2149b181b) )
 
 	ROM_REGION( 0x400000, "sprites", 0 )
 	ROM_LOAD( "crom0", 0x0000000, 0x400000, CRC(9c956e88) SHA1(e3c251a7a1ab674e2373318bfdef3d1f07f8b099) )
@@ -4275,7 +4222,7 @@ ROM_END
 
 ROM_START( wjammersdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(4155941f) SHA1(51e7cb4d98695a33c162d4159a2fa3cfd15aa78e) )
+	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(6692c140) SHA1(5da574e906974fac92bb2f49bdeea257c014a897) )
 	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(074b5723) SHA1(86d3b3bb5414f43e4d3b7a2af0db23cc71ce8412) )
@@ -5429,8 +5376,8 @@ ROM_START( gpilotsnds )
 
 	NEO_BIOS_AUDIO_128K( "m1rom", CRC(48409377) SHA1(0e212d2c76856a90b2c2fdff675239525972ac43) )
 
-	ROM_REGION( 0x280000, "ymsnd", 0 )
-	ROM_LOAD( "vroma0", 0x000000, 0x280000, CRC(7ed5d77c) SHA1(005e470870fe66668ad788f160acf86d4ccc7701) )
+	ROM_REGION( 0x300000, "ymsnd", 0 )
+	ROM_LOAD( "vroma0", 0x000000, 0x300000, CRC(85f0a01b) SHA1(d40099a653d391575bcbacb7a76f9a3edbc2e1d6) )
 
 	ROM_REGION( 0x400000, "sprites", 0 )
 	ROM_LOAD( "crom0", 0x0000000, 0x400000, CRC(b4391c3e) SHA1(ef54ba4eae1b4f477f7b7408a3d5d86cea6013a6) )
@@ -5447,8 +5394,8 @@ ROM_START( gpilotshnds )
 
 	NEO_BIOS_AUDIO_128K( "m1rom", CRC(48409377) SHA1(0e212d2c76856a90b2c2fdff675239525972ac43) )
 
-	ROM_REGION( 0x280000, "ymsnd", 0 )
-	ROM_LOAD( "vroma0", 0x000000, 0x280000, CRC(7ed5d77c) SHA1(005e470870fe66668ad788f160acf86d4ccc7701) )
+	ROM_REGION( 0x300000, "ymsnd", 0 )
+	ROM_LOAD( "vroma0", 0x000000, 0x300000, CRC(85f0a01b) SHA1(d40099a653d391575bcbacb7a76f9a3edbc2e1d6) )
 
 	ROM_REGION( 0x400000, "sprites", 0 )
 	ROM_LOAD( "crom0", 0x0000000, 0x400000, CRC(b4391c3e) SHA1(ef54ba4eae1b4f477f7b7408a3d5d86cea6013a6) )
@@ -5936,9 +5883,10 @@ ROM_START( kof2003hnds )
 ROM_END
 
 ROM_START( kof10thnds )
-	ROM_REGION( 0x800000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "promt", 0x000000, 0x800000, CRC(30c82f4c) SHA1(d02e6fa14af6fd4aff0349fcb3d275d9226ccbe7) )
-    ROM_IGNORE( 0x507F000 )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "kof10th.neo", 0x000000, 0x001000, CRC(1660f35d) SHA1(5186e24a5fab4280053b1fd85f0ee8bf855bf08e) )
+    ROM_CONTINUE( 0x000000, 0x801000 )
+	ROM_IGNORE( 0x503F000 )
     ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "sromt", CRC(3c757cb1) SHA1(fea798902c59c125c8d31f42d52aa22caa31fc7b) )
@@ -7694,10 +7642,10 @@ ROM_START( samsh5spnds )
 
 	NEO_SFIX_128K( "srom", CRC(c297f973) SHA1(b31af6b51e7536b538cd7eb3542c631c6327e826) )
 
-	NEO_BIOS_AUDIO_128K( "m1rom", CRC(654e9236) SHA1(e13a1b4b73d43008565ee419c9714a220927d0bc) )
+	NEO_BIOS_AUDIO_128K( "m1rom", CRC(203d744e) SHA1(24fc73943009effa14eed0f7a29955f349ca8e8f) )
 
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
-	ROM_LOAD( "vroma0", 0x000000, 0x1000000, CRC(80369c31) SHA1(dba53b5669f14ebf4a40738c8664c72b72d460e0) )
+	ROM_LOAD( "vroma0", 0x000000, 0x1000000, CRC(ae5a592d) SHA1(e3f9b44c9b94007172ea07dac11789a62a3811e3) )
 
 	ROM_REGION( 0x4000000, "sprites", 0 )
 	ROM_LOAD( "crom0", 0x0000000, 0x4000000, CRC(c734c427) SHA1(522c776a7c06c6f3b246aad1e9103d9ebbfead14) )
@@ -7712,10 +7660,10 @@ ROM_START( samsh5sphnds )
 
 	NEO_SFIX_128K( "srom", CRC(c297f973) SHA1(b31af6b51e7536b538cd7eb3542c631c6327e826) )
 
-	NEO_BIOS_AUDIO_128K( "m1rom", CRC(654e9236) SHA1(e13a1b4b73d43008565ee419c9714a220927d0bc) )
+	NEO_BIOS_AUDIO_128K( "m1rom", CRC(203d744e) SHA1(24fc73943009effa14eed0f7a29955f349ca8e8f) )
 
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
-	ROM_LOAD( "vroma0", 0x000000, 0x1000000, CRC(80369c31) SHA1(dba53b5669f14ebf4a40738c8664c72b72d460e0) )
+	ROM_LOAD( "vroma0", 0x000000, 0x1000000, CRC(ae5a592d) SHA1(e3f9b44c9b94007172ea07dac11789a62a3811e3) )
 
 	ROM_REGION( 0x4000000, "sprites", 0 )
 	ROM_LOAD( "crom0", 0x0000000, 0x4000000, CRC(c734c427) SHA1(522c776a7c06c6f3b246aad1e9103d9ebbfead14) )
@@ -7730,10 +7678,10 @@ ROM_START( samsh5sphonds )
 
 	NEO_SFIX_128K( "srom", CRC(c297f973) SHA1(b31af6b51e7536b538cd7eb3542c631c6327e826) )
 
-	NEO_BIOS_AUDIO_128K( "m1rom", CRC(654e9236) SHA1(e13a1b4b73d43008565ee419c9714a220927d0bc) )
+	NEO_BIOS_AUDIO_128K( "m1rom", CRC(203d744e) SHA1(24fc73943009effa14eed0f7a29955f349ca8e8f) )
 
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
-	ROM_LOAD( "vroma0", 0x000000, 0x1000000, CRC(80369c31) SHA1(dba53b5669f14ebf4a40738c8664c72b72d460e0) )
+	ROM_LOAD( "vroma0", 0x000000, 0x1000000, CRC(ae5a592d) SHA1(e3f9b44c9b94007172ea07dac11789a62a3811e3) )
 
 	ROM_REGION( 0x4000000, "sprites", 0 )
 	ROM_LOAD( "crom0", 0x0000000, 0x4000000, CRC(c734c427) SHA1(522c776a7c06c6f3b246aad1e9103d9ebbfead14) )
@@ -8397,8 +8345,8 @@ ROM_START( superspynds )
 
 	NEO_BIOS_AUDIO_256K( "m1rom", CRC(ca661f1b) SHA1(4e3cb57db716ec48487c1b070c3a55a5faf40856) )
 
-	ROM_REGION( 0x280000, "ymsnd", 0 )
-	ROM_LOAD( "vroma0", 0x000000, 0x280000, CRC(5077b417) SHA1(f07a0c8b3d055452e711c551118639325ecf9baa) )
+	ROM_REGION( 0x300000, "ymsnd", 0 )
+	ROM_LOAD( "vroma0", 0x000000, 0x300000, CRC(18402ab8) SHA1(71d701cfffdfc3a31670138df83d7be2149b181b) )
 
 	ROM_REGION( 0x400000, "sprites", 0 )
 	ROM_LOAD( "crom0", 0x0000000, 0x400000, CRC(9c956e88) SHA1(e3c251a7a1ab674e2373318bfdef3d1f07f8b099) )
@@ -8922,7 +8870,7 @@ GAME( 1991, burningfpdd,  burningf, neogeo_noslot,   neogeo, neogeo_state,   ini
 GAME( 1991, burningfpadd, burningf, neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Burning Fight (Prototype, ver 23.3, 910326) (Darksoft)", MACHINE_MECHANICAL )
 GAME( 1996, crswd2bldd,   crswd2bl, neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "CD_conv", "Crossed Swords 2 (CD to MVS Conversion) (Darksoft)", MACHINE_MECHANICAL )
 GAME( 1991, crsworddd,    crsword,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Alpha Denshi Co.", "Crossed Swords (ALM-002)(ALH-002) (Darksoft)", MACHINE_MECHANICAL )
-GAME( 2003, ct2k3sadd,    kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_ct2k3sadd,  ROT0, "bootleg", "Crouching Tiger Hidden Dragon 2003 Super Plus alternate (The King of Fighters 2001 bootleg) (Darksoft)", MACHINE_MECHANICAL ) /* Hack / Bootleg of kof2001 */
+GAME( 2003, ct2k3sadd,    kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "bootleg", "Crouching Tiger Hidden Dragon 2003 Super Plus alternate (The King of Fighters 2001 bootleg) (Darksoft)", MACHINE_MECHANICAL ) /* Hack / Bootleg of kof2001 */
 GAME( 2003, ct2k3spdd,    kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_ct2k3spdd,  ROT0, "bootleg", "Crouching Tiger Hidden Dragon 2003 Super Plus (The King of Fighters 2001 bootleg) (Darksoft)", MACHINE_MECHANICAL ) /* Protected Hack / Bootleg of kof2001 */
 GAME( 2003, cthd2003dd,   kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_cthd2003dd, ROT0, "bootleg", "Crouching Tiger Hidden Dragon 2003 (The King of Fighters 2001 bootleg, set 1) (Darksoft)", MACHINE_MECHANICAL ) /* Protected Hack / Bootleg of kof2001 */
 GAME( 1999, ctomadaydd,   ctomaday, neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Visco", "Captain Tomaday (Darksoft)", MACHINE_MECHANICAL )
@@ -8977,9 +8925,9 @@ GAME( 2000, kof2000dd,    kof2000,  neogeo_noslot,   neogeo, neogeo_state,   ini
 GAME( 2000, kof2000ndd,   kof2000,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2000dd,  ROT0, "SNK", "The King of Fighters 2000 (Not encrypted) (Darksoft)" , MACHINE_MECHANICAL ) /* Encrypted GFX */
 GAME( 2001, kof2001dd,    kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Eolith / SNK", "The King of Fighters 2001 (NGM-2621) (Darksoft)" , MACHINE_MECHANICAL ) /* Encrypted GFX */
 GAME( 2001, kof2001hdd,   kof2001,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Eolith / SNK", "The King of Fighters 2001 (NGH-2621) (Darksoft)" , MACHINE_MECHANICAL ) /* Encrypted GFX */
-GAME( 2002, kof2002dd,    kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2002dd,  ROT0, "Eolith / Playmore", "The King of Fighters 2002 (NGM-2650)(NGH-2650) (Darksoft)" , MACHINE_MECHANICAL ) /* Encrypted GFX */
+GAME( 2002, kof2002dd,    kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,  ROT0, "Eolith / Playmore", "The King of Fighters 2002 (NGM-2650)(NGH-2650) (Darksoft)" , MACHINE_MECHANICAL ) /* Encrypted GFX */
 GAME( 2002, kof2002bdd,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2002dd,  ROT0, "bootleg", "The King of Fighters 2002 (bootleg) (Darksoft)", MACHINE_MECHANICAL )
-GAME( 2003, kof2003dd,    kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK Playmore", "The King of Fighters 2003 (NGM-2710) (Darksoft)", MACHINE_MECHANICAL )
+GAME( 2003, kof2003dd,    kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2003dd,  ROT0, "SNK Playmore", "The King of Fighters 2003 (NGM-2710) (Darksoft)", MACHINE_MECHANICAL )
 GAME( 2003, kof2003hdd,   kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2003dd,  ROT0, "SNK Playmore", "The King of Fighters 2003 (NGH-2710) (Darksoft)", MACHINE_MECHANICAL )
 GAME( 2002, kof10thdd,    kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "bootleg", "The King of Fighters 10th Anniversary (The King of Fighters 2002 bootleg) (Darksoft)", MACHINE_MECHANICAL ) // fake SNK copyright
 GAME( 2005, kf10thepdd,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "bootleg", "The King of Fighters 10th Anniversary Extra Plus (The King of Fighters 2002 bootleg) (Darksoft)", MACHINE_MECHANICAL ) // fake SNK copyright
@@ -8995,10 +8943,10 @@ GAME( 1997, kof97hdd,     kof97,    neogeo_noslot,   neogeo, neogeo_state,   ini
 GAME( 1997, kof97kdd,     kof97,    neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "The King of Fighters '97 (Korean release) (Darksoft)", MACHINE_MECHANICAL )
 GAME( 1997, kof97plsdd,   kof97,    neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "bootleg", "The King of Fighters '97 Plus (bootleg) (Darksoft)", MACHINE_MECHANICAL )
 GAME( 1997, kof97orodd,   kof97,    neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "bootleg", "The King of Fighters '97 Oroshi Plus 2003 (bootleg) (Darksoft)", MACHINE_MECHANICAL )
-GAME( 1998, kof98dd,      kof98,    neogeo_noslot,   neogeo, neogeo_state,   init_kof98dd,    ROT0, "SNK", "The King of Fighters '98 - The Slugfest / King of Fighters '98 - dream match never ends (NGM-2420) (Darksoft)", MACHINE_MECHANICAL )
+GAME( 1998, kof98dd,      kof98,    neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,    ROT0, "SNK", "The King of Fighters '98 - The Slugfest / King of Fighters '98 - dream match never ends (NGM-2420) (Darksoft)", MACHINE_MECHANICAL )
 GAME( 1998, kof98hdd,     kof98,    neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "The King of Fighters '98 - The Slugfest / King of Fighters '98 - dream match never ends (NGH-2420) (Darksoft)", MACHINE_MECHANICAL )
 GAME( 1998, kof98kdd,     kof98,    neogeo_noslot,   neogeo, neogeo_state,   init_kof98dd,    ROT0, "SNK", "The King of Fighters '98 - The Slugfest / King of Fighters '98 - dream match never ends (Korean board) (Darksoft)", MACHINE_MECHANICAL )
-GAME( 1998, kof98kadd,    kof98,    neogeo_noslot,   neogeo, neogeo_state,   init_kof98dd,    ROT0, "SNK", "The King of Fighters '98 - The Slugfest / King of Fighters '98 - dream match never ends (Korean board 2) (Darksoft)", MACHINE_MECHANICAL )
+GAME( 1998, kof98kadd,    kof98,    neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,    ROT0, "SNK", "The King of Fighters '98 - The Slugfest / King of Fighters '98 - dream match never ends (Korean board 2) (Darksoft)", MACHINE_MECHANICAL )
 GAME( 1999, kof99dd,      kof99,    neogeo_noslot,   neogeo, neogeo_state,   init_kof99dd,    ROT0, "SNK", "The King of Fighters '99 - Millennium Battle (NGM-2510) (Darksoft)" , MACHINE_MECHANICAL )
 GAME( 1999, kof99edd,     kof99,    neogeo_noslot,   neogeo, neogeo_state,   init_kof99dd,    ROT0, "SNK", "The King of Fighters '99 - Millennium Battle (Earlier) (Darksoft)" , MACHINE_MECHANICAL )
 GAME( 1999, kof99hdd,     kof99,    neogeo_noslot,   neogeo, neogeo_state,   init_kof99dd,    ROT0, "SNK", "The King of Fighters '99 - Millennium Battle (NGH-2510) (Darksoft)" , MACHINE_MECHANICAL )
@@ -9066,7 +9014,6 @@ GAME( 1996, ragnagrdd,    ragnagrd, neogeo_noslot,   neogeo, neogeo_state,   ini
 GAME( 1995, rbff1dd,      rbff1,    neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Real Bout Fatal Fury / Real Bout Garou Densetsu (NGM-095 ~ NGH-095) (Darksoft)", MACHINE_MECHANICAL )
 GAME( 1995, rbff1add,     rbff1,    neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Real Bout Fatal Fury / Real Bout Garou Densetsu (bug fix revision) (Darksoft)", MACHINE_MECHANICAL )
 GAME( 1995, rbff1kdd,     rbff1,    neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Real Bout Fatal Fury / Real Bout Garou Densetsu (Korean release) (Darksoft)", MACHINE_MECHANICAL )
-GAME( 1995, rbff1kadd,    rbff1,    neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Real Bout Fatal Fury / Real Bout Garou Densetsu (Korean release, bug fix revision) (Darksoft)", MACHINE_MECHANICAL )
 GAME( 1998, rbff2dd,      rbff2,    neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Real Bout Fatal Fury 2 - The Newcomers / Real Bout Garou Densetsu 2 - the newcomers (NGM-2400) (Darksoft)", MACHINE_MECHANICAL )
 GAME( 1998, rbff2hdd,     rbff2,    neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Real Bout Fatal Fury 2 - The Newcomers / Real Bout Garou Densetsu 2 - the newcomers (NGH-2400) (Darksoft)", MACHINE_MECHANICAL )
 GAME( 1998, rbff2kdd,     rbff2,    neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Real Bout Fatal Fury 2 - The Newcomers (Korean release) (Darksoft)", MACHINE_MECHANICAL ) // no Japanese title / mode
@@ -9091,12 +9038,11 @@ GAME( 1995, samsho3dd,    samsho3,  neogeo_noslot,   neogeo, neogeo_state,   ini
 GAME( 1995, samsho3hdd,   samsho3,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Samurai Shodown III / Samurai Spirits - Zankurou Musouken (NGH-087) (Darksoft)", MACHINE_MECHANICAL )
 GAME( 1996, samsho4dd,    samsho4,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Samurai Shodown IV - Amakusa's Revenge / Samurai Spirits - Amakusa Kourin (NGM-222 ~ NGH-222) (Darksoft)", MACHINE_MECHANICAL )
 GAME( 1996, samsho4kdd,   samsho4,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Pae Wang Jeon Seol / Legend of a Warrior (Korean censored Samurai Shodown IV) (Darksoft)", MACHINE_MECHANICAL )
-GAME( 2003, samsho5dd,    samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_samsho5dd,  ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V / Samurai Spirits Zero (NGM-2700, set 1) (Darksoft)", MACHINE_MECHANICAL )
-GAME( 2003, samsho5add,   samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_samsho5dd,  ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V / Samurai Spirits Zero (NGM-2700, set 2) (Darksoft)", MACHINE_MECHANICAL )
-GAME( 2003, samsho5hdd,   samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_samsho5dd,  ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V / Samurai Spirits Zero (NGH-2700) (Darksoft)", MACHINE_MECHANICAL )
-GAME( 2003, samsho5bdd,   samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_samsho5bdd, ROT0, "bootleg", "Samurai Shodown V / Samurai Spirits Zero (bootleg) (Darksoft)", MACHINE_MECHANICAL ) // different program scrambling
+GAME( 2003, samsho5dd,    samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V / Samurai Spirits Zero (NGM-2700, set 1) (Darksoft)", MACHINE_MECHANICAL )
+GAME( 2003, samsho5hdd,   samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V / Samurai Spirits Zero (NGH-2700) (Darksoft)", MACHINE_MECHANICAL )
+GAME( 2003, samsho5bdd,   samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "bootleg", "Samurai Shodown V / Samurai Spirits Zero (bootleg) (Darksoft)", MACHINE_MECHANICAL ) // different program scrambling
 GAME( 1995, savageredd,   savagere, neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Savage Reign / Fu'un Mokushiroku - kakutou sousei (Darksoft)", MACHINE_MECHANICAL )
-GAME( 2004, sbpdd,        sbp,      neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,      ROT0, "Vektorlogic", "Super Bubble Pop (Darksoft)", MACHINE_MECHANICAL | MACHINE_NOT_WORKING )
+GAME( 2004, sbpdd,        sbp,      neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Vektorlogic", "Super Bubble Pop (Darksoft)", MACHINE_MECHANICAL | MACHINE_NOT_WORKING )
 GAME( 1996, sdodgebdd,    sdodgeb,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Technos Japan", "Super Dodge Ball / Kunio no Nekketsu Toukyuu Densetsu (Darksoft)", MACHINE_MECHANICAL )
 GAME( 1991, sengokudd,    sengoku,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Sengoku / Sengoku Denshou (NGM-017 ~ NGH-017) (Darksoft)", MACHINE_MECHANICAL )
 GAME( 1991, sengokuhdd,   sengoku,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Sengoku / Sengoku Denshou (NGH-017)(US) (Darksoft)", MACHINE_MECHANICAL )
@@ -9135,10 +9081,6 @@ GAME( 1996, twinspridd,   twinspri, neogeo_noslot,   neogeo, neogeo_state,   ini
 GAME( 1996, twsoc96dd,    twsoc96,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Tecmo", "Tecmo World Soccer '96 (Darksoft)", MACHINE_MECHANICAL )
 GAME( 1992, viewpoindd,   viewpoin, neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Sammy / Aicom", "Viewpoint (Darksoft)", MACHINE_MECHANICAL )
 // vlinerdd (The Roms Does Not Work On This Version Of The NeoGeo System)
-// vliner7edd (The Roms Does Not Work On This Version Of The NeoGeo System)
-// vliner6edd (The Roms Does Not Work On This Version Of The NeoGeo System)
-// vliner54dd (The Roms Does Not Work On This Version Of The NeoGeo System)
-// vliner53dd (The Roms Does Not Work On This Version Of The NeoGeo System)
 GAME( 1996, wakuwak7dd,   wakuwak7, neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Sunsoft", "Waku Waku 7 (Darksoft)", MACHINE_MECHANICAL )
 GAME( 1992, wh1dd,        wh1,      neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Alpha Denshi Co.", "World Heroes (ALM-005) (Darksoft)", MACHINE_MECHANICAL )
 GAME( 1992, wh1hdd,       wh1,      neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Alpha Denshi Co.", "World Heroes (ALH-005) (Darksoft)", MACHINE_MECHANICAL )
@@ -9243,7 +9185,7 @@ GAME( 2002, kof2002nds,    kof2002,  neogeo_noslot,   neogeo, neogeo_state,   in
 GAME( 2002, kof2002bnds,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "bootleg", "The King of Fighters 2002 (bootleg) (Neo SD)", MACHINE_MECHANICAL )
 GAME( 2003, kof2003nds,    kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2003dd,   ROT0, "SNK Playmore", "The King of Fighters 2003 (NGM-2710) (Neo SD)", MACHINE_MECHANICAL )
 GAME( 2003, kof2003hnds,   kof2003,  neogeo_noslot,   neogeo, neogeo_state,   init_kof2003dd,   ROT0, "SNK Playmore", "The King of Fighters 2003 (NGH-2710) (Neo SD)", MACHINE_MECHANICAL )
-//GAME( 2002, kof10thnds,    kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "bootleg", "The King of Fighters 10th Anniversary (The King of Fighters 2002 bootleg) (Neo SD)", MACHINE_MECHANICAL ) // fake SNK copyright
+GAME( 2002, kof10thnds,    kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "bootleg", "The King of Fighters 10th Anniversary (The King of Fighters 2002 bootleg) (Neo SD)", MACHINE_MECHANICAL ) // fake SNK copyright
 GAME( 2005, kf10thepnds,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "bootleg", "The King of Fighters 10th Anniversary Extra Plus (The King of Fighters 2002 bootleg) (Neo SD)", MACHINE_MECHANICAL ) // fake SNK copyright
 GAME( 2004, kf2k5uninds,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "bootleg", "The King of Fighters 10th Anniversary 2005 Unique (The King of Fighters 2002 bootleg) (Neo SD)", MACHINE_MECHANICAL ) // fake SNK copyright
 GAME( 2004, kof2k4sends,   kof2k4se, neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "bootleg", "The King of Fighters Special Edition 2004 (The King of Fighters 2002 bootleg, Set 1) (Neo SD)", MACHINE_MECHANICAL ) /* Hack / Bootleg of kof2002 */
@@ -9328,7 +9270,6 @@ GAME( 1996, ragnagrnds,    ragnagrd, neogeo_noslot,   neogeo, neogeo_state,   in
 GAME( 1995, rbff1nds,      rbff1,    neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Real Bout Fatal Fury / Real Bout Garou Densetsu (NGM-095 ~ NGH-095) (Neo SD)", MACHINE_MECHANICAL )
 GAME( 1995, rbff1ands,     rbff1,    neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Real Bout Fatal Fury / Real Bout Garou Densetsu (bug fix revision) (Neo SD)", MACHINE_MECHANICAL )
 GAME( 1995, rbff1knds,     rbff1,    neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Real Bout Fatal Fury / Real Bout Garou Densetsu (Korean release) (Neo SD)", MACHINE_MECHANICAL )
-//rbff1kands (There is no version of this roms "Neo SD")
 GAME( 1998, rbff2nds,      rbff2,    neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Real Bout Fatal Fury 2 - The Newcomers / Real Bout Garou Densetsu 2 - the newcomers (NGM-2400) (Neo SD)", MACHINE_MECHANICAL )
 GAME( 1998, rbff2hnds,     rbff2,    neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Real Bout Fatal Fury 2 - The Newcomers / Real Bout Garou Densetsu 2 - the newcomers (NGH-2400) (Neo SD)", MACHINE_MECHANICAL )
 GAME( 1998, rbff2knds,     rbff2,    neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Real Bout Fatal Fury 2 - The Newcomers (Korean release) (Neo SD)", MACHINE_MECHANICAL ) // no Japanese title / mode
@@ -9354,7 +9295,6 @@ GAME( 1995, samsho3hnds,   samsho3,  neogeo_noslot,   neogeo, neogeo_state,   in
 GAME( 1996, samsho4nds,    samsho4,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Samurai Shodown IV - Amakusa's Revenge / Samurai Spirits - Amakusa Kourin (NGM-222 ~ NGH-222) (Neo SD)", MACHINE_MECHANICAL )
 GAME( 1996, samsho4knds,   samsho4,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Pae Wang Jeon Seol / Legend of a Warrior (Korean censored Samurai Shodown IV) (Neo SD)", MACHINE_MECHANICAL )
 GAME( 2003, samsho5nds,    samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V / Samurai Spirits Zero (NGM-2700, set 1) (Neo SD)", MACHINE_MECHANICAL )
-//GAME( 2003, samsho5ands,   samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_samsho5dd,  ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V / Samurai Spirits Zero (NGM-2700, set 2) (Neo SD)", MACHINE_MECHANICAL )
 GAME( 2003, samsho5hnds,   samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V / Samurai Spirits Zero (NGH-2700) (Neo SD)", MACHINE_MECHANICAL )
 GAME( 2003, samsho5bnds,   samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "bootleg", "Samurai Shodown V / Samurai Spirits Zero (bootleg) (Neo SD)", MACHINE_MECHANICAL ) // different program scrambling
 GAME( 1995, savagerends,   savagere, neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Savage Reign / Fu'un Mokushiroku - kakutou sousei (Neo SD)", MACHINE_MECHANICAL )
@@ -9397,10 +9337,6 @@ GAME( 1996, twinsprinds,   twinspri, neogeo_noslot,   neogeo, neogeo_state,   in
 GAME( 1996, twsoc96nds,    twsoc96,  neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Tecmo", "Tecmo World Soccer '96 (Neo SD)", MACHINE_MECHANICAL )
 GAME( 1992, viewpoinnds,   viewpoin, neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Sammy / Aicom", "Viewpoint (Neo SD)", MACHINE_MECHANICAL )
 //vlinernds (The Roms Does Not Work On This Version Of The NeoGeo System)
-//vliner7ends (The Roms Does Not Work On This Version Of The NeoGeo System)
-//vliner6ends (The Roms Does Not Work On This Version Of The NeoGeo System)
-//vliner54nds (The Roms Does Not Work On This Version Of The NeoGeo System)
-//vliner53nds (The Roms Does Not Work On This Version Of The NeoGeo System)
 GAME( 1996, wakuwak7nds,   wakuwak7, neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Sunsoft", "Waku Waku 7 (Neo SD)", MACHINE_MECHANICAL )
 GAME( 1992, wh1nds,        wh1,      neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Alpha Denshi Co.", "World Heroes (ALM-005) (Neo SD)", MACHINE_MECHANICAL )
 GAME( 1992, wh1hnds,       wh1,      neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Alpha Denshi Co.", "World Heroes (ALH-005) (Neo SD)", MACHINE_MECHANICAL )

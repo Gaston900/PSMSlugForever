@@ -217,8 +217,6 @@ public:
 	void init_mslug5dd();
 	void init_mslug5ndd();
 	void init_mslugxdd();
-	void init_samsh5spdd();
-	void init_samsho5dd();
 	void init_samsho5bdd();
 	void init_svcdd();
 	void init_vlinerdd();
