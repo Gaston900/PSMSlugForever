@@ -729,6 +729,57 @@ INPUT_PORTS_EXTERN(dualbios);
 #define NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO_512K(name, hash) \
 	NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO(0x80000, name, hash)
 
+/***************************
+   ROMFILL Code specific 
+ ***************************/
+
+#define KOF94_AES_FILL \
+	ROM_FILL(0x32461,1,0x99)\
+	ROM_FILL(0x32467,1,0x99)
+
+#define KOF95_AES_FILL \
+	ROM_FILL(0x38c59,1,0x99)\
+	ROM_FILL(0x38c5f,1,0x99)
+
+#define KOF95A_AES_FILL \
+	ROM_FILL(0x38efd,1,0x99)\
+	ROM_FILL(0x38f03,1,0x99)
+
+#define KOF96_AES_FILL \
+	ROM_FILL(0x8c5f,1,0x99)\
+	ROM_FILL(0x8c65,1,0x99)
+
+#define KOF97_AES_FILL \
+	ROM_FILL(0x98d9,1,0x99)\
+	ROM_FILL(0x98df,1,0x99)
+
+#define KOF98_AES_FILL \
+	ROM_FILL(0x9c93,1,0x99)\
+	ROM_FILL(0x9c99,1,0x99)
+
+#define KOF99_AES_FILL \
+	ROM_FILL(0x853b,1,0x99)\
+	ROM_FILL(0x8541,1,0x99)
+
+#define KOF2000_AES_FILL \
+	ROM_FILL(0x9283,1,0x99)\
+	ROM_FILL(0x9289,1,0x99)
+
+#define KOF2001_AES_FILL \
+	ROM_FILL(0x91d7,1,0x99)\
+	ROM_FILL(0x91dd,1,0x99)
+
+#define KOF2001H_AES_FILL \
+	ROM_FILL(0x91e9,1,0x99)\
+	ROM_FILL(0x91ef,1,0x99)
+
+#define KOF2002_AES_FILL \
+	ROM_FILL(0x8f1f,1,0x99)\
+	ROM_FILL(0x8f25,1,0x99)
+
+#define KOF2003_AES_FILL \
+	ROM_FILL(0x1d79,1,0x99)\
+	ROM_FILL(0x1d7f,1,0x99)
 
 /*************************************
     Game specific input definitions
