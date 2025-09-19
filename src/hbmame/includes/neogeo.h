@@ -219,7 +219,6 @@ public:
 	void init_mslugxdd();
 	void init_samsho5bdd();
 	void init_svcdd();
-	void init_vlinerdd();
 
 	DECLARE_CUSTOM_INPUT_MEMBER(get_memcard_status);
 	DECLARE_CUSTOM_INPUT_MEMBER(get_audio_result);
@@ -733,6 +732,20 @@ INPUT_PORTS_EXTERN(dualbios);
    ROMFILL Code specific 
  ***************************/
 
+//Both garouhdd, garouhadd versions work.
+#define GAROUDD_AES_FILL \
+	ROM_FILL(0xcbd2,1,0x4e)\
+	ROM_FILL(0xcbd3,1,0x71)\
+	ROM_FILL(0xcbd4,1,0x4e)\
+	ROM_FILL(0xcbd5,1,0x71)
+
+//Both garoubl versions work.
+#define GAROUP_AES_FILL \
+	ROM_FILL(0xcb60,1,0x4e)\
+	ROM_FILL(0xcb61,1,0x71)\
+	ROM_FILL(0xcb62,1,0x4e)\
+	ROM_FILL(0xcb63,1,0x71)
+
 #define KOF94_AES_FILL \
 	ROM_FILL(0x32461,1,0x99)\
 	ROM_FILL(0x32467,1,0x99)
@@ -780,6 +793,81 @@ INPUT_PORTS_EXTERN(dualbios);
 #define KOF2003_AES_FILL \
 	ROM_FILL(0x1d79,1,0x99)\
 	ROM_FILL(0x1d7f,1,0x99)
+
+#define SAMSH5SP_AES_FILL \
+	ROM_FILL(0x11a20,1,0x4e)\
+	ROM_FILL(0x11a21,1,0x71)\
+	ROM_FILL(0x11a22,1,0x4e)\
+	ROM_FILL(0x11a23,1,0x71)
+
+#define SAMSH5SPH_AES_FILL \
+	ROM_FILL(0x11c60,1,0x4e)\
+	ROM_FILL(0x11c61,1,0x71)\
+	ROM_FILL(0x11c62,1,0x4e)\
+	ROM_FILL(0x11c63,1,0x71)
+
+#define SAMSHO_AES_FILL \
+	ROM_FILL(0x0c4c,1,0x4e)\
+	ROM_FILL(0x0c4d,1,0x71)\
+	ROM_FILL(0x0c4e,1,0x4e)\
+	ROM_FILL(0x0c4f,1,0x71)
+
+#define SAMSHO2_AES_FILL \
+	ROM_FILL(0x1810,1,0x4e)\
+	ROM_FILL(0x1811,1,0x71)\
+	ROM_FILL(0x1812,1,0x4e)\
+	ROM_FILL(0x1813,1,0x71)
+
+#define SAMSHO3_AES_FILL \
+	ROM_FILL(0x197c,1,0x4e)\
+	ROM_FILL(0x197d,1,0x71)\
+	ROM_FILL(0x197e,1,0x4e)\
+	ROM_FILL(0x197f,1,0x71)\
+	ROM_FILL(0x19e0,1,0x4e)\
+	ROM_FILL(0x19e1,1,0x71)\
+	ROM_FILL(0x19e2,1,0x4e)\
+	ROM_FILL(0x19e3,1,0x71)
+
+//Both fswords versions work.
+#define SAMSHO3H_AES_FILL \
+	ROM_FILL(0x19b0,1,0x4e)\
+	ROM_FILL(0x19b1,1,0x71)\
+	ROM_FILL(0x19b2,1,0x4e)\
+	ROM_FILL(0x19b3,1,0x71)\
+	ROM_FILL(0x1a14,1,0x4e)\
+	ROM_FILL(0x1a15,1,0x71)\
+	ROM_FILL(0x1a16,1,0x4e)\
+	ROM_FILL(0x1a17,1,0x71)
+
+#define SAMSHO4_AES_FILL \
+	ROM_FILL(0xddda,1,0x4e)\
+	ROM_FILL(0xdddb,1,0x71)\
+	ROM_FILL(0xdddc,1,0x4e)\
+	ROM_FILL(0xdddd,1,0x71)
+
+#define SAMSHO4k_AES_FILL \
+	ROM_FILL(0xdce0,1,0x4e)\
+	ROM_FILL(0xdce1,1,0x71)\
+	ROM_FILL(0xdce2,1,0x4e)\
+	ROM_FILL(0xdce3,1,0x71)
+
+//Both samsho5b versions work.
+#define SAMSHO5_AES_FILL \
+	ROM_FILL(0x1187a,1,0x4e)\
+	ROM_FILL(0x1187b,1,0x71)\
+	ROM_FILL(0x1187c,1,0x4e)\
+	ROM_FILL(0x1187d,1,0x71)
+
+//Both samsho5h versions work.
+#define SAMSHO5A_AES_FILL \
+	ROM_FILL(0x11844,1,0x4e)\
+	ROM_FILL(0x11845,1,0x71)\
+	ROM_FILL(0x11846,1,0x4e)\
+	ROM_FILL(0x11847,1,0x71)
+
+#define SVC_AES_FILL \
+	ROM_FILL(0x9b73,1,0x99)\
+	ROM_FILL(0x9b79,1,0x99)
 
 /*************************************
     Game specific input definitions

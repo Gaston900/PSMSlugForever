@@ -138,22 +138,6 @@ void neogeo_state::init_samsho5bdd()
     m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
 }
 
-void neogeo_state::init_vlinerdd()
-{
-	m_banked_cart->install_banks(machine(), m_maincpu, m_region_maincpu->base(), m_region_maincpu->bytes());
-
-	m_sprgen->m_fixed_layer_bank_type = 0;
-	m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
-	m_extra_ram = std::make_unique<uint16_t[]>(0x1000);
-	m_maincpu->space(AS_PROGRAM).install_ram(0x200000, 0x201fff, m_extra_ram.get());
-	save_pointer(NAME(m_extra_ram), 0x1000);
-
-	m_maincpu->space(AS_PROGRAM).install_read_port(0x300000, 0x300001, 0x01ff7e, "DSW");
-	m_maincpu->space(AS_PROGRAM).install_read_port(0x280000, 0x280001, "IN5");
-	m_maincpu->space(AS_PROGRAM).install_read_port(0x2c0000, 0x2c0001, "IN6");
-}
-
-
 void neogeo_state::init_svcdd()
 {
 	init_neogeo();
@@ -177,7 +161,6 @@ void neogeo_state::init_kof2003dd()
 ROM_START( 2020bbdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(d396c9cb) SHA1(47ba421d14d05b965a8d44e7475b227a208e5a07) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7015b8fc) SHA1(8c09bc3e6c62e0f7c9557c1e10c901be325bae7f) )
 
@@ -193,7 +176,6 @@ ROM_END
 ROM_START( 2020bbadd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "proma", 0x000000, 0x080000, CRC(c59be3dd) SHA1(4fbd462c1c18e85a252c58b04b54fd3b82b46cb0) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7015b8fc) SHA1(8c09bc3e6c62e0f7c9557c1e10c901be325bae7f) )
 
@@ -209,7 +191,6 @@ ROM_END
 ROM_START( 2020bbhdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promh", 0x000000, 0x080000, CRC(12d048d7) SHA1(ee0d03a565b11ca3bee2d24f62ff46a85ef18d90) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7015b8fc) SHA1(8c09bc3e6c62e0f7c9557c1e10c901be325bae7f) )
 
@@ -225,7 +206,6 @@ ROM_END
 ROM_START( 3countbdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(ffbdd928) SHA1(05b24655ca32723661adc5509b450824deb0c176) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(c362d484) SHA1(a3c029292572842feabe9aa8c3372628fb63978d) )
 
@@ -241,7 +221,6 @@ ROM_END
 ROM_START( alpham2dd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0xa0000, CRC(5415d8c0) SHA1(ffd756203e6d646323966ed2f679bea6b08ba962) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(85ec9acf) SHA1(39a11974438ad36a2cc84307151b31474c3c5518) )
 
@@ -257,7 +236,6 @@ ROM_END
 ROM_START( alpham2pdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promp", 0x000000, 0x100000, CRC(8c6d3c17) SHA1(aea233dcdaa78e212dd154f2c664d3fa31927f9b) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "sromp", CRC(efc9ae2e) SHA1(a594826b0082fe5a13191673e8d9aa42517230f5) )
 
@@ -273,7 +251,6 @@ ROM_END
 ROM_START( androdundd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(be2b36b8) SHA1(f43338db54d49c58f5ea8df6d300c3775940a15b) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(6349de5d) SHA1(bcc44b9576d7bedd9a39294530bb66f707690c72) )
 
@@ -289,7 +266,6 @@ ROM_END
 ROM_START( aodkdd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(a3f82b1c) SHA1(9ae52f9e6048d23a7310b6077cec89867e14c54b) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(96148d2b) SHA1(47725a8059346ebe5639bbdbf62a2ac8028756a9) )
 
@@ -305,7 +281,6 @@ ROM_END
 ROM_START( aofdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(ca9f7a6d) SHA1(4d28ef86696f7e832510a66d3e8eb6c93b5b91a1) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(89903f39) SHA1(a04a0c244a5d5c7a595fcf649107969635a6a8b6) )
 
@@ -321,7 +296,6 @@ ROM_END
 ROM_START( aof2dd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(a3b1d021) SHA1(ee42f3ca4516226b0088d0303ed28e3ecdabcd71) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(8b02638e) SHA1(aa4d28804ca602da776948b5f223ea89e427906b) )
 
@@ -337,7 +311,6 @@ ROM_END
 ROM_START( aof2add )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(a7a76f05) SHA1(6b1ee737d9cc39a7c7ce426a63fedaed4669db9c) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(8b02638e) SHA1(aa4d28804ca602da776948b5f223ea89e427906b) )
 
@@ -353,7 +326,6 @@ ROM_END
 ROM_START( aof3dd )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x300000, CRC(ad005661) SHA1(e30fd1bd6230671d9a83fef7e5a865896d69fb3a) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(cc7fd344) SHA1(2c6846cf8ea61fb192ba181dbccb63594d572c0e) )
 
@@ -369,7 +341,6 @@ ROM_END
 ROM_START( aof3kdd )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promk", 0x000000, 0x300000, CRC(c0760964) SHA1(e8df6a1dfd61d0bc533ea2e957e8e10d087a317b) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(cc7fd344) SHA1(2c6846cf8ea61fb192ba181dbccb63594d572c0e) )
 
@@ -385,7 +356,6 @@ ROM_END
 ROM_START( b2bdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(7687197d) SHA1(4bb9cb7819807f7a7e1f85f1c4faac4a2f8761e8) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(44e5f154) SHA1(b3f80051789e60e5d8c5df0408f1aba51616e92d) )
 
@@ -401,7 +371,6 @@ ROM_END
 ROM_START( bakatonodd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(1c66b6fa) SHA1(6c50cc452971c46c763ae0b2def95792671a1798) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(f3ef4485) SHA1(c30bfceed7e669e4c97b0b3ec2e9f4271e5b6662) )
 
@@ -417,7 +386,6 @@ ROM_END
 ROM_START( bangbeadd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(08b6b530) SHA1(59554a0a869020f55493d6c589830a0a8a9ab11f) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(bb50fb2d) SHA1(7372939f328fb5e7d09c16985e09ae8c34702b0c) )
 
@@ -433,7 +401,6 @@ ROM_END
 ROM_START( bjourneydd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(6a2f6d4a) SHA1(b8ca548e56f1c7abcdce415ba7329e0cf698ee13) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(843c3624) SHA1(dbdf86c193b7c1d795f8c21f2c103c1d3e18abbe) )
 
@@ -449,7 +416,6 @@ ROM_END
 ROM_START( bjourneyhdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promh", 0x000000, 0x100000, CRC(62cbe7b2) SHA1(f9a8fd98702c623ae793804ba50d09751e3fee4c) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(843c3624) SHA1(dbdf86c193b7c1d795f8c21f2c103c1d3e18abbe) )
 
@@ -465,7 +431,6 @@ ROM_END
 ROM_START( blazstardd )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x300000, CRC(635b1487) SHA1(409cd3c54e183725c3dff0b6a6a0aebb531eb6a9) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(d56cb498) SHA1(420ce56431dc7f3f7de84fcbc8c0a17b5eab205e) )
 
@@ -481,7 +446,6 @@ ROM_END
 ROM_START( breakersdd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(96dcd0e4) SHA1(24b61c07ea49d41c382e25c969afdbf8e041aae8) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(076fb64c) SHA1(c166038128d7004f69932141f83b320a35c2b4ca) )
 
@@ -497,7 +461,6 @@ ROM_END
 ROM_START( breakrevdd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(d72cf10d) SHA1(58076ec4b1d9b23e0f8e5a3971c9bcd2b807ea9c) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(e7660a5d) SHA1(1cd54964ba60b245ea57d9daf0e27b572b815d21) )
 
@@ -513,7 +476,6 @@ ROM_END
 ROM_START( bstarsdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(c100b5f5) SHA1(4cea9f29ad67288c3eccfa4cf961ee9782e49165) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(1a7fd0c6) SHA1(3fc701b7afddab369ddf9dedfbc5e1aaf80b8af3) )
 
@@ -529,7 +491,6 @@ ROM_END
 ROM_START( bstarshdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promh", 0x000000, 0x080000, CRC(3bc7790e) SHA1(50b2fffb1278151bb4849fbe1f8cb23916019815) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(1a7fd0c6) SHA1(3fc701b7afddab369ddf9dedfbc5e1aaf80b8af3) )
 
@@ -545,7 +506,6 @@ ROM_END
 ROM_START( bstars2dd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(523567fd) SHA1(f1e81eb4678f586b214ea102cde6effea1b0f768) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(015c5c94) SHA1(f1c60cd3dc54986b39f630ef3bf48f68c68695dc) )
 
@@ -561,7 +521,6 @@ ROM_END
 ROM_START( burningfdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(4092c8db) SHA1(df194a4ad2c35e0e18bc053ff9284183444a4666) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(6799ea0d) SHA1(ec75ef9dfdcb0b123574fc6d81ebaaadfba32fb5) )
 
@@ -577,7 +536,6 @@ ROM_END
 ROM_START( burningfhdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promh", 0x000000, 0x080000, CRC(ddffcbf4) SHA1(c646c4bbdb4e9b32df76c90f582ccd69fcc9f8e7) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(6799ea0d) SHA1(ec75ef9dfdcb0b123574fc6d81ebaaadfba32fb5) )
 
@@ -593,7 +551,6 @@ ROM_END
 ROM_START( burningfpdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promp", 0x000000, 0x100000, CRC(39673258) SHA1(5b924fef3b98c153830c2fcf1ce1ea78c8dc4ce6) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "sromp", CRC(f3d130e8) SHA1(2fdeb93f4bb2a60d391cac2822be41661b1e1795) )
 
@@ -609,7 +566,6 @@ ROM_END
 ROM_START( burningfpadd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prompa", 0x000000, 0x100000, CRC(e4cbe72c) SHA1(0704ff3f6f6948d9917f73d076a55e2215f7559b) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(6799ea0d) SHA1(ec75ef9dfdcb0b123574fc6d81ebaaadfba32fb5) )
 
@@ -625,7 +581,6 @@ ROM_END
 ROM_START( crswd2bldd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(b8559ece) SHA1(1aa976460f104cfff21ecae34a9192aac4ebc0a5) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(22e02ddd) SHA1(ebd834affc763cc5854abf1c6c42f43f3f3755fd) )
 
@@ -641,7 +596,6 @@ ROM_END
 ROM_START( crsworddd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(e7f2553c) SHA1(8469ecb900477feed05ae3311fe9515019bbec2a) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(74651f27) SHA1(bff7ff2429d2be82c1647abac2ee45b339b3b310) )
 
@@ -705,7 +659,6 @@ ROM_END
 ROM_START( ctomadaydd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(2e067d0b) SHA1(85a750272f021105fb3d0644b39d8a80e1972e45) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(dc9eb372) SHA1(b8aa142243ba303799554479bfc88eb49260f3b1) )
 
@@ -721,7 +674,6 @@ ROM_END
 ROM_START( cyberlipdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(69a6b42d) SHA1(6e7cb089de83f1d22cc4a87db5b1a94bf76fb1e8) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(79a35264) SHA1(c2819a82adbe1f5e489496e0e03477863a5b7665) )
 
@@ -752,7 +704,6 @@ ROM_END
 ROM_START( doubledrdd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(90d6a562) SHA1(8debe5a5db1ab568fca98265ddab38b74c9dc4d0) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(bef995c5) SHA1(9c89adbdaa5c1f827632c701688563dac2e482a4) )
 
@@ -783,7 +734,6 @@ ROM_END
 ROM_START( eightmandd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(43344cb0) SHA1(29dfd699f35b0a74e20fedd6c9174c289f0ef6e0) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(a402202b) SHA1(75c44e1af459af155f5b892fd18706268dd5e602) )
 
@@ -799,7 +749,6 @@ ROM_END
 ROM_START( fatfurspdd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x180000, CRC(f8361af0) SHA1(5d52d7ae636c7c1202b1ccd944747443b1cd0601) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(2df03197) SHA1(24083cfc97e720ac9e131c9fe37df57e27c49294) )
 
@@ -815,7 +764,6 @@ ROM_END
 ROM_START( fatfurspadd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "proma", 0x000000, 0x180000, CRC(605bab56) SHA1(88d69f5a8a2b05697805adab16745aff8acc9399) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(2df03197) SHA1(24083cfc97e720ac9e131c9fe37df57e27c49294) )
 
@@ -831,7 +779,6 @@ ROM_END
 ROM_START( fatfury1dd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0xa0000, CRC(13f851ee) SHA1(9985c9fba7bc484e2cf6d1735550ee0702aa282c) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(3c3bdf8c) SHA1(2f3e5feed6c27850b2a0f6fae0b97041690e944c) )
 
@@ -847,7 +794,6 @@ ROM_END
 ROM_START( fatfury2dd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(a0084440) SHA1(8dab8411c48da7866e678c8ba4b19015e70b5d38) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(d7dbbf39) SHA1(29253e596f475ebd41a6e3bb53952e3a0ccd2eed) )
 
@@ -863,7 +809,6 @@ ROM_END
 ROM_START( fatfury3dd )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x300000, CRC(fe1f6508) SHA1(e59acdfd1193d3983f18cce5d698dd5c70ad9546) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(0b33a800) SHA1(b7d2cc97da4f30ddebc7b801f5e1d17d2306b2db) )
 
@@ -879,7 +824,6 @@ ROM_END
 ROM_START( fbfrenzydd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(cdef6b19) SHA1(97482db0dffc6d625fb41fa38449c0a74d741a72) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(8472ed44) SHA1(42e1a9671dddd090d2a634cff986f6c73ba08b70) )
 
@@ -895,7 +839,6 @@ ROM_END
 ROM_START( fightfevdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(2a104b50) SHA1(3eb663d3df7074e1cdf4c0e450a35c9cf55d8979) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(d62a72e9) SHA1(a23e4c4fd4ec11a7467ce41227c418b4dd1ef649) )
 
@@ -912,8 +855,6 @@ ROM_START( fightfevadd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "proma", 0x0000000, 0x100000, CRC(da445cbe) SHA1(723032a892e1355ab9f825c67029c78552bffb6a) )
 
-	ROM_DEFAULT_BIOS("console_mode")
-
 	NEO_SFIX_128K( "srom", CRC(d62a72e9) SHA1(a23e4c4fd4ec11a7467ce41227c418b4dd1ef649) )
 
 	NEO_BIOS_AUDIO_128K( "m1rom", CRC(0b7c4e65) SHA1(999a1e784de18db3f1332b30bc425836ea6970be) )
@@ -928,7 +869,6 @@ ROM_END
 ROM_START( flipshotdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x0000000, 0x100000, CRC(95779094) SHA1(a985e033bc6f137fa65855d3eed245d66d5b244a) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(6300185c) SHA1(cb2f1de085fde214f96a962b1c2fa285eb387d44) )
 
@@ -944,7 +884,6 @@ ROM_END
 ROM_START( froman2bdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x0000000, 0x080000, CRC(09675541) SHA1(6afb89d43e67f93e40f3877cbedfec9566e3ff0f) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(0e6a7c73) SHA1(31b1194524dcc80ec4d63bac088b6fb4909f496c) )
 
@@ -976,7 +915,6 @@ ROM_END
 ROM_START( galaxyfgdd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x0000000, 0x200000, CRC(bef586ce) SHA1(429dbf66081c6489f3a53fdccf1281ed6e77ca7a) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(72f8923e) SHA1(da908bffc2b5d8baa2002dbb5bfb3aa17d2472b7) )
 
@@ -992,7 +930,6 @@ ROM_END
 ROM_START( ganryudd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x0000000, 0x200000, CRC(8f212084) SHA1(2ffcfd74f095425e45e118b89b7c0f220a5228f0) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(a8dadec9) SHA1(e909764d0377705cde0cc0accfdaf9b520c1df02) )
 
@@ -1103,7 +1040,6 @@ ROM_END
 ROM_START( goalx3dd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(0e4620e1) SHA1(f605ab4d63f26f682b34b44cd029f0d87a47a07a) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(c0eaad86) SHA1(99412093c9707d51817893971e73fb8469cdc9d0) )
 
@@ -1119,7 +1055,6 @@ ROM_END
 ROM_START( gowcaizrdd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(14503b2a) SHA1(b27f8711f291575036ea9935c775d1cae00276b3) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(2f8748a2) SHA1(5cc723c4284120473d63d8b0c1a3b3be74bdc324) )
 
@@ -1135,7 +1070,6 @@ ROM_END
 ROM_START( gpilotsdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0xa0000, CRC(0c727844) SHA1(0ba118b57f3a46d47fd87c0c997c6743789d1a51) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(a6d83d53) SHA1(9a8c092f89521cc0b27a385aa72e29cbaca926c5) )
 
@@ -1151,7 +1085,6 @@ ROM_END
 ROM_START( gpilotshdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promh", 0x000000, 0xa0000, CRC(920ad15e) SHA1(3396bd064c27c589e580df2a1ba1dceea39ed560) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(a6d83d53) SHA1(9a8c092f89521cc0b27a385aa72e29cbaca926c5) )
 
@@ -1167,7 +1100,6 @@ ROM_END
 ROM_START( gururindd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(4cea8a49) SHA1(cea4a35db8de898e30eb40dd339b3cbe77ac0856) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(b119e1eb) SHA1(f63a68a71aea220d3d4475847652e2a1f68b2b6f) )
 
@@ -1183,7 +1115,6 @@ ROM_END
 ROM_START( ironcladd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(65849961) SHA1(2846081bb1451a209412159991bfac95d394fe3a) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(372fe217) SHA1(493433e682f519bf647e1481c8bdd3a980830ffb) )
 
@@ -1199,7 +1130,6 @@ ROM_END
 ROM_START( ironcladod )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promo", 0x000000, 0x200000, CRC(590ca356) SHA1(be87d0a0d9c202aec7fc4204321282d0489dd1dc) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(372fe217) SHA1(493433e682f519bf647e1481c8bdd3a980830ffb) )
 
@@ -1240,7 +1170,6 @@ ROM_END
 ROM_START( janshindd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(fa818cbb) SHA1(afee2c897b766c84f13891fb52c574fb18df0951) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(8285b25a) SHA1(d983640cda3e346e38469b4d3ec8048b116a7bb7) )
 
@@ -1334,6 +1263,7 @@ ROM_END
 ROM_START( kf2k2mpdd )
 	ROM_REGION( 0x800000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prommp", 0x000000, 0x800000, CRC(542f47e3) SHA1(6d1a9660c48dfe709b89cbb7a6632bad5098ca16) )
+    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srommp", CRC(29c0693e) SHA1(a852d15a8558b4a1cadf1ed9ef357d765ff88d35) )
 
@@ -1349,6 +1279,7 @@ ROM_END
 ROM_START( kf2k2mp2dd )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prommp2", 0x000000, 0x600000, CRC(c4f378a5) SHA1(3f8a6436cb51d743f0889d3da3b5bea2578d2a10) )
+    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srommp2", CRC(df4ce33b) SHA1(1287c84c16e17df7d5887af57fc6657da452d0ae) )
 
@@ -1364,6 +1295,7 @@ ROM_END
 ROM_START( kf2k2pladd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prompla", 0x000000, 0x500000, CRC(fd81168f) SHA1(3a7510ab72123d62de606b9d88c343d0a551c3ae) )
+    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srompla", CRC(1a3ed064) SHA1(9749bb55c750e6b65d651998c2649c5fb68db68e) )
 
@@ -1379,6 +1311,7 @@ ROM_END
 ROM_START( kf2k2plsdd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prompls", 0x000000, 0x500000, CRC(7e1bce72) SHA1(18b990c4630df6e860028f548f678d6418ebd553) )
+    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srompls", CRC(595e0006) SHA1(ff086bdaa6f40e9ad963e1100a27f44618d684ed) )
 
@@ -1394,6 +1327,7 @@ ROM_END
 ROM_START( kf2k3bldd )
 	ROM_REGION( 0x700000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prombld", 0x000000, 0x700000, CRC(b110c81e) SHA1(7b04d201d981bf7a9b87f1313a3de88fe16e2724) )
+    ROM_DEFAULT_BIOS("console_mode")
 
     NEO_SFIX_128K( "srom", CRC(7c7829aa) SHA1(22f8d38d1d0891295d0593741d9477fbe6b4f48c) )
 
@@ -1409,6 +1343,7 @@ ROM_END
 ROM_START( kf2k3bladd )
 	ROM_REGION( 0x700000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promblad", 0x000000, 0x700000, CRC(cff15aed) SHA1(15c6c7603c3f3c228d76659298068b185a1f8456) )
+    ROM_DEFAULT_BIOS("console_mode")
 
     NEO_SFIX_128K( "srom", CRC(7c7829aa) SHA1(22f8d38d1d0891295d0593741d9477fbe6b4f48c) )
 
@@ -1424,6 +1359,7 @@ ROM_END
 ROM_START( kf2k3upldd )
 	ROM_REGION( 0x800000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promupl", 0x000000, 0x800000, CRC(2e5e414d) SHA1(e9611acb88a0941b1e976e26b0959aa3e553f483) )
+    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "sromupl", CRC(eb232b3a) SHA1(a875222f0e9a37e0a7bf839a21d2feb5e0ac7572) )
 
@@ -1439,6 +1375,7 @@ ROM_END
 ROM_START( kf2k3pldd )
 	ROM_REGION( 0x700000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prompl", 0x000000, 0x700000, CRC(73474729) SHA1(33655820746d8e107fcdd6a33372eff58325bea5) )
+    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_512K( "srompl", CRC(71b538cf) SHA1(d230aa4bd6eb24a08faebfc948a62c4b31d84b41) )
 
@@ -1968,7 +1905,6 @@ ROM_START( kogdd )
 	ROM_LOAD16_WORD_SWAP( "promg", 0x000000, 0x600000, CRC(9c3974c2) SHA1(ac5c3333e5484734c7a02626b2f9e7a9cabcf06f) )
     ROM_DEFAULT_BIOS("console_mode")
 
-//	NEO_SFIX_128K( "srom", CRC(0bef69da) SHA1(80918586e694dce35c4dba796eb18abf6a070ebb) )
     NEO_SFIX_128K( "srom", CRC(ec690592) SHA1(a5af2880778a1904dd6c6006be769ea36b15dae3) )
 
 	NEO_BIOS_AUDIO_128K( "m1rom", CRC(45348747) SHA1(ed77cbae2b208d1177a9f5f6e8cd57070e90b65b) )
@@ -1983,7 +1919,6 @@ ROM_END
 ROM_START( kotmdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0xa0000, CRC(3f7dcb04) SHA1(a336212bda389f5e65d8befdb27be67b4c6f06ea) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(1a2eeeb3) SHA1(8d2b96d395020197bc59294b6b0c8d62b1d8d4dd) )
 
@@ -1999,7 +1934,6 @@ ROM_END
 ROM_START( kotmhdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promh", 0x000000, 0xa0000, CRC(fd7c6538) SHA1(ec5ee9345c1fcb813f6ff087b07c3ce80c573905) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(1a2eeeb3) SHA1(8d2b96d395020197bc59294b6b0c8d62b1d8d4dd) )
 
@@ -2015,7 +1949,6 @@ ROM_END
 ROM_START( kotm2dd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(e17961c9) SHA1(24e2b2e5fed3e2183a324ad48520c5ffc24ecf18) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(63ee053a) SHA1(7d4b92bd022708975b1470e8f24d1f5a712e1b94) )
 
@@ -2031,7 +1964,6 @@ ROM_END
 ROM_START( kotm2add )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "proma", 0x000000, 0x100000, CRC(3296e2b3) SHA1(4452424a9c50ef07a6854cd8094894029ed56175) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(63ee053a) SHA1(7d4b92bd022708975b1470e8f24d1f5a712e1b94) )
 
@@ -2047,7 +1979,6 @@ ROM_END
 ROM_START( kotm2pdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promp", 0x000000, 0x100000, CRC(1a066120) SHA1(9225ac7e732a23c0c2d3b05e126b0a8be9f88bb1) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(63ee053a) SHA1(7d4b92bd022708975b1470e8f24d1f5a712e1b94) )
 
@@ -2063,7 +1994,6 @@ ROM_END
 ROM_START( lans2004dd )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x600000, CRC(ec4eb4ae) SHA1(ca1cfa8a0a395fbe11d2749054684ee237f451d4) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(8699c63a) SHA1(d1a0345bcb4e3f6044c93abd52ff6fe6280dc5ee) )
 
@@ -2079,7 +2009,6 @@ ROM_END
 ROM_START( lastbladdd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x500000, CRC(5ded714e) SHA1(a8acfab571219b8d1fdff04fd58d74d34a8cc45d) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(95561412) SHA1(995de272f572fd08d909d3d0af4251b9957b3640) )
 
@@ -2095,7 +2024,6 @@ ROM_END
 ROM_START( lastbladhdd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promh", 0x000000, 0x500000, CRC(c4e80eaa) SHA1(34f2e331c96ebc6707f526acfbf894aa6e4052e3) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(95561412) SHA1(995de272f572fd08d909d3d0af4251b9957b3640) )
 
@@ -2111,7 +2039,6 @@ ROM_END
 ROM_START( lastsoldd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promd", 0x000000, 0x500000, CRC(d7b8ede4) SHA1(6c5cedab4460454206a55af4b3b3ea99bb308bdb) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(95561412) SHA1(995de272f572fd08d909d3d0af4251b9957b3640) )
 
@@ -2127,7 +2054,6 @@ ROM_END
 ROM_START( lasthopedd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prompe", 0x000000, 0x100000, CRC(3776a88f) SHA1(ea8b669da06d7c6b5ff7fa97a195f56a9253a7a1) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_64K( "srompe", CRC(0c0ff9e6) SHA1(c87d1ea8731ac1e63ab960b8182dd1043bcc10bb) )
 
@@ -2143,7 +2069,6 @@ ROM_END
 ROM_START( lastbld2dd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x500000, CRC(839893c2) SHA1(4008309137458a899696a975d6c4c38d9c14f47b) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(c9cd2298) SHA1(a9a18b5347f9dbe29a2ccb63fd4c8fd19537bf8b) )
 
@@ -2159,7 +2084,6 @@ ROM_END
 ROM_START( lbowlingdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(a2de8445) SHA1(893d7ae72b4644123469de143fa35fac1cbcd61e) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(5fcdc0ed) SHA1(86415077e7adc3ba6153eeb4fb0c62cf36e903fa) )
 
@@ -2175,7 +2099,6 @@ ROM_END
 ROM_START( legendosdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(9d563f19) SHA1(9bff7bf9fdcf81a0a6c4ce3e196097d4f05e67b6) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(bcd502f0) SHA1(a3400f52c037aa6a42e59e602cc24fa45fcbc951) )
 
@@ -2191,7 +2114,6 @@ ROM_END
 ROM_START( lresortdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(89c4ab97) SHA1(3a1817c427185ea1b44fe52f009c00b0a9007c85) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(5cef5cc6) SHA1(9ec305007bdb356e9f8f279beae5e2bcb3f2cf7b) )
 
@@ -2207,7 +2129,6 @@ ROM_END
 ROM_START( lresortpdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promp", 0x000000, 0x100000, CRC(a155c216) SHA1(59d61b3b1aba738cfbe62821ee0a778bce8693e2) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(5cef5cc6) SHA1(9ec305007bdb356e9f8f279beae5e2bcb3f2cf7b) )
 
@@ -2223,7 +2144,6 @@ ROM_END
 ROM_START( magdrop2dd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(7be82353) SHA1(08ab39f52b893591c13a7d7aa26b20ce86e9ddf5) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(2a4063a3) SHA1(0e09a7d88d85b1a2100888f4211960ea56ef978b) )
 
@@ -2239,7 +2159,6 @@ ROM_END
 ROM_START( magdrop3dd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(931e17fa) SHA1(4a95c4b79d0878485ce272e9f4c4f647bec0e070) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7399e68a) SHA1(b535ee56a0f0995f04674e676f6aa636ffad26aa) )
 
@@ -2255,7 +2174,6 @@ ROM_END
 ROM_START( maglorddd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(bd0a492d) SHA1(d043d3710cf2b0d2b3798008e65e4c7c3ead1af3) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(1c5369a2) SHA1(db0dba0a7dced6c9ca929c5abda491b05d84199c) )
 
@@ -2271,7 +2189,6 @@ ROM_END
 ROM_START( maglordhdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promh", 0x000000, 0x080000, CRC(599043c5) SHA1(43f234b0f89b72b4c6050c40d9daa5c4e96b94ce) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(1c5369a2) SHA1(db0dba0a7dced6c9ca929c5abda491b05d84199c) )
 
@@ -2287,7 +2204,6 @@ ROM_END
 ROM_START( mahretsudd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(fc6f53db) SHA1(64a62ca4c8fb68954e06121399c9402278bd0467) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(2bd05a06) SHA1(876deadd4645373d82a503154eeddf18f440d743) )
 
@@ -2303,7 +2219,6 @@ ROM_END
 ROM_START( marukodqdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(c33ed21e) SHA1(bffff0d17e587e67672227e60c0ebd3f3a7193e6) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(f0b68780) SHA1(3f60950b14d121a5af3e6a8155ae9832ddc6ec46) )
 
@@ -2319,7 +2234,6 @@ ROM_END
 ROM_START( matrimdd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x500000, CRC(7663aaf7) SHA1(7ee83998e72a2ebf884bb92bb0cea71ddc9248cb) )
-    ROM_DEFAULT_BIOS("console_mode")
 
     NEO_SFIX_128K( "srom", CRC(aff2a3be) SHA1(57aba048573eacf8fbdd228f04a7f30da64cebe5) )
 
@@ -2335,7 +2249,6 @@ ROM_END
 ROM_START( matrimbldd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prombl", 0x000000, 0x500000, CRC(673b9f1e) SHA1(fc614694460db03453c3c616dac7a2a42e70b460) )
-    ROM_DEFAULT_BIOS("console_mode")
 
     NEO_SFIX_128K( "srom", CRC(aff2a3be) SHA1(57aba048573eacf8fbdd228f04a7f30da64cebe5) )
 
@@ -2351,7 +2264,6 @@ ROM_END
 ROM_START( miexchngdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(61be1810) SHA1(1ab0e11352ca05329c6e3f5657b60e4a227fcbfb) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(fe0c0c53) SHA1(54d56d4463db193e504658f4f6f4997a62ae3d95) )
 
@@ -2367,7 +2279,6 @@ ROM_END
 ROM_START( minasandd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(c8381327) SHA1(c8f8be0ba276c6d12ef13d05af3cf83a2b924894) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(e5824baa) SHA1(8230ff7fe3cabeacecc762d90a084e893db84906) )
 
@@ -2383,7 +2294,6 @@ ROM_END
 ROM_START( moshougidd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(7ba70e2d) SHA1(945f472cc3e7706f613c52df18de35c986d166e7) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(bfdc8309) SHA1(781337eab932a130b396a6c1080611d6f9c24c6e) )
 
@@ -2399,7 +2309,6 @@ ROM_END
 ROM_START( mutnatdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(6f1699c8) SHA1(87206f67a619dede7959230f9ff3701b8b78957a) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(99419733) SHA1(b2524af8704941acc72282aa1d62fd4c93e3e822) )
 
@@ -2415,7 +2324,6 @@ ROM_END
 ROM_START( nam1975dd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(cc9fc951) SHA1(92f4e6ddeeb825077d92dbb70b50afea985f15c0) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7988ba51) SHA1(bc2f661f381b06b34ac2fa215dd5689d3bf84832) )
 
@@ -2431,7 +2339,6 @@ ROM_END
 ROM_START( ncombatdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(b45fcfbf) SHA1(3872147dda2d1ba905d35f4571065d87b1958b4a) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(d49afee8) SHA1(77615f12edf08ae8f1353f7a056a8f3a50d3ebdc) )
 
@@ -2447,7 +2354,6 @@ ROM_END
 ROM_START( ncombathdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promh", 0x000000, 0x080000, CRC(8e9f0add) SHA1(d0b908a86a58f2537eea73a431038f1cd74a5a2f) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(d49afee8) SHA1(77615f12edf08ae8f1353f7a056a8f3a50d3ebdc) )
 
@@ -2463,7 +2369,6 @@ ROM_END
 ROM_START( ncommanddd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(4e097c40) SHA1(43311a7ca14a14dcd4a99d8576a12e897b078643) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(db8f9c8e) SHA1(11cb82cf3c4d0fc2da5df0c26410a64808093610) )
 
@@ -2479,7 +2384,6 @@ ROM_END
 ROM_START( neobombedd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(a1a71d0d) SHA1(059284c84f61a825923d86d2f29c91baa2c439cd) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(4b3fa119) SHA1(41cb0909bfb017eb6f2c530cb92a423319ed7ab1) )
 
@@ -2495,7 +2399,6 @@ ROM_END
 ROM_START( neocup98dd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(a1564aca) SHA1(2240612caf578da8c8d6bbd81173f188792e1251) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(9bddb697) SHA1(2f479bcd5a433201168792a578de3057252d649f) )
 
@@ -2511,7 +2414,6 @@ ROM_END
 ROM_START( neodriftdd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(e405551b) SHA1(6cbb32a05cc0444d9b746ab4472b88e26e880fe9) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(b76b61bc) SHA1(5fdb407d16ab9e33c4f26ee09ff70891ae1d2bd0) )
 
@@ -2527,7 +2429,6 @@ ROM_END
 ROM_START( neomrdodd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(334ea51e) SHA1(0a642f8565ec6e9587ed767bcf177f4677547162) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(6aebafce) SHA1(5db03715fbed62f2ff3cef7f93606f30261c0362) )
 
@@ -2543,7 +2444,6 @@ ROM_END
 ROM_START( ninjamasdd )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x300000, CRC(76b419c1) SHA1(5b19d8bd9c02f09b036f8f7b6f3d372feba934d4) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(8ff782f0) SHA1(90099c154357042ba658d4ef6abe4d9335bb7172) )
 
@@ -2559,7 +2459,6 @@ ROM_END
 ROM_START( nitddd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(61361082) SHA1(441f3f41c1aa752c0e0a9a0b1d92711d9e636b85) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(dd3bf47c) SHA1(881271caee6508b8be51bf1b59c8f1e58e08e551) )
 
@@ -2576,7 +2475,6 @@ ROM_END
 ROM_START( nitdbldd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promb", 0x000000, 0x080000, CRC(1a05bd1b) SHA1(7bbddef842d50b0778711063af695b168a76ff61) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(dd3bf47c) SHA1(881271caee6508b8be51bf1b59c8f1e58e08e551) )
 
@@ -2593,7 +2491,6 @@ ROM_END
 ROM_START( overtopdd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(f63e7281) SHA1(8e690ef0d5f5751b7e2e2f31b296597b07587d31) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(481d3ddc) SHA1(7b0df3fc5b19f282abfd0eb5a4c6ed836a536ece) )
 
@@ -2609,7 +2506,6 @@ ROM_END
 ROM_START( panicbomdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(adc356ad) SHA1(801e0a54b65d7a3500e6cef2d6bba40c6356dc1f) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(b876de7e) SHA1(910347d7657470da914fb0a6b0ea02891e13c081) )
 
@@ -2625,7 +2521,6 @@ ROM_END
 ROM_START( pbobbl2ndd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(9d6c0754) SHA1(95c70c2d51fc4de01e768e03cc800a850aaad5dc) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(0a3fee41) SHA1(0ab2120e462086be942efcf6ffb37f58ea966ca3) )
 
@@ -2641,7 +2536,6 @@ ROM_END
 ROM_START( pbobblendd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(6102ca14) SHA1(328429d11de5b327a0654ae0548da4d0025a2ae6) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(9caae538) SHA1(cf2d90a7c1a42107c0bb8b9a61397634286dbe0a) )
 
@@ -2657,7 +2551,6 @@ ROM_END
 ROM_START( pbobblenbdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promb", 0x000000, 0x080000, CRC(ac1e9ef3) SHA1(a2b125ee70869667431ab125bc29e768500802ad) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(9caae538) SHA1(cf2d90a7c1a42107c0bb8b9a61397634286dbe0a) )
 
@@ -2673,7 +2566,6 @@ ROM_END
 ROM_START( pgoaldd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(07d63483) SHA1(d3178ed163da50b83dd77b337c3697867a5f54e5) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(002f3c88) SHA1(a8a5bbc5397c8ae9858e38997ebdc713b7b4f50a) )
 
@@ -2689,7 +2581,6 @@ ROM_END
 ROM_START( pnyaadd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(bf34e71c) SHA1(cfa7a2c7c41601a758414faf34e59583d7537363) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(88ffbb15) SHA1(e5b97c17167c44f6425006e939149c9fb4e6b1b2) )
 
@@ -2705,7 +2596,6 @@ ROM_END
 ROM_START( pnyaaadd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "proma", 0x000000, 0x100000, CRC(112fe2c0) SHA1(01420e051f0bdbd4f68ce306a3738161b96f8ba8) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(88ffbb15) SHA1(e5b97c17167c44f6425006e939149c9fb4e6b1b2) )
 
@@ -2721,7 +2611,6 @@ ROM_END
 ROM_START( popbouncdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(be96e44f) SHA1(43679da8664fbb491103a1108040ddf94d59fc2b) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(b61cf595) SHA1(b14f8b78af7c634d41cf34d36b11b116e61f7342) )
 
@@ -2737,7 +2626,6 @@ ROM_END
 ROM_START( preisle2dd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x500000, CRC(e7d7692a) SHA1(6c053e2c1d0918f6f17d1090b6456f13ff01d8a5) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(666cabdc) SHA1(f37206ea84b3053f38b2263c1c228463899e425e) )
 
@@ -2753,7 +2641,6 @@ ROM_END
 ROM_START( pspikes2dd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(105a408f) SHA1(2ee51defa1c24c66c63a6498ee542ac26de3cfbb) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(18082299) SHA1(efe93fabe6a76a5dc8cf12f255e571480afb40a0) )
 
@@ -2784,7 +2671,6 @@ ROM_END
 ROM_START( puzzldprdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(afed5de2) SHA1(a5d82c6dbe687505e8c8d7339908da45cd379a0b) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(3b13a22f) SHA1(4506fc340d9658a50fa415676564f10bbfba2703) )
 
@@ -2800,7 +2686,6 @@ ROM_END
 ROM_START( puzzledpdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promp", 0x000000, 0x080000, CRC(2b61415b) SHA1(0e3e4faf2fd6e63407425e1ac788003e75aeeb4f) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "sromp", CRC(cd19264f) SHA1(531be2305cd56d332fb7a53ab924214ade34a9e8) )
 
@@ -2816,7 +2701,6 @@ ROM_END
 ROM_START( quizdai2dd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(ed719dcf) SHA1(12baf2601e86c0e4358517b9fa1c55f2f5835f1d) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(164fd6e6) SHA1(dad35bedc33d502a5ae745a45a972af8d901b160) )
 
@@ -2832,7 +2716,6 @@ ROM_END
 ROM_START( quizdaisdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(c488fda3) SHA1(4cdf2f1837fffd720efef42f81f933bdf2ef1402) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(ac31818a) SHA1(93c8d67a93606a2e02f12ca4cab849dc3f3de286) )
 
@@ -2848,7 +2731,6 @@ ROM_END
 ROM_START( quizdaiskdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promk", 0x000000, 0x100000, CRC(a6f35eae) SHA1(edd3fd5ba8eae2231e2b0a6605fa00e5c6de094a) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "sromk", CRC(53de938a) SHA1(5024fee3b245f8a069d7ecfa6f033b70ed1a5fce) )
 
@@ -2864,7 +2746,6 @@ ROM_END
 ROM_START( quizkofdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(4440315e) SHA1(f4adba8e341d64a1f6280dfd98ebf6918c00608d) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(d7b86102) SHA1(09e1ca6451f3035ce476e3b045541646f860aad5) )
 
@@ -2880,7 +2761,6 @@ ROM_END
 ROM_START( quizkofkdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promk", 0x000000, 0x100000, CRC(2589488e) SHA1(609f3095c1cf8b11335b56f23c5d955eebd66dd2) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "sromk", CRC(af72c30f) SHA1(f6a2c583f38295b7da2cbcf4b2c7ed3d3e01db4f) )
 
@@ -2896,7 +2776,6 @@ ROM_END
 ROM_START( ragnagrdd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(cf5684ef) SHA1(1669073ae6ebe545b862e7361c020e89948524eb) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7d402f9a) SHA1(59ec29d03e62e7a8bef689a124a9164f43b2ace1) )
 
@@ -2912,7 +2791,6 @@ ROM_END
 ROM_START( rbff1dd )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x300000, CRC(639dec1f) SHA1(2e63e8652cead5358d739e59b0a8d4d641faa8c1) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(b6bf5e08) SHA1(b527355c35ea097f3448676f2ffa65b8e56ae30c) )
 
@@ -2928,7 +2806,6 @@ ROM_END
 ROM_START( rbff1add )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "proma", 0x000000, 0x300000, CRC(54454d9d) SHA1(ea44cfa70b327a4b10ab8ae8b397039a1cd9a258) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(b6bf5e08) SHA1(b527355c35ea097f3448676f2ffa65b8e56ae30c) )
 
@@ -2944,7 +2821,6 @@ ROM_END
 ROM_START( rbff1kdd )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promk", 0x000000, 0x300000, CRC(63a18188) SHA1(f692ec04e817e453490f1b4870a288a84aad0e59) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(b6bf5e08) SHA1(b527355c35ea097f3448676f2ffa65b8e56ae30c) )
 
@@ -2960,7 +2836,6 @@ ROM_END
 ROM_START( rbff2dd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x500000, CRC(e9381358) SHA1(c8dcb65afe887dd71c70a2f07972837968731272) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(da3b40de) SHA1(e6bf74e057ac6fe1f249a7547f13ba7fbc694561) )
 
@@ -2976,7 +2851,6 @@ ROM_END
 ROM_START( rbff2hdd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promh", 0x000000, 0x500000, CRC(d1e7d08d) SHA1(f4a83e110ff19cce37334b5ecfbe95e4407b21ff) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(da3b40de) SHA1(e6bf74e057ac6fe1f249a7547f13ba7fbc694561) )
 
@@ -2992,7 +2866,6 @@ ROM_END
 ROM_START( rbff2kdd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promk", 0x000000, 0x500000, CRC(20e1ca7f) SHA1(66bd41753f1549cdb1a8306d069d3d76bdce4761) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(da3b40de) SHA1(e6bf74e057ac6fe1f249a7547f13ba7fbc694561) )
 
@@ -3008,7 +2881,6 @@ ROM_END
 ROM_START( rbffspecdd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x500000, CRC(2688ae88) SHA1(317297d96e9bea5dcbabc507dc891753201724c2) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7ecd6e8c) SHA1(465455afc4d83cbb118142be4671b2539ffafd79) )
 
@@ -3024,7 +2896,6 @@ ROM_END
 ROM_START( rbffspeckdd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promk", 0x000000, 0x500000, CRC(f2dff82a) SHA1(6c33054ed66da6e8cdb4ba5b6cdb524dd586649c) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7ecd6e8c) SHA1(465455afc4d83cbb118142be4671b2539ffafd79) )
 
@@ -3076,7 +2947,6 @@ ROM_END
 ROM_START( roboarmydd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(cd11cbd4) SHA1(23163e3da2f07e830a7f4a02aea1cb01a54ccbf3) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(ac0daa1b) SHA1(93bae4697dc403fce19422752a514326ccf66a91) )
 
@@ -3092,7 +2962,6 @@ ROM_END
 ROM_START( roboarmyadd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "proma", 0x000000, 0x080000, CRC(27c773cb) SHA1(597ca73f142b1129cc7780540bb9cfacd47bc6ce) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(ac0daa1b) SHA1(93bae4697dc403fce19422752a514326ccf66a91) )
 
@@ -3108,7 +2977,6 @@ ROM_END
 ROM_START( rotddd )
 	ROM_REGION( 0x800000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x800000, CRC(b8cc969d) SHA1(4f2205b4bdd32dd1522106ef4df10ac0eb1b852d) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(c155d4ff) SHA1(cc20d4e30004ca82da2ba075c084d294c94651d0) )
 
@@ -3124,7 +2992,6 @@ ROM_END
 ROM_START( rotdhdd )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promh", 0x000000, 0x300000, CRC(b26813c1) SHA1(c818597dd630bb2695efbcc61e235bc6ad273cea) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(c155d4ff) SHA1(cc20d4e30004ca82da2ba075c084d294c94651d0) )
 
@@ -3140,7 +3007,6 @@ ROM_END
 ROM_START( s1945pdd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x500000, CRC(1fedc918) SHA1(4fee71f6ab33281d1a47b0b1abe1d92cef39b109) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(121a4f94) SHA1(5f00f3c5eb6f95c16add2050157803a375bb333d) )
 
@@ -3396,7 +3262,6 @@ ROM_END
 ROM_START( savageredd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(9fbde405) SHA1(e0ace7778792b40865c8997812bfc5d756afdce9) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(e08978ca) SHA1(55152cb9bd0403ae8656b93a6b1522dba5db6d1a) )
 
@@ -3412,7 +3277,6 @@ ROM_END
 ROM_START( sbpdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(83aabc6a) SHA1(bc3ca3541bd1b632db0a64f3ba7f27037cb22fd4) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7e1cdb26) SHA1(a2479ef13f9571ca90305cfc6acd5c0bff83f92f) )
 
@@ -3428,7 +3292,6 @@ ROM_END
 ROM_START( sdodgebdd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(9481ce53) SHA1(03f083b643b7e1aa98f152408e06ba6bd69c53a2) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(64abd6b3) SHA1(0315d724e4d83a44ce84c531ff9b8c398363c039) )
 
@@ -3444,7 +3307,6 @@ ROM_END
 ROM_START( sengokudd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0xa0000, CRC(27992b5a) SHA1(2f11148237220cba3d5f5ee740296bb240f61c3e) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(b246204d) SHA1(73dce64c61fb5bb7e836a8e60f081bb77d80d281) )
 
@@ -3460,7 +3322,6 @@ ROM_END
 ROM_START( sengokuhdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promh", 0x000000, 0xa0000, CRC(2155d71c) SHA1(d79fd65307c05a9c3fd88e78d29c270d8a18230a) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(b246204d) SHA1(73dce64c61fb5bb7e836a8e60f081bb77d80d281) )
 
@@ -3476,7 +3337,6 @@ ROM_END
 ROM_START( sengoku2dd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(6dde02c2) SHA1(e432e63feb88c71629ec96aa84650dcfe356a551) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(cd9802a3) SHA1(f685d4638f4f68e7e3f101c0c39128454536721b) )
 
@@ -3492,7 +3352,6 @@ ROM_END
 ROM_START( sengoku3dd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(12db5c94) SHA1(19c746c9d92d902a9f94183bcbc87883367542cc) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(c1e27cc7) SHA1(7d38319f517059f60287a8ce393a4901719db8a9) )
 
@@ -3508,7 +3367,6 @@ ROM_END
 ROM_START( sengoku3add )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "proma", 0x000000, 0x200000, CRC(cb539a5a) SHA1(1ba0bb7483c1a5672bd3f0a29159d97e0ec44f8d) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(c1e27cc7) SHA1(7d38319f517059f60287a8ce393a4901719db8a9) )
 
@@ -3524,7 +3382,6 @@ ROM_END
 ROM_START( shocktr2dd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "proms", 0x000000, 0x500000, CRC(3545c882) SHA1(76bf6a56bb8650ca5d1c3990e72498a1d78f28c4) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(2a360637) SHA1(431b43da5377dd189e51bd93d88d8a24d1b5090a) )
 
@@ -3540,7 +3397,6 @@ ROM_END
 ROM_START( shocktrodd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x500000, CRC(19893688) SHA1(70b1aa52a8efa651820d1aac750b8af8cff4dd67) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(1f95cedb) SHA1(adfa74868147fd260481e4c387d254d3b6de83f4) )
 
@@ -3556,7 +3412,6 @@ ROM_END
 ROM_START( shocktroadd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "proma", 0x000000, 0x500000, CRC(fe19180a) SHA1(ef303b5ba99741bd10cc648a3a9bf2fb0665b6a4) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(1f95cedb) SHA1(adfa74868147fd260481e4c387d254d3b6de83f4) )
 
@@ -3572,7 +3427,6 @@ ROM_END
 ROM_START( socbrawldd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(17f034a7) SHA1(2e66c7bd93a08efe63c4894494db50bbf58f60e4) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(4c117174) SHA1(26e52c4f628338a9aa1c159517cdf873f738fb98) )
 
@@ -3588,7 +3442,6 @@ ROM_END
 ROM_START( socbrawlhdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promh", 0x000000, 0x080000, CRC(a2801c24) SHA1(627d76ff0740ca29586f37b268f47fb469822529) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(4c117174) SHA1(26e52c4f628338a9aa1c159517cdf873f738fb98) )
 
@@ -3604,7 +3457,6 @@ ROM_END
 ROM_START( sonicwi2dd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(346c9b58) SHA1(e79a559d835f5c2b60d5eccd304787dfd3479584) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(c9eec367) SHA1(574e1afe7e0d54610c145131106e59ba2894eeb7) )
 
@@ -3620,7 +3472,6 @@ ROM_END
 ROM_START( sonicwi3dd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(22485da7) SHA1(3e978b03d099e43cacde6c5d348289313943154b) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(8dd66743) SHA1(39214bb25a1d5b44a8524010be05bf5a0211981f) )
 
@@ -3636,7 +3487,6 @@ ROM_END
 ROM_START( spinmastdd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(aec418b0) SHA1(d8671b8841ee09171db4a59a5c7ed5d961bbeef5) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(289e2bbe) SHA1(f52c7f2bffc89df3130b3cabd200408509a28cdc) )
 
@@ -3652,7 +3502,6 @@ ROM_END
 ROM_START( ssidekidd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(46d9f81d) SHA1(805ebc89aa1413c6d09867a50cb55cddb883954c) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(97689804) SHA1(fa8dab3b3353d7115a0368f3fc749950c0186fbc) )
 
@@ -3668,7 +3517,6 @@ ROM_END
 ROM_START( ssideki2dd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(5969e0dc) SHA1(78abea880c125ec5a85bef6404478512a34b5513) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(226d1b68) SHA1(de010f6fda3ddadb181fe37daa6105f22e78b970) )
 
@@ -3684,7 +3532,6 @@ ROM_END
 ROM_START( ssideki3dd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(11d4a32d) SHA1(a2b90c9c1cbdcaaa359a6f5be26b0d073ed09237) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7626da34) SHA1(30bad65633d0035fd578323c22cbddb8c9d549a6) )
 
@@ -3700,7 +3547,6 @@ ROM_END
 ROM_START( ssideki4dd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(019e7d26) SHA1(ae18d75167bf495a68203b7d1fcf2b120e1be304) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(f0fe5c36) SHA1(b7badd6d2ac3788ce5cace1fcf5cdad14734e4e6) )
 
@@ -3716,7 +3562,6 @@ ROM_END
 ROM_START( stakwindd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(f95be464) SHA1(dbb0395f9a3b47201f7cb069cada92fcd78e1b71) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(073cb208) SHA1(c5b4697d767575884dd49ae416c1fe4a4a92d3f6) )
 
@@ -3732,7 +3577,6 @@ ROM_END
 ROM_START( stakwin2dd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(49c4f96b) SHA1(ad20dd644405c8815723122c385038ef5f096120) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(2a8c4462) SHA1(9155fbb5fee6d46a68d17ea780a7a92565f9aa47) )
 
@@ -3748,7 +3592,6 @@ ROM_END
 ROM_START( strhoopdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(5e78328e) SHA1(7a00b096ed6dd77afc3008c5a4c83686e475f323) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(3ac06665) SHA1(ba9ab51eb95c3568304377ef6d7b5f32e8fbcde1) )
 
@@ -3764,7 +3607,6 @@ ROM_END
 ROM_START( superspydd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0xa0000, CRC(dd351e30) SHA1(252867faf8f3f21ba93efe41db8eec972e8dbc4d) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(ec5fdb96) SHA1(8003028025ac7bf531e568add6ba66c02d0b7e84) )
 
@@ -3892,7 +3734,6 @@ ROM_END
 ROM_START( tophuntrdd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(bead9a45) SHA1(ad701a8f534c99ced50c3706e3d38f8943a47769) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(14b01d7b) SHA1(618ce75c25d6cc86a3b46bd64a0aa34ab82f75ae) )
 
@@ -3908,7 +3749,6 @@ ROM_END
 ROM_START( tophuntrhdd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promh", 0x000000, 0x200000, CRC(dd543eb5) SHA1(627f9ff42b09b8e4fb4722e85df4caa72e8f7d16) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "sromh", CRC(92e9ac8c) SHA1(cab5c77c091e8d12d9c3a2cc8d741b74e4386efb) )
 
@@ -3924,7 +3764,6 @@ ROM_END
 ROM_START( tpgolfdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(e3584fae) SHA1(211a26e56ef099c0a6d05919f7629e0be9105567) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7b3eb9b1) SHA1(39cd8bad9f8bfdeb8ac681b5b79ae5aa81c8dd5f) )
 
@@ -3940,7 +3779,6 @@ ROM_END
 ROM_START( trallydd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(bd51d4ab) SHA1(93866ccc43394961a3f490341715b5120a2985e5) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(fff62ae3) SHA1(6510a762ea41557a8938cbfc0557cd5921306061) )
 
@@ -3956,7 +3794,6 @@ ROM_END
 ROM_START( turfmastdd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(025939d8) SHA1(6a26554135134f7fcb95d4668ede985eb0869581) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(9a5402b2) SHA1(ae1a0b5450869d61b2bb23671c744d3dda8769c4) )
 
@@ -3972,7 +3809,6 @@ ROM_END
 ROM_START( twinspridd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(fd5cd7d3) SHA1(a7cff21a4ff3afe968782f24c2cdb57decae9a59) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(eeed5758) SHA1(24e48f396716e145b692468762cf595fb7267873) )
 
@@ -3988,7 +3824,6 @@ ROM_END
 ROM_START( twsoc96dd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(03e20ab6) SHA1(3a0a5a54649178ce7a6158980cb4445084b40fb5) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(6f5e2b3a) SHA1(273341489f6625d35a4a920042a60e2b86373847) )
 
@@ -4004,7 +3839,6 @@ ROM_END
 ROM_START( viewpoindd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(17aa899d) SHA1(674cd8ace7acdf4f407de741e3d0071bcb49c902) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(9fea5758) SHA1(5c6f01da89f2639cf741ee7c39e27023b8083052) )
 
@@ -4017,85 +3851,9 @@ ROM_START( viewpoindd )
 	ROM_LOAD( "crom0", 0x0000000, 0x600000, CRC(f5e7133b) SHA1(bf871334170dc92782ab4164a1cf01a494a925a2) )
 ROM_END
 
-ROM_START( vlinerdd )
-	ROM_REGION( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(052f93ed) SHA1(3a5330073d21fd068d44956680cfae7faa4f3951) )
-	ROM_DEFAULT_BIOS("console_mode")
-
-	NEO_SFIX_128K( "srom", CRC(972d8c31) SHA1(41f09ef28a3791668ea304c74b8b06c117a50e9a) )
-
-	NEO_BIOS_AUDIO_64K( "m1rom", CRC(9b92b7d1) SHA1(2c9b777feb9a8e43fa1bd942aba5afe3b5427d94) )
-
-	ROM_REGION( 0x200000, "ymsnd", ROMREGION_ERASE00 )
-
-	ROM_REGION( 0x100000, "sprites", 0 )
-	ROM_LOAD( "crom0", 0x0000000, 0x100000, CRC(1414704e) SHA1(cc62a21b2fbd023c8dd2366ed2d619260d911190) )
-ROM_END
-
-ROM_START( vliner53dd )
-	ROM_REGION( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "prom53", 0x000000, 0x080000, CRC(e263dce8) SHA1(c95e5b77c99828ee1b849d000a69fdd6bde502f8) )
-	ROM_DEFAULT_BIOS("console_mode")
-
-	NEO_SFIX_128K( "srom", CRC(972d8c31) SHA1(41f09ef28a3791668ea304c74b8b06c117a50e9a) )
-
-	NEO_BIOS_AUDIO_64K( "m1rom", CRC(9b92b7d1) SHA1(2c9b777feb9a8e43fa1bd942aba5afe3b5427d94) )
-
-	ROM_REGION( 0x200000, "ymsnd", ROMREGION_ERASE00 )
-
-	ROM_REGION( 0x100000, "sprites", 0 )
-	ROM_LOAD( "crom0", 0x0000000, 0x100000, CRC(1414704e) SHA1(cc62a21b2fbd023c8dd2366ed2d619260d911190) )
-ROM_END
-
-ROM_START( vliner54dd )
-	ROM_REGION( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "prom54", 0x000000, 0x080000, CRC(172efc18) SHA1(8ca739f8780a9e6fa19ac2c3e931d75871603f58) )
-	ROM_DEFAULT_BIOS("console_mode")
-
-	NEO_SFIX_128K( "srom", CRC(972d8c31) SHA1(41f09ef28a3791668ea304c74b8b06c117a50e9a) )
-
-	NEO_BIOS_AUDIO_64K( "m1rom", CRC(9b92b7d1) SHA1(2c9b777feb9a8e43fa1bd942aba5afe3b5427d94) )
-
-	ROM_REGION( 0x200000, "ymsnd", ROMREGION_ERASE00 )
-
-	ROM_REGION( 0x100000, "sprites", 0 )
-	ROM_LOAD( "crom0", 0x0000000, 0x100000, CRC(1414704e) SHA1(cc62a21b2fbd023c8dd2366ed2d619260d911190) )
-ROM_END
-
-ROM_START( vliner6edd )
-	ROM_REGION( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "prom6e", 0x000000, 0x080000, CRC(72a2c043) SHA1(b34bcc10ff33e4465126a6865fe8bf6b6a3d6cee) )
-	ROM_DEFAULT_BIOS("console_mode")
-
-	NEO_SFIX_128K( "srom", CRC(972d8c31) SHA1(41f09ef28a3791668ea304c74b8b06c117a50e9a) )
-
-	NEO_BIOS_AUDIO_64K( "m1rom", CRC(9b92b7d1) SHA1(2c9b777feb9a8e43fa1bd942aba5afe3b5427d94) )
-
-	ROM_REGION( 0x200000, "ymsnd", ROMREGION_ERASE00 )
-
-	ROM_REGION( 0x100000, "sprites", 0 )
-	ROM_LOAD( "crom0", 0x0000000, 0x100000, CRC(1414704e) SHA1(cc62a21b2fbd023c8dd2366ed2d619260d911190) )
-ROM_END
-
-ROM_START( vliner7edd )
-	ROM_REGION( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "prom7e", 0x000000, 0x080000, CRC(49a94db5) SHA1(5e3066ebe3afde9e59444b8c6e092a3713a173c0) )
-	ROM_DEFAULT_BIOS("console_mode")
-
-	NEO_SFIX_128K( "srom", CRC(972d8c31) SHA1(41f09ef28a3791668ea304c74b8b06c117a50e9a) )
-
-	NEO_BIOS_AUDIO_64K( "m1rom", CRC(9b92b7d1) SHA1(2c9b777feb9a8e43fa1bd942aba5afe3b5427d94) )
-
-	ROM_REGION( 0x200000, "ymsnd", ROMREGION_ERASE00 )
-
-	ROM_REGION( 0x100000, "sprites", 0 )
-	ROM_LOAD( "crom0", 0x0000000, 0x100000, CRC(1414704e) SHA1(cc62a21b2fbd023c8dd2366ed2d619260d911190) )
-ROM_END
-
 ROM_START( wakuwak7dd )
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x300000, CRC(23a680a8) SHA1(e6c1a9018568e8c2087d80f499582bbfd8f8485d) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(71c4b4b5) SHA1(9410f13807f01082dc86f2d84051be4bed8e9f7c) )
 
@@ -4111,7 +3869,6 @@ ROM_END
 ROM_START( wh1dd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(7dc1d4f5) SHA1(4967a8c20fcb1e8e7440f198dcd9ab10fc9b641b) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(8c2c2d6b) SHA1(87fa79611c6f8886dcc8766814829c669c65b40f) )
 
@@ -4127,7 +3884,6 @@ ROM_END
 ROM_START( wh1hdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promh", 0x000000, 0x100000, CRC(c56a55ed) SHA1(f3f32375b22bab2e9182f33bb71f21138f4c5bb5) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(8c2c2d6b) SHA1(87fa79611c6f8886dcc8766814829c669c65b40f) )
 
@@ -4143,7 +3899,6 @@ ROM_END
 ROM_START( wh1hadd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promha", 0x000000, 0x100000, CRC(fd9e0988) SHA1(505792935608ea1b15578d78aca299730d56c57f) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(8c2c2d6b) SHA1(87fa79611c6f8886dcc8766814829c669c65b40f) )
 
@@ -4159,7 +3914,6 @@ ROM_END
 ROM_START( wh2dd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(676ff721) SHA1(00aad89bb01e880f2235932efe86f49b2a295b90) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(fcaeb3a4) SHA1(1f3f85e38b8552333261c04ae5af0d6e3b310622) )
 
@@ -4175,7 +3929,6 @@ ROM_END
 ROM_START( wh2hdd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "promh", 0x000000, 0x200000, CRC(dbc26fe6) SHA1(71809a58b64bd9cb9720c27b1a2f5d4dcbd86785) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(fcaeb3a4) SHA1(1f3f85e38b8552333261c04ae5af0d6e3b310622) )
 
@@ -4191,7 +3944,6 @@ ROM_END
 ROM_START( wh2jdd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(ccb24071) SHA1(9b7880e611703679b0bf236222b1cee7a5684ceb) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(2a03998a) SHA1(5e33f469982f12d4622a06d323a345f192bf88e6) )
 
@@ -4207,7 +3959,6 @@ ROM_END
 ROM_START( whpdd )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x200000, CRC(5ba1aaaa) SHA1(6ff0a070809c35cfc38c843b13a328e5cea32426) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(174a880f) SHA1(c35d315d728d119a6e9aa42e0593937c90897449) )
 
@@ -4223,7 +3974,6 @@ ROM_END
 ROM_START( wjammersdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(6692c140) SHA1(5da574e906974fac92bb2f49bdeea257c014a897) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(074b5723) SHA1(86d3b3bb5414f43e4d3b7a2af0db23cc71ce8412) )
 
@@ -4239,7 +3989,6 @@ ROM_END
 ROM_START( zedbladedd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x080000, CRC(d7c1effd) SHA1(485c2308a40baecd122be9ab4996044622bdcc7e) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(f4c25dd5) SHA1(8ec9026219f393930634f9170edbaaee479f875e) )
 
@@ -4255,7 +4004,6 @@ ROM_END
 ROM_START( zintrckbdd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(06c8fca7) SHA1(b7bf38965c3d0db4d7a9684d14cac94a45b4a45b) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(a7ab0e81) SHA1(f0649819b96cea79b05411e0b15c8edc677d79ba) )
 
@@ -4271,7 +4019,6 @@ ROM_END
 ROM_START( zupapadd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x100000, CRC(5a96203e) SHA1(49cddec9ca6cc51e5ecf8a34e447a23e1f8a15a1) )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(307967ba) SHA1(b91430d0fb08ca6e0d63ded42016fd2a5cd9728b) )
 
@@ -4293,7 +4040,6 @@ ROM_START( 2020bbnds )
 	ROM_LOAD16_WORD_SWAP( "2020bb.neo", 0x000000, 0x001000, CRC(8041ad52) SHA1(b28dc29119ce47e37fc13798a261e1da37b61179) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x63F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7015b8fc) SHA1(8c09bc3e6c62e0f7c9557c1e10c901be325bae7f) )
 
@@ -4311,7 +4057,6 @@ ROM_START( 2020bbands )
 	ROM_LOAD16_WORD_SWAP( "2020bba.neo", 0x000000, 0x001000, CRC(e9526781) SHA1(08a3b571d3f5a88d6a51d3513e29efde020df928) )
     ROM_CONTINUE( 0x000000, 0x081000 )
     ROM_IGNORE( 0x63F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7015b8fc) SHA1(8c09bc3e6c62e0f7c9557c1e10c901be325bae7f) )
 
@@ -4329,7 +4074,6 @@ ROM_START( 2020bbhnds )
 	ROM_LOAD16_WORD_SWAP( "2020bbh.neo", 0x000000, 0x001000, CRC(9143727f) SHA1(caf7252b915e2870eef82e00bb0d5cd9ff6b88ea) )
     ROM_CONTINUE( 0x000000, 0x081000 )
     ROM_IGNORE( 0x63F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7015b8fc) SHA1(8c09bc3e6c62e0f7c9557c1e10c901be325bae7f) )
 
@@ -4347,7 +4091,6 @@ ROM_START( 3countbnds )
 	ROM_LOAD16_WORD_SWAP( "3countb.neo", 0x000000, 0x001000, CRC(03bdc5a6) SHA1(d4cc02f92353c483d9eecc7d26f6afe5d665477a) )
     ROM_CONTINUE( 0x000000, 0x101000 )
     ROM_IGNORE( 0xC3F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(c362d484) SHA1(a3c029292572842feabe9aa8c3372628fb63978d) )
 
@@ -4365,7 +4108,6 @@ ROM_START( alpham2nds )
 	ROM_LOAD16_WORD_SWAP( "alpham2.neo", 0x000000, 0x001000, CRC(d8cb49e9) SHA1(c93f33c2eab91f44f68aea6c2c2381cf0122bf9b) )
     ROM_CONTINUE( 0x000000, 0x0a1000 )
     ROM_IGNORE( 0x53F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(85ec9acf) SHA1(39a11974438ad36a2cc84307151b31474c3c5518) )
 
@@ -4383,7 +4125,6 @@ ROM_START( alpham2pnds )
 	ROM_LOAD16_WORD_SWAP( "alpham2p.neo", 0x000000, 0x001000, CRC(aab8f811) SHA1(25264a992848cccd15afaed53cad32c62d1b32ee) )
     ROM_CONTINUE( 0x000000, 0x101000 )
     ROM_IGNORE( 0x7BF000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "sromp", CRC(efc9ae2e) SHA1(a594826b0082fe5a13191673e8d9aa42517230f5) )
 
@@ -4401,7 +4142,6 @@ ROM_START( androdunnds )
 	ROM_LOAD16_WORD_SWAP( "androdun.neo", 0x000000, 0x001000, CRC(6aaed441) SHA1(40b177d5803be15d6014fba2ec9c676f4ecfb8d9) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x33F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(6349de5d) SHA1(bcc44b9576d7bedd9a39294530bb66f707690c72) )
 
@@ -4419,7 +4159,6 @@ ROM_START( aodknds )
 	ROM_LOAD16_WORD_SWAP( "aodk.neo", 0x000000, 0x001000, CRC(8dcafd3b) SHA1(e8744878045bf87a442ce8d6ae987cf6de41e323) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x143F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(96148d2b) SHA1(47725a8059346ebe5639bbdbf62a2ac8028756a9) )
 
@@ -4437,7 +4176,6 @@ ROM_START( aofnds )
 	ROM_LOAD16_WORD_SWAP( "aof.neo", 0x000000, 0x001000, CRC(02e281f9) SHA1(77fe9609cb72682970d2d3ff567ee08e96adb3ca) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0xC3F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(89903f39) SHA1(a04a0c244a5d5c7a595fcf649107969635a6a8b6) )
 
@@ -4455,7 +4193,6 @@ ROM_START( aof2nds )
 	ROM_LOAD16_WORD_SWAP( "aof2.neo", 0x000000, 0x001000, CRC(bc3e4c20) SHA1(bf49eb0a6e89b74c39e33e3ce16a395cb8a82bda) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x153F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(8b02638e) SHA1(aa4d28804ca602da776948b5f223ea89e427906b) )
 
@@ -4473,7 +4210,6 @@ ROM_START( aof2ands )
 	ROM_LOAD16_WORD_SWAP( "aof2a.neo", 0x000000, 0x001000, CRC(c649e151) SHA1(e62fb13f3083e4fbb6aacebf3c4c188e9babadde) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x153F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(8b02638e) SHA1(aa4d28804ca602da776948b5f223ea89e427906b) )
 
@@ -4491,7 +4227,6 @@ ROM_START( aof3nds )
 	ROM_LOAD16_WORD_SWAP( "aof3.neo", 0x000000, 0x001000, CRC(46b7eac3) SHA1(55c4211dfb7054cb8d2a9db172c581dccf8ab9aa) )
     ROM_CONTINUE( 0x000000, 0x301000 )
 	ROM_IGNORE( 0x223F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(cc7fd344) SHA1(2c6846cf8ea61fb192ba181dbccb63594d572c0e) )
 
@@ -4509,7 +4244,6 @@ ROM_START( aof3knds )
 	ROM_LOAD16_WORD_SWAP( "aof3k.neo", 0x000000, 0x001000, CRC(890a3f7a) SHA1(6189b8daa4796f00e3a1b24ed78ed60a7563536a) )
     ROM_CONTINUE( 0x000000, 0x301000 )
 	ROM_IGNORE( 0x223F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(cc7fd344) SHA1(2c6846cf8ea61fb192ba181dbccb63594d572c0e) )
 
@@ -4527,7 +4261,6 @@ ROM_START( b2bnds )
 	ROM_LOAD16_WORD_SWAP( "b2b.neo", 0x000000, 0x001000, CRC(5228faba) SHA1(f675603d339efbb003e3e6d17cdfd3512b8dfdb9) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x53F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(44e5f154) SHA1(b3f80051789e60e5d8c5df0408f1aba51616e92d) )
 
@@ -4545,7 +4278,6 @@ ROM_START( bakatononds )
 	ROM_LOAD16_WORD_SWAP( "bakatono.neo", 0x000000, 0x001000, CRC(4e1acd2b) SHA1(dcb2f8db549c6891a283c17eee3ab1be330f8efb) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x63F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(f3ef4485) SHA1(c30bfceed7e669e4c97b0b3ec2e9f4271e5b6662) )
 
@@ -4563,7 +4295,6 @@ ROM_START( bangbeadnds )
 	ROM_LOAD16_WORD_SWAP( "bangbead.neo", 0x000000, 0x001000, CRC(0003bb08) SHA1(6470b36c05bd84decd7cf1aaafacd83c92fa2155) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x153F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(bb50fb2d) SHA1(7372939f328fb5e7d09c16985e09ae8c34702b0c) )
 
@@ -4581,7 +4312,6 @@ ROM_START( bjourneynds )
 	ROM_LOAD16_WORD_SWAP( "bjourney.neo", 0x000000, 0x001000, CRC(3d0805de) SHA1(94e9f9fd007c490c098f4348f2a2639472435a25) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x63F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(843c3624) SHA1(dbdf86c193b7c1d795f8c21f2c103c1d3e18abbe) )
 
@@ -4599,7 +4329,6 @@ ROM_START( bjourneyhnds )
 	ROM_LOAD16_WORD_SWAP( "bjourneyh.neo", 0x000000, 0x001000, CRC(3792dfc7) SHA1(a51c4e0f9337f092ef7176653fc76b5867de4843) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x63F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(843c3624) SHA1(dbdf86c193b7c1d795f8c21f2c103c1d3e18abbe) )
 
@@ -4617,7 +4346,6 @@ ROM_START( blazstarnds )
 	ROM_LOAD16_WORD_SWAP( "blazstar.neo", 0x000000, 0x001000, CRC(21aa3a79) SHA1(4a7706aba7ede5acb4417d36d14c93940d61ad3a) )
     ROM_CONTINUE( 0x000000, 0x301000 )
 	ROM_IGNORE( 0x283F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(d56cb498) SHA1(420ce56431dc7f3f7de84fcbc8c0a17b5eab205e) )
 
@@ -4635,7 +4363,6 @@ ROM_START( breakersnds )
 	ROM_LOAD16_WORD_SWAP( "breakers.neo", 0x000000, 0x001000, CRC(e9e191f2) SHA1(a328180b3627d366170f6139fb3269ceb72df986) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x183F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(076fb64c) SHA1(c166038128d7004f69932141f83b320a35c2b4ca) )
 
@@ -4653,7 +4380,6 @@ ROM_START( breakrevnds )
 	ROM_LOAD16_WORD_SWAP( "breakrev.neo", 0x000000, 0x001000, CRC(0874ff8b) SHA1(5fd07a248feb2e1421acae611780317d4b83e005) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x203F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(e7660a5d) SHA1(1cd54964ba60b245ea57d9daf0e27b572b815d21) )
 
@@ -4671,7 +4397,6 @@ ROM_START( bstarsnds )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x001000, CRC(221e9fdb) SHA1(7bb409546fc6f652fbf568cd9766d115f5c1daf2) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x5DF000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(1a7fd0c6) SHA1(3fc701b7afddab369ddf9dedfbc5e1aaf80b8af3) )
 
@@ -4689,7 +4414,6 @@ ROM_START( bstarshnds )
 	ROM_LOAD16_WORD_SWAP( "bstarsh.neo", 0x000000, 0x001000, CRC(1fff2e59) SHA1(9ee76a4c145208f395336142beebba2f6dcaf336) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x5DF000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(1a7fd0c6) SHA1(3fc701b7afddab369ddf9dedfbc5e1aaf80b8af3) )
 
@@ -4707,7 +4431,6 @@ ROM_START( bstars2nds )
 	ROM_LOAD16_WORD_SWAP( "bstars2.neo", 0x000000, 0x001000, CRC(cea02498) SHA1(cb5e038327a95d2149b8497d1ab409b51d085408) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x6BF000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(015c5c94) SHA1(f1c60cd3dc54986b39f630ef3bf48f68c68695dc) )
 
@@ -4725,7 +4448,6 @@ ROM_START( burningfnds )
 	ROM_LOAD16_WORD_SWAP( "burningf.neo", 0x000000, 0x001000, CRC(62c88a2d) SHA1(0e0ba21f5257f9a4a0f9df6973f124e174365a10) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x63F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(6799ea0d) SHA1(ec75ef9dfdcb0b123574fc6d81ebaaadfba32fb5) )
 
@@ -4743,7 +4465,6 @@ ROM_START( burningfhnds )
 	ROM_LOAD16_WORD_SWAP( "burningfh.neo", 0x000000, 0x001000, CRC(adcc7b7d) SHA1(26135136e170851c7f59d60ff50048608d509bed) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x63F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(6799ea0d) SHA1(ec75ef9dfdcb0b123574fc6d81ebaaadfba32fb5) )
 
@@ -4761,7 +4482,6 @@ ROM_START( burningfpnds )
 	ROM_LOAD16_WORD_SWAP( "burningfp.neo", 0x000000, 0x001000, CRC(8d3e9c7b) SHA1(3d2e6a767ce31e26d333529b68b7a1ead25b1442) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x63F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "sromp", CRC(f3d130e8) SHA1(2fdeb93f4bb2a60d391cac2822be41661b1e1795) )
 
@@ -4779,7 +4499,6 @@ ROM_START( burningfpands )
 	ROM_LOAD16_WORD_SWAP( "burningfpa.neo", 0x000000, 0x001000, CRC(b5df2d4e) SHA1(95e4427258dc5bd058eb9602eee95d1d0f17c47a) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x63F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(6799ea0d) SHA1(ec75ef9dfdcb0b123574fc6d81ebaaadfba32fb5) )
 
@@ -4797,7 +4516,6 @@ ROM_START( crswd2blnds )
 	ROM_LOAD16_WORD_SWAP( "crswd2bl.neo", 0x000000, 0x001000, CRC(9acfb8e5) SHA1(caabbbf4e03ec8bdfc362c86195be6d2e873dcdb) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0xA3F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(22e02ddd) SHA1(ebd834affc763cc5854abf1c6c42f43f3f3755fd) )
 
@@ -4815,7 +4533,6 @@ ROM_START( crswordnds )
 	ROM_LOAD16_WORD_SWAP( "crsword.neo", 0x000000, 0x001000, CRC(75fabd5d) SHA1(5b61e3af212e87da0a7fd01f060e4631d87f74ac) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x53F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(74651f27) SHA1(bff7ff2429d2be82c1647abac2ee45b339b3b310) )
 
@@ -4887,7 +4604,6 @@ ROM_START( ctomadaynds )
 	ROM_LOAD16_WORD_SWAP( "ctomaday.neo", 0x000000, 0x001000, CRC(0ce8e4f2) SHA1(22ee288dd2f23c145c178e0efb93cd71448ff726) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0xD3F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(dc9eb372) SHA1(b8aa142243ba303799554479bfc88eb49260f3b1) )
 
@@ -4905,7 +4621,6 @@ ROM_START( cyberlipnds )
 	ROM_LOAD16_WORD_SWAP( "cyberlip.neo", 0x000000, 0x001000, CRC(d20d6a3e) SHA1(07983b33f1f26e15d8b57c2797ea1cc50912c891) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x5BF000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(79a35264) SHA1(c2819a82adbe1f5e489496e0e03477863a5b7665) )
 
@@ -4940,7 +4655,6 @@ ROM_START( doubledrnds )
 	ROM_LOAD16_WORD_SWAP( "doubledr.neo", 0x000000, 0x001000, CRC(5f92a3aa) SHA1(18a3d5efd39f71c6914001b139d83e605c4ad2b6) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x123F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(bef995c5) SHA1(9c89adbdaa5c1f827632c701688563dac2e482a4) )
 
@@ -4975,7 +4689,6 @@ ROM_START( eightmannds )
 	ROM_LOAD16_WORD_SWAP( "eightman.neo", 0x000000, 0x001000, CRC(843dcf30) SHA1(baa64ae076a076e1f2bdc90d3100f3ef612c6b7e) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x53F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(a402202b) SHA1(75c44e1af459af155f5b892fd18706268dd5e602) )
 
@@ -4993,7 +4706,6 @@ ROM_START( fatfurspnds )
 	ROM_LOAD16_WORD_SWAP( "fatfursp.neo", 0x000000, 0x001000, CRC(beccef57) SHA1(a0be4785ff17a61a87e593ffa4a87a65b9890155) )
 	ROM_CONTINUE( 0x000000, 0x181000 )
 	ROM_IGNORE( 0x113F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(2df03197) SHA1(24083cfc97e720ac9e131c9fe37df57e27c49294) )
 
@@ -5011,7 +4723,6 @@ ROM_START( fatfurspands )
 	ROM_LOAD16_WORD_SWAP( "fatfurspa.neo", 0x000000, 0x001000, CRC(e2f91cac) SHA1(5c0b925b1fd90a100a0be3f92a7f9c0254f1af13) )
 	ROM_CONTINUE( 0x000000, 0x181000 )
 	ROM_IGNORE( 0x113F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(2df03197) SHA1(24083cfc97e720ac9e131c9fe37df57e27c49294) )
 
@@ -5029,7 +4740,6 @@ ROM_START( fatfury1nds )
 	ROM_LOAD16_WORD_SWAP( "fatfury1.neo", 0x000000, 0x001000, CRC(dabcc80b) SHA1(43a32868e9b2eab5e5eb774ef4f1a6516545e28f) )
 	ROM_CONTINUE( 0x000000, 0x0a1000 )
 	ROM_IGNORE( 0x63F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(3c3bdf8c) SHA1(2f3e5feed6c27850b2a0f6fae0b97041690e944c) )
 
@@ -5047,7 +4757,6 @@ ROM_START( fatfury2nds )
 	ROM_LOAD16_WORD_SWAP( "fatfury2.neo", 0x000000, 0x001000, CRC(18f33cde) SHA1(f569bf5752c527446673e1dfec08e8eb3f2eb8e4) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0xC3F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(d7dbbf39) SHA1(29253e596f475ebd41a6e3bb53952e3a0ccd2eed) )
 
@@ -5065,7 +4774,6 @@ ROM_START( fatfury3nds )
 	ROM_LOAD16_WORD_SWAP( "fatfury3.neo", 0x000000, 0x001000, CRC(d353eeed) SHA1(64b3cd8075c48766d2fd1d696cc7a0c0972e9c27) )
     ROM_CONTINUE( 0x000000, 0x301000 )
 	ROM_IGNORE( 0x1E3F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(0b33a800) SHA1(b7d2cc97da4f30ddebc7b801f5e1d17d2306b2db) )
 
@@ -5083,7 +4791,6 @@ ROM_START( fbfrenzynds )
 	ROM_LOAD16_WORD_SWAP( "fbfrenzy.neo", 0x000000, 0x001000, CRC(2db33ec0) SHA1(693df1dab4d2c8cb5b18025bc069a7e26631ba23) )
 	ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x53F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(8472ed44) SHA1(42e1a9671dddd090d2a634cff986f6c73ba08b70) )
 
@@ -5101,7 +4808,6 @@ ROM_START( fightfevnds )
 	ROM_LOAD16_WORD_SWAP( "fightfev.neo", 0x000000, 0x001000, CRC(8515503b) SHA1(4f0cd768f9de330af6e2ac66fbb408b03e3c95c5) )
 	ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0xB3F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(d62a72e9) SHA1(a23e4c4fd4ec11a7467ce41227c418b4dd1ef649) )
 
@@ -5119,7 +4825,6 @@ ROM_START( fightfevands )
 	ROM_LOAD16_WORD_SWAP( "fightfeva.neo", 0x0000000, 0x001000, CRC(babd8403) SHA1(3d761fae10638323d287d704326cbab8d2c7c3d9) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0xB3F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(d62a72e9) SHA1(a23e4c4fd4ec11a7467ce41227c418b4dd1ef649) )
 
@@ -5137,7 +4842,6 @@ ROM_START( flipshotnds )
 	ROM_LOAD16_WORD_SWAP( "flipshot.neo", 0x0000000, 0x001000, CRC(e3d2d230) SHA1(3f888d71a91cee0ae1b683d07b1bdae3988233d7) )
 	ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x63F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(6300185c) SHA1(cb2f1de085fde214f96a962b1c2fa285eb387d44) )
 
@@ -5155,7 +4859,6 @@ ROM_START( froman2bnds )
 	ROM_LOAD16_WORD_SWAP( "froman2b.neo", 0x0000000, 0x001000, CRC(e7d57377) SHA1(ac69564de809db5f46fa2b85f8147bf5442fabc4) )
 	ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x93F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(0e6a7c73) SHA1(31b1194524dcc80ec4d63bac088b6fb4909f496c) )
 
@@ -5173,7 +4876,7 @@ ROM_START( fswordsnds )
 	ROM_LOAD16_WORD_SWAP( "fswords.neo", 0x0000000, 0x001000, CRC(e6aa08c1) SHA1(c15008e50b5bb586c3c04f3b952533090b9e1a16) )
 	ROM_CONTINUE( 0x000000, 0x301000 )
 	ROM_IGNORE( 0x203F000 )
-	ROM_DEFAULT_BIOS("console_mode")
+    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(74ec7d9f) SHA1(d79c479838a7ca51735a44f91f1968ec5b3c6b91) )
 
@@ -5191,7 +4894,6 @@ ROM_START( galaxyfgnds )
 	ROM_LOAD16_WORD_SWAP( "galaxyfg.neo", 0x0000000, 0x001000, CRC(ec905658) SHA1(151d5b61185e87e4d40f233d3e87c94ec5dd9cc1) )
 	ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x133F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(72f8923e) SHA1(da908bffc2b5d8baa2002dbb5bfb3aa17d2472b7) )
 
@@ -5209,7 +4911,6 @@ ROM_START( ganryunds )
 	ROM_LOAD16_WORD_SWAP( "ganryu.neo", 0x0000000, 0x001000, CRC(382e661f) SHA1(81c2f4a5b27ee55452d6ba6b36535d6127235650) )
 	ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x143F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(a8dadec9) SHA1(e909764d0377705cde0cc0accfdaf9b520c1df02) )
 
@@ -5245,7 +4946,7 @@ ROM_START( garoublnds )
 	ROM_LOAD16_WORD_SWAP( "garoubl.neo", 0x000000, 0x001000, CRC(2c3351e9) SHA1(fab16bd08a2a7242d06261c9dc7a129a1cb2db95) )
     ROM_CONTINUE( 0x000000, 0x501000 )
 	ROM_IGNORE( 0x509F000 )
-	ROM_DEFAULT_BIOS("console_mode")
+    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "sromb", CRC(0ded51da) SHA1(1c359ff1f1545c7641ab88a2708e0a6808a0e952) )
 
@@ -5334,7 +5035,6 @@ ROM_START( goalx3nds )
 	ROM_LOAD16_WORD_SWAP( "goalx3.neo", 0x000000, 0x001000, CRC(1a3799d6) SHA1(b760b49e4045599c185b0d7ebfadcb308864932c) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0xC3F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(c0eaad86) SHA1(99412093c9707d51817893971e73fb8469cdc9d0) )
 
@@ -5352,7 +5052,6 @@ ROM_START( gowcaizrnds )
 	ROM_LOAD16_WORD_SWAP( "gowcaizr.neo", 0x000000, 0x001000, CRC(519b1bd4) SHA1(9830b921ba0e4a20ec587b95dd766edc6b9ef132) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x153F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(2f8748a2) SHA1(5cc723c4284120473d63d8b0c1a3b3be74bdc324) )
 
@@ -5370,7 +5069,6 @@ ROM_START( gpilotsnds )
 	ROM_LOAD16_WORD_SWAP( "gpilots.neo", 0x000000, 0x001000, CRC(aad82c6c) SHA1(eabf68766aaba54b3cfd9ba3c12e79838016d49e) )
     ROM_CONTINUE( 0x000000, 0x0a1000 )
 	ROM_IGNORE( 0x63F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(a6d83d53) SHA1(9a8c092f89521cc0b27a385aa72e29cbaca926c5) )
 
@@ -5388,7 +5086,6 @@ ROM_START( gpilotshnds )
 	ROM_LOAD16_WORD_SWAP( "gpilotsh.neo", 0x000000, 0x001000, CRC(eea2b267) SHA1(b58ac81067d5af4a738bcea581432fef16c4f4bc) )
     ROM_CONTINUE( 0x000000, 0x0a1000 )
 	ROM_IGNORE( 0x63F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(a6d83d53) SHA1(9a8c092f89521cc0b27a385aa72e29cbaca926c5) )
 
@@ -5406,7 +5103,6 @@ ROM_START( gururinnds )
 	ROM_LOAD16_WORD_SWAP( "gururin.neo", 0x000000, 0x001000, CRC(5c587362) SHA1(b0ecdaf04bf6db87d34c1184fbf2c6205c00d77b) )
     ROM_CONTINUE( 0x000000, 0x0a1000 )
 	ROM_IGNORE( 0x49F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(b119e1eb) SHA1(f63a68a71aea220d3d4475847652e2a1f68b2b6f) )
 
@@ -5424,7 +5120,6 @@ ROM_START( ironcladnds )
 	ROM_LOAD16_WORD_SWAP( "ironclad.neo", 0x000000, 0x001000, CRC(e38554fb) SHA1(e9a03c946ecb5144286e556e1e979230791141e0) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x143F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(372fe217) SHA1(493433e682f519bf647e1481c8bdd3a980830ffb) )
 
@@ -5442,7 +5137,6 @@ ROM_START( ironcladonds )
 	ROM_LOAD16_WORD_SWAP( "ironclado.neo", 0x000000, 0x001000, CRC(300b920a) SHA1(29fc9bd61432afd0553248fefc3836ea8140430e) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x143F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(372fe217) SHA1(493433e682f519bf647e1481c8bdd3a980830ffb) )
 
@@ -5487,7 +5181,6 @@ ROM_START( janshinnds )
 	ROM_LOAD16_WORD_SWAP( "janshin.neo", 0x000000, 0x001000, CRC(c62ab999) SHA1(c4ca157366642fccae0652dd277853d2e6e5ebbe) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x63F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(8285b25a) SHA1(d983640cda3e346e38469b4d3ec8048b116a7bb7) )
 
@@ -5590,6 +5283,7 @@ ROM_START( kf2k2mpnds )
 	ROM_LOAD16_WORD_SWAP( "kf2k2mp.neo", 0x000000, 0x001000, CRC(9878c142) SHA1(29e245dc689dfc3c31994d0209ad05436a9a3d11) )
     ROM_CONTINUE( 0x000000, 0x801000 )
 	ROM_IGNORE( 0x503F000 )
+    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srommp", CRC(29c0693e) SHA1(a852d15a8558b4a1cadf1ed9ef357d765ff88d35) )
 
@@ -5607,6 +5301,7 @@ ROM_START( kf2k2mp2nds )
 	ROM_LOAD16_WORD_SWAP( "kf2k2mp2.neo", 0x000000, 0x001000, CRC(2c4c9c31) SHA1(45cf3cbad3552bb854f948105c7335e01a971e37) )
     ROM_CONTINUE( 0x000000, 0x601000 )
 	ROM_IGNORE( 0x503F000 )
+    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srommp2", CRC(df4ce33b) SHA1(1287c84c16e17df7d5887af57fc6657da452d0ae) )
 
@@ -5624,6 +5319,7 @@ ROM_START( kf2k2plands )
 	ROM_LOAD16_WORD_SWAP( "kf2k2pla.neo", 0x000000, 0x001000, CRC(9feb8a4c) SHA1(6e838a005017c73acd72981c3782deaa09d81b9b) )
     ROM_CONTINUE( 0x000000, 0x501000 )
 	ROM_IGNORE( 0x503F000 )
+    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srompla", CRC(1a3ed064) SHA1(9749bb55c750e6b65d651998c2649c5fb68db68e) )
 
@@ -5641,6 +5337,7 @@ ROM_START( kf2k2plsnds )
 	ROM_LOAD16_WORD_SWAP( "kf2k2pls.neo", 0x000000, 0x001000, CRC(0c609d8b) SHA1(3b32b88f73e6817278e91c873fe5c27733be32ee) )
     ROM_CONTINUE( 0x000000, 0x501000 )
 	ROM_IGNORE( 0x503F000 )
+    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srompls", CRC(595e0006) SHA1(ff086bdaa6f40e9ad963e1100a27f44618d684ed) )
 
@@ -5658,6 +5355,7 @@ ROM_START( kf2k3blnds )
 	ROM_LOAD16_WORD_SWAP( "kf2k3bl.neo", 0x000000, 0x001000, CRC(f9a1c5cb) SHA1(aaedb7581b79fa8fabba1afd45e09d329d3515a2) )
     ROM_CONTINUE( 0x000000, 0x701000 )
 	ROM_IGNORE( 0x503F000 )
+    ROM_DEFAULT_BIOS("console_mode")
 
     NEO_SFIX_128K( "srom", CRC(7c7829aa) SHA1(22f8d38d1d0891295d0593741d9477fbe6b4f48c) )
 
@@ -5675,6 +5373,7 @@ ROM_START( kf2k3blands )
 	ROM_LOAD16_WORD_SWAP( "kf2k3bla.neo", 0x000000, 0x001000, CRC(4af506bf) SHA1(a552a85d300acf2cccc212289fff347e49ccd693) )
     ROM_CONTINUE( 0x000000, 0x701000 )
 	ROM_IGNORE( 0x503F000 )
+    ROM_DEFAULT_BIOS("console_mode")
 
     NEO_SFIX_128K( "srom", CRC(7c7829aa) SHA1(22f8d38d1d0891295d0593741d9477fbe6b4f48c) )
 
@@ -5692,6 +5391,7 @@ ROM_START( kf2k3uplnds )
 	ROM_LOAD16_WORD_SWAP( "kf2k3upl.neo", 0x000000, 0x001000, CRC(e49b4a2f) SHA1(3ecfa321a7196e5fb782f49815c0d8039cf3ef79) )
     ROM_CONTINUE( 0x000000, 0x801000 )
 	ROM_IGNORE( 0x503F000 )
+    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "sromupl", CRC(eb232b3a) SHA1(a875222f0e9a37e0a7bf839a21d2feb5e0ac7572) )
 
@@ -5709,6 +5409,7 @@ ROM_START( kf2k3plnds )
 	ROM_LOAD16_WORD_SWAP( "kf2k3pl.neo", 0x000000, 0x001000, CRC(2ec1f4a3) SHA1(1a77efe04f09e13c179382f4b89732f25f774b91) )
     ROM_CONTINUE( 0x000000, 0x701000 )
 	ROM_IGNORE( 0x503F000 )
+    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_512K( "srompl", CRC(71b538cf) SHA1(d230aa4bd6eb24a08faebfc948a62c4b31d84b41) )
 
@@ -6319,7 +6020,6 @@ ROM_START( kotmnds )
 	ROM_LOAD16_WORD_SWAP( "kotm.neo", 0x000000, 0x001000, CRC(03919498) SHA1(b083f8f6dc7955b88baf1cac4129392e9f1c8629) )
     ROM_CONTINUE( 0x000000, 0x0a1000 )
 	ROM_IGNORE( 0x63F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(1a2eeeb3) SHA1(8d2b96d395020197bc59294b6b0c8d62b1d8d4dd) )
 
@@ -6337,7 +6037,6 @@ ROM_START( kotmhnds )
 	ROM_LOAD16_WORD_SWAP( "kotmh.neo", 0x000000, 0x001000, CRC(a4c35bfd) SHA1(9dde610517c84d4ab999bdea5eb973fd486a4110) )
     ROM_CONTINUE( 0x000000, 0x0a1000 )
 	ROM_IGNORE( 0x63F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(1a2eeeb3) SHA1(8d2b96d395020197bc59294b6b0c8d62b1d8d4dd) )
 
@@ -6355,7 +6054,6 @@ ROM_START( kotm2nds )
 	ROM_LOAD16_WORD_SWAP( "kotm2.neo", 0x000000, 0x001000, CRC(45d1ee0c) SHA1(c5c2cd7a1f49a5234a0fd83e13f932621bccd9a7) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x93F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(63ee053a) SHA1(7d4b92bd022708975b1470e8f24d1f5a712e1b94) )
 
@@ -6373,7 +6071,6 @@ ROM_START( kotm2ands )
 	ROM_LOAD16_WORD_SWAP( "kotm2a.neo", 0x000000, 0x001000, CRC(8244fe15) SHA1(7b79d0aa6bc5ba34973dcc734d28c5b83db587c1) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x93F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(63ee053a) SHA1(7d4b92bd022708975b1470e8f24d1f5a712e1b94) )
 
@@ -6391,7 +6088,6 @@ ROM_START( kotm2pnds )
 	ROM_LOAD16_WORD_SWAP( "kotm2p.neo", 0x000000, 0x001000, CRC(2589d82e) SHA1(86894ef5626f7252f9e4735fb5fcc6a7fa54a14d) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x93F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(63ee053a) SHA1(7d4b92bd022708975b1470e8f24d1f5a712e1b94) )
 
@@ -6409,7 +6105,6 @@ ROM_START( lans2004nds )
 	ROM_LOAD16_WORD_SWAP( "lans2004.neo", 0x000000, 0x001000, CRC(f0bdeb60) SHA1(e2f342ad6940bba5285a1c36e7c2648c0cbd50dd) )
     ROM_CONTINUE( 0x000000, 0x601000 )
 	ROM_IGNORE( 0x3A3F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(8699c63a) SHA1(d1a0345bcb4e3f6044c93abd52ff6fe6280dc5ee) )
 
@@ -6427,7 +6122,6 @@ ROM_START( lastbladnds )
 	ROM_LOAD16_WORD_SWAP( "lastblad.neo", 0x000000, 0x001000, CRC(656c0ebb) SHA1(06d8cf677bbdab34acc9cd9692a3902b7e24dc36) )
     ROM_CONTINUE( 0x000000, 0x501000 )
 	ROM_IGNORE( 0x383F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(95561412) SHA1(995de272f572fd08d909d3d0af4251b9957b3640) )
 
@@ -6445,7 +6139,6 @@ ROM_START( lastbladhnds )
 	ROM_LOAD16_WORD_SWAP( "lastbladh.neo", 0x000000, 0x001000, CRC(89e250aa) SHA1(714fa35819157b47f7cd30c1d88349c7183238c1) )
     ROM_CONTINUE( 0x000000, 0x501000 )
 	ROM_IGNORE( 0x383F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(95561412) SHA1(995de272f572fd08d909d3d0af4251b9957b3640) )
 
@@ -6463,7 +6156,6 @@ ROM_START( lastsolnds )
 	ROM_LOAD16_WORD_SWAP( "lastsold.neo", 0x000000, 0x001000, CRC(662b7105) SHA1(befd750d4ce4fb0c09947b06f88210d46ab86a1f) )
     ROM_CONTINUE( 0x000000, 0x501000 )
 	ROM_IGNORE( 0x383F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(95561412) SHA1(995de272f572fd08d909d3d0af4251b9957b3640) )
 
@@ -6481,7 +6173,6 @@ ROM_START( lasthopends )
 	ROM_LOAD16_WORD_SWAP( "lasthope.neo", 0x000000, 0x001000, CRC(473cb952) SHA1(997715f194e1840fe3ff3c255e31e22915048f7b) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x162F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_64K( "srompe", CRC(0c0ff9e6) SHA1(c87d1ea8731ac1e63ab960b8182dd1043bcc10bb) )
 
@@ -6499,7 +6190,6 @@ ROM_START( lastbld2nds )
 	ROM_LOAD16_WORD_SWAP( "lastbld2.neo", 0x000000, 0x001000, CRC(22439ffb) SHA1(039e4831135c21f37b96d39518e01e5dce55616b) )
     ROM_CONTINUE( 0x000000, 0x501000 )
 	ROM_IGNORE( 0x403F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(c9cd2298) SHA1(a9a18b5347f9dbe29a2ccb63fd4c8fd19537bf8b) )
 
@@ -6517,7 +6207,6 @@ ROM_START( lbowlingnds )
 	ROM_LOAD16_WORD_SWAP( "lbowling.neo", 0x000000, 0x001000, CRC(7222c3ce) SHA1(5643f8ef101587d47698fd522e7cac81c404d7b1) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x2BF000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(5fcdc0ed) SHA1(86415077e7adc3ba6153eeb4fb0c62cf36e903fa) )
 
@@ -6535,7 +6224,6 @@ ROM_START( legendosnds )
 	ROM_LOAD16_WORD_SWAP( "legendos.neo", 0x000000, 0x001000, CRC(67f65c54) SHA1(f7935cc220c365b7638cc931b0c86e47e93d0bbb) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x53F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(bcd502f0) SHA1(a3400f52c037aa6a42e59e602cc24fa45fcbc951) )
 
@@ -6553,7 +6241,6 @@ ROM_START( lresortnds )
 	ROM_LOAD16_WORD_SWAP( "lresort.neo", 0x000000, 0x001000, CRC(6738aeb0) SHA1(429464aca03f7e90af693dcce906988e9dd7c543) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x53F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(5cef5cc6) SHA1(9ec305007bdb356e9f8f279beae5e2bcb3f2cf7b) )
 
@@ -6571,7 +6258,6 @@ ROM_START( lresortpnds )
 	ROM_LOAD16_WORD_SWAP( "lresortp.neo", 0x000000, 0x001000, CRC(c41b32c3) SHA1(f305651b0228f272ba0e62c9f9765c1720b9dd6f) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x63F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(5cef5cc6) SHA1(9ec305007bdb356e9f8f279beae5e2bcb3f2cf7b) )
 
@@ -6589,7 +6275,6 @@ ROM_START( magdrop2nds )
 	ROM_LOAD16_WORD_SWAP( "magdrop2.neo", 0x000000, 0x001000, CRC(fd5d3e9a) SHA1(33aeb930fca580c73e83ee70220ee0364ea3a62b) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0xA3F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(2a4063a3) SHA1(0e09a7d88d85b1a2100888f4211960ea56ef978b) )
 
@@ -6607,7 +6292,6 @@ ROM_START( magdrop3nds )
 	ROM_LOAD16_WORD_SWAP( "magdrop3.neo", 0x000000, 0x001000, CRC(7bf1a9b0) SHA1(cd0763b33f0670e6edb969460f839a45b892f1a3) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x14BF000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7399e68a) SHA1(b535ee56a0f0995f04674e676f6aa636ffad26aa) )
 
@@ -6625,7 +6309,6 @@ ROM_START( maglordnds )
 	ROM_LOAD16_WORD_SWAP( "maglord.neo", 0x000000, 0x001000, CRC(11971fbf) SHA1(49ee797d2a9cfaf9f8a5130fc742aafed5b79347) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x4DF000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(1c5369a2) SHA1(db0dba0a7dced6c9ca929c5abda491b05d84199c) )
 
@@ -6643,7 +6326,6 @@ ROM_START( maglordhnds )
 	ROM_LOAD16_WORD_SWAP( "maglordh.neo", 0x000000, 0x001000, CRC(f2d54371) SHA1(8ded5f00ea54dc43216433bb6195b35129a3575c) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x4DF000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(1c5369a2) SHA1(db0dba0a7dced6c9ca929c5abda491b05d84199c) )
 
@@ -6661,7 +6343,6 @@ ROM_START( mahretsunds )
 	ROM_LOAD16_WORD_SWAP( "mahretsu.neo", 0x000000, 0x001000, CRC(18309421) SHA1(23a5591b0a2d727a02191ba752479264c6fa6c3f) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x4BF000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(2bd05a06) SHA1(876deadd4645373d82a503154eeddf18f440d743) )
 
@@ -6679,7 +6360,6 @@ ROM_START( marukodqnds )
 	ROM_LOAD16_WORD_SWAP( "marukodq.neo", 0x000000, 0x001000, CRC(a725e249) SHA1(b1db27b985e805c51134c4f948c519e61595c6fb) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0xE3F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(f0b68780) SHA1(3f60950b14d121a5af3e6a8155ae9832ddc6ec46) )
 
@@ -6697,7 +6377,6 @@ ROM_START( matrimnds )
 	ROM_LOAD16_WORD_SWAP( "matrim.neo", 0x000000, 0x001000, CRC(b09a3c96) SHA1(98b2659dedc72e950f40df539fd77e707be57ed3) )
     ROM_CONTINUE( 0x000000, 0x501000 )
 	ROM_IGNORE( 0x509F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
     NEO_SFIX_128K( "srom", CRC(aff2a3be) SHA1(57aba048573eacf8fbdd228f04a7f30da64cebe5) )
 
@@ -6715,7 +6394,6 @@ ROM_START( matrimblnds )
 	ROM_LOAD16_WORD_SWAP( "matrimbl.neo", 0x000000, 0x001000, CRC(a4871179) SHA1(e1e301dde30de70b8da1edcce49fc8ff3f55ef92) )
     ROM_CONTINUE( 0x000000, 0x501000 )
 	ROM_IGNORE( 0x509F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
     NEO_SFIX_128K( "srom", CRC(aff2a3be) SHA1(57aba048573eacf8fbdd228f04a7f30da64cebe5) )
 
@@ -6733,7 +6411,6 @@ ROM_START( miexchngnds )
 	ROM_LOAD16_WORD_SWAP( "miexchng.neo", 0x000000, 0x001000, CRC(7edfbb25) SHA1(7a49b62423ef18ba538d2d707487364db98f3afb) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0xA3F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(fe0c0c53) SHA1(54d56d4463db193e504658f4f6f4997a62ae3d95) )
 
@@ -6751,7 +6428,6 @@ ROM_START( minasannds )
 	ROM_LOAD16_WORD_SWAP( "minasan.neo", 0x000000, 0x001000, CRC(fa5f4de4) SHA1(d17f40ce3a9dfb6b4323422f432991c9cc0fa0cf) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x63F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(e5824baa) SHA1(8230ff7fe3cabeacecc762d90a084e893db84906) )
 
@@ -6769,7 +6445,6 @@ ROM_START( moshouginds )
 	ROM_LOAD16_WORD_SWAP( "moshougi.neo", 0x000000, 0x001000, CRC(71112101) SHA1(f754e89b5e6b834e2cc8e13a4443d5b5fe17097c) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x63F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(bfdc8309) SHA1(781337eab932a130b396a6c1080611d6f9c24c6e) )
 
@@ -6787,7 +6462,6 @@ ROM_START( mutnatnds )
 	ROM_LOAD16_WORD_SWAP( "mutnat.neo", 0x000000, 0x001000, CRC(100027fa) SHA1(e5fa4c5023c25fe1b1ca843ad8718c9f0456a51c) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x63F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(99419733) SHA1(b2524af8704941acc72282aa1d62fd4c93e3e822) )
 
@@ -6805,7 +6479,6 @@ ROM_START( nam1975nds )
 	ROM_LOAD16_WORD_SWAP( "nam1975.neo", 0x000000, 0x001000, CRC(338f2dee) SHA1(5d59497e07c4db771c909af92c40174592fe49f4) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x55F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7988ba51) SHA1(bc2f661f381b06b34ac2fa215dd5689d3bf84832) )
 
@@ -6823,7 +6496,6 @@ ROM_START( ncombatnds )
 	ROM_LOAD16_WORD_SWAP( "ncombat.neo", 0x000000, 0x001000, CRC(75d42338) SHA1(e182a64591c1e036ffc077d6d6860089c2595951) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x53F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(d49afee8) SHA1(77615f12edf08ae8f1353f7a056a8f3a50d3ebdc) )
 
@@ -6841,7 +6513,6 @@ ROM_START( ncombathnds )
 	ROM_LOAD16_WORD_SWAP( "ncombath.neo", 0x000000, 0x001000, CRC(00a23c2a) SHA1(09cd99d6701ec3297f45346cb5955d5523850efe) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x53F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(d49afee8) SHA1(77615f12edf08ae8f1353f7a056a8f3a50d3ebdc) )
 
@@ -6859,7 +6530,6 @@ ROM_START( ncommandnds )
 	ROM_LOAD16_WORD_SWAP( "ncommand.neo", 0x000000, 0x001000, CRC(817db341) SHA1(c625a661c95c3b6f435bc2a5289e17bdefbfdbe1) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x5BF000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(db8f9c8e) SHA1(11cb82cf3c4d0fc2da5df0c26410a64808093610) )
 
@@ -6877,7 +6547,6 @@ ROM_START( neobombends )
 	ROM_LOAD16_WORD_SWAP( "neobombe.neo", 0x000000, 0x001000, CRC(452609d6) SHA1(96f3e143939e779a4323818602b897288a43ed2d) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0xF3F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(4b3fa119) SHA1(41cb0909bfb017eb6f2c530cb92a423319ed7ab1) )
 
@@ -6895,7 +6564,6 @@ ROM_START( neocup98nds )
 	ROM_LOAD16_WORD_SWAP( "neocup98.neo", 0x000000, 0x001000, CRC(3896f2d9) SHA1(c0f3dbd94673e160d45e2655491a0733ecf7764f) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x163F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(9bddb697) SHA1(2f479bcd5a433201168792a578de3057252d649f) )
 
@@ -6913,7 +6581,6 @@ ROM_START( neodriftnds )
 	ROM_LOAD16_WORD_SWAP( "neodrift.neo", 0x000000, 0x001000, CRC(f2063afc) SHA1(2825bd7e7517a20f67acec33da3d182aec779abd) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0xC3F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(b76b61bc) SHA1(5fdb407d16ab9e33c4f26ee09ff70891ae1d2bd0) )
 
@@ -6931,7 +6598,6 @@ ROM_START( neomrdonds )
 	ROM_LOAD16_WORD_SWAP( "neomrdo.neo", 0x000000, 0x001000, CRC(6ab90d70) SHA1(a250f51615dc79bc04a6b8f5b93e218c221b9b29) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x63F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(6aebafce) SHA1(5db03715fbed62f2ff3cef7f93606f30261c0362) )
 
@@ -6949,7 +6615,6 @@ ROM_START( ninjamasnds )
 	ROM_LOAD16_WORD_SWAP( "ninjamas.neo", 0x000000, 0x001000, CRC(6c043356) SHA1(14fa61bcb5fcc50ef10057cdd000b949f9c604f6) )
     ROM_CONTINUE( 0x000000, 0x301000 )
 	ROM_IGNORE( 0x263F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(8ff782f0) SHA1(90099c154357042ba658d4ef6abe4d9335bb7172) )
 
@@ -6967,7 +6632,6 @@ ROM_START( nitdnds )
 	ROM_LOAD16_WORD_SWAP( "nitd.neo", 0x000000, 0x001000, CRC(42ce8908) SHA1(5a76af9b7074bc9c3cfa9141afe6ff40c65a05ce) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x149F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(dd3bf47c) SHA1(881271caee6508b8be51bf1b59c8f1e58e08e551) )
 
@@ -6986,7 +6650,6 @@ ROM_START( nitdblnds )
 	ROM_LOAD16_WORD_SWAP( "nitdbl.neo", 0x000000, 0x001000, CRC(ed62a567) SHA1(383c5a36f522827fd9dae9f501a88c5dc7f18640) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0xC9F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(dd3bf47c) SHA1(881271caee6508b8be51bf1b59c8f1e58e08e551) )
 
@@ -7005,7 +6668,6 @@ ROM_START( overtopnds )
 	ROM_LOAD16_WORD_SWAP( "overtop.neo", 0x000000, 0x001000, CRC(935c39ea) SHA1(1d1c97e3db652080795d46a49e2a87179001caac) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x183F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(481d3ddc) SHA1(7b0df3fc5b19f282abfd0eb5a4c6ed836a536ece) )
 
@@ -7023,7 +6685,6 @@ ROM_START( panicbomnds )
 	ROM_LOAD16_WORD_SWAP( "panicbom.neo", 0x000000, 0x001000, CRC(c7799f9d) SHA1(da82607976d473a7dae549c8637dc6d0cb678842) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x53F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(b876de7e) SHA1(910347d7657470da914fb0a6b0ea02891e13c081) )
 
@@ -7041,7 +6702,6 @@ ROM_START( pbobbl2nnds )
 	ROM_LOAD16_WORD_SWAP( "pbobbl2n.neo", 0x000000, 0x001000, CRC(1710150c) SHA1(d223da46bfe0bb2e6cd6d0fd31736d176aeb0e2e) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x123F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(0a3fee41) SHA1(0ab2120e462086be942efcf6ffb37f58ea966ca3) )
 
@@ -7059,7 +6719,6 @@ ROM_START( pbobblennds )
 	ROM_LOAD16_WORD_SWAP( "pbobblen.neo", 0x000000, 0x001000, CRC(71619b37) SHA1(337d79d550b83cf353089f632874264aa025fb11) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x8BF000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(9caae538) SHA1(cf2d90a7c1a42107c0bb8b9a61397634286dbe0a) )
 
@@ -7077,7 +6736,6 @@ ROM_START( pbobblenbnds )
 	ROM_LOAD16_WORD_SWAP( "pbobblenb.neo", 0x000000, 0x001000, CRC(54fa6513) SHA1(64194d575de1a27b6dda7361fa926147dc0bb282) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x8BF000 )    
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(9caae538) SHA1(cf2d90a7c1a42107c0bb8b9a61397634286dbe0a) )
 
@@ -7095,7 +6753,6 @@ ROM_START( pgoalnds )
 	ROM_LOAD16_WORD_SWAP( "pgoal.neo", 0x000000, 0x001000, CRC(463fe2bc) SHA1(39feb35124a960c8404a63c63bf4c0575ab4cb3e) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x103F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(002f3c88) SHA1(a8a5bbc5397c8ae9858e38997ebdc713b7b4f50a) )
 
@@ -7113,7 +6770,6 @@ ROM_START( pnyaands )
 	ROM_LOAD16_WORD_SWAP( "pnyaa.neo", 0x000000, 0x001000, CRC(ae651e86) SHA1(ad21c6b4a78f72645a71e0fc63a8ff3b0310ba40) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x149F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(88ffbb15) SHA1(e5b97c17167c44f6425006e939149c9fb4e6b1b2) )
 
@@ -7131,7 +6787,6 @@ ROM_START( pnyaaands )
 	ROM_LOAD16_WORD_SWAP( "pnyaaa.neo", 0x000000, 0x001000, CRC(ae651e86) SHA1(ad21c6b4a78f72645a71e0fc63a8ff3b0310ba40) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x149F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(88ffbb15) SHA1(e5b97c17167c44f6425006e939149c9fb4e6b1b2) )
 
@@ -7149,7 +6804,6 @@ ROM_START( popbouncnds )
 	ROM_LOAD16_WORD_SWAP( "popbounc.neo", 0x000000, 0x001000, CRC(ce389e8b) SHA1(d998c7bf9e2d5ddd135a275e1587a3efab157da6) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x63F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(b61cf595) SHA1(b14f8b78af7c634d41cf34d36b11b116e61f7342) )
 
@@ -7167,7 +6821,6 @@ ROM_START( preisle2nds )
 	ROM_LOAD16_WORD_SWAP( "preisle2.neo", 0x000000, 0x001000, CRC(2734d1be) SHA1(a3fac4f717a519f6261429cd7842c8570774eb4f) )
     ROM_CONTINUE( 0x000000, 0x501000 )
 	ROM_IGNORE( 0x363F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(666cabdc) SHA1(f37206ea84b3053f38b2263c1c228463899e425e) )
 
@@ -7185,7 +6838,6 @@ ROM_START( pspikes2nds )
 	ROM_LOAD16_WORD_SWAP( "prom", 0x000000, 0x001000, CRC(7e6bb2eb) SHA1(ab89b4b4a30ecfd61e44e938947ef354da5c0369) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x93F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(18082299) SHA1(efe93fabe6a76a5dc8cf12f255e571480afb40a0) )
 
@@ -7220,7 +6872,6 @@ ROM_START( puzzldprnds )
 	ROM_LOAD16_WORD_SWAP( "puzzldpr.neo", 0x000000, 0x001000, CRC(a7ea0a8a) SHA1(01c61f988ec0eb26ad8691e20c0e7a5ea0943138) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x2BF000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(3b13a22f) SHA1(4506fc340d9658a50fa415676564f10bbfba2703) )
 
@@ -7238,7 +6889,6 @@ ROM_START( puzzledpnds )
 	ROM_LOAD16_WORD_SWAP( "puzzledp.neo", 0x000000, 0x001000, CRC(9610638a) SHA1(77d4f302790ef808bf65b8c00a9a80b5e3537689) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x2BF000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "sromp", CRC(cd19264f) SHA1(531be2305cd56d332fb7a53ab924214ade34a9e8) )
 
@@ -7256,7 +6906,6 @@ ROM_START( quizdai2nds )
 	ROM_LOAD16_WORD_SWAP( "quizdai2.neo", 0x000000, 0x001000, CRC(bd15b7a1) SHA1(416595d9a472ad9f2c2fb41ccb98c638fc8d859d) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x53F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(164fd6e6) SHA1(dad35bedc33d502a5ae745a45a972af8d901b160) )
 
@@ -7274,7 +6923,6 @@ ROM_START( quizdaisnds )
 	ROM_LOAD16_WORD_SWAP( "quizdais.neo", 0x000000, 0x001000, CRC(483b8670) SHA1(224891b0a4e7ff7745d0555e261eb625ab7a8b62) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x33F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(ac31818a) SHA1(93c8d67a93606a2e02f12ca4cab849dc3f3de286) )
 
@@ -7292,7 +6940,6 @@ ROM_START( quizdaisknds )
 	ROM_LOAD16_WORD_SWAP( "quizdaisk.neo", 0x000000, 0x001000, CRC(d0c614a0) SHA1(bfb928ac7bcea2711009ab298c93267f8bc3a7e7) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x43F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "sromk", CRC(53de938a) SHA1(5024fee3b245f8a069d7ecfa6f033b70ed1a5fce) )
 
@@ -7310,7 +6957,6 @@ ROM_START( quizkofnds )
 	ROM_LOAD16_WORD_SWAP( "quizkof.neo", 0x000000, 0x001000, CRC(0603f66d) SHA1(03358dfce966c7bacaa328b3950b6c834070de2b) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0xE3F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(d7b86102) SHA1(09e1ca6451f3035ce476e3b045541646f860aad5) )
 
@@ -7328,7 +6974,6 @@ ROM_START( quizkofknds )
 	ROM_LOAD16_WORD_SWAP( "quizkofk.neo", 0x000000, 0x001000, CRC(f660f0d9) SHA1(4571b7e26d49e0016beeca0cdf09ae41e5c0cb95) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0xE3F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "sromk", CRC(af72c30f) SHA1(f6a2c583f38295b7da2cbcf4b2c7ed3d3e01db4f) )
 
@@ -7346,7 +6991,6 @@ ROM_START( ragnagrnds )
 	ROM_LOAD16_WORD_SWAP( "ragnagrd.neo", 0x000000, 0x001000, CRC(8c08477b) SHA1(ceb05e66861f07080648d4d6de80f9ad9a969796) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x283F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7d402f9a) SHA1(59ec29d03e62e7a8bef689a124a9164f43b2ace1) )
 
@@ -7364,7 +7008,6 @@ ROM_START( rbff1nds )
 	ROM_LOAD16_WORD_SWAP( "rbff1.neo", 0x000000, 0x001000, CRC(9de2bc23) SHA1(67aa91dc1d320341a045a53fdf001d8630aceed9) )
     ROM_CONTINUE( 0x000000, 0x301000 )
 	ROM_IGNORE( 0x283F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(b6bf5e08) SHA1(b527355c35ea097f3448676f2ffa65b8e56ae30c) )
 
@@ -7382,7 +7025,6 @@ ROM_START( rbff1ands )
 	ROM_LOAD16_WORD_SWAP( "rbff1a.neo", 0x000000, 0x001000, CRC(ec8b37f0) SHA1(7acc7fdb02d780205e7bdef3e8ec67909c297d36) )
     ROM_CONTINUE( 0x000000, 0x301000 )
 	ROM_IGNORE( 0x283F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(b6bf5e08) SHA1(b527355c35ea097f3448676f2ffa65b8e56ae30c) )
 
@@ -7400,7 +7042,6 @@ ROM_START( rbff1knds )
 	ROM_LOAD16_WORD_SWAP( "rbff1k.neo", 0x000000, 0x001000, CRC(bf5b4349) SHA1(6e2c32fab4d6d847620286253829f39f208ab792) )
     ROM_CONTINUE( 0x000000, 0x301000 )
 	ROM_IGNORE( 0x283F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(b6bf5e08) SHA1(b527355c35ea097f3448676f2ffa65b8e56ae30c) )
 
@@ -7418,7 +7059,6 @@ ROM_START( rbff2nds )
 	ROM_LOAD16_WORD_SWAP( "rbff2.neo", 0x000000, 0x001000, CRC(5ba5aa03) SHA1(492628590c0b9068ad01ca6d2f45e7767ed57855) )
     ROM_CONTINUE( 0x000000, 0x501000 )
 	ROM_IGNORE( 0x3E5F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(da3b40de) SHA1(e6bf74e057ac6fe1f249a7547f13ba7fbc694561) )
 
@@ -7436,7 +7076,6 @@ ROM_START( rbff2hnds )
 	ROM_LOAD16_WORD_SWAP( "rbff2h.neo", 0x000000, 0x001000, CRC(fc3be0de) SHA1(355eeea636ae71bdc382f7f5b547b98d02bdcd5c) )
     ROM_CONTINUE( 0x000000, 0x501000 )
 	ROM_IGNORE( 0x3E5F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(da3b40de) SHA1(e6bf74e057ac6fe1f249a7547f13ba7fbc694561) )
 
@@ -7454,7 +7093,6 @@ ROM_START( rbff2knds )
 	ROM_LOAD16_WORD_SWAP( "rbff2k.neo", 0x000000, 0x001000, CRC(d23d0173) SHA1(abe854cb2408745fdac96d74a62e94300e274035) )
     ROM_CONTINUE( 0x000000, 0x501000 )
 	ROM_IGNORE( 0x3E5F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(da3b40de) SHA1(e6bf74e057ac6fe1f249a7547f13ba7fbc694561) )
 
@@ -7472,7 +7110,6 @@ ROM_START( rbffspecnds )
 	ROM_LOAD16_WORD_SWAP( "rbffspec.neo", 0x000000, 0x001000, CRC(60f8fcf8) SHA1(aa809932530185d841f2534f6a3117d89b133a39) )
     ROM_CONTINUE( 0x000000, 0x501000 )
 	ROM_IGNORE( 0x2C3F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7ecd6e8c) SHA1(465455afc4d83cbb118142be4671b2539ffafd79) )
 
@@ -7490,7 +7127,6 @@ ROM_START( rbffspecknds )
 	ROM_LOAD16_WORD_SWAP( "rbffspeck.neo", 0x000000, 0x001000, CRC(da1e9521) SHA1(1173b0ed13bf4c359d3b32b1624a414b9349299f) )
     ROM_CONTINUE( 0x000000, 0x501000 )
 	ROM_IGNORE( 0x2C3F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7ecd6e8c) SHA1(465455afc4d83cbb118142be4671b2539ffafd79) )
 
@@ -7548,7 +7184,6 @@ ROM_START( roboarmynds )
 	ROM_LOAD16_WORD_SWAP( "roboarma.neo", 0x000000, 0x001000, CRC(776234e8) SHA1(27a47bf4f315e675f76bbcc450cda0cf718ea3f1) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x53F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(ac0daa1b) SHA1(93bae4697dc403fce19422752a514326ccf66a91) )
 
@@ -7566,7 +7201,6 @@ ROM_START( roboarmyands )
 	ROM_LOAD16_WORD_SWAP( "roboarmy.neo", 0x000000, 0x001000, CRC(23b6caaf) SHA1(6283e446210c392b8d0fe9e4ccf60b8f9a35c478) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x53F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(ac0daa1b) SHA1(93bae4697dc403fce19422752a514326ccf66a91) )
 
@@ -7584,7 +7218,6 @@ ROM_START( rotdnds )
 	ROM_LOAD16_WORD_SWAP( "rotd.neo", 0x000000, 0x001000, CRC(29ae65fd) SHA1(7c63cfa51e62de98620ce6f2fb596e963962489c) )
     ROM_CONTINUE( 0x000000, 0x801000 )
 	ROM_IGNORE( 0x503F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(c155d4ff) SHA1(cc20d4e30004ca82da2ba075c084d294c94651d0) )
 
@@ -7602,7 +7235,6 @@ ROM_START( rotdhnds )
 	ROM_LOAD16_WORD_SWAP( "rotdh.neo", 0x000000, 0x001000, CRC(ecf6a9f7) SHA1(a304aa7a5d1038479a9442bad6f6c0681d5339a3) )
     ROM_CONTINUE( 0x000000, 0x301000 )
 	ROM_IGNORE( 0x503F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(c155d4ff) SHA1(cc20d4e30004ca82da2ba075c084d294c94651d0) )
 
@@ -7620,7 +7252,6 @@ ROM_START( s1945pnds )
 	ROM_LOAD16_WORD_SWAP( "s1945p.neo", 0x000000, 0x001000, CRC(a5f8886e) SHA1(b31ef54831b52bef2a7b3ad353c8e1c3600994b3) )
     ROM_CONTINUE( 0x000000, 0x501000 )
 	ROM_IGNORE( 0x503F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(121a4f94) SHA1(5f00f3c5eb6f95c16add2050157803a375bb333d) )
 
@@ -7925,7 +7556,6 @@ ROM_START( savagerends )
 	ROM_LOAD16_WORD_SWAP( "savagere.neo", 0x000000, 0x001000, CRC(68964a13) SHA1(391957cbb39c5bb24e0a38c47c12d23b5afe167a) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x163F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(e08978ca) SHA1(55152cb9bd0403ae8656b93a6b1522dba5db6d1a) )
 
@@ -7943,7 +7573,6 @@ ROM_START( sbpnds )
 	ROM_LOAD16_WORD_SWAP( "sbp.neo", 0x000000, 0x001000, CRC(346afd7f) SHA1(2186f99a07103e13c10f9451fdc3527113d25d1e) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0xC9F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7e1cdb26) SHA1(a2479ef13f9571ca90305cfc6acd5c0bff83f92f) )
 
@@ -7961,7 +7590,6 @@ ROM_START( sdodgebnds )
 	ROM_LOAD16_WORD_SWAP( "sdodgeb.neo", 0x000000, 0x001000, CRC(04e50958) SHA1(8c51a3d862a5275beac3e5a31e11b078930c8efd) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x103F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(64abd6b3) SHA1(0315d724e4d83a44ce84c531ff9b8c398363c039) )
 
@@ -7979,7 +7607,6 @@ ROM_START( sengokunds )
 	ROM_LOAD16_WORD_SWAP( "sengoku.neo", 0x000000, 0x001000, CRC(5c7b047b) SHA1(0e57f040d22c76c60703a59cf6444849b69a0cd1) )
     ROM_CONTINUE( 0x000000, 0x0a1000 )
 	ROM_IGNORE( 0x63F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(b246204d) SHA1(73dce64c61fb5bb7e836a8e60f081bb77d80d281) )
 
@@ -7997,7 +7624,6 @@ ROM_START( sengokuhnds )
 	ROM_LOAD16_WORD_SWAP( "sengokuh.neo", 0x000000, 0x001000, CRC(dbcede61) SHA1(b26183ae8dc6f789996fe22e8a0771b7f24fec2a) )
     ROM_CONTINUE( 0x000000, 0x0a1000 )
 	ROM_IGNORE( 0x63F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(b246204d) SHA1(73dce64c61fb5bb7e836a8e60f081bb77d80d281) )
 
@@ -8015,7 +7641,6 @@ ROM_START( sengoku2nds )
 	ROM_LOAD16_WORD_SWAP( "sengoku2.neo", 0x000000, 0x001000, CRC(e48c07d0) SHA1(8f847635ac7b4d667b265324866a1c87f40c467f) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x93F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(cd9802a3) SHA1(f685d4638f4f68e7e3f101c0c39128454536721b) )
 
@@ -8033,7 +7658,6 @@ ROM_START( sengoku3nds )
 	ROM_LOAD16_WORD_SWAP( "sengoku3.neo", 0x000000, 0x001000, CRC(1f9bf279) SHA1(474fe39ecf5bf390653a80f8b72f3033dc733eea) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x2E9F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(c1e27cc7) SHA1(7d38319f517059f60287a8ce393a4901719db8a9) )
 
@@ -8051,7 +7675,6 @@ ROM_START( sengoku3ands )
 	ROM_LOAD16_WORD_SWAP( "sengoku3a.neo", 0x000000, 0x001000, CRC(0e46da2b) SHA1(8f398acf93fe56866dbd0fb451e374724b82fbd9) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x2E9F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(c1e27cc7) SHA1(7d38319f517059f60287a8ce393a4901719db8a9) )
 
@@ -8069,7 +7692,6 @@ ROM_START( shocktr2nds )
 	ROM_LOAD16_WORD_SWAP( "shocktr2.neo", 0x000000, 0x001000, CRC(1438e16f) SHA1(b38bc38abf6263f3b6cb2af004bd97c6134ce780) )
     ROM_CONTINUE( 0x000000, 0x501000 )
 	ROM_IGNORE( 0x3A3F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(2a360637) SHA1(431b43da5377dd189e51bd93d88d8a24d1b5090a) )
 
@@ -8087,7 +7709,6 @@ ROM_START( shocktronds )
 	ROM_LOAD16_WORD_SWAP( "shocktro.neo", 0x000000, 0x001000, CRC(968553d8) SHA1(82d3a0872ddb8a4d0bdd2fd8d1a39866ecbfc03d) )
     ROM_CONTINUE( 0x000000, 0x501000 )
 	ROM_IGNORE( 0x263F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(1f95cedb) SHA1(adfa74868147fd260481e4c387d254d3b6de83f4) )
 
@@ -8105,7 +7726,6 @@ ROM_START( shocktroands )
 	ROM_LOAD16_WORD_SWAP( "shocktroa.neo", 0x000000, 0x001000, CRC(dc4edbe3) SHA1(66dae282a1aee31df1840f747ead701f1bbf08b9) )
     ROM_CONTINUE( 0x000000, 0x501000 )
 	ROM_IGNORE( 0x263F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(1f95cedb) SHA1(adfa74868147fd260481e4c387d254d3b6de83f4) )
 
@@ -8123,7 +7743,6 @@ ROM_START( socbrawlnds )
 	ROM_LOAD16_WORD_SWAP( "socbrawl.neo", 0x000000, 0x001000, CRC(2ea06384) SHA1(673599c859c8e62e08e1d750ebdec5eb5cf40545) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x53F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(4c117174) SHA1(26e52c4f628338a9aa1c159517cdf873f738fb98) )
 
@@ -8141,7 +7760,6 @@ ROM_START( socbrawlhnds )
 	ROM_LOAD16_WORD_SWAP( "socbrawlh.neo", 0x000000, 0x001000, CRC(02d3b361) SHA1(2864ede358e2258c2ac5708369b64af721d338e8) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x53F000 )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(4c117174) SHA1(26e52c4f628338a9aa1c159517cdf873f738fb98) )
 
@@ -8159,7 +7777,6 @@ ROM_START( sonicwi2nds )
 	ROM_LOAD16_WORD_SWAP( "sonicwi2.neo", 0x000000, 0x001000, CRC(ac1851bb) SHA1(db2b875f28b58c7cff5b147e91529c8ed77a898d) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0xB3F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(c9eec367) SHA1(574e1afe7e0d54610c145131106e59ba2894eeb7) )
 
@@ -8177,7 +7794,6 @@ ROM_START( sonicwi3nds )
 	ROM_LOAD16_WORD_SWAP( "sonicwi3.neo", 0x000000, 0x001000, CRC(10edc4ff) SHA1(fab8e5e07caa96fc122779e6e3b739c1c1b462b9) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x123F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(8dd66743) SHA1(39214bb25a1d5b44a8524010be05bf5a0211981f) )
 
@@ -8195,7 +7811,6 @@ ROM_START( spinmastnds )
 	ROM_LOAD16_WORD_SWAP( "spinmast.neo", 0x000000, 0x001000, CRC(6c76c571) SHA1(7ca7d37dd4a9cd79b6a1062d97ea4725eee6a593) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x93F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(289e2bbe) SHA1(f52c7f2bffc89df3130b3cabd200408509a28cdc) )
 
@@ -8213,7 +7828,6 @@ ROM_START( ssidekinds )
 	ROM_LOAD16_WORD_SWAP( "ssideki.neo", 0x000000, 0x001000, CRC(d68ed5c3) SHA1(083711e079cdbd46287935e3ccce8058e2242b0e) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0x83F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(97689804) SHA1(fa8dab3b3353d7115a0368f3fc749950c0186fbc) )
 
@@ -8231,7 +7845,6 @@ ROM_START( ssideki2nds )
 	ROM_LOAD16_WORD_SWAP( "ssideki2.neo", 0x000000, 0x001000, CRC(51744243) SHA1(152d47bd738c9726b60fa4508cd43f52551bf288) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0xC3F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(226d1b68) SHA1(de010f6fda3ddadb181fe37daa6105f22e78b970) )
 
@@ -8267,7 +7880,6 @@ ROM_START( ssideki4nds )
 	ROM_LOAD16_WORD_SWAP( "ssideki4.neo", 0x000000, 0x001000, CRC(574c4b4e) SHA1(2b31cbf4eae4f389b0f204058376e4ab9ce35446) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x1A3F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(f0fe5c36) SHA1(b7badd6d2ac3788ce5cace1fcf5cdad14734e4e6) )
 
@@ -8285,7 +7897,6 @@ ROM_START( stakwinnds )
 	ROM_LOAD16_WORD_SWAP( "stakwin.neo", 0x000000, 0x001000, CRC(fb42bea3) SHA1(eb45000b84ba1af36dc31f8c4780638dec72c4a3) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0xA3F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(073cb208) SHA1(c5b4697d767575884dd49ae416c1fe4a4a92d3f6) )
 
@@ -8303,7 +7914,6 @@ ROM_START( stakwin2nds )
 	ROM_LOAD16_WORD_SWAP( "stakwin2.neo", 0x000000, 0x001000, CRC(9c791c8c) SHA1(088141a5260262a9475dcd171c3454b71cdc970c) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x143F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(2a8c4462) SHA1(9155fbb5fee6d46a68d17ea780a7a92565f9aa47) )
 
@@ -8321,7 +7931,6 @@ ROM_START( strhoopnds )
 	ROM_LOAD16_WORD_SWAP( "strhoop.neo", 0x000000, 0x001000, CRC(fa3f7ee1) SHA1(addd8840ef465e0228bc83eafe13e701e785cfa0) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0xB3F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(3ac06665) SHA1(ba9ab51eb95c3568304377ef6d7b5f32e8fbcde1) )
 
@@ -8339,7 +7948,6 @@ ROM_START( superspynds )
 	ROM_LOAD16_WORD_SWAP( "superspy.neo", 0x000000, 0x001000, CRC(a23a0bd8) SHA1(523bf865b788c4d9b8299a22d40c54c6a8d213ed) )
     ROM_CONTINUE( 0x000000, 0x0a1000 )
 	ROM_IGNORE( 0x65F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(ec5fdb96) SHA1(8003028025ac7bf531e568add6ba66c02d0b7e84) )
 
@@ -8483,7 +8091,6 @@ ROM_START( tophuntrnds )
 	ROM_LOAD16_WORD_SWAP( "tophuntr.neo", 0x000000, 0x001000, CRC(bc747b28) SHA1(7148a5ed5502e891fb4934552fe398751957569a) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0xC3F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(14b01d7b) SHA1(618ce75c25d6cc86a3b46bd64a0aa34ab82f75ae) )
 
@@ -8501,7 +8108,6 @@ ROM_START( tophuntrhnds )
 	ROM_LOAD16_WORD_SWAP( "tophuntrh.neo", 0x000000, 0x001000, CRC(661180a9) SHA1(f1880dbcffde539fd5b97c735afcac14c1c8a654) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0xC3F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "sromh", CRC(92e9ac8c) SHA1(cab5c77c091e8d12d9c3a2cc8d741b74e4386efb) )
 
@@ -8519,7 +8125,6 @@ ROM_START( tpgolfnds )
 	ROM_LOAD16_WORD_SWAP( "tpgolf.neo", 0x000000, 0x001000, CRC(f4a8abc6) SHA1(60666f2acba13380e1d2093bc03a477c1f779622) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x6BF000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(7b3eb9b1) SHA1(39cd8bad9f8bfdeb8ac681b5b79ae5aa81c8dd5f) )
 
@@ -8537,7 +8142,6 @@ ROM_START( trallynds )
 	ROM_LOAD16_WORD_SWAP( "trally.neo", 0x000000, 0x001000, CRC(ad8dc774) SHA1(159f54251007b5a4b8aafc39316a5b7c267869ce) )
     ROM_CONTINUE( 0x000000, 0x101000 )
     ROM_IGNORE( 0x4BF000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(fff62ae3) SHA1(6510a762ea41557a8938cbfc0557cd5921306061) )
 
@@ -8555,7 +8159,6 @@ ROM_START( turfmastnds )
 	ROM_LOAD16_WORD_SWAP( "turfmast.neo", 0x000000, 0x001000, CRC(f00c2138) SHA1(1f6f96c19341dc036ff7e71749fc2e812aa14cc0) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x103F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(9a5402b2) SHA1(ae1a0b5450869d61b2bb23671c744d3dda8769c4) )
 
@@ -8573,7 +8176,6 @@ ROM_START( twinsprinds )
 	ROM_LOAD16_WORD_SWAP( "twinspri.neo", 0x000000, 0x001000, CRC(192ccf78) SHA1(ea2fcb7805e3130141705c946030e4db96de81b9) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x103F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(eeed5758) SHA1(24e48f396716e145b692468762cf595fb7267873) )
 
@@ -8591,7 +8193,6 @@ ROM_START( twsoc96nds )
 	ROM_LOAD16_WORD_SWAP( "twsoc96.neo", 0x000000, 0x001000, CRC(6056a624) SHA1(006da310a7ff92e2294b2225da07eacbc0f2d3cf) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0xE3F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(6f5e2b3a) SHA1(273341489f6625d35a4a920042a60e2b86373847) )
 
@@ -8609,7 +8210,6 @@ ROM_START( viewpoinnds )
 	ROM_LOAD16_WORD_SWAP( "viewpoin.neo", 0x000000, 0x001000, CRC(110f9248) SHA1(ed04dc7bfa4a870da9a8ebbc7d7874868948dc94) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0xA3F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(9fea5758) SHA1(5c6f01da89f2639cf741ee7c39e27023b8083052) )
 
@@ -8627,7 +8227,6 @@ ROM_START( wakuwak7nds )
 	ROM_LOAD16_WORD_SWAP( "wakuwak7.neo", 0x000000, 0x001000, CRC(81b7ad16) SHA1(4fc08fc1e023e55e53842e4a167069901d858705) )
     ROM_CONTINUE( 0x000000, 0x301000 )
 	ROM_IGNORE( 0x203F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(71c4b4b5) SHA1(9410f13807f01082dc86f2d84051be4bed8e9f7c) )
 
@@ -8645,7 +8244,6 @@ ROM_START( wh1nds )
 	ROM_LOAD16_WORD_SWAP( "wh1.neo", 0x000000, 0x001000, CRC(d864f492) SHA1(e188e2904855aadef1569606f863f2f3f0deb63c) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x93F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(8c2c2d6b) SHA1(87fa79611c6f8886dcc8766814829c669c65b40f) )
 
@@ -8663,7 +8261,6 @@ ROM_START( wh1hnds )
 	ROM_LOAD16_WORD_SWAP( "wh1h.neo", 0x000000, 0x001000, CRC(e65d03d1) SHA1(36c0f69667836287b0702f0c788c2670504febd1) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x93F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(8c2c2d6b) SHA1(87fa79611c6f8886dcc8766814829c669c65b40f) )
 
@@ -8681,7 +8278,6 @@ ROM_START( wh1hands )
 	ROM_LOAD16_WORD_SWAP( "wh1ha.neo", 0x000000, 0x001000, CRC(9ff1ed75) SHA1(012dafb77e68a5424de5a1482d97d75d97e8b186) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x93F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(8c2c2d6b) SHA1(87fa79611c6f8886dcc8766814829c669c65b40f) )
 
@@ -8699,7 +8295,6 @@ ROM_START( wh2nds )
 	ROM_LOAD16_WORD_SWAP( "wh2.neo", 0x000000, 0x001000, CRC(99e14fc1) SHA1(90a8ac3adbb0500ae05a3985b694425373e962ff) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x103F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(fcaeb3a4) SHA1(1f3f85e38b8552333261c04ae5af0d6e3b310622) )
 
@@ -8717,7 +8312,6 @@ ROM_START( wh2hnds )
 	ROM_LOAD16_WORD_SWAP( "wh2h.neo", 0x000000, 0x001000, CRC(cb994200) SHA1(fd4b7d86fdd9e051a408c6e88773b2d5f033b3ed) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x103F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(fcaeb3a4) SHA1(1f3f85e38b8552333261c04ae5af0d6e3b310622) )
 
@@ -8735,7 +8329,6 @@ ROM_START( wh2jnds )
 	ROM_LOAD16_WORD_SWAP( "wh2j.neo", 0x000000, 0x001000, CRC(e1a45894) SHA1(69a8cfc21d6b3551005ce9046d647407b392a86b) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x143F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(2a03998a) SHA1(5e33f469982f12d4622a06d323a345f192bf88e6) )
 
@@ -8753,7 +8346,6 @@ ROM_START( whpnds )
 	ROM_LOAD16_WORD_SWAP( "whp.neo", 0x000000, 0x001000, CRC(37858a01) SHA1(1381bc226ce007a5c8c74959e3169792e42615ac) )
     ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x223F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(174a880f) SHA1(c35d315d728d119a6e9aa42e0593937c90897449) )
 
@@ -8771,7 +8363,6 @@ ROM_START( wjammersnds )
 	ROM_LOAD16_WORD_SWAP( "wjammers.neo", 0x000000, 0x001000, CRC(342f7f79) SHA1(207833b3a6d3d6f58ead7321e199859561f95ec4) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x83F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(074b5723) SHA1(86d3b3bb5414f43e4d3b7a2af0db23cc71ce8412) )
 
@@ -8789,7 +8380,6 @@ ROM_START( zedbladends )
 	ROM_LOAD16_WORD_SWAP( "zedblade.neo", 0x000000, 0x001000, CRC(4cc9e910) SHA1(257b292e68772887c01d574b365b77c1a45e79fb) )
     ROM_CONTINUE( 0x000000, 0x081000 )
 	ROM_IGNORE( 0xD3F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(f4c25dd5) SHA1(8ec9026219f393930634f9170edbaaee479f875e) )
 
@@ -8807,7 +8397,6 @@ ROM_START( zintrckbnds )
 	ROM_LOAD16_WORD_SWAP( "zintrckb.neo", 0x000000, 0x001000, CRC(5cea990f) SHA1(da6b7be43994ad67193623198a7855189853c7d4) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x63F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(a7ab0e81) SHA1(f0649819b96cea79b05411e0b15c8edc677d79ba) )
 
@@ -8825,7 +8414,6 @@ ROM_START( zupapands )
 	ROM_LOAD16_WORD_SWAP( "zupapa.neo", 0x000000, 0x001000, CRC(6f323821) SHA1(93e39387a477a1ea7535758e2b2096a31ca6dd32) )
     ROM_CONTINUE( 0x000000, 0x101000 )
 	ROM_IGNORE( 0x123F000 )
-	ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "srom", CRC(307967ba) SHA1(b91430d0fb08ca6e0d63ded42016fd2a5cd9728b) )
 
@@ -9111,7 +8699,7 @@ GAME( 1996, aof3nds,       aof3,     neogeo_noslot,   neogeo, neogeo_state,   in
 GAME( 1996, aof3knds,      aof3,     neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "SNK", "Art of Fighting 3 - The Path of the Warrior (Korean release) (Neo SD)", MACHINE_MECHANICAL ) // no Japanese title / mode
 GAME( 2000, b2bnds,        b2b,      neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Visco", "Bang Bang Busters (2010 NCI release) (Neo SD)" , MACHINE_MECHANICAL )
 GAME( 1991, bakatononds,   bakatono, neogeo_mj,       mjneogeo, neogeo_state, init_darksoft,   ROT0, "Monolith Corp.", "Bakatonosama Mahjong Manyuuki (MOM-002 ~ MOH-002) (Neo SD)", MACHINE_MECHANICAL )
-GAME( 2000, bangbeadnds,    bangbead, neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Visco", "Bang Bead (Neo SD)", MACHINE_MECHANICAL )
+GAME( 2000, bangbeadnds,   bangbead, neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Visco", "Bang Bead (Neo SD)", MACHINE_MECHANICAL )
 GAME( 1990, bjourneynds,   bjourney, neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Alpha Denshi Co.", "Blue's Journey / Raguy (ALM-001)(ALH-001) (Neo SD)", MACHINE_MECHANICAL )
 GAME( 1990, bjourneyhnds,  bjourney, neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Alpha Denshi Co.", "Blue's Journey / Raguy (ALH-001) (Neo SD)", MACHINE_MECHANICAL )
 GAME( 1998, blazstarnds,   blazstar, neogeo_noslot,   neogeo, neogeo_state,   init_darksoft,   ROT0, "Yumekobo", "Blazing Star (Neo SD)", MACHINE_MECHANICAL )
