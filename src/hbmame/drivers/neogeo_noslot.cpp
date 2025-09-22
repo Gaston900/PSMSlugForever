@@ -4787,6 +4787,7 @@ ROM_END
 ROM_START( lasthope )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "300.p1", 0x000000, 0x100000, CRC(3776a88f) SHA1(ea8b669da06d7c6b5ff7fa97a195f56a9253a7a1) )
+ /* Does not have Dip */
 
 	NEO_SFIX_64K( "802.s1", CRC(0c0ff9e6) SHA1(c87d1ea8731ac1e63ab960b8182dd1043bcc10bb) )
 
@@ -4830,6 +4831,7 @@ ROM_END
 ROM_START( legendos )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "029.p1", 0x000000, 0x080000, CRC(9d563f19) SHA1(9bff7bf9fdcf81a0a6c4ce3e196097d4f05e67b6) )
+ /* Incompatible with the encrypted version "ROM FILL Does Not Work" */
 
 	NEO_SFIX_128K( "029.s1", CRC(bcd502f0) SHA1(a3400f52c037aa6a42e59e602cc24fa45fcbc951) )
 
