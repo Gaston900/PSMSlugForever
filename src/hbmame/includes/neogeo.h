@@ -732,7 +732,7 @@ INPUT_PORTS_EXTERN(dualbios);
    ROMFILL Code specific 
  ***************************/
 
-#define 3COUNTB_MVS_FILL \
+#define THREECOUNTB_MVS_FILL \
     ROM_FILL(0X0B04,1,0XEF)\
     ROM_FILL(0X0B05,1,0XEF)\
     ROM_FILL(0X0B06,1,0XEF)\
