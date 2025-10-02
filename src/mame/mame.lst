@@ -311,6 +311,7 @@ mslug3hc36        // Hack
 mslug3hc37        // Hack
 mslug3hc38        // Hack
 mslug3hc39        // Hack
+mslug3hc40        // Hack
 mslug4hc01        // Hack
 mslug4hc02        // Hack
 mslug4hc03        // Hack
@@ -336,6 +337,7 @@ mslug4hc22        // Hack
 mslug4hc23        // Hack
 mslug4hc24        // Hack
 mslug4hc25        // Hack
+mslug4hc26        // Hack
 mslug5hc01        // Hack
 mslug5hc02        // Hack
 mslug5hc03        // Hack
@@ -366,6 +368,7 @@ mslug5hc27        // Hack
 mslug5hc28        // Hack
 mslug5hc29        // Hack
 mslug5hc30        // Hack
+mslug5hc31        // Hack
 mslugxhc01        // Hack
 mslugxhc02        // Hack
 mslugxhc03        // Hack
@@ -400,7 +403,7 @@ mslugxhc31        // Hack
 mslugxhc32        // Hack
 mslugxhc33        // Hack
 mslugxhc34        // Hack
-
+mslugxhc35        // Hack
 
 /*****************
   Only exclusive

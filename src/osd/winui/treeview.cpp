@@ -4086,14 +4086,18 @@ void CreateUPDATEFolders(int parent_index)
 		if (!strcmp("mslug3hc37", s))			        AddGame(lpFolder, jj);
 		if (!strcmp("mslug3hc38", s))		            AddGame(lpFolder, jj);
 		if (!strcmp("mslug3hc39", s))			        AddGame(lpFolder, jj);
+		if (!strcmp("mslug3hc40", s))			        AddGame(lpFolder, jj);
 		if (!strcmp("mslug4hc25", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug4hc26", s))	                AddGame(lpFolder, jj);
 		if (!strcmp("mslug5hc13", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslug5hc14", s))	                AddGame(lpFolder, jj);
 		if (!strcmp("mslug5hc30", s))	                AddGame(lpFolder, jj);
 		if (!strcmp("mslugdyf1", s))	                AddGame(lpFolder, jj);
 		if (!strcmp("mslughc03", s))	                AddGame(lpFolder, jj);
 		if (!strcmp("mslugxhc26", s))	                AddGame(lpFolder, jj);
 		if (!strcmp("mslugxhc31", s))	                AddGame(lpFolder, jj);
 		if (!strcmp("mslugxhc34", s))	                AddGame(lpFolder, jj);
+		if (!strcmp("mslugxhc35", s))	                AddGame(lpFolder, jj);
 	}
 }
 

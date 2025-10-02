@@ -6871,9 +6871,9 @@ ROM_START( mslug5hc12 ) //mslug5sc
 	MSLUG5SC_SPRITES
 ROM_END
 
-ROM_START( mslug5hc13 ) //mslug5cq old / mslug5tlmjjq
+ROM_START( mslug5hc13 ) //mslug5cq
 	ROM_REGION( 0xa00000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_hc13.p1", 0x000000, 0xa00000, CRC(ebe3bae8) SHA1(f59c288d8e54cd37f3e2639226361a17d5315a79) )
+	ROM_LOAD16_WORD_SWAP( "268_hc13.p1", 0x000000, 0xa00000, CRC(5417dbcd) SHA1(9638c855cf53a0c0bc1b2fa6730359ef75729fdf) )
     MSLUG5CQ_ESSENTIALPATCH_MODS_FILL
     MSLUG5D_SFIX_128K
     MSLUG5CQ_AUDIO_BIOS_128K
@@ -6881,14 +6881,14 @@ ROM_START( mslug5hc13 ) //mslug5cq old / mslug5tlmjjq
 	MSLUG5CQ_SPRITES
 ROM_END
 
-ROM_START( mslug5hc14 ) //mslug5mg
-	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_hc14.p1", 0x000000, 0x600000, CRC(1fc7de70) SHA1(c9f8f70706db9832dacb70723d5525aab4bfb9ac) )
-    MSLUG5MG_ESSENTIALPATCH_MODS_FILL
+ROM_START( mslug5hc14 ) //mslug5tlmjjq
+	ROM_REGION( 0xa00000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "268_hc14.p1", 0x000000, 0xa00000, CRC(af226dbc) SHA1(a3035573347d11bef31a3216b710e9654ce7cc91) )
+    MSLUG5CQ_ESSENTIALPATCH_MODS_FILL
     MSLUG5D_SFIX_128K
-    MSLUG5D_AUDIO_512K
+    MSLUG5CQ_AUDIO_BIOS_128K
 	MSLUG5D_YMSND
-	MSLUG5D_SPRITES
+	MSLUG5CQ_SPRITES
 ROM_END
 
 ROM_START( mslug5hc15 ) //mslug51v2
@@ -7057,6 +7057,16 @@ ROM_START( mslug5hc30 ) //mslug5ammor
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "268_hc30.p1", 0x000000, 0x600000, CRC(9ba6f532) SHA1(cf0153ca467b968380dd4dffd21c2d0cf593a9a0) )
     MSLUG5BOSS_ESSENTIALPATCH_MODS_FILL
+    MSLUG5D_SFIX_128K
+    MSLUG5D_AUDIO_512K
+	MSLUG5D_YMSND
+	MSLUG5D_SPRITES
+ROM_END
+
+ROM_START( mslug5hc31 ) //mslug5mg
+	ROM_REGION( 0x600000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "268_hc31.p1", 0x000000, 0x600000, CRC(1fc7de70) SHA1(c9f8f70706db9832dacb70723d5525aab4bfb9ac) )
+    MSLUG5MG_ESSENTIALPATCH_MODS_FILL
     MSLUG5D_SFIX_128K
     MSLUG5D_AUDIO_512K
 	MSLUG5D_YMSND
@@ -8770,8 +8780,8 @@ GAME( 2021, mslug5hc09,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,
 GAME( 2023, mslug5hc10,       mslug5,   neogeo_noslot, mslug5es,   neogeo_state,    init_mslug5,     ROT0, "GOTVG",           "Metal Slug 5 (The Longest Battle 2023-02-08)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc11,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PPXCLUB",         "Metal Slug 5 (Burst Enhanced 2022-11-03)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug5hc12,       mslug5,   neogeo_noslot, mslug5cq,   neogeo_state,    init_mslug5,     ROT0, "GOTVG",           "Metal Slug 5 (Survival 2023-06-12)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug5hc13,       mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_mslug5,     ROT0, "GOTVG",           "Metal Slug 5 (Rise of the Ptolemaic Army 7.T 2025-07-19)", MACHINE_SUPPORTS_SAVE )
-GAME( 2019, mslug5hc14,       mslug5,   neogeo_noslot, mslug5hb,   neogeo_state,    init_mslug5,     ROT0, "GOTVG",           "Metal Slug 5 (Devil Enemy Remix 2019-12-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug5hc13,       mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_mslug5,     ROT0, "GOTVG",           "Metal Slug 5 (Legendary Firepower Showdown 7.5 2025-09-29)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug5hc14,       mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_mslug5,     ROT0, "GOTVG",           "Metal Slug 5 (Rise of the Ptolemaic Army 7.5T 2025-09-29)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug5hc15,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "GOTVG",           "Metal Slug 5 (1v2 Mode 2019-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug5hc16,       mslug5,   neogeo_noslot, mslug5hb,   neogeo_state,    init_mslug5,     ROT0, "GOTVG",           "Metal Slug 5 (Vehicle Slug 2018-09-18)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, mslug5hc17,       mslug5,   neogeo_noslot, mslug5hb,   neogeo_state,    init_mslug5,     ROT0, "GOTVG",           "Metal Slug 5 (Multifunction 2017-05-23)", MACHINE_SUPPORTS_SAVE )
@@ -8788,6 +8798,7 @@ GAME( 2022, mslug5hc27,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,
 GAME( 2023, mslug5hc28,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "hack",            "Metal Slug 5 Plus (Hide Oh Big Mode 2022-11-03)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug5hc29,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_ms5plush,   ROT0, "GOTVG",           "Metal Slug 5 Plus (2019-07-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug5hc30,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "GOTVG",           "Metal Slug 5 (Ammo Random 2025-02-08)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, mslug5hc31,       mslug5,   neogeo_noslot, mslug5hb,   neogeo_state,    init_mslug5,     ROT0, "GOTVG",           "Metal Slug 5 (Devil Enemy Remix 2019-12-07)", MACHINE_SUPPORTS_SAVE )
 
 /*********************************************************************************
 * This game sector is exclusive 2017 - 2025, its modifications that load have been customized

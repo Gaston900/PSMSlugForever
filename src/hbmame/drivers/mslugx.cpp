@@ -4455,8 +4455,8 @@ INPUT_PORTS_END
 	ROM_LOAD16_BYTE( "250.c2",       0x0000001, 0x800000, CRC(31679821) SHA1(554f600a3aa09c16c13c625299b087a79d0d15c5) )\
 	ROM_LOAD16_BYTE( "250_hc33.c3",  0x1000000, 0x800000, CRC(917f95c5) SHA1(c08ed27bf82892c401b855731cb0ea6f03f6e858) )\
 	ROM_LOAD16_BYTE( "250_hc33.c4",  0x1000001, 0x800000, CRC(93290f81) SHA1(cb541431b95d42aff9f6ae5d85f9239cc1a52f23) )\
-	ROM_LOAD16_BYTE( "250_hc33.c5",  0x2000000, 0x800000, CRC(c2d442e1) SHA1(004d263d09aff57a68f209185af126bac4431c7a) )\
-	ROM_LOAD16_BYTE( "250_hc33.c6",  0x2000001, 0x800000, CRC(ec2f6882) SHA1(35835faf840ee358df06aaef89244dbb04a6fca1) )
+	ROM_LOAD16_BYTE( "250_hc33.c5",  0x2000000, 0x800000, CRC(9b14fbf2) SHA1(a68f6a090aa7d6591a621bb6568f31dca893d2df) )\
+	ROM_LOAD16_BYTE( "250_hc33.c6",  0x2000001, 0x800000, CRC(e0e796d3) SHA1(88582e3b0f814ba97211f19e469ed7390f3bfcff) )
 
 #define MSLUGXCQI_SPRITES \
 	ROM_REGION( 0x4000000, "sprites", 0 ) \
@@ -5051,10 +5051,21 @@ ROM_START( mslugxhc33 ) //mslugxcq
 	MSLUGXCQ_SPRITES
 ROM_END
 
-ROM_START( mslugxhc34 ) //mslugxchuanqi old / mslugxmdjdfc
+ROM_START( mslugxhc34 ) //mslugxchuanqi
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250_hc34.p1", 0x000000, 0x100000, CRC(fab06096) SHA1(351d35841c5a7dcce570f9fa1cea3b36253ab7ba) )
-	ROM_LOAD16_WORD_SWAP( "250_hc34.p2", 0x100000, 0x800000, CRC(310fccc8) SHA1(2b24bf5ec052f7e36a2e66bcdc2c88678a193e3d) )
+	ROM_LOAD16_WORD_SWAP( "250_hc34.p1", 0x000000, 0x100000, CRC(d004ed8b) SHA1(37be51908f9457fc9fff34e7cf1a06cfed307ad6) )
+	ROM_LOAD16_WORD_SWAP( "250_hc34.p2", 0x100000, 0x800000, CRC(f8a2bb8b) SHA1(bc6afdfa51adb5bfd63f51e0e6a0f8a7ca0fba1f) )
+    MSLUGXCQI_ESSENTIALPATCH_MODS_FILL
+	MSLUGXSC_SFIX_128K
+    MSLUGXSC_AUDIO_BIOS_128K
+	MSLUGX_YMSND
+	MSLUGXCQI_SPRITES
+ROM_END
+
+ROM_START( mslugxhc35 ) //mslugxmdjdfc
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "250_hc35.p1", 0x000000, 0x100000, CRC(e6a77a75) SHA1(8a7f493adf754fee260f7997a345996dac98e8a8) )
+	ROM_LOAD16_WORD_SWAP( "250_hc35.p2", 0x100000, 0x800000, CRC(7e1a51c9) SHA1(d288d7d12ede33f024648807b001f850c5315dad) )
     MSLUGXCQI_ESSENTIALPATCH_MODS_FILL
 	MSLUGXSC_SFIX_128K
     MSLUGXSC_AUDIO_BIOS_128K
@@ -7063,7 +7074,8 @@ GAME( 2023, mslugxhc30,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,
 GAME( 2025, mslugxhc31,       mslugx,   neogeo_noslot, mslugxsvh,  neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Rebel Soldier 2025-04-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxhc32,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Survival 2023-02-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugxhc33,       mslugx,   neogeo_noslot, mslugxcq,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Legendary 4.5 2024-12-02)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslugxhc34,       mslugx,   neogeo_noslot, mslugxcqi,  neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Revenge of the Morden Army 7.M 2025-07-19)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugxhc34,       mslugx,   neogeo_noslot, mslugxcqi,  neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Legendary Firepower Showdown 7.5 2025-09-22)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugxhc35,       mslugx,   neogeo_noslot, mslugxcqi,  neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Revenge of the Morden Army 7.5M 2025-09-22)", MACHINE_SUPPORTS_SAVE )
 
 /*********************************************************************************
 * This game sector is exclusive 2017 - 2025, its modifications that load have been customized
