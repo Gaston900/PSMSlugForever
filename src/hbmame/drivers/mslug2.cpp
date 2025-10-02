@@ -1870,7 +1870,6 @@ INPUT_PORTS_END
 #define MSLUG2_AUDIO_BIOS_128K \
     NEO_EUROPE_MVS_BIOS_BOOT_AUDIO_128K( "241.m1", CRC(94520ebd) SHA1(f8a1551cebcb91e416f30f50581feed7f72899e9) )
 
-
 #define MSLUG2_SFIX_128K \
     NEO_SFIX_128K( "241.s1", CRC(f3d32f0f) SHA1(2dc38b7dfd3ff14f64d5c0733c510b6bb8c692d0) )
 
@@ -1914,22 +1913,6 @@ INPUT_PORTS_END
 #define MSLUG2FRDD_SPRITES \
 	ROM_REGION( 0x2000000, "sprites", 0 ) \
 	ROM_LOAD( "crom0fr", 0x0000000, 0x2000000, CRC(16abbde3) SHA1(c876556f85ed5ce1a63b93cf8d676d703d2ca125) )
-
-#define MSLUG2NSD_SPRITES \
-	ROM_REGION( 0x2000000, "sprites", 0 ) \
-	ROM_LOAD( "241nsd.c1", 0x0000000, 0x2000000, CRC(f7d491c1) SHA1(c50dbfda64dcde300251ddad2bc4a0cd9bb221e7) )
-
-#define MSLUG2DDNSD_SPRITES \
-	ROM_REGION( 0x2000000, "sprites", 0 ) \
-	ROM_LOAD( "241ddnsd.c1", 0x0000000, 0x2000000, CRC(306f02aa) SHA1(b50ecc9919ac69ccafca8fdef623675b4184f864) )
-
-#define MSLUG2EGNSD_SPRITES \
-	ROM_REGION( 0x3000000, "sprites", 0 ) \
-	ROM_LOAD( "241egnsd.c1", 0x0000000, 0x3000000, CRC(e245a02c) SHA1(61e4b5f4db4ca329fa8254484933d627d7b26943) )
-
-#define MSLUG2FRNSD_SPRITES \
-	ROM_REGION( 0x2000000, "sprites", 0 ) \
-	ROM_LOAD( "241frnsd.c1", 0x0000000, 0x2000000, CRC(b52791a0) SHA1(f27670baa28d8d2de9001cccda7f3c9be402e4e1) )
 
 #define MSLUG2FR_SPRITES \
 	ROM_REGION( 0x2000000, "sprites", 0 ) \
@@ -2048,26 +2031,26 @@ ROM_END
 
 ROM_START( mslug2nsd )
 	ROM_REGION( 0x400000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "mslug2.neo", 0x000000, 0x001000, CRC(b965139a) SHA1(b8440c743dcf1f2c6c8874c3a992e28c60f715af) )
+	ROM_LOAD16_WORD_SWAP( "mslug2.neo", 0x000000, 0x001000, CRC(ac0aa8ef) SHA1(0b395461dcb24f0fdeba5491d4fe71bcf2640f4b) )
     ROM_CONTINUE( 0x000000, 0x301000 )
 	ROM_IGNORE( 0x283F000 )
 	MSLUG2_ESSENTIALPATCH_MODS_FILL
 	MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2DD_YMSND
-    MSLUG2NSD_SPRITES
+    MSLUG2DD_SPRITES
 ROM_END
 
 ROM_START( mslug2tnsd )
 	ROM_REGION( 0x400000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "mslug2t.neo", 0x000000, 0x001000, CRC(22a64e1e) SHA1(43fb6067f3bc62df9a7451597f10c8431cf4f8b3) )
+	ROM_LOAD16_WORD_SWAP( "mslug2t.neo", 0x000000, 0x001000, CRC(2056e958) SHA1(7c85f0b2422d995528ebbd2b376c90a6fc602219) )
     ROM_CONTINUE( 0x000000, 0x301000 )
 	ROM_IGNORE( 0x283F000 )
 	MSLUG2_ESSENTIALPATCH_MODS_FILL
 	MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2DD_YMSND
-    MSLUG2NSD_SPRITES
+    MSLUG2DD_SPRITES
 ROM_END
 
  /***************************
@@ -2083,7 +2066,7 @@ ROM_START( mslug2ddnds )
     MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2DD_YMSND
-    MSLUG2DDNSD_SPRITES
+    MSLUG2DDDD_SPRITES
 ROM_END
 
 ROM_START( mslug2egnds )
@@ -2095,7 +2078,7 @@ ROM_START( mslug2egnds )
     MSLUG2EG_SFIX_128K
     MSLUG2_AUDIO_BIOS_128K
     MSLUG2DD_YMSND
-    MSLUG2EGNSD_SPRITES
+    MSLUG2EGDD_SPRITES
 ROM_END
 
 ROM_START( mslug2frnds )
@@ -2107,7 +2090,7 @@ ROM_START( mslug2frnds )
     MSLUG2FR_SFIX_128K
 	MSLUG2_AUDIO_128K
     MSLUG2DD_YMSND
-	MSLUG2FRNSD_SPRITES
+	MSLUG2FRDD_SPRITES
 ROM_END
 
  /**********************
@@ -2754,33 +2737,33 @@ GAME( 1998, mslug2,           neogeo,   neogeo_noslot, mslug2hb,   neogeo_state,
 GAME( 2015, mslug2t,          mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "SNK",             "Metal Slug 2 Turbo", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
-// Metal Slug (DARKSOFT Neo Geo Converted MVS To Decrypter/Encrypted C)
-GAME( 1998, mslug2dd,         mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "SNK",             "Metal Slug 2 (Decrypted C / Darksoft)", MACHINE_SUPPORTS_SAVE )
-GAME( 1998, mslug2tdd,        mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "SNK",             "Metal Slug 2 Turbo (Decrypted C / Darksoft)", MACHINE_SUPPORTS_SAVE )
+// Metal Slug (DARKSOFT Neo Geo Converted MVS To Decrypter C)
+GAME( 1998, mslug2dd,         mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "SNK",             "Metal Slug 2 (Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 1998, mslug2tdd,        mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "SNK",             "Metal Slug 2 Turbo (Darksoft)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
-// Metal Slug (DARKSOFT Neo Geo Hacks Converted MVS To Decrypter/Encrypted C)
-GAME( 2022, mslug2dddd,       mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (Starlight 2022-05-11)(Darksoft)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug2egdd,       mslug2,   neogeo_noslot, mslug2eg,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (Extraction Green Turbo 2021-09-16)(Darksoft)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2006, mslug2frdd,       mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (French Translation 2006-09-26)(Darksoft)", MACHINE_SUPPORTS_SAVE )
+// Metal Slug Hack (DARKSOFT Neo Geo Converted MVS To Decrypter C)
+GAME( 2022, mslug2dddd,       mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (Starlight 2022-05-11) (Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug2egdd,       mslug2,   neogeo_noslot, mslug2eg,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (Extraction Green Turbo 2021-09-16) (Darksoft)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslug2frdd,       mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (French Translation 2006-09-26) (Darksoft)", MACHINE_SUPPORTS_SAVE )
 
 // This uses a .neo file: 0x1000 bytes for header, then p rom (word_swap), then remainder is normal (HBMAME)
 // The .neo boot file (P1) is used, converted .neo to GFX Encrypted/Decrypted.
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (MATT GREER "CITY41" Neo Geo Converted .NEO SD)
-GAME( 1998, mslug2nsd,        mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "SNK",             "Metal Slug 2 (Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 1998, mslug2tnsd,       mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "SNK",             "Metal Slug 2 Turbo (Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 1998, mslug2nsd,        mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "SNK",             "Metal Slug 2 (Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 1998, mslug2tnsd,       mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "SNK",             "Metal Slug 2 Turbo (Neo SD)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (MATT GREER "CITY41" Neo Geo Hack Converted .NEO SD)
-GAME( 2022, mslug2ddnds,      mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (Starlight 2022-05-11)(Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug2egnds,      mslug2,   neogeo_noslot, mslug2eg,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (Extraction Green Turbo 2021-09-16)(Neo SD)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2006, mslug2frnds,      mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (French Translation 2006-09-26)(Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslug2ddnds,      mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (Starlight 2022-05-11) (Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug2egnds,      mslug2,   neogeo_noslot, mslug2eg,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (Extraction Green Turbo 2021-09-16) (Neo SD)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslug2frnds,      mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (French Translation 2006-09-26) (Neo SD)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Exclusive Fightcade2)
-GAME( 2021, mslug2fm,         mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "CXZInc, Alice",   "Metal Slug 2 (Friendly Fire 2021-04-15)(Fightcade2)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug2fm,         mslug2,   neogeo_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "CXZInc, Alice",   "Metal Slug 2 (Friendly Fire 2021-04-15) (Fightcade2)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug 2 (Hack)

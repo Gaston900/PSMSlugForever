@@ -120,7 +120,7 @@ extern const FOLDERDATA g_folderData[] =
 	{"Serie Speedrun", 	    "serie speedrun",	   FOLDER_SERIESPEEDRUN,       IDI_FOLDER_SERIESPEEDRUN,       0,			 0, 		   0, CreateSERIESPEEDRUNFolders },
 	{"Soldier Rebel", 	    "soldier rebel",	   FOLDER_SOLDIERREBEL,        IDI_FOLDER_SOLDIERREBEL,        0,			 0, 		   0, CreateSOLDIERREBELFolders },
 	{"Update 2025", 	    "Update 2025",	       FOLDER_UPDATE,              IDI_FOLDER_UPDATE,              0,			 0, 		   0, CreateUPDATEFolders },
-	{"NEOGEO (MVS/AES)",    "neogeo (mvs/aes)",    FOLDER_MECHANICAL,          IDI_MECHANICAL,                 0,            0,            0, NULL,                       DriverIsMechanical,      true },
+//	{"Mechanical",    "mechanical",       FOLDER_MECHANICAL,   IDI_FOLDER_MECHANICAL,    0,             0,            0, NULL,                       DriverIsMechanical,      true },
 //	{"Unavailable",   "unavailable",      FOLDER_UNAVAILABLE,  IDI_FOLDER_UNAVAILABLE,   0,             F_AVAILABLE,  0, NULL,                       FilterAvailable,         false },
 //	{"Parents",       "originals",        FOLDER_ORIGINAL,     IDI_FOLDER_ORIGINALS,     F_ORIGINALS,   F_CLONES,     0, NULL,                       DriverIsClone,           false },
 //	{"Clones",        "clones",           FOLDER_CLONES,       IDI_FOLDER_CLONES,        F_CLONES,      F_ORIGINALS,  0, NULL,                       DriverIsClone,           true },
@@ -386,13 +386,6 @@ bool GameFiltered(int nGame, DWORD dwMask)
 	if(lpFolder && lpFolder->m_nFolderId != FOLDER_BIOS)
 	{
 		if(DriverIsBios(nGame))
-			return true;
-	}
-
-/* Add games "MACHINE_MECHANICAL" */
-	if(lpFolder && lpFolder->m_nFolderId != FOLDER_MECHANICAL)
-	{
-		if(DriverIsMechanical(nGame))
 			return true;
 	}
 
@@ -2963,40 +2956,27 @@ void CreateDECRYPTEDEANDBFolders(int parent_index)
 		if (!strcmp("ms5pcbd", s))			    AddGame(lpFolder, jj);
 		if (!strcmp("ms4plusa", s))	            AddGame(lpFolder, jj);
 		if (!strcmp("ms4plusd", s))			    AddGame(lpFolder, jj);
-		if (!strcmp("ms4pluse", s))			    AddGame(lpFolder, jj);
-		if (!strcmp("ms5plusa", s))		        AddGame(lpFolder, jj);
-		if (!strcmp("ms5plusc", s))			    AddGame(lpFolder, jj);
-		if (!strcmp("ms5plusd", s))			    AddGame(lpFolder, jj);
 		if (!strcmp("ms5pluse", s))			    AddGame(lpFolder, jj);
-		if (!strcmp("ms5pluse1", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ms5plusd", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("ms5plusnd", s))		    AddGame(lpFolder, jj);
 		if (!strcmp("msluge", s))	            AddGame(lpFolder, jj);
 		if (!strcmp("mslug2t", s))			    AddGame(lpFolder, jj);
 		if (!strcmp("mslug3d", s))			    AddGame(lpFolder, jj);
-		if (!strcmp("mslug3dh", s))			    AddGame(lpFolder, jj);
 		if (!strcmp("mslug3hd", s))			    AddGame(lpFolder, jj);
 		if (!strcmp("mslug3nd", s))		        AddGame(lpFolder, jj);
-		if (!strcmp("mslug3bd", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("mslug3he", s))			    AddGame(lpFolder, jj);
 		if (!strcmp("mslug3b6d", s))			AddGame(lpFolder, jj);
 		if (!strcmp("mslug3b6e", s))			AddGame(lpFolder, jj);
 		if (!strcmp("mslug4d", s))			    AddGame(lpFolder, jj);
 		if (!strcmp("mslug4hd", s))			    AddGame(lpFolder, jj);
-		if (!strcmp("mslug4e", s))			    AddGame(lpFolder, jj);
 		if (!strcmp("mslug4nd", s))	            AddGame(lpFolder, jj);
-		if (!strcmp("mslug4nde", s))			AddGame(lpFolder, jj);
-		if (!strcmp("mslug4p", s))		        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4e", s))			    AddGame(lpFolder, jj);
 		if (!strcmp("mslug5d", s))			    AddGame(lpFolder, jj);
 		if (!strcmp("mslug5hd", s))			    AddGame(lpFolder, jj);
 		if (!strcmp("mslug5e", s))			    AddGame(lpFolder, jj);
 		if (!strcmp("mslug5n", s))			    AddGame(lpFolder, jj);
-		if (!strcmp("mslug5end", s))			AddGame(lpFolder, jj);
 		if (!strcmp("mslug5nd", s))			    AddGame(lpFolder, jj);
 		if (!strcmp("mslug5nde", s))		    AddGame(lpFolder, jj);
-		if (!strcmp("mslug5nde1", s))			AddGame(lpFolder, jj);
-		if (!strcmp("mslug5nde2", s))	        AddGame(lpFolder, jj);
-		if (!strcmp("mslug5nde3", s))			AddGame(lpFolder, jj);
-		if (!strcmp("mslug5nde4", s))			AddGame(lpFolder, jj);
-		if (!strcmp("mslug5nde5", s))		    AddGame(lpFolder, jj);
-		if (!strcmp("mslug5eb2", s))			AddGame(lpFolder, jj);
 		if (!strcmp("mslug5b2", s))			    AddGame(lpFolder, jj);
 		if (!strcmp("mslug5b3", s))			    AddGame(lpFolder, jj);
 		if (!strcmp("mslug5b4", s))			    AddGame(lpFolder, jj);

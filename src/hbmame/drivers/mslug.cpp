@@ -1037,10 +1037,6 @@ INPUT_PORTS_END
 	ROM_REGION( 0x1000000, "sprites", 0 ) \
 	ROM_LOAD( "crom0", 0x000000, 0x1000000, CRC(d2955fc3) SHA1(4b69f4926766543ae289546569b27c80a82d53d5) )
 
-#define MSLUGNDS_SPRITES \
-	ROM_REGION( 0x1000000, "sprites", 0 ) \
-	ROM_LOAD( "201nds.c1", 0x000000, 0x1000000, CRC(e20d5589) SHA1(94a962a7a8dd0fbe12e20be31c8b795e52b7a69f) )
-
 #define MSLUGE_SPRITES \
 	ROM_REGION( 0x1000000, "sprites", 0 ) \
 	ROM_LOAD16_BYTE( "201e.c1", 0x400000, 0x200000, CRC(d00bd152) SHA1(eb688dba2233bece1c3ba120ac8eb342f37fba37) )\
@@ -1113,14 +1109,14 @@ ROM_END
 
 ROM_START( mslugnsd )
 	ROM_REGION( 0x300000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "mslug.neo", 0x000000, 0x001000, CRC(e39f9a72) SHA1(351edb2e9d74df4e2769fd8dd878702e4e476d95) )
+	ROM_LOAD16_WORD_SWAP( "mslug.neo", 0x000000, 0x001000, CRC(05be3849) SHA1(7589a3e3e10bb7f36f0bb257259954e56f1ee3c1) )
 	ROM_CONTINUE( 0x000000, 0x201000 )
 	ROM_IGNORE( 0x183F000 )
 	MSLUG_ESSENTIALPATCH_MODS_FILL
 	MSLUG_SFIX_128K
 	MSLUG_AUDIO_128K
     MSLUGDD_YMSND
-    MSLUGNDS_SPRITES
+    MSLUGDD_SPRITES
 ROM_END
 
  /**********************
@@ -1489,19 +1485,19 @@ GAME( 1996, msboot,           mslug,    neogeo_noslot, mslughb,   neogeo_state, 
 GAME( 1996, msluge,           mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "Nazca",           "Metal Slug (Earlier)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
-// Metal Slug (DARKSOFT Neo Geo Converted MVS To Decrypter/Encrypted C)
-GAME( 1996, mslugdd,          mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_darksoft,   ROT0, "Nazca",           "Metal Slug (Decrypted C / Darksoft)", MACHINE_SUPPORTS_SAVE )
+// Metal Slug (DARKSOFT Neo Geo Converted MVS To Decrypter C)
+GAME( 1996, mslugdd,          mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_darksoft,   ROT0, "Nazca",           "Metal Slug (Darksoft)", MACHINE_SUPPORTS_SAVE )
 
 // This uses a .neo file: 0x1000 bytes for header, then p rom (word_swap), then remainder is normal (HBMAME)
 // The .neo boot file (P1) is used, converted .neo to GFX Encrypted/Decrypted.
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (MATT GREER "CITY41" Neo Geo Converted .NEO SD)
-GAME( 1996, mslugnsd,         mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "Nazca",           "Metal Slug (Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, mslugnsd,         mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_darksoft,   ROT0, "Nazca",           "Metal Slug (Neo SD)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Exclusive Fightcade2)
-GAME( 2025, mslugdyf1,        mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Origins Random Item 2025-07-18)(Fightcade2)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugdyf1,        mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Origins Random Item 2025-07-18) (Fightcade2)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Hack)
@@ -1518,7 +1514,7 @@ GAME( 2017, mslughc10,        mslug,    neogeo_noslot, mslughb,   neogeo_state, 
 GAME( 2018, mslughc11,        mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslughc12,        mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslughc13,        mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Random Item 2024-04-15)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslughc14,        mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Random Item, Powerful Enemy Defense 2024-04-15)(Earlier)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslughc14,        mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Random Item, Powerful Enemy Defense 2024-04-15) (Earlier)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslughc15,        mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Random Item, Powerful Enemy Defense 2024-11-08)", MACHINE_SUPPORTS_SAVE )
 GAME( 2013, mslughc16,        mslug,    neogeo_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Unlimited Firepower 2013-06-13)", MACHINE_SUPPORTS_SAVE )
 
