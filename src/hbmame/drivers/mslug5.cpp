@@ -133,7 +133,7 @@ INPUT_PORTS_START( mslug5cqi )
 	PORT_DIPNAME( 0x40, 0x40, DEF_STR( Free_Play ) ) PORT_DIPLOCATION("SW:7")
 	PORT_DIPSETTING(    0x40, DEF_STR( Off ) )
 	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
-	PORT_BIT( 0x2000+0x8000, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_NAME("@P1 Enable Enemy Random Mode @Button6") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0xA000) PORT_CODE(KEYCODE_W)
+	PORT_BIT( 0x2000+0x8000, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_NAME("@P1 Enable Enemy Reset Mode @Button6") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0xA000) PORT_CODE(KEYCODE_W)
     PORT_BIT( 0x2000+0x0100, IP_ACTIVE_LOW, IPT_BUTTON7 ) PORT_NAME("@P1 Increase Star Difficulty Level @Button7") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x2100) PORT_CODE(KEYCODE_E)
     PORT_BIT( 0x2000+0x0200, IP_ACTIVE_LOW, IPT_BUTTON8 ) PORT_NAME("@P1 Lower Star Difficulty Level @Button8") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x2200) PORT_CODE(KEYCODE_R)
     PORT_BIT( 0x1000+0x4000+0x8000+0x0200+0x0100, IP_ACTIVE_LOW, IPT_BUTTON9 ) PORT_NAME("@P1 Enable Mod LV=X @Button9") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0xD300) PORT_CODE(KEYCODE_T)
@@ -5591,7 +5591,7 @@ INPUT_PORTS_END
 	NEO_EUROPE_MVS_BIOS_BOOT_AUDIO_512K( "268d.m1", CRC(39f3cbba) SHA1(56f9ba6a1ecfc28733b7b88c9796415cba0461f2) )
 
 #define MSLUG5CQ_AUDIO_BIOS_128K \
-	NEO_EUROPE_MVS_BIOS_BOOT_AUDIO_128K( "268cq.m1", CRC(346d4a30) SHA1(3fe143afab3ff75365750ca5c14d02737306cbc8) )
+	NEO_EUROPE_MVS_BIOS_BOOT_AUDIO_128K( "268_hc13.m1", CRC(346d4a30) SHA1(3fe143afab3ff75365750ca5c14d02737306cbc8) )
 
 #define MS5BOOT_AUDIO_128K \
 	NEO_BIOS_AUDIO_256K( "268boot.m1", CRC(792e07c1) SHA1(117516e8ec9026c7682ab27857aab6639bef5835) )
@@ -6293,9 +6293,19 @@ ROM_END
   Darksoft Neo Geo Decrypter
 *******************************/
 
+ROM_START( mslug5cqtdd )
+	ROM_REGION( 0xa00000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "promcqt", 0x000000, 0xa00000, CRC(af226dbc) SHA1(a3035573347d11bef31a3216b710e9654ce7cc91) )
+    MSLUG5CQ_ESSENTIALPATCH_MODS_FILL
+    MSLUG5D_SFIX_128K
+    MSLUG5CQ_AUDIO_BIOS_128K
+	MSLUG5CQDD_YMSND
+	MSLUG5CQDD_SPRITES
+ROM_END
+
 ROM_START( mslug5cqdd )
 	ROM_REGION( 0xa00000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "promcq", 0x000000, 0xa00000, CRC(c0faa4aa) SHA1(122b73123e0744172c5e9b6ceba9be1a03843a1b) )
+	ROM_LOAD16_WORD_SWAP( "promcq", 0x000000, 0xa00000, CRC(5417dbcd) SHA1(9638c855cf53a0c0bc1b2fa6730359ef75729fdf) )
     MSLUG5CQ_ESSENTIALPATCH_MODS_FILL
     MSLUG5D_SFIX_128K
     MSLUG5CQ_AUDIO_BIOS_128K
@@ -6399,11 +6409,23 @@ ROM_END
   Neo Geo Converted .NEO SD
 *******************************/
 
+ROM_START( mslug5cqtnds )
+	ROM_REGION( 0xb00000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "mslug5cqt.neo", 0x000000, 0x001000, CRC(d2c5f425) SHA1(ebb4601e224906a8e2c5b0b204d283f594823b00) )
+    ROM_CONTINUE( 0x000000, 0xa01000 )
+	ROM_IGNORE( 0x503F000 )
+    MSLUG5CQ_ESSENTIALPATCH_MODS_FILL
+    MSLUG5D_SFIX_128K
+    MSLUG5CQ_AUDIO_BIOS_128K
+	MSLUG5CQDD_YMSND
+	MSLUG5CQDD_SPRITES
+ROM_END
+
 ROM_START( mslug5cqnds )
 	ROM_REGION( 0xb00000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "mslug5cq.neo", 0x000000, 0x001000, CRC(6ce9a2ff) SHA1(f257992e9fdc8792a9b7fcff25c7809a0451f4a7) )
+	ROM_LOAD16_WORD_SWAP( "mslug5cq.neo", 0x000000, 0x001000, CRC(5fbaab81) SHA1(a88859ddcb97c5083e6da82d1747e1ee20fdad88) )
     ROM_CONTINUE( 0x000000, 0xa01000 )
-	ROM_IGNORE( 0x509F000 )
+	ROM_IGNORE( 0x503F000 )
     MSLUG5CQ_ESSENTIALPATCH_MODS_FILL
     MSLUG5D_SFIX_128K
     MSLUG5CQ_AUDIO_BIOS_128K
@@ -8711,7 +8733,8 @@ GAME( 2003, mslug5hdd,        mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug Hack (DARKSOFT Neo Geo Converted MVS To Decrypter C)
-GAME( 2025, mslug5cqdd,       mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 5 (Legendary 7.0 2025-07-06) (Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug5cqtdd,      mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 5 (Rise of the Ptolemaic Army 7.5T 2025-09-29) (Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug5cqdd,       mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 5 (Legendary Firepower Showdown 7.5 2025-09-29) (Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug5fdd,        mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 5 (Fierce Battle 2015-04-10) (Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2006, mslug5frdd,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 5 (French Translation 2006-09-26) (Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug5scdd,       mslug5,   neogeo_noslot, mslug5cq,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 5 (Survival 2023-06-12) (Darksoft)", MACHINE_SUPPORTS_SAVE )
@@ -8729,7 +8752,8 @@ GAME( 2003, mslug5hnsd,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (MATT GREER "CITY41" Neo Geo Hack Converted .NEO SD)
-GAME( 2025, mslug5cqnds,      mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 5 (Legendary 7.0 2025-07-06) (Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug5cqtnds,     mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 5 (Rise of the Ptolemaic Army 7.5T 2025-09-29) (Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug5cqnds,      mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 5 (Legendary Firepower Showdown 7.5 2025-09-29) (Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug5fnds,       mslug5,   neogeo_noslot, mslug5w,    neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 5 (Fierce Battle 2015-04-10) (Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2006, mslug5frnds,      mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 5 (French Translation 2006-09-26) (Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug5scnds,      mslug5,   neogeo_noslot, mslug5cq,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 5 (Survival 2023-06-12) (Neo SD)", MACHINE_SUPPORTS_SAVE )
