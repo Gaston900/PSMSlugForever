@@ -7075,7 +7075,7 @@ GAME( 2023, mslugxhc07,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,
 GAME( 2018, mslugxhc08,       mslugx,   neogeo_noslot, mslugxwp,   neogeo_state,    init_mslugx,     ROT0, "DDJ",             "Metal Slug X (Change Weapon And Mummy 2018-09-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslugxhc09,       mslugx,   neogeo_noslot, mslugxzh,   neogeo_state,    init_mslugx,     ROT0, "DDJ",             "Metal Slug X (War Chariot 2016-03-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslugxhc10,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Infinite Firepower 2021-03-20 )", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslugxhc11,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Unlimited Firepower 2020-10-18)(Earlier)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslugxhc11,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Unlimited Firepower 2020-10-18) (Earlier)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslugxhc12,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Unlimited Firepower 2021-03-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxhc13,       mslugx,   neogeo_noslot, mslugxdg,   neogeo_state,    init_mslugx,     ROT0, "GOTVG",           "Metal Slug X (Multifunction 2023-06-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslugxhc14,       mslugx,   neogeo_noslot, mslugxhb,   neogeo_state,    init_mslugx,     ROT0, "PPXCLUB",         "Metal Slug X (Burst Enhanced 2022-11-03)", MACHINE_SUPPORTS_SAVE )

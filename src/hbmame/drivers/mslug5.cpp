@@ -6259,7 +6259,7 @@ ROM_END
 
 ROM_START( ms5plusdd )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "promp", 0x000000, 0x500000, CRC(4677f2ad) SHA1(6a708620c1aa18c7a00c7a2840e6c79f5f5df430) )
+	ROM_LOAD16_WORD_SWAP( "promp", 0x000000, 0x500000, CRC(65ee5f6d) SHA1(2620b05ad086f49fb573b32a2611759b7cb485ad) )
     MSLUG5D_ESSENTIALPATCH_MODS_FILL
     MS5PLUSD_SFIX_128K
 	MSLUG5D_AUDIO_512K
@@ -6371,7 +6371,7 @@ ROM_END
 
 ROM_START( ms5plusnsd )
 	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "ms5plus.neo", 0x000000, 0x001000, CRC(0271c9c4) SHA1(139f06c393e2b7804af20e0b59de96c699e8a145) )
+	ROM_LOAD16_WORD_SWAP( "ms5plus.neo", 0x000000, 0x001000, CRC(504a5234) SHA1(259d9d333d8813be1f899bae2c2e54aa50da44ad) )
     ROM_CONTINUE( 0x000000, 0x501000 )
 	ROM_IGNORE( 0x509F000 )
     MSLUG5D_ESSENTIALPATCH_MODS_FILL
@@ -7262,7 +7262,7 @@ ROM_END
 
 ROM_START( mslug5ctma16 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_cma16.p1", 0x000000, 0x100000, CRC(a2b6bc24) SHA1(bfdd1b204501662be192c989000d25b2dd93ec81) )
+	ROM_LOAD16_WORD_SWAP( "268_cma16.p1", 0x000000, 0x100000, CRC(f8b19574) SHA1(accf0e57a4fc0344a149ece642de9fc287caf378) )
 	ROM_LOAD16_WORD_SWAP( "ms5p.p2",      0x100000, 0x200000, CRC(d6a458e8) SHA1(c0a8bdae06d62859fb6734766ccc190eb2a809a4) )
 	ROM_LOAD16_WORD_SWAP( "ms5p.p3",      0x300000, 0x200000, CRC(439ec031) SHA1(f0ad8f9be7d26bc504593c1321bd23c286a221f0) )
     MSLUG5NP_CCUZTOMESSENTIALPATCH_MODS_FILL
@@ -7445,7 +7445,7 @@ ROM_END
 
 ROM_START( mslug5ctmb16 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_cmb16.p1", 0x000000, 0x100000, CRC(83f9c90c) SHA1(e6a695ee73fe3bffa2527fdd9675a4290244664d) )
+	ROM_LOAD16_WORD_SWAP( "268_cmb16.p1", 0x000000, 0x100000, CRC(d9fee05c) SHA1(7563aa96b2a6c95235884af37af6a2eef9e795b1) )
 	ROM_LOAD16_WORD_SWAP( "268_cmb16.p2", 0x100000, 0x200000, CRC(ce4844cd) SHA1(93876c02173153a75a477ad077ac43dd0386ed30) )
 	ROM_LOAD16_WORD_SWAP( "ms5p.p3",      0x300000, 0x200000, CRC(439ec031) SHA1(f0ad8f9be7d26bc504593c1321bd23c286a221f0) )
     MSLUG5NP_XCUZTOMESSENTIALPATCH_MODS_FILL
@@ -7608,7 +7608,7 @@ ROM_END
 
 ROM_START( mslug5ctmc15 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_cmc15.p1", 0x000000, 0x100000, CRC(5a783eaf) SHA1(15a05b713885daf367143b0c2d73e554bf224782) )
+	ROM_LOAD16_WORD_SWAP( "268_cmc15.p1", 0x000000, 0x100000, CRC(007f17ff) SHA1(40cf6fdb34a629ed3d566629973cf444458323b7) )
 	ROM_LOAD16_WORD_SWAP( "268_cmc15.p2", 0x100000, 0x200000, CRC(f5ca54b8) SHA1(87b8e35020556aa1b4bc0cdeed62d545ad483059) )
 	ROM_LOAD16_WORD_SWAP( "ms5p.p3",      0x300000, 0x200000, CRC(439ec031) SHA1(f0ad8f9be7d26bc504593c1321bd23c286a221f0) )
     MSLUG5NP_SECUZTOMESSENTIALPATCH_MODS_FILL
@@ -7791,7 +7791,7 @@ ROM_END
 
 ROM_START( mslug5ctmd16 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_cmd16.p1", 0x000000, 0x100000, CRC(3df60cad) SHA1(aec93aa9aac6d3e6a2ae18bdc5f4a54f36554f9e) )
+	ROM_LOAD16_WORD_SWAP( "268_cmd16.p1", 0x000000, 0x100000, CRC(67f125fd) SHA1(a44395d35d408054cd1f4d415efe4c8efcef5ae1) )
 	ROM_LOAD16_WORD_SWAP( "268_cmd16.p2", 0x100000, 0x200000, CRC(77481111) SHA1(54390ba8988b132b6ae826f86bcc69bdc47a0c42) )
 	ROM_LOAD16_WORD_SWAP( "ms5p.p3",      0x300000, 0x200000, CRC(439ec031) SHA1(f0ad8f9be7d26bc504593c1321bd23c286a221f0) )
     MSLUG5NP_WCUZTOMESSENTIALPATCH_MODS_FILL
@@ -7974,7 +7974,7 @@ ROM_END
 
 ROM_START( mslug5ctme16 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_cme16.p1", 0x000000, 0x100000, CRC(745b756d) SHA1(cfbb8250863849d28a3b6d5106c8e824aeb8f9f7) )
+	ROM_LOAD16_WORD_SWAP( "268_cme16.p1", 0x000000, 0x100000, CRC(2e5c5c3d) SHA1(78a09d58f2dda06f52e5720aa60dce22df9ef72d) )
 	ROM_LOAD16_WORD_SWAP( "268_cme16.p2", 0x100000, 0x200000, CRC(21767527) SHA1(ac14b888b6aabdae4a2c8b4a38a07ed6c2d30759) )
 	ROM_LOAD16_WORD_SWAP( "ms5p.p3",      0x300000, 0x200000, CRC(439ec031) SHA1(f0ad8f9be7d26bc504593c1321bd23c286a221f0) )
     MSLUG5NP_MG1CUZTOMESSENTIALPATCH_MODS_FILL
@@ -8157,7 +8157,7 @@ ROM_END
 
 ROM_START( mslug5ctmf16 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_cmf16.p1", 0x000000, 0x100000, CRC(bd44e91c) SHA1(b41aaa2c1bdb3f8afb30876a1a08e894dc6bb57c) )
+	ROM_LOAD16_WORD_SWAP( "268_cmf16.p1", 0x000000, 0x100000, CRC(e743c04c) SHA1(43b0245907eddc5b608024c44e5e1069ed5aface) )
 	ROM_LOAD16_WORD_SWAP( "268_cmf16.p2", 0x100000, 0x200000, CRC(3f7c9db2) SHA1(67cb7081a2b921e0fd355b53a6c340ddaf5a497c) )
 	ROM_LOAD16_WORD_SWAP( "ms5p.p3",      0x300000, 0x200000, CRC(439ec031) SHA1(f0ad8f9be7d26bc504593c1321bd23c286a221f0) )
     MSLUG5NP_MG2CUZTOMESSENTIALPATCH_MODS_FILL
@@ -8340,7 +8340,7 @@ ROM_END
 
 ROM_START( mslug5ctmg16 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_cmg16.p1", 0x000000, 0x100000, CRC(ef5d7429) SHA1(8cff8a3c548959c7a7eebf1dedee431a5213d6ac) )
+	ROM_LOAD16_WORD_SWAP( "268_cmg16.p1", 0x000000, 0x100000, CRC(b55a5d79) SHA1(331ec3337e8bbb44c92f830134c3141aba48e42e) )
 	ROM_LOAD16_WORD_SWAP( "268_cmg16.p2", 0x100000, 0x200000, CRC(974ef288) SHA1(f1968cf0e11360cad038df4b4a9ceb3f8aeebf10) )
 	ROM_LOAD16_WORD_SWAP( "ms5p.p3",      0x300000, 0x200000, CRC(439ec031) SHA1(f0ad8f9be7d26bc504593c1321bd23c286a221f0) )
     MSLUG5NP_MG3CUZTOMESSENTIALPATCH_MODS_FILL
@@ -8727,7 +8727,7 @@ GAME( 2003, mslug5b8,         mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (DARKSOFT Neo Geo Converted MVS To Decrypter C)
 GAME( 2003, ms5pcbdd,         mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5dd,   ROT0, "SNK Playmore",    "Metal Slug 5 (JAMMA PCB) (Darksoft)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, ms5plusdd,        mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_ms5plusdd,  ROT0, "Bootleg",         "Metal Slug 5 Plus (Bootleg) (Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, ms5plusdd,        mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_darksoft,   ROT0, "Bootleg",         "Metal Slug 5 Plus (Bootleg) (Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5dd,         mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5dd,   ROT0, "SNK Playmore",    "Metal Slug 5 (NGM-2680) (Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5hdd,        mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5dd,   ROT0, "SNK Playmore",    "Metal Slug 5 (NGH-2680) (Darksoft)", MACHINE_SUPPORTS_SAVE )
 
@@ -8746,7 +8746,7 @@ GAME( 2015, mslug5wdd,        mslug5,   neogeo_noslot, mslug5w,    neogeo_state,
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (MATT GREER "CITY41" Neo Geo Converted .NEO SD)
 GAME( 2003, ms5pcbdnsd,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5dd,   ROT0, "SNK Playmore",    "Metal Slug 5 (JAMMA PCB) (Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, ms5plusnsd,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_ms5plusdd,  ROT0, "Bootleg",         "Metal Slug 5 Plus (Bootleg) (Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, ms5plusnsd,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_darksoft,   ROT0, "Bootleg",         "Metal Slug 5 Plus (Bootleg) (Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5nsd,        mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5dd,   ROT0, "SNK Playmore",    "Metal Slug 5 (NGM-2680) (Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5hnsd,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5dd,   ROT0, "SNK Playmore",    "Metal Slug 5 (NGH-2680) (Neo SD)", MACHINE_SUPPORTS_SAVE )
 
@@ -8820,7 +8820,7 @@ GAME( 2018, mslug5hc25,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,
 GAME( 2022, mslug5hc26,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "GOTVG",           "Metal Slug 5 (Enemy Soldiers Enhanced 2022-04-06) (Earlier)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc27,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "GOTVG",           "Metal Slug 5 (X 2022-06-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug5hc28,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "hack",            "Metal Slug 5 Plus (Hide Oh Big Mode 2022-11-03)", MACHINE_SUPPORTS_SAVE )
-GAME( 2019, mslug5hc29,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_ms5plush,   ROT0, "GOTVG",           "Metal Slug 5 Plus (2019-07-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, mslug5hc29,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_ms5plus,    ROT0, "GOTVG",           "Metal Slug 5 Plus (2019-07-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug5hc30,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "GOTVG",           "Metal Slug 5 (Ammo Random 2025-02-08)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug5hc31,       mslug5,   neogeo_noslot, mslug5hb,   neogeo_state,    init_mslug5,     ROT0, "GOTVG",           "Metal Slug 5 (Devil Enemy Remix 2019-12-07)", MACHINE_SUPPORTS_SAVE )
 
@@ -8853,7 +8853,7 @@ GAME( 2024, mslug5ctma12,     mslug5,   neogeo_noslot, mslug5es,   neogeo_state,
 GAME( 2024, mslug5ctma13,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemies Resetting Ultimate Simplified Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctma14,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemies Resetting Unity Time! Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctma15,     mslug5,   neogeo_noslot, mslug5zh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemies Resetting War Chariot Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug5ctma16,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_ms5plusd,   ROT0, "PSMSlugForever",  "Metal Slug 5 Plus (Enemies Resetting Cuztom 2024-04-19)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5ctma16,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 5 Plus (Enemies Resetting Cuztom 2024-04-19)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctma17,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (Enemies Resetting X Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmb01,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (X 1v2 Mode Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmb02,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (X Burst Enhanced Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
@@ -8870,7 +8870,7 @@ GAME( 2024, mslug5ctmb12,     mslug5,   neogeo_noslot, mslug5es,   neogeo_state,
 GAME( 2024, mslug5ctmb13,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (X Ultimate Simplified Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmb14,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (X Unity Time! Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmb15,     mslug5,   neogeo_noslot, mslug5zh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (X War Chariot Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug5ctmb16,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_ms5plusd,   ROT0, "PSMSlugForever",  "Metal Slug 5 Plus (X Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5ctmb16,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 5 Plus (X Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmc01,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (The Longest Battle 1v2 Mode Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmc02,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (The Longest Battle Burst Enhanced Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmc03,     mslug5,   neogeo_noslot, mslug5wp,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (The Longest Battle Change Weapons Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
@@ -8885,7 +8885,7 @@ GAME( 2024, mslug5ctmc11,     mslug5,   neogeo_noslot, mslug5hb,   neogeo_state,
 GAME( 2024, mslug5ctmc12,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (The Longest Battle Ultimate Simplified Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmc13,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (The Longest Battle Unity Time! Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmc14,     mslug5,   neogeo_noslot, mslug5zh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (The Longest Battle War Chariot Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug5ctmc15,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_ms5plusd,   ROT0, "PSMSlugForever",  "Metal Slug 5 Plus (The Longest Battle Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5ctmc15,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 5 Plus (The Longest Battle Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmc16,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (The Longest Battle X Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmd01,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (New Battle 1v2 Mode Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmd02,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (New Battle Burst Enhanced Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
@@ -8902,7 +8902,7 @@ GAME( 2024, mslug5ctmd12,     mslug5,   neogeo_noslot, mslug5es,   neogeo_state,
 GAME( 2024, mslug5ctmd13,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (New Battle Ultimate Simplified Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmd14,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (New Battle Unity Time! Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmd15,     mslug5,   neogeo_noslot, mslug5zh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (New Battle War Chariot Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug5ctmd16,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_ms5plusd,   ROT0, "PSMSlugForever",  "Metal Slug 5 Plus (New Battle Cuztom 2024-04-19)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5ctmd16,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 5 Plus (New Battle Cuztom 2024-04-19)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmd17,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (New Battle X Cuztom 2024-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctme01,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (Devil Enemy Remix #1 1v2 Mode Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctme02,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (Devil Enemy Remix #1 Burst Enhanced Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
@@ -8919,7 +8919,7 @@ GAME( 2024, mslug5ctme12,     mslug5,   neogeo_noslot, mslug5es,   neogeo_state,
 GAME( 2024, mslug5ctme13,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (Devil Enemy Remix #1 Ultimate Simplified Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctme14,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (Devil Enemy Remix #1 Unity Time! Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctme15,     mslug5,   neogeo_noslot, mslug5zh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (Devil Enemy Remix #1 War Chariot Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug5ctme16,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_ms5plusd,   ROT0, "PSMSlugForever",  "Metal Slug 5 Plus (Devil Enemy Remix #1 Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5ctme16,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 5 Plus (Devil Enemy Remix #1 Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctme17,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (Devil Enemy Remix #1 X Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmf01,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (Devil Enemy Remix #2 1v2 Mode Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmf02,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (Devil Enemy Remix #2 Burst Enhanced Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
@@ -8936,7 +8936,7 @@ GAME( 2024, mslug5ctmf12,     mslug5,   neogeo_noslot, mslug5es,   neogeo_state,
 GAME( 2024, mslug5ctmf13,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (Devil Enemy Remix #2 Ultimate Simplified Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmf14,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (Devil Enemy Remix #2 Unity Time! Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmf15,     mslug5,   neogeo_noslot, mslug5zh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (Devil Enemy Remix #2 War Chariot Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug5ctmf16,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_ms5plusd,   ROT0, "PSMSlugForever",  "Metal Slug 5 Plus (Devil Enemy Remix #2 Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5ctmf16,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 5 Plus (Devil Enemy Remix #2 Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmf17,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (Devil Enemy Remix #2 X Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmg01,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (Devil Enemy Remix #3 1v2 Mode Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmg02,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (Devil Enemy Remix #3 Burst Enhanced Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
@@ -8953,7 +8953,7 @@ GAME( 2024, mslug5ctmg12,     mslug5,   neogeo_noslot, mslug5es,   neogeo_state,
 GAME( 2024, mslug5ctmg13,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (Devil Enemy Remix #3 Ultimate Simplified Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmg14,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (Devil Enemy Remix #3 Unity Time! Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmg15,     mslug5,   neogeo_noslot, mslug5zh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (Devil Enemy Remix #3 War Chariot Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslug5ctmg16,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_ms5plusd,   ROT0, "PSMSlugForever",  "Metal Slug 5 Plus (Devil Enemy Remix #3 Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslug5ctmg16,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 5 Plus (Devil Enemy Remix #3 Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug5ctmg17,     mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PSMSlugForever",  "Metal Slug 5 (Devil Enemy Remix #3 X Cuztom 2024-05-06)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */

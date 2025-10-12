@@ -101,15 +101,12 @@ public:
 	void init_darksoft();
 	void init_ms5pcb();
 	void init_ms5plus();
-	void init_ms5plusd();
-	void init_ms5plush();
-	void init_ms5plusdd();		   
 	void init_mslug3();
 	void init_mslug3a();
 	void init_mslug3e();
 	void init_mslug3cqt();
 	void init_mslug3dd();
-    void init_mslug3b6d();
+    void init_mslug3b6();
 	void init_mslug4();
     void init_mslug4dd();
     void init_mslug4lw();
