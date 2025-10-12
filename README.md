@@ -43,7 +43,7 @@ Expand the memory file adpcma rom that can be read to 0x2000000.
 
 The free mod is enabled on the NeoGeo system by pressing the Start button, you don't need to add credits every time you lose.
 
-It has been configured by default that it has 99 Credits in MVS/AES mode.
+It has been configured by default that it has 99 Credits in AES mode.
 
 It supports switching between MVS (Arcade) and AES (Console) mode.
 
@@ -56,8 +56,6 @@ Removed warning screen.
 Removed Startups, Loading, Decryption screen texts.
 
 The Arcade64 "GUI" EKMAME source code has been implemented (By KAZE).
-
-The Arcade64 "GUI" some default settings have been implemented.
 
 It is already pre-configured, enforce aspect ratio is disabled, full screen mode and tricks are already enabled by default.
 
@@ -95,3 +93,4 @@ The compilation [TOOL](https://github.com/mamedev/buildtools/releases) is sugges
 Open Source Software Projects
 ------------------------------
 Although the source code is free to use, please note that the use of this code for any commercial exploitation or use of the project for fundraising purposes is prohibited.
+
