@@ -37,7 +37,7 @@ const ioport_value IP_ACTIVE_HIGH = 0x00000000;
 const ioport_value IP_ACTIVE_LOW = 0xffffffff;
 
 // maximum number of players supported
-const int MAX_PLAYERS = 10;
+const int MAX_PLAYERS = 4;
 
 // unicode constants
 const char32_t UCHAR_PRIVATE = 0x100000;
