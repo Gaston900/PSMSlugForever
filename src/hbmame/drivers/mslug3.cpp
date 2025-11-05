@@ -13280,8 +13280,8 @@ ROM_END
 
 ROM_START( mslug3hc38 ) //mslug3hamy
 	ROM_REGION( 0xa00000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "256_hc38.p1", 0x000000, 0x100000, CRC(08af5bc7) SHA1(008fc38bab060bba6926e3aacbd77fb56699c12e) )
-	ROM_LOAD16_WORD_SWAP( "256_hc38.p2", 0x100000, 0x800000, CRC(b79cdfb6) SHA1(dceffd97d3c2b725b2599167c49c010e148b4408) )
+	ROM_LOAD16_WORD_SWAP( "256_hc38.p1", 0x000000, 0x100000, CRC(8a1af079) SHA1(e706cc314e423e5a42500f0d941c9b4f86bdc48f) )
+	ROM_LOAD16_WORD_SWAP( "256_hc38.p2", 0x100000, 0x800000, CRC(7a802c89) SHA1(2b86dca2a0dd3b032270a2ea8f2e307e02a3331e) )
     MSLUG3CQI_ESSENTIALPATCH_MODS_FILL
 	MSLUG3HD_SFIX_128K
 	MSLUG3_AUDIO_BIOS_512K
@@ -15424,7 +15424,7 @@ GAME( 2023, mslug3hc34,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,
 GAME( 2023, mslug3hc35,       mslug3,   neogeo_noslot, mslug3hb,   neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Survival 2023-03-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug3hc36,       mslug3,   neogeo_noslot, mslug3cq,   neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Legendary 4.5 2025-07-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug3hc37,       mslug3,   neogeo_noslot, mslug3cq,   neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Legendary Firepower Showdown 7.5 2025-09-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug3hc38,       mslug3,   neogeo_noslot, mslug3cqi,  neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Dark Fate 7.5H 2025-09-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug3hc38,       mslug3,   neogeo_noslot, mslug3cqi,  neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Dark Fate 7.5H 2025-10-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug3hc39,       mslug3,   neogeo_68kram, mslug3sc,   neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Legendary Tower Defense 6.0 2025-06-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslug3hc40,       mslug3,   neogeo_noslot, mslug3sc,   neogeo_state,    init_mslug3,     ROT0, "GOTVG",           "Metal Slug 3 (Legendary Journey 2024-11-14)", MACHINE_SUPPORTS_SAVE )
 

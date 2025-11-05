@@ -6895,7 +6895,7 @@ ROM_END
 
 ROM_START( mslug5hc13 ) //mslug5cq
 	ROM_REGION( 0xa00000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "268_hc13.p1", 0x000000, 0xa00000, CRC(5417dbcd) SHA1(9638c855cf53a0c0bc1b2fa6730359ef75729fdf) )
+	ROM_LOAD16_WORD_SWAP( "268_hc13.p1", 0x000000, 0xa00000, CRC(86ac155a) SHA1(5d4893ebfa4bb592c36c803e9e92f5b995e7382f) )
     MSLUG5CQ_ESSENTIALPATCH_MODS_FILL
     MSLUG5D_SFIX_128K
     MSLUG5CQ_AUDIO_BIOS_128K
@@ -8804,7 +8804,7 @@ GAME( 2021, mslug5hc09,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,
 GAME( 2023, mslug5hc10,       mslug5,   neogeo_noslot, mslug5es,   neogeo_state,    init_mslug5,     ROT0, "GOTVG",           "Metal Slug 5 (The Longest Battle 2023-02-08)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug5hc11,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "PPXCLUB",         "Metal Slug 5 (Burst Enhanced 2022-11-03)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug5hc12,       mslug5,   neogeo_noslot, mslug5cq,   neogeo_state,    init_mslug5,     ROT0, "GOTVG",           "Metal Slug 5 (Survival 2023-06-12)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug5hc13,       mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_mslug5,     ROT0, "GOTVG",           "Metal Slug 5 (Legendary Firepower Showdown 7.5 2025-09-29)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug5hc13,       mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_mslug5,     ROT0, "GOTVG",           "Metal Slug 5 (Legendary Firepower Showdown 7.5 2025-10-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug5hc14,       mslug5,   neogeo_noslot, mslug5cqi,  neogeo_state,    init_mslug5,     ROT0, "GOTVG",           "Metal Slug 5 (Rise of the Ptolemaic Army 7.5T 2025-09-29)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug5hc15,       mslug5,   neogeo_noslot, mslug5vh,   neogeo_state,    init_mslug5,     ROT0, "GOTVG",           "Metal Slug 5 (1v2 Mode 2019-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug5hc16,       mslug5,   neogeo_noslot, mslug5hb,   neogeo_state,    init_mslug5,     ROT0, "GOTVG",           "Metal Slug 5 (Vehicle Slug 2018-09-18)", MACHINE_SUPPORTS_SAVE )
