@@ -75,8 +75,10 @@ mslug3b6dd        // Bootleg (Darksoft)
 mslug3ndd         // SNK (Fully Decrypted) (Darksoft)
 mslug4dd          // Mega / Playmore (Darksoft)
 mslug4hdd         // Mega / Playmore (Darksoft)
+mslug4ndd         // Mega / Playmore (Fully Decrypted) (Darksoft)
 mslug5dd          // SNK Playmore (Darksoft)
 mslug5hdd         // SNK Playmore (Darksoft)
+mslug5ndd         // SNK Playmore (Fully Decrypted) (Darksoft)
 mslugxdd          // SNK (Darksoft)
 
 @source:neogeo.cpp
@@ -129,8 +131,10 @@ mslug3b6nsd       // Bootleg (Neo SD)
 mslug3ndnsd       // SNK (Fully Decrypted) (Neo SD)
 mslug4nsd         // Mega / Playmore (Neo SD)
 mslug4hnsd        // Mega / Playmore (Neo SD)
+mslug4ndnsd       // Mega / Playmore (Fully Decrypted) (Neo SD)
 mslug5nsd         // SNK Playmore (Neo SD)
 mslug5hnsd        // SNK Playmore (Neo SD)
+mslug5ndnsd       // SNK Playmore (Fully Decrypted) (Neo SD)
 mslugxnsd         // SNK (Neo SD)
 
 @source:neogeo.cpp
