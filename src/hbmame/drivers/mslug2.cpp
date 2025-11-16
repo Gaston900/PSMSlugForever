@@ -31,7 +31,7 @@
     Game specific input definitions
  *************************************/
 
-INPUT_PORTS_START( mslug2hb )
+INPUT_PORTS_START( mslug2 )
 	PORT_INCLUDE( neogeo )
 
 	PORT_MODIFY("DSW")
@@ -42,7 +42,7 @@ INPUT_PORTS_START( mslug2hb )
 INPUT_PORTS_END
 
 INPUT_PORTS_START( mslug2wp )
-	PORT_INCLUDE( mslug2hb )
+	PORT_INCLUDE( mslug2 )
 
 	PORT_MODIFY("DSW")
 	PORT_BIT( 0x8100, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_NAME("@P1 Body Change @Button6") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8100) PORT_CODE(KEYCODE_W)
@@ -54,7 +54,7 @@ INPUT_PORTS_START( mslug2wp )
 INPUT_PORTS_END
 
 INPUT_PORTS_START( mslug2eg )
-	PORT_INCLUDE( mslug2hb )
+	PORT_INCLUDE( mslug2 )
 
 	PORT_MODIFY("DSW")
 	PORT_DIPNAME( 0x02, 0x02, DEF_STR( Cabinet ) ) PORT_DIPLOCATION("SW:2")
@@ -91,7 +91,7 @@ INPUT_PORTS_START( mslug2cq )
 INPUT_PORTS_END
 
 INPUT_PORTS_START( mslug2sd )
-	PORT_INCLUDE( mslug2hb )
+	PORT_INCLUDE( mslug2 )
 
 	PORT_MODIFY("DSW")
 	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_NAME("@P1 Weapon Change @Button4") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8000)
@@ -111,7 +111,7 @@ INPUT_PORTS_START( mslug2sdi )
 INPUT_PORTS_END
 
 INPUT_PORTS_START( mslug2zh )
-	PORT_INCLUDE( mslug2hb )
+	PORT_INCLUDE( mslug2 )
 
 	PORT_MODIFY("SYSTEM")
 	PORT_BIT( 0x0010, IP_ACTIVE_LOW, IPT_CUSTOM )  PORT_CONDITION("SYSTEM", 0x0110, NOTEQUALS, 0x0010)
@@ -1914,6 +1914,10 @@ INPUT_PORTS_END
 	ROM_REGION( 0x2000000, "sprites", 0 ) \
 	ROM_LOAD( "crom0fr", 0x0000000, 0x2000000, CRC(16abbde3) SHA1(c876556f85ed5ce1a63b93cf8d676d703d2ca125) )
 
+#define MSLUG2NSD_SPRITES \
+	ROM_REGION( 0x2000000, "sprites", 0 ) \
+	ROM_LOAD( "241nsd.c1", 0x0000000, 0x2000000, CRC(f7d491c1) SHA1(c50dbfda64dcde300251ddad2bc4a0cd9bb221e7) )
+
 #define MSLUG2FR_SPRITES \
 	ROM_REGION( 0x2000000, "sprites", 0 ) \
 	ROM_LOAD16_BYTE( "241_hc17.c1", 0x0000000, 0x800000, CRC(7df74035) SHA1(08322a2f4e87cd125ebc5b7a98754c7a5b8e91d2) )\
@@ -2038,7 +2042,7 @@ ROM_START( mslug2nsd )
 	MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2DD_YMSND
-    MSLUG2DD_SPRITES
+    MSLUG2NSD_SPRITES
 ROM_END
 
 ROM_START( mslug2tnsd )
@@ -2050,7 +2054,7 @@ ROM_START( mslug2tnsd )
 	MSLUG2_SFIX_128K
     MSLUG2_AUDIO_128K
     MSLUG2DD_YMSND
-    MSLUG2DD_SPRITES
+    MSLUG2NSD_SPRITES
 ROM_END
 
  /***************************
@@ -2722,9 +2726,9 @@ ROM_START( mslug2rmb02 )
     MSLUG2_SPRITES
 ROM_END
 
-/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug 2 (MVS AND AES VERSION)
-GAME( 1998, mslug2,           neogeo,   neogeo_noslot,   mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "SNK",             "Metal Slug 2 - Super Vehicle-001/II (NGM-2410 ~ NGH-2410)", MACHINE_SUPPORTS_SAVE )
+GAME( 1998, mslug2,           neogeo,   neogeo_noslot,   mslug2,     neogeo_state,    init_neogeo,     ROT0, "SNK",             "Metal Slug 2 - Super Vehicle-001/II (NGM-2410 ~ NGH-2410)", MACHINE_SUPPORTS_SAVE )
 
 /***************************************************************************************************************************************************
   The prototype roms that had been published by the NEORAGEX, FBA Evolution, MAMEYA Lite, Mame Plus, Neomame32 Plus, Caname emulator are included, in 
@@ -2732,60 +2736,60 @@ GAME( 1998, mslug2,           neogeo,   neogeo_noslot,   mslug2hb,   neogeo_stat
   were Looked for an alternate means to be able to play this roms by making an encrypted file. 
 *****************************************************************************************************************************************************/
 
-/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug 2 (Predecrypted, Decrypter, Earlier, Bootleg And Encrypted)
-GAME( 2015, mslug2t,          mslug2,   neogeo_noslot,   mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "SNK",             "Metal Slug 2 Turbo", MACHINE_SUPPORTS_SAVE )
+GAME( 2015, mslug2t,          mslug2,   neogeo_noslot,   mslug2,     neogeo_state,    init_neogeo,     ROT0, "SNK",             "Metal Slug 2 Turbo", MACHINE_SUPPORTS_SAVE )
 
-/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug 2 (DARKSOFT)
-GAME( 1998, mslug2dd,         mslug2,   neogeo_noslot,   mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "SNK",             "Metal Slug 2 (Darksoft)", MACHINE_SUPPORTS_SAVE )
-GAME( 1998, mslug2tdd,        mslug2,   neogeo_noslot,   mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "SNK",             "Metal Slug 2 Turbo (Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 1998, mslug2dd,         mslug2,   neogeo_noslot,   mslug2,     neogeo_state,    init_darksoft,   ROT0, "SNK",             "Metal Slug 2 (Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 1998, mslug2tdd,        mslug2,   neogeo_noslot,   mslug2,     neogeo_state,    init_darksoft,   ROT0, "SNK",             "Metal Slug 2 Turbo (Darksoft)", MACHINE_SUPPORTS_SAVE )
 
-/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug 2 Hack (DARKSOFT)
-GAME( 2022, mslug2dddd,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (Starlight 2022-05-11) (Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslug2dddd,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (Starlight 2022-05-11) (Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2egdd,       mslug2,   neoclock_noslot, mslug2eg,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (Extraction Green Turbo 2021-09-16) (Darksoft)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2006, mslug2frdd,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (French Translation 2006-09-26) (Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslug2frdd,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (French Translation 2006-09-26) (Darksoft)", MACHINE_SUPPORTS_SAVE )
 
 // This uses a .neo file: 0x1000 bytes for header, then p rom (word_swap).
 // The .neo (P1) boot file is used independently of the GFX Encrypted/Decrypted.
 
-/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug 2 (NEO SD)
-GAME( 1998, mslug2nsd,        mslug2,   neogeo_noslot,   mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "SNK",             "Metal Slug 2 (Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 1998, mslug2tnsd,       mslug2,   neogeo_noslot,   mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "SNK",             "Metal Slug 2 Turbo (Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 1998, mslug2nsd,        mslug2,   neogeo_noslot,   mslug2,     neogeo_state,    init_neogeo,     ROT0, "SNK",             "Metal Slug 2 (Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 1998, mslug2tnsd,       mslug2,   neogeo_noslot,   mslug2,     neogeo_state,    init_neogeo,     ROT0, "SNK",             "Metal Slug 2 Turbo (Neo SD)", MACHINE_SUPPORTS_SAVE )
 
-/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug 2 Hack (NEO SD)
-GAME( 2022, mslug2ddnds,      mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (Starlight 2022-05-11) (Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslug2ddnds,      mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (Starlight 2022-05-11) (Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2egnds,      mslug2,   neoclock_noslot, mslug2eg,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (Extraction Green Turbo 2021-09-16) (Neo SD)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2006, mslug2frnds,      mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (French Translation 2006-09-26) (Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslug2frnds,      mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_darksoft,   ROT0, "hack",            "Metal Slug 2 (French Translation 2006-09-26) (Neo SD)", MACHINE_SUPPORTS_SAVE )
 
-/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug 2 (Exclusive Fightcade2)
-GAME( 2021, mslug2fm,         mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "CXZInc, Alice",   "Metal Slug 2 (Friendly Fire 2021-04-15) (Fightcade2)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug2fm,         mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "CXZInc, Alice",   "Metal Slug 2 (Friendly Fire 2021-04-15) (Fightcade2)", MACHINE_SUPPORTS_SAVE )
 
-/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug 2 (Hack)
-GAME( 2014, mslug2hc01,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 2 (Enemies Resetting 2014-09-14)", MACHINE_SUPPORTS_SAVE )
-GAME( 2019, mslug2hc02,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 2 (1v2 Mode 2019-05-11)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug2hc03,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (Unity Time! 2021-01-22)", MACHINE_SUPPORTS_SAVE )
-GAME( 2008, mslug2hc04,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (Hybrid bullets 2023-02-15)", MACHINE_SUPPORTS_SAVE ) // This 2023 has been fix
+GAME( 2014, mslug2hc01,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 2 (Enemies Resetting 2014-09-14)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, mslug2hc02,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 2 (1v2 Mode 2019-05-11)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug2hc03,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (Unity Time! 2021-01-22)", MACHINE_SUPPORTS_SAVE )
+GAME( 2008, mslug2hc04,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (Hybrid bullets 2023-02-15)", MACHINE_SUPPORTS_SAVE ) // This 2023 has been fix
 GAME( 2021, mslug2hc05,       mslug2,   neoclock_noslot, mslug2eg,   neogeo_state,    init_neogeo,     ROT0, "Phengzheng",      "Metal Slug 2 (Extraction Green Turbo 2021-09-16)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslug2hc06,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 2 (Friendly Fire 2021-04-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslug2hc06,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 2 (Friendly Fire 2021-04-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug2hc07,       mslug2,   neoclock_noslot, mslug2wp,   neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug 2 (Change Weapon And Mummy 2018-08-25)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslug2hc08,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "PPXCLUB",         "Metal Slug 2 (Burst Enhanced 2022-11-03)", MACHINE_SUPPORTS_SAVE )
-GAME( 2017, mslug2hc09,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 2 (Multifunction 2017-05-09)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslug2hc08,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "PPXCLUB",         "Metal Slug 2 (Burst Enhanced 2022-11-03)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, mslug2hc09,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 2 (Multifunction 2017-05-09)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug2hc10,       mslug2,   neoclock_noslot, mslug2cq,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 2 (Survival 2018-07-31)", MACHINE_SUPPORTS_SAVE ) // To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
-GAME( 2015, mslug2hc11,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 2 (Weapon Storage 2015-11-11)", MACHINE_SUPPORTS_SAVE )
-GAME( 2016, mslug2hc12,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (Slug #1 2016-04-12)", MACHINE_SUPPORTS_SAVE )
+GAME( 2015, mslug2hc11,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 2 (Weapon Storage 2015-11-11)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, mslug2hc12,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (Slug #1 2016-04-12)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug2hc13,       mslug2,   neoclock_noslot, mslug2zh,   neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug 2 (War Chariot 2018-01-25)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslug2hc14,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 2 (Starlight 2022-05-11)", MACHINE_SUPPORTS_SAVE )
-GAME( 2016, mslug2hc15,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug 2 (Stage Select 2016-10-19)", MACHINE_SUPPORTS_SAVE )
-GAME( 2015, mslug2hc16,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug 2 (Jump In Mid Air 2015-08-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2006, mslug2hc17,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "Shyma.X",         "Metal Slug 2 (French Translation 2006-09-26)", MACHINE_SUPPORTS_SAVE )
-GAME( 2011, mslug2hc18,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (A Full Screen Attack 2011-01-16)", MACHINE_SUPPORTS_SAVE )
-GAME( 2018, mslug2hc19,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslug2hc14,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 2 (Starlight 2022-05-11)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, mslug2hc15,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug 2 (Stage Select 2016-10-19)", MACHINE_SUPPORTS_SAVE )
+GAME( 2015, mslug2hc16,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug 2 (Jump In Mid Air 2015-08-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslug2hc17,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "Shyma.X",         "Metal Slug 2 (French Translation 2006-09-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2011, mslug2hc18,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (A Full Screen Attack 2011-01-16)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, mslug2hc19,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
 
 /*********************************************************************************
 * This game sector is exclusive 2017 - 2025, its modifications that load have been customized
@@ -2799,47 +2803,47 @@ GAME( 2018, mslug2hc19,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_stat
 * They are the first hack remix roms that I have made in a basic way for the HBMAME emulator.
 **************************************************************************************************/
 
-/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Cuztom)
 GAME( 2025, mslug2ctma01,     mslug2,   neoclock_noslot, mslug2cq,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting Survival Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE ) // To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
-GAME( 2025, mslug2ctma02,     mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting Multifunction Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug2ctma03,     mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting 1v2 Mode Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug2ctma04,     mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting Hybrid bullets Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE ) // This 2023 has been fix
-GAME( 2025, mslug2ctma05,     mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting Burst Enhanced Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug2ctma06,     mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting Easy Mode Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug2ctma07,     mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting Weapon Storage Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug2ctma08,     mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting Unity Time! Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug2ctma09,     mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting Friendly Fire Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug2ctma02,     mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting Multifunction Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug2ctma03,     mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting 1v2 Mode Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug2ctma04,     mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting Hybrid bullets Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE ) // This 2023 has been fix
+GAME( 2025, mslug2ctma05,     mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting Burst Enhanced Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug2ctma06,     mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting Easy Mode Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug2ctma07,     mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting Weapon Storage Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug2ctma08,     mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting Unity Time! Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug2ctma09,     mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting Friendly Fire Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug2ctma10,     mslug2,   neoclock_noslot, mslug2zh,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting War Chariot Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug2ctma11,     mslug2,   neoclock_noslot, mslug2wp,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting Change Weapon And Mummy Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug2ctma12,     mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting Starlight Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug2ctma12,     mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting Starlight Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug2ctma13,     mslug2,   neoclock_noslot, mslug2eg,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting Extraction Green Turbo Cuztom 2025-02-05)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug2ctma14,     mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug2ctma14,     mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting Cuztom 2025-02-05)", MACHINE_SUPPORTS_SAVE )
 
-/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug 2 (All Apocalyptic Time)
-GAME( 2021, mslug2at01,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "Gaston90",        "Metal Slug 2 Turbo (Apocalyptic Time Ports 0.2 2021-07-17)", MACHINE_SUPPORTS_SAVE ) //2023-03-21
+GAME( 2021, mslug2at01,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "Gaston90",        "Metal Slug 2 Turbo (Apocalyptic Time Ports 0.2 2021-07-17)", MACHINE_SUPPORTS_SAVE ) //2023-03-21
 
-/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug 2 (Remix)
-GAME( 2025, mslug2la01,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (XR Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug2la02,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (XR Fat Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug2la03,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (XR Multifunction Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug2la04,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (XR Multifunction Fat Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug2la01,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (XR Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug2la02,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (XR Fat Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug2la03,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (XR Multifunction Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug2la04,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (XR Multifunction Fat Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug2la05,       mslug2,   neoclock_noslot, mslug2cq,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (XR Survival Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
 GAME( 2025, mslug2la06,       mslug2,   neoclock_noslot, mslug2cq,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (XR Survival Fat Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
 GAME( 2025, mslug2la07,       mslug2,   neoclock_noslot, mslug2cq,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (XR Survival Hybrid Bullets Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
-GAME( 2025, mslug2la08,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (XR Hybrid Bullets Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug2lb01,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting XR Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug2lb02,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting XR Fat Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug2lb03,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting XR Multifunction Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslug2lb04,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting XR Multifunction Fat Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug2la08,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (XR Hybrid Bullets Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug2lb01,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting XR Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug2lb02,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting XR Fat Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug2lb03,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting XR Multifunction Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug2lb04,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting XR Multifunction Fat Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug2lb05,       mslug2,   neoclock_noslot, mslug2cq,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting XR Survival Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
 GAME( 2025, mslug2lb06,       mslug2,   neoclock_noslot, mslug2cq,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting XR Survival Fat Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
 GAME( 2025, mslug2lb07,       mslug2,   neoclock_noslot, mslug2cq,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting XR Survival Hybrid Bullets Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.
-GAME( 2025, mslug2lb08,       mslug2,   neoclock_noslot, mslug2hb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting XR Hybrid Bullets Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslug2lb08,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (Enemies Resetting XR Hybrid Bullets Remix 2025-02-05)", MACHINE_SUPPORTS_SAVE )
 
-/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug 2 (Remix Extreme)
 GAME( 2025, mslug2rma01,      mslug2,   neoclock_noslot, mslug2sd,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (XR Remix Extreme 2025-02-25)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug2rma02,      mslug2,   neoclock_noslot, mslug2sdi,  neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug 2 (XR Survival Remix Extreme 2025-02-25)", MACHINE_SUPPORTS_SAVE )//To enable Mods random you need to apply a command you have to press the Stars + D button to change Stars + C.

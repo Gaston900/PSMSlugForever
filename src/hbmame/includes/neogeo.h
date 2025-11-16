@@ -122,9 +122,12 @@ public:
 
 	// Fixed MVS/AES GFX (Encrypted - Decrypted) Darksoft Software Configurations
 	void init_darksoft();
+	void init_ms5pcbdd();
+	void init_ms5plusdd();
 	void init_mslug3dd();
 	void init_mslug3ndd();
     void init_mslug4dd();
+    void init_mslug4ndd();	
 	void init_mslug5dd();
 	void init_mslugxdd();
 

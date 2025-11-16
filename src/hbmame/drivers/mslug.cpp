@@ -31,7 +31,7 @@
    Game specific input definitions
  ************************************/
 
-INPUT_PORTS_START( mslughb )
+INPUT_PORTS_START( mslug )
 	PORT_INCLUDE( neogeo )
 
 	PORT_MODIFY("DSW")
@@ -42,7 +42,7 @@ INPUT_PORTS_START( mslughb )
 INPUT_PORTS_END
 
 INPUT_PORTS_START( mslugwp )
-	PORT_INCLUDE( mslughb )
+	PORT_INCLUDE( mslug )
 
 	PORT_MODIFY("DSW")
 	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_NAME("@P1 Weapon Change @Button4") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8000)
@@ -52,7 +52,7 @@ INPUT_PORTS_START( mslugwp )
 INPUT_PORTS_END
 
 INPUT_PORTS_START( mslugzh )
-	PORT_INCLUDE( mslughb )
+	PORT_INCLUDE( mslug )
 
 	PORT_MODIFY("SYSTEM")
 	PORT_BIT( 0x0010, IP_ACTIVE_LOW, IPT_CUSTOM )  PORT_CONDITION("SYSTEM", 0x0110, NOTEQUALS, 0x0010)
@@ -1037,6 +1037,10 @@ INPUT_PORTS_END
 	ROM_REGION( 0x1000000, "sprites", 0 ) \
 	ROM_LOAD( "crom0", 0x000000, 0x1000000, CRC(d2955fc3) SHA1(4b69f4926766543ae289546569b27c80a82d53d5) )
 
+#define MSLUGNDS_SPRITES \
+	ROM_REGION( 0x1000000, "sprites", 0 ) \
+	ROM_LOAD( "201nds.c1", 0x000000, 0x1000000, CRC(e20d5589) SHA1(94a962a7a8dd0fbe12e20be31c8b795e52b7a69f) )
+
 #define MSLUGE_SPRITES \
 	ROM_REGION( 0x1000000, "sprites", 0 ) \
 	ROM_LOAD16_BYTE( "201e.c1", 0x400000, 0x200000, CRC(d00bd152) SHA1(eb688dba2233bece1c3ba120ac8eb342f37fba37) )\
@@ -1116,7 +1120,7 @@ ROM_START( mslugnsd )
 	MSLUG_SFIX_128K
 	MSLUG_AUDIO_128K
     MSLUGDD_YMSND
-    MSLUGDD_SPRITES
+    MSLUGNDS_SPRITES
 ROM_END
 
  /**********************
@@ -1469,9 +1473,9 @@ ROM_START( mslugrmb01 )
     MSLUG_SPRITES
 ROM_END
 
-/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (MVS AND AES VERSION)
-GAME( 1996, mslug,            neogeo,   neogeo_noslot,   mslughb,   neogeo_state,    init_neogeo,     ROT0, "Nazca",           "Metal Slug - Super Vehicle-001", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, mslug,            neogeo,   neogeo_noslot,   mslug,     neogeo_state,    init_neogeo,     ROT0, "Nazca",           "Metal Slug - Super Vehicle-001", MACHINE_SUPPORTS_SAVE )
 
 /***************************************************************************************************************************************************
   The prototype roms that had been published by the NEORAGEX, FBA Evolution, MAMEYA Lite, Mame Plus, Neomame32 Plus, Caname emulator are included, in 
@@ -1479,44 +1483,44 @@ GAME( 1996, mslug,            neogeo,   neogeo_noslot,   mslughb,   neogeo_state
   were Looked for an alternate means to be able to play this roms by making an encrypted file. 
 *****************************************************************************************************************************************************/
 
-/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Predecrypted, Decrypter, Earlier, Bootleg And Encrypted)
-GAME( 1996, msboot,           mslug,    neogeo_noslot,   mslughb,   neogeo_state,    init_neogeo,     ROT0, "Bootleg",         "Metal Slug (Bootleg)", MACHINE_SUPPORTS_SAVE )
-GAME( 1996, msluge,           mslug,    neogeo_noslot,   mslughb,   neogeo_state,    init_neogeo,     ROT0, "Nazca",           "Metal Slug (Earlier)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, msboot,           mslug,    neogeo_noslot,   mslug,     neogeo_state,    init_neogeo,     ROT0, "Bootleg",         "Metal Slug (Bootleg)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, msluge,           mslug,    neogeo_noslot,   mslug,     neogeo_state,    init_neogeo,     ROT0, "Nazca",           "Metal Slug (Earlier)", MACHINE_SUPPORTS_SAVE )
 
-/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (DARKSOFT)
-GAME( 1996, mslugdd,          mslug,    neogeo_noslot,   mslughb,   neogeo_state,    init_darksoft,   ROT0, "Nazca",           "Metal Slug (Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, mslugdd,          mslug,    neogeo_noslot,   mslug,     neogeo_state,    init_darksoft,   ROT0, "Nazca",           "Metal Slug (Darksoft)", MACHINE_SUPPORTS_SAVE )
 
 // This uses a .neo file: 0x1000 bytes for header, then p rom (word_swap).
 // The .neo (P1) boot file is used independently of the GFX Encrypted/Decrypted.
 
-/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (NEO SD)
-GAME( 1996, mslugnsd,         mslug,    neogeo_noslot,   mslughb,   neogeo_state,    init_darksoft,   ROT0, "Nazca",           "Metal Slug (Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, mslugnsd,         mslug,    neogeo_noslot,   mslug,     neogeo_state,    init_neogeo,     ROT0, "Nazca",           "Metal Slug (Neo SD)", MACHINE_SUPPORTS_SAVE )
 
-/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Exclusive Fightcade2)
-GAME( 2025, mslugdyf1,        mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Origins Random Item 2025-07-18) (Fightcade2)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugdyf1,        mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Origins Random Item 2025-07-18) (Fightcade2)", MACHINE_SUPPORTS_SAVE )
 
-/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Hack)
 GAME( 2016, mslughc01,        mslug,    neoclock_noslot, mslugwp,   neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug (Change Weapon 2016-03-26)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslughc02,        mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "FBN4DROID",       "Metal Slug (Random Items Explosives 2021-06-08)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, mslughc03,        mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Origins 2025-06-06)", MACHINE_SUPPORTS_SAVE )
-GAME( 2018, mslughc04,        mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Multifunction 2018-04-30)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslughc05,        mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "PPXCLUB",         "Metal Slug (Burst Enhanced 2022-11-03)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslughc06,        mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (1v2 Mode 2023-06-26)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mslughc07,        mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Unity Time! 2021-02-05)", MACHINE_SUPPORTS_SAVE )
-GAME( 2016, mslughc08,        mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug (Stage Select 2016-10-17)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslughc02,        mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "FBN4DROID",       "Metal Slug (Random Items Explosives 2021-06-08)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslughc03,        mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Origins 2025-06-06)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, mslughc04,        mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Multifunction 2018-04-30)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslughc05,        mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "PPXCLUB",         "Metal Slug (Burst Enhanced 2022-11-03)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslughc06,        mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (1v2 Mode 2023-06-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mslughc07,        mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Unity Time! 2021-02-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, mslughc08,        mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug (Stage Select 2016-10-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslughc09,        mslug,    neoclock_noslot, mslugzh,   neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug (War Chariot 2016-03-26)", MACHINE_SUPPORTS_SAVE )
-GAME( 2017, mslughc10,        mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug (Jump In Mid Air 2017-08-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2018, mslughc11,        mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, mslughc12,        mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslughc13,        mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Random Item 2024-04-15)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslughc14,        mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Random Item, Powerful Enemy Defense 2024-04-15) (Earlier)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslughc15,        mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Random Item, Powerful Enemy Defense 2024-11-08)", MACHINE_SUPPORTS_SAVE )
-GAME( 2013, mslughc16,        mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Unlimited Firepower 2013-06-13)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, mslughc10,        mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug (Jump In Mid Air 2017-08-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, mslughc11,        mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslughc12,        mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslughc13,        mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Random Item 2024-04-15)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslughc14,        mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Random Item, Powerful Enemy Defense 2024-04-15) (Earlier)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslughc15,        mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug (Unity Random Item, Powerful Enemy Defense 2024-11-08)", MACHINE_SUPPORTS_SAVE )
+GAME( 2013, mslughc16,        mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Unlimited Firepower 2013-06-13)", MACHINE_SUPPORTS_SAVE )
 
 /*********************************************************************************
 * This game sector is exclusive 2017 - 2025, its modifications that load have been customized
@@ -1530,24 +1534,24 @@ GAME( 2013, mslughc16,        mslug,    neoclock_noslot, mslughb,   neogeo_state
 * They are the first hack remix roms that I have made in a basic way for the HBMAME emulator.
 **************************************************************************************************/
 
-/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Cuztom)
-GAME( 2024, mslugctma01,      mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origins 1v2 Mode Cuztom 2023-06-26)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslugctma02,      mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origins Burst Enhanced Cuztom 2021-09-19)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslugctma03,      mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origins Change Weapon Cuztom 2016-03-26)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslugctma04,      mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origins Easy Mode Cuztom 2018-11-26)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslugctma05,      mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origins Enemy Speed Up Cuztom 2023-03-14)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslugctma06,      mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origins Random Items Explosives Cuztom 2021-06-08)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugctma01,      mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origins 1v2 Mode Cuztom 2023-06-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugctma02,      mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origins Burst Enhanced Cuztom 2021-09-19)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugctma03,      mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origins Change Weapon Cuztom 2016-03-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugctma04,      mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origins Easy Mode Cuztom 2018-11-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugctma05,      mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origins Enemy Speed Up Cuztom 2023-03-14)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugctma06,      mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origins Random Items Explosives Cuztom 2021-06-08)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, mslugctma07,      mslug,    neoclock_noslot, mslugzh,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origins War Chariot Cuztom 2016-03-26)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslugctma08,      mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origins Unity Random Item, Powerful Enemy Defense Cuztom 2023-12-15)", MACHINE_SUPPORTS_SAVE ) //2024-02-22
-GAME( 2024, mslugctma09,      mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origins Unlimited Firepower Cuztom 2013-06-13)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugctma08,      mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origins Unity Random Item, Powerful Enemy Defense Cuztom 2023-12-15)", MACHINE_SUPPORTS_SAVE ) //2024-02-22
+GAME( 2024, mslugctma09,      mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origins Unlimited Firepower Cuztom 2013-06-13)", MACHINE_SUPPORTS_SAVE )
 
-/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Remix)
-GAME( 2023, mslugla01,        mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Multifunction Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, msluglb01,        mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origins Remix 2024-02-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslugla01,        mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Multifunction Remix 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, msluglb01,        mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origins Remix 2024-02-21)", MACHINE_SUPPORTS_SAVE )
 
-/*    YEAR   NAME             PARENT       MACHINE     INPUT                           INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Remix Extreme)
-GAME( 2023, mslugrma01,       mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Multifunction Remix Extreme 2023-07-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, mslugrmb01,       mslug,    neoclock_noslot, mslughb,   neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origins Remix Extreme 2024-02-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, mslugrma01,       mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Multifunction Remix Extreme 2023-07-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, mslugrmb01,       mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "PSMSlugForever",  "Metal Slug (Origins Remix Extreme 2024-02-21)", MACHINE_SUPPORTS_SAVE )
