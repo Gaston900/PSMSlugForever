@@ -96,29 +96,37 @@ public:
     void multimvs(machine_config &config);
 	void neosd(machine_config &config);
 
+	// Mainboard Configurations CPU2X
+    void neoclock_arcade(machine_config &config);
+	void neoclock_base(machine_config &config);
+	void neoclock_noslot(machine_config &config);
+
 	// Fixed MVS/AES Software Configurations
 	void init_neogeo();
-	void init_darksoft();
 	void init_ms5pcb();
 	void init_ms5plus();
 	void init_mslug3();
 	void init_mslug3a();
 	void init_mslug3e();
 	void init_mslug3cqt();
-	void init_mslug3dd();
     void init_mslug3b6();
 	void init_mslug4();
-    void init_mslug4dd();
     void init_mslug4lw();
 	void init_mslug4e();
 	void init_mslug5();
 	void init_mslug5b();
 	void init_mslug5e();
-	void init_mslug5dd();
 	void init_mslug5nd();
 	void init_mslugx();
-	void init_mslugxdd();
 	void init_s1945p();
+
+	// Fixed MVS/AES GFX (Encrypted - Decrypted) Darksoft Software Configurations
+	void init_darksoft();
+	void init_mslug3dd();
+	void init_mslug3ndd();
+    void init_mslug4dd();
+	void init_mslug5dd();
+	void init_mslugxdd();
 
 	DECLARE_CUSTOM_INPUT_MEMBER(get_memcard_status);
 	DECLARE_CUSTOM_INPUT_MEMBER(get_audio_result);

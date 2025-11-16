@@ -1050,7 +1050,7 @@ void neogeo_state::neogeo_68kram_map(address_map &map)
 
 void neogeo_state::neogeo_68kram(machine_config &config)
 {
-	neogeo_noslot(config);
+	neoclock_arcade(config);
 	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::neogeo_68kram_map);
 }
 
@@ -1325,6 +1325,82 @@ QUICKLOAD_LOAD_MEMBER(neogeo_state::mvs_q_cb)
 	return image_init_result::PASS;
 }
 
+/*************************************
+ *  Machine Driver Overclocking 2X
+ *************************************/
+
+void neogeo_state::neoclock_base(machine_config &config)
+{
+	/* basic machine hardware */
+	M68000(config, m_maincpu, NEOGEO_MAIN_CPU2X_CLOCK);
+	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::neogeo_main_map);
+
+	Z80(config, m_audiocpu, NEOGEO_AUDIO_CPU_CLOCK);
+	m_audiocpu->set_addrmap(AS_PROGRAM, &neogeo_state::audio_map);
+	m_audiocpu->set_addrmap(AS_IO, &neogeo_state::audio_io_map);
+
+	/* video hardware */
+	config.set_default_layout(layout_neogeo);
+
+	SCREEN(config, m_screen, SCREEN_TYPE_RASTER);
+	m_screen->set_raw(NEOGEO_PIXEL_CLOCK, NEOGEO_HTOTAL, NEOGEO_HBEND, NEOGEO_HBSTART, NEOGEO_VTOTAL, NEOGEO_VBEND, NEOGEO_VBSTART);
+	m_screen->set_screen_update(FUNC(neogeo_state::screen_update_neogeo));
+
+	GFXDECODE(config, "gfxdecode", m_palette, gfx_neogeo);
+	/* 4096 colors * two banks * normal and shadow */
+	PALETTE(config, m_palette, palette_device::BLACK, 4096*2*2);
+
+	NEOGEO_SPRITE(config, m_sprgen, 0).set_screen(m_screen);
+
+	/* audio hardware */
+	SPEAKER(config, "lspeaker").front_left();
+	SPEAKER(config, "rspeaker").front_right();
+
+	GENERIC_LATCH_8(config, m_soundlatch);
+	GENERIC_LATCH_8(config, m_soundlatch2);
+
+	YM2610(config, m_ym, NEOGEO_YM2610_CLOCK);
+	m_ym->irq_handler().set_inputline(m_audiocpu, 0);
+	m_ym->add_route(0, "lspeaker", 0.28);
+	m_ym->add_route(0, "rspeaker", 0.28);
+	m_ym->add_route(1, "lspeaker", 0.98);
+	m_ym->add_route(2, "rspeaker", 0.98);
+	NEOGEO_BANKED_CART(config, "banked_cart");
+}
+
+void neogeo_state::neoclock_arcade(machine_config &config)
+{
+	neoclock_base(config);
+	WATCHDOG_TIMER(config, "watchdog").set_time(attotime::from_ticks(3244030, NEOGEO_MASTER_CLOCK));
+	UPD4990A(config, m_upd4990a);
+	NVRAM(config, "saveram", nvram_device::DEFAULT_ALL_0);
+	NG_MEMCARD(config, "memcard");
+}
+
+void neogeo_state::neoclock_noslot(machine_config &config)
+{
+	neoclock_arcade(config); // no slot config (legacy mame)
+	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::main_map_noslot);
+
+	//joystick controller
+	NEOGEO_CTRL_EDGE_CONNECTOR(config, m_edge, neogeo_arc_edge, "joy", true);
+
+	//no mahjong controller
+	NEOGEO_CONTROL_PORT(config, "ctrl1", neogeo_arc_pin15, nullptr, true);
+	NEOGEO_CONTROL_PORT(config, "ctrl2", neogeo_arc_pin15, nullptr, true);
+
+	MSLUGX_PROT(config, "mslugx_prot");
+	SMA_PROT(config, "sma_prot");
+	CMC_PROT(config, "cmc_prot");
+	PCM2_PROT(config, "pcm2_prot");
+	PVC_PROT(config, "pvc_prot");
+	NGBOOTLEG_PROT(config, "bootleg_prot");
+	KOF2002_PROT(config, "kof2002_prot");
+	FATFURY2_PROT(config, "fatfury2_prot");
+	KOF98_PROT(config, "kof98_prot");
+	SBP_PROT(config, "sbp_prot");
+}
+
 /*********************************************** non-carts */
 /*************************************
  *
@@ -1411,6 +1487,15 @@ void neogeo_state::init_mslug3cqt()
 }
 
 void neogeo_state::init_mslug3dd()
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 1;
+	m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+	m_cmc_prot->cmc42_neogeo_gfx_decrypt(spr_region, spr_region_size, MSLUG3_GFX_KEY);
+	m_sma_prot->mslug3_install_protection(m_maincpu,m_banked_cart);
+}
+
+void neogeo_state::init_mslug3ndd()
 {
 	init_neogeo();
 	m_sprgen->m_fixed_layer_bank_type = 1;
@@ -1708,10 +1793,6 @@ void neogeo_state::init_s1945p()
 	m_cmc_prot->cmc42_neogeo_gfx_decrypt(spr_region, spr_region_size, S1945P_GFX_KEY);
 	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
 }
-
-
-
-
 
 /********************************************************* */
 void neogeo_state::install_banked_bios()
