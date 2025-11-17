@@ -1096,3 +1096,15 @@ pgm               // Base Unit
 dmnfrnt           // (c) 2002 Demon Front
 dmnfrnt103        //
 dmnfrnt102        //
+
+@source:ngp.cpp
+ngpc              // NeoGeo Pocket Color
+
+@source:megadriv.cpp
+megadriv          // 1990 Sega Mega Drive (Europe)
+
+@source:gba.cpp
+gba               // Nintendo Game Boy Advance Handheld
+
+@source:gb.cpp
+gbcolor           // Nintendo Game Boy Color Handheld

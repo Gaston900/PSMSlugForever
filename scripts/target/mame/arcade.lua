@@ -13,6 +13,10 @@ CPUS["M680X0"] = true
 CPUS["NEC"] = true -- M92
 CPUS["ARM7"] = true -- PGM
 CPUS["I386"] = true  -- PGM
+CPUS["TLCS900"] = true --NPG
+CPUS["SH"] = true -- MEGADRIVE
+CPUS["SSP1601"] = true -- MEGADRIVE
+CPUS["LR35902"] = true -- GB
 
 --------------------------------------------------
 -- specify available sound cores
@@ -25,6 +29,18 @@ SOUNDS["OKIM6295"] = true -- M92
 SOUNDS["SAMPLES"] = true -- M92
 SOUNDS["YM2151"] = true -- M92
 SOUNDS["ICS2115"] = true -- PGM
+SOUNDS["DAC"] = true -- NPG
+SOUNDS["T6W28"] = true -- NPG
+SOUNDS["VOLT_REG"] = true -- NPG
+SOUNDS["YM2203"] = true -- MEGADRIVE
+SOUNDS["YM2608"] = true -- MEGADRIVE
+SOUNDS["YM2612"] = true -- MEGADRIVE
+SOUNDS["AY8910"] = true -- MEGADRIVE
+SOUNDS["SN76496"] = true -- MEGADRIVE
+SOUNDS["CDDA"] = true -- MEGADRIVE
+SOUNDS["RF5C68"] = true -- MEGADRIVE
+SOUNDS["SN76496"] = true -- MEGADRIVE
+SOUNDS["GB_SOUND"] = true -- GBA
 
 --------------------------------------------------
 -- specify available machine cores
@@ -38,10 +54,23 @@ MACHINES["PIC8259"] = true -- M92
 MACHINES["V3021"] = true --PGM
 
 --------------------------------------------------
+-- specify available bus cores
+--------------------------------------------------
+
+BUSES["GENERIC"] = true -- NPG
+BUSES["MEGADRIVE"] = true -- MEGADRIVE
+BUSES["GBA"] = true -- GBA
+BUSES["GAMEBOY"] = true -- GB
+
+--------------------------------------------------
 -- specify available video cores
 --------------------------------------------------
 
 VIDEOS["BUFSPRITE"] = true -- M92
+VIDEOS["SEGA315_5124"] = true -- MEGADRIVE
+VIDEOS["SEGA315_5313"] = true -- MEGADRIVE
+VIDEOS["GBA_LCD"] = true -- GBA
+VIDEOS["GB_LCD"] = true -- GB
 
 --------------------------------------------------
 -- this is the list of driver libraries that
@@ -54,6 +83,9 @@ function linkProjects_mame_arcade(_target, _subtarget)
 		"igs",
 		"irem",
 		"neogeo",
+		"nintendo",
+		"sega",
+		"snk",
 	}
 end
 
@@ -151,6 +183,35 @@ files {
 	MAME_DIR .. "src/hbmame/bus/neogeo_ctrl/dial.cpp",
 	MAME_DIR .. "src/hbmame/bus/neogeo_ctrl/irrmaze.cpp",
 	MAME_DIR .. "src/hbmame/bus/neogeo_ctrl/kizuna4p.cpp",
+}
+
+createMAMEProjects(_target, _subtarget, "nintendo")
+files {
+	MAME_DIR .. "src/mame/drivers/gb.cpp",
+	MAME_DIR .. "src/mame/includes/gb.h",
+	MAME_DIR .. "src/mame/machine/gb.cpp",
+	MAME_DIR .. "src/mame/drivers/gba.cpp",
+	MAME_DIR .. "src/mame/includes/gba.h",
+}
+
+createMAMEProjects(_target, _subtarget, "sega")
+files {
+	MAME_DIR .. "src/mame/drivers/megadriv.cpp",
+	MAME_DIR .. "src/mame/includes/megadriv.h",
+	MAME_DIR .. "src/mame/machine/megadriv.cpp",
+	MAME_DIR .. "src/mame/machine/mega32x.cpp",
+	MAME_DIR .. "src/mame/machine/mega32x.h",
+	MAME_DIR .. "src/mame/machine/megacd.cpp",
+	MAME_DIR .. "src/mame/machine/megacd.h",
+	MAME_DIR .. "src/mame/machine/megacdcd.cpp",
+	MAME_DIR .. "src/mame/machine/megacdcd.h",
+}
+
+createMAMEProjects(_target, _subtarget, "snk")
+files {
+	MAME_DIR .. "src/mame/drivers/ngp.cpp",
+	MAME_DIR .. "src/mame/video/k1ge.cpp",
+	MAME_DIR .. "src/mame/video/k1ge.h",
 }
 
 end

@@ -240,3 +240,109 @@ if (CPUS["I386"]~=null) then
 		MAME_DIR .. "src/devices/cpu/i386/cpuidmsrs.hxx",
 	}
 end
+
+-- SYSTEM (NPG)
+--------------------------------------------------
+-- Toshiba TLCS-900 Series
+--@src/devices/cpu/tlcs900/tlcs900.h,CPUS["TLCS900"] = true
+--------------------------------------------------
+
+if (CPUS["TLCS900"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/cpu/tlcs900/tlcs900.cpp",
+		MAME_DIR .. "src/devices/cpu/tlcs900/tlcs900.h",
+		MAME_DIR .. "src/devices/cpu/tlcs900/900tbl.hxx",
+		MAME_DIR .. "src/devices/cpu/tlcs900/900htbl.hxx",
+		MAME_DIR .. "src/devices/cpu/tlcs900/tmp95c061.cpp",
+		MAME_DIR .. "src/devices/cpu/tlcs900/tmp95c061.h",
+		MAME_DIR .. "src/devices/cpu/tlcs900/tmp95c063.cpp",
+		MAME_DIR .. "src/devices/cpu/tlcs900/tmp95c063.h",
+		MAME_DIR .. "src/devices/cpu/tlcs900/tmp96c141.cpp",
+		MAME_DIR .. "src/devices/cpu/tlcs900/tmp96c141.h",
+	}
+end
+
+if (CPUS["TLCS900"]~=null or _OPTIONS["with-tools"]) then
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/tlcs900/dasm900.cpp")
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/tlcs900/dasm900.h")
+end
+
+-- SYSTEM (MEGADRIVE)
+--------------------------------------------------
+-- Hitachi SuperH series (SH1/SH2/SH3/SH4)
+--@src/devices/cpu/sh/sh2.h,CPUS["SH"] = true
+--@src/devices/cpu/sh/sh4.h,CPUS["SH"] = true
+--------------------------------------------------
+
+if (CPUS["SH"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/cpu/sh/sh.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh.h",
+		MAME_DIR .. "src/devices/cpu/sh/sh2.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh2.h",
+		MAME_DIR .. "src/devices/cpu/sh/sh2comn.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh2comn.h",
+		MAME_DIR .. "src/devices/cpu/sh/sh_fe.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh2fe.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh4fe.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh7604_bus.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh7604_bus.h",
+		MAME_DIR .. "src/devices/cpu/sh/sh7604_sci.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh7604_sci.h",
+		MAME_DIR .. "src/devices/cpu/sh/sh7604_wdt.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh7604_wdt.h",
+		MAME_DIR .. "src/devices/cpu/sh/sh4.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh4.h",
+		MAME_DIR .. "src/devices/cpu/sh/sh4comn.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh4comn.h",
+		MAME_DIR .. "src/devices/cpu/sh/sh3comn.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh3comn.h",
+		MAME_DIR .. "src/devices/cpu/sh/sh4tmu.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh4tmu.h",
+		MAME_DIR .. "src/devices/cpu/sh/sh4dmac.cpp",
+		MAME_DIR .. "src/devices/cpu/sh/sh4dmac.h",
+		MAME_DIR .. "src/devices/cpu/sh/sh4regs.h",
+	}
+end
+
+if (CPUS["SH"]~=null or _OPTIONS["with-tools"]) then
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/sh/sh_dasm.cpp")
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/sh/sh_dasm.h")
+end
+
+--------------------------------------------------
+-- SSP1601
+--@src/devices/cpu/ssp1601/ssp1601.h,CPUS["SSP1601"] = true
+--------------------------------------------------
+
+if (CPUS["SSP1601"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/cpu/ssp1601/ssp1601.cpp",
+		MAME_DIR .. "src/devices/cpu/ssp1601/ssp1601.h",
+	}
+end
+
+if (CPUS["SSP1601"]~=null or _OPTIONS["with-tools"]) then
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/ssp1601/ssp1601d.cpp")
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/ssp1601/ssp1601d.h")
+end
+
+-- SYSTEM (GB)
+--------------------------------------------------
+-- Sharp LR35902 (Game Boy CPU)
+--@src/devices/cpu/lr35902/lr35902.h,CPUS["LR35902"] = true
+--------------------------------------------------
+
+if (CPUS["LR35902"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/cpu/lr35902/lr35902.cpp",
+		MAME_DIR .. "src/devices/cpu/lr35902/lr35902.h",
+		MAME_DIR .. "src/devices/cpu/lr35902/opc_cb.hxx",
+		MAME_DIR .. "src/devices/cpu/lr35902/opc_main.hxx",
+	}
+end
+
+if (CPUS["LR35902"]~=null or _OPTIONS["with-tools"]) then
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/lr35902/lr35902d.cpp")
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/lr35902/lr35902d.h")
+end

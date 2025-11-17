@@ -144,3 +144,41 @@ if (MACHINES["V3021"]~=null) then
 		MAME_DIR .. "src/devices/machine/v3021.h",
 	}
 end
+
+-- SYSTEM (MEGADRIVE)
+---------------------------------------------------
+--
+--@src/devices/machine/i2cmem.h,MACHINES["I2CMEM"] = true
+---------------------------------------------------
+
+if (MACHINES["I2CMEM"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/machine/i2cmem.cpp",
+		MAME_DIR .. "src/devices/machine/i2cmem.h",
+	}
+end
+
+---------------------------------------------------
+--
+--@src/devices/machine/lc89510.h,MACHINES["LC89510"] = true
+---------------------------------------------------
+
+if (MACHINES["LC89510"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/machine/lc89510.cpp",
+		MAME_DIR .. "src/devices/machine/lc89510.h",
+	}
+end
+
+-- SYSTEM (GBA)
+---------------------------------------------------
+--
+--@src/devices/machine/intelfsh.h,MACHINES["INTELFLASH"] = true
+---------------------------------------------------
+
+if (MACHINES["INTELFLASH"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/machine/intelfsh.cpp",
+		MAME_DIR .. "src/devices/machine/intelfsh.h",
+	}
+end

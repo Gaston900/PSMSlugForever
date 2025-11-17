@@ -25,13 +25,13 @@ files {
 --@src/devices/sound/spkrdev.h,SOUNDS["SPEAKER"] = true
 --@src/devices/sound/beep.h,SOUNDS["BEEP"] = true
 ---------------------------------------------------
-
---if (SOUNDS["DAC"]~=null) then
---	files {
---		MAME_DIR .. "src/devices/sound/dac.cpp",
---		MAME_DIR .. "src/devices/sound/dac.h",
---	}
---end
+-- SYSTEM (NPG)
+if (SOUNDS["DAC"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/sound/dac.cpp",
+		MAME_DIR .. "src/devices/sound/dac.h",
+	}
+end
 
 --if (SOUNDS["DMADAC"]~=null) then
 --	files {
@@ -281,4 +281,97 @@ if (SOUNDS["ICS2115"]~=null) then
 	}
 end
 
+-- SYSTEM (NPG)
+---------------------------------------------------
+-- SNK(?) custom stereo sn76489a clone
+--@src/devices/sound/t6w28.h,SOUNDS["T6W28"] = true
+---------------------------------------------------
 
+if (SOUNDS["T6W28"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/sound/t6w28.cpp",
+		MAME_DIR .. "src/devices/sound/t6w28.h",
+	}
+end
+
+-- SYSTEM (NPG)
+---------------------------------------------------
+-- Voltage Regulator
+--@src/devices/sound/volt_reg.h,SOUNDS["VOLT_REG"] = true
+---------------------------------------------------
+if (SOUNDS["VOLT_REG"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/sound/volt_reg.cpp",
+		MAME_DIR .. "src/devices/sound/volt_reg.h",
+	}
+end
+
+-- SYSTEM (MEGADRIVE)
+---------------------------------------------------
+-- GI AY-8910
+--@src/devices/sound/ay8910.h,SOUNDS["AY8910"] = true
+---------------------------------------------------
+
+if (SOUNDS["AY8910"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/sound/ay8910.cpp",
+		MAME_DIR .. "src/devices/sound/ay8910.h",
+	}
+end
+
+---------------------------------------------------
+-- CD audio
+--@src/devices/sound/cdda.h,SOUNDS["CDDA"] = true
+---------------------------------------------------
+
+if (SOUNDS["CDDA"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/sound/cdda.cpp",
+		MAME_DIR .. "src/devices/sound/cdda.h",
+	}
+end
+
+---------------------------------------------------
+-- Ricoh sample players
+--@src/devices/sound/rf5c68.h,SOUNDS["RF5C68"] = true
+--@src/devices/sound/rf5c400.h,SOUNDS["RF5C400"] = true
+---------------------------------------------------
+
+if (SOUNDS["RF5C68"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/sound/rf5c68.cpp",
+		MAME_DIR .. "src/devices/sound/rf5c68.h",
+	}
+end
+
+--if (SOUNDS["RF5C400"]~=null) then
+--	files {
+--		MAME_DIR .. "src/devices/sound/rf5c400.cpp",
+--		MAME_DIR .. "src/devices/sound/rf5c400.h",
+--	}
+--end
+
+---------------------------------------------------
+-- Texas Instruments SN76496
+--@src/devices/sound/sn76496.h,SOUNDS["SN76496"] = true
+---------------------------------------------------
+
+if (SOUNDS["SN76496"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/sound/sn76496.cpp",
+		MAME_DIR .. "src/devices/sound/sn76496.h",
+	}
+end
+
+-- SYSTEM (GBA)
+---------------------------------------------------
+-- GB_SOUND
+--@src/devices/sound/gb.h,SOUNDS["GB_SOUND"] = true
+---------------------------------------------------
+
+if (SOUNDS["GB_SOUND"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/sound/gb.cpp",
+		MAME_DIR .. "src/devices/sound/gb.h",
+	}
+end

@@ -47,3 +47,54 @@ if (VIDEOS["BUFSPRITE"]~=null) then
 		MAME_DIR .. "src/devices/video/bufsprite.h",
 	}
 end
+
+-- SYSTEM (MEGADRIVE)
+--------------------------------------------------
+--
+--@src/devices/video/315_5124.h,VIDEOS["SEGA315_5124"] = true
+--------------------------------------------------
+
+if (VIDEOS["SEGA315_5124"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/video/315_5124.cpp",
+		MAME_DIR .. "src/devices/video/315_5124.h",
+	}
+end
+
+--------------------------------------------------
+--
+--@src/devices/video/315_5313.h,VIDEOS["SEGA315_5313"] = true
+--------------------------------------------------
+
+if (VIDEOS["SEGA315_5313"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/video/315_5313.cpp",
+		MAME_DIR .. "src/devices/video/315_5313.h",
+	}
+end
+
+-- SYSTEM (GBA)
+--------------------------------------------------
+--
+--@src/devices/video/gba_lcd.h,VIDEOS["GBA_LCD"] = true
+--------------------------------------------------
+
+if (VIDEOS["GBA_LCD"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/video/gba_lcd.cpp",
+		MAME_DIR .. "src/devices/video/gba_lcd.h",
+	}
+end
+
+-- SYSTEM (GB)
+--------------------------------------------------
+--
+--@src/devices/video/gb_lcd.h,VIDEOS["GB_LCD"] = true
+--------------------------------------------------
+
+if (VIDEOS["GB_LCD"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/video/gb_lcd.cpp",
+		MAME_DIR .. "src/devices/video/gb_lcd.h",
+	}
+end

@@ -1,9 +1,13 @@
-pgm.cpp
+gb.cpp
+gba.cpp
+homebrew.cpp
 m92.cpp
+megadriv.cpp
 mslug.cpp
 mslug2.cpp
 mslug3.cpp
 mslug4.cpp
 mslug5.cpp
 mslugx.cpp
-homebrew.cpp
+ngp.cpp
+pgm.cpp
