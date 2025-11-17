@@ -67,7 +67,7 @@ enum
 	FOLDER_BIOS, //Do not disable
 //	FOLDER_HARDDISK,
 //	FOLDER_SAMPLES,
-//	FOLDER_MECHANICAL,
+	FOLDER_MECHANICAL,
 //	FOLDER_LIGHTGUN,
 //	FOLDER_TRACKBALL,
 //	FOLDER_WORKING,
@@ -107,14 +107,7 @@ enum
     FOLDER_ORIGINAL,
     FOLDER_REMIX,
     FOLDER_REMIXEXTREME,
-    FOLDER_SERIEEASYMODE,
-    FOLDER_SERIEENEMYRESET,
-	FOLDER_SERIEFIREPOWER,
-	FOLDER_SERIEGREENBLUE,
-	FOLDER_SERIELEGENDARY,
-	FOLDER_SERIEMULTIFUNCTION,
-	FOLDER_SERIERANDOM,
-	FOLDER_SERIESPEEDRUN,
+    FOLDER_COLLECTION,
 	FOLDER_SOLDIERREBEL,
 	FOLDER_UPDATE,
 //#endif	
@@ -216,14 +209,7 @@ void CreateNEOSDHACKFolders(int parent_index);
 void CreateORIGINALFolders(int parent_index);
 void CreateREMIXFolders(int parent_index);
 void CreateREMIXEXTREMEFolders(int parent_index);
-void CreateSERIEEASYMODEFolders(int parent_index);
-void CreateSERIEENEMYRESETFolders(int parent_index);
-void CreateSERIEFIREPOWERFolders(int parent_index);
-void CreateSERIEGREENBLUEFolders(int parent_index);
-void CreateSERIELEGENDARYFolders(int parent_index);
-void CreateSERIEMULTIFUNCTIONFolders(int parent_index);
-void CreateSERIERANDOMFolders(int parent_index);
-void CreateSERIESPEEDRUNFolders(int parent_index);
+void CreateCOLLECTIONFolders(int parent_index);
 void CreateSOLDIERREBELFolders(int parent_index);
 void CreateUPDATEFolders(int parent_index);
 //#endif

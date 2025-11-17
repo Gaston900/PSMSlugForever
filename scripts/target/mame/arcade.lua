@@ -10,6 +10,7 @@
 
 CPUS["Z80"] = true 
 CPUS["M680X0"] = true
+CPUS["NEC"] = true -- M92
 
 --------------------------------------------------
 -- specify available sound cores
@@ -17,6 +18,10 @@ CPUS["M680X0"] = true
 
 SOUNDS["SPEAKER"] = true
 SOUNDS["YM2610"] = true
+SOUNDS["IREMGA20"] = true -- M92
+SOUNDS["OKIM6295"] = true -- M92
+SOUNDS["SAMPLES"] = true -- M92
+SOUNDS["YM2151"] = true -- M92
 
 --------------------------------------------------
 -- specify available machine cores
@@ -26,9 +31,20 @@ MACHINES["GEN_LATCH"] = true
 MACHINES["UPD1990A"] = true
 MACHINES["WATCHDOG"] = true
 MACHINES["Z80DAISY"] = true
+MACHINES["PIC8259"] = true -- M92
+
+--------------------------------------------------
+-- specify available video cores
+--------------------------------------------------
+
+VIDEOS["BUFSPRITE"] = true -- M92
+
+
+
 
 function linkProjects_mame_arcade(_target, _subtarget)
 	links {
+		"irem",
 		"neogeo",
 	}
 end
@@ -69,6 +85,13 @@ function createProjects_mame_arcade(_target, _subtarget)
 -- the following files are general components and
 -- shared across a number of drivers
 --------------------------------------------------
+
+createMAMEProjects(_target, _subtarget, "irem")
+files {
+	MAME_DIR .. "src/mame/drivers/m92.cpp",
+	MAME_DIR .. "src/mame/video/m92.cpp",
+	MAME_DIR .. "src/mame/machine/irem_cpu.cpp",
+}
 
 createMAMEProjects(_target, _subtarget, "neogeo")
 files {
