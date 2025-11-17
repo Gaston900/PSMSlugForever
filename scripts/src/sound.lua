@@ -268,4 +268,17 @@ end
 --	}
 --end
 
+-- SYSTEM (PGM)
+---------------------------------------------------
+-- ICS2115 sound chip
+--@src/devices/sound/ics2115.h,SOUNDS["ICS2115"] = true
+---------------------------------------------------
+
+if (SOUNDS["ICS2115"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/sound/ics2115.cpp",
+		MAME_DIR .. "src/devices/sound/ics2115.h",
+	}
+end
+
 

@@ -1090,3 +1090,9 @@ gunforceu         // (c) 1991 Irem America (US)
 inthunt           // (c) 1993 Irem (World)
 inthuntu          // (c) 1993 Irem (US)
 kaiteids          // (c) 1993 Irem (Japan)
+
+@source:pgm.cpp
+pgm               // Base Unit
+dmnfrnt           // (c) 2002 Demon Front
+dmnfrnt103        //
+dmnfrnt102        //

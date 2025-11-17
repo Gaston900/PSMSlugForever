@@ -132,3 +132,15 @@ if (MACHINES["PIC8259"]~=null) then
 	}
 end
 
+-- SYSTEM (PGM)
+---------------------------------------------------
+--
+--@src/devices/machine/v3021.h,MACHINES["V3021"] = true
+---------------------------------------------------
+
+if (MACHINES["V3021"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/machine/v3021.cpp",
+		MAME_DIR .. "src/devices/machine/v3021.h",
+	}
+end
