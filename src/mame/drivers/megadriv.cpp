@@ -1187,7 +1187,7 @@ ROM_END
 
 /*    YEAR  NAME          PARENT    COMPAT  MACHINE          INPUT     CLASS          INIT          COMPANY   FULLNAME */
 CONS( 1989, genesis,      0,        0,      ms_megadriv,     md,       md_cons_state, init_genesis, "Sega",   "Genesis (USA, NTSC)",  MACHINE_SUPPORTS_SAVE )
-CONS( 1990, megadriv,     genesis,  0,      ms_megadpal,     md,       md_cons_state, init_md_eur,  "Sega",   "Mega Drive (Europe, PAL)", MACHINE_SUPPORTS_SAVE )
+CONS( 1990, megadriv,     0,        0,      ms_megadpal,     md,       md_cons_state, init_md_eur,  "Sega",   "Mega Drive (Europe, PAL)", MACHINE_IS_BIOS_ROOT | MACHINE_SUPPORTS_SAVE )
 CONS( 1988, megadrij,     genesis,  0,      ms_megadriv,     md,       md_cons_state, init_md_jpn,  "Sega",   "Mega Drive (Japan, NTSC)", MACHINE_SUPPORTS_SAVE )
 
 // 1990+ models had the TMSS security chip, leave this as a clone, it reduces compatibility and nothing more.
