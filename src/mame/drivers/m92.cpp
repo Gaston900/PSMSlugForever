@@ -1101,6 +1101,12 @@ void m92_state::gunforc2(machine_config &config)
 	m_soundcpu->set_decryption_table(lethalth_decryption_table);
 }
 
+void m92_state::geostorma(machine_config &config)
+{
+	gunforc2(config);
+	m_soundcpu->set_decryption_table(dsoccr94_decryption_table);
+}
+
 /***************************************************************************/
 
 ROM_START( bmaster ) /* M92-B-B PCB used for program rom locations */
@@ -2250,6 +2256,33 @@ ROM_START( geostorm )
 	ROM_LOAD("a2_da.1l",  0x000000, 0x100000, CRC(3c8cdb6a) SHA1(d1f4186e8ddf99698443f8ee1c60a6e6bc367b09) )
 ROM_END
 
+ROM_START( geostorma ) // same as above, but uses a different custom sound CPU and thus different sound CPU ROMs
+	ROM_REGION( 0x100000, "maincpu", 0 ) // white labels
+	ROM_LOAD16_BYTE("geo-h0.bin", 0x000001, 0x040000, CRC(9be58d09) SHA1(ab98b91abc8129c342c59674eab9683cccc6ca35) )
+	ROM_LOAD16_BYTE("geo-l0.bin", 0x000000, 0x040000, CRC(59abb75d) SHA1(52b48685470ffa3f36a8259bf333448bf40caea9) )
+	ROM_LOAD16_BYTE("a2-h1-a.6f", 0x080001, 0x040000, CRC(34280b88) SHA1(3fd3cdf8acfa845abacb0708fb48741ee44dbf13) )
+	ROM_LOAD16_BYTE("a2-l1-a.8f", 0x080000, 0x040000, CRC(c8c13f51) SHA1(fde3fd983ebb920f79e6898aa0576da9dd9f0c15) )
+
+	ROM_REGION( 0x20000, "soundcpu", 0 ) // white labels
+	ROM_LOAD16_BYTE("ic24", 0x00001, 0x10000, CRC(62a13a96) SHA1(48dc41173ab8a78a28a194132d68b2971bd7a9f6) )
+	ROM_LOAD16_BYTE("ic31", 0x00000, 0x10000, CRC(16b8b6b5) SHA1(c312dd6d86f69cf751579defc5bc2e661a7b20d4) )
+
+	ROM_REGION( 0x200000, "gfx1", 0 )   /* chars */
+	ROM_LOAD("a2_c0.1a",   0x000000, 0x080000, CRC(68b8f574) SHA1(fb935947cdde43e84453f82caeea141a4ae7226d) )
+	ROM_LOAD("a2_c1.1b",   0x080000, 0x080000, CRC(0b9efe67) SHA1(1df4108d30d2538f6407e328513517cd3412321f) )
+	ROM_LOAD("a2_c2.3a",   0x100000, 0x080000, CRC(7a9e9978) SHA1(241dc310e75960e306701a2e86e30d9c1a60ebff) )
+	ROM_LOAD("a2_c3.3b",   0x180000, 0x080000, CRC(1395ee6d) SHA1(e9befc966e6ee046eaca185a9969976304a119d8) )
+
+	ROM_REGION( 0x400000, "gfx2", 0 ) /* Sprites */
+	ROM_LOAD( "a2_000.8a", 0x000000, 0x100000, CRC(38e03147) SHA1(cc5bacad9592aa5e91632b139955e1c704a67a33) )
+	ROM_LOAD( "a2_010.8b", 0x100000, 0x100000, CRC(1d5b05f8) SHA1(884f134ed51b432965a4e5e79915ba9c0ab562c6) )
+	ROM_LOAD( "a2_020.8c", 0x200000, 0x100000, CRC(f2f461cc) SHA1(04e91efc749d022c8012caac493767ec1f6a992d) )
+	ROM_LOAD( "a2_030.8d", 0x300000, 0x100000, CRC(97609d9d) SHA1(71ddff85a8ddeac69863bbf6c493c5c3973fd175) )
+
+	ROM_REGION( 0x100000, "irem", 0 ) // Samples
+	ROM_LOAD("a2_-da-.ic10",  0x000000, 0x100000, CRC(3c8cdb6a) SHA1(d1f4186e8ddf99698443f8ee1c60a6e6bc367b09) )
+ROM_END
+
 /***************************************************************************/
 
 /* has bankswitching */
@@ -2321,4 +2354,5 @@ GAME( 1993, psoldier, ssoldier, psoldier,      psoldier,  m92_state, empty_init,
 GAME( 1994, dsoccr94j,dsoccr94, dsoccr94j,     dsoccr94j, m92_state, init_bank,     ROT0,   "Irem",         "Dream Soccer '94 (Japan, M92 hardware)", MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL )
 
 GAME( 1994, gunforc2, 0,        gunforc2,      gunforc2,  m92_state, init_bank,     ROT0,   "Irem",         "Gun Force II (US)", MACHINE_MECHANICAL | MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL )
-GAME( 1994, geostorm, gunforc2, gunforc2,      gunforc2,  m92_state, init_bank,     ROT0,   "Irem",         "Geo Storm (Japan)", MACHINE_MECHANICAL | MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL )
+GAME( 1994, geostorm, gunforc2, gunforc2,      gunforc2,  m92_state, init_bank,     ROT0,   "Irem",         "Geo Storm (Japan, 014 custom sound CPU)", MACHINE_MECHANICAL | MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL )
+GAME( 1994, geostorma,gunforc2, geostorma,     gunforc2,  m92_state, init_bank,     ROT0,   "Irem",         "Geo Storm (Japan, 026 custom sound CPU)", MACHINE_MECHANICAL | MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL )
