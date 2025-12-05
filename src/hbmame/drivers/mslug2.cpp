@@ -2774,7 +2774,7 @@ GAME( 2021, mslug2fm,         mslug2,   neoclock_noslot, mslug2,     neogeo_stat
 GAME( 2014, mslug2hc01,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 2 (Enemies Resetting 2014-09-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, mslug2hc02,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 2 (1v2 Mode 2019-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2hc03,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (Unity Time! 2021-01-22)", MACHINE_SUPPORTS_SAVE )
-GAME( 2008, mslug2hc04,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (Hybrid bullets 2023-02-15)", MACHINE_SUPPORTS_SAVE ) // This 2023 has been fix
+GAME( 2008, mslug2hc04,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug 2 (Hybrid bullets 2008-02-15)", MACHINE_SUPPORTS_SAVE ) // This 2023 has been fix
 GAME( 2021, mslug2hc05,       mslug2,   neoclock_noslot, mslug2eg,   neogeo_state,    init_neogeo,     ROT0, "Phengzheng",      "Metal Slug 2 (Extraction Green Turbo 2021-09-16)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mslug2hc06,       mslug2,   neoclock_noslot, mslug2,     neogeo_state,    init_neogeo,     ROT0, "GOTVG",           "Metal Slug 2 (Friendly Fire 2021-04-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug2hc07,       mslug2,   neoclock_noslot, mslug2wp,   neogeo_state,    init_neogeo,     ROT0, "DDJ",             "Metal Slug 2 (Change Weapon And Mummy 2018-08-25)", MACHINE_SUPPORTS_SAVE )

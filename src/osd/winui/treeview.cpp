@@ -96,7 +96,7 @@ extern const FOLDERDATA g_folderData[] =
 	{"Darksoft ~ Hack",     "darksoft~hack",	   FOLDER_DARKSOFTHACK, 	   IDI_FOLDER_DARKSOFTHACK,        0,			 0, 		   0, CreateDARKSOFTHACKFolders },	
 	{"Decrypted E & B",	    "decrypted e & b",     FOLDER_DECRYPTEDEANDB,      IDI_FOLDER_DECRYPTEDEANDB,      0,			 0, 		   0, CreateDECRYPTEDEANDBFolders },
 	{"Encrypted C & P",	    "encrypted c & p",	   FOLDER_ENCRYPTEDCANDP,      IDI_FOLDER_ENCRYPTEDCANDP,      0,			 0,            0, CreateENCRYPTEDCANDPFolders },
-	{"FB4Droid",	        "fb4droid",	           FOLDER_FB4DROID,            IDI_FOLDER_FB4DROID,            0,			 0,            0, CreateFB4DROIDFolders },
+	{"FB4Droid/IPS",	    "fb4droid",	           FOLDER_FB4DROID,            IDI_FOLDER_FB4DROID,            0,			 0,            0, CreateFB4DROIDFolders },
 	{"Fightcade 2",	        "fightcade 2",	       FOLDER_FIGHTCADE2,          IDI_FOLDER_FIGHTCADE2,          0,			 0,            0, CreateFIGHTCADE2Folders },
 	{"GOTVG",	            "gotvg",	           FOLDER_GOTVG,               IDI_FOLDER_GOTVG,               0,			 0,            0, CreateGOTVGFolders },
 	{"HomeBrew", 	        "homebrew",		       FOLDER_HOMEBREW,		       IDI_FOLDER_HOMEBREW,	           0,			 0, 		   0, CreateHOMEBREWFolders },
@@ -111,9 +111,9 @@ extern const FOLDERDATA g_folderData[] =
 	{"Original", 	        "original",		       FOLDER_ORIGINAL,		       IDI_FOLDER_ORIGINAL,	           0,			 0, 		   0, CreateORIGINALFolders },
 	{"Remix", 	            "remix",		       FOLDER_REMIX,		       IDI_FOLDER_REMIX,	           0,			 0, 		   0, CreateREMIXFolders },
 	{"Remix Extreme", 	    "remix extreme",	   FOLDER_REMIXEXTREME,        IDI_FOLDER_REMIXEXTREME,        0,			 0, 		   0, CreateREMIXEXTREMEFolders },
-	{"Soldier Rebel", 	    "soldier rebel",	   FOLDER_SOLDIERREBEL,        IDI_FOLDER_SOLDIERREBEL,        0,			 0, 		   0, CreateSOLDIERREBELFolders },
-	{"Update 2025", 	    "update 2025",	       FOLDER_UPDATE,              IDI_FOLDER_UPDATE,              0,			 0, 		   0, CreateUPDATEFolders },
-	{"Misterix",            "misterix",              FOLDER_MECHANICAL,          IDI_MECHANICAL,                 0,            0,            0, NULL,                       DriverIsMechanical,      true },
+//	{"Soldier Rebel", 	    "soldier rebel",	   FOLDER_SOLDIERREBEL,        IDI_FOLDER_SOLDIERREBEL,        0,			 0, 		   0, CreateSOLDIERREBELFolders },
+	{"Update 2026", 	    "update 2026",	       FOLDER_UPDATE,              IDI_FOLDER_UPDATE,              0,			 0, 		   0, CreateUPDATEFolders },
+	{"Misterix",            "misterix",            FOLDER_MECHANICAL,          IDI_MECHANICAL,                 0,            0,            0, NULL,                       DriverIsMechanical,      true },
 //	{"Unavailable",   "unavailable",      FOLDER_UNAVAILABLE,  IDI_FOLDER_UNAVAILABLE,   0,             F_AVAILABLE,  0, NULL,                       FilterAvailable,         false },
 //	{"Parents",       "originals",        FOLDER_ORIGINAL,     IDI_FOLDER_ORIGINALS,     F_ORIGINALS,   F_CLONES,     0, NULL,                       DriverIsClone,           false },
 //	{"Clones",        "clones",           FOLDER_CLONES,       IDI_FOLDER_CLONES,        F_CLONES,      F_ORIGINALS,  0, NULL,                       DriverIsClone,           true },
@@ -3785,7 +3785,7 @@ void CreateCOLLECTIONFolders(int parent_index)
 	int jj;
 	int nGames = GetNumGames();
 
-	
+
 	LPTREEFOLDER lpFolder = treeFolders[parent_index];
     LPTREEFOLDER lpSerieEM, lpSerieER, lpSerieFP, lpSerieGB, lpSerieLD, lpSerieMF, lpSerieRI, lpSerieSD;
 
@@ -3956,11 +3956,56 @@ void CreateUPDATEFolders(int parent_index)
 	int jj;
 	int nGames = GetNumGames();
 
-	
 	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+    LPTREEFOLDER lpSerie26, lpSerie25, lpSerie24, lpSerie23, lpSerie22, lpSerie21, lpSerie20, lpSerie19, lpSerie18, lpSerie17, lpSerie16, lpSerie15, lpSerie14, lpSerie13, lpSerie12, lpSerie11, lpSerie10, lpSerie08, lpSerie07, lpSerie06, lpSerie05;
 
 	// no games in top level folder
 	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	// create our two subfolders
+    lpSerie26 = NewFolder("2026", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+    lpSerie25 = NewFolder("2025", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+    lpSerie24 = NewFolder("2024", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+    lpSerie23 = NewFolder("2023", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+    lpSerie22 = NewFolder("2022", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+    lpSerie21 = NewFolder("2021", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+    lpSerie20 = NewFolder("2020", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+    lpSerie19 = NewFolder("2019", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+    lpSerie18 = NewFolder("2018", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+    lpSerie17 = NewFolder("2017", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+    lpSerie16 = NewFolder("2016", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+    lpSerie15 = NewFolder("2015", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+    lpSerie14 = NewFolder("2014", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+    lpSerie13 = NewFolder("2013", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+    lpSerie12 = NewFolder("2012", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+    lpSerie11 = NewFolder("2011", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+    lpSerie10 = NewFolder("2010", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+    lpSerie08 = NewFolder("2008", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+    lpSerie07 = NewFolder("2007", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+    lpSerie06 = NewFolder("2006", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+    lpSerie05 = NewFolder("2005", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+
+	AddFolder(lpSerie26);
+	AddFolder(lpSerie25);
+	AddFolder(lpSerie24);
+	AddFolder(lpSerie23);
+	AddFolder(lpSerie22);
+	AddFolder(lpSerie21);
+	AddFolder(lpSerie20);
+	AddFolder(lpSerie19);
+	AddFolder(lpSerie18);
+	AddFolder(lpSerie17);
+	AddFolder(lpSerie16);
+	AddFolder(lpSerie15);
+	AddFolder(lpSerie14);
+	AddFolder(lpSerie13);
+	AddFolder(lpSerie12);
+	AddFolder(lpSerie11);
+	AddFolder(lpSerie10);
+	AddFolder(lpSerie08);
+	AddFolder(lpSerie07);
+	AddFolder(lpSerie06);
+	AddFolder(lpSerie05);
 
 	for (jj = 0; jj < nGames; jj++)
 	{
@@ -3969,23 +4014,242 @@ void CreateUPDATEFolders(int parent_index)
 		if (s == NULL || s[0] == '\0')
 			continue;
 
-		if (!strcmp("mslug3esl", s))			        AddGame(lpFolder, jj);
-		if (!strcmp("mslug3or", s))			            AddGame(lpFolder, jj);
-		if (!strcmp("mslug3hc37", s))			        AddGame(lpFolder, jj);
-		if (!strcmp("mslug3hc38", s))		            AddGame(lpFolder, jj);
-		if (!strcmp("mslug3hc39", s))			        AddGame(lpFolder, jj);
-		if (!strcmp("mslug3hc40", s))			        AddGame(lpFolder, jj);
-		if (!strcmp("mslug4hc25", s))	                AddGame(lpFolder, jj);
-		if (!strcmp("mslug4hc26", s))	                AddGame(lpFolder, jj);
-		if (!strcmp("mslug5hc13", s))	                AddGame(lpFolder, jj);
-		if (!strcmp("mslug5hc14", s))	                AddGame(lpFolder, jj);
-		if (!strcmp("mslug5hc30", s))	                AddGame(lpFolder, jj);
-		if (!strcmp("mslugdyf1", s))	                AddGame(lpFolder, jj);
-		if (!strcmp("mslughc03", s))	                AddGame(lpFolder, jj);
-		if (!strcmp("mslugxhc26", s))	                AddGame(lpFolder, jj);
-		if (!strcmp("mslugxhc31", s))	                AddGame(lpFolder, jj);
-		if (!strcmp("mslugxhc34", s))	                AddGame(lpFolder, jj);
-		if (!strcmp("mslugxhc35", s))	                AddGame(lpFolder, jj);
+        // 2026
+		if (!strcmp("mslughc110", s))			        AddGame(lpSerie26, jj);
+		if (!strcmp("mslughc110", s))			        AddGame(lpSerie26, jj);
+		if (!strcmp("mslughc110", s))			        AddGame(lpSerie26, jj);
+		if (!strcmp("mslughc110", s))		            AddGame(lpSerie26, jj);
+		if (!strcmp("mslughc110", s))			        AddGame(lpSerie26, jj);
+		if (!strcmp("mslughc110", s))	                AddGame(lpSerie26, jj);
+
+        // 2025
+		if (!strcmp("mslugdyf1", s))			        AddGame(lpSerie25, jj);
+		if (!strcmp("mslughc03", s))			        AddGame(lpSerie25, jj);
+		if (!strcmp("mslug3esl", s))			        AddGame(lpSerie25, jj);
+		if (!strcmp("mslug3hc36", s))		            AddGame(lpSerie25, jj);
+		if (!strcmp("mslug3hc37", s))			        AddGame(lpSerie25, jj);
+		if (!strcmp("mslug3hc38", s))	                AddGame(lpSerie25, jj);
+		if (!strcmp("mslug3hc39", s))			        AddGame(lpSerie25, jj);
+		if (!strcmp("mslug4hc25", s))			        AddGame(lpSerie25, jj);
+		if (!strcmp("mslug4hc26", s))		            AddGame(lpSerie25, jj);
+		if (!strcmp("mslug5hc13", s))			        AddGame(lpSerie25, jj);
+		if (!strcmp("mslug5hc14", s))			        AddGame(lpSerie25, jj);
+		if (!strcmp("mslug5hc30", s))			        AddGame(lpSerie25, jj);
+		if (!strcmp("mslugxhc31", s))			        AddGame(lpSerie25, jj);
+		if (!strcmp("mslugxhc34", s))	                AddGame(lpSerie25, jj);
+		if (!strcmp("mslugxhc35", s))			        AddGame(lpSerie25, jj);
+
+        // 2024
+		if (!strcmp("mslughc13", s))			        AddGame(lpSerie24, jj);
+		if (!strcmp("mslughc14", s))			        AddGame(lpSerie24, jj);
+		if (!strcmp("mslughc15", s))			        AddGame(lpSerie24, jj);
+		if (!strcmp("mslug3or", s))		                AddGame(lpSerie24, jj);
+		if (!strcmp("mslug3hc23", s))			        AddGame(lpSerie24, jj);
+		if (!strcmp("mslug3hc40", s))	                AddGame(lpSerie24, jj);
+		if (!strcmp("mslug5hc07", s))	                AddGame(lpSerie24, jj);
+		if (!strcmp("mslug5hc08", s))	                AddGame(lpSerie24, jj);
+		if (!strcmp("mslugxhc26", s))	                AddGame(lpSerie24, jj);
+        if (!strcmp("mslugxhc33", s))	                AddGame(lpSerie24, jj);
+
+        // 2023
+		if (!strcmp("mslughc06", s))			        AddGame(lpSerie23, jj);
+		if (!strcmp("mslughc12", s))			        AddGame(lpSerie23, jj);
+		if (!strcmp("mslug3hc20", s))			        AddGame(lpSerie23, jj);
+		if (!strcmp("mslug3hc28", s))		            AddGame(lpSerie23, jj);
+		if (!strcmp("mslug3hc34", s))			        AddGame(lpSerie23, jj);
+		if (!strcmp("mslug3hc35", s))	                AddGame(lpSerie23, jj);
+		if (!strcmp("mslug4hc03", s))			        AddGame(lpSerie23, jj);
+		if (!strcmp("mslug4hc04", s))		            AddGame(lpSerie23, jj);
+		if (!strcmp("mslug4hc05", s))			        AddGame(lpSerie23, jj);
+		if (!strcmp("mslug4hc23", s))	                AddGame(lpSerie23, jj);
+		if (!strcmp("mslug5hc10", s))		            AddGame(lpSerie23, jj);
+		if (!strcmp("mslug5hc12", s))			        AddGame(lpSerie23, jj);
+		if (!strcmp("mslug5hc20", s))	                AddGame(lpSerie23, jj);
+		if (!strcmp("mslugxhc03", s))		            AddGame(lpSerie23, jj);
+		if (!strcmp("mslugxhc07", s))			        AddGame(lpSerie23, jj);
+		if (!strcmp("mslugxhc13", s))	                AddGame(lpSerie23, jj);
+		if (!strcmp("mslugxhc30", s))			        AddGame(lpSerie23, jj);
+		if (!strcmp("mslugxhc32", s))		            AddGame(lpSerie23, jj);
+		if (!strcmp("mslugxat10", s))			        AddGame(lpSerie23, jj);
+
+        // 2022
+		if (!strcmp("mslug3x", s))			            AddGame(lpSerie22, jj);
+		if (!strcmp("mslughc05", s))			        AddGame(lpSerie22, jj);
+		if (!strcmp("mslug2hc08", s))			        AddGame(lpSerie22, jj);
+		if (!strcmp("mslug2hc14", s))		            AddGame(lpSerie22, jj);
+		if (!strcmp("mslug3hc02", s))			        AddGame(lpSerie22, jj);
+		if (!strcmp("mslug3hc03", s))	                AddGame(lpSerie22, jj);
+		if (!strcmp("mslug3hc05", s))	                AddGame(lpSerie22, jj);
+		if (!strcmp("mslug3hc26", s))	                AddGame(lpSerie22, jj);
+		if (!strcmp("mslug3hc27", s))	                AddGame(lpSerie22, jj);
+		if (!strcmp("mslug4hc02", s))	                AddGame(lpSerie22, jj);
+		if (!strcmp("mslug4hc08", s))	                AddGame(lpSerie22, jj);
+		if (!strcmp("mslug4hc09", s))	                AddGame(lpSerie22, jj);
+		if (!strcmp("mslug4hc13", s))			        AddGame(lpSerie22, jj);
+		if (!strcmp("mslug4hc14", s))			        AddGame(lpSerie22, jj);
+		if (!strcmp("mslug5hc03", s))			        AddGame(lpSerie22, jj);
+		if (!strcmp("mslug5hc11", s))		            AddGame(lpSerie22, jj);
+		if (!strcmp("mslug5hc21", s))			        AddGame(lpSerie22, jj);
+		if (!strcmp("mslug5hc22", s))	                AddGame(lpSerie22, jj);
+		if (!strcmp("mslug5hc26", s))	                AddGame(lpSerie22, jj);
+		if (!strcmp("mslug5hc27", s))	                AddGame(lpSerie22, jj);
+		if (!strcmp("mslug5hc28", s))	                AddGame(lpSerie22, jj);
+		if (!strcmp("mslugxhc14", s))	                AddGame(lpSerie22, jj);
+		if (!strcmp("mslugxhc24", s))	                AddGame(lpSerie22, jj);
+
+        // 2021
+		if (!strcmp("mslughc02", s))			        AddGame(lpSerie21, jj);
+		if (!strcmp("mslughc07", s))			        AddGame(lpSerie21, jj);
+		if (!strcmp("mslug2hc03", s))			        AddGame(lpSerie21, jj);
+		if (!strcmp("mslug2hc05", s))		            AddGame(lpSerie21, jj);
+		if (!strcmp("mslug2hc06", s))			        AddGame(lpSerie21, jj);
+		if (!strcmp("mslug2at01", s))	                AddGame(lpSerie21, jj);
+		if (!strcmp("mslug3hc11", s))			        AddGame(lpSerie21, jj);
+		if (!strcmp("mslug3hc24", s))			        AddGame(lpSerie21, jj);
+		if (!strcmp("mslug4hc11", s))			        AddGame(lpSerie21, jj);
+		if (!strcmp("mslug4hc17", s))		            AddGame(lpSerie21, jj);
+		if (!strcmp("mslug5hc09", s))			        AddGame(lpSerie21, jj);
+		if (!strcmp("mslug5hc18", s))	                AddGame(lpSerie21, jj);
+		if (!strcmp("mslugxsrf", s))	                AddGame(lpSerie21, jj);
+		if (!strcmp("mslugxhc04", s))	                AddGame(lpSerie21, jj);
+		if (!strcmp("mslugxhc10", s))	                AddGame(lpSerie21, jj);
+		if (!strcmp("mslugxhc12", s))	                AddGame(lpSerie21, jj);
+		if (!strcmp("mslugxhc19", s))	                AddGame(lpSerie21, jj);
+		if (!strcmp("mslugxhc20", s))	                AddGame(lpSerie21, jj);
+		if (!strcmp("mslugxat08", s))	                AddGame(lpSerie21, jj);
+		if (!strcmp("mslugxat09", s))	                AddGame(lpSerie21, jj);
+
+        // 2020
+		if (!strcmp("mslug3hc12", s))			        AddGame(lpSerie20, jj);
+		if (!strcmp("mslug3hc14", s))			        AddGame(lpSerie20, jj);
+		if (!strcmp("mslug4hc07", s))			        AddGame(lpSerie20, jj);
+		if (!strcmp("mslug5hc02", s))		            AddGame(lpSerie20, jj);
+		if (!strcmp("mslug5hc19", s))			        AddGame(lpSerie20, jj);
+		if (!strcmp("mslugxhc11", s))	                AddGame(lpSerie20, jj);
+		if (!strcmp("mslugxhc21", s))	                AddGame(lpSerie20, jj);
+		if (!strcmp("mslugxhc22", s))	                AddGame(lpSerie20, jj);
+		if (!strcmp("mslugxhc23", s))	                AddGame(lpSerie20, jj);
+		if (!strcmp("mslugxtst01", s))	                AddGame(lpSerie20, jj);
+		if (!strcmp("mslugxtao01", s))	                AddGame(lpSerie20, jj);
+		if (!strcmp("mslugxat01", s))	                AddGame(lpSerie20, jj);
+		if (!strcmp("mslugxat02", s))	                AddGame(lpSerie20, jj);
+		if (!strcmp("mslugxat03", s))	                AddGame(lpSerie20, jj);
+		if (!strcmp("mslugxat04", s))	                AddGame(lpSerie20, jj);
+		if (!strcmp("mslugxat05", s))	                AddGame(lpSerie20, jj);
+		if (!strcmp("mslugxat06", s))	                AddGame(lpSerie20, jj);
+		if (!strcmp("mslugxat07", s))	                AddGame(lpSerie20, jj);
+
+        // 2019
+		if (!strcmp("mslug2hc02", s))			        AddGame(lpSerie19, jj);
+		if (!strcmp("mslug3hc04", s))			        AddGame(lpSerie19, jj);
+		if (!strcmp("mslug3hc17", s))			        AddGame(lpSerie19, jj);
+		if (!strcmp("mslug3hc18", s))		            AddGame(lpSerie19, jj);
+		if (!strcmp("mslug3hc22", s))			        AddGame(lpSerie19, jj);
+		if (!strcmp("mslug3hc25", s))	                AddGame(lpSerie19, jj);
+		if (!strcmp("mslug4hc06", s))			        AddGame(lpSerie19, jj);
+		if (!strcmp("mslug4hc10", s))			        AddGame(lpSerie19, jj);
+		if (!strcmp("mslug5hc15", s))			        AddGame(lpSerie19, jj);
+		if (!strcmp("mslug5hc23", s))		            AddGame(lpSerie19, jj);
+		if (!strcmp("mslug5hc29", s))			        AddGame(lpSerie19, jj);
+		if (!strcmp("mslug5hc31", s))	                AddGame(lpSerie19, jj);
+		if (!strcmp("mslugxhc17", s))	                AddGame(lpSerie19, jj);
+
+        // 2018
+		if (!strcmp("mslughc04", s))			        AddGame(lpSerie18, jj);
+		if (!strcmp("mslughc11", s))			        AddGame(lpSerie18, jj);
+		if (!strcmp("mslug2hc07", s))			        AddGame(lpSerie18, jj);
+		if (!strcmp("mslug2hc10", s))		            AddGame(lpSerie18, jj);
+		if (!strcmp("mslug2hc13", s))			        AddGame(lpSerie18, jj);
+		if (!strcmp("mslug2hc19", s))	                AddGame(lpSerie18, jj);
+		if (!strcmp("mslug3hc10", s))			        AddGame(lpSerie18, jj);
+		if (!strcmp("mslug3hc33", s))			        AddGame(lpSerie18, jj);
+		if (!strcmp("mslug4hc22", s))		            AddGame(lpSerie18, jj);
+		if (!strcmp("mslug5hc16", s))			        AddGame(lpSerie18, jj);
+		if (!strcmp("mslug5hc25", s))	                AddGame(lpSerie18, jj);
+		if (!strcmp("mslugxhc08", s))	                AddGame(lpSerie18, jj);
+		if (!strcmp("mslugxhc18", s))	                AddGame(lpSerie18, jj);
+		if (!strcmp("mslugxhc25", s))	                AddGame(lpSerie18, jj);
+
+        // 2017
+		if (!strcmp("mslughc10", s))			        AddGame(lpSerie17, jj);
+		if (!strcmp("mslug2hc09", s))			        AddGame(lpSerie17, jj);
+		if (!strcmp("mslug3hc08", s))			        AddGame(lpSerie17, jj);
+		if (!strcmp("mslug3hc09", s))		            AddGame(lpSerie17, jj);
+		if (!strcmp("mslug3hc15", s))			        AddGame(lpSerie17, jj);
+		if (!strcmp("mslug3hc19", s))	                AddGame(lpSerie17, jj);
+		if (!strcmp("mslug3hc21", s))			        AddGame(lpSerie17, jj);
+		if (!strcmp("mslug4hc12", s))			        AddGame(lpSerie17, jj);
+		if (!strcmp("mslug5hc17", s))			        AddGame(lpSerie17, jj);
+
+        // 2016
+		if (!strcmp("mslughc01", s))			        AddGame(lpSerie16, jj);
+		if (!strcmp("mslughc08", s))			        AddGame(lpSerie16, jj);
+		if (!strcmp("mslughc09", s))			        AddGame(lpSerie16, jj);
+		if (!strcmp("mslug2hc12", s))		            AddGame(lpSerie16, jj);
+		if (!strcmp("mslug2hc15", s))			        AddGame(lpSerie16, jj);
+		if (!strcmp("mslug3hc30", s))	                AddGame(lpSerie16, jj);
+		if (!strcmp("mslug5hc01", s))			        AddGame(lpSerie16, jj);
+		if (!strcmp("mslugxhc09", s))			        AddGame(lpSerie16, jj);
+
+        // 2015
+		if (!strcmp("mslug2t", s))			            AddGame(lpSerie15, jj);
+		if (!strcmp("mslug2hc11", s))			        AddGame(lpSerie15, jj);
+		if (!strcmp("mslug2hc16", s))			        AddGame(lpSerie15, jj);
+		if (!strcmp("mslug4hc18", s))		            AddGame(lpSerie15, jj);
+		if (!strcmp("mslug5l9a", s))			        AddGame(lpSerie15, jj);
+		if (!strcmp("mslug5l9b", s))	                AddGame(lpSerie15, jj);
+		if (!strcmp("mslug5hc04", s))			        AddGame(lpSerie15, jj);
+		if (!strcmp("mslug5hc05", s))			        AddGame(lpSerie15, jj);
+		if (!strcmp("mslug5hc06", s))			        AddGame(lpSerie15, jj);
+		if (!strcmp("mslugxhc02", s))			        AddGame(lpSerie15, jj);
+
+        // 2014
+		if (!strcmp("mslug2hc01", s))	                AddGame(lpSerie14, jj);
+		if (!strcmp("mslug3hc07", s))			        AddGame(lpSerie14, jj);
+		if (!strcmp("mslugxhc06", s))			        AddGame(lpSerie14, jj);
+		if (!strcmp("mslugxhc16", s))		            AddGame(lpSerie14, jj);
+
+        // 2013
+		if (!strcmp("mslughc16", s))	                AddGame(lpSerie13, jj);
+		if (!strcmp("mslug3hc06", s))			        AddGame(lpSerie13, jj);
+		if (!strcmp("mslug3hc13", s))			        AddGame(lpSerie13, jj);
+		if (!strcmp("mslug4hc01", s))		            AddGame(lpSerie13, jj);
+		if (!strcmp("mslug4hc19", s))	                AddGame(lpSerie13, jj);
+		if (!strcmp("mslugxhc01", s))			        AddGame(lpSerie13, jj);
+		if (!strcmp("mslugxhc05", s))			        AddGame(lpSerie13, jj);
+		if (!strcmp("mslugxhc15", s))		            AddGame(lpSerie13, jj);
+
+        // 2012
+		if (!strcmp("mslug3hc01", s))	                AddGame(lpSerie12, jj);
+		if (!strcmp("mslug3hc16", s))			        AddGame(lpSerie12, jj);
+		if (!strcmp("mslug3hc29", s))			        AddGame(lpSerie12, jj);
+		if (!strcmp("mslug3hc31", s))		            AddGame(lpSerie12, jj);
+		if (!strcmp("mslug4hc16", s))	                AddGame(lpSerie12, jj);
+		if (!strcmp("mslug4hc24", s))			        AddGame(lpSerie12, jj);
+		if (!strcmp("mslugxhc27", s))			        AddGame(lpSerie12, jj);
+
+        // 2011
+		if (!strcmp("mslug2hc18", s))	                AddGame(lpSerie11, jj);
+
+        // 2010
+		if (!strcmp("neopang", s))	                    AddGame(lpSerie10, jj);
+
+        // 2008
+		if (!strcmp("mslug2hc04", s))	                AddGame(lpSerie08, jj);
+
+        // 2007
+		if (!strcmp("mslug4hc21", s))	                AddGame(lpSerie07, jj);
+
+        // 2006
+		if (!strcmp("mslug2hc17", s))	                AddGame(lpSerie06, jj);
+		if (!strcmp("mslug3hc32", s))			        AddGame(lpSerie06, jj);
+		if (!strcmp("mslug4hc20", s))			        AddGame(lpSerie06, jj);
+		if (!strcmp("mslug5hc24", s))		            AddGame(lpSerie06, jj);
+		if (!strcmp("mslugxhc28", s))	                AddGame(lpSerie06, jj);
+
+        // 2005
+		if (!strcmp("mslug4hc21", s))	                AddGame(lpSerie05, jj);
+		if (!strcmp("mslugxhc29", s))			        AddGame(lpSerie05, jj);
 	}
 }
 

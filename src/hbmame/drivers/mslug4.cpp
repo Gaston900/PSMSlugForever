@@ -7452,7 +7452,7 @@ GAME( 2023, mslug4ammordd,    mslug4,   neoclock_noslot, mslug4vh,   neogeo_stat
 GAME( 2025, mslug4cqtdd,      mslug4,   neoclock_noslot, mslug4cqi,  neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Final Counterattack 7.5Z 2025-09-29) (Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug4cqidd,      mslug4,   neoclock_noslot, mslug4cqi,  neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Legendary Firepower Showdown 7.5 2025-09-29) (Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4dddd,       mslug4,   neoclock_noslot, mslug4,     neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Starlight 2022-10-05) (Darksoft)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, mslug4frdd,       mslug4,   neoclock_noslot, mslug4,     neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (French Translation 2006-12-23) (Darksoft)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslug4frdd,       mslug4,   neoclock_noslot, mslug4,     neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (French Translation 2006-12-23) (Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4kidd,       mslug4,   neoclock_noslot, mslug4,     neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Komorebi 2022-05-20) (Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug4lwdd,       mslug4,   neoclock_noslot, mslug4vh,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix 2023-02-25) (Darksoft)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug4lwqdd,      mslug4,   neoclock_noslot, mslug4vh,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix - Without Body Armor 2023-02-25) (Darksoft)", MACHINE_SUPPORTS_SAVE )
@@ -7473,24 +7473,24 @@ GAME( 2023, mslug4ammornds,   mslug4,   neoclock_noslot, mslug4vh,   neogeo_stat
 GAME( 2025, mslug4cqtnds,     mslug4,   neoclock_noslot, mslug4cqi,  neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Final Counterattack 7.5Z 2025-09-29) (Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mslug4cqinds,     mslug4,   neoclock_noslot, mslug4cqi,  neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Legendary Firepower Showdown 7.5 2025-09-29) (Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4ddnds,      mslug4,   neoclock_noslot, mslug4,     neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Starlight 2022-10-05) (Neo SD)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, mslug4frnds,      mslug4,   neoclock_noslot, mslug4,     neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (French Translation 2006-12-23) (Neo SD)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslug4frnds,      mslug4,   neoclock_noslot, mslug4,     neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (French Translation 2006-12-23) (Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4kinds,      mslug4,   neoclock_noslot, mslug4,     neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Komorebi 2022-05-20) (Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug4lwnds,      mslug4,   neoclock_noslot, mslug4vh,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix 2023-02-25) (Neo SD)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug4lwqnds,     mslug4,   neoclock_noslot, mslug4vh,   neogeo_state,    init_mslug4ndd,  ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix - Without Body Armor 2023-02-25) (Neo SD)", MACHINE_SUPPORTS_SAVE )
 
-/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
+/*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT           MONITOR            COMPANY                    FULLNAME FLAGS */
 // Metal Slug 4 (Hack Converted C, V, M, S & P Decrypter To Encrypte)
-GAME( 2002, mslug4fr,         mslug4,   neoclock_noslot, mslug4vh,   neogeo_state,    init_mslug4,     ROT0, "hack",            "Metal Slug 4 (French Translation 2006-12-23) (Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-GAME( 2023, mslug4lw,         mslug4,   neoclock_noslot, mslug4vh,   neogeo_state,    init_mslug4lw,   ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix 2023-02-25) (Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-GAME( 2023, mslug4ammor,      mslug4,   neoclock_noslot, mslug4vh,   neogeo_state,    init_mslug4lw,   ROT0, "hack",            "Metal Slug 4 (Random Ammunition 2023-02-25) (Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-GAME( 2023, mslug4lwq,        mslug4,   neoclock_noslot, mslug4vh,   neogeo_state,    init_mslug4lw,   ROT0, "hack",            "Metal Slug 4 (Last Bullet Remix - Without Body Armor 2023-02-25) (Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-GAME( 2022, mslug4dde,        mslug4,   neoclock_noslot, mslug4vh,   neogeo_state,    init_mslug4,     ROT0, "hack",            "Metal Slug 4 (Starlight 2022-10-05) (Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-GAME( 2022, mslug4ki,         mslug4,   neoclock_noslot, mslug4vh,   neogeo_state,    init_mslug4,     ROT0, "hack",            "Metal Slug 4 (Komorebi 2022-05-11) (Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-GAME( 2025, mslug4cqi,        mslug4,   neoclock_noslot, mslug4cqi,  neogeo_state,    init_mslug4lw,   ROT0, "hack",            "Metal Slug 4 (Legendary Firepower Showdown 5.0 2025-02-13) (Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
+GAME( 2002, mslug4fr,         mslug4,   neoclock_noslot, mslug4vh,   neogeo_state,    init_mslug4,     ROT0, "Decrypter to Encrypted Conversion",   "Metal Slug 4 (French Translation 2006-12-23) (Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
+GAME( 2023, mslug4lw,         mslug4,   neoclock_noslot, mslug4vh,   neogeo_state,    init_mslug4lw,   ROT0, "Decrypter to Encrypted Conversion",   "Metal Slug 4 (Last Bullet Remix 2023-02-25) (Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
+GAME( 2023, mslug4ammor,      mslug4,   neoclock_noslot, mslug4vh,   neogeo_state,    init_mslug4lw,   ROT0, "Decrypter to Encrypted Conversion",   "Metal Slug 4 (Random Ammunition 2023-02-25) (Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
+GAME( 2023, mslug4lwq,        mslug4,   neoclock_noslot, mslug4vh,   neogeo_state,    init_mslug4lw,   ROT0, "Decrypter to Encrypted Conversion",   "Metal Slug 4 (Last Bullet Remix - Without Body Armor 2023-02-25) (Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
+GAME( 2022, mslug4dde,        mslug4,   neoclock_noslot, mslug4vh,   neogeo_state,    init_mslug4,     ROT0, "Decrypter to Encrypted Conversion",   "Metal Slug 4 (Starlight 2022-10-05) (Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
+GAME( 2022, mslug4ki,         mslug4,   neoclock_noslot, mslug4vh,   neogeo_state,    init_mslug4,     ROT0, "Decrypter to Encrypted Conversion",   "Metal Slug 4 (Komorebi 2022-05-11) (Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
+GAME( 2025, mslug4cqi,        mslug4,   neoclock_noslot, mslug4cqi,  neogeo_state,    init_mslug4lw,   ROT0, "Decrypter to Encrypted Conversion",   "Metal Slug 4 (Legendary Firepower Showdown 5.0 2025-02-13) (Encrypted C)", MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
 
 /*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug 4 (Hack)
-GAME( 2007, mslug4hc01,       mslug4,   neoclock_noslot, mslug4sd,   neogeo_state,    init_mslug4,     ROT0, "HappyAsr",        "Metal Slug 4 (Super D Version 2013-03-11)", MACHINE_SUPPORTS_SAVE )
+GAME( 2013, mslug4hc01,       mslug4,   neoclock_noslot, mslug4sd,   neogeo_state,    init_mslug4,     ROT0, "HappyAsr",        "Metal Slug 4 (Super D Version 2013-03-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mslug4hc02,       mslug4,   neoclock_noslot, mslug4,     neogeo_state,    init_mslug4,     ROT0, "PPXCLUB",         "Metal Slug 4 (Burst Enhanced 2022-11-03)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug4hc03,       mslug4,   neoclock_noslot, mslug4vh,   neogeo_state,    init_mslug4,     ROT0, "GOTVG",           "Metal Slug 4 (Last Bullet Remix 2023-02-25)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslug4hc04,       mslug4,   neoclock_noslot, mslug4vh,   neogeo_state,    init_mslug4,     ROT0, "GOTVG",           "Metal Slug 4 (Random Ammunition 2023-02-25)", MACHINE_SUPPORTS_SAVE )
@@ -7509,8 +7509,8 @@ GAME( 2012, mslug4hc16,       mslug4,   neoclock_noslot, mslug4cb,   neogeo_stat
 GAME( 2021, mslug4hc17,       mslug4,   neoclock_noslot, mslug4,     neogeo_state,    init_mslug4,     ROT0, "hack",            "Metal Slug 4 (Children's 2021-06-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, mslug4hc18,       mslug4,   neoclock_noslot, mslug4,     neogeo_state,    init_mslug4,     ROT0, "DDJ",             "Metal Slug 4 (Jump In Mid Air 2015-08-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2013, mslug4hc19,       mslug4,   neoclock_noslot, mslug4zh,   neogeo_state,    init_mslug4,     ROT0, "DDJ",             "Metal Slug 4 (War Chariot 2013-02-21)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, mslug4hc20,       mslug4,   neoclock_noslot, mslug4,     neogeo_state,    init_mslug4,     ROT0, "Shyma.X",         "Metal Slug 4 (French Translation 2006-12-23)", MACHINE_SUPPORTS_SAVE )
-GAME( 2007, mslug4hc21,       mslug4,   neoclock_noslot, mslug4,     neogeo_state,    init_mslug4,     ROT0, "Evoboy",          "Metal Slug 4 (Italian Translation 2005-12-12)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, mslug4hc20,       mslug4,   neoclock_noslot, mslug4,     neogeo_state,    init_mslug4,     ROT0, "Shyma.X",         "Metal Slug 4 (French Translation 2006-12-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2005, mslug4hc21,       mslug4,   neoclock_noslot, mslug4,     neogeo_state,    init_mslug4,     ROT0, "Evoboy",          "Metal Slug 4 (Italian Translation 2005-12-12)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslug4hc22,       mslug4,   neoclock_noslot, mslug4,     neogeo_state,    init_mslug4,     ROT0, "hack",            "Metal Slug 4 (Easy Mode 2018-11-16)", MACHINE_SUPPORTS_SAVE ) // Fix Gaston90 2023
 GAME( 2023, mslug4hc23,       mslug4,   neoclock_noslot, mslug4,     neogeo_state,    init_mslug4,     ROT0, "hack",            "Metal Slug 4 (Enemy Speed Up 2023-03-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2012, mslug4hc24,       mslug4,   neoclock_noslot, mslug4cf,   neogeo_state,    init_mslug4,     ROT0, "LB70 (Eezezy)",   "Metal Slug 4 (Crazy Fire 2012-01-16)", MACHINE_SUPPORTS_SAVE )

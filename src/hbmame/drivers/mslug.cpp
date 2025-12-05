@@ -1501,7 +1501,7 @@ GAME( 1996, mslugnsd,         mslug,    neogeo_noslot,   mslug,     neogeo_state
 
 /*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Exclusive Fightcade2)
-GAME( 2025, mslugdyf1,        mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "hack",            "Metal Slug (Origins Random Item 2025-07-18) (Fightcade2)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, mslugdyf1,        mslug,    neoclock_noslot, mslug,     neogeo_state,    init_neogeo,     ROT0, "Alice",           "Metal Slug (Origins Random Item 2025-07-18) (Fightcade2)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR   NAME             PARENT       MACHINE       INPUT                         INIT        MONITOR COMPANY           FULLNAME FLAGS */
 // Metal Slug (Hack)
