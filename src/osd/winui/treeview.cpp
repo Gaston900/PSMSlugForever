@@ -3787,7 +3787,7 @@ void CreateCOLLECTIONFolders(int parent_index)
 
 
 	LPTREEFOLDER lpFolder = treeFolders[parent_index];
-    LPTREEFOLDER lpSerieEM, lpSerieER, lpSerieFP, lpSerieGB, lpSerieLD, lpSerieMF, lpSerieRI, lpSerieSD;
+    LPTREEFOLDER lpSerieEM, lpSerieER, lpSerieFP, lpSerieGB, lpSerieLD, lpSerieMF, lpSerieRI, lpSerieSD, lpSerieSR;
 
 	// no games in top level folder
 	SetAllBits(lpFolder->m_lpGameBits,FALSE);
@@ -3801,6 +3801,7 @@ void CreateCOLLECTIONFolders(int parent_index)
     lpSerieMF = NewFolder("Multifunction", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
     lpSerieRI = NewFolder("Random Item", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
     lpSerieSD = NewFolder("Speedrun", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+    lpSerieSR = NewFolder("Survival", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
 
 	AddFolder(lpSerieEM);
 	AddFolder(lpSerieER);
@@ -3810,6 +3811,7 @@ void CreateCOLLECTIONFolders(int parent_index)
 	AddFolder(lpSerieMF);	
 	AddFolder(lpSerieRI);	
 	AddFolder(lpSerieSD);
+	AddFolder(lpSerieSR);
 
 	for (jj = 0; jj < nGames; jj++)
 	{
@@ -3925,6 +3927,11 @@ void CreateCOLLECTIONFolders(int parent_index)
 		if (!strcmp("mslug4hc11", s))		            AddGame(lpSerieSD, jj);
 		if (!strcmp("mslug5hc18", s))			        AddGame(lpSerieSD, jj);
 		if (!strcmp("mslugxhc04", s))	                AddGame(lpSerieSD, jj);
+
+        // Serie Survival
+		if (!strcmp("mslug3hc39", s))			        AddGame(lpSerieSR, jj);
+		if (!strcmp("mslug3hc40", s))			        AddGame(lpSerieSR, jj);
+	    if (!strcmp("mslug3esl", s))			        AddGame(lpSerieSR, jj);
 	}
 }
 
