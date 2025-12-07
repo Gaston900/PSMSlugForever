@@ -25,6 +25,7 @@ struct DriversInfo
 	bool isBIOS;
 	bool isConsole;
 	bool isMvs;
+	bool isCapcom;
 };
 
 static std::vector<DriversInfo>	drivers_info;
@@ -288,6 +289,7 @@ static void InitDriversInfo(void)
 		gameinfo->isVertical = BIT(cache, 2);  //ORIENTATION_SWAP_XY
 		gameinfo->isConsole = BIT(cache, 21);
 		gameinfo->isMvs = BIT(cache, 15);
+		gameinfo->isCapcom = BIT(cache, 20);
 		gameinfo->isMechanical = BIT(cache, 14);  //MACHINE_MECHANICAL
 		gameinfo->isBIOS = BIT(cache, 9);  //MACHINE_IS_BIOS_ROOT
 		gameinfo->screenCount = NumberOfScreens(config);
@@ -392,6 +394,7 @@ static void InitDriversCache(void)
 		gameinfo->isBIOS            =  BIT(cache_lower, 9);
 		gameinfo->isConsole         =  BIT(cache_lower, 21);
 		gameinfo->isMvs             =  BIT(cache_lower, 15);
+		gameinfo->isCapcom          =  BIT(cache_lower, 20);
 	}
 }
 
@@ -493,6 +496,11 @@ bool DriverIsConsole(int driver_index)
 bool DriverIsMvs(int driver_index)
 {
 	return GetDriversInfo(driver_index)->isMvs;
+}
+
+bool DriverIsCapcom(int driver_index)
+{
+	return GetDriversInfo(driver_index)->isCapcom;
 }
 
 //============================================================

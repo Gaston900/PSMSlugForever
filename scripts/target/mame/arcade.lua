@@ -17,6 +17,10 @@ CPUS["TLCS900"] = true --NPG
 CPUS["SH"] = true -- MEGADRIVE
 CPUS["SSP1601"] = true -- MEGADRIVE
 CPUS["LR35902"] = true -- GB
+CPUS["DSP16"] = true --CPS1
+CPUS["I386"] = true --CPS1
+CPUS["PIC16C5X"] = true --CPS1
+CPUS["SH"] = true --CPS3
 
 --------------------------------------------------
 -- specify available sound cores
@@ -41,6 +45,8 @@ SOUNDS["CDDA"] = true -- MEGADRIVE
 SOUNDS["RF5C68"] = true -- MEGADRIVE
 SOUNDS["SN76496"] = true -- MEGADRIVE
 SOUNDS["GB_SOUND"] = true -- GBA
+SOUNDS["MSM5205"] = true --CPS1
+SOUNDS["QSOUND"] = true --CPS1
 
 --------------------------------------------------
 -- specify available machine cores
@@ -52,6 +58,13 @@ MACHINES["WATCHDOG"] = true
 MACHINES["Z80DAISY"] = true
 MACHINES["PIC8259"] = true -- M92
 MACHINES["V3021"] = true --PGM
+MACHINES["TTL74157"] = true --CPS1
+MACHINES["EEPROMDEV"] = true --CPS1
+MACHINES["TIMEKPR"] = true --CPS1
+MACHINES["UPD4701"] = true --CPS1
+MACHINES["INTELFLASH"] = true -- cps3
+MACHINES["NSCSI"] = true -- cps3
+MACHINES["WD33C9X"] = true -- cps3
 
 --------------------------------------------------
 -- specify available bus cores
@@ -61,6 +74,7 @@ BUSES["GENERIC"] = true -- NPG
 BUSES["MEGADRIVE"] = true -- MEGADRIVE
 BUSES["GBA"] = true -- GBA
 BUSES["GAMEBOY"] = true -- GB
+BUSES["NSCSI"] = true --CPS3
 
 --------------------------------------------------
 -- specify available video cores
@@ -80,6 +94,7 @@ VIDEOS["GB_LCD"] = true -- GB
 
 function linkProjects_mame_arcade(_target, _subtarget)
 	links {
+     	"capcom",
 		"igs",
 		"irem",
 		"neogeo",
@@ -125,6 +140,21 @@ function createProjects_mame_arcade(_target, _subtarget)
 -- the following files are general components and
 -- shared across a number of drivers
 --------------------------------------------------
+
+createMAMEProjects(_target, _subtarget, "capcom")
+files {
+	MAME_DIR .. "src/hbmame/drivers/cps1.cpp",
+	MAME_DIR .. "src/hbmame/video/cps1.cpp",
+	MAME_DIR .. "src/hbmame/drivers/cps1bl_5205.cpp",
+	MAME_DIR .. "src/hbmame/drivers/cps1bl_pic.cpp",
+	MAME_DIR .. "src/hbmame/drivers/cps2.cpp",
+	MAME_DIR .. "src/hbmame/video/cps2.cpp",
+--	MAME_DIR .. "src/hbmame/drivers/cps3hb.cpp",
+--	MAME_DIR .. "src/mame/audio/cps3.cpp",
+	MAME_DIR .. "src/hbmame/drivers/fcrash.cpp",
+	MAME_DIR .. "src/mame/machine/kabuki.cpp",
+}
+
 
 createMAMEProjects(_target, _subtarget, "igs")
 files {

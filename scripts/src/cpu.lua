@@ -346,3 +346,45 @@ if (CPUS["LR35902"]~=null or _OPTIONS["with-tools"]) then
 	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/lr35902/lr35902d.cpp")
 	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/lr35902/lr35902d.h")
 end
+
+-- SYSTEM (CPS1)
+--------------------------------------------------
+-- WE|AT&T DSP16
+--@src/devices/cpu/dsp16/dsp16.h,CPUS["DSP16"] = true
+--------------------------------------------------
+
+if (CPUS["DSP16"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/cpu/dsp16/dsp16.cpp",
+		MAME_DIR .. "src/devices/cpu/dsp16/dsp16.h",
+		MAME_DIR .. "src/devices/cpu/dsp16/dsp16core.cpp",
+		MAME_DIR .. "src/devices/cpu/dsp16/dsp16core.h",
+		MAME_DIR .. "src/devices/cpu/dsp16/dsp16core.ipp",
+		MAME_DIR .. "src/devices/cpu/dsp16/dsp16fe.cpp",
+		MAME_DIR .. "src/devices/cpu/dsp16/dsp16fe.h",
+		MAME_DIR .. "src/devices/cpu/dsp16/dsp16rc.cpp",
+		MAME_DIR .. "src/devices/cpu/dsp16/dsp16rc.h",
+	}
+end
+
+if (CPUS["DSP16"]~=null or _OPTIONS["with-tools"]) then
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/dsp16/dsp16dis.cpp")
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/dsp16/dsp16dis.h")
+end
+
+--------------------------------------------------
+-- Microchip PIC16C5x
+--@src/devices/cpu/pic16c5x/pic16c5x.h,CPUS["PIC16C5X"] = true
+--------------------------------------------------
+
+if (CPUS["PIC16C5X"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/cpu/pic16c5x/pic16c5x.cpp",
+		MAME_DIR .. "src/devices/cpu/pic16c5x/pic16c5x.h",
+	}
+end
+
+if (CPUS["PIC16C5X"]~=null or _OPTIONS["with-tools"]) then
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/pic16c5x/16c5xdsm.cpp")
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/pic16c5x/16c5xdsm.h")
+end

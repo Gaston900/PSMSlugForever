@@ -226,12 +226,12 @@ if (SOUNDS["OKIM6258"]~=null or SOUNDS["OKIM6295"]~=null or SOUNDS["OKIM9810"]~=
 	}
 end
 
---if (SOUNDS["MSM5205"]~=null or SOUNDS["MSM6585"]~=null) then
---	files {
---		MAME_DIR .. "src/devices/sound/msm5205.cpp",
---		MAME_DIR .. "src/devices/sound/msm5205.h",
---	}
---end
+  if (SOUNDS["MSM5205"]~=null or SOUNDS["MSM6585"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/sound/msm5205.cpp",
+		MAME_DIR .. "src/devices/sound/msm5205.h",
+	}
+end
 
 --if (SOUNDS["MSM5232"]~=null) then
 --	files {
@@ -373,5 +373,20 @@ if (SOUNDS["GB_SOUND"]~=null) then
 	files {
 		MAME_DIR .. "src/devices/sound/gb.cpp",
 		MAME_DIR .. "src/devices/sound/gb.h",
+	}
+end
+
+-- SYSTEM (CPS1)
+---------------------------------------------------
+-- QSound sample player
+--@src/devices/sound/qsound.h,SOUNDS["QSOUND"] = true
+---------------------------------------------------
+
+if (SOUNDS["QSOUND"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/sound/qsound.cpp",
+		MAME_DIR .. "src/devices/sound/qsound.h",
+		MAME_DIR .. "src/devices/sound/qsoundhle.cpp",
+		MAME_DIR .. "src/devices/sound/qsoundhle.h",
 	}
 end

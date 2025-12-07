@@ -188,8 +188,9 @@
 #define IDI_FOLDER_MVS			        308
 #define IDI_FOLDER_UPDATE				309
 #define IDI_FOLDER_CONSOLE              310
-#define IDI_HEADER_UP                   311
-#define IDI_HEADER_DOWN                 312
+#define IDI_FOLDER_CAPCOM               311
+#define IDI_HEADER_UP                   312
+#define IDI_HEADER_DOWN                 313
 
 #define IDC_LIST                        1000
 #define IDC_JOYSTICK                    1003

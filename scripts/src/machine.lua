@@ -182,3 +182,58 @@ if (MACHINES["INTELFLASH"]~=null) then
 		MAME_DIR .. "src/devices/machine/intelfsh.h",
 	}
 end
+
+-- SYSTEM (CPS1)
+---------------------------------------------------
+--
+--@src/devices/machine/74157.h,MACHINES["TTL74157"] = true
+---------------------------------------------------
+
+if (MACHINES["TTL74157"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/machine/74157.cpp",
+		MAME_DIR .. "src/devices/machine/74157.h",
+	}
+end
+
+---------------------------------------------------
+--
+--@src/devices/machine/eeprom.h,MACHINES["EEPROMDEV"] = true
+--@src/devices/machine/eepromser.h,MACHINES["EEPROMDEV"] = true
+--@src/devices/machine/eeprompar.h,MACHINES["EEPROMDEV"] = true
+---------------------------------------------------
+
+if (MACHINES["EEPROMDEV"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/machine/eeprom.cpp",
+		MAME_DIR .. "src/devices/machine/eeprom.h",
+		MAME_DIR .. "src/devices/machine/eepromser.cpp",
+		MAME_DIR .. "src/devices/machine/eepromser.h",
+		MAME_DIR .. "src/devices/machine/eeprompar.cpp",
+		MAME_DIR .. "src/devices/machine/eeprompar.h",
+	}
+end
+
+---------------------------------------------------
+--
+--@src/devices/machine/timekpr.h,MACHINES["TIMEKPR"] = true
+---------------------------------------------------
+
+if (MACHINES["TIMEKPR"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/machine/timekpr.cpp",
+		MAME_DIR .. "src/devices/machine/timekpr.h",
+	}
+end
+
+---------------------------------------------------
+--
+--@src/devices/machine/upd4701.h,MACHINES["UPD4701"] = true
+---------------------------------------------------
+
+if (MACHINES["UPD4701"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/machine/upd4701.cpp",
+		MAME_DIR .. "src/devices/machine/upd4701.h",
+	}
+end
