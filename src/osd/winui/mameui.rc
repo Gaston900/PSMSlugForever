@@ -426,7 +426,7 @@ BEGIN
     RTEXT            "",IDC_BUILD,6,4,308,10
     LTEXT            "",IDC_BUILDVER,6,4,120,10
     CONTROL         "",IDC_ABOUT,WC_STATIC,SS_BITMAP,6,16,56,17
-    CTEXT           "PSMSlugForever Copyright (C) 2020-2025 Gaston90 And The Collaborators",IDC_TEXT1,6,106,310,10
+    CTEXT           "SlugNeo Copyright (C) 2020-2025 Gaston90 And The Collaborators",IDC_TEXT1,6,106,310,10
     CTEXT           "MAMEUI version by Christopher Kirmse and The MAMEUI Team",IDC_TEXT2,6,118,310,10
     CTEXT           "Additional MAMEUI code by Mike Haaland, Andrew Kirmse,",IDC_TEXT3,6,130,310,10
     CTEXT           "Jeff Miller, John Hardy IV and Michael Soderstrom",IDC_TEXT4,6,142,310,10

@@ -78,11 +78,11 @@
 #endif
 
 #ifdef PTR64
-#define MAMEUINAME			"PSMSlugForever (Metal Slug MVS/AES Gold Collection)"
+#define MAMEUINAME			"SlugNeo (NeoGeo MVS/AES Collection)"
 #else
-#define MAMEUINAME			"PSMSlugForever (Metal Slug MVS/AES Gold Collection)"
+#define MAMEUINAME			"SlugNeo (NeoGeo MVS/AES Collection)"
 #endif
-#define MAMENAME			"PSMSlugForever"
+#define MAMENAME			"SlugNeo"
 
 #define MAME_VERSION		"5.7"
 #define MAMEUIFX_VERSION	MAME_VERSION " (" __DATE__")"

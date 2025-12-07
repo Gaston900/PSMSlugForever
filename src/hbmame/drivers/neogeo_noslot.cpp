@@ -1,4 +1,3 @@
-// NeoEX
 // license:BSD-3-Clause
 // copyright-holders:Bryan McPhail, Ernesto Corvi, Andrew Prime, Zsolt Vasvari
 // Thanks To The Collaborators Who Have Made A Great Contribution To The Project: Robbert.
