@@ -909,4 +909,4 @@ ROM_END
 
 //   YEAR  NAME  PARENT  COMPAT  MACHINE  INPUT  STATE      INIT        COMPANY  FULLNAME               FLAGS
 CONS(1998, ngp,  0,      0,      ngp,     ngp,   ngp_state, empty_init, "SNK",   "NeoGeo Pocket",       MACHINE_SUPPORTS_SAVE)
-CONS(1999, ngpc, 0,      0,      ngpc,    ngp,   ngp_state, empty_init, "SNK",   "NeoGeo Pocket Color", MACHINE_IS_BIOS_ROOT | MACHINE_SUPPORTS_SAVE)
+CONS(1999, ngpc, 0,      0,      ngpc,    ngp,   ngp_state, empty_init, "SNK",   "NeoGeo Pocket Color", MACHINE_WRONG_COLORS | MACHINE_SUPPORTS_SAVE)

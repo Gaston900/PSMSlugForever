@@ -1098,6 +1098,609 @@ dmnfrnt           // (c) 2002 Demon Front
 dmnfrnt103        //
 dmnfrnt102        //
 
+@source:neogeo.cpp
+2020bb            // 0030 (c) 1991 SNK / Pallas
+2020bba           // 0030 (c) 1991 SNK / Pallas
+2020bbh           // 0030 (c) 1991 SNK / Pallas
+3countb           // 0043 (c) 1993 SNK
+alpham2           // 0007 (c) 1991 SNK
+alpham2p          // 0007 (c) 1991 SNK (prototype)
+androdun          // 0049 (c) 1992 Visco
+aodk              // 0074 (c) 1994 ADK / SNK
+aof               // 0044 (c) 1992 SNK
+aof2              // 0056 (c) 1994 SNK
+aof2a             // 0056 (c) 1994 SNK
+aof3              // 0096 (c) 1996 SNK
+aof3k             // 0196 Censored Korean release of aof3
+b2b               // 0071 (c) 2000 Visco (released by NCI in 2010)
+bakatono          // 0036 (c) 1991 Monolith Corp.
+bangbead          // 0259 (c) 2000 Visco
+bjourney          // 0022 (c) 1990 Alpha Denshi Co.
+bjourneyh         //
+blazstar          // 0239 (c) 1998 Yumekobo
+breakers          // 0230 (c) 1996 Visco
+breakrev          // 0245 (c) 1998 Visco
+bstars            // 0002 (c) 1990 SNK
+bstars2           // 0041 (c) 1992 SNK
+bstarsh           // 0002 (c) 1990 SNK
+burningf          // 0018 (c) 1991 SNK
+burningfh         // 0018 (c) 1991 SNK
+burningfp         // 0018 (c) 1991 SNK (prototype)
+burningfpa        // 0018 (c) 1991 SNK (prototype)
+burningfpb        // 0018 (c) 1991 SNK (prototype)
+crswd2bl          // 0054 bootleg made from CD version
+crsword           // 0037 (c) 1991 Alpha Denshi Co.
+ct2k3sa           // bootleg of kof2001
+ct2k3sp           // bootleg of kof2001
+cthd2003          // bootleg of kof2001
+ctomaday          // 0249 (c) 1999 Visco
+cyberlip          // 0010 (c) 1990 SNK
+diggerma          // No Game ID (unlicensed), (c) 2000 Kyle Hodgetts, prototype
+doubledr          // 0082 (c) 1995 Technos
+dragonsh          // same ID as gowcaizr, dev board
+eightman          // 0025 (c) 1991 SNK / Pallas
+fatfursp          // 0058 (c) 1993 SNK
+fatfurspa         // 0058 (c) 1993 SNK
+fatfury1          // 0033 (c) 1991 SNK
+fatfury2          // 0047 (c) 1992 SNK
+fatfury2a         // 0047 (c) 1992 SNK
+fatfury3          // 0069 (c) 1995 SNK
+fatfury3a         // 0069 (c) 1995 SNK
+fbfrenzy          // 0034 (c) 1992 SNK
+fightfev          // 0060 (c) 1994 Viccom
+fightfeva         // 0060 (c) 1994 Viccom
+flipshot          // 0247 (c) 1998 Visco
+froman2b          // 098 hack - this is not a genuine MVS cart, its a bootleg made from the CD version
+fswords           // 0187 Korean hack of samsho3
+galaxyfg          // 0078 (c) 1995 Sunsoft
+ganryu            // 0252 (c) 1999 Visco
+garou             // 0253 (c) 1999 SNK
+garoubl           // bootleg
+garouh            // 0253 (c) 1999 SNK
+garouha           // 0253 (c) 1999 SNK
+garoup            // 0253 (c) 1999 SNK
+ghostlop          // 0228 GhostLop (prototype) 1996? Data East
+goalx3            // 0209 (c) 1995 Visco
+gowcaizr          // 0094 (c) 1995 Technos
+gpilots           // 0020 (c) 1991 SNK
+gpilotsh          // 0020 (c) 1991 SNK
+gpilotsp          // prototype
+gururin           // 0067 (c) 1994 Face
+ironclad          // 0220 (c) 1996 Saurus - Choutetsu Brikin'ger - Iron clad (protoype)
+ironclado         // 0220 (c) 1996 Saurus - Choutetsu Brikin'ger - Iron clad (protoype, older)
+irrmaze           // 0236 (c) 1997 SNK / Saurus
+janshin           // 0048 (c) 1994 Aicom
+jockeygp          //
+jockeygpa         //
+joyjoy            // 0021 (c) 1990 SNK
+kabukikl          // 0092 (c) 1995 Hudson
+karnovr           // 0066 (c) 1994 Data East Corporation
+kf10thep          // bootleg of kof2002
+kf2k3pcb          //
+kf2k2mp           // bootleg
+kf2k2mp2          // bootleg
+kf2k2pla          // bootleg
+kf2k2pls          // bootleg
+kf2k3bl           // bootleg
+kf2k3bla          // bootleg
+kf2k3pl           // bootleg
+kf2k3upl          // bootleg
+kf2k5uni          // bootleg of kof2002
+kizuna            // 0216 (c) 1996 SNK
+kizuna4p          // 0216 (c) 1996 SNK - same cartridge as kizuna, needs extension board and a compatible MVS to enable 4p mode
+kof10th           // bootleg of kof2002
+kof2000           // 0257 (c) 2000 SNK
+kof2000n          // 0257 (c) 2000 SNK
+kof2001           // 0262 (c) 2001 Eolith / SNK
+kof2001h          // 0262 (c) 2001 Eolith / SNK
+kof2002           // 0265 (c) 2002 Eolith / Playmore
+kof2002b          // bootleg
+kof2003           // 0271 (c) 2003 Playmore
+kof2003h          // 0271 (c) 2003 Playmore
+kof2k4se          // bootleg of kof2002
+kof94             // 0055 (c) 1994 SNK
+kof95             // 0084 (c) 1995 SNK
+kof95a            // 0084 (c) 1995 SNK, alternate board
+kof95h            // 0084 (c) 1995 SNK
+kof96             // 0214 (c) 1996 SNK
+kof96a            // 0214 (c) 1996 SNK
+kof96h            // 0214 (c) 1996 SNK
+kof97             // 0232 (c) 1997 SNK
+kof97h            // 0232 (c) 1997 SNK
+kof97k            // 0232 (c) 1997 SNK
+kof97oro          // bootleg of kof97
+kof97pls          // bootleg of kof97
+kof98             // 0242 (c) 1998 SNK
+kof98a            // 0242 (c) 1998 SNK, alternate board
+kof98h            // 0242 (c) 1998 SNK
+kof98k            // 0242 (c) 1998 SNK
+kof98ka           // 0242 (c) 1998 SNK
+kof99             // 0251 (c) 1999 SNK
+kof99e            // 0251 (c) 1999 SNK
+kof99h            // 0251 (c) 1999 SNK
+kof99k            // 0152 (c) 1999 SNK
+kof99ka           // 0152 (c) 1999 SNK
+kof99p            // 0251 (c) 1999 SNK
+kog               // bootleg of kof97
+kogplus           // bootleg of kof97
+kotm              // 0016 (c) 1991 SNK
+kotm2             // 0039 (c) 1992 SNK
+kotm2a            // 0039 (c) 1992 SNK
+kotm2p            // 0039 (c) 1992 SNK (prototype)
+kotmh             // 0016 (c) 1991 SNK
+lans2004          // bootleg of shocktr2
+lastblad          // 0234 (c) 1997 SNK
+lastblada         // 0234 (c) 1997 SNK
+lastbladh         // 0234 (c) 1997 SNK
+lastbld2          // 0243 (c) 1998 SNK
+lasthope          //
+lastsold          // 0196 Censored Korean release of lastblad
+lbowling          // 0019 (c) 1990 SNK
+legendos          // 0029 (c) 1991 SNK
+lresort           // 0024 (c) 1992 SNK
+lresortp          // prototype
+magdrop2          // 0221 (c) 1996 Data East Corporation
+magdrop3          // 0233 (c) 1997 Data East Corporation
+maglord           // 0005 (c) 1990 Alpha Denshi Co.
+maglordh          // 0005 (c) 1990 Alpha Denshi Co.
+mahretsu          // 0004 (c) 1990 SNK
+marukodq          // 0206 (c) 1995 Takara
+matrim            // 0266 (c) 2003 Atlus
+matrimbl          // bootleg
+miexchng          // 0231 (c) 1997 Face
+minasan           // 0027 (c) 1990 Monolith Corp.
+moshougi          // 0203 (c) 1995 ADK / SNK
+mutnat            // 0014 (c) 1992 SNK
+nam1975           // 0001 (c) 1990 SNK
+ncombat           // 0009 (c) 1990 Alpha Denshi Co.
+ncombath          // 0009 (c) 1990 Alpha Denshi Co.
+ncommand          // 0050 (c) 1992 Alpha Denshi Co.
+neobombe          // 0093 (c) 1997 Hudson
+neocup98          // 0244 (c) 1998 SNK
+neodrift          // 0213 (c) 1996 Visco
+neomrdo           // 0207 (c) 1996 Visco
+ninjamas          // 0217 (c) 1996 ADK / SNK
+nitd              // 0260 (c) 2000 Eleven / Gavaking
+nitdbl            // bootleg
+overtop           // 0212 (c) 1996 ADK
+panicbom          // 0073 (c) 1994 Eighting / Hudson
+pbobbl2n          // 0248 (c) 1999 Taito (SNK license)
+pbobblen          // 0083 (c) 1994 Taito
+pbobblenb         // bootleg
+pgoal             // 0219 (c) 1996 Saurus
+pnyaa             // 0267 (c) 2003 Aiky / Taito
+pnyaaa            // 0267 (c) 2003 Aiky / Taito
+popbounc          // 0237 (c) 1997 Video System Co.
+preisle2          // 0255 (c) 1999 Yumekobo
+pspikes2          // 0068 (c) 1994 Video System Co.
+pulstar           // 0089 (c) 1995 Aicom
+pulstara          // 0089 (c) 1995 Aicom
+puzzldpr          // 0235 (c) 1997 Taito (Visco license)
+puzzledp          // 0202 (c) 1995 Taito (Visco license)
+quizdai2          // 0042 (c) 1992 SNK
+quizdais          // 0023 (c) 1991 SNK
+quizdaisk         // 0123 (c) 1991 SNK
+quizkof           // 0080 (c) 1995 Saurus
+quizkofk          // 0080 (c) 1995 Saurus
+ragnagrd          // 0218 (c) 1996 Saurus
+rbff1             // 0095 (c) 1995 SNK
+rbff1a            // 0095 (c) 1995 SNK
+rbff1k            // 0095 (c) 1995 SNK
+rbff1ka           // 0095 (c) 1995 SNK
+rbff2             // 0240 (c) 1998 SNK
+rbff2h            // 0240 (c) 1998 SNK
+rbff2k            // 0140 Censored Korean release of rbff2
+rbffspec          // 0223 (c) 1996 SNK
+rbffspeck         // 0124 (c) 1996 SNK
+ridhero           // 0006 (c) 1990 SNK
+ridheroh          // 0006 (c) 1990 SNK
+roboarmy          // 0032 (c) 1991 SNK
+roboarmya         // 0032 (c) 1991 SNK
+rotd              // 0264 (c) 2002 Evoga
+rotdh             // 0264 (c) 2002 Evoga
+s1945p            // 0254 (c) 1999 Psikyo
+samsh5sp          // 0272 (c) 2004 Playmore
+samsh5sph         // 0272 (c) 2004 Playmore
+samsh5spho        // 0272 (c) 2004 Playmore
+samsho            // 0045 (c) 1993 SNK
+samshoh           // 0045 (c) 1993 SNK
+samshoa           //
+samsho2           // 0063 (c) 1994 SNK
+samsho2k          // 0063 (c) 1994 SNK (Korean hack)
+samsho2ka         // 0063 (c) 1994 SNK (Korean hack)
+samsho3           // 0087 (c) 1995 SNK
+samsho3h          // 0087 (c) 1995 SNK
+samsho4           // 0222 (c) 1996 SNK
+samsho4k          // Censored Korean release of samsho4
+samsho5           // 0270 (c) 2003 Playmore
+samsho5a          // 0270 (c) 2003 Playmore
+samsho5h          // 0270 (c) 2003 Playmore
+samsho5b          // bootleg
+savagere          // 0059 (c) 1995 SNK
+sbp               // (c)2004 Vektorlogik
+sdodgeb           // 0208 (c) 1996 Technos
+sengoku           // 0017 (c) 1991 SNK
+sengokuh          // 0017 (c) 1991 SNK
+sengoku2          // 0040 (c) 1993 SNK
+sengoku3          // 0261 (c) 2001 Noise Factory / SNK
+sengoku3a         //
+shocktr2          // 0246 (c) 1998 Saurus
+shocktro          // 0238 (c) 1997 Saurus
+shocktroa         // 0238 (c) 1997 Saurus
+socbrawl          // 0031 (c) 1991 SNK
+socbrawlh         // 0031 (c) 1991 SNK
+sonicwi2          // 0075 (c) 1994 Video System Co.
+sonicwi3          // 0097 (c) 1995 Video System Co.
+spinmast          // 0062 (c) 1993 Data East Corporation
+ssideki           // 0052 (c) 1992 SNK
+ssideki2          // 0061 (c) 1994 SNK
+ssideki3          // 0081 (c) 1995 SNK
+ssideki4          // 0215 (c) 1996 SNK
+stakwin           // 0088 (c) 1995 Saurus
+stakwindev        // prototype
+stakwin2          // 0227 (c) 1996 Saurus
+strhoop           // 0079 (c) 1994 Data East Corporation
+superspy          // 0011 (c) 1990 SNK
+svcpcb            // 0269 (c) 2003 Playmore / Capcom - JAMMA PCB
+svcpcba           // 0269 (c) 2003 Playmore / Capcom - JAMMA PCB
+svc               // 0269 (c) 2003 Playmore / Capcom
+svcboot           // bootleg
+svcplus           // bootleg
+svcplusa          // bootleg
+svcsplus          // bootleg
+tophuntr          // 0046 (c) 1994 SNK
+tophuntrh         // 0046 (c) 1994 SNK
+tpgolf            // 0003 (c) 1990 SNK
+trally            // 0038 (c) 1991 Alpha Denshi Co.
+turfmast          // 0200 (c) 1996 Nazca
+twinspri          // 0224 (c) 1996 ADK
+twsoc96           // 0086 (c) 1996 Tecmo
+viewpoin          // 0051 (c) 1992 Sammy
+viewpoinp         //
+vliner            //
+vliner7e          //
+vliner6e          //
+vliner54          //
+vliner53          //
+wakuwak7          // 0225 (c) 1996 Sunsoft
+wh1               // 0053 (c) 1992 Alpha Denshi Co.
+wh1h              // 0053 (c) 1992 Alpha Denshi Co.
+wh1ha             // 0053 (c) 1992 Alpha Denshi Co.
+wh2               // 0057 (c) 1993 ADK
+wh2h              //
+wh2j              // 0064 (c) 1994 ADK / SNK
+wh2ja             // 0064 (c) 1994 ADK / SNK
+whp               // 0090 (c) 1995 ADK / SNK
+wjammers          // 0065 (c) 1994 Data East Corporation
+zedblade          // 0076 (c) 1994 NMK
+zintrckb          // 0211 hack - this is not a genuine MVS proto, its a bootleg made from the CD version
+zupapa            // 0070 Zupapa - released in 2001, 1994 prototype probably exists
+
+@source:neogeo.cpp
+bangbedd          // Decrypted / Bootleg
+cthd2k3d          // Decrypted / Bootleg
+cthd2k3da         // Decrypted / Bootleg
+cthd2k3a          // Decrypted / Bootleg
+ct2k3spd          // Decrypted / Bootleg
+ganryud           // Decrypted / Bootleg
+garoud            // Decrypted / Bootleg
+garouhd           // Decrypted / Bootleg
+jckeygpd          // Decrypted / Bootleg
+kof96ep           // Decrypted / Bootleg
+kof97orod         // Decrypted / Bootleg
+kof99d            // Decrypted / Bootleg
+kof99kd           // Decrypted / Bootleg
+kof2kd            // Decrypted / Bootleg
+kof2knd           // Decrypted / Bootleg
+kof2k1d           // Decrypted / Bootleg
+kof2k1hd          // Decrypted / Bootleg
+kof2k1nd          // Decrypted / Bootleg
+kf2k1bh           // Decrypted / Bootleg
+kf2k1pls          // Decrypted / Bootleg
+kf2k1plse         // Encrypted / Bootleg
+kf2k1plsd         // Decrypted / Bootleg
+kf2k1pla          // Decrypted / Bootleg
+kf2k1plae         // Encrypted / Bootleg
+kf2k1plad         // Decrypted / Bootleg
+kf2k1plap         // Predecrypted / Bootleg
+kof2k2d           // Decrypted / Bootleg
+kof2k2nd          // Decrypted / Bootleg
+kf2k2plae         // Encrypted / Bootleg
+kf2k2plad         // Decrypted / Bootleg
+kf2k2plap         // Predecrypted / Bootleg
+kf2k2plbe         // Encrypted / Bootleg
+kf2k2plbd         // Decrypted / Bootleg
+kf2k2plbp         // Predecrypted / Bootleg
+kf2k2plc          // Decrypted / Bootleg
+kf2k2plce         // Encrypted / Bootleg
+kf2k2plcd         // Decrypted / Bootleg
+kf2k2pld          // Decrypted / Bootleg
+kf2k2plde         // Encrypted / Bootleg
+kf2k2pldd         // Decrypted / Bootleg
+kf2k2ple          // Decrypted / Bootleg
+kf2k2plee         // Encrypted / Bootleg
+kf2k2pled         // Decrypted / Bootleg
+kf2k2plep         // Predecrypted / Bootleg
+kf2k2mpl          // Decrypted / Bootleg
+kf2k2mpp          // Predecrypted / Bootleg
+kf2k2mpe          // Encrypted / Bootleg
+kf2k2mpd          // Decrypted / Bootleg
+kf2k2mp2e         // Encrypted / Bootleg
+kf2k2mp2d         // Decrypted / Bootleg
+kf2k2mp2p         // Predecrypted / Bootleg
+kof2k3d           // Decrypted / Bootleg
+kf2k3bd           // Decrypted / Bootleg
+kof2k3hd          // Decrypted / Bootleg
+kof2k3nd          // Decrypted / Bootleg
+kf2k3pcd          // Decrypted / Bootleg
+kf2k3pd           // Decrypted / Bootleg
+kf2k3upd          // Decrypted / Bootleg
+kogd              // Decrypted / Bootleg
+kogplusd          // Decrypted / Bootleg
+kof10thd          // Decrypted / Bootleg
+kof10thp          // Predecrypted / Bootleg
+kf10thepp         // Predecrypted / Bootleg
+kof10thu          // Decrypted / Bootleg
+kf2k5unid         // Decrypted / Bootleg
+kofse2k4          // Decrypted / Bootleg
+kofse2k4e         // Encrypted / Bootleg
+kofse2k4d         // Decrypted / Bootleg
+kofse2k4p         // Predecrypted / Bootleg
+kf2k4pls          // Decrypted / Bootleg
+kf2k4plse         // Encrypted / Bootleg
+kf2k4plsd         // Decrypted / Bootleg
+kf2k4plsp         // Predecrypted / Bootleg
+lans2k4d          // Decrypted / Bootleg
+matrimd           // Decrypted / Bootleg
+matrimbd          // Decrypted / Bootleg
+matrimnd          // Decrypted / Bootleg
+nitdd             // Decrypted / Bootleg
+pbobblendx        // Decrypted / Bootleg
+pnyaad            // Decrypted / Bootleg
+pnyaand           // Decrypted / Bootleg
+preisl2d          // Decrypted / Bootleg
+rotdd             // Decrypted / Bootleg
+rotdnd            // Decrypted / Bootleg
+rotdndd           // Decrypted / Bootleg
+s1945pd           // Decrypted / Bootleg
+samsh3hb          // Decrypted / Bootleg
+samsh5bd          // Decrypted / Bootleg
+samsh5d           // Decrypted / Bootleg
+samsh5hd          // Decrypted / Bootleg
+samsh5nd          // Decrypted / Bootleg
+sams5spd          // Decrypted / Bootleg
+sams5sod          // Decrypted / Bootleg
+sams5shd          // Decrypted / Bootleg
+sams5sond         // Decrypted / Bootleg
+sams5shnd         // Decrypted / Bootleg
+sengok3d          // Decrypted / Bootleg
+svcda             // Decrypted / Bootleg
+svcd              // Decrypted / Bootleg
+svcnd             // Decrypted / Bootleg
+svcbp             // Decrypted / Bootleg
+svcplusb          // Decrypted / Bootleg
+svcplusd          // Decrypted / Bootleg
+svcplusp          // Predecrypted / Bootleg
+svcplusap         // Predecrypted / Bootleg
+svcsplusp         // Predecrypted / Bootleg
+svcpcbd           // Decrypted / Bootleg
+zupapad           // Decrypted / Bootleg
+zupapand          // Decrypted / Bootleg
+
+@source:neogeo.cpp
+2020bbe           // Earlier
+3countbe          // Earlier
+androdune         // Earlier
+aof3e             // Earlier
+bangbeade         // Earlier
+blazstre          // Earlier
+goalx3e           // Earlier
+kabukikle         // Earlier
+lastbladhe        // Earlier
+kizunae           // Earlier
+kof95e            // Earlier
+kotm2e            // Earlier
+magdrp3e          // Earlier
+miexchnge         // Earlier
+neobombee         // Earlier
+neodrifte         // Earlier
+ninjamse          // Earlier
+pulstare          // Earlier
+ragnagrde         // Earlier
+rbffspece         // Earlier
+roboarme          // Earlier
+panicbome         // Earlier
+samsho3e          // Earlier
+samsho4e          // Earlier
+strhoope          // Earlier
+shocktrae         // Earlier
+sonicw3e          // Earlier
+ssidek4e          // Earlier
+turfmste          // Earlier
+twinspre          // Earlier
+tws96e            // Earlier
+wakuwk7e          // Earlier
+wh1e              // Earlier
+whpe              // Earlier
+wjammere          // Earlier
+
+@source:neogeo.cpp
+3countbd          // Multi Game Doctor 2
+2020bbd           // Multi Game Doctor 2
+alpham2d          // Multi Game Doctor 2
+androdund         // Multi Game Doctor 2
+aofd              // Multi Game Doctor 2
+bstarsd           // Multi Game Doctor 2
+burningfd         // Multi Game Doctor 2
+crswordd          // Multi Game Doctor 2
+cyberlipd         // Multi Game Doctor 2
+eightmand         // Multi Game Doctor 2
+fatfury1d         // Multi Game Doctor 2
+fbfrenzyd         // Multi Game Doctor 2
+gpilotsd          // Multi Game Doctor 2
+joyjoyd           // Multi Game Doctor 2
+kotmd             // Multi Game Doctor 2
+lbowlingd         // Multi Game Doctor 2
+lresortd          // Multi Game Doctor 2
+maglordd          // Multi Game Doctor 2
+mutnatd           // Multi Game Doctor 2
+ncombatd          // Multi Game Doctor 2
+ncommandd         // Multi Game Doctor 2
+ridherod          // Multi Game Doctor 2
+roboarmyd         // Multi Game Doctor 2
+sengokud          // Multi Game Doctor 2
+sengoku2d         // Multi Game Doctor 2
+socbrawld         // Multi Game Doctor 2
+superspyd         // Multi Game Doctor 2
+tpgolfd           // Multi Game Doctor 2
+trallyd           // Multi Game Doctor 2
+wh1d              // Multi Game Doctor 2
+
+@source:neogeo.cpp
+2020bbcd          // CD conversion
+columnsncd        // CD conversion
+fr2cd             // CD conversion
+gpilotcd          // CD conversion
+ironcladcd        // CD conversion
+joyjoycd          // CD conversion
+lbowlingcd        // CD conversion
+pbobblencd        // CD conversion
+pspikes2cd        // CD conversion
+sengokucd         // CD conversion
+ssidekicd         // CD conversion
+strhoopcd         // CD conversion
+superspycd        // CD conversion
+tpgolfcd          // CD conversion
+trallycd          // CD conversion
+zintrkcd          // CD conversion
+
+@source:neogeo.cpp
+19yy              // HomeBrew
+19yyo             // HomeBrew
+68kng             // HomeBrew
+240ptest          // HomeBrew
+4play             // HomeBrew
+abyssal           // HomeBrew
+amazonn           // HomeBrew
+badapple          // HomeBrew
+baddudesn         // HomeBrew
+bbb2              // HomeBrew
+beast             // HomeBrew
+bpanicdx          // HomeBrew
+bonusstage        // HomeBrew
+cabalng           // HomeBrew
+cakefght          // HomeBrew
+caravan           // HomeBrew
+cbarrel           // HomeBrew
+chelnovn          // HomeBrew
+cnbe              // HomeBrew
+cnbe2018          // HomeBrew
+cphd              // HomeBrew
+columnsn          // HomeBrew
+cyborg            // HomeBrew
+ddsprdmo          // HomeBrew
+didemo            // HomeBrew
+doubled1          // HomeBrew
+flapchck          // HomeBrew
+ffeast            // HomeBrew
+fr2               // HomeBrew
+foodfn            // HomeBrew
+galaxiann         // HomeBrew
+gladmort          // HomeBrew
+goldaxen          // HomeBrew
+gxg               // HomeBrew
+horekidb3         // HomeBrew
+hypernoid         // HomeBrew
+igla              // HomeBrew
+inthehunt         // HomeBrew
+iocero            // HomeBrew
+jumpnrund         // HomeBrew
+jurl              // HomeBrew
+karnovn           // HomeBrew
+knightsch         // HomeBrew
+lernit            // HomeBrew
+lhcdb             // HomeBrew
+looptris          // HomeBrew
+looptrsp          // HomeBrew
+ltorb             // HomeBrew
+nblktiger         // HomeBrew
+knacki            // HomeBrew
+ndo_a_td          // HomeBrew
+neo2500           // HomeBrew
+neo2048           // HomeBrew
+neopang           // HomeBrew
+neo3d             // HomeBrew
+neocstlv          // HomeBrew
+neodemo           // HomeBrew
+neofight          // HomeBrew
+neogal1           // HomeBrew
+neogal1t          // HomeBrew
+neonopon          // HomeBrew
+neopl             // HomeBrew
+neopong           // HomeBrew
+neoponga          // HomeBrew
+neoromjb          // HomeBrew
+neotest           // HomeBrew
+neothund          // HomeBrew
+neotris           // HomeBrew
+ngcdtdd0          // HomeBrew
+ng4ptest          // HomeBrew
+ngem2k            // HomeBrew
+ngftdemo          // HomeBrew
+ngmontst          // HomeBrew
+ngtd2             // HomeBrew
+ngtetris          // HomeBrew
+ngym2610          // HomeBrew
+nsmbd             // HomeBrew
+nsmb              // HomeBrew
+nyan              // HomeBrew
+pcmademo          // HomeBrew
+pcmbdemo          // HomeBrew
+poknight          // HomeBrew
+pown              // HomeBrew
+raroggame         // HomeBrew
+samantha          // HomeBrew
+santabll          // HomeBrew
+sgz               // HomeBrew
+shaman24          // HomeBrew
+shinobin          // HomeBrew
+seafight          // HomeBrew
+snddemo           // HomeBrew
+spkick            // HomeBrew
+spriteex          // HomeBrew
+syscheck          // HomeBrew
+teot              // HomeBrew
+timesup           // HomeBrew
+timesupd          // HomeBrew
+totc              // HomeBrew
+twister           // HomeBrew
+vaporous          // HomeBrew
+vlad2000          // HomeBrew
+wrldracr          // HomeBrew
+ww2demo           // HomeBrew
+yoyoshkn          // HomeBrew
+xeviousn          // HomeBrew
+xeno              // HomeBrew
+xmas2017          // HomeBrew
+
+@source:neogeo.cpp
+akiradmo          // Intro Demo Music
+cndi              // Intro Demo Music
+dti               // Intro Demo Music
+dwi               // Intro Demo Music
+dwia              // Intro Demo Music
+gbi               // Intro Demo Music
+rci               // Intro Demo Music
+smi               // Intro Demo Music
+tmnti             // Intro Demo Music
+tmntia            // Intro Demo Music
+
+
+
+/*****************************************************
+    List of all enabled drivers console in the system.
+********************************************************/
+
 @source:ngp.cpp
 ngpc              // NeoGeo Pocket Color
 

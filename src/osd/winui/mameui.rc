@@ -382,8 +382,9 @@ IDI_FOLDER_ORIGINAL		        ICON				    "res\\fold_original.ico"
 IDI_FOLDER_REMIX		        ICON				    "res\\fold_remix.ico"
 IDI_FOLDER_REMIXEXTREME		    ICON				    "res\\fold_remixe.ico"
 IDI_FOLDER_COLLECTION	        ICON				    "res\\fold_serie.ico"
-IDI_FOLDER_SOLDIERREBEL		    ICON				    "res\\fold_soldier.ico"
+IDI_FOLDER_MVS       		    ICON				    "res\\fold_mvs.ico"
 IDI_FOLDER_UPDATE		        ICON				    "res\\fold_update.ico"
+IDI_FOLDER_CONSOLE              ICON                    "res\\foldavail.ico"
 //#endif
 /////////////////////////////////////////////////////////////////////////////
 //

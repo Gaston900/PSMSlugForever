@@ -86,8 +86,10 @@ extern const FOLDERDATA g_folderData[] =
 {
 	// commented-out lines have parts not defined elsewhere
 	{"All Games",           "allgames",            FOLDER_ALLGAMES,            IDI_FOLDER_ALLGAMES,            0,            0,            0, NULL,                       NULL,                    true },
-	{"Available",           "available",           FOLDER_AVAILABLE,           IDI_FOLDER_AVAILABLE,           F_AVAILABLE,  0,            0, NULL,                       FilterAvailable,         true },
+	{"Working",             "working",             FOLDER_WORKING,             IDI_WORKING,                    F_WORKING,    F_NONWORKING, 0, NULL,                       DriverIsBroken,          false },
+//	{"Available",           "available",           FOLDER_AVAILABLE,           IDI_FOLDER_AVAILABLE,           F_AVAILABLE,  0,            0, NULL,                       FilterAvailable,         true },
     {"Not Working",         "nonworking",          FOLDER_NONWORKING,          IDI_NONWORKING,                 F_NONWORKING, F_WORKING,    0, NULL,                       DriverIsBroken,          true },
+	{"Console",             "console",             FOLDER_CONSOLE,             IDI_FOLDER_CONSOLE,             0,            0,            0, NULL,                       DriverIsConsole,        true },
 	{"BIOS",                "bios",                FOLDER_BIOS,                IDI_FOLDER_BIOS,                0,            0,            1, CreateBIOSFolders,          DriverIsBios,            true },
 	{"Apocalyptic Time",    "apocalyptic time",    FOLDER_AT,		           IDI_FOLDER_AT,                  0,			 0, 		   0, CreateATFolders },
 	{"Collection",          "collection",	       FOLDER_COLLECTION,          IDI_FOLDER_COLLECTION,          0,			 0, 		   0, CreateCOLLECTIONFolders },
@@ -96,7 +98,7 @@ extern const FOLDERDATA g_folderData[] =
 	{"Darksoft ~ Hack",     "darksoft~hack",	   FOLDER_DARKSOFTHACK, 	   IDI_FOLDER_DARKSOFTHACK,        0,			 0, 		   0, CreateDARKSOFTHACKFolders },	
 	{"Decrypted E & B",	    "decrypted e & b",     FOLDER_DECRYPTEDEANDB,      IDI_FOLDER_DECRYPTEDEANDB,      0,			 0, 		   0, CreateDECRYPTEDEANDBFolders },
 	{"Encrypted C & P",	    "encrypted c & p",	   FOLDER_ENCRYPTEDCANDP,      IDI_FOLDER_ENCRYPTEDCANDP,      0,			 0,            0, CreateENCRYPTEDCANDPFolders },
-	{"FB4Droid/IPS",	    "fb4droid",	           FOLDER_FB4DROID,            IDI_FOLDER_FB4DROID,            0,			 0,            0, CreateFB4DROIDFolders },
+	{"FB4Droid ~ IPS",	    "fb4droid",	           FOLDER_FB4DROID,            IDI_FOLDER_FB4DROID,            0,			 0,            0, CreateFB4DROIDFolders },
 	{"Fightcade 2",	        "fightcade 2",	       FOLDER_FIGHTCADE2,          IDI_FOLDER_FIGHTCADE2,          0,			 0,            0, CreateFIGHTCADE2Folders },
 	{"GOTVG",	            "gotvg",	           FOLDER_GOTVG,               IDI_FOLDER_GOTVG,               0,			 0,            0, CreateGOTVGFolders },
 	{"HomeBrew", 	        "homebrew",		       FOLDER_HOMEBREW,		       IDI_FOLDER_HOMEBREW,	           0,			 0, 		   0, CreateHOMEBREWFolders },
@@ -111,8 +113,8 @@ extern const FOLDERDATA g_folderData[] =
 	{"Original", 	        "original",		       FOLDER_ORIGINAL,		       IDI_FOLDER_ORIGINAL,	           0,			 0, 		   0, CreateORIGINALFolders },
 	{"Remix", 	            "remix",		       FOLDER_REMIX,		       IDI_FOLDER_REMIX,	           0,			 0, 		   0, CreateREMIXFolders },
 	{"Remix Extreme", 	    "remix extreme",	   FOLDER_REMIXEXTREME,        IDI_FOLDER_REMIXEXTREME,        0,			 0, 		   0, CreateREMIXEXTREMEFolders },
-//	{"Soldier Rebel", 	    "soldier rebel",	   FOLDER_SOLDIERREBEL,        IDI_FOLDER_SOLDIERREBEL,        0,			 0, 		   0, CreateSOLDIERREBELFolders },
 	{"Update 2026", 	    "update 2026",	       FOLDER_UPDATE,              IDI_FOLDER_UPDATE,              0,			 0, 		   0, CreateUPDATEFolders },
+	{"MVS ~ AES", 	        "mvs~aes",	           FOLDER_MVS,                 IDI_FOLDER_MVS,                 0,			 0, 		   0, NULL,                       DriverIsMvs,             true },
 	{"Misterix",            "misterix",            FOLDER_MECHANICAL,          IDI_MECHANICAL,                 0,            0,            0, NULL,                       DriverIsMechanical,      true },
 //	{"Unavailable",   "unavailable",      FOLDER_UNAVAILABLE,  IDI_FOLDER_UNAVAILABLE,   0,             F_AVAILABLE,  0, NULL,                       FilterAvailable,         false },
 //	{"Parents",       "originals",        FOLDER_ORIGINAL,     IDI_FOLDER_ORIGINALS,     F_ORIGINALS,   F_CLONES,     0, NULL,                       DriverIsClone,           false },
@@ -197,8 +199,9 @@ static const TREEICON treeIconNames[] =
 	{ IDI_FOLDER_REMIX,	        "fold_remix" },
 	{ IDI_FOLDER_REMIXEXTREME,	"fold_remixe" },
 	{ IDI_FOLDER_COLLECTION,	"fold_collection" },
-	{ IDI_FOLDER_SOLDIERREBEL,	"fold_soldier" },
+	{ IDI_FOLDER_MVS,	        "fold_mvs" },
 	{ IDI_FOLDER_UPDATE,	    "fold_update" },
+	{ IDI_FOLDER_CONSOLE,    	"fold_console" },
 
 //#endif	
 	{ IDI_FOLDER_MANUFACTURER,	"foldmanu" },
@@ -378,6 +381,20 @@ bool GameFiltered(int nGame, DWORD dwMask)
 	if(lpFolder && lpFolder->m_nFolderId != FOLDER_MECHANICAL)
 	{
 		if(DriverIsMechanical(nGame))
+			return true;
+	}
+
+/* Add games "MACHINE_IS_INCOMPLETE" */
+	if(lpFolder && lpFolder->m_nFolderId != FOLDER_MVS)
+	{
+		if(DriverIsMvs(nGame))
+			return true;
+	}
+
+/* Add games "MACHINE_IS_INCOMPLETE" */
+	if(lpFolder && lpFolder->m_nFolderId != FOLDER_CONSOLE)
+	{
+		if(DriverIsConsole(nGame))
 			return true;
 	}
 
