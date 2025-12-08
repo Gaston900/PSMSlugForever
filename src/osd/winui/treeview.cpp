@@ -114,7 +114,7 @@ extern const FOLDERDATA g_folderData[] =
 	{"Remix", 	            "remix",		       FOLDER_REMIX,		       IDI_FOLDER_REMIX,	           0,			 0, 		   0, CreateREMIXFolders },
 	{"Remix Extreme", 	    "remix extreme",	   FOLDER_REMIXEXTREME,        IDI_FOLDER_REMIXEXTREME,        0,			 0, 		   0, CreateREMIXEXTREMEFolders },
 	{"Update 2026", 	    "update 2026",	       FOLDER_UPDATE,              IDI_FOLDER_UPDATE,              0,			 0, 		   0, CreateUPDATEFolders },
-	{"MVS ~ AES", 	        "mvs~aes",	           FOLDER_MVS,                 IDI_FOLDER_MVS,                 0,			 0, 		   0, NULL,                       DriverIsMvs,             true },
+	{"NeoGeo", 	            "neogeo",	           FOLDER_MVS,                 IDI_FOLDER_MVS,                 0,			 0, 		   0, NULL,                       DriverIsMvs,             true },
     {"Capcom", 	            "capcom",	           FOLDER_CAPCOM,              IDI_FOLDER_CAPCOM,              0,			 0, 		   0, NULL,                       DriverIsCapcom,          true },
 	{"Misterix",            "misterix",            FOLDER_MECHANICAL,          IDI_MECHANICAL,                 0,            0,            0, NULL,                       DriverIsMechanical,      true },
 //	{"Unavailable",   "unavailable",      FOLDER_UNAVAILABLE,  IDI_FOLDER_UNAVAILABLE,   0,             F_AVAILABLE,  0, NULL,                       FilterAvailable,         false },
@@ -393,19 +393,28 @@ bool GameFiltered(int nGame, DWORD dwMask)
 			return true;
 	}
 
-/* Add games "MACHINE_WRONG_COLORS" */
+// (cache, 0 = cache, 1)
+/* Add games "MACHINE_TYPE_CONSOLE" "MACHINE_TYPE_COMPUTER" "MACHINE_TYPE_OTHER"*/
 	if(lpFolder && lpFolder->m_nFolderId != FOLDER_CONSOLE)
 	{
 		if(DriverIsConsole(nGame))
 			return true;
 	}
 
-/* Add games "MACHINE_WRONG_COLORS" */
+/* Add games "MACHINE_IMPERFECT_COLORS" */
 	if(lpFolder && lpFolder->m_nFolderId != FOLDER_CAPCOM)
 	{
 		if(DriverIsCapcom(nGame))
 			return true;
 	}
+
+// (cache, 8) "MACHINE_NO_COCKTAIL"
+// (cache, 10) "MACHINE_REQUIRES_ARTWORK"
+// (cache, 11) "MACHINE_CLICKABLE_ARTWORK"
+// (cache, 12) "MACHINE_UNOFFICIAL"
+// (cache, 21) "MACHINE_WRONG_COLORS"
+// (cache, 22) "MACHINE_UNEMULATED_PROTECTION"
+// (cache, 23) "MACHINE_IMPERFECT_CONTROLS"
 
 	if(driver_list::driver(nGame).name[0] == '_')
 		return true;

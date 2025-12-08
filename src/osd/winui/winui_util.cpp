@@ -287,7 +287,7 @@ static void InitDriversInfo(void)
 		gameinfo->isImperfect = (cache & 0x3fa000) ? true : false;  // MACHINE_INCOMPLETE | NO_SOUND_HW | (IMPERFECT|UNEMULATED) | (PALETTE|GRAPHICS|SOUND)
 		gameinfo->supportsSaveState = BIT(cache, 7) ? false : true;  //MACHINE_SUPPORTS_SAVE
 		gameinfo->isVertical = BIT(cache, 2);  //ORIENTATION_SWAP_XY
-		gameinfo->isConsole = BIT(cache, 21);
+		gameinfo->isConsole = BIT(cache, 0);
 		gameinfo->isMvs = BIT(cache, 15);
 		gameinfo->isCapcom = BIT(cache, 20);
 		gameinfo->isMechanical = BIT(cache, 14);  //MACHINE_MECHANICAL
@@ -392,7 +392,7 @@ static void InitDriversCache(void)
 		gameinfo->isImperfect       =  (cache_lower & 0x3fa000) ? true : false;
 		gameinfo->isMechanical      =  BIT(cache_lower, 14);
 		gameinfo->isBIOS            =  BIT(cache_lower, 9);
-		gameinfo->isConsole         =  BIT(cache_lower, 21);
+		gameinfo->isConsole         =  BIT(cache_lower, 0);
 		gameinfo->isMvs             =  BIT(cache_lower, 15);
 		gameinfo->isCapcom          =  BIT(cache_lower, 20);
 	}
