@@ -20,7 +20,6 @@ CPUS["LR35902"] = true -- GB
 CPUS["DSP16"] = true --CPS1
 CPUS["I386"] = true --CPS1
 CPUS["PIC16C5X"] = true --CPS1
-CPUS["SH"] = true --CPS3
 
 --------------------------------------------------
 -- specify available sound cores
@@ -149,8 +148,8 @@ files {
 	MAME_DIR .. "src/hbmame/drivers/cps1bl_pic.cpp",
 	MAME_DIR .. "src/hbmame/drivers/cps2.cpp",
 	MAME_DIR .. "src/hbmame/video/cps2.cpp",
---	MAME_DIR .. "src/hbmame/drivers/cps3hb.cpp",
---	MAME_DIR .. "src/mame/audio/cps3.cpp",
+	MAME_DIR .. "src/mame/drivers/cps3.cpp",
+	MAME_DIR .. "src/mame/audio/cps3.cpp",
 	MAME_DIR .. "src/hbmame/drivers/fcrash.cpp",
 	MAME_DIR .. "src/mame/machine/kabuki.cpp",
 }

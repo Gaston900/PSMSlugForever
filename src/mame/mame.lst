@@ -2986,7 +2986,55 @@ xmvsfu1d          //
 xmvsfur1          // 04/10/1996 (c) 1996 (USA)
 xmvsfur2          // 10/09/1996 (c) 1996 (USA)
 
-
+@source:cps3.cpp
+//cps3boot          // bootleg
+//cps3boota         // bootleg
+//cps3bootao        // bootleg
+//cps3bootao2       // bootleg
+//cps3booto         // bootleg
+//cps3booto2        // bootleg
+//cps3bs32          //
+//cps3bs32a         //
+//jojo              // 28/01/1999 (c) 1998 (Euro)
+//jojoba            // 27/09/1999 (c) 1999 (Japan)
+jojoban           // 27/09/1999 (c) 1999 (Japan)
+jojobane          // 27/09/1999 (c) 1999 (Euro)
+jojobaner1        // 13/09/1999 (c) 1999 (Euro)
+jojobanr1         // 13/09/1999 (c) 1999 (Japan)
+//jojobar1          // 13/09/1999 (c) 1999 (Japan)
+//jojoj             // 28/01/1999 (c) 1998 (Japan)
+//jojojr1           // 08/01/1999 (c) 1998 (Japan)
+//jojojr2           // 02/12/1998 (c) 1998 (Japan)
+jojon             // 28/01/1999 (c) 1998 (Asia)
+jojonr1           // 08/01/1999 (c) 1998 (Asia)
+jojonr2           // 02/12/1998 (c) 1998 (Asia)
+//jojor1            // 08/01/1999 (c) 1998 (Euro)
+//jojor2            // 02/12/1998 (c) 1998 (Euro)
+//jojou             // 28/01/1999 (c) 1998 (USA)
+//jojour1           // 08/01/1999 (c) 1998 (USA)
+//jojour2           // 02/12/1998 (c) 1998 (USA)
+//redearth          // 21/11/1996 (c) 1996 (Euro)
+//redearthr1        // 23/10/1996 (c) 1996 (Euro)
+//sfiii             // 04/02/1997 (c) 1997 (Euro)
+//sfiii2            // 30/09/1997 (c) 1997 (USA)
+//sfiii2j           // 30/09/1997 (c) 1997 (Japan)
+sfiii2n           // 30/09/1997 (c) 1997 (Asia)
+//sfiii3            // 08/06/1999 (c) 1999 (Euro)
+//sfiii3j           // 08/06/1999 (c) 1999 (Japan)
+//sfiii3jr1         // 12/05/1999 (c) 1999 (Japan)
+sfiii3n           // 08/06/1999 (c) 1999 (Japan)
+sfiii3nr1         // 12/05/1999 (c) 1999 (Japan)
+//sfiii3r1          // 12/05/1999 (c) 1999 (Euro)
+//sfiii3u           // 08/06/1999 (c) 1999 (USA)
+//sfiii3ur1         // 12/05/1999 (c) 1999 (USA)
+//sfiiia            // 04/02/1997 (c) 1997 (Asia)
+//sfiiih            // 04/02/1997 (c) 1997 (Hispanic)
+//sfiiij            // 04/02/1997 (c) 1997 (Japan)
+sfiiin            // 04/02/1997 (c) 1997 (Asia)
+sfiiina           // 04/02/1997 (c) 1997 (Asia)
+//sfiiiu            // 04/02/1997 (c) 1997 (USA)
+//warzard           // 21/11/1996 (c) 1996 (Japan)
+//warzardr1         // 23/10/1996 (c) 1996 (Japan)
 
 /*****************************************************
     List of all enabled drivers console in the system.

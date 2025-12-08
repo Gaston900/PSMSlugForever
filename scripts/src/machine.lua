@@ -237,3 +237,45 @@ if (MACHINES["UPD4701"]~=null) then
 		MAME_DIR .. "src/devices/machine/upd4701.h",
 	}
 end
+
+-- SYSTEM (CPS3)
+---------------------------------------------------
+--
+--@src/devices/machine/intelfsh.h,MACHINES["INTELFLASH"] = true
+---------------------------------------------------
+
+if (MACHINES["INTELFLASH"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/machine/intelfsh.cpp",
+		MAME_DIR .. "src/devices/machine/intelfsh.h",
+	}
+end
+
+
+---------------------------------------------------
+--
+--@src/devices/machine/nscsi_bus.h,MACHINES["NSCSI"] = true
+--@src/devices/machine/nscsi_cb.h,MACHINES["NSCSI"] = true
+---------------------------------------------------
+
+if (MACHINES["NSCSI"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/machine/nscsi_bus.cpp",
+		MAME_DIR .. "src/devices/machine/nscsi_bus.h",
+		MAME_DIR .. "src/devices/machine/nscsi_cb.cpp",
+		MAME_DIR .. "src/devices/machine/nscsi_cb.h",
+	}
+end
+
+---------------------------------------------------
+--
+--@src/devices/machine/wd33c9x.h,MACHINES["WD33C9X"] = true
+---------------------------------------------------
+
+if (MACHINES["WD33C9X"]~=null) then
+	MACHINES["SCSI"] = true
+	files {
+		MAME_DIR .. "src/devices/machine/wd33c9x.cpp",
+		MAME_DIR .. "src/devices/machine/wd33c9x.h",
+	}
+end
