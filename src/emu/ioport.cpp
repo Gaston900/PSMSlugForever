@@ -666,7 +666,9 @@ digital_joystick::digital_joystick(int player, int number)
 		m_number(number),
 		m_current(0),
 		m_current4way(0),
-		m_previous(0)
+		m_previous(0),
+	    m_previous_LEFT_or_RIGHT(0),
+	    m_previous_UP_or_DOWN(0)
 {
 }
 
@@ -706,11 +708,49 @@ void digital_joystick::frame_update()
 				m_current |= 1 << direction;
 		}
 
-	// lock out opposing directions (left + right or up + down)
+// 修改的 代码来源 (GSC2007)
+//***************GSC2007*******新增代码************************************************************************************************************************************************
+	if((m_current & (LEFT_BIT | RIGHT_BIT)) == (LEFT_BIT | RIGHT_BIT))
+	{	
+		m_current &= m_current ^ m_previous_LEFT_or_RIGHT;//左+右同时按压时，除去干扰项m_previous_LEFT_or_RIGHT里的左输入或右输入，获得实际需要的纠正输入
+	} 
+	else if(m_current & (LEFT_BIT | RIGHT_BIT))
+	{
+		m_previous_LEFT_or_RIGHT = m_current & (LEFT_BIT | RIGHT_BIT);	//只记录左or右未同时按压时的左输入或右输入
+	}	
+
+	if((m_current & (UP_BIT | DOWN_BIT)) == (UP_BIT | DOWN_BIT))
+	{
+		m_current &= m_current ^ m_previous_UP_or_DOWN;	//同上。
+	}
+	else if(m_current & (UP_BIT | DOWN_BIT))
+	{
+		m_previous_UP_or_DOWN = m_current & (UP_BIT | DOWN_BIT);	//同上。
+	}			
+//mame原始代码，用于对优化代码进行极端情况的补充，相反输入互斥
 	if ((m_current & (UP_BIT | DOWN_BIT)) == (UP_BIT | DOWN_BIT))
 		m_current &= ~(UP_BIT | DOWN_BIT);
 	if ((m_current & (LEFT_BIT | RIGHT_BIT)) == (LEFT_BIT | RIGHT_BIT))
 		m_current &= ~(LEFT_BIT | RIGHT_BIT);
+//mame原始代码，用于对优化代码进行极端情况的补充
+
+	if (((m_current | m_previous) & (LEFT_BIT | RIGHT_BIT)) == (LEFT_BIT | RIGHT_BIT))
+		m_current &= ~(LEFT_BIT | RIGHT_BIT);	//左右切换,第一帧互斥
+	if (((m_current | m_previous) & (UP_BIT | DOWN_BIT)) == (UP_BIT | DOWN_BIT))
+		m_current &= ~(UP_BIT | DOWN_BIT);	//上下切换,第一帧互斥
+	
+	
+//	if(  ((m_current ==(LEFT_BIT | DOWN_BIT)) &&(m_previous ==(RIGHT_BIT | DOWN_BIT)))||((m_current ==(RIGHT_BIT | DOWN_BIT)) &&(m_previous ==(LEFT_BIT | DOWN_BIT))) ||((m_current ==(RIGHT_BIT | UP_BIT)) &&(m_previous ==(LEFT_BIT | UP_BIT)))||((m_current ==(LEFT_BIT | UP_BIT)) &&(m_previous ==(RIGHT_BIT | UP_BIT))))
+//	{
+//		m_current &= ~(LEFT_BIT | RIGHT_BIT);//输入左下,右下时，纠正为左下,下等。。。屏蔽左右，补全下上输入
+//	}
+	
+//	if(  ((m_current ==(LEFT_BIT | DOWN_BIT)) &&(m_previous ==(LEFT_BIT | UP_BIT)))||((m_current ==(RIGHT_BIT | DOWN_BIT)) &&(m_previous ==(RIGHT_BIT | UP_BIT))) ||((m_current ==(RIGHT_BIT | UP_BIT)) &&(m_previous ==(RIGHT_BIT | DOWN_BIT)))||((m_current ==(LEFT_BIT | UP_BIT)) &&(m_previous ==(LEFT_BIT | DOWN_BIT))))
+//	{
+//		m_current &= ~(UP_BIT | DOWN_BIT);//同上。屏蔽下上，补全左右输入
+//	}
+		
+//***************GSC2007******结束***************************************************************************************************************************************************
 
 	// only update 4-way case if joystick has moved
 	if (m_current != m_previous)
