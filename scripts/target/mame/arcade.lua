@@ -1,37 +1,28 @@
 -- license:BSD-3-Clause
 -- copyright-holders:Gaston90
 ---------------------------------------------------
---   PSMSLUGFOREVER target makefile
+--   SLUGNEO target makefile
 ---------------------------------------------------
 
 ---------------------------------------------------
 -- specify available CPU cores
 ---------------------------------------------------
 
-CPUS["Z80"] = true 
-CPUS["M680X0"] = true
-CPUS["NEC"] = true -- M92
-CPUS["ARM7"] = true -- PGM
-CPUS["I386"] = true  -- PGM
-CPUS["TLCS900"] = true --NPG
+CPUS["Z80"] = true -- NEOGEO
+CPUS["M680X0"] = true -- NEOGEO
+CPUS["TLCS900"] = true -- NPG
 CPUS["SH"] = true -- MEGADRIVE
 CPUS["SSP1601"] = true -- MEGADRIVE
+CPUS["I386"] = true  -- MEGADRIVE
 CPUS["LR35902"] = true -- GB
-CPUS["DSP16"] = true --CPS1
-CPUS["I386"] = true --CPS1
-CPUS["PIC16C5X"] = true --CPS1
+CPUS["ARM7"] = true -- GB
 
 --------------------------------------------------
 -- specify available sound cores
 --------------------------------------------------
 
-SOUNDS["SPEAKER"] = true
-SOUNDS["YM2610"] = true
-SOUNDS["IREMGA20"] = true -- M92
-SOUNDS["OKIM6295"] = true -- M92
-SOUNDS["SAMPLES"] = true -- M92
-SOUNDS["YM2151"] = true -- M92
-SOUNDS["ICS2115"] = true -- PGM
+SOUNDS["SPEAKER"] = true -- NEOGEO
+SOUNDS["YM2610"] = true -- NEOGEO
 SOUNDS["DAC"] = true -- NPG
 SOUNDS["T6W28"] = true -- NPG
 SOUNDS["VOLT_REG"] = true -- NPG
@@ -44,26 +35,16 @@ SOUNDS["CDDA"] = true -- MEGADRIVE
 SOUNDS["RF5C68"] = true -- MEGADRIVE
 SOUNDS["SN76496"] = true -- MEGADRIVE
 SOUNDS["GB_SOUND"] = true -- GBA
-SOUNDS["MSM5205"] = true --CPS1
-SOUNDS["QSOUND"] = true --CPS1
 
 --------------------------------------------------
 -- specify available machine cores
 --------------------------------------------------
 
-MACHINES["GEN_LATCH"] = true
-MACHINES["UPD1990A"] = true
-MACHINES["WATCHDOG"] = true
-MACHINES["Z80DAISY"] = true
-MACHINES["PIC8259"] = true -- M92
-MACHINES["V3021"] = true --PGM
-MACHINES["TTL74157"] = true --CPS1
-MACHINES["EEPROMDEV"] = true --CPS1
-MACHINES["TIMEKPR"] = true --CPS1
-MACHINES["UPD4701"] = true --CPS1
-MACHINES["INTELFLASH"] = true -- cps3
-MACHINES["NSCSI"] = true -- cps3
-MACHINES["WD33C9X"] = true -- cps3
+MACHINES["GEN_LATCH"] = true -- NEOGEO
+MACHINES["UPD1990A"] = true -- NEOGEO
+MACHINES["WATCHDOG"] = true -- NEOGEO
+MACHINES["Z80DAISY"] = true -- NEOGEO
+MACHINES["INTELFLASH"] = true -- GBA
 
 --------------------------------------------------
 -- specify available bus cores
@@ -73,13 +54,11 @@ BUSES["GENERIC"] = true -- NPG
 BUSES["MEGADRIVE"] = true -- MEGADRIVE
 BUSES["GBA"] = true -- GBA
 BUSES["GAMEBOY"] = true -- GB
-BUSES["NSCSI"] = true --CPS3
 
 --------------------------------------------------
 -- specify available video cores
 --------------------------------------------------
 
-VIDEOS["BUFSPRITE"] = true -- M92
 VIDEOS["SEGA315_5124"] = true -- MEGADRIVE
 VIDEOS["SEGA315_5313"] = true -- MEGADRIVE
 VIDEOS["GBA_LCD"] = true -- GBA
@@ -93,9 +72,6 @@ VIDEOS["GB_LCD"] = true -- GB
 
 function linkProjects_mame_arcade(_target, _subtarget)
 	links {
-     	"capcom",
-		"igs",
-		"irem",
 		"neogeo",
 		"nintendo",
 		"sega",
@@ -140,62 +116,9 @@ function createProjects_mame_arcade(_target, _subtarget)
 -- shared across a number of drivers
 --------------------------------------------------
 
-createMAMEProjects(_target, _subtarget, "capcom")
-files {
-	MAME_DIR .. "src/hbmame/drivers/cps1.cpp",
-	MAME_DIR .. "src/hbmame/video/cps1.cpp",
-	MAME_DIR .. "src/hbmame/drivers/cps1bl_5205.cpp",
-	MAME_DIR .. "src/hbmame/drivers/cps1bl_pic.cpp",
-	MAME_DIR .. "src/hbmame/drivers/cps2.cpp",
-	MAME_DIR .. "src/hbmame/video/cps2.cpp",
-	MAME_DIR .. "src/mame/drivers/cps3.cpp",
-	MAME_DIR .. "src/mame/audio/cps3.cpp",
-	MAME_DIR .. "src/hbmame/drivers/fcrash.cpp",
-	MAME_DIR .. "src/mame/machine/kabuki.cpp",
-}
-
-
-createMAMEProjects(_target, _subtarget, "igs")
-files {
-	MAME_DIR .. "src/mame/drivers/pgm.cpp",
-	MAME_DIR .. "src/mame/includes/pgm.h",
-	MAME_DIR .. "src/mame/video/pgm.cpp",
-	MAME_DIR .. "src/mame/machine/pgmprot_igs027a_type1.cpp",
-	MAME_DIR .. "src/mame/machine/pgmprot_igs027a_type1.h",
-	MAME_DIR .. "src/mame/machine/pgmprot_igs027a_type2.cpp",
-	MAME_DIR .. "src/mame/machine/pgmprot_igs027a_type2.h",
-	MAME_DIR .. "src/mame/machine/pgmprot_igs027a_type3.cpp",
-	MAME_DIR .. "src/mame/machine/pgmprot_igs027a_type3.h",
-	MAME_DIR .. "src/mame/machine/pgmprot_igs025_igs012.cpp",
-	MAME_DIR .. "src/mame/machine/pgmprot_igs025_igs012.h",
-	MAME_DIR .. "src/mame/machine/pgmprot_igs025_igs022.cpp",
-	MAME_DIR .. "src/mame/machine/pgmprot_igs025_igs022.h",
-	MAME_DIR .. "src/mame/machine/pgmprot_igs025_igs028.cpp",
-	MAME_DIR .. "src/mame/machine/pgmprot_igs025_igs028.h",
-	MAME_DIR .. "src/mame/machine/pgmprot_orlegend.cpp",
-	MAME_DIR .. "src/mame/machine/pgmprot_orlegend.h",
-	MAME_DIR .. "src/mame/machine/pgmcrypt.cpp",
-	MAME_DIR .. "src/mame/machine/pgmcrypt.h",
-	MAME_DIR .. "src/mame/machine/igs025.cpp",
-	MAME_DIR .. "src/mame/machine/igs025.h",
-	MAME_DIR .. "src/mame/machine/igs022.cpp",
-	MAME_DIR .. "src/mame/machine/igs022.h",
-	MAME_DIR .. "src/mame/machine/igs028.cpp",
-	MAME_DIR .. "src/mame/machine/igs028.h",
-}
-
-createMAMEProjects(_target, _subtarget, "irem")
-files {
-	MAME_DIR .. "src/mame/drivers/m92.cpp",
-	MAME_DIR .. "src/mame/video/m92.cpp",
-	MAME_DIR .. "src/mame/machine/irem_cpu.cpp",
-}
-
 createMAMEProjects(_target, _subtarget, "neogeo")
 files {
 	MAME_DIR .. "src/hbmame/drivers/neogeo.cpp",
-	MAME_DIR .. "src/hbmame/drivers/neogeo_noslot.cpp",
-	MAME_DIR .. "src/hbmame/drivers/neogeo_noslothb.cpp",
 	MAME_DIR .. "src/hbmame/drivers/mslug.cpp",
 	MAME_DIR .. "src/hbmame/drivers/mslug2.cpp",
 	MAME_DIR .. "src/hbmame/drivers/mslug3.cpp",

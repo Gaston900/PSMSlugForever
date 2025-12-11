@@ -67,7 +67,7 @@ enum
 	FOLDER_BIOS, //Do not disable
 //	FOLDER_HARDDISK,
 //	FOLDER_SAMPLES,
-	FOLDER_MECHANICAL,
+//	FOLDER_MECHANICAL,
 //	FOLDER_LIGHTGUN,
 //	FOLDER_TRACKBALL,
 	FOLDER_WORKING,
@@ -108,8 +108,6 @@ enum
     FOLDER_REMIX,
     FOLDER_REMIXEXTREME,
     FOLDER_COLLECTION,
-	FOLDER_MVS,
-	FOLDER_CAPCOM,
 	FOLDER_UPDATE,
 	FOLDER_CONSOLE,
 //#endif	
@@ -212,7 +210,6 @@ void CreateORIGINALFolders(int parent_index);
 void CreateREMIXFolders(int parent_index);
 void CreateREMIXEXTREMEFolders(int parent_index);
 void CreateCOLLECTIONFolders(int parent_index);
-void CreateSOLDIERREBELFolders(int parent_index);
 void CreateUPDATEFolders(int parent_index);
 //#endif
 

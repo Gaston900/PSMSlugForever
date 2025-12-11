@@ -88,33 +88,3 @@ if (BUSES["GAMEBOY"]~=null) then
 		MAME_DIR .. "src/devices/bus/gameboy/mbc.h",
 	}
 end
-
--- SYSTEM (CPS3)
----------------------------------------------------
---
---@src/devices/bus/nscsi/cd.h,BUSES["NSCSI"] = true
---@src/devices/bus/nscsi/devices.h,BUSES["NSCSI"] = true
---@src/devices/bus/nscsi/hd.h,BUSES["NSCSI"] = true
---@src/devices/bus/nscsi/s1410.h,BUSES["NSCSI"] = true
----------------------------------------------------
-
-if (BUSES["NSCSI"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/bus/nscsi/cd.cpp",
-		MAME_DIR .. "src/devices/bus/nscsi/cd.h",
-		MAME_DIR .. "src/devices/bus/nscsi/cdd2000.cpp",
-		MAME_DIR .. "src/devices/bus/nscsi/cdd2000.h",
-		MAME_DIR .. "src/devices/bus/nscsi/cdrn820s.cpp",
-		MAME_DIR .. "src/devices/bus/nscsi/cdrn820s.h",
-		MAME_DIR .. "src/devices/bus/nscsi/cw7501.cpp",
-		MAME_DIR .. "src/devices/bus/nscsi/cw7501.h",
-		MAME_DIR .. "src/devices/bus/nscsi/devices.cpp",
-		MAME_DIR .. "src/devices/bus/nscsi/devices.h",
-		MAME_DIR .. "src/devices/bus/nscsi/hd.cpp",
-		MAME_DIR .. "src/devices/bus/nscsi/hd.h",
-		MAME_DIR .. "src/devices/bus/nscsi/s1410.cpp",
-		MAME_DIR .. "src/devices/bus/nscsi/s1410.h",
-		MAME_DIR .. "src/devices/bus/nscsi/smoc501.cpp",
-		MAME_DIR .. "src/devices/bus/nscsi/smoc501.h",
-	}
-end

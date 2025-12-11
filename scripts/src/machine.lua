@@ -16,21 +16,21 @@ files {
 --	MAME_DIR .. "src/devices/machine/buffer.h",
 	MAME_DIR .. "src/devices/machine/clock.cpp",
 	MAME_DIR .. "src/devices/machine/clock.h",
-	MAME_DIR .. "src/devices/machine/keyboard.cpp", -- M92
-	MAME_DIR .. "src/devices/machine/keyboard.h", -- M92
-	MAME_DIR .. "src/devices/machine/keyboard.ipp", -- M92
-	MAME_DIR .. "src/devices/machine/laserdsc.cpp", -- M92
-	MAME_DIR .. "src/devices/machine/laserdsc.h", -- M92
+	MAME_DIR .. "src/devices/machine/keyboard.cpp", -- NGP
+	MAME_DIR .. "src/devices/machine/keyboard.h", -- NGP
+	MAME_DIR .. "src/devices/machine/keyboard.ipp", -- NGP
+	MAME_DIR .. "src/devices/machine/laserdsc.cpp", -- NGP
+	MAME_DIR .. "src/devices/machine/laserdsc.h", -- NGP
 	MAME_DIR .. "src/devices/machine/nvram.cpp",
 	MAME_DIR .. "src/devices/machine/nvram.h",
 	MAME_DIR .. "src/devices/machine/ram.cpp",
 	MAME_DIR .. "src/devices/machine/ram.h",
-	MAME_DIR .. "src/devices/machine/legscsi.cpp", -- M92
-	MAME_DIR .. "src/devices/machine/legscsi.h", -- M92
+	MAME_DIR .. "src/devices/machine/legscsi.cpp", -- NGP
+	MAME_DIR .. "src/devices/machine/legscsi.h", -- NGP
 --	MAME_DIR .. "src/devices/machine/sdlc.cpp",
 --	MAME_DIR .. "src/devices/machine/sdlc.h",
-	MAME_DIR .. "src/devices/machine/terminal.cpp", -- M92
-	MAME_DIR .. "src/devices/machine/terminal.h", -- M92
+	MAME_DIR .. "src/devices/machine/terminal.cpp", -- NGP
+	MAME_DIR .. "src/devices/machine/terminal.h", -- NGP
 	MAME_DIR .. "src/devices/machine/timer.cpp",
 	MAME_DIR .. "src/devices/machine/timer.h",
 }
@@ -39,16 +39,16 @@ files {
 --	MAME_DIR .. "src/devices/imagedev/bitbngr.h",
 	MAME_DIR .. "src/devices/imagedev/cassette.cpp",
 	MAME_DIR .. "src/devices/imagedev/cassette.h",
-	MAME_DIR .. "src/devices/imagedev/chd_cd.cpp", -- M92
-	MAME_DIR .. "src/devices/imagedev/chd_cd.h", -- M92
+	MAME_DIR .. "src/devices/imagedev/chd_cd.cpp", -- NGP
+	MAME_DIR .. "src/devices/imagedev/chd_cd.h", -- NGP
 --	MAME_DIR .. "src/devices/imagedev/diablo.cpp",
 --	MAME_DIR .. "src/devices/imagedev/diablo.h",
-	MAME_DIR .. "src/devices/imagedev/flopdrv.cpp", -- M92
-	MAME_DIR .. "src/devices/imagedev/flopdrv.h", -- M92
+	MAME_DIR .. "src/devices/imagedev/flopdrv.cpp", -- NGP
+	MAME_DIR .. "src/devices/imagedev/flopdrv.h", -- NGP
 	MAME_DIR .. "src/devices/imagedev/floppy.cpp",
 	MAME_DIR .. "src/devices/imagedev/floppy.h",
-	MAME_DIR .. "src/devices/imagedev/harddriv.cpp", -- M92
-	MAME_DIR .. "src/devices/imagedev/harddriv.h", -- M92
+	MAME_DIR .. "src/devices/imagedev/harddriv.cpp", -- NGP
+	MAME_DIR .. "src/devices/imagedev/harddriv.h", -- NGP
 --	MAME_DIR .. "src/devices/imagedev/mfmhd.cpp",
 --	MAME_DIR .. "src/devices/imagedev/mfmhd.h",
 --	MAME_DIR .. "src/devices/imagedev/microdrv.cpp",
@@ -119,32 +119,6 @@ if (MACHINES["Z80DAISY"]~=null) then
 	}
 end
 
--- SYSTEM (M92)
----------------------------------------------------
---
---@src/devices/machine/pic8259.h,MACHINES["PIC8259"] = true
----------------------------------------------------
-
-if (MACHINES["PIC8259"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/machine/pic8259.cpp",
-		MAME_DIR .. "src/devices/machine/pic8259.h",
-	}
-end
-
--- SYSTEM (PGM)
----------------------------------------------------
---
---@src/devices/machine/v3021.h,MACHINES["V3021"] = true
----------------------------------------------------
-
-if (MACHINES["V3021"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/machine/v3021.cpp",
-		MAME_DIR .. "src/devices/machine/v3021.h",
-	}
-end
-
 -- SYSTEM (MEGADRIVE)
 ---------------------------------------------------
 --
@@ -180,102 +154,5 @@ if (MACHINES["INTELFLASH"]~=null) then
 	files {
 		MAME_DIR .. "src/devices/machine/intelfsh.cpp",
 		MAME_DIR .. "src/devices/machine/intelfsh.h",
-	}
-end
-
--- SYSTEM (CPS1)
----------------------------------------------------
---
---@src/devices/machine/74157.h,MACHINES["TTL74157"] = true
----------------------------------------------------
-
-if (MACHINES["TTL74157"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/machine/74157.cpp",
-		MAME_DIR .. "src/devices/machine/74157.h",
-	}
-end
-
----------------------------------------------------
---
---@src/devices/machine/eeprom.h,MACHINES["EEPROMDEV"] = true
---@src/devices/machine/eepromser.h,MACHINES["EEPROMDEV"] = true
---@src/devices/machine/eeprompar.h,MACHINES["EEPROMDEV"] = true
----------------------------------------------------
-
-if (MACHINES["EEPROMDEV"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/machine/eeprom.cpp",
-		MAME_DIR .. "src/devices/machine/eeprom.h",
-		MAME_DIR .. "src/devices/machine/eepromser.cpp",
-		MAME_DIR .. "src/devices/machine/eepromser.h",
-		MAME_DIR .. "src/devices/machine/eeprompar.cpp",
-		MAME_DIR .. "src/devices/machine/eeprompar.h",
-	}
-end
-
----------------------------------------------------
---
---@src/devices/machine/timekpr.h,MACHINES["TIMEKPR"] = true
----------------------------------------------------
-
-if (MACHINES["TIMEKPR"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/machine/timekpr.cpp",
-		MAME_DIR .. "src/devices/machine/timekpr.h",
-	}
-end
-
----------------------------------------------------
---
---@src/devices/machine/upd4701.h,MACHINES["UPD4701"] = true
----------------------------------------------------
-
-if (MACHINES["UPD4701"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/machine/upd4701.cpp",
-		MAME_DIR .. "src/devices/machine/upd4701.h",
-	}
-end
-
--- SYSTEM (CPS3)
----------------------------------------------------
---
---@src/devices/machine/intelfsh.h,MACHINES["INTELFLASH"] = true
----------------------------------------------------
-
-if (MACHINES["INTELFLASH"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/machine/intelfsh.cpp",
-		MAME_DIR .. "src/devices/machine/intelfsh.h",
-	}
-end
-
-
----------------------------------------------------
---
---@src/devices/machine/nscsi_bus.h,MACHINES["NSCSI"] = true
---@src/devices/machine/nscsi_cb.h,MACHINES["NSCSI"] = true
----------------------------------------------------
-
-if (MACHINES["NSCSI"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/machine/nscsi_bus.cpp",
-		MAME_DIR .. "src/devices/machine/nscsi_bus.h",
-		MAME_DIR .. "src/devices/machine/nscsi_cb.cpp",
-		MAME_DIR .. "src/devices/machine/nscsi_cb.h",
-	}
-end
-
----------------------------------------------------
---
---@src/devices/machine/wd33c9x.h,MACHINES["WD33C9X"] = true
----------------------------------------------------
-
-if (MACHINES["WD33C9X"]~=null) then
-	MACHINES["SCSI"] = true
-	files {
-		MAME_DIR .. "src/devices/machine/wd33c9x.cpp",
-		MAME_DIR .. "src/devices/machine/wd33c9x.h",
 	}
 end

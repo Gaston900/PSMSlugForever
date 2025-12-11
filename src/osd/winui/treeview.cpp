@@ -114,9 +114,7 @@ extern const FOLDERDATA g_folderData[] =
 	{"Remix", 	            "remix",		       FOLDER_REMIX,		       IDI_FOLDER_REMIX,	           0,			 0, 		   0, CreateREMIXFolders },
 	{"Remix Extreme", 	    "remix extreme",	   FOLDER_REMIXEXTREME,        IDI_FOLDER_REMIXEXTREME,        0,			 0, 		   0, CreateREMIXEXTREMEFolders },
 	{"Update 2026", 	    "update 2026",	       FOLDER_UPDATE,              IDI_FOLDER_UPDATE,              0,			 0, 		   0, CreateUPDATEFolders },
-	{"NeoGeo", 	            "neogeo",	           FOLDER_MVS,                 IDI_FOLDER_MVS,                 0,			 0, 		   0, NULL,                       DriverIsMvs,             true },
-    {"Capcom", 	            "capcom",	           FOLDER_CAPCOM,              IDI_FOLDER_CAPCOM,              0,			 0, 		   0, NULL,                       DriverIsCapcom,          true },
-	{"PGM",                 "pgm",                 FOLDER_MECHANICAL,          IDI_MECHANICAL,                 0,            0,            0, NULL,                       DriverIsMechanical,      true },
+//	{"Mechanical",          "mechanical",          FOLDER_MECHANICAL,          IDI_MECHANICAL,                 0,            0,            0, NULL,                       DriverIsMechanical,      true },
 //	{"Unavailable",   "unavailable",      FOLDER_UNAVAILABLE,  IDI_FOLDER_UNAVAILABLE,   0,             F_AVAILABLE,  0, NULL,                       FilterAvailable,         false },
 //	{"Parents",       "originals",        FOLDER_ORIGINAL,     IDI_FOLDER_ORIGINALS,     F_ORIGINALS,   F_CLONES,     0, NULL,                       DriverIsClone,           false },
 //	{"Clones",        "clones",           FOLDER_CLONES,       IDI_FOLDER_CLONES,        F_CLONES,      F_ORIGINALS,  0, NULL,                       DriverIsClone,           true },
@@ -200,8 +198,6 @@ static const TREEICON treeIconNames[] =
 	{ IDI_FOLDER_REMIX,	        "fold_remix" },
 	{ IDI_FOLDER_REMIXEXTREME,	"fold_remixe" },
 	{ IDI_FOLDER_COLLECTION,	"fold_collection" },
-	{ IDI_FOLDER_MVS,	        "fold_mvs" },
-	{ IDI_FOLDER_CAPCOM,	    "fold_capcom" },
 	{ IDI_FOLDER_UPDATE,	    "fold_update" },
 	{ IDI_FOLDER_CONSOLE,    	"fold_console" },
 
@@ -379,32 +375,12 @@ bool GameFiltered(int nGame, DWORD dwMask)
 		if(DriverIsBios(nGame))
 			return true;
 	}
-/* Add games "MACHINE_MECHANICAL" */
-	if(lpFolder && lpFolder->m_nFolderId != FOLDER_MECHANICAL)
-	{
-		if(DriverIsMechanical(nGame))
-			return true;
-	}
-
-/* Add games "MACHINE_IS_INCOMPLETE" */
-	if(lpFolder && lpFolder->m_nFolderId != FOLDER_MVS)
-	{
-		if(DriverIsMvs(nGame))
-			return true;
-	}
 
 // (cache, 0 = cache, 1)
 /* Add games "MACHINE_TYPE_CONSOLE" "MACHINE_TYPE_COMPUTER" "MACHINE_TYPE_OTHER"*/
 	if(lpFolder && lpFolder->m_nFolderId != FOLDER_CONSOLE)
 	{
 		if(DriverIsConsole(nGame))
-			return true;
-	}
-
-/* Add games "MACHINE_IMPERFECT_COLORS" */
-	if(lpFolder && lpFolder->m_nFolderId != FOLDER_CAPCOM)
-	{
-		if(DriverIsCapcom(nGame))
 			return true;
 	}
 
@@ -3967,29 +3943,6 @@ void CreateCOLLECTIONFolders(int parent_index)
 		if (!strcmp("mslug3hc39", s))			        AddGame(lpSerieSR, jj);
 		if (!strcmp("mslug3hc40", s))			        AddGame(lpSerieSR, jj);
 	    if (!strcmp("mslug3esl", s))			        AddGame(lpSerieSR, jj);
-	}
-}
-
-void CreateSOLDIERREBELFolders(int parent_index)
-{
-	int jj;
-	int nGames = GetNumGames();
-
-	
-	LPTREEFOLDER lpFolder = treeFolders[parent_index];
-
-	// no games in top level folder
-	SetAllBits(lpFolder->m_lpGameBits,FALSE);
-
-	for (jj = 0; jj < nGames; jj++)
-	{
-		const char *s = GetDriverGameName(jj);
-
-		if (s == NULL || s[0] == '\0')
-			continue;
-
-		if (!strcmp("mslug3esl", s))			        AddGame(lpFolder, jj);
-		if (!strcmp("mslug3or", s))			            AddGame(lpFolder, jj);
 	}
 }
 

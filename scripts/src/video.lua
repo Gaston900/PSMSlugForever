@@ -35,19 +35,6 @@ files {
 	MAME_DIR .. "src/devices/video/cgapal.h",
 }
 
--- SYSTEM (M92)
---------------------------------------------------
---
---@src/devices/video/bufsprite.h,VIDEOS["BUFSPRITE"] = true
---------------------------------------------------
-
-if (VIDEOS["BUFSPRITE"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/video/bufsprite.cpp",
-		MAME_DIR .. "src/devices/video/bufsprite.h",
-	}
-end
-
 -- SYSTEM (MEGADRIVE)
 --------------------------------------------------
 --

@@ -10,8 +10,8 @@
 
 #include "emu.h"
 
-#define APPNAME                 "PSMSlugForever"
-#define APPNAME_LOWER           "PSMSlugForever"
+#define APPNAME                 "SlugNeo"
+#define APPNAME_LOWER           "SlugNeo"
 #define CONFIGNAME              "mame"
 #define COPYRIGHT               "Copyright Nicola Salmoria\nand the MAME team\nhttp://mamedev.org"
 #define COPYRIGHT_INFO          "Copyright Nicola Salmoria and the MAME team"

@@ -185,12 +185,10 @@
 #define IDI_FOLDER_REMIX				305
 #define IDI_FOLDER_REMIXEXTREME		    306
 #define IDI_FOLDER_COLLECTION		    307
-#define IDI_FOLDER_MVS			        308
-#define IDI_FOLDER_UPDATE				309
-#define IDI_FOLDER_CONSOLE              310
-#define IDI_FOLDER_CAPCOM               311
-#define IDI_HEADER_UP                   312
-#define IDI_HEADER_DOWN                 313
+#define IDI_FOLDER_UPDATE				308
+#define IDI_FOLDER_CONSOLE              309
+#define IDI_HEADER_UP                   310
+#define IDI_HEADER_DOWN                 311
 
 #define IDC_LIST                        1000
 #define IDC_JOYSTICK                    1003

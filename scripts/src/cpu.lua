@@ -22,7 +22,7 @@ for i, v in ipairs(DRC_CPUS) do
 	end
 end
 
--- SYSTEM (PGM)
+-- SYSTEM (GB)
 if (CPU_INCLUDE_DRC) then
 	files {
 		MAME_DIR .. "src/devices/cpu/drcbec.cpp",
@@ -104,141 +104,6 @@ end
 if (CPUS["Z80"]~=null or _OPTIONS["with-tools"]) then
 	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/z80/z80dasm.cpp")
 	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/z80/z80dasm.h")
-end
-
--- SYSTEM (M92)
---------------------------------------------------
--- NEC V-series Intel-compatible
---@src/devices/cpu/nec/nec.h,CPUS["NEC"] = true
---@src/devices/cpu/nec/v25.h,CPUS["NEC"] = true
---@src/devices/cpu/nec/v5x.h,CPUS["NEC"] = true
---@src/devices/cpu/v30mz/v30mz.h,CPUS["V30MZ"] = true
---------------------------------------------------
-
-if (CPUS["NEC"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/cpu/nec/nec.cpp",
-		MAME_DIR .. "src/devices/cpu/nec/nec.h",
-		MAME_DIR .. "src/devices/cpu/nec/necea.h",
-		MAME_DIR .. "src/devices/cpu/nec/necinstr.h",
-		MAME_DIR .. "src/devices/cpu/nec/necinstr.hxx",
-		MAME_DIR .. "src/devices/cpu/nec/nec80inst.hxx",
-		MAME_DIR .. "src/devices/cpu/nec/necmacro.h",
-		MAME_DIR .. "src/devices/cpu/nec/necmodrm.h",
-		MAME_DIR .. "src/devices/cpu/nec/necpriv.ipp",
-		MAME_DIR .. "src/devices/cpu/nec/v25instr.h",
-		MAME_DIR .. "src/devices/cpu/nec/v25instr.hxx",
-		MAME_DIR .. "src/devices/cpu/nec/v25priv.ipp",
-		MAME_DIR .. "src/devices/cpu/nec/v25.cpp",
-		MAME_DIR .. "src/devices/cpu/nec/v25.h",
-		MAME_DIR .. "src/devices/cpu/nec/v25sfr.cpp",
-		MAME_DIR .. "src/devices/cpu/nec/v5x.cpp",
-		MAME_DIR .. "src/devices/cpu/nec/v5x.h",
-	}
-end
-
-if (CPUS["NEC"]~=null or _OPTIONS["with-tools"]) then
-	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/nec/necdasm.cpp")
-	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/nec/necdasm.h")
-end
-
-if (CPUS["V30MZ"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/cpu/v30mz/v30mz.cpp",
-		MAME_DIR .. "src/devices/cpu/v30mz/v30mz.h",
-	}
-end
-
-if (CPUS["V30MZ"]~=null or _OPTIONS["with-tools"]) then
-	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/nec/necdasm.cpp")
-	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/nec/necdasm.h")
-end
-
--- SYSTEM (PGM)
---------------------------------------------------
--- Acorn ARM series
---
---@src/devices/cpu/arm/arm.h,CPUS["ARM"] = true
---@src/devices/cpu/arm7/arm7.h,CPUS["ARM7"] = true
---------------------------------------------------
-
---if (CPUS["ARM"]~=null) then
---	files {
---		MAME_DIR .. "src/devices/cpu/arm/arm.cpp",
---		MAME_DIR .. "src/devices/cpu/arm/arm.h",
---	}
---end
-
---if (CPUS["ARM"]~=null or _OPTIONS["with-tools"]) then
---	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/arm/armdasm.cpp")
---	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/arm/armdasm.h")
---end
-
-if (CPUS["ARM7"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/cpu/arm7/arm7.cpp",
-		MAME_DIR .. "src/devices/cpu/arm7/arm7.h",
-		MAME_DIR .. "src/devices/cpu/arm7/arm7thmb.cpp",
-		MAME_DIR .. "src/devices/cpu/arm7/arm7ops.cpp",
-		MAME_DIR .. "src/devices/cpu/arm7/lpc210x.cpp",
-		MAME_DIR .. "src/devices/cpu/arm7/lpc210x.h",
-		MAME_DIR .. "src/devices/cpu/arm7/arm7core.h",
-		MAME_DIR .. "src/devices/cpu/arm7/arm7core.hxx",
-		MAME_DIR .. "src/devices/cpu/arm7/arm7drc.hxx",
-		MAME_DIR .. "src/devices/cpu/arm7/arm7help.h",
-		MAME_DIR .. "src/devices/cpu/arm7/arm7tdrc.hxx",
-	}
-end
-
-if (CPUS["ARM7"]~=null or _OPTIONS["with-tools"]) then
-	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/arm7/arm7dasm.cpp")
-	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/arm7/arm7dasm.h")
-end
-
---------------------------------------------------
--- Intel 80x86 series (also a dynamic recompiler target)
---@src/devices/cpu/i86/i86.h,CPUS["I86"] = true
---@src/devices/cpu/i86/i286.h,CPUS["I86"] = true
---@src/devices/cpu/i386/i386.h,CPUS["I386"] = true
---------------------------------------------------
-
---if (CPUS["I86"]~=null) then
---	files {
---		MAME_DIR .. "src/devices/cpu/i86/i86.cpp",
---		MAME_DIR .. "src/devices/cpu/i86/i86.h",
---		MAME_DIR .. "src/devices/cpu/i86/i186.cpp",
---		MAME_DIR .. "src/devices/cpu/i86/i186.h",
---		MAME_DIR .. "src/devices/cpu/i86/i286.cpp",
---		MAME_DIR .. "src/devices/cpu/i86/i286.h",
---		MAME_DIR .. "src/devices/cpu/i86/i86inline.h",
---	}
---end
-
-if (CPUS["I86"]~=null or CPUS["I386"]~=null or CPU_INCLUDE_DRC or _OPTIONS["with-tools"]) then
-	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/i386/i386dasm.cpp")
-	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/i386/i386dasm.h")
-end
-
-if (CPUS["I386"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/cpu/i386/i386.cpp",
-		MAME_DIR .. "src/devices/cpu/i386/i386.h",
-		MAME_DIR .. "src/devices/cpu/i386/athlon.cpp",
-		MAME_DIR .. "src/devices/cpu/i386/athlon.h",
-		MAME_DIR .. "src/devices/cpu/i386/cache.h",
-		MAME_DIR .. "src/devices/cpu/i386/cycles.h",
-		MAME_DIR .. "src/devices/cpu/i386/i386op16.hxx",
-		MAME_DIR .. "src/devices/cpu/i386/i386op32.hxx",
-		MAME_DIR .. "src/devices/cpu/i386/i386ops.h",
-		MAME_DIR .. "src/devices/cpu/i386/i386ops.hxx",
-		MAME_DIR .. "src/devices/cpu/i386/i386priv.h",
-		MAME_DIR .. "src/devices/cpu/i386/i386segs.hxx",
-		MAME_DIR .. "src/devices/cpu/i386/i486ops.hxx",
-		MAME_DIR .. "src/devices/cpu/i386/pentops.hxx",
-		MAME_DIR .. "src/devices/cpu/i386/x87ops.hxx",
-		MAME_DIR .. "src/devices/cpu/i386/x87priv.h",
-		MAME_DIR .. "src/devices/cpu/i386/cpuidmsrs.hxx",
-	}
 end
 
 -- SYSTEM (NPG)
@@ -327,6 +192,52 @@ if (CPUS["SSP1601"]~=null or _OPTIONS["with-tools"]) then
 	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/ssp1601/ssp1601d.h")
 end
 
+--------------------------------------------------
+-- Intel 80x86 series (also a dynamic recompiler target)
+--@src/devices/cpu/i86/i86.h,CPUS["I86"] = true
+--@src/devices/cpu/i86/i286.h,CPUS["I86"] = true
+--@src/devices/cpu/i386/i386.h,CPUS["I386"] = true
+--------------------------------------------------
+
+--if (CPUS["I86"]~=null) then
+--	files {
+--		MAME_DIR .. "src/devices/cpu/i86/i86.cpp",
+--		MAME_DIR .. "src/devices/cpu/i86/i86.h",
+--		MAME_DIR .. "src/devices/cpu/i86/i186.cpp",
+--		MAME_DIR .. "src/devices/cpu/i86/i186.h",
+--		MAME_DIR .. "src/devices/cpu/i86/i286.cpp",
+--		MAME_DIR .. "src/devices/cpu/i86/i286.h",
+--		MAME_DIR .. "src/devices/cpu/i86/i86inline.h",
+--	}
+--end
+
+if (CPUS["I86"]~=null or CPUS["I386"]~=null or CPU_INCLUDE_DRC or _OPTIONS["with-tools"]) then
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/i386/i386dasm.cpp")
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/i386/i386dasm.h")
+end
+
+if (CPUS["I386"]~=null) then
+	files {
+		MAME_DIR .. "src/devices/cpu/i386/i386.cpp",
+		MAME_DIR .. "src/devices/cpu/i386/i386.h",
+		MAME_DIR .. "src/devices/cpu/i386/athlon.cpp",
+		MAME_DIR .. "src/devices/cpu/i386/athlon.h",
+		MAME_DIR .. "src/devices/cpu/i386/cache.h",
+		MAME_DIR .. "src/devices/cpu/i386/cycles.h",
+		MAME_DIR .. "src/devices/cpu/i386/i386op16.hxx",
+		MAME_DIR .. "src/devices/cpu/i386/i386op32.hxx",
+		MAME_DIR .. "src/devices/cpu/i386/i386ops.h",
+		MAME_DIR .. "src/devices/cpu/i386/i386ops.hxx",
+		MAME_DIR .. "src/devices/cpu/i386/i386priv.h",
+		MAME_DIR .. "src/devices/cpu/i386/i386segs.hxx",
+		MAME_DIR .. "src/devices/cpu/i386/i486ops.hxx",
+		MAME_DIR .. "src/devices/cpu/i386/pentops.hxx",
+		MAME_DIR .. "src/devices/cpu/i386/x87ops.hxx",
+		MAME_DIR .. "src/devices/cpu/i386/x87priv.h",
+		MAME_DIR .. "src/devices/cpu/i386/cpuidmsrs.hxx",
+	}
+end
+
 -- SYSTEM (GB)
 --------------------------------------------------
 -- Sharp LR35902 (Game Boy CPU)
@@ -347,44 +258,42 @@ if (CPUS["LR35902"]~=null or _OPTIONS["with-tools"]) then
 	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/lr35902/lr35902d.h")
 end
 
--- SYSTEM (CPS1)
 --------------------------------------------------
--- WE|AT&T DSP16
---@src/devices/cpu/dsp16/dsp16.h,CPUS["DSP16"] = true
+-- Acorn ARM series
+--
+--@src/devices/cpu/arm/arm.h,CPUS["ARM"] = true
+--@src/devices/cpu/arm7/arm7.h,CPUS["ARM7"] = true
 --------------------------------------------------
 
-if (CPUS["DSP16"]~=null) then
+--if (CPUS["ARM"]~=null) then
+--	files {
+--		MAME_DIR .. "src/devices/cpu/arm/arm.cpp",
+--		MAME_DIR .. "src/devices/cpu/arm/arm.h",
+--	}
+--end
+
+--if (CPUS["ARM"]~=null or _OPTIONS["with-tools"]) then
+--	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/arm/armdasm.cpp")
+--	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/arm/armdasm.h")
+--end
+
+if (CPUS["ARM7"]~=null) then
 	files {
-		MAME_DIR .. "src/devices/cpu/dsp16/dsp16.cpp",
-		MAME_DIR .. "src/devices/cpu/dsp16/dsp16.h",
-		MAME_DIR .. "src/devices/cpu/dsp16/dsp16core.cpp",
-		MAME_DIR .. "src/devices/cpu/dsp16/dsp16core.h",
-		MAME_DIR .. "src/devices/cpu/dsp16/dsp16core.ipp",
-		MAME_DIR .. "src/devices/cpu/dsp16/dsp16fe.cpp",
-		MAME_DIR .. "src/devices/cpu/dsp16/dsp16fe.h",
-		MAME_DIR .. "src/devices/cpu/dsp16/dsp16rc.cpp",
-		MAME_DIR .. "src/devices/cpu/dsp16/dsp16rc.h",
+		MAME_DIR .. "src/devices/cpu/arm7/arm7.cpp",
+		MAME_DIR .. "src/devices/cpu/arm7/arm7.h",
+		MAME_DIR .. "src/devices/cpu/arm7/arm7thmb.cpp",
+		MAME_DIR .. "src/devices/cpu/arm7/arm7ops.cpp",
+		MAME_DIR .. "src/devices/cpu/arm7/lpc210x.cpp",
+		MAME_DIR .. "src/devices/cpu/arm7/lpc210x.h",
+		MAME_DIR .. "src/devices/cpu/arm7/arm7core.h",
+		MAME_DIR .. "src/devices/cpu/arm7/arm7core.hxx",
+		MAME_DIR .. "src/devices/cpu/arm7/arm7drc.hxx",
+		MAME_DIR .. "src/devices/cpu/arm7/arm7help.h",
+		MAME_DIR .. "src/devices/cpu/arm7/arm7tdrc.hxx",
 	}
 end
 
-if (CPUS["DSP16"]~=null or _OPTIONS["with-tools"]) then
-	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/dsp16/dsp16dis.cpp")
-	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/dsp16/dsp16dis.h")
-end
-
---------------------------------------------------
--- Microchip PIC16C5x
---@src/devices/cpu/pic16c5x/pic16c5x.h,CPUS["PIC16C5X"] = true
---------------------------------------------------
-
-if (CPUS["PIC16C5X"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/cpu/pic16c5x/pic16c5x.cpp",
-		MAME_DIR .. "src/devices/cpu/pic16c5x/pic16c5x.h",
-	}
-end
-
-if (CPUS["PIC16C5X"]~=null or _OPTIONS["with-tools"]) then
-	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/pic16c5x/16c5xdsm.cpp")
-	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/pic16c5x/16c5xdsm.h")
+if (CPUS["ARM7"]~=null or _OPTIONS["with-tools"]) then
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/arm7/arm7dasm.cpp")
+	table.insert(disasm_files , MAME_DIR .. "src/devices/cpu/arm7/arm7dasm.h")
 end

@@ -71,13 +71,12 @@ end
 --@src/devices/sound/262intf.h,SOUNDS["YMF262"] = true
 ---------------------------------------------------
 
--- SYSTEM (M92)
-if (SOUNDS["YM2151"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/sound/ym2151.cpp",
-		MAME_DIR .. "src/devices/sound/ym2151.h",
-	}
-end
+--if (SOUNDS["YM2151"]~=null) then
+--	files {
+--		MAME_DIR .. "src/devices/sound/ym2151.cpp",
+--		MAME_DIR .. "src/devices/sound/ym2151.h",
+--	}
+--end
 
 --if (SOUNDS["YM2413"]~=null) then
 --	files {
@@ -194,20 +193,6 @@ end
 --	}
 --end
 
--- SYSTEM (M92)
----------------------------------------------------
--- Irem custom sound chips
---@src/devices/sound/iremga20.h,SOUNDS["IREMGA20"] = true
----------------------------------------------------
-
-if (SOUNDS["IREMGA20"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/sound/iremga20.cpp",
-		MAME_DIR .. "src/devices/sound/iremga20.h",
-	}
-end
-
-
 ---------------------------------------------------
 -- OKI ADPCM sample players
 --@src/devices/sound/okim6258.h,SOUNDS["OKIM6258"] = true
@@ -226,12 +211,12 @@ if (SOUNDS["OKIM6258"]~=null or SOUNDS["OKIM6295"]~=null or SOUNDS["OKIM9810"]~=
 	}
 end
 
-  if (SOUNDS["MSM5205"]~=null or SOUNDS["MSM6585"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/sound/msm5205.cpp",
-		MAME_DIR .. "src/devices/sound/msm5205.h",
-	}
-end
+--  if (SOUNDS["MSM5205"]~=null or SOUNDS["MSM6585"]~=null) then
+--	files {
+--		MAME_DIR .. "src/devices/sound/msm5205.cpp",
+--		MAME_DIR .. "src/devices/sound/msm5205.h",
+--	}
+--end
 
 --if (SOUNDS["MSM5232"]~=null) then
 --	files {
@@ -247,12 +232,12 @@ end
 --	}
 --end
 
-if (SOUNDS["OKIM6295"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/sound/okim6295.cpp",
-		MAME_DIR .. "src/devices/sound/okim6295.h",
-	}
-end
+--if (SOUNDS["OKIM6295"]~=null) then
+--	files {
+--		MAME_DIR .. "src/devices/sound/okim6295.cpp",
+--		MAME_DIR .. "src/devices/sound/okim6295.h",
+--	}
+--end
 
 --if (SOUNDS["OKIM6258"]~=null) then
 --	files {
@@ -267,19 +252,6 @@ end
 --		MAME_DIR .. "src/devices/sound/okim9810.h",
 --	}
 --end
-
--- SYSTEM (PGM)
----------------------------------------------------
--- ICS2115 sound chip
---@src/devices/sound/ics2115.h,SOUNDS["ICS2115"] = true
----------------------------------------------------
-
-if (SOUNDS["ICS2115"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/sound/ics2115.cpp",
-		MAME_DIR .. "src/devices/sound/ics2115.h",
-	}
-end
 
 -- SYSTEM (NPG)
 ---------------------------------------------------
@@ -373,20 +345,5 @@ if (SOUNDS["GB_SOUND"]~=null) then
 	files {
 		MAME_DIR .. "src/devices/sound/gb.cpp",
 		MAME_DIR .. "src/devices/sound/gb.h",
-	}
-end
-
--- SYSTEM (CPS1)
----------------------------------------------------
--- QSound sample player
---@src/devices/sound/qsound.h,SOUNDS["QSOUND"] = true
----------------------------------------------------
-
-if (SOUNDS["QSOUND"]~=null) then
-	files {
-		MAME_DIR .. "src/devices/sound/qsound.cpp",
-		MAME_DIR .. "src/devices/sound/qsound.h",
-		MAME_DIR .. "src/devices/sound/qsoundhle.cpp",
-		MAME_DIR .. "src/devices/sound/qsoundhle.h",
 	}
 end
