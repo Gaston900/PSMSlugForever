@@ -1,9 +1,9 @@
 # SLUGNEO
-What is PSMSlugForever?
+What is SlugNeo?
 
-It is called Project Shadow Metal Slug Forever, this project was part of the HBMAME emulator in the year 2018 – 2020.
+It's called SlugNeo, this project was part of the HBMAME emulator in the year 2018 – 2020.
 
-Afterwards, it has been decided to make the project independent in 2021, providing all kinds of support, repairing all bugs and glitches, correcting incompatibility with the NeoGeo system, etc.
+Afterwards, it has been decided to make the  Metal Slug project would become independent in 2021, providing comprehensive technical support, fixing errors and failures, correcting incompatibilities with the NeoGeo system, etc.
 
 Version 0.224 [HBMAME/EKMAME] is being used as the base system.
 
@@ -93,5 +93,6 @@ The compilation [TOOL](https://github.com/mamedev/buildtools/releases) is sugges
 Open Source Software Projects
 ------------------------------
 Although the source code is free to use, please note that the use of this code for any commercial exploitation or use of the project for fundraising purposes is prohibited.
+
 
 
