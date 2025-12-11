@@ -1,4 +1,4 @@
-# PSMETAL SLUG FOREVER
+# SLUGNEO
 What is PSMSlugForever?
 
 It is called Project Shadow Metal Slug Forever, this project was part of the HBMAME emulator in the year 2018 – 2020.
@@ -93,4 +93,5 @@ The compilation [TOOL](https://github.com/mamedev/buildtools/releases) is sugges
 Open Source Software Projects
 ------------------------------
 Although the source code is free to use, please note that the use of this code for any commercial exploitation or use of the project for fundraising purposes is prohibited.
+
 
